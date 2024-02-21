@@ -1,14 +1,10 @@
 import Unit from "./Unit";
+import { UnitProps } from "./Unit";
 
 interface FlowProps {
   flow: {
     flowName: string;
-    units: {
-      name: string;
-      sanskritName: string;
-      duration: number;
-      announcement: string;
-    }[];
+    units: UnitProps[];
   };
 }
 
@@ -18,7 +14,9 @@ function Flow({ flow }: FlowProps) {
       <div className="h-full border">
         <div>{flow.flowName}</div>
         <div className=" bg-slate-400">
-          <Unit></Unit>
+          {flow.units.map((unit) => (
+            <Unit key={unit.name} {...unit}></Unit>
+          ))}
         </div>
       </div>
     </div>

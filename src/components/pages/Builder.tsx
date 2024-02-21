@@ -1,17 +1,10 @@
 import AspectGroup from "../buildingBlocks/AspectGroup";
 import Flow from "../buildingBlocks/Flow";
+import { UnitProps } from "../buildingBlocks/Unit";
+import { AspectGroupProps } from "../buildingBlocks/AspectGroup";
 
 function Builder() {
-  interface AspectGroup {
-    groupName: string;
-    aspects: Aspect[];
-  }
-
-  type Aspect = {
-    name: string;
-  };
-
-  const aspectGroups: AspectGroup[] = [
+  const aspectGroups: AspectGroupProps[] = [
     {
       groupName: "Group 1",
       aspects: [
@@ -76,15 +69,8 @@ function Builder() {
 
   interface Flow {
     flowName: string;
-    units: Unit[];
+    units: UnitProps[];
   }
-
-  type Unit = {
-    name: string;
-    sanskritName: string;
-    duration: number;
-    announcement: string;
-  };
 
   const flow: Flow = {
     flowName: "my fancy flow",

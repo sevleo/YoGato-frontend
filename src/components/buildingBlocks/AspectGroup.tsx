@@ -1,7 +1,11 @@
-interface AspectGroupProps {
+export interface AspectGroupProps {
   groupName: string;
-  aspects: { name: string }[];
+  aspects: Aspect[];
 }
+
+export type Aspect = {
+  name: string;
+};
 
 function AspectGroup({ groupName, aspects }: AspectGroupProps) {
   return (
