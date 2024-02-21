@@ -93,13 +93,67 @@ function Builder() {
         duration: 8,
         announcement: "fancy announcement",
       },
+      {
+        name: "unit 4",
+        sanskritName: "sanskrit name of unit 1",
+        duration: 5,
+        announcement: "fancy announcement",
+      },
+      {
+        name: "unit 5",
+        sanskritName: "sanskrit name of unit 2",
+        duration: 2,
+        announcement: "fancy announcement",
+      },
+      {
+        name: "unit 6",
+        sanskritName: "sanskrit name of unit 3",
+        duration: 8,
+        announcement: "fancy announcement",
+      },
+      {
+        name: "unit 7",
+        sanskritName: "sanskrit name of unit 1",
+        duration: 5,
+        announcement: "fancy announcement",
+      },
+      {
+        name: "unit 8",
+        sanskritName: "sanskrit name of unit 2",
+        duration: 2,
+        announcement: "fancy announcement",
+      },
+      {
+        name: "unit 9",
+        sanskritName: "sanskrit name of unit 3",
+        duration: 8,
+        announcement: "fancy announcement",
+      },
+      {
+        name: "unit 10",
+        sanskritName: "sanskrit name of unit 1",
+        duration: 5,
+        announcement: "fancy announcement",
+      },
+      {
+        name: "unit 11",
+        sanskritName: "sanskrit name of unit 2",
+        duration: 2,
+        announcement: "fancy announcement",
+      },
+      {
+        name: "unit 12",
+        sanskritName: "sanskrit name of unit 3",
+        duration: 8,
+        announcement: "fancy announcement",
+      },
     ],
   };
 
   return (
     <>
-      <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl">
-        <div className="canvas w-1/2 bg-slate-500">
+      <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl ">
+        <div className="canvas w-1/2 overflow-auto bg-slate-500">
           <Flow flow={flow}></Flow>
         </div>
 

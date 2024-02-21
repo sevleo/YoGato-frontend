@@ -7,13 +7,16 @@ export interface UnitProps {
 
 function Unit({ name, sanskritName, duration, announcement }: UnitProps) {
   return (
-    <div className="flex justify-center gap-5">
-      <div className="w-1/2">Step 1</div>
-      <div className="flex w-1/2 flex-col items-start">
+    <div className="flex justify-center gap-5 bg-slate-100 text-black">
+      <div className="flex w-1/6 items-center justify-center">Step 1</div>
+      <div className="flex w-1/6 items-center justify-center">
+        Picture space
+      </div>
+      <div className="flex w-4/6 flex-col items-start">
         <p>{name}</p>
         <p>{sanskritName}</p>
-        <p>{duration}</p>
-        <p>{announcement}</p>
+        <p>Length: {duration}</p>
+        <p>Announce: {announcement}</p>
       </div>
     </div>
   );

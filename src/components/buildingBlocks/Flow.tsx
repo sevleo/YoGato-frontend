@@ -10,10 +10,10 @@ interface FlowProps {
 
 function Flow({ flow }: FlowProps) {
   return (
-    <div className="h-full p-5">
+    <div className="h-auto p-5">
       <div className="h-full border">
         <div>{flow.flowName}</div>
-        <div className=" bg-slate-400">
+        <div className=" flex flex-col gap-5 bg-slate-400">
           {flow.units.map((unit) => (
             <Unit key={unit.name} {...unit}></Unit>
           ))}
