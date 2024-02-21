@@ -6,7 +6,7 @@ interface AspectGroupProps {
 function AspectGroup({ groupName, aspects }: AspectGroupProps) {
   return (
     <div className=" flex flex-col justify-center text-black">
-      <p className="mb-2 mt-2">{groupName}</p>
+      <p className="mb-2 mt-5 ">{groupName}</p>
       <div className="grid-cols-aspects grid justify-center gap-5">
         {aspects.map((aspect) => (
           <div
