@@ -77,7 +77,7 @@ function Builder() {
     <>
       <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl">
         <div className="canvas w-1/2 bg-slate-500"></div>
-        <div className=" blocks grid-cols-aspects grid w-1/2 justify-center gap-10 bg-slate-300 p-5">
+        <div className="flex w-1/2 flex-col justify-start gap-5 bg-slate-300 p-5">
           {aspectGroups.map((aspectGroup) => (
             <AspectGroup
               key={aspectGroup.groupName}
