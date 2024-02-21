@@ -2,7 +2,11 @@
 export default {
   content: ["index.html", "./src/*.tsx", "./src/**/*.tsx"],
   theme: {
-    extend: {},
+    extend: {
+      gridTemplateColumns: {
+        aspects: "repeat(auto-fill, minmax(100px, calc(25% - 0.5rem)))",
+      },
+    },
   },
   plugins: [],
 };
