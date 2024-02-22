@@ -2,7 +2,7 @@ import AspectGroup from "../buildingBlocks/AspectGroup";
 import Flow from "../buildingBlocks/Flow";
 import { UnitProps } from "../buildingBlocks/Unit";
 import { AspectGroupProps } from "../buildingBlocks/AspectGroup";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function Builder() {
   const aspectGroups: AspectGroupProps[] = [
