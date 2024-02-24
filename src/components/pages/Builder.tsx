@@ -92,13 +92,12 @@ function Builder() {
   };
 
   const [flow, setFlow] = useState<Flow>(defaultFlow);
-  const [isDragging, setIsDragging] = useState(false);
 
   return (
     <>
       <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl ">
         <div className="canvas w-1/2 overflow-auto bg-slate-500">
-          <Flow flow={flow} setFlow={setFlow} isDragging={isDragging}></Flow>
+          <Flow flow={flow} setFlow={setFlow}></Flow>
         </div>
 
         <div className="flex w-1/2 flex-col justify-start gap-5 overflow-auto bg-slate-300">
@@ -109,7 +108,6 @@ function Builder() {
                   key={aspectGroup.groupName}
                   groupName={aspectGroup.groupName}
                   aspects={aspectGroup.aspects}
-                  setIsDragging={setIsDragging}
                 ></AspectGroup>
               ))}
             </div>
