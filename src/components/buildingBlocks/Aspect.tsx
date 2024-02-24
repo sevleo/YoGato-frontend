@@ -1,16 +1,27 @@
 import { ItemTypes } from "../DND/ItemTypes";
 import { useDrag } from "react-dnd";
 
-export interface AspectProps {
+export interface AspectType {
   name: string;
 }
 
-export default function Aspect({ name }: AspectProps) {
+interface AspectProps {
+  name: string;
+  setIsDragging: (isDragging: boolean) => void;
+}
+
+export default function Aspect({ name, setIsDragging }: AspectProps) {
   const [, drag] = useDrag(() => ({
     type: ItemTypes.ASPECT,
-    collect: (monitor) => ({
-      isDragging: !!monitor.isDragging(),
-    }),
+    collect: (monitor) => {
+      const dragging = !!monitor.isDragging();
+      if (dragging) {
+        setIsDragging(dragging);
+      }
+    },
+    end: () => {
+      setIsDragging(false);
+    },
   }));
 
   return (

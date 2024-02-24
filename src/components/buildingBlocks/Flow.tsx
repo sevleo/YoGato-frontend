@@ -2,6 +2,8 @@ import { SetStateAction } from "react";
 import Unit from "./Unit";
 import { UnitProps } from "./Unit";
 import { Dispatch } from "react";
+import { ItemTypes } from "../DND/ItemTypes";
+import { useDrop } from "react-dnd";
 
 interface FlowProps {
   flow: {
@@ -14,9 +16,18 @@ interface FlowProps {
       units: UnitProps[];
     }>
   >;
+  isDragging: boolean;
 }
 
-function Flow({ flow, setFlow }: FlowProps) {
+function Flow({ flow, setFlow, isDragging }: FlowProps) {
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: ItemTypes.ASPECT,
+    drop: () => handleButtonClick(),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
   function handleButtonClick() {
     const newUnit = {
       name: "new unit",
@@ -34,8 +45,10 @@ function Flow({ flow, setFlow }: FlowProps) {
   }
 
   return (
-    <div className="h-auto p-5">
-      <div className="h-full border">
+    <div
+      className={`h-auto p-5 ${isOver ? "bg-black" : ""} ${isDragging ? "border-4" : ""}`}
+    >
+      <div className="h-full border" ref={drop}>
         <div>{flow.flowName}</div>
         <div>
           <button onClick={handleButtonClick}>Create new unit</button>
