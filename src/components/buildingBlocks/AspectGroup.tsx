@@ -1,11 +1,10 @@
+import Aspect from "./Aspect";
+import { AspectProps } from "./Aspect";
+
 export interface AspectGroupProps {
   groupName: string;
-  aspects: Aspect[];
+  aspects: AspectProps[];
 }
-
-export type Aspect = {
-  name: string;
-};
 
 function AspectGroup({ groupName, aspects }: AspectGroupProps) {
   return (
@@ -13,12 +12,7 @@ function AspectGroup({ groupName, aspects }: AspectGroupProps) {
       <p className="mb-2 mt-5 ">{groupName}</p>
       <div className="grid-cols-aspects grid justify-center gap-5">
         {aspects.map((aspect) => (
-          <div
-            key={aspect.name}
-            className="flex aspect-square cursor-pointer items-center justify-center rounded-md bg-white"
-          >
-            {aspect.name}
-          </div>
+          <Aspect key={aspect.name} name={aspect.name}></Aspect>
         ))}
       </div>
     </div>
