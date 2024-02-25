@@ -102,6 +102,7 @@ function Builder() {
   const [flow, setFlow] = useState<Flow>(defaultFlow);
 
   const [activeItem, setActiveItem] = useState<AspectType>();
+  const [isDragging, setIsDragging] = useState(false);
 
   const handleDragStart = (event: DragStartEvent) => {
     const { active } = event;
@@ -110,13 +111,22 @@ function Builder() {
       .find((aspect) => aspect.name === active.id);
     console.log(foundAspect);
     setActiveItem(foundAspect);
+    setIsDragging(true);
   };
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { over } = event;
-    if (!over) return;
-    console.log("end");
+    if (!over) {
+      setIsDragging(false);
+      return;
+    }
     handleButtonClick();
+    setIsDragging(false);
+  };
+
+  const handleDragCancel = () => {
+    console.log("canceled");
+    setIsDragging(false);
   };
 
   function handleButtonClick() {
@@ -137,10 +147,14 @@ function Builder() {
 
   return (
     <>
-      <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+      <DndContext
+        onDragStart={handleDragStart}
+        onDragEnd={handleDragEnd}
+        onDragCancel={handleDragCancel}
+      >
         <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl ">
           <div className="canvas w-1/2 overflow-auto bg-slate-500">
-            <Flow flow={flow} setFlow={setFlow}></Flow>
+            <Flow flow={flow} setFlow={setFlow} isDragging={isDragging}></Flow>
           </div>
 
           <div className="flex w-1/2 flex-col justify-start gap-5 overflow-auto bg-slate-300">

@@ -15,20 +15,25 @@ interface FlowProps {
       units: UnitProps[];
     }>
   >;
+  isDragging: boolean;
 }
 
-function Flow({ flow }: FlowProps) {
+function Flow({ flow, isDragging }: FlowProps) {
   const { isOver, setNodeRef } = useDroppable({
     id: "flow",
   });
 
   const style = {
-    border: isOver ? "2px solid gold" : "2px solid black",
+    border: isOver
+      ? "2px solid gold"
+      : isDragging
+        ? "2px solid green"
+        : "2px solid black",
   };
 
   return (
     <div className={`h-auto p-5`}>
-      <div className="h-full border" ref={setNodeRef} style={style}>
+      <div className="h-full" ref={setNodeRef} style={style}>
         <div>{flow.flowName}</div>
 
         <div className=" flex flex-col gap-5 bg-slate-400">
