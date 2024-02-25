@@ -13,10 +13,12 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
     const styles: CSSProperties = {
       opacity: isOpacityEnabled ? "0.4" : "1",
       cursor: isDragging ? "grabbing" : "grab",
-      lineHeight: "0.5",
+      //   lineHeight: "0.5",
       transform: isDragging ? "scale(1.05)" : "scale(1)",
+      color: "black",
       ...style,
     };
+    // console.log(aspect);
 
     return (
       <div
