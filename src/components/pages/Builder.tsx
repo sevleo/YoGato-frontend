@@ -129,7 +129,7 @@ function Builder() {
             </div>
           </div>
         </div>
-        <DragOverlay adjustScale style={{ transformOrigin: "0 0 " }}>
+        <DragOverlay style={{ transformOrigin: "0 0 " }}>
           {activeItem ? <Aspect aspect={activeItem} isDragging /> : null}
         </DragOverlay>
       </DndContext>

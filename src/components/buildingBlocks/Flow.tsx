@@ -2,6 +2,7 @@ import { SetStateAction } from "react";
 import Unit from "./Unit";
 import { UnitProps } from "./Unit";
 import { Dispatch } from "react";
+import { useDroppable } from "@dnd-kit/core";
 
 interface FlowProps {
   flow: {
@@ -17,6 +18,16 @@ interface FlowProps {
 }
 
 function Flow({ flow, setFlow }: FlowProps) {
+  const { isOver, setNodeRef } = useDroppable({
+    id: "flow",
+  });
+
+  const style = {
+    // width: "100%",
+    // height: "100%",
+    border: isOver ? "2px solid gold" : "2px solid black",
+  };
+
   function handleButtonClick() {
     const newUnit = {
       name: "new unit",
@@ -35,7 +46,7 @@ function Flow({ flow, setFlow }: FlowProps) {
 
   return (
     <div className={`h-auto p-5`}>
-      <div className="h-full border">
+      <div className="h-full border" ref={setNodeRef} style={style}>
         <div>{flow.flowName}</div>
         <div>
           <button onClick={handleButtonClick}>Create new unit</button>

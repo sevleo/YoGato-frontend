@@ -16,6 +16,7 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
       //   lineHeight: "0.5",
       transform: isDragging ? "scale(1.05)" : "scale(1)",
       color: "black",
+      maxWidth: "100px",
       ...style,
     };
     // console.log(aspect);
