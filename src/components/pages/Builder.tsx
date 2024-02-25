@@ -3,7 +3,12 @@ import Flow from "../buildingBlocks/Flow";
 import { UnitProps } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { useState } from "react";
-import { DndContext, DragOverlay, DragStartEvent } from "@dnd-kit/core";
+import {
+  DndContext,
+  DragEndEvent,
+  DragOverlay,
+  DragStartEvent,
+} from "@dnd-kit/core";
 import { AspectType } from "../buildingBlocks/AspectController";
 import Aspect from "../buildingBlocks/AspectDisplay";
 
@@ -107,9 +112,32 @@ function Builder() {
     setActiveItem(foundAspect);
   };
 
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { over } = event;
+    if (!over) return;
+    console.log("end");
+    handleButtonClick();
+  };
+
+  function handleButtonClick() {
+    const newUnit = {
+      name: "new unit",
+      sanskritName: "sanskrit name of unit 1",
+      duration: 5,
+      announcement: "fancy announcement",
+    };
+    console.log(newUnit);
+    setFlow((prevFlow) => {
+      return {
+        ...prevFlow,
+        units: [...prevFlow.units, newUnit],
+      };
+    });
+  }
+
   return (
     <>
-      <DndContext onDragStart={handleDragStart}>
+      <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
         <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl ">
           <div className="canvas w-1/2 overflow-auto bg-slate-500">
             <Flow flow={flow} setFlow={setFlow}></Flow>
