@@ -3,6 +3,7 @@ import Flow from "../buildingBlocks/Flow";
 import { UnitProps } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { useState } from "react";
+import { DndContext } from "@dnd-kit/core";
 
 function Builder() {
   const aspectGroups: AspectGroupType[] = [
@@ -95,25 +96,27 @@ function Builder() {
 
   return (
     <>
-      <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl ">
-        <div className="canvas w-1/2 overflow-auto bg-slate-500">
-          <Flow flow={flow} setFlow={setFlow}></Flow>
-        </div>
+      <DndContext>
+        <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl ">
+          <div className="canvas w-1/2 overflow-auto bg-slate-500">
+            <Flow flow={flow} setFlow={setFlow}></Flow>
+          </div>
 
-        <div className="flex w-1/2 flex-col justify-start gap-5 overflow-auto bg-slate-300">
-          <div className="h-auto gap-5 p-5">
-            <div className="border">
-              {aspectGroups.map((aspectGroup) => (
-                <AspectGroup
-                  key={aspectGroup.groupName}
-                  groupName={aspectGroup.groupName}
-                  aspects={aspectGroup.aspects}
-                ></AspectGroup>
-              ))}
+          <div className="flex w-1/2 flex-col justify-start gap-5 overflow-auto bg-slate-300">
+            <div className="h-auto gap-5 p-5">
+              <div className="border">
+                {aspectGroups.map((aspectGroup) => (
+                  <AspectGroup
+                    key={aspectGroup.groupName}
+                    groupName={aspectGroup.groupName}
+                    aspects={aspectGroup.aspects}
+                  ></AspectGroup>
+                ))}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </DndContext>
     </>
   );
 }
