@@ -16,6 +16,7 @@ export default function Aspect({ name }: AspectProps) {
   const style = transform
     ? {
         transform: `translate3d(${transform.x}px, ${transform.y}px, 0) scale(1.05)`,
+        // zIndex: 9999,
       }
     : undefined;
 

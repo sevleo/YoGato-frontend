@@ -3,7 +3,8 @@ import Flow from "../buildingBlocks/Flow";
 import { UnitProps } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { useState } from "react";
-import { DndContext } from "@dnd-kit/core";
+import { DndContext, DragOverlay, DragStartEvent } from "@dnd-kit/core";
+import { AspectType } from "../buildingBlocks/Aspect";
 
 function Builder() {
   const aspectGroups: AspectGroupType[] = [
@@ -94,9 +95,20 @@ function Builder() {
 
   const [flow, setFlow] = useState<Flow>(defaultFlow);
 
+  const [activeItem, setActiveItem] = useState<AspectType>();
+
+  const handleDragStart = (event: DragStartEvent) => {
+    const { active } = event;
+    const foundAspect = aspectGroups
+      .flatMap((group) => group.aspects)
+      .find((aspect) => aspect.name === active.id);
+    console.log(foundAspect);
+    setActiveItem(foundAspect);
+  };
+
   return (
     <>
-      <DndContext>
+      <DndContext onDragStart={handleDragStart}>
         <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl ">
           <div className="canvas w-1/2 overflow-auto bg-slate-500">
             <Flow flow={flow} setFlow={setFlow}></Flow>
