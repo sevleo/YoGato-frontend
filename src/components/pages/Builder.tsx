@@ -4,7 +4,8 @@ import { UnitProps } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { useState } from "react";
 import { DndContext, DragOverlay, DragStartEvent } from "@dnd-kit/core";
-import { AspectType } from "../buildingBlocks/Aspect";
+import { AspectType } from "../buildingBlocks/AspectController";
+import Aspect from "../buildingBlocks/AspectDisplay";
 
 function Builder() {
   const aspectGroups: AspectGroupType[] = [
@@ -128,6 +129,9 @@ function Builder() {
             </div>
           </div>
         </div>
+        <DragOverlay adjustScale style={{ transformOrigin: "0 0 " }}>
+          {activeItem ? <Aspect aspect={activeItem} isDragging /> : null}
+        </DragOverlay>
       </DndContext>
     </>
   );
