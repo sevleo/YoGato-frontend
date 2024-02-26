@@ -38,7 +38,7 @@ function Flow({ flow, isDragging }: FlowProps) {
 
         <div className=" flex flex-col gap-5 bg-slate-400">
           {flow.units.map((unit, index) => (
-            <Unit key={unit.name} {...unit} index={index}></Unit>
+            <Unit key={unit.id} {...unit} index={index}></Unit>
           ))}
         </div>
       </div>

@@ -11,6 +11,7 @@ import {
 } from "@dnd-kit/core";
 import { AspectType } from "../buildingBlocks/AspectController";
 import Aspect from "../buildingBlocks/AspectDisplay";
+import { v4 as uuidv4 } from "uuid";
 
 function Builder() {
   const aspectGroups: AspectGroupType[] = [
@@ -85,12 +86,14 @@ function Builder() {
     flowName: "my fancy flow",
     units: [
       {
+        id: uuidv4(),
         name: "unit 1",
         sanskritName: "sanskrit name of unit 1",
         duration: 5,
         announcement: "fancy announcement",
       },
       {
+        id: uuidv4(),
         name: "unit 2",
         sanskritName: "sanskrit name of unit 2",
         duration: 2,
@@ -131,6 +134,7 @@ function Builder() {
 
   function handleButtonClick() {
     const newUnit = {
+      id: uuidv4(),
       name: "new unit",
       sanskritName: "sanskrit name of unit 1",
       duration: 5,

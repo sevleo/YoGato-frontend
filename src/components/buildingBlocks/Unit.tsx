@@ -1,4 +1,5 @@
 export interface UnitProps {
+  id: string;
   name: string;
   sanskritName: string;
   duration: number;
@@ -16,7 +17,7 @@ function Unit({
   return (
     <div className="flex justify-center gap-5 bg-slate-100 text-black">
       <div className="flex w-1/6 items-center justify-center">
-        Step {index ? index + 1 : null}
+        Step {index != null ? index + 1 : null}
       </div>
       <div className="flex w-1/6 items-center justify-center">
         Picture space
