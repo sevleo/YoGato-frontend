@@ -112,7 +112,6 @@ function Builder() {
     const foundAspect = aspectGroups
       .flatMap((group) => group.aspects)
       .find((aspect) => aspect.name === active.id);
-    console.log(foundAspect);
     setActiveItem(foundAspect);
     setIsDragging(true);
   };
@@ -123,7 +122,8 @@ function Builder() {
       setIsDragging(false);
       return;
     }
-    handleButtonClick();
+
+    updateFlow();
     setIsDragging(false);
   };
 
@@ -132,21 +132,26 @@ function Builder() {
     setIsDragging(false);
   };
 
-  function handleButtonClick() {
-    const newUnit = {
-      id: uuidv4(),
-      name: "new unit",
-      sanskritName: "sanskrit name of unit 1",
-      duration: 5,
-      announcement: "fancy announcement",
-    };
-    console.log(newUnit);
-    setFlow((prevFlow) => {
-      return {
-        ...prevFlow,
-        units: [...prevFlow.units, newUnit],
+  function updateFlow() {
+    if (activeItem) {
+      const newUnit = {
+        id: uuidv4(),
+        name: activeItem.name,
+        sanskritName: activeItem.name,
+        duration: 5,
+        announcement: "fancy announcement",
       };
-    });
+
+      console.log(activeItem);
+      console.log(newUnit);
+
+      setFlow((prevFlow) => {
+        return {
+          ...prevFlow,
+          units: [...prevFlow.units, newUnit],
+        };
+      });
+    }
   }
 
   return (
