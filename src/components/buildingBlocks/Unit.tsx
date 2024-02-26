@@ -3,12 +3,21 @@ export interface UnitProps {
   sanskritName: string;
   duration: number;
   announcement: string;
+  index: number;
 }
 
-function Unit({ name, sanskritName, duration, announcement }: UnitProps) {
+function Unit({
+  name,
+  sanskritName,
+  duration,
+  announcement,
+  index,
+}: UnitProps) {
   return (
     <div className="flex justify-center gap-5 bg-slate-100 text-black">
-      <div className="flex w-1/6 items-center justify-center">Step 1</div>
+      <div className="flex w-1/6 items-center justify-center">
+        Step {index + 1}
+      </div>
       <div className="flex w-1/6 items-center justify-center">
         Picture space
       </div>
