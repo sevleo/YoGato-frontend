@@ -25,9 +25,9 @@ function Flow({ flow, isDragging }: FlowProps) {
 
   const style = {
     border: isOver
-      ? "2px solid gold"
+      ? "2px solid green"
       : isDragging
-        ? "2px solid green"
+        ? "2px solid gold"
         : "2px solid black",
   };
 
@@ -35,11 +35,21 @@ function Flow({ flow, isDragging }: FlowProps) {
     <div className="p-5">
       <div>{flow.flowName}</div>
       <div className="droppable-area " ref={setNodeRef} style={{ ...style }}>
-        <div className=" flex flex-col gap-5 bg-slate-400">
+        <div className=" flex flex-col bg-slate-400">
           {flow.units.map((unit, index) => (
-            <Unit key={unit.id} {...unit} index={index}></Unit>
+            <>
+              <Unit key={unit.id} {...unit} index={index}></Unit>
+              <span className="material-symbols-outlined">
+                keyboard_arrow_down
+              </span>
+            </>
           ))}
-          <div className="step-placeholder" style={{ minHeight: "96px" }}></div>
+          <div
+            className="step-placeholder flex items-center justify-center"
+            style={{ minHeight: "96px" }}
+          >
+            drop here
+          </div>
         </div>
       </div>
     </div>
