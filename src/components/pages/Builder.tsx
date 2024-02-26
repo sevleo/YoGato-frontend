@@ -103,9 +103,9 @@ function Builder() {
   };
 
   const [flow, setFlow] = useState<Flow>(defaultFlow);
-
   const [activeItem, setActiveItem] = useState<AspectType>();
   const [isDragging, setIsDragging] = useState(false);
+  const [isAddedToFlow, setIsAddedToFlow] = useState(true);
 
   const handleDragStart = (event: DragStartEvent) => {
     const { active } = event;
@@ -118,19 +118,21 @@ function Builder() {
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { over } = event;
+    console.log(over);
     if (!over) {
+      setIsAddedToFlow(false);
       setIsDragging(false);
       return;
     }
-
+    setIsAddedToFlow(true);
     updateFlow();
     setIsDragging(false);
   };
 
-  const handleDragCancel = () => {
-    console.log("canceled");
-    setIsDragging(false);
-  };
+  // const handleDragCancel = () => {
+  //   console.log("canceled");
+  //   setIsDragging(false);
+  // };
 
   function updateFlow() {
     if (activeItem) {
@@ -159,7 +161,7 @@ function Builder() {
       <DndContext
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
-        onDragCancel={handleDragCancel}
+        // onDragCancel={handleDragCancel}
       >
         <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl ">
           <div className="canvas w-1/2 overflow-auto bg-slate-500">
@@ -180,7 +182,10 @@ function Builder() {
             </div>
           </div>
         </div>
-        <DragOverlay style={{ transformOrigin: "0 0 " }}>
+        <DragOverlay
+          dropAnimation={isAddedToFlow ? null : undefined}
+          style={{ transformOrigin: "0 0 " }}
+        >
           {activeItem ? <Aspect aspect={activeItem} isDragging /> : null}
         </DragOverlay>
       </DndContext>
