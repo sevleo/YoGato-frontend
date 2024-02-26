@@ -32,7 +32,7 @@ function Home() {
     })
   );
 
-  function handleDragEnd(event) {
+  function sortableHandleDragEnd(event) {
     const { active, over } = event;
 
     if (active.id !== over.id) {
@@ -45,21 +45,30 @@ function Home() {
     }
   }
 
-  // Main app
+  // Draggable implementation
+  const [isDropped, setIsDropped] = useState(false);
+
+  function draggableHandleDragEnd(event: DragEndEvent) {
+    if (event.over && event.over.id === "droppable") {
+      setIsDropped(!isDropped);
+    }
+  }
 
   return (
     <>
       <div>Welcome to YoGato</div>
       <br />
-
       <Link to="/builder">Continue as Guest</Link>
       <br />
       <Link to="/builder">Login</Link>
-
+      <br />
+      <br />
+      <br />
+      <br />
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
+        onDragEnd={sortableHandleDragEnd}
       >
         <SortableContext items={items} strategy={verticalListSortingStrategy}>
           {items.map((id) => (
@@ -67,10 +76,11 @@ function Home() {
           ))}
         </SortableContext>
       </DndContext>
-      <DndContext onDragEnd={handleDragEnd}>
-        <div>{isDropped.toString()}</div>
-        <br />
-        <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <DndContext onDragEnd={draggableHandleDragEnd}>
         {!isDropped ? (
           <Draggable>Drag me!</Draggable>
         ) : (
