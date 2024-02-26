@@ -109,8 +109,8 @@ function Builder() {
       setIsDragging(false);
       return;
     }
-    setIsAddedToFlow(true);
     updateFlow();
+    setIsAddedToFlow(true);
     setIsDragging(false);
   };
 
@@ -138,6 +138,8 @@ function Builder() {
           units: [...prevFlow.units, newUnit],
         };
       });
+
+      console.log(flow);
     }
   }
 

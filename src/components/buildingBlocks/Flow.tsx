@@ -36,14 +36,16 @@ function Flow({ flow, isDragging }: FlowProps) {
       <div>{flow.flowName}</div>
       <div className="droppable-area " ref={setNodeRef} style={{ ...style }}>
         <div className=" flex flex-col bg-slate-400">
-          {flow.units.map((unit, index) => (
-            <>
-              <Unit key={unit.id} {...unit} index={index}></Unit>
-              <span className="material-symbols-outlined">
-                keyboard_arrow_down
-              </span>
-            </>
-          ))}
+          {flow.units.map((unit, index) => {
+            return (
+              <div key={unit.id}>
+                <Unit {...unit} index={index}></Unit>
+                <span className="material-symbols-outlined">
+                  keyboard_arrow_down
+                </span>
+              </div>
+            );
+          })}
           <div
             className="step-placeholder flex items-center justify-center"
             style={{ minHeight: "96px" }}

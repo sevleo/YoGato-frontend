@@ -14,6 +14,10 @@ function Unit({
   announcement,
   index,
 }: UnitProps) {
+  // console.log(name);
+  // console.log(index);
+  // console.log(id);
+
   return (
     <div className="step flex justify-center gap-5 bg-slate-100 text-black">
       <div className="flex w-1/6 items-center justify-center">
