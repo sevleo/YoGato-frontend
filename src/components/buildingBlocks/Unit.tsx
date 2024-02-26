@@ -3,7 +3,7 @@ export interface UnitProps {
   sanskritName: string;
   duration: number;
   announcement: string;
-  index: number;
+  index?: number;
 }
 
 function Unit({
@@ -16,7 +16,7 @@ function Unit({
   return (
     <div className="flex justify-center gap-5 bg-slate-100 text-black">
       <div className="flex w-1/6 items-center justify-center">
-        Step {index + 1}
+        Step {index ? index + 1 : null}
       </div>
       <div className="flex w-1/6 items-center justify-center">
         Picture space
