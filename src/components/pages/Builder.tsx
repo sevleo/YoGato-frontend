@@ -1,16 +1,25 @@
+// React
+import { useState } from "react";
+
+// Components
 import AspectGroup from "../buildingBlocks/AspectGroup";
 import Flow from "../buildingBlocks/Flow";
+import Aspect from "../buildingBlocks/AspectDisplay";
+
+// Types & interfaces
 import { UnitProps } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
-import { useState } from "react";
+import { AspectType } from "../buildingBlocks/AspectController";
+
+// DndKit draggable
 import {
   DndContext,
   DragEndEvent,
   DragOverlay,
   DragStartEvent,
 } from "@dnd-kit/core";
-import { AspectType } from "../buildingBlocks/AspectController";
-import Aspect from "../buildingBlocks/AspectDisplay";
+
+// Other
 import { v4 as uuidv4 } from "uuid";
 
 function Builder() {

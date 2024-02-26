@@ -1,3 +1,6 @@
+import { useSortable } from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
+
 export interface UnitProps {
   id: string;
   name: string;
@@ -8,18 +11,29 @@ export interface UnitProps {
 }
 
 function Unit({
+  id,
   name,
   sanskritName,
   duration,
   announcement,
   index,
 }: UnitProps) {
-  // console.log(name);
-  // console.log(index);
-  // console.log(id);
+  const { attributes, listeners, setNodeRef, transform, transition } =
+    useSortable({ id: id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
 
   return (
-    <div className="step flex justify-center gap-5 bg-slate-100 text-black">
+    <div
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
+      className="step flex justify-center gap-5 bg-slate-100 text-black"
+    >
       <div className="flex w-1/6 items-center justify-center">
         Step {index != null ? index + 1 : null}
       </div>
