@@ -32,8 +32,8 @@ function Flow({ flow, isDragging }: FlowProps) {
   };
 
   return (
-    <div className={`h-auto p-5`}>
-      <div className="h-full" ref={setNodeRef} style={style}>
+    <div className="h-60 bg-black p-5">
+      <div className="droppable-area min-h-60 " ref={setNodeRef} style={style}>
         <div>{flow.flowName}</div>
 
         <div className=" flex flex-col gap-5 bg-slate-400">

@@ -84,22 +84,7 @@ function Builder() {
 
   const defaultFlow: Flow = {
     flowName: "my fancy flow",
-    units: [
-      {
-        id: uuidv4(),
-        name: "unit 1",
-        sanskritName: "sanskrit name of unit 1",
-        duration: 5,
-        announcement: "fancy announcement",
-      },
-      {
-        id: uuidv4(),
-        name: "unit 2",
-        sanskritName: "sanskrit name of unit 2",
-        duration: 2,
-        announcement: "fancy announcement",
-      },
-    ],
+    units: [],
   };
 
   const [flow, setFlow] = useState<Flow>(defaultFlow);
