@@ -4,6 +4,8 @@ import { UnitProps } from "./Unit";
 import { Dispatch } from "react";
 import { DndContext, useDroppable } from "@dnd-kit/core";
 
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+
 // DndKit sortable
 import {
   closestCenter,
@@ -80,6 +82,7 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
       sensors={sensors}
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
+      modifiers={[restrictToVerticalAxis]}
     >
       <div className="p-5">
         <div>{flow.flowName}</div>

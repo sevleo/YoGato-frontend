@@ -19,7 +19,9 @@ function Unit({
   index,
 }: UnitProps) {
   const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({ id: id });
+    useSortable({
+      id: id,
+    });
 
   const style = {
     transform: CSS.Transform.toString(transform),
