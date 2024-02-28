@@ -1,12 +1,10 @@
+// React
 import { SetStateAction } from "react";
-import Unit from "./Unit";
-import { UnitProps } from "./Unit";
 import { Dispatch } from "react";
+
+// DndKit
 import { DndContext, useDroppable, DragEndEvent } from "@dnd-kit/core";
-
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
-
-// DndKit sortable
 import {
   closestCenter,
   KeyboardSensor,
@@ -21,6 +19,12 @@ import {
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
+
+// Components
+import Unit from "./Unit";
+
+// Types & interfaces
+import { UnitProps } from "./Unit";
 
 interface FlowProps {
   flow: {

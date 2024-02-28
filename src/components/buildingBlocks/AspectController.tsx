@@ -1,7 +1,12 @@
-import { useDraggable } from "@dnd-kit/core";
+// React
 import { HTMLAttributes } from "react";
-import Aspect from "./AspectDisplay";
+
+// DndKit
+import { useDraggable } from "@dnd-kit/core";
 import { CSS } from "@dnd-kit/utilities";
+
+// Components
+import Aspect from "./AspectDisplay";
 
 export interface AspectType {
   name: string;

@@ -1,4 +1,7 @@
+// Components
 import AspectController from "./AspectController";
+
+// Types & Interfaces
 import { AspectType } from "./AspectController";
 
 export interface AspectGroupType {

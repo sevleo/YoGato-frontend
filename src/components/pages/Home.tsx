@@ -1,8 +1,11 @@
+// React
+import { useState } from "react";
 import { Link } from "react-router-dom";
+
+// DndKit
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
 import { Draggable } from "../../Draggable";
 import { Droppable } from "../../Droppable";
-import { useState } from "react";
 
 function Home() {
   // Draggable implementation

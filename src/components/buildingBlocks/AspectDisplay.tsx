@@ -1,5 +1,7 @@
+// React
 import { CSSProperties, forwardRef, HTMLAttributes } from "react";
 
+// Types & interfaces
 import { AspectType } from "./AspectController";
 
 type Props = {
