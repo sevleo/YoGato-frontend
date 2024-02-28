@@ -2,7 +2,7 @@ import { SetStateAction } from "react";
 import Unit from "./Unit";
 import { UnitProps } from "./Unit";
 import { Dispatch } from "react";
-import { DndContext, useDroppable } from "@dnd-kit/core";
+import { DndContext, useDroppable, DragEndEvent } from "@dnd-kit/core";
 
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 
@@ -56,10 +56,10 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
     })
   );
 
-  function handleDragEnd(event) {
+  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
 
-    if (active.id !== over.id) {
+    if (over && active.id !== over.id) {
       setFlow((prevFlow) => {
         const oldIndex = prevFlow.units.findIndex(
           (unit) => unit.id === active.id
@@ -67,7 +67,6 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
         const newIndex = prevFlow.units.findIndex(
           (unit) => unit.id === over.id
         );
-
         const newUnits = arrayMove(prevFlow.units, oldIndex, newIndex);
         return {
           ...prevFlow,
