@@ -17,18 +17,13 @@ type Props = {
 } & HTMLAttributes<HTMLDivElement>;
 
 export default function AspectController({ aspect }: Props) {
-  const { attributes, isDragging, listeners, setNodeRef, transform } =
-    useDraggable({
-      id: aspect.name,
-    });
-  const style = {
-    transform: CSS.Translate.toString(transform),
-  };
+  const { attributes, isDragging, listeners, setNodeRef } = useDraggable({
+    id: aspect.name,
+  });
 
   return (
     <Aspect
       aspect={aspect}
-      style={style}
       ref={setNodeRef}
       isOpacityEnabled={isDragging}
       isDragging={isDragging}
