@@ -20,39 +20,40 @@ import {
   restrictToParentElement,
 } from "@dnd-kit/modifiers";
 import { useDroppable } from "@dnd-kit/core";
+import { v4 as uuidv4 } from "uuid";
 
 // DndKit
 
 function Home() {
   const [items1, setItems1] = useState([
     {
-      id: 1,
+      id: uuidv4(),
       name: "A",
     },
     {
-      id: 2,
+      id: uuidv4(),
       name: "B",
     },
     {
-      id: 3,
+      id: uuidv4(),
       name: "C",
     },
     {
-      id: 4,
+      id: uuidv4(),
       name: "D",
     },
   ]);
   const [items2, setItems2] = useState([
     {
-      id: 5,
+      id: uuidv4(),
       name: "E",
     },
     {
-      id: 6,
+      id: uuidv4(),
       name: "F",
     },
     {
-      id: 7,
+      id: uuidv4(),
       name: "G",
     },
   ]);
@@ -63,6 +64,10 @@ function Home() {
     restrictToParentElement,
     restrictToWindowEdges,
   ]);
+
+  // Tracks if the element from the right has been moved to the left
+  const [isMoved, setIsMoved] = useState(false);
+  const [movedItem, setMovedItem] = useState();
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -98,6 +103,8 @@ function Home() {
       setItems2((prevItems) =>
         prevItems.filter((item) => item.id !== draggedItem.id)
       );
+      setIsMoved(true);
+      setMovedItem(draggedItem);
     }
     // Conditional for sortable
     // if (
@@ -130,9 +137,14 @@ function Home() {
     // Conditional for draggable
     if (
       event.active.data.current !== undefined &&
-      event.over.data.current !== undefined
+      event.over.data.current !== undefined &&
+      isMoved
     ) {
-      console.log("ttt");
+      console.log("Copy!");
+      const draggedItemCopy = { ...movedItem };
+      draggedItemCopy.id = uuidv4();
+      setItems2((prevItems) => [...prevItems, draggedItemCopy]);
+      setIsMoved(false);
     }
 
     // Conditional for sortable
@@ -151,10 +163,6 @@ function Home() {
       }
     }
   }
-
-  const { isOver, setNodeRef } = useDroppable({
-    id: "right-area",
-  });
 
   return (
     <>
