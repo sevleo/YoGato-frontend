@@ -69,6 +69,7 @@ function Home() {
   // Tracks if the element from the right has been moved to the left
   const [isMoved, setIsMoved] = useState(false);
   const [movedItem, setMovedItem] = useState();
+  const [activeItem, setActiveItem] = useState();
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -83,6 +84,8 @@ function Home() {
     } else {
       setModifiers([]);
       console.log(event);
+      const newActiveItem = items2.find((item) => item.id === event.active.id);
+      setActiveItem(newActiveItem);
     }
   }
 
@@ -190,19 +193,23 @@ function Home() {
             >
               {items1.map((item) => {
                 return (
-                  <DraggableItem key={item.id} item={item} sortable={true} />
+                  <DraggableItem key={item.id} item={item} type="sortable" />
                 );
               })}
             </SortableContext>
           </div>
           <div className="ml-1 mr-auto flex min-h-80 w-80 flex-col bg-green-300 ">
             {items2.map((item) => {
-              return <DraggableItem key={item.id} item={item} />;
+              return (
+                <DraggableItem key={item.id} item={item} type="draggable" />
+              );
             })}
           </div>
         </div>
-        {/* <DragOverlay dropAnimation={null} style={{ transformOrigin: "0 0 " }}>
-          {movedItem ? <DraggableItem item={movedItem} /> : null}
+        {/* <DragOverlay style={{ transformOrigin: "0 0 " }}>
+          {activeItem ? (
+            <DraggableItem item={activeItem} type="overlay" />
+          ) : null}
         </DragOverlay> */}
       </DndContext>
       <br />
