@@ -21,6 +21,7 @@ import {
 } from "@dnd-kit/modifiers";
 import { useDroppable } from "@dnd-kit/core";
 import { v4 as uuidv4 } from "uuid";
+import { DragOverlay } from "@dnd-kit/core";
 
 // DndKit
 
@@ -81,6 +82,7 @@ function Home() {
       setModifiers([restrictToVerticalAxis]);
     } else {
       setModifiers([]);
+      console.log(event);
     }
   }
 
@@ -199,6 +201,9 @@ function Home() {
             })}
           </div>
         </div>
+        {/* <DragOverlay dropAnimation={null} style={{ transformOrigin: "0 0 " }}>
+          {movedItem ? <DraggableItem item={movedItem} /> : null}
+        </DragOverlay> */}
       </DndContext>
       <br />
       <br />
