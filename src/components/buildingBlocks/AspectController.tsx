@@ -22,7 +22,7 @@ export default function AspectController({ aspect }: Props) {
       id: aspect.name,
     });
   const style = {
-    transform: CSS.Translate.toString(transform),
+    // transform: CSS.Translate.toString(transform),
   };
 
   return (

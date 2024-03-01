@@ -552,6 +552,10 @@ video {
   position: absolute;
 }
 
+.m-auto {
+  margin: auto;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
