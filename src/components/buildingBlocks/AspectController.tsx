@@ -20,9 +20,6 @@ export default function AspectController({ aspect }: Props) {
   const { attributes, isDragging, listeners, setNodeRef } = useDraggable({
     id: aspect.name,
   });
-  const { attributes, isDragging, listeners, setNodeRef } = useDraggable({
-    id: aspect.name,
-  });
 
   return (
     <Aspect
