@@ -3,7 +3,6 @@ import { HTMLAttributes } from "react";
 
 // DndKit
 import { useDraggable } from "@dnd-kit/core";
-import { CSS } from "@dnd-kit/utilities";
 
 // Components
 import Aspect from "./AspectDisplay";

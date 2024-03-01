@@ -3,6 +3,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import {
   DndContext,
+  DragEndEvent,
+  DragOverEvent,
+  DragStartEvent,
   KeyboardSensor,
   PointerSensor,
   useSensor,
@@ -78,7 +81,7 @@ function Home() {
     })
   );
 
-  function handleDragStart(event) {
+  function handleDragStart(event: DragStartEvent) {
     if (event.active.data.current !== undefined) {
       setModifiers([restrictToVerticalAxis]);
     } else {
@@ -89,13 +92,13 @@ function Home() {
     }
   }
 
-  function handleDragMove(event) {
+  function handleDragMove(event: DragMoveEvent) {
     // console.log("Drag Move:");
     // console.log(event);
     // if (event.over && )
   }
 
-  function handleDragOver(event) {
+  function handleDragOver(event: DragOverEvent) {
     if (
       event.active.data.current === undefined &&
       event.over.data.current !== undefined &&
@@ -111,30 +114,9 @@ function Home() {
       setIsMoved(true);
       setMovedItem(draggedItem);
     }
-    // Conditional for sortable
-    // if (
-    //   event.over &&
-    //   event.active.data.current !== undefined &&
-    //   event.active.data.current.sortable.containerId !==
-    //     event.over.data.current.sortable.containerId
-    // ) {
-    //   if (event.active.data.current.sortable.containerId === "items1") {
-    //     const draggedItem = items1.find((item) => item.id === event.active.id);
-    //     setItems1((prevItems) =>
-    //       prevItems.filter((item) => item.id !== draggedItem.id)
-    //     );
-    //     setItems2((prevItems) => [...prevItems, draggedItem]);
-    //   } else if (event.active.data.current.sortable.containerId === "items2") {
-    //     const draggedItem = items2.find((item) => item.id === event.active.id);
-    //     setItems2((prevItems) =>
-    //       prevItems.filter((item) => item.id !== draggedItem.id)
-    //     );
-    //     setItems1((prevItems) => [...prevItems, draggedItem]);
-    //   }
-    // }
   }
 
-  function handleDragEnd(event) {
+  function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
     console.log("Drag End:");
     console.log(event);
@@ -186,6 +168,15 @@ function Home() {
       >
         <div className="flex flex-row">
           <div className="ml-auto mr-1 flex min-h-80 w-80 flex-col bg-green-300">
+            {/* <DndContext
+              sensors={sensors}
+              collisionDetection={closestCenter}
+              onDragStart={handleDragStart}
+              onDragOver={handleDragOver}
+              onDragEnd={handleDragEnd}
+              modifiers={modifiers}
+              onDragMove={handleDragMove}
+            > */}
             <SortableContext
               items={items1}
               strategy={verticalListSortingStrategy}
@@ -197,6 +188,7 @@ function Home() {
                 );
               })}
             </SortableContext>
+            {/* </DndContext> */}
           </div>
           <div className="ml-1 mr-auto flex min-h-80 w-80 flex-col bg-green-300 ">
             {items2.map((item) => {
