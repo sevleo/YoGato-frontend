@@ -27,6 +27,8 @@ import { v4 as uuidv4 } from "uuid";
 import { DragOverlay } from "@dnd-kit/core";
 
 // DndKit
+import { SortableItem } from "../SortableItem";
+import { Item } from "../Item";
 
 function Home() {
   const [items1, setItems1] = useState([
@@ -151,8 +153,47 @@ function Home() {
     }
   }
 
+  // Another implementation of sortable
+
+  const [activeId, setActiveId] = useState(null);
+  const [items, setItems] = useState(["1", "2", "3"]);
+
+  function handleDragStart2(event) {
+    const { active } = event;
+
+    setActiveId(active.id);
+  }
+
+  function handleDragEnd2(event) {
+    const { active, over } = event;
+
+    if (active.id !== over.id) {
+      setItems((items) => {
+        const oldIndex = items.indexOf(active.id);
+        const newIndex = items.indexOf(over.id);
+
+        return arrayMove(items, oldIndex, newIndex);
+      });
+    }
+
+    setActiveId(null);
+  }
+
   return (
     <>
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragStart={handleDragStart2}
+        onDragEnd={handleDragEnd2}
+      >
+        <SortableContext items={items} strategy={verticalListSortingStrategy}>
+          {items.map((id) => (
+            <SortableItem key={id} id={id} />
+          ))}
+        </SortableContext>
+        <DragOverlay>{activeId ? <Item id={activeId} /> : null}</DragOverlay>
+      </DndContext>
       <br />
       <br />
       <br />

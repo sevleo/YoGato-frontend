@@ -1,3 +1,7 @@
+// React
+import { SetStateAction } from "react";
+import { Dispatch } from "react";
+
 // DndKit
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -9,6 +13,12 @@ export interface UnitProps {
   duration: number;
   announcement: string;
   index?: number;
+  setFlow: Dispatch<
+    SetStateAction<{
+      flowName: string;
+      units: UnitProps[];
+    }>
+  >;
 }
 
 function Unit({
@@ -18,7 +28,18 @@ function Unit({
   duration,
   announcement,
   index,
+  setFlow,
 }: UnitProps) {
+  // On delete unit button
+  function onUnitCloseClick() {
+    setFlow((prevFlow) => {
+      return {
+        ...prevFlow,
+        units: prevFlow.units.filter((unit) => unit.id !== id),
+      };
+    });
+  }
+
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
       id: id,
@@ -34,9 +55,21 @@ function Unit({
       ref={setNodeRef}
       style={style}
       {...attributes}
-      {...listeners}
-      className="step flex justify-center gap-5 bg-slate-100 text-black"
+      className=" step relative flex justify-center gap-5 bg-slate-100 text-black"
+      // handle
     >
+      <div
+        className=" absolute right-[10px] top-[10px] z-50 hover:cursor-pointer"
+        onClick={onUnitCloseClick}
+      >
+        <span className="material-symbols-outlined">close</span>
+      </div>
+      <div
+        {...listeners}
+        className="mb-auto mt-auto flex items-center justify-center "
+      >
+        Drag
+      </div>
       <div className="flex w-1/6 items-center justify-center">
         Step {index != null ? index + 1 : null}
       </div>

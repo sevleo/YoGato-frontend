@@ -1,5 +1,5 @@
 // React
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // DndKit
 import {
@@ -112,7 +112,7 @@ function Builder() {
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { over } = event;
-    console.log(over);
+    // console.log(over);
     if (!over) {
       setIsAddedToFlow(false);
       setIsDragging(false);
@@ -138,8 +138,8 @@ function Builder() {
         announcement: "fancy announcement",
       };
 
-      console.log(activeItem);
-      console.log(newUnit);
+      // console.log(activeItem);
+      // console.log(newUnit);
 
       setFlow((prevFlow) => {
         return {
@@ -148,9 +148,26 @@ function Builder() {
         };
       });
 
-      console.log(flow);
+      // console.log(flow);
     }
   }
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.key === "c" || event.key === "C") {
+        console.log(flow.units);
+
+        // console.log("UNITS IN FLOW:");
+        // flow.units.forEach((unit) => {
+        //   console.log(unit);
+        // });
+      }
+    };
+    document.addEventListener("keydown", handleKeyPress);
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  }, [flow]);
 
   return (
     <>

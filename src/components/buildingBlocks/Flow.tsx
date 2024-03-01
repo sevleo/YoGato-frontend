@@ -98,7 +98,7 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
               {flow.units.map((unit, index) => {
                 return (
                   <div key={unit.id}>
-                    <Unit {...unit} index={index}></Unit>
+                    <Unit {...unit} index={index} setFlow={setFlow}></Unit>
                     <span className="material-symbols-outlined">
                       keyboard_arrow_down
                     </span>
