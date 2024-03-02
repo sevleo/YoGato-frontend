@@ -31,11 +31,13 @@ interface FlowProps {
   flow: {
     flowName: string;
     units: UnitProps[];
+    duration: number;
   };
   setFlow: Dispatch<
     SetStateAction<{
       flowName: string;
       units: UnitProps[];
+      duration: number;
     }>
   >;
   isDragging: boolean;
@@ -81,26 +83,33 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
     }
   }
 
-  const [startCount, setStartCount] = useState<boolean>(false);
+  const [startFlow, setStartFlow] = useState<boolean>(false);
   const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
     let id;
-    if (startCount) {
+    if (startFlow) {
       id = setInterval(() => {
         setCount((count) => {
           console.log(count + 1);
-          return count + 1;
+          if (count + 1 === flow.duration) {
+            setCount(0);
+            setStartFlow(false);
+            console.log(`Count active: ${!startFlow}`);
+            return;
+          } else {
+            return count + 1;
+          }
         });
       }, 1000);
     }
 
     return () => clearInterval(id);
-  }, [startCount]);
+  }, [startFlow, flow]);
 
   function onButtonClick() {
-    setStartCount(!startCount);
-    console.log(`Count active: ${!startCount}`);
+    setStartFlow(!startFlow);
+    console.log(`Count active: ${!startFlow}`);
   }
 
   return (
@@ -113,7 +122,6 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
       <div className="p-5">
         <div>{flow.flowName}</div>
         <button onClick={onButtonClick}>Start</button>
-        <div>{count}</div>
         <div className="droppable-area " ref={setNodeRef} style={{ ...style }}>
           <div className=" flex flex-col bg-slate-400">
             <SortableContext
