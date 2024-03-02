@@ -53,11 +53,30 @@ function Unit({
     transition,
   };
 
+  function handleLengthChange(newLength) {
+    console.log(newLength);
+    console.log(id);
+    setFlow((prevFlow) => {
+      const updatedUnits = prevFlow.units.map((unit) => {
+        if (unit.id === id) {
+          return {
+            ...unit,
+            duration: newLength,
+          };
+        }
+        return unit;
+      });
+      return {
+        ...prevFlow,
+        units: updatedUnits,
+      };
+    });
+  }
+
   return (
     <div
       ref={setNodeRef}
       style={style}
-      {...attributes}
       className=" step relative flex cursor-default justify-center gap-5 bg-slate-100 text-black"
     >
       <div
@@ -67,10 +86,13 @@ function Unit({
         <span className="material-symbols-outlined">close</span>
       </div>
       <div
+        {...attributes}
         {...listeners}
         className="mb-auto mt-auto flex cursor-pointer items-center justify-center"
       >
-        Drag
+        <svg viewBox="0 0 20 20" width="20">
+          <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
+        </svg>
       </div>
       <div className="flex w-1/6 items-center justify-center">
         Step {index != null ? index + 1 : null}
@@ -81,7 +103,13 @@ function Unit({
       <div className="flex w-4/6 flex-col items-start">
         <p>{name}</p>
         <p>{sanskritName}</p>
-        <Input id={id} type="number" label="Length:" defaultValue={duration} />
+        <Input
+          onChange={handleLengthChange}
+          id={id}
+          type="number"
+          label="Length:"
+          defaultValue={duration}
+        />
         <p>Announce: {announcement}</p>
       </div>
     </div>
