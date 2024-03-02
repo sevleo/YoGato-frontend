@@ -88,9 +88,9 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
     let id;
     if (startCount) {
       id = setInterval(() => {
-        setCount((oldCount) => {
-          console.log(oldCount + 1);
-          return oldCount + 1;
+        setCount((count) => {
+          console.log(count + 1);
+          return count + 1;
         });
       }, 1000);
     }
@@ -113,7 +113,7 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
       <div className="p-5">
         <div>{flow.flowName}</div>
         <button onClick={onButtonClick}>Start</button>
-        {/* <div>{count}</div> */}
+        <div>{count}</div>
         <div className="droppable-area " ref={setNodeRef} style={{ ...style }}>
           <div className=" flex flex-col bg-slate-400">
             <SortableContext
