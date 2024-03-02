@@ -1,6 +1,7 @@
 // React
-import { SetStateAction } from "react";
+import { SetStateAction, useEffect } from "react";
 import { Dispatch } from "react";
+import { useState } from "react";
 
 // DndKit
 import { DndContext, useDroppable, DragEndEvent } from "@dnd-kit/core";
@@ -80,6 +81,28 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
     }
   }
 
+  const [startCount, setStartCount] = useState(false);
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    let id;
+    if (startCount) {
+      id = setInterval(() => {
+        setCount((oldCount) => {
+          console.log(oldCount + 1);
+          return oldCount + 1;
+        });
+      }, 1000);
+    }
+
+    return () => clearInterval(id);
+  }, [startCount]);
+
+  function onButtonClick() {
+    setStartCount(!startCount);
+    console.log(`Count active: ${!startCount}`);
+  }
+
   return (
     <DndContext
       sensors={sensors}
@@ -89,6 +112,8 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
     >
       <div className="p-5">
         <div>{flow.flowName}</div>
+        <button onClick={onButtonClick}>Start</button>
+        {/* <div>{count}</div> */}
         <div className="droppable-area " ref={setNodeRef} style={{ ...style }}>
           <div className=" flex flex-col bg-slate-400">
             <SortableContext
