@@ -56,7 +56,6 @@ function Unit({
       style={style}
       {...attributes}
       className=" step relative flex cursor-default justify-center gap-5 bg-slate-100 text-black"
-      // handle
     >
       <div
         className=" absolute right-[10px] top-[10px] z-50 hover:cursor-pointer"

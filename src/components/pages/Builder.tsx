@@ -12,12 +12,12 @@ import {
 // Components
 import AspectGroup from "../buildingBlocks/AspectGroup";
 import Flow from "../buildingBlocks/Flow";
-import Aspect from "../buildingBlocks/AspectDisplay";
+import Aspect from "../buildingBlocks/Aspect/AspectDisplay";
 
 // Types & interfaces
 import { UnitProps } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
-import { AspectType } from "../buildingBlocks/AspectController";
+import { AspectType } from "../buildingBlocks/Aspect/AspectController";
 
 // Other
 import { v4 as uuidv4 } from "uuid";

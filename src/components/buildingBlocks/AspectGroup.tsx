@@ -1,8 +1,8 @@
 // Components
-import AspectController from "./AspectController";
+import AspectController from "./Aspect/AspectController";
 
 // Types & Interfaces
-import { AspectType } from "./AspectController";
+import { AspectType } from "./Aspect/AspectController";
 
 export interface AspectGroupType {
   groupName: string;
