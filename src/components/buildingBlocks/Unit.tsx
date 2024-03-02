@@ -20,6 +20,7 @@ export interface UnitProps {
     SetStateAction<{
       flowName: string;
       units: UnitProps[];
+      duration: number;
     }>
   >;
 }
@@ -36,9 +37,16 @@ function Unit({
   // On delete button on unit
   function onUnitCloseClick() {
     setFlow((prevFlow) => {
+      const updatedUnits = prevFlow.units.filter((unit) => unit.id !== id);
+      const updatedDuration = updatedUnits.reduce(
+        (acc, unit) => acc + unit.duration,
+        0
+      );
+
       return {
         ...prevFlow,
-        units: prevFlow.units.filter((unit) => unit.id !== id),
+        units: updatedUnits,
+        duration: updatedDuration,
       };
     });
   }
@@ -65,9 +73,14 @@ function Unit({
         }
         return unit;
       });
+      const updatedDuration = updatedUnits.reduce(
+        (acc, unit) => acc + unit.duration,
+        0
+      );
       return {
         ...prevFlow,
         units: updatedUnits,
+        duration: updatedDuration,
       };
     });
   }

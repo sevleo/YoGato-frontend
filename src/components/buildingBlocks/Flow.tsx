@@ -81,8 +81,8 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
     }
   }
 
-  const [startCount, setStartCount] = useState(false);
-  const [count, setCount] = useState(0);
+  const [startCount, setStartCount] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(0);
 
   useEffect(() => {
     let id;

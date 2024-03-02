@@ -89,11 +89,13 @@ function Builder() {
   interface Flow {
     flowName: string;
     units: UnitProps[];
+    duration: number;
   }
 
   const defaultFlow: Flow = {
     flowName: "my fancy flow",
     units: [],
+    duration: 0,
   };
 
   const [flow, setFlow] = useState<Flow>(defaultFlow);
@@ -138,13 +140,17 @@ function Builder() {
         announcement: "fancy announcement",
       };
 
-      // console.log(activeItem);
-      // console.log(newUnit);
-
       setFlow((prevFlow) => {
+        const updatedUnits = [...prevFlow.units, newUnit];
+        const totalDuration = updatedUnits.reduce(
+          (acc, unit) => acc + unit.duration,
+          0
+        );
+
         return {
           ...prevFlow,
-          units: [...prevFlow.units, newUnit],
+          units: updatedUnits,
+          duration: totalDuration,
         };
       });
 
@@ -155,7 +161,7 @@ function Builder() {
   useEffect(() => {
     const handleKeyPress = (event) => {
       if (event.key === "c" || event.key === "C") {
-        console.log(flow.units);
+        console.log(flow);
 
         // console.log("UNITS IN FLOW:");
         // flow.units.forEach((unit) => {
