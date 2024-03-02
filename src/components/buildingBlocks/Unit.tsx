@@ -33,7 +33,7 @@ function Unit({
   index,
   setFlow,
 }: UnitProps) {
-  // On delete unit button
+  // On delete button on unit
   function onUnitCloseClick() {
     setFlow((prevFlow) => {
       return {
@@ -53,9 +53,8 @@ function Unit({
     transition,
   };
 
-  function handleLengthChange(newLength) {
-    console.log(newLength);
-    console.log(id);
+  // On changing length on unit
+  function handleLengthChange(newLength: number) {
     setFlow((prevFlow) => {
       const updatedUnits = prevFlow.units.map((unit) => {
         if (unit.id === id) {
@@ -104,11 +103,11 @@ function Unit({
         <p>{name}</p>
         <p>{sanskritName}</p>
         <Input
-          onChange={handleLengthChange}
           id={id}
           type="number"
           label="Length:"
           defaultValue={duration}
+          onChange={handleLengthChange}
         />
         <p>Announce: {announcement}</p>
       </div>
