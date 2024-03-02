@@ -84,29 +84,49 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
   }
 
   const [startFlow, setStartFlow] = useState<boolean>(false);
-  const [count, setCount] = useState<number>(0);
+  const [flowCount, setFlowCount] = useState<number>(0);
+  const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
+  const [unitCount, setUnitCount] = useState<number>(0);
 
+  // Flowing :)
   useEffect(() => {
     let id;
     if (startFlow) {
       id = setInterval(() => {
-        setCount((count) => {
-          console.log(count + 1);
-          if (count + 1 === flow.duration) {
-            setCount(0);
+        setUnitCount((unitCount) => {
+          // console.log(`Unit count: ${unitCount + 1}`);
+
+          if (unitCount + 1 === flow.units[currentUnitIndex].duration) {
+            console.log(flow.units[currentUnitIndex].announcement);
+
+            setUnitCount(0);
+            setCurrentUnitIndex(currentUnitIndex + 1);
+
+            return;
+          } else {
+            return unitCount + 1;
+          }
+        });
+
+        setFlowCount((flowCount) => {
+          console.log(`Total count: ${flowCount + 1}`);
+
+          if (flowCount + 1 === flow.duration) {
+            setFlowCount(0);
             setStartFlow(false);
             console.log(`Count active: ${!startFlow}`);
             return;
           } else {
-            return count + 1;
+            return flowCount + 1;
           }
         });
       }, 1000);
     }
 
     return () => clearInterval(id);
-  }, [startFlow, flow]);
+  }, [startFlow, flow, currentUnitIndex]);
 
+  // Triggers flow start
   function onButtonClick() {
     setStartFlow(!startFlow);
     console.log(`Count active: ${!startFlow}`);

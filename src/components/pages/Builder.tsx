@@ -136,7 +136,7 @@ function Builder() {
         id: uuidv4(),
         name: activeItem.name,
         sanskritName: activeItem.name,
-        duration: 5,
+        duration: 2,
         announcement: "fancy announcement",
       };
 
