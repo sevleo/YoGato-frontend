@@ -55,7 +55,7 @@ function Unit({
       ref={setNodeRef}
       style={style}
       {...attributes}
-      className=" step relative flex justify-center gap-5 bg-slate-100 text-black"
+      className=" step relative flex cursor-default justify-center gap-5 bg-slate-100 text-black"
       // handle
     >
       <div
@@ -66,7 +66,7 @@ function Unit({
       </div>
       <div
         {...listeners}
-        className="mb-auto mt-auto flex items-center justify-center "
+        className="mb-auto mt-auto flex cursor-pointer items-center justify-center"
       >
         Drag
       </div>
