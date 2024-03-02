@@ -6,6 +6,9 @@ import { Dispatch } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
+// Components
+import Input from "./Input";
+
 export interface UnitProps {
   id: string;
   name: string;
@@ -78,7 +81,7 @@ function Unit({
       <div className="flex w-4/6 flex-col items-start">
         <p>{name}</p>
         <p>{sanskritName}</p>
-        <p>Length: {duration}</p>
+        <Input id={id} type="number" label="Length:" defaultValue={duration} />
         <p>Announce: {announcement}</p>
       </div>
     </div>

@@ -22,7 +22,6 @@ import {
   restrictToWindowEdges,
   restrictToParentElement,
 } from "@dnd-kit/modifiers";
-import { useDroppable } from "@dnd-kit/core";
 import { v4 as uuidv4 } from "uuid";
 import { DragOverlay } from "@dnd-kit/core";
 
