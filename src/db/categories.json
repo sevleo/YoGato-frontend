@@ -29,7 +29,8 @@
         "pose_benefits": "Strengthens the abdomen, hip flexors and spine.  Stimulates the kidneys, thyroid, prostate glands and intestines.  Helps relieve stress.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483073/yoga-api/2_ozh7sv.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483073/yoga-api/2_ozh7sv.png",
-        "url_svg_alt": "https://www.dropbox.com/s/1nx0r94msxjwvyp/boatbentlegs.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/1nx0r94msxjwvyp/boatbentlegs.svg?raw=1",
+        "url_svg_alt_local": "boatbentlegs"
       },
       {
         "id": 7,
@@ -42,7 +43,8 @@
         "pose_benefits": "Relieves the spine and neck. Energizes the body.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483075/yoga-api/7_a6aspg.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483075/yoga-api/7_a6aspg.png",
-        "url_svg_alt": "https://www.dropbox.com/s/cginnz98of2jpgr/cat.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/cginnz98of2jpgr/cat.svg?raw=1",
+        "url_svg_alt_local": "cat"
       },
       {
         "id": 9,
@@ -55,7 +57,8 @@
         "pose_benefits": "Strengthens the ankles, thighs, calves, and spine.  Stretches shoulders and chest.  Stimulates the abdominal organs, diaphragm, and heart.  Reduces flat feet.  Energizes the entire body.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483078/yoga-api/9_ewvoun.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483078/yoga-api/9_ewvoun.png",
-        "url_svg_alt": "https://www.dropbox.com/s/9emlawz8vayk8bm/chair.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/9emlawz8vayk8bm/chair.svg?raw=1",
+        "url_svg_alt_local": "chair"
       },
       {
         "id": 13,
@@ -68,7 +71,8 @@
         "pose_benefits": "Strengthens arms and wrists.  Stretches the upper back.  Strengthens the abdominal muscles.  Opens the groin.  Tones the abdominal organs.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483083/yoga-api/13_hdjxuz.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483083/yoga-api/13_hdjxuz.png",
-        "url_svg_alt": "https://www.dropbox.com/s/ukaxoioh0uooswj/crow.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/ukaxoioh0uooswj/crow.svg?raw=1",
+        "url_svg_alt_local": "crow"
       },
       {
         "id": 14,
@@ -81,7 +85,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression. Energizes the body. Stretches the shoulders, hamstrings, calves, arches, and hands. Strengthens the arms and legs. Helps relieve the symptoms of menopause. Relieves menstrual discomfort when done with the head supported. Helps prevent osteoporosis. Improves digestion. Relieves headache, insomnia, back pain, and fatigue. Therapeutic for high blood pressure, asthma, flat feet, sciatica, and sinusitis. Warms up the ankles and the toes.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483080/yoga-api/14_k9lr9a.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483080/yoga-api/14_k9lr9a.png",
-        "url_svg_alt": "https://www.dropbox.com/s/px1foombb3v24se/dolphin.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/px1foombb3v24se/dolphin.svg?raw=1",
+        "url_svg_alt_local": "dolphin"
       },
       {
         "id": 26,
@@ -94,7 +99,8 @@
         "pose_benefits": "Strengthens the arms, wrists, and spine.  Tones the abdomen.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/26_mxkzlo.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/26_mxkzlo.png",
-        "url_svg_alt": "https://www.dropbox.com/s/jg6ge8zpaltx10f/plank.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/jg6ge8zpaltx10f/plank.svg?raw=1",
+        "url_svg_alt_local": "plank"
       },
       {
         "id": 34,
@@ -107,7 +113,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Stretches the shoulders, hamstrings, calves, and arches.  Strengthens the arms and legs.  Helps relieve the symptoms of menopause.  Helps prevent osteoporosis.  Improves digestion.  Relieves headache, insomnia, back pain, and fatigue.  Therapeutic for high blood pressure, asthma, flat feet, sciatica.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/34_qle5tp.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/34_qle5tp.png",
-        "url_svg_alt": "https://www.dropbox.com/s/w35ciia4u570xj8/sideplank.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/w35ciia4u570xj8/sideplank.svg?raw=1",
+        "url_svg_alt_local": "sideplank"
       }
     ]
   },
@@ -127,7 +134,8 @@
         "pose_benefits": "Strengthens the abdomen, hip flexors, and spine.  Stimulates the kidneys, thyroid and prostate glands, and intestines.  Helps relieve stress.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483071/yoga-api/1_txmirf.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483071/yoga-api/1_txmirf.png",
-        "url_svg_alt": "https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1",
+        "url_svg_alt_local": "boatstraightlegs"
       },
       {
         "id": 2,
@@ -140,7 +148,8 @@
         "pose_benefits": "Strengthens the abdomen, hip flexors and spine.  Stimulates the kidneys, thyroid, prostate glands and intestines.  Helps relieve stress.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483073/yoga-api/2_ozh7sv.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483073/yoga-api/2_ozh7sv.png",
-        "url_svg_alt": "https://www.dropbox.com/s/1nx0r94msxjwvyp/boatbentlegs.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/1nx0r94msxjwvyp/boatbentlegs.svg?raw=1",
+        "url_svg_alt_local": "boatbentlegs"
       },
       {
         "id": 5,
@@ -153,7 +162,8 @@
         "pose_benefits": "Opens the hips and groins.  Stretches the shoulders, rib cage and back.  Stimulates the abdominal organs, lungs and heart.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483074/yoga-api/5_i64gif.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483074/yoga-api/5_i64gif.png",
-        "url_svg_alt": "https://www.dropbox.com/s/3h2pts6xbn28dh7/butterfly%3F.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/3h2pts6xbn28dh7/butterfly%3F.svg?raw=1",
+        "url_svg_alt_local": "butterfly"
       },
       {
         "id": 30,
@@ -166,7 +176,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Stretches the spine, shoulders and hamstrings.  Stimulates the liver, kidneys, ovaries and uterus.  Improves digestion.  Helps relieve the symptoms of menopause and menstrual discomfort.  Soothes headache and anxiety.  Reduces fatigue.  Therapeutic for high blood pressure, infertility, insomnia and sinusitis.  Traditional texts say that Paschimottanasana increases appetite, reduces obesity and cures diseases.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/30_gumpl3.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/30_gumpl3.png",
-        "url_svg_alt": "https://www.dropbox.com/s/ji0otecqx42by00/seatedforwardfold.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/ji0otecqx42by00/seatedforwardfold.svg?raw=1",
+        "url_svg_alt_local": "seatedforwardfold"
       },
       {
         "id": 31,
@@ -179,7 +190,8 @@
         "pose_benefits": "Opens the hips, groin and stretches the knees, ankles and thighs.  Strengthens the back and calms the mind, reduces stress and anxiety.  Improves circulation and blood flow in the pelvis.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/31_ozseum.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/31_ozseum.png",
-        "url_svg_alt": "https://www.dropbox.com/s/0oylivjwzuj5fnp/seatedORlotus.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/0oylivjwzuj5fnp/seatedORlotus.svg?raw=1",
+        "url_svg_alt_local": "lotus"
       },
       {
         "id": 32,
@@ -192,7 +204,8 @@
         "pose_benefits": "Stretches the shoulders, the chest, the thighs, the groins, and the abdomen.  Strengthens the legs and the ankles.  Improves balance.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/32_hafoa0.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/32_hafoa0.png",
-        "url_svg_alt": "https://www.dropbox.com/s/u9joi8lbntxumyh/seatedspinaltwist.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/u9joi8lbntxumyh/seatedspinaltwist.svg?raw=1",
+        "url_svg_alt_local": "seatedspinaltwist"
       },
       {
         "id": 36,
@@ -205,7 +218,8 @@
         "pose_benefits": "Stretches the thighs, hamstrings, and groin.  Stimulates the abdominal organs.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483092/yoga-api/36_a2z20a.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483092/yoga-api/36_a2z20a.png",
-        "url_svg_alt": "https://www.dropbox.com/s/u8dxhc41hjfcxj6/splits.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/u8dxhc41hjfcxj6/splits.svg?raw=1",
+        "url_svg_alt_local": "splits"
       },
       {
         "id": 40,
@@ -218,7 +232,8 @@
         "pose_benefits": "Stretches the insides and backs of the legs.  Stimulates the abdominal organs.  Strengthens the spine.  Calms the brain.  Releases groin.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/40_dkmow6.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/40_dkmow6.png",
-        "url_svg_alt": "https://www.dropbox.com/s/6z51vzosovhx5w7/straddlesplit.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/6z51vzosovhx5w7/straddlesplit.svg?raw=1",
+        "url_svg_alt_local": "straddlesplit"
       }
     ]
   },
@@ -238,7 +253,8 @@
         "pose_benefits": "Strengthens the abdomen, hip flexors, and spine.  Stimulates the kidneys, thyroid and prostate glands, and intestines.  Helps relieve stress.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483071/yoga-api/1_txmirf.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483071/yoga-api/1_txmirf.png",
-        "url_svg_alt": "https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1",
+        "url_svg_alt_local": "boatstraightlegs"
       },
       {
         "id": 2,
@@ -251,7 +267,8 @@
         "pose_benefits": "Strengthens the abdomen, hip flexors and spine.  Stimulates the kidneys, thyroid, prostate glands and intestines.  Helps relieve stress.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483073/yoga-api/2_ozh7sv.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483073/yoga-api/2_ozh7sv.png",
-        "url_svg_alt": "https://www.dropbox.com/s/1nx0r94msxjwvyp/boatbentlegs.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/1nx0r94msxjwvyp/boatbentlegs.svg?raw=1",
+        "url_svg_alt_local": "boatbentlegs"
       },
       {
         "id": 9,
@@ -264,7 +281,8 @@
         "pose_benefits": "Strengthens the ankles, thighs, calves, and spine.  Stretches shoulders and chest.  Stimulates the abdominal organs, diaphragm, and heart.  Reduces flat feet.  Energizes the entire body.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483078/yoga-api/9_ewvoun.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483078/yoga-api/9_ewvoun.png",
-        "url_svg_alt": "https://www.dropbox.com/s/9emlawz8vayk8bm/chair.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/9emlawz8vayk8bm/chair.svg?raw=1",
+        "url_svg_alt_local": "chair"
       },
       {
         "id": 14,
@@ -277,7 +295,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression. Energizes the body. Stretches the shoulders, hamstrings, calves, arches, and hands. Strengthens the arms and legs. Helps relieve the symptoms of menopause. Relieves menstrual discomfort when done with the head supported. Helps prevent osteoporosis. Improves digestion. Relieves headache, insomnia, back pain, and fatigue. Therapeutic for high blood pressure, asthma, flat feet, sciatica, and sinusitis. Warms up the ankles and the toes.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483080/yoga-api/14_k9lr9a.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483080/yoga-api/14_k9lr9a.png",
-        "url_svg_alt": "https://www.dropbox.com/s/px1foombb3v24se/dolphin.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/px1foombb3v24se/dolphin.svg?raw=1",
+        "url_svg_alt_local": "dolphin"
       },
       {
         "id": 15,
@@ -290,7 +309,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Energizes the body.  Stretches the shoulders, neck, hamstrings, calves, arches, and hands.  Strengthens the arms and legs.  Helps relieve the symptoms of menopause.  Relieves menstrual discomfort when done with the head supported.  Helps prevent osteoporosis.  Improves digestion.  Relieves headache, insomnia, back pain, and fatigue.  Therapeutic for high blood pressure, asthma, flat feet, sciatica, and sinusitis.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/15_vkviqn.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/15_vkviqn.png",
-        "url_svg_alt": "https://www.dropbox.com/s/75xa1bduu2u5y7d/downdog.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/75xa1bduu2u5y7d/downdog.svg?raw=1",
+        "url_svg_alt_local": "downdog"
       },
       {
         "id": 18,
@@ -303,7 +323,8 @@
         "pose_benefits": "Strengthens and stretches the legs, knees, and ankles.  Stretches the groin, spine, waist, chest, lungs, and shoulders. Stimulates abdominal organs. Increases stamina.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483083/yoga-api/18_aqufak.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483083/yoga-api/18_aqufak.png",
-        "url_svg_alt": "https://www.dropbox.com/s/yzynxmyb9o7eras/extendedsideangle.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/yzynxmyb9o7eras/extendedsideangle.svg?raw=1",
+        "url_svg_alt_local": "extendedsideangle"
       },
       {
         "id": 19,
@@ -316,7 +337,8 @@
         "pose_benefits": "Strengthens arms and shoulders.  Improves focus and balance.  Stretches the upper and lower back.  Strengthens the abdominal muscles.  Tones the abdominal area.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/19_jadqwc.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/19_jadqwc.png",
-        "url_svg_alt": "https://www.dropbox.com/s/kjlyju4m91qgoi6/forearmstand.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/kjlyju4m91qgoi6/forearmstand.svg?raw=1",
+        "url_svg_alt_local": "forearmstand"
       },
       {
         "id": 22,
@@ -329,7 +351,8 @@
         "pose_benefits": "Strengthens the shoulders, arms and wrists.  Stretches the belly.  Improves sense of balance.  Calms the brain and helps relieve stress and mild depression.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/22_ojzmr8.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/22_ojzmr8.png",
-        "url_svg_alt": "https://www.dropbox.com/s/p7pf5j0untktn9c/handstand.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/p7pf5j0untktn9c/handstand.svg?raw=1",
+        "url_svg_alt_local": "handstand"
       },
       {
         "id": 26,
@@ -342,7 +365,8 @@
         "pose_benefits": "Strengthens the arms, wrists, and spine.  Tones the abdomen.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/26_mxkzlo.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/26_mxkzlo.png",
-        "url_svg_alt": "https://www.dropbox.com/s/jg6ge8zpaltx10f/plank.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/jg6ge8zpaltx10f/plank.svg?raw=1",
+        "url_svg_alt_local": "plank"
       },
       {
         "id": 28,
@@ -355,7 +379,8 @@
         "pose_benefits": "Calms the brain.  Stretches the spine, the shoulders, the hips and the hamstrings.  Strengthens the legs.  Stimulates the abdominal organs.  Improves posture and sense of balance.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483089/yoga-api/28_uu58tt.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483089/yoga-api/28_uu58tt.png",
-        "url_svg_alt": "https://www.dropbox.com/s/j7p2600bmf840e0/pyramid.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/j7p2600bmf840e0/pyramid.svg?raw=1",
+        "url_svg_alt_local": "pyramid"
       },
       {
         "id": 42,
@@ -368,7 +393,8 @@
         "pose_benefits": "Stretches and strengthens the thighs, knees, and ankles.  Stretches the hips, groin, hamstrings, calves, shoulders, chest, and spine.  Stimulates the abdominal organs.  Helps relieve stress.  Improves digestion.  Helps relieve the symptoms of menopause.  Relieves backache, especially through second trimester of pregnancy.  Therapeutic for anxiety, flat feet, infertility, neck pain, osteoporosis, and sciatica.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/42_jawxqw.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/42_jawxqw.png",
-        "url_svg_alt": "https://www.dropbox.com/s/l41pfqjwmjoy5os/triangle.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/l41pfqjwmjoy5os/triangle.svg?raw=1",
+        "url_svg_alt_local": "triangle"
       },
       {
         "id": 44,
@@ -381,7 +407,8 @@
         "pose_benefits": "Stretches the chest, lungs, shoulders, neck, belly and groin (psoas).  Strengthens the shoulders, arms and back muscles.  Strengthens and stretches the thighs, calves and ankles.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/44_dqeayo.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/44_dqeayo.png",
-        "url_svg_alt": "https://www.dropbox.com/s/j9fip5gm1o1l3fx/warrior1.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/j9fip5gm1o1l3fx/warrior1.svg?raw=1",
+        "url_svg_alt_local": "warrior1"
       },
       {
         "id": 45,
@@ -394,7 +421,8 @@
         "pose_benefits": "Strengthens and stretches the legs and ankles.  Stretches the groin, chest, lungs, and shoulders.  Stimulates abdominal organs.  Increases stamina.  Relieves backaches, especially through second trimester of pregnancy.  Therapeutic for carpal tunnel syndrome, flat feet, infertility, osteoporosis, and sciatica.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/45_ehimr1.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/45_ehimr1.png",
-        "url_svg_alt": "https://www.dropbox.com/s/rsb3mx41dfq4otl/warrior2.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/rsb3mx41dfq4otl/warrior2.svg?raw=1",
+        "url_svg_alt_local": "warrior2"
       },
       {
         "id": 46,
@@ -407,7 +435,8 @@
         "pose_benefits": "Strengthens the ankles and legs.  Strengthens the shoulders and muscles of the back.  Tones the abdomen.  Improves balance and posture.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/46_lz6v7i.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/46_lz6v7i.png",
-        "url_svg_alt": "https://www.dropbox.com/s/lwgoky3z37ameif/warrior3.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/lwgoky3z37ameif/warrior3.svg?raw=1",
+        "url_svg_alt_local": "warrior3"
       },
       {
         "id": 47,
@@ -420,7 +449,8 @@
         "pose_benefits": "Strengthens the arms, wrists, legs, buttocks, abs, and spine.  Stimulates the thyroid and pituitary.  Increases energy and counteracts depression.  Therapeutic for asthma, back pain, infertility, and osteoporosis.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/47_w2jsof.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/47_w2jsof.png",
-        "url_svg_alt": "https://www.dropbox.com/s/kpa1bewuut3lm5q/wheel.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/kpa1bewuut3lm5q/wheel.svg?raw=1",
+        "url_svg_alt_local": "wheel"
       }
     ]
   },
@@ -440,7 +470,8 @@
         "pose_benefits": "Stretches the entire front of the body, ankles, thighs and groins, abdomen and chest, and throat, and deep hip flexors (psoas).  Strengthens the back muscles.  Improves posture.  Stimulates the organs of the abdomen and neck.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483072/yoga-api/3_aa0fgk.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483072/yoga-api/3_aa0fgk.png",
-        "url_svg_alt": "https://www.dropbox.com/s/wizj5kwxvez4c0a/bow.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/wizj5kwxvez4c0a/bow.svg?raw=1",
+        "url_svg_alt_local": "bow"
       },
       {
         "id": 6,
@@ -453,7 +484,8 @@
         "pose_benefits": "Stretches the entire front of the body, the ankles, thighs and groins, abdomen and chest, and throat.  Stretches the deep hip flexors (psoas).  Strengthens back muscles.  Improves posture.  Stimulates the organs of the abdomen and neck.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483075/yoga-api/6_ri1w0e.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483075/yoga-api/6_ri1w0e.png",
-        "url_svg_alt": "https://www.dropbox.com/s/o5gr4lngltsdg5r/camel.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/o5gr4lngltsdg5r/camel.svg?raw=1",
+        "url_svg_alt_local": "camel"
       },
       {
         "id": 8,
@@ -466,7 +498,8 @@
         "pose_benefits": "Removes fatigue.  Improves breathing and the circulation of blood to the brain.  Rejuvenates the entire body.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483077/yoga-api/8_wi10sn.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483077/yoga-api/8_wi10sn.png",
-        "url_svg_alt": "https://www.dropbox.com/s/neau4ceai1rskh6/cow.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/neau4ceai1rskh6/cow.svg?raw=1",
+        "url_svg_alt_local": "cow"
       },
       {
         "id": 35,
@@ -479,7 +512,8 @@
         "pose_benefits": "Strengthens the spine.  Stretches the chest, the lungs, the shoulders and the abdomen.  Stimulates the abdominal organs.  Opens the heart and the lungs.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483092/yoga-api/35_dytwvz.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483092/yoga-api/35_dytwvz.png",
-        "url_svg_alt": "https://www.dropbox.com/s/cl8teqpf9yingwm/sphinx.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/cl8teqpf9yingwm/sphinx.svg?raw=1",
+        "url_svg_alt_local": "sphinx"
       },
       {
         "id": 43,
@@ -492,7 +526,8 @@
         "pose_benefits": "Improves posture.  Strengthens the spine, arms, and wrists.  Stretches the chest, lungs, shoulders, and abdomen.  Firms the buttocks.  Stimulates abdominal organs.  Helps relieve mild depression, fatigue, and sciatica.  Therapeutic for asthma.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/43_m3nxjk.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/43_m3nxjk.png",
-        "url_svg_alt": "https://www.dropbox.com/s/vnfx1srlwt1583t/updog.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/vnfx1srlwt1583t/updog.svg?raw=1",
+        "url_svg_alt_local": "updog"
       },
       {
         "id": 47,
@@ -505,7 +540,8 @@
         "pose_benefits": "Strengthens the arms, wrists, legs, buttocks, abs, and spine.  Stimulates the thyroid and pituitary.  Increases energy and counteracts depression.  Therapeutic for asthma, back pain, infertility, and osteoporosis.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/47_w2jsof.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/47_w2jsof.png",
-        "url_svg_alt": "https://www.dropbox.com/s/kpa1bewuut3lm5q/wheel.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/kpa1bewuut3lm5q/wheel.svg?raw=1",
+        "url_svg_alt_local": "wheel"
       },
       {
         "id": 48,
@@ -518,7 +554,8 @@
         "pose_benefits": "Stretches the chest, shoulders, back, and throat.  Strengthens and opens the hips, hip flexors, and thighs.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/48_unoav6.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/48_unoav6.png",
-        "url_svg_alt": "https://www.dropbox.com/s/d1dbdvo4l7xry4w/downdogflip.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/d1dbdvo4l7xry4w/downdogflip.svg?raw=1",
+        "url_svg_alt_local": "wildthing"
       }
     ]
   },
@@ -552,7 +589,8 @@
         "pose_benefits": "Stretches the entire front of the body, the ankles, thighs and groins, abdomen and chest, and throat.  Stretches the deep hip flexors (psoas).  Strengthens back muscles.  Improves posture.  Stimulates the organs of the abdomen and neck.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483075/yoga-api/6_ri1w0e.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483075/yoga-api/6_ri1w0e.png",
-        "url_svg_alt": "https://www.dropbox.com/s/o5gr4lngltsdg5r/camel.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/o5gr4lngltsdg5r/camel.svg?raw=1",
+        "url_svg_alt_local": "camel"
       },
       {
         "id": 8,
@@ -565,7 +603,8 @@
         "pose_benefits": "Removes fatigue.  Improves breathing and the circulation of blood to the brain.  Rejuvenates the entire body.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483077/yoga-api/8_wi10sn.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483077/yoga-api/8_wi10sn.png",
-        "url_svg_alt": "https://www.dropbox.com/s/neau4ceai1rskh6/cow.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/neau4ceai1rskh6/cow.svg?raw=1",
+        "url_svg_alt_local": "cow"
       },
       {
         "id": 24,
@@ -578,7 +617,8 @@
         "pose_benefits": "Stretches the hamstrings and quads.  If the elbow is used to push the thigh, it opens the hips as well.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/24_ulgsjo.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/24_ulgsjo.png",
-        "url_svg_alt": "https://www.dropbox.com/s/77peru289zm446u/pigeon.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/77peru289zm446u/pigeon.svg?raw=1",
+        "url_svg_alt_local": "pigeon"
       },
       {
         "id": 25,
@@ -591,7 +631,8 @@
         "pose_benefits": "Stretches the thighs, groins (psoas), abdomen, chest, shoulders and neck.  Stimulates the abdominal organs.  Opens the shoulders and chest.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483087/yoga-api/25_rssro9.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483087/yoga-api/25_rssro9.png",
-        "url_svg_alt": "https://www.dropbox.com/s/10usd0gcqgy6o53/kingpigeon.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/10usd0gcqgy6o53/kingpigeon.svg?raw=1",
+        "url_svg_alt_local": "kingpigeon"
       },
       {
         "id": 35,
@@ -604,7 +645,8 @@
         "pose_benefits": "Strengthens the spine.  Stretches the chest, the lungs, the shoulders and the abdomen.  Stimulates the abdominal organs.  Opens the heart and the lungs.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483092/yoga-api/35_dytwvz.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483092/yoga-api/35_dytwvz.png",
-        "url_svg_alt": "https://www.dropbox.com/s/cl8teqpf9yingwm/sphinx.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/cl8teqpf9yingwm/sphinx.svg?raw=1",
+        "url_svg_alt_local": "sphinx"
       },
       {
         "id": 43,
@@ -617,7 +659,8 @@
         "pose_benefits": "Improves posture.  Strengthens the spine, arms, and wrists.  Stretches the chest, lungs, shoulders, and abdomen.  Firms the buttocks.  Stimulates abdominal organs.  Helps relieve mild depression, fatigue, and sciatica.  Therapeutic for asthma.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/43_m3nxjk.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/43_m3nxjk.png",
-        "url_svg_alt": "https://www.dropbox.com/s/vnfx1srlwt1583t/updog.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/vnfx1srlwt1583t/updog.svg?raw=1",
+        "url_svg_alt_local": "updog"
       },
       {
         "id": 47,
@@ -630,7 +673,8 @@
         "pose_benefits": "Strengthens the arms, wrists, legs, buttocks, abs, and spine.  Stimulates the thyroid and pituitary.  Increases energy and counteracts depression.  Therapeutic for asthma, back pain, infertility, and osteoporosis.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/47_w2jsof.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/47_w2jsof.png",
-        "url_svg_alt": "https://www.dropbox.com/s/kpa1bewuut3lm5q/wheel.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/kpa1bewuut3lm5q/wheel.svg?raw=1",
+        "url_svg_alt_local": "wheel"
       }
     ]
   },
@@ -650,7 +694,8 @@
         "pose_benefits": "Opens the hips and groins.  Stretches the shoulders, rib cage and back.  Stimulates the abdominal organs, lungs and heart.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483074/yoga-api/5_i64gif.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483074/yoga-api/5_i64gif.png",
-        "url_svg_alt": "https://www.dropbox.com/s/3h2pts6xbn28dh7/butterfly%3F.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/3h2pts6xbn28dh7/butterfly%3F.svg?raw=1",
+        "url_svg_alt_local": "butterfly"
       },
       {
         "id": 10,
@@ -663,7 +708,8 @@
         "pose_benefits": "Gently stretches the hips, thighs, and ankles.  Calms the brain and helps relieve stress and fatigue.  Relieves back and neck pain when done with head and torso supported.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483079/yoga-api/10_wzpo85.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483079/yoga-api/10_wzpo85.png",
-        "url_svg_alt": "https://www.dropbox.com/s/ini3uwali0q5gxa/child.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/ini3uwali0q5gxa/child.svg?raw=1",
+        "url_svg_alt_local": "child"
       },
       {
         "id": 15,
@@ -676,7 +722,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Energizes the body.  Stretches the shoulders, neck, hamstrings, calves, arches, and hands.  Strengthens the arms and legs.  Helps relieve the symptoms of menopause.  Relieves menstrual discomfort when done with the head supported.  Helps prevent osteoporosis.  Improves digestion.  Relieves headache, insomnia, back pain, and fatigue.  Therapeutic for high blood pressure, asthma, flat feet, sciatica, and sinusitis.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/15_vkviqn.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/15_vkviqn.png",
-        "url_svg_alt": "https://www.dropbox.com/s/75xa1bduu2u5y7d/downdog.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/75xa1bduu2u5y7d/downdog.svg?raw=1",
+        "url_svg_alt_local": "downdog"
       },
       {
         "id": 20,
@@ -689,7 +736,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Stimulates the liver and kidneys.  Stretches the hamstrings, calves, and hips.  Strengthens the thighs and knees.  Improves digestion.  Helps relieve the symptoms of menopause.  Reduces fatigue and anxiety.  Relieves headache and insomnia.  Relieves headache and insomnia.  Opens the shoulders.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/20_uogrfq.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/20_uogrfq.png",
-        "url_svg_alt": "https://www.dropbox.com/s/sjqfq99pqpelv4v/forwardfoldshoulderstretch.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/sjqfq99pqpelv4v/forwardfoldshoulderstretch.svg?raw=1",
+        "url_svg_alt_local": "forwardfoldshoulderstretch"
       },
       {
         "id": 28,
@@ -702,7 +750,8 @@
         "pose_benefits": "Calms the brain.  Stretches the spine, the shoulders, the hips and the hamstrings.  Strengthens the legs.  Stimulates the abdominal organs.  Improves posture and sense of balance.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483089/yoga-api/28_uu58tt.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483089/yoga-api/28_uu58tt.png",
-        "url_svg_alt": "https://www.dropbox.com/s/j7p2600bmf840e0/pyramid.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/j7p2600bmf840e0/pyramid.svg?raw=1",
+        "url_svg_alt_local": "pyramid"
       },
       {
         "id": 30,
@@ -715,7 +764,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Stretches the spine, shoulders and hamstrings.  Stimulates the liver, kidneys, ovaries and uterus.  Improves digestion.  Helps relieve the symptoms of menopause and menstrual discomfort.  Soothes headache and anxiety.  Reduces fatigue.  Therapeutic for high blood pressure, infertility, insomnia and sinusitis.  Traditional texts say that Paschimottanasana increases appetite, reduces obesity and cures diseases.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/30_gumpl3.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/30_gumpl3.png",
-        "url_svg_alt": "https://www.dropbox.com/s/ji0otecqx42by00/seatedforwardfold.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/ji0otecqx42by00/seatedforwardfold.svg?raw=1",
+        "url_svg_alt_local": "seatedforwardfold"
       },
       {
         "id": 38,
@@ -728,7 +778,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Stimulates the liver and kidneys.  Stretches the hamstrings, calves, and hips.  Strengthens the thighs and knees.  Improves digestion.  Helps relieve the symptoms of menopause.  Reduces fatigue and anxiety.  Relieves headache and insomnia.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/38_yb3thk.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/38_yb3thk.png",
-        "url_svg_alt": "https://www.dropbox.com/s/u09snmhtposvaq0/standingforwardfold.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/u09snmhtposvaq0/standingforwardfold.svg?raw=1",
+        "url_svg_alt_local": "standingforwardfold"
       },
       {
         "id": 40,
@@ -741,7 +792,8 @@
         "pose_benefits": "Stretches the insides and backs of the legs.  Stimulates the abdominal organs.  Strengthens the spine.  Calms the brain.  Releases groin.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/40_dkmow6.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/40_dkmow6.png",
-        "url_svg_alt": "https://www.dropbox.com/s/6z51vzosovhx5w7/straddlesplit.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/6z51vzosovhx5w7/straddlesplit.svg?raw=1",
+        "url_svg_alt_local": "straddlesplit"
       }
     ]
   },
@@ -761,7 +813,8 @@
         "pose_benefits": "Opens the hips and groins.  Stretches the shoulders, rib cage and back.  Stimulates the abdominal organs, lungs and heart.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483074/yoga-api/5_i64gif.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483074/yoga-api/5_i64gif.png",
-        "url_svg_alt": "https://www.dropbox.com/s/3h2pts6xbn28dh7/butterfly%3F.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/3h2pts6xbn28dh7/butterfly%3F.svg?raw=1",
+        "url_svg_alt_local": "butterfly"
       },
       {
         "id": 10,
@@ -774,7 +827,8 @@
         "pose_benefits": "Gently stretches the hips, thighs, and ankles.  Calms the brain and helps relieve stress and fatigue.  Relieves back and neck pain when done with head and torso supported.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483079/yoga-api/10_wzpo85.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483079/yoga-api/10_wzpo85.png",
-        "url_svg_alt": "https://www.dropbox.com/s/ini3uwali0q5gxa/child.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/ini3uwali0q5gxa/child.svg?raw=1",
+        "url_svg_alt_local": "child"
       },
       {
         "id": 16,
@@ -787,7 +841,8 @@
         "pose_benefits": "Strengthens and stretches the ankles and calves.  Stretches the thighs, hips, shoulders, and upper back.  Improves concentration.  Improves sense of balance.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/16_g7ueht.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/16_g7ueht.png",
-        "url_svg_alt": "https://www.dropbox.com/s/w05qgx7wyxva1y3/eagle.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/w05qgx7wyxva1y3/eagle.svg?raw=1",
+        "url_svg_alt_local": "eagle"
       },
       {
         "id": 17,
@@ -800,7 +855,8 @@
         "pose_benefits": "Opens the hips and groins.  Stretches the hamstrings, IT bands and legs.  Improves balance.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/17_l9joyu.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/17_l9joyu.png",
-        "url_svg_alt": "https://www.dropbox.com/s/0yk0z7f0a4ni37l/extendedhandtotoe.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/0yk0z7f0a4ni37l/extendedhandtotoe.svg?raw=1",
+        "url_svg_alt_local": "extendedhandtotoe"
       },
       {
         "id": 25,
@@ -813,7 +869,8 @@
         "pose_benefits": "Stretches the thighs, groins (psoas), abdomen, chest, shoulders and neck.  Stimulates the abdominal organs.  Opens the shoulders and chest.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483087/yoga-api/25_rssro9.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483087/yoga-api/25_rssro9.png",
-        "url_svg_alt": "https://www.dropbox.com/s/10usd0gcqgy6o53/kingpigeon.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/10usd0gcqgy6o53/kingpigeon.svg?raw=1",
+        "url_svg_alt_local": "kingpigeon"
       },
       {
         "id": 32,
@@ -826,7 +883,8 @@
         "pose_benefits": "Stretches the shoulders, the chest, the thighs, the groins, and the abdomen.  Strengthens the legs and the ankles.  Improves balance.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/32_hafoa0.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/32_hafoa0.png",
-        "url_svg_alt": "https://www.dropbox.com/s/u9joi8lbntxumyh/seatedspinaltwist.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/u9joi8lbntxumyh/seatedspinaltwist.svg?raw=1",
+        "url_svg_alt_local": "seatedspinaltwist"
       },
       {
         "id": 40,
@@ -839,7 +897,8 @@
         "pose_benefits": "Stretches the insides and backs of the legs.  Stimulates the abdominal organs.  Strengthens the spine.  Calms the brain.  Releases groin.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/40_dkmow6.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/40_dkmow6.png",
-        "url_svg_alt": "https://www.dropbox.com/s/6z51vzosovhx5w7/straddlesplit.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/6z51vzosovhx5w7/straddlesplit.svg?raw=1",
+        "url_svg_alt_local": "straddlesplit"
       }
     ]
   },
@@ -859,7 +918,8 @@
         "pose_benefits": "Strengthens the ankles, thighs, calves, and spine.  Stretches shoulders and chest.  Stimulates the abdominal organs, diaphragm, and heart.  Reduces flat feet.  Energizes the entire body.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483078/yoga-api/9_ewvoun.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483078/yoga-api/9_ewvoun.png",
-        "url_svg_alt": "https://www.dropbox.com/s/9emlawz8vayk8bm/chair.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/9emlawz8vayk8bm/chair.svg?raw=1",
+        "url_svg_alt_local": "chair"
       },
       {
         "id": 12,
@@ -872,7 +932,8 @@
         "pose_benefits": "Stretches the rib cage, arms and torso.  Tones the oblique muscles.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483080/yoga-api/12_pv4p1z.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483080/yoga-api/12_pv4p1z.png",
-        "url_svg_alt": "https://www.dropbox.com/s/1oc1dqv8mfwo8uj/highlunge.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/1oc1dqv8mfwo8uj/highlunge.svg?raw=1",
+        "url_svg_alt_local": "highlunge"
       },
       {
         "id": 14,
@@ -885,7 +946,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression. Energizes the body. Stretches the shoulders, hamstrings, calves, arches, and hands. Strengthens the arms and legs. Helps relieve the symptoms of menopause. Relieves menstrual discomfort when done with the head supported. Helps prevent osteoporosis. Improves digestion. Relieves headache, insomnia, back pain, and fatigue. Therapeutic for high blood pressure, asthma, flat feet, sciatica, and sinusitis. Warms up the ankles and the toes.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483080/yoga-api/14_k9lr9a.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483080/yoga-api/14_k9lr9a.png",
-        "url_svg_alt": "https://www.dropbox.com/s/px1foombb3v24se/dolphin.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/px1foombb3v24se/dolphin.svg?raw=1",
+        "url_svg_alt_local": "dolphin"
       },
       {
         "id": 15,
@@ -898,7 +960,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Energizes the body.  Stretches the shoulders, neck, hamstrings, calves, arches, and hands.  Strengthens the arms and legs.  Helps relieve the symptoms of menopause.  Relieves menstrual discomfort when done with the head supported.  Helps prevent osteoporosis.  Improves digestion.  Relieves headache, insomnia, back pain, and fatigue.  Therapeutic for high blood pressure, asthma, flat feet, sciatica, and sinusitis.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/15_vkviqn.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/15_vkviqn.png",
-        "url_svg_alt": "https://www.dropbox.com/s/75xa1bduu2u5y7d/downdog.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/75xa1bduu2u5y7d/downdog.svg?raw=1",
+        "url_svg_alt_local": "downdog"
       },
       {
         "id": 16,
@@ -911,7 +974,8 @@
         "pose_benefits": "Strengthens and stretches the ankles and calves.  Stretches the thighs, hips, shoulders, and upper back.  Improves concentration.  Improves sense of balance.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/16_g7ueht.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/16_g7ueht.png",
-        "url_svg_alt": "https://www.dropbox.com/s/w05qgx7wyxva1y3/eagle.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/w05qgx7wyxva1y3/eagle.svg?raw=1",
+        "url_svg_alt_local": "eagle"
       },
       {
         "id": 17,
@@ -924,7 +988,8 @@
         "pose_benefits": "Opens the hips and groins.  Stretches the hamstrings, IT bands and legs.  Improves balance.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/17_l9joyu.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/17_l9joyu.png",
-        "url_svg_alt": "https://www.dropbox.com/s/0yk0z7f0a4ni37l/extendedhandtotoe.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/0yk0z7f0a4ni37l/extendedhandtotoe.svg?raw=1",
+        "url_svg_alt_local": "extendedhandtotoe"
       },
       {
         "id": 18,
@@ -937,7 +1002,8 @@
         "pose_benefits": "Strengthens and stretches the legs, knees, and ankles.  Stretches the groin, spine, waist, chest, lungs, and shoulders. Stimulates abdominal organs. Increases stamina.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483083/yoga-api/18_aqufak.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483083/yoga-api/18_aqufak.png",
-        "url_svg_alt": "https://www.dropbox.com/s/yzynxmyb9o7eras/extendedsideangle.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/yzynxmyb9o7eras/extendedsideangle.svg?raw=1",
+        "url_svg_alt_local": "extendedsideangle"
       },
       {
         "id": 21,
@@ -950,7 +1016,8 @@
         "pose_benefits": "Strengthens the abdomen, ankles, thighs, buttocks and spine.  Stretches the groins, hamstrings, calves, shoulders, chest and spine.  Improves coordination and sense of balance.  Helps relieve stress.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/21_etedlp.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/21_etedlp.png",
-        "url_svg_alt": "https://www.dropbox.com/s/gpumf9eehr8wo9g/halfmoon.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/gpumf9eehr8wo9g/halfmoon.svg?raw=1",
+        "url_svg_alt_local": "halfmoon"
       },
       {
         "id": 22,
@@ -963,7 +1030,8 @@
         "pose_benefits": "Strengthens the shoulders, arms and wrists.  Stretches the belly.  Improves sense of balance.  Calms the brain and helps relieve stress and mild depression.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/22_ojzmr8.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/22_ojzmr8.png",
-        "url_svg_alt": "https://www.dropbox.com/s/p7pf5j0untktn9c/handstand.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/p7pf5j0untktn9c/handstand.svg?raw=1",
+        "url_svg_alt_local": "handstand"
       },
       {
         "id": 23,
@@ -976,7 +1044,8 @@
         "pose_benefits": "Stretches the chest, lungs, neck, belly and groin (psoas).  Strengthens the shoulders, arms and back muscles.  Strengthens and stretches the thighs, calves and ankles.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483086/yoga-api/23_k2jccj.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483086/yoga-api/23_k2jccj.png",
-        "url_svg_alt": "https://www.dropbox.com/s/h0ehjaz1wa9xfu1/lowlunge.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/h0ehjaz1wa9xfu1/lowlunge.svg?raw=1",
+        "url_svg_alt_local": "lowlunge"
       },
       {
         "id": 28,
@@ -989,7 +1058,8 @@
         "pose_benefits": "Calms the brain.  Stretches the spine, the shoulders, the hips and the hamstrings.  Strengthens the legs.  Stimulates the abdominal organs.  Improves posture and sense of balance.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483089/yoga-api/28_uu58tt.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483089/yoga-api/28_uu58tt.png",
-        "url_svg_alt": "https://www.dropbox.com/s/j7p2600bmf840e0/pyramid.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/j7p2600bmf840e0/pyramid.svg?raw=1",
+        "url_svg_alt_local": "pyramid"
       },
       {
         "id": 29,
@@ -1002,7 +1072,8 @@
         "pose_benefits": "Strengthens and stretches the legs, knees, and ankles.  Stretches the groin, spine, waist, chest, lungs, and shoulders.  Stimulates abdominal organs.  Increases stamina.  Relieves backaches, especially through second trimester of pregnancy.  Therapeutic for carpal tunnel syndrome, flat feet, infertility, osteoporosis, and sciatica.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483089/yoga-api/29_ww7bot.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483089/yoga-api/29_ww7bot.png",
-        "url_svg_alt": "https://www.dropbox.com/s/q6yn6cb9fglo0wp/reverswarrior.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/q6yn6cb9fglo0wp/reverswarrior.svg?raw=1",
+        "url_svg_alt_local": "reverswarrior"
       },
       {
         "id": 37,
@@ -1015,7 +1086,8 @@
         "pose_benefits": "Stretches the ankles, groins and back torso.  Tones the belly.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/37_moh7ii.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/37_moh7ii.png",
-        "url_svg_alt": "https://www.dropbox.com/s/ntrwtdlr6tdkdxz/squat.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/ntrwtdlr6tdkdxz/squat.svg?raw=1",
+        "url_svg_alt_local": "squat"
       },
       {
         "id": 39,
@@ -1028,7 +1100,8 @@
         "pose_benefits": "Stretches the rib cage, arms and torso.  Tones the oblique muscles.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483095/yoga-api/39_hqj0sa.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483095/yoga-api/39_hqj0sa.png",
-        "url_svg_alt": "https://www.dropbox.com/s/9tv6z3qdcw2vg3a/standingstretch.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/9tv6z3qdcw2vg3a/standingstretch.svg?raw=1",
+        "url_svg_alt_local": "standingstretch"
       },
       {
         "id": 41,
@@ -1041,7 +1114,8 @@
         "pose_benefits": "Strengthens the legs, ankles, and feet.  Improves flexibility in the hips and knees.  Improves balance.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483094/yoga-api/41_veknug.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483094/yoga-api/41_veknug.png",
-        "url_svg_alt": "https://www.dropbox.com/s/mn2ktlihp12mtfa/tree.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/mn2ktlihp12mtfa/tree.svg?raw=1",
+        "url_svg_alt_local": "tree"
       },
       {
         "id": 42,
@@ -1054,7 +1128,8 @@
         "pose_benefits": "Stretches and strengthens the thighs, knees, and ankles.  Stretches the hips, groin, hamstrings, calves, shoulders, chest, and spine.  Stimulates the abdominal organs.  Helps relieve stress.  Improves digestion.  Helps relieve the symptoms of menopause.  Relieves backache, especially through second trimester of pregnancy.  Therapeutic for anxiety, flat feet, infertility, neck pain, osteoporosis, and sciatica.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/42_jawxqw.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/42_jawxqw.png",
-        "url_svg_alt": "https://www.dropbox.com/s/l41pfqjwmjoy5os/triangle.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/l41pfqjwmjoy5os/triangle.svg?raw=1",
+        "url_svg_alt_local": "triangle"
       },
       {
         "id": 44,
@@ -1067,7 +1142,8 @@
         "pose_benefits": "Stretches the chest, lungs, shoulders, neck, belly and groin (psoas).  Strengthens the shoulders, arms and back muscles.  Strengthens and stretches the thighs, calves and ankles.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/44_dqeayo.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/44_dqeayo.png",
-        "url_svg_alt": "https://www.dropbox.com/s/j9fip5gm1o1l3fx/warrior1.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/j9fip5gm1o1l3fx/warrior1.svg?raw=1",
+        "url_svg_alt_local": "warrior1"
       },
       {
         "id": 45,
@@ -1080,7 +1156,8 @@
         "pose_benefits": "Strengthens and stretches the legs and ankles.  Stretches the groin, chest, lungs, and shoulders.  Stimulates abdominal organs.  Increases stamina.  Relieves backaches, especially through second trimester of pregnancy.  Therapeutic for carpal tunnel syndrome, flat feet, infertility, osteoporosis, and sciatica.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/45_ehimr1.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483096/yoga-api/45_ehimr1.png",
-        "url_svg_alt": "https://www.dropbox.com/s/rsb3mx41dfq4otl/warrior2.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/rsb3mx41dfq4otl/warrior2.svg?raw=1",
+        "url_svg_alt_local": "warrior2"
       },
       {
         "id": 46,
@@ -1093,7 +1170,8 @@
         "pose_benefits": "Strengthens the ankles and legs.  Strengthens the shoulders and muscles of the back.  Tones the abdomen.  Improves balance and posture.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/46_lz6v7i.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/46_lz6v7i.png",
-        "url_svg_alt": "https://www.dropbox.com/s/lwgoky3z37ameif/warrior3.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/lwgoky3z37ameif/warrior3.svg?raw=1",
+        "url_svg_alt_local": "warrior3"
       }
     ]
   },
@@ -1113,7 +1191,8 @@
         "pose_benefits": "Gently stretches the hips, thighs, and ankles.  Calms the brain and helps relieve stress and fatigue.  Relieves back and neck pain when done with head and torso supported.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483079/yoga-api/10_wzpo85.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483079/yoga-api/10_wzpo85.png",
-        "url_svg_alt": "https://www.dropbox.com/s/ini3uwali0q5gxa/child.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/ini3uwali0q5gxa/child.svg?raw=1",
+        "url_svg_alt_local": "child"
       },
       {
         "id": 11,
@@ -1126,7 +1205,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Relaxes the body.  Reduces headache, fatigue, and insomnia.  Helps to lower blood pressure.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483078/yoga-api/11_dczyrp.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483078/yoga-api/11_dczyrp.png",
-        "url_svg_alt": "https://www.dropbox.com/s/eohyx2crvtjvaxb/sivasana.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/eohyx2crvtjvaxb/sivasana.svg?raw=1",
+        "url_svg_alt_local": "corpse"
       }
     ]
   },
@@ -1146,7 +1226,8 @@
         "pose_benefits": "Strengthens arms and wrists.  Stretches the upper back.  Strengthens the abdominal muscles.  Opens the groin.  Tones the abdominal organs.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483083/yoga-api/13_hdjxuz.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483083/yoga-api/13_hdjxuz.png",
-        "url_svg_alt": "https://www.dropbox.com/s/ukaxoioh0uooswj/crow.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/ukaxoioh0uooswj/crow.svg?raw=1",
+        "url_svg_alt_local": "crow"
       },
       {
         "id": 26,
@@ -1159,7 +1240,8 @@
         "pose_benefits": "Strengthens the arms, wrists, and spine.  Tones the abdomen.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/26_mxkzlo.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/26_mxkzlo.png",
-        "url_svg_alt": "https://www.dropbox.com/s/jg6ge8zpaltx10f/plank.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/jg6ge8zpaltx10f/plank.svg?raw=1",
+        "url_svg_alt_local": "plank"
       },
       {
         "id": 34,
@@ -1172,7 +1254,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Stretches the shoulders, hamstrings, calves, and arches.  Strengthens the arms and legs.  Helps relieve the symptoms of menopause.  Helps prevent osteoporosis.  Improves digestion.  Relieves headache, insomnia, back pain, and fatigue.  Therapeutic for high blood pressure, asthma, flat feet, sciatica.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/34_qle5tp.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/34_qle5tp.png",
-        "url_svg_alt": "https://www.dropbox.com/s/w35ciia4u570xj8/sideplank.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/w35ciia4u570xj8/sideplank.svg?raw=1",
+        "url_svg_alt_local": "sideplank"
       },
       {
         "id": 48,
@@ -1185,7 +1268,8 @@
         "pose_benefits": "Stretches the chest, shoulders, back, and throat.  Strengthens and opens the hips, hip flexors, and thighs.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/48_unoav6.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/48_unoav6.png",
-        "url_svg_alt": "https://www.dropbox.com/s/d1dbdvo4l7xry4w/downdogflip.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/d1dbdvo4l7xry4w/downdogflip.svg?raw=1",
+        "url_svg_alt_local": "wildthing"
       }
     ]
   },
@@ -1205,7 +1289,8 @@
         "pose_benefits": "Strengthens and stretches the ankles and calves.  Stretches the thighs, hips, shoulders, and upper back.  Improves concentration.  Improves sense of balance.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/16_g7ueht.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483081/yoga-api/16_g7ueht.png",
-        "url_svg_alt": "https://www.dropbox.com/s/w05qgx7wyxva1y3/eagle.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/w05qgx7wyxva1y3/eagle.svg?raw=1",
+        "url_svg_alt_local": "eagle"
       },
       {
         "id": 17,
@@ -1218,7 +1303,8 @@
         "pose_benefits": "Opens the hips and groins.  Stretches the hamstrings, IT bands and legs.  Improves balance.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/17_l9joyu.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/17_l9joyu.png",
-        "url_svg_alt": "https://www.dropbox.com/s/0yk0z7f0a4ni37l/extendedhandtotoe.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/0yk0z7f0a4ni37l/extendedhandtotoe.svg?raw=1",
+        "url_svg_alt_local": "extendedhandtotoe"
       },
       {
         "id": 21,
@@ -1231,7 +1317,8 @@
         "pose_benefits": "Strengthens the abdomen, ankles, thighs, buttocks and spine.  Stretches the groins, hamstrings, calves, shoulders, chest and spine.  Improves coordination and sense of balance.  Helps relieve stress.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/21_etedlp.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/21_etedlp.png",
-        "url_svg_alt": "https://www.dropbox.com/s/gpumf9eehr8wo9g/halfmoon.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/gpumf9eehr8wo9g/halfmoon.svg?raw=1",
+        "url_svg_alt_local": "halfmoon"
       },
       {
         "id": 22,
@@ -1244,7 +1331,8 @@
         "pose_benefits": "Strengthens the shoulders, arms and wrists.  Stretches the belly.  Improves sense of balance.  Calms the brain and helps relieve stress and mild depression.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/22_ojzmr8.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483085/yoga-api/22_ojzmr8.png",
-        "url_svg_alt": "https://www.dropbox.com/s/p7pf5j0untktn9c/handstand.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/p7pf5j0untktn9c/handstand.svg?raw=1",
+        "url_svg_alt_local": "handstand"
       },
       {
         "id": 33,
@@ -1257,7 +1345,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Stimulates the thyroid and prostate glands and abdominal organs.  Stretches the shoulders and neck.  Tones the legs and buttocks.  Improves digestion.  Helps relieve the symptoms of menopause.  Reduces fatigue and alleviates insomnia.  Therapeutic for asthma, infertility, and sinusitis.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/33_r7motl.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/33_r7motl.png",
-        "url_svg_alt": "https://www.dropbox.com/s/tqj48exec3zub2u/shoulderstand.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/tqj48exec3zub2u/shoulderstand.svg?raw=1",
+        "url_svg_alt_local": "shoulderstand"
       },
       {
         "id": 34,
@@ -1270,7 +1359,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Stretches the shoulders, hamstrings, calves, and arches.  Strengthens the arms and legs.  Helps relieve the symptoms of menopause.  Helps prevent osteoporosis.  Improves digestion.  Relieves headache, insomnia, back pain, and fatigue.  Therapeutic for high blood pressure, asthma, flat feet, sciatica.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/34_qle5tp.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483093/yoga-api/34_qle5tp.png",
-        "url_svg_alt": "https://www.dropbox.com/s/w35ciia4u570xj8/sideplank.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/w35ciia4u570xj8/sideplank.svg?raw=1",
+        "url_svg_alt_local": "sideplank"
       },
       {
         "id": 39,
@@ -1283,7 +1373,8 @@
         "pose_benefits": "Stretches the rib cage, arms and torso.  Tones the oblique muscles.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483095/yoga-api/39_hqj0sa.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483095/yoga-api/39_hqj0sa.png",
-        "url_svg_alt": "https://www.dropbox.com/s/9tv6z3qdcw2vg3a/standingstretch.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/9tv6z3qdcw2vg3a/standingstretch.svg?raw=1",
+        "url_svg_alt_local": "standingstretch"
       },
       {
         "id": 41,
@@ -1296,7 +1387,8 @@
         "pose_benefits": "Strengthens the legs, ankles, and feet.  Improves flexibility in the hips and knees.  Improves balance.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483094/yoga-api/41_veknug.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483094/yoga-api/41_veknug.png",
-        "url_svg_alt": "https://www.dropbox.com/s/mn2ktlihp12mtfa/tree.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/mn2ktlihp12mtfa/tree.svg?raw=1",
+        "url_svg_alt_local": "tree"
       },
       {
         "id": 46,
@@ -1309,7 +1401,8 @@
         "pose_benefits": "Strengthens the ankles and legs.  Strengthens the shoulders and muscles of the back.  Tones the abdomen.  Improves balance and posture.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/46_lz6v7i.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483097/yoga-api/46_lz6v7i.png",
-        "url_svg_alt": "https://www.dropbox.com/s/lwgoky3z37ameif/warrior3.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/lwgoky3z37ameif/warrior3.svg?raw=1",
+        "url_svg_alt_local": "warrior3"
       }
     ]
   },
@@ -1329,7 +1422,8 @@
         "pose_benefits": "Strengthens arms and shoulders.  Improves focus and balance.  Stretches the upper and lower back.  Strengthens the abdominal muscles.  Tones the abdominal area.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/19_jadqwc.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483084/yoga-api/19_jadqwc.png",
-        "url_svg_alt": "https://www.dropbox.com/s/kjlyju4m91qgoi6/forearmstand.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/kjlyju4m91qgoi6/forearmstand.svg?raw=1",
+        "url_svg_alt_local": "forearmstand"
       },
       {
         "id": 27,
@@ -1342,7 +1436,8 @@
         "pose_benefits": "Calms the brain.  Stimulates the abdominal organs and the thyroid glands.  Stretches the shoulders and spine.  Helps relieve the symptoms of menopause.  Reduces stress and fatigue.  Therapeutic for backache, headache, infertility, insomnia,  and sinusitis.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/27_m4yux9.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483088/yoga-api/27_m4yux9.png",
-        "url_svg_alt": "https://www.dropbox.com/s/zi9231wbajm6d2m/plow.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/zi9231wbajm6d2m/plow.svg?raw=1",
+        "url_svg_alt_local": "plow"
       },
       {
         "id": 33,
@@ -1355,7 +1450,8 @@
         "pose_benefits": "Calms the brain and helps relieve stress and mild depression.  Stimulates the thyroid and prostate glands and abdominal organs.  Stretches the shoulders and neck.  Tones the legs and buttocks.  Improves digestion.  Helps relieve the symptoms of menopause.  Reduces fatigue and alleviates insomnia.  Therapeutic for asthma, infertility, and sinusitis.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/33_r7motl.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483091/yoga-api/33_r7motl.png",
-        "url_svg_alt": "https://www.dropbox.com/s/tqj48exec3zub2u/shoulderstand.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/tqj48exec3zub2u/shoulderstand.svg?raw=1",
+        "url_svg_alt_local": "shoulderstand"
       }
     ]
   }
