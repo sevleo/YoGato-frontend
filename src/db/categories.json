@@ -15,7 +15,8 @@
         "pose_benefits": "Strengthens the abdomen, hip flexors, and spine.  Stimulates the kidneys, thyroid and prostate glands, and intestines.  Helps relieve stress.  Improves digestion.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483071/yoga-api/1_txmirf.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483071/yoga-api/1_txmirf.png",
-        "url_svg_alt": "https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/4m64ztxkj8a4dab/boatstraightlegs.svg?raw=1",
+        "url_svg_alt_local": "boatstraightlegs"
       },
       {
         "id": 2,
@@ -537,7 +538,8 @@
         "pose_benefits": "Stretches the entire front of the body, ankles, thighs and groins, abdomen and chest, and throat, and deep hip flexors (psoas).  Strengthens the back muscles.  Improves posture.  Stimulates the organs of the abdomen and neck.",
         "url_svg": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483072/yoga-api/3_aa0fgk.svg",
         "url_png": "https://res.cloudinary.com/dko1be2jy/image/upload/fl_sanitize/v1676483072/yoga-api/3_aa0fgk.png",
-        "url_svg_alt": "https://www.dropbox.com/s/wizj5kwxvez4c0a/bow.svg?raw=1"
+        "url_svg_alt": "https://www.dropbox.com/s/wizj5kwxvez4c0a/bow.svg?raw=1",
+        "url_svg_alt_local": "bow"
       },
       {
         "id": 6,

@@ -12,6 +12,7 @@ export interface AspectType {
   category_name: string;
   sanskrit_name_adapted: string;
   url_svg_alt: string;
+  url_svg_alt_local: string;
 }
 
 type Props = {

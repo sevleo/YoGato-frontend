@@ -1,8 +1,11 @@
 // React
 import { CSSProperties, forwardRef, HTMLAttributes } from "react";
+import svgProvider from "../../../assets/svgProvider";
 
 // Types & interfaces
 import { AspectType } from "./AspectController";
+
+svgProvider("boatstraightlegs");
 
 type Props = {
   aspect: AspectType;
@@ -23,6 +26,8 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
     };
     // console.log(aspect);
 
+    const svg = svgProvider(aspect.url_svg_alt_local);
+
     return (
       <div
         ref={ref}
@@ -41,6 +46,8 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
       >
         <p>{aspect.english_name}</p>
         <p>{aspect.sanskrit_name_adapted}</p>
+        <p>{aspect.url_svg_alt_local}</p>
+        <img src={svg} alt="" />
       </div>
     );
   }
