@@ -18,73 +18,14 @@ import Aspect from "../buildingBlocks/Aspect/AspectDisplay";
 import { UnitProps } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { AspectType } from "../buildingBlocks/Aspect/AspectController";
+import aspects from "../../db/aspects.json";
+import categories from "../../db/categories.json";
 
 // Other
 import { v4 as uuidv4 } from "uuid";
 
 function Builder() {
-  const aspectGroups: AspectGroupType[] = [
-    {
-      groupName: "Group 1",
-      aspects: [
-        { name: "A" },
-        { name: "B" },
-        { name: "C" },
-        { name: "D" },
-        { name: "E" },
-        { name: "F" },
-        { name: "G" },
-      ],
-    },
-    {
-      groupName: "Group 2",
-      aspects: [
-        { name: "H" },
-        { name: "I" },
-        { name: "J" },
-        { name: "K" },
-        { name: "L" },
-        { name: "M" },
-        { name: "N" },
-      ],
-    },
-    {
-      groupName: "Group 3",
-      aspects: [
-        { name: "O" },
-        { name: "P" },
-        { name: "Q" },
-        { name: "R" },
-        { name: "S" },
-        { name: "T" },
-        { name: "U" },
-      ],
-    },
-    {
-      groupName: "Group 4",
-      aspects: [
-        { name: "V" },
-        { name: "W" },
-        { name: "X" },
-        { name: "Y" },
-        { name: "Z" },
-        { name: "AA" },
-        { name: "AB" },
-      ],
-    },
-    {
-      groupName: "Group 5",
-      aspects: [
-        { name: "AC" },
-        { name: "AD" },
-        { name: "AE" },
-        { name: "AF" },
-        { name: "AG" },
-        { name: "AH" },
-        { name: "AI" },
-      ],
-    },
-  ];
+  const aspectGroups: AspectGroupType[] = categories;
 
   interface Flow {
     flowName: string;
@@ -106,8 +47,10 @@ function Builder() {
   const handleDragStart = (event: DragStartEvent) => {
     const { active } = event;
     const foundAspect = aspectGroups
-      .flatMap((group) => group.aspects)
-      .find((aspect) => aspect.name === active.id);
+      .flatMap((group) => group.poses)
+      .find(
+        (aspect) => aspect.english_name + aspect.category_name === active.id
+      );
     setActiveItem(foundAspect);
     setIsDragging(true);
   };
@@ -134,10 +77,10 @@ function Builder() {
     if (activeItem) {
       const newUnit = {
         id: uuidv4(),
-        name: activeItem.name,
-        sanskritName: activeItem.name,
+        name: activeItem.english_name,
+        sanskritName: activeItem.sanskrit_name_adapted,
         duration: 2,
-        announcement: "fancy announcement",
+        announcement: activeItem.english_name,
       };
 
       setFlow((prevFlow) => {
@@ -192,9 +135,9 @@ function Builder() {
               <div className="border">
                 {aspectGroups.map((aspectGroup) => (
                   <AspectGroup
-                    key={aspectGroup.groupName}
-                    groupName={aspectGroup.groupName}
-                    aspects={aspectGroup.aspects}
+                    key={aspectGroup.category_name}
+                    category_name={aspectGroup.category_name}
+                    poses={aspectGroup.poses}
                   ></AspectGroup>
                 ))}
               </div>

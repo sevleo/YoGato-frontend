@@ -36,10 +36,11 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
           objectFit: "cover",
         }}
         {...props}
-        key={aspect.name}
-        className="flex aspect-square items-center justify-center rounded-md bg-white"
+        key={aspect.english_name}
+        className="flex aspect-square flex-col items-center justify-center rounded-md bg-white"
       >
-        {aspect.name}
+        <p>{aspect.english_name}</p>
+        <p>{aspect.sanskrit_name_adapted}</p>
       </div>
     );
   }

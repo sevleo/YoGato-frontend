@@ -8,7 +8,10 @@ import { useDraggable } from "@dnd-kit/core";
 import Aspect from "./AspectDisplay";
 
 export interface AspectType {
-  name: string;
+  english_name: string;
+  category_name: string;
+  sanskrit_name_adapted: string;
+  url_svg_alt: string;
 }
 
 type Props = {
@@ -17,7 +20,7 @@ type Props = {
 
 export default function AspectController({ aspect }: Props) {
   const { attributes, isDragging, listeners, setNodeRef } = useDraggable({
-    id: aspect.name,
+    id: aspect.english_name + aspect.category_name,
   });
 
   return (

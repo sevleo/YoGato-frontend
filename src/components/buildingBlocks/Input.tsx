@@ -17,15 +17,15 @@ export default function Input({
     onChange(Number(event.target.value));
   };
   return (
-    <div className="flex flex-row items-start justify-center">
-      <label htmlFor={id} className="p-1">
+    <div className="flex flex-row items-center justify-center">
+      <label htmlFor={id} className=" ">
         {label}
       </label>
       <input
         type={type}
         id={id}
         defaultValue={defaultValue}
-        className=" w-12 border bg-transparent p-1"
+        className=" w-12 border bg-transparent"
         onChange={handleChange}
       />
     </div>

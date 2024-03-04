@@ -5,24 +5,24 @@ import AspectController from "./Aspect/AspectController";
 import { AspectType } from "./Aspect/AspectController";
 
 export interface AspectGroupType {
-  groupName: string;
-  aspects: AspectType[];
+  category_name: string;
+  poses: AspectType[];
 }
 
 interface AspectGroupProps {
-  groupName: string;
-  aspects: AspectType[];
+  category_name: string;
+  poses: AspectType[];
 }
 
-function AspectGroup({ groupName, aspects }: AspectGroupProps) {
+function AspectGroup({ category_name, poses }: AspectGroupProps) {
   return (
     <div className=" flex flex-col justify-center text-black">
-      <p className="mb-2 mt-5 ">{groupName}</p>
+      <p className="mb-2 mt-5 ">{category_name}</p>
       <div className="grid grid-cols-aspects justify-center gap-5">
-        {aspects.map((aspect) => (
+        {poses.map((pose) => (
           <AspectController
-            key={aspect.name}
-            aspect={aspect}
+            key={pose.english_name + pose.category_name}
+            aspect={pose}
           ></AspectController>
         ))}
       </div>

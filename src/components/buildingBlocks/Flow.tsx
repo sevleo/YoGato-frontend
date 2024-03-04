@@ -97,7 +97,9 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
           // console.log(`Unit count: ${unitCount + 1}`);
 
           if (unitCount + 1 === flow.units[currentUnitIndex].duration) {
-            console.log(flow.units[currentUnitIndex].announcement);
+            if (flow.units[currentUnitIndex + 1]) {
+              console.log(flow.units[currentUnitIndex + 1].announcement);
+            }
 
             setUnitCount(0);
             setCurrentUnitIndex(currentUnitIndex + 1);
@@ -114,7 +116,7 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
           if (flowCount + 1 === flow.duration) {
             setFlowCount(0);
             setStartFlow(false);
-            console.log(`Count active: ${!startFlow}`);
+            console.log(`End of flow.`);
             return;
           } else {
             return flowCount + 1;
@@ -130,6 +132,7 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
   function onButtonClick() {
     setStartFlow(!startFlow);
     console.log(`Count active: ${!startFlow}`);
+    console.log(flow.units[currentUnitIndex].announcement);
   }
 
   return (
