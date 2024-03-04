@@ -32,6 +32,7 @@ function Unit({
   duration,
   announcement,
   index,
+  image,
   setFlow,
 }: UnitProps) {
   // On delete button on unit
@@ -110,7 +111,7 @@ function Unit({
         Step {index != null ? index + 1 : null}
       </div>
       <div className="flex w-1/6 items-center justify-center">
-        Picture space
+        <img src={image} alt="" />
       </div>
       <div className="flex w-4/6 flex-col items-start">
         <p>{name}</p>

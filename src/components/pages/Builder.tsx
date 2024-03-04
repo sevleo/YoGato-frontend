@@ -24,6 +24,8 @@ import categories from "../../db/categories.json";
 // Other
 import { v4 as uuidv4 } from "uuid";
 
+import svgProvider from "../../assets/svgProvider";
+
 function Builder() {
   const aspectGroups: AspectGroupType[] = categories;
 
@@ -81,6 +83,7 @@ function Builder() {
         sanskritName: activeItem.sanskrit_name_adapted,
         duration: 2,
         announcement: activeItem.english_name,
+        image: svgProvider(activeItem.url_svg_alt_local),
       };
 
       setFlow((prevFlow) => {
