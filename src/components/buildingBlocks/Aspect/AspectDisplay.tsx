@@ -46,7 +46,6 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
       >
         <p>{aspect.english_name}</p>
         <p>{aspect.sanskrit_name_adapted}</p>
-        <p>{aspect.url_svg_alt_local}</p>
         <img src={svg} alt="" />
       </div>
     );
