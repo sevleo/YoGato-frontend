@@ -18,7 +18,6 @@ import Aspect from "../buildingBlocks/Aspect/AspectDisplay";
 import { UnitProps } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { AspectType } from "../buildingBlocks/Aspect/AspectController";
-import aspects from "../../db/aspects.json";
 import categories from "../../db/categories.json";
 
 // Other
@@ -84,6 +83,7 @@ function Builder() {
         duration: 2,
         announcement: activeItem.english_name,
         image: svgProvider(activeItem.url_svg_alt_local),
+        aspectId: activeItem.id,
       };
 
       setFlow((prevFlow) => {
@@ -92,11 +92,29 @@ function Builder() {
           (acc, unit) => acc + unit.duration,
           0
         );
+        console.log(updatedUnits);
+        const uniqueAspects = [];
+
+        updatedUnits.forEach((unit) => {
+          const matchingAspectIndex = uniqueAspects.findIndex(
+            (aspect) => aspect.id === unit.aspectId
+          );
+          if (matchingAspectIndex !== -1) {
+            uniqueAspects[matchingAspectIndex].count += 1;
+          } else {
+            const uniqueAspect = {
+              id: unit.aspectId,
+              count: 1,
+            };
+            uniqueAspects.push(uniqueAspect);
+          }
+        });
 
         return {
           ...prevFlow,
           units: updatedUnits,
           duration: totalDuration,
+          uniqueAspects: uniqueAspects,
         };
       });
 

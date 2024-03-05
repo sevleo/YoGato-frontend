@@ -32,12 +32,20 @@ interface FlowProps {
     flowName: string;
     units: UnitProps[];
     duration: number;
+    uniqueAspects: {
+      id: string;
+      count: number;
+    }[];
   };
   setFlow: Dispatch<
     SetStateAction<{
       flowName: string;
       units: UnitProps[];
       duration: number;
+      uniqueAspects: {
+        id: string;
+        count: number;
+      }[];
     }>
   >;
   isDragging: boolean;
