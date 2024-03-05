@@ -4,7 +4,7 @@ export default {
   theme: {
     extend: {
       gridTemplateColumns: {
-        aspects: "repeat(auto-fill, minmax(100px, calc(25% - 1.25rem)))",
+        aspects: "repeat(auto-fill, minmax(100px, calc(50% - 2rem)))",
       },
     },
   },

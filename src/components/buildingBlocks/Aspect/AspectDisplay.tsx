@@ -42,11 +42,11 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
         }}
         {...props}
         key={aspect.english_name}
-        className="flex aspect-square flex-col items-center justify-center rounded-md bg-white"
+        className=" flex h-20 flex-row items-center justify-center rounded-md bg-white"
       >
+        <img className="h-full" src={svg} alt="" />
         <p>{aspect.english_name}</p>
         <p>{aspect.sanskrit_name_adapted}</p>
-        <img src={svg} alt="" />
       </div>
     );
   }
