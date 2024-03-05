@@ -13,13 +13,14 @@ export interface AspectType {
   sanskrit_name_adapted: string;
   url_svg_alt: string;
   url_svg_alt_local: string;
+  id: number;
 }
 
 type Props = {
   aspect: AspectType;
 } & HTMLAttributes<HTMLDivElement>;
 
-export default function AspectController({ aspect }: Props) {
+export default function AspectController({ aspect, count }: Props) {
   const { attributes, isDragging, listeners, setNodeRef } = useDraggable({
     id: aspect.english_name + aspect.category_name,
   });
@@ -27,6 +28,7 @@ export default function AspectController({ aspect }: Props) {
   return (
     <Aspect
       aspect={aspect}
+      count={count}
       ref={setNodeRef}
       isOpacityEnabled={isDragging}
       isDragging={isDragging}

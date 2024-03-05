@@ -14,7 +14,7 @@ type Props = {
 } & HTMLAttributes<HTMLDivElement>;
 
 const Aspect = forwardRef<HTMLDivElement, Props>(
-  ({ aspect, isOpacityEnabled, isDragging, style, ...props }, ref) => {
+  ({ aspect, isOpacityEnabled, isDragging, style, count, ...props }, ref) => {
     const styles: CSSProperties = {
       opacity: isOpacityEnabled ? "0.4" : "1",
       cursor: isDragging ? "grabbing" : "grab",
@@ -45,9 +45,13 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
       >
         <img className=" h-[80px] w-[80px]" src={svg} alt="" />
         <p className=" text-xs">{aspect.english_name}</p>
-        <span className=" absolute right-[3px] top-[3px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-red-600 p-0.5 text-xs text-white">
-          0
-        </span>
+
+        {count > 0 && (
+          <span className=" absolute right-[3px] top-[3px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-red-600 p-0.5 text-xs text-white">
+            {count}
+          </span>
+        )}
+
         {/* <p>{aspect.sanskrit_name_adapted}</p> */}
       </div>
     );

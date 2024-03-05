@@ -32,12 +32,17 @@ function Builder() {
     flowName: string;
     units: UnitProps[];
     duration: number;
+    uniqueAspects: {
+      id: string;
+      count: number;
+    }[];
   }
 
   const defaultFlow: Flow = {
     flowName: "my fancy flow",
     units: [],
     duration: 0,
+    uniqueAspects: [],
   };
 
   const [flow, setFlow] = useState<Flow>(defaultFlow);
@@ -159,6 +164,7 @@ function Builder() {
                     key={aspectGroup.category_name}
                     category_name={aspectGroup.category_name}
                     poses={aspectGroup.poses}
+                    uniqueAspects={flow.uniqueAspects}
                   ></AspectGroup>
                 ))}
               </div>
