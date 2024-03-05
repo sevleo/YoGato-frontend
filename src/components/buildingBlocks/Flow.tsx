@@ -25,19 +25,27 @@ import {
 import Unit from "./Unit";
 
 // Types & interfaces
-import { UnitProps } from "./Unit";
+import { UnitType } from "./Unit";
 
 interface FlowProps {
   flow: {
     flowName: string;
-    units: UnitProps[];
+    units: UnitType[];
     duration: number;
+    uniqueAspects: {
+      id: number;
+      count: number;
+    }[];
   };
   setFlow: Dispatch<
     SetStateAction<{
       flowName: string;
-      units: UnitProps[];
+      units: UnitType[];
       duration: number;
+      uniqueAspects: {
+        id: number;
+        count: number;
+      }[];
     }>
   >;
   isDragging: boolean;
@@ -84,43 +92,43 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
   }
 
   const [startFlow, setStartFlow] = useState<boolean>(false);
-  const [flowCount, setFlowCount] = useState<number>(0);
+  const [, setFlowCount] = useState<number>(0);
   const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
-  const [unitCount, setUnitCount] = useState<number>(0);
+  const [, setUnitCount] = useState<number>(0);
 
   // Flowing :)
   useEffect(() => {
-    let id;
+    let id: number;
     if (startFlow) {
       id = setInterval(() => {
-        setUnitCount((unitCount) => {
+        setUnitCount((unitCount: number) => {
           // console.log(`Unit count: ${unitCount + 1}`);
+          let newUnitCount: number;
 
           if (unitCount + 1 === flow.units[currentUnitIndex].duration) {
             if (flow.units[currentUnitIndex + 1]) {
               console.log(flow.units[currentUnitIndex + 1].announcement);
             }
-
-            setUnitCount(0);
             setCurrentUnitIndex(currentUnitIndex + 1);
-
-            return;
+            newUnitCount = 0;
           } else {
-            return unitCount + 1;
+            newUnitCount = unitCount + 1;
           }
+          return newUnitCount;
         });
 
-        setFlowCount((flowCount) => {
+        setFlowCount((flowCount: number) => {
           console.log(`Total count: ${flowCount + 1}`);
+          let newFlowCount: number;
 
           if (flowCount + 1 === flow.duration) {
-            setFlowCount(0);
+            newFlowCount = 0;
             setStartFlow(false);
             console.log(`End of flow.`);
-            return;
           } else {
-            return flowCount + 1;
+            newFlowCount = flowCount + 1;
           }
+          return newFlowCount;
         });
       }, 1000);
     }

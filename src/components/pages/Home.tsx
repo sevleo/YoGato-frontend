@@ -73,7 +73,7 @@ function Home() {
   // Tracks if the element from the right has been moved to the left
   const [isMoved, setIsMoved] = useState(false);
   const [movedItem, setMovedItem] = useState();
-  const [activeItem, setActiveItem] = useState();
+  const [, setActiveItem] = useState();
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -93,11 +93,11 @@ function Home() {
     }
   }
 
-  function handleDragMove(event: DragMoveEvent) {
-    // console.log("Drag Move:");
-    // console.log(event);
-    // if (event.over && )
-  }
+  // function handleDragMove(event: DragMoveEvent) {
+  //   console.log("Drag Move:");
+  //   console.log(event);
+  //   if (event.over && )
+  // }
 
   function handleDragOver(event: DragOverEvent) {
     if (
@@ -204,7 +204,7 @@ function Home() {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
         modifiers={modifiers}
-        onDragMove={handleDragMove}
+        // onDragMove={handleDragMove}
       >
         <div className="flex flex-row">
           <div className="ml-auto mr-1 flex min-h-80 w-80 flex-col bg-green-300">

@@ -9,12 +9,17 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: white;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
 }
 
 a {
@@ -56,6 +61,10 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.scrollbar-gutter {
+  scrollbar-gutter: stable both-edges;
 }
 
 @media (prefers-color-scheme: light) {

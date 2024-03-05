@@ -9,18 +9,35 @@ import { CSS } from "@dnd-kit/utilities";
 // Components
 import Input from "./Input";
 
-export interface UnitProps {
+export interface UnitType {
   id: string;
   name: string;
   sanskritName: string;
   duration: number;
   announcement: string;
   index?: number;
+  image: string | undefined;
+  aspectId: number;
+}
+
+interface UnitProps {
+  id: string;
+  name: string;
+  sanskritName: string;
+  duration: number;
+  announcement: string;
+  index?: number;
+  image: string | undefined;
+  aspectId: number;
   setFlow: Dispatch<
     SetStateAction<{
       flowName: string;
-      units: UnitProps[];
+      units: UnitType[];
       duration: number;
+      uniqueAspects: {
+        id: number;
+        count: number;
+      }[];
     }>
   >;
 }

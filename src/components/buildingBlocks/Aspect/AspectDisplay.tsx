@@ -9,12 +9,13 @@ svgProvider("boatstraightlegs");
 
 type Props = {
   aspect: AspectType;
+  count: number;
   isOpacityEnabled?: boolean;
   isDragging?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
 const Aspect = forwardRef<HTMLDivElement, Props>(
-  ({ aspect, isOpacityEnabled, isDragging, style, ...props }, ref) => {
+  ({ aspect, isOpacityEnabled, isDragging, style, count, ...props }, ref) => {
     const styles: CSSProperties = {
       opacity: isOpacityEnabled ? "0.4" : "1",
       cursor: isDragging ? "grabbing" : "grab",
@@ -34,19 +35,25 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
         style={{
           ...styles,
           borderRadius: "8px",
-          boxShadow: isDragging
-            ? "none"
-            : "rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px",
+          boxShadow:
+            "rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px",
           maxWidth: "100%",
           objectFit: "cover",
         }}
         {...props}
         key={aspect.english_name}
-        className="flex aspect-square flex-col items-center justify-center rounded-md bg-white"
+        className=" relative flex h-[140px] w-[100px] flex-col items-center justify-between rounded-md bg-white p-2"
       >
-        <p>{aspect.english_name}</p>
-        <p>{aspect.sanskrit_name_adapted}</p>
-        <img src={svg} alt="" />
+        <img className=" h-[80px] w-[80px]" src={svg} alt="" />
+        <p className=" text-xs">{aspect.english_name}</p>
+
+        {count > 0 && (
+          <span className=" absolute right-[3px] top-[3px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-red-600 p-0.5 text-xs text-white">
+            {count}
+          </span>
+        )}
+
+        {/* <p>{aspect.sanskrit_name_adapted}</p> */}
       </div>
     );
   }
