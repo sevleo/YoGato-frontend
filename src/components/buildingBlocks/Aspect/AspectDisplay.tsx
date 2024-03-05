@@ -34,19 +34,21 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
         style={{
           ...styles,
           borderRadius: "8px",
-          boxShadow: isDragging
-            ? "none"
-            : "rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px",
+          boxShadow:
+            "rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px",
           maxWidth: "100%",
           objectFit: "cover",
         }}
         {...props}
         key={aspect.english_name}
-        className=" flex h-20 flex-row items-center justify-center rounded-md bg-white"
+        className=" relative flex h-[140px] w-[100px] flex-col items-center justify-between rounded-md bg-white p-2"
       >
-        <img className="h-full" src={svg} alt="" />
-        <p>{aspect.english_name}</p>
-        <p>{aspect.sanskrit_name_adapted}</p>
+        <img className=" h-[80px] w-[80px]" src={svg} alt="" />
+        <p className=" text-xs">{aspect.english_name}</p>
+        <span className=" absolute right-[3px] top-[3px] flex h-[16px] min-w-[16px] items-center justify-center rounded-full bg-red-600 p-0.5 text-xs text-white">
+          0
+        </span>
+        {/* <p>{aspect.sanskrit_name_adapted}</p> */}
       </div>
     );
   }
