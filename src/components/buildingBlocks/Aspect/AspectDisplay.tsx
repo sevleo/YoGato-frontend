@@ -9,6 +9,7 @@ svgProvider("boatstraightlegs");
 
 type Props = {
   aspect: AspectType;
+  count: number;
   isOpacityEnabled?: boolean;
   isDragging?: boolean;
 } & HTMLAttributes<HTMLDivElement>;

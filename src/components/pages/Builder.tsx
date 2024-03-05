@@ -15,7 +15,7 @@ import Flow from "../buildingBlocks/Flow";
 import Aspect from "../buildingBlocks/Aspect/AspectDisplay";
 
 // Types & interfaces
-import { UnitProps } from "../buildingBlocks/Unit";
+import { UnitType } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { AspectType } from "../buildingBlocks/Aspect/AspectController";
 import categories from "../../db/categories.json";
@@ -30,10 +30,10 @@ function Builder() {
 
   interface Flow {
     flowName: string;
-    units: UnitProps[];
+    units: UnitType[];
     duration: number;
     uniqueAspects: {
-      id: string;
+      id: number;
       count: number;
     }[];
   }
@@ -97,8 +97,7 @@ function Builder() {
           (acc, unit) => acc + unit.duration,
           0
         );
-        console.log(updatedUnits);
-        const uniqueAspects = [];
+        const uniqueAspects: { id: number; count: number }[] = [];
 
         updatedUnits.forEach((unit) => {
           const matchingAspectIndex = uniqueAspects.findIndex(
@@ -122,20 +121,13 @@ function Builder() {
           uniqueAspects: uniqueAspects,
         };
       });
-
-      // console.log(flow);
     }
   }
 
   useEffect(() => {
-    const handleKeyPress = (event) => {
+    const handleKeyPress = (event: KeyboardEvent) => {
       if (event.key === "c" || event.key === "C") {
         console.log(flow);
-
-        // console.log("UNITS IN FLOW:");
-        // flow.units.forEach((unit) => {
-        //   console.log(unit);
-        // });
       }
     };
     document.addEventListener("keydown", handleKeyPress);
@@ -175,7 +167,9 @@ function Builder() {
           dropAnimation={isAddedToFlow ? null : undefined}
           style={{ transformOrigin: "0 0 " }}
         >
-          {activeItem ? <Aspect aspect={activeItem} isDragging /> : null}
+          {activeItem ? (
+            <Aspect aspect={activeItem} isDragging count={0} />
+          ) : null}
         </DragOverlay>
       </DndContext>
     </>

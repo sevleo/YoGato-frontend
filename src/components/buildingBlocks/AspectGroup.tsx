@@ -12,6 +12,10 @@ export interface AspectGroupType {
 interface AspectGroupProps {
   category_name: string;
   poses: AspectType[];
+  uniqueAspects: {
+    id: number;
+    count: number;
+  }[];
 }
 
 function AspectGroup({

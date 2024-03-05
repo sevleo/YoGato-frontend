@@ -18,6 +18,7 @@ export interface AspectType {
 
 type Props = {
   aspect: AspectType;
+  count: number;
 } & HTMLAttributes<HTMLDivElement>;
 
 export default function AspectController({ aspect, count }: Props) {
