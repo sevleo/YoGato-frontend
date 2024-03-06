@@ -125,15 +125,17 @@ function Unit({
     <div
       ref={setNodeRef}
       style={style}
-      className=" step relative flex cursor-default justify-center gap-5 bg-slate-100 text-black"
+      className="step relative flex h-[200px] w-[120px] cursor-default flex-col items-center justify-center text-black"
+      {...attributes}
+      {...listeners}
     >
-      <div
+      {/* <div
         className=" absolute right-[10px] top-[10px] z-50 hover:cursor-pointer"
         onClick={onUnitCloseClick}
       >
         <span className="material-symbols-outlined">close</span>
-      </div>
-      <div
+      </div> */}
+      {/* <div
         {...attributes}
         {...listeners}
         className="mb-auto mt-auto flex cursor-pointer items-center justify-center"
@@ -141,24 +143,30 @@ function Unit({
         <svg viewBox="0 0 20 20" width="20">
           <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
         </svg>
+      </div> */}
+      <div className="flexitems-center justify-center">
+        {index != null ? index + 1 : null}
       </div>
-      <div className="flex w-1/6 items-center justify-center">
-        Step {index != null ? index + 1 : null}
-      </div>
-      <div className="flex w-1/6 items-center justify-center">
-        <img src={image} alt="" />
-      </div>
-      <div className="flex w-4/6 flex-col items-start">
-        <p>{name}</p>
-        <p>{sanskritName}</p>
-        <Input
-          id={id}
-          type="number"
-          label="Length:"
-          defaultValue={duration}
-          onChange={handleLengthChange}
-        />
-        <p>Announce: {announcement}</p>
+      <div className="h-full w-full rounded-md border border-gray-200 p-2 shadow-sm">
+        <div className="flex items-center justify-center">
+          <img
+            className="h-[80px] max-h-[100px] w-[80px] max-w-[100px]"
+            src={image}
+            alt=""
+          />
+        </div>
+        <div className="flex flex-col items-center text-xs">
+          <p className="text-sm">{name}</p>
+          <p className="mb-2 text-wrap">{sanskritName}</p>
+          <Input
+            id={id}
+            type="number"
+            label=""
+            defaultValue={duration}
+            onChange={handleLengthChange}
+          />
+          {/* <p>Announce: {announcement}</p> */}
+        </div>
       </div>
     </div>
   );

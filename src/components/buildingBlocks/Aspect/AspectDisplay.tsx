@@ -34,15 +34,12 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
         ref={ref}
         style={{
           ...styles,
-          borderRadius: "8px",
-          boxShadow:
-            "rgb(63 63 68 / 5%) 0px 0px 0px 1px, rgb(34 33 81 / 15%) 0px 1px 3px 0px",
           maxWidth: "100%",
           objectFit: "cover",
         }}
         {...props}
         key={aspect.english_name}
-        className=" relative flex h-[140px] w-[100px] flex-col items-center justify-between rounded-md bg-white p-2"
+        className=" border-rad relative flex h-[140px] w-[100px] flex-col items-center justify-between rounded-md rounded-md border  border-gray-200 bg-white p-2 shadow-sm"
       >
         <img className=" h-[80px] w-[80px]" src={svg} alt="" />
         <p className=" text-xs">{aspect.english_name}</p>

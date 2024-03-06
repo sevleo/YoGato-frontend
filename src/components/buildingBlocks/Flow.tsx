@@ -59,11 +59,7 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
   });
 
   const style = {
-    border: isOver
-      ? "2px solid green"
-      : isDragging
-        ? "2px solid gold"
-        : "2px solid black",
+    border: isOver ? "1px solid green" : isDragging ? "1px solid gold" : "",
   };
 
   const sensors = useSensors(
@@ -157,34 +153,47 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
       sensors={sensors}
       collisionDetection={closestCenter}
       onDragEnd={handleDragEnd}
-      modifiers={[restrictToVerticalAxis]}
+      // modifiers={[restrictToVerticalAxis]}
     >
-      <div className="ltr p-5">
-        <div>{flow.flowName}</div>
-        <button onClick={onButtonClick}>Start</button>
-        <div className="droppable-area " ref={setNodeRef} style={{ ...style }}>
-          <div className=" flex flex-col bg-slate-400">
+      <div className="ltr h-full p-5">
+        {/* <div>{flow.flowName}</div> */}
+
+        <div
+          className="droppable-area h-full border-[1px] border-solid border-neutral-200"
+          ref={setNodeRef}
+          style={{ ...style }}
+        >
+          <button className="mb-2 mt-5" onClick={onButtonClick}>
+            Start
+          </button>
+          <div className=" flex flex-row flex-wrap gap-5">
             <SortableContext
               items={flow.units}
-              strategy={verticalListSortingStrategy}
+              // strategy={verticalListSortingStrategy}
             >
               {flow.units.map((unit, index) => {
                 return (
-                  <div key={unit.id}>
-                    <Unit {...unit} index={index} setFlow={setFlow}></Unit>
-                    <span className="material-symbols-outlined">
-                      keyboard_arrow_down
-                    </span>
-                  </div>
+                  // <div key={unit.id}>
+                  //   <Unit key={unit.id}{...unit} index={index} setFlow={setFlow}></Unit>
+                  //   {/* <span className="material-symbols-outlined">
+                  //     keyboard_arrow_down
+                  //   </span> */}
+                  // </div>
+                  <Unit
+                    key={unit.id}
+                    {...unit}
+                    index={index}
+                    setFlow={setFlow}
+                  ></Unit>
                 );
               })}
             </SortableContext>
-            <div
-              className="step-placeholder flex items-center justify-center"
+            {/* <div
+              className="step-placeholder flex items-center justify-center text-black"
               style={{ minHeight: "96px" }}
             >
               drop here
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
