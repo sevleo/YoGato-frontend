@@ -145,12 +145,11 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
   // Triggers flow start
   function onButtonClick() {
     setStartFlow(!startFlow);
+    setCurrentUnitIndex(0);
     console.log(`Count active: ${!startFlow}`);
-    const audio = new Audio(
-      mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
-    );
+    const audio = new Audio(mp3Provider(flow.units[0].url_svg_alt_local));
     audio.play();
-    console.log(flow.units[currentUnitIndex].announcement);
+    console.log(flow.units[0].announcement);
   }
 
   return (
