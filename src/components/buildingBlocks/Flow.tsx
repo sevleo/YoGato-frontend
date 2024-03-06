@@ -146,6 +146,10 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
   function onButtonClick() {
     setStartFlow(!startFlow);
     console.log(`Count active: ${!startFlow}`);
+    const audio = new Audio(
+      mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
+    );
+    audio.play();
     console.log(flow.units[currentUnitIndex].announcement);
   }
 
