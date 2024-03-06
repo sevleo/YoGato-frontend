@@ -61,6 +61,7 @@ function Unit({
         (acc, unit) => acc + unit.duration,
         0
       );
+      // Update aspect count
       const uniqueAspects: { id: number; count: number }[] = [];
       updatedUnits.forEach((unit) => {
         const matchingAspectIndex = uniqueAspects.findIndex(
