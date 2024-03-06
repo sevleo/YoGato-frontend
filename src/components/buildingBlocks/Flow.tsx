@@ -159,7 +159,8 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
         {/* <div>{flow.flowName}</div> */}
 
         <div
-          className="droppable-area  h-fit min-h-full border-[1px] border-solid border-neutral-200 p-5"
+          // className="droppable-area  h-fit min-h-full border-[1px] border-solid border-neutral-200 p-5"
+          className="droppable-area  h-fit min-h-full  p-5"
           ref={setNodeRef}
           style={{ ...style }}
         >

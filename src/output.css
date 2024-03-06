@@ -568,6 +568,38 @@ video {
   top: 3px;
 }
 
+.top-\[15px\] {
+  top: 15px;
+}
+
+.top-\[20px\] {
+  top: 20px;
+}
+
+.top-\[30px\] {
+  top: 30px;
+}
+
+.right-\[5px\] {
+  right: 5px;
+}
+
+.top-\[50px\] {
+  top: 50px;
+}
+
+.top-\[5px\] {
+  top: 5px;
+}
+
+.top-\[0px\] {
+  top: 0px;
+}
+
+.right-\[0px\] {
+  right: 0px;
+}
+
 .z-50 {
   z-index: 50;
 }
@@ -675,6 +707,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-\[0\.5px\] {
+  width: 0.5px;
 }
 
 .min-w-\[16px\] {
@@ -803,6 +839,21 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-neutral-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 229 229 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(163 163 163 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-300 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(212 212 212 / var(--tw-bg-opacity));
+}
+
 .p-0 {
   padding: 0px;
 }
@@ -837,6 +888,14 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-100 {
+  opacity: 1;
 }
 
 .shadow-sm {
@@ -963,6 +1022,22 @@ button:focus-visible {
   }
 }
 
+.hover\:right-\[0px\]:hover {
+  right: 0px;
+}
+
+.hover\:top-\[0px\]:hover {
+  top: 0px;
+}
+
 .hover\:cursor-pointer:hover {
   cursor: pointer;
+}
+
+.hover\:opacity-100:hover {
+  opacity: 1;
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
 }

@@ -55,6 +55,7 @@ function Unit({
 }: UnitProps) {
   // On delete button on unit
   function onUnitCloseClick() {
+    console.log("close");
     setFlow((prevFlow) => {
       const updatedUnits = prevFlow.units.filter((unit) => unit.id !== id);
       const updatedDuration = updatedUnits.reduce(
@@ -126,14 +127,12 @@ function Unit({
       ref={setNodeRef}
       style={style}
       className="step relative flex  cursor-default flex-col items-center justify-center text-black"
-      {...attributes}
-      {...listeners}
     >
       {/* <div
-        className=" absolute right-[10px] top-[10px] z-50 hover:cursor-pointer"
+        className=" absolute right-[0px] top-[0px] z-50 hover:cursor-pointer"
         onClick={onUnitCloseClick}
       >
-        <span className="material-symbols-outlined">close</span>
+        <span className="material-symbols-outlined">delete</span>
       </div> */}
       {/* <div
         {...attributes}
@@ -147,13 +146,20 @@ function Unit({
       <div className="flexitems-center justify-center">
         {index != null ? index + 1 : null}
       </div>
-      <div className="h-full w-full rounded-md border border-gray-200 p-2 shadow-sm">
-        <div className="flex items-center justify-center">
+      <div className="flex h-full w-full flex-col justify-between rounded-md border border-gray-200 shadow-sm">
+        <div
+          className="flex flex-col items-center justify-center p-2"
+          {...attributes}
+          {...listeners}
+        >
           <img className="" src={image} alt="" />
+          <div className="flex flex-col items-center text-xs">
+            <p className="w-full text-sm">{name}</p>
+            <p className="mb-2 w-full text-wrap">{sanskritName}</p>
+          </div>
         </div>
-        <div className="flex flex-col items-center text-xs">
-          <p className="text-sm">{name}</p>
-          <p className="mb-2 text-wrap">{sanskritName}</p>
+
+        <div className="  mt-auto flex flex-col">
           <Input
             id={id}
             type="number"
@@ -162,6 +168,10 @@ function Unit({
             onChange={handleLengthChange}
           />
           {/* <p>Announce: {announcement}</p> */}
+          <div className="  hover:cursor-pointer" onClick={onUnitCloseClick}>
+            <span className="material-symbols-outlined">close</span>
+            {/* <span>delete</span> */}
+          </div>
         </div>
       </div>
     </div>

@@ -148,10 +148,11 @@ function Builder() {
           <div className="rtl scrollbar-gutter canvas w-2/3 overflow-auto ">
             <Flow flow={flow} setFlow={setFlow} isDragging={isDragging}></Flow>
           </div>
-          {/* <div className="h-3/4 w-[1px] self-center bg-black"></div> */}
-          <div className="flex w-1/3 flex-row justify-start gap-5 overflow-auto ">
+          <div className="h-3/4 w-[0.5px] self-center bg-neutral-300"></div>
+          <div className=" scrollbar-gutter flex w-1/3 flex-row justify-start gap-5 overflow-auto ">
             <div className="h-fit min-h-full w-full gap-5 p-5">
-              <div className=" border-[1px] border-solid border-neutral-200 p-5">
+              {/* <div className=" border-[1px] border-solid border-neutral-200 p-5"> */}
+              <div className=" p-5">
                 {aspectGroups.map((aspectGroup) => (
                   <AspectGroup
                     key={aspectGroup.category_name}
