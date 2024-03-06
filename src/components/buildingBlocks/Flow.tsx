@@ -3,6 +3,8 @@ import { SetStateAction, useEffect } from "react";
 import { Dispatch } from "react";
 import { useState } from "react";
 
+import mp3Provider from "../../assets/mp3Provider";
+
 // DndKit
 import { DndContext, useDroppable, DragEndEvent } from "@dnd-kit/core";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
@@ -107,6 +109,10 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
 
           if (unitCount + 1 === flow.units[currentUnitIndex].duration) {
             if (flow.units[currentUnitIndex + 1]) {
+              const audio = new Audio(
+                mp3Provider(flow.units[currentUnitIndex + 1].url_svg_alt_local)
+              );
+              audio.play();
               console.log(flow.units[currentUnitIndex + 1].announcement);
             }
             setCurrentUnitIndex(currentUnitIndex + 1);

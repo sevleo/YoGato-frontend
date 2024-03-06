@@ -18,6 +18,7 @@ export interface UnitType {
   index?: number;
   image: string | undefined;
   aspectId: number;
+  url_svg_alt_local: string;
 }
 
 interface UnitProps {

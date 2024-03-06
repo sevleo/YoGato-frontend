@@ -89,6 +89,7 @@ function Builder() {
         announcement: activeItem.english_name,
         image: svgProvider(activeItem.url_svg_alt_local),
         aspectId: activeItem.id,
+        url_svg_alt_local: activeItem.url_svg_alt_local,
       };
 
       setFlow((prevFlow) => {
