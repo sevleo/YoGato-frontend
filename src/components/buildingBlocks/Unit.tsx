@@ -61,11 +61,27 @@ function Unit({
         (acc, unit) => acc + unit.duration,
         0
       );
+      const uniqueAspects: { id: number; count: number }[] = [];
+      updatedUnits.forEach((unit) => {
+        const matchingAspectIndex = uniqueAspects.findIndex(
+          (aspect) => aspect.id === unit.aspectId
+        );
+        if (matchingAspectIndex !== -1) {
+          uniqueAspects[matchingAspectIndex].count += 1;
+        } else {
+          const uniqueAspect = {
+            id: unit.aspectId,
+            count: 1,
+          };
+          uniqueAspects.push(uniqueAspect);
+        }
+      });
 
       return {
         ...prevFlow,
         units: updatedUnits,
         duration: updatedDuration,
+        uniqueAspects: uniqueAspects,
       };
     });
   }
