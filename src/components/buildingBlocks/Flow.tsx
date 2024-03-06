@@ -159,7 +159,7 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
       onDragEnd={handleDragEnd}
       modifiers={[restrictToVerticalAxis]}
     >
-      <div className="p-5">
+      <div className="ltr p-5">
         <div>{flow.flowName}</div>
         <button onClick={onButtonClick}>Start</button>
         <div className="droppable-area " ref={setNodeRef} style={{ ...style }}>
