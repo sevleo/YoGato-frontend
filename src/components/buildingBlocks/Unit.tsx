@@ -125,7 +125,7 @@ function Unit({
     <div
       ref={setNodeRef}
       style={style}
-      className="step relative flex h-[200px] w-[120px] cursor-default flex-col items-center justify-center text-black"
+      className="step relative flex  cursor-default flex-col items-center justify-center text-black"
       {...attributes}
       {...listeners}
     >
@@ -149,11 +149,7 @@ function Unit({
       </div>
       <div className="h-full w-full rounded-md border border-gray-200 p-2 shadow-sm">
         <div className="flex items-center justify-center">
-          <img
-            className="h-[80px] max-h-[100px] w-[80px] max-w-[100px]"
-            src={image}
-            alt=""
-          />
+          <img className="" src={image} alt="" />
         </div>
         <div className="flex flex-col items-center text-xs">
           <p className="text-sm">{name}</p>

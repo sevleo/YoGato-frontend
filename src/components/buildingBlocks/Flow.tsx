@@ -159,14 +159,14 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
         {/* <div>{flow.flowName}</div> */}
 
         <div
-          className="droppable-area h-full border-[1px] border-solid border-neutral-200"
+          className="droppable-area h-full border-[1px] border-solid border-neutral-200 p-5"
           ref={setNodeRef}
           style={{ ...style }}
         >
           <button className="mb-2 mt-5" onClick={onButtonClick}>
             Start
           </button>
-          <div className=" flex flex-row flex-wrap gap-5">
+          <div className=" grid-cols-canvas grid gap-5">
             <SortableContext
               items={flow.units}
               // strategy={verticalListSortingStrategy}

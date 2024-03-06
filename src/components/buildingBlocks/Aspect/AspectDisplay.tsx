@@ -39,7 +39,7 @@ const Aspect = forwardRef<HTMLDivElement, Props>(
         }}
         {...props}
         key={aspect.english_name}
-        className=" border-rad relative flex h-[140px] w-[100px] flex-col items-center justify-between rounded-md rounded-md border  border-gray-200 bg-white p-2 shadow-sm"
+        className=" border-rad relative flex h-[140px] w-[100px] flex-col items-center justify-between rounded-md border  border-gray-200 bg-white p-2 shadow-sm"
       >
         <img className=" h-[80px] w-[80px]" src={svg} alt="" />
         <p className=" text-xs">{aspect.english_name}</p>
