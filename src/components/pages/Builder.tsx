@@ -150,7 +150,7 @@ function Builder() {
           </div>
           {/* <div className="h-3/4 w-[1px] self-center bg-black"></div> */}
           <div className="flex w-1/3 flex-row justify-start gap-5 overflow-auto ">
-            <div className="h-auto w-full gap-5 p-5">
+            <div className="h-fit min-h-full w-full gap-5 p-5">
               <div className=" border-[1px] border-solid border-neutral-200 p-5">
                 {aspectGroups.map((aspectGroup) => (
                   <AspectGroup
