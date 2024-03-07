@@ -19,7 +19,7 @@ export default function Input({
   const [value, setValue] = useState(defaultValue);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    if (event.target.value === "") {
+    if (event.target.value === "" || event.target.value.startsWith("0")) {
       setValue(Number(1));
       onChange(Number(1));
     } else {
@@ -29,8 +29,13 @@ export default function Input({
   };
 
   const handlePlusFiveSeconds = (event) => {
-    setValue(value + 5);
-    onChange(value + 5);
+    if (value === 1) {
+      setValue(value + 4);
+      onChange(value + 4);
+    } else {
+      setValue(value + 5);
+      onChange(value + 5);
+    }
   };
 
   const handleMinusFiveSeconds = (event) => {
@@ -63,7 +68,7 @@ export default function Input({
         onMouseEnter={disableDrag}
         onMouseLeave={enableDrag}
       >
-        -5
+        -5s
       </div>
       <input
         type="text"
@@ -79,7 +84,9 @@ export default function Input({
           if (
             !/^\d$/.test(e.key) &&
             e.key !== "Delete" &&
-            e.key !== "Backspace"
+            e.key !== "Backspace" &&
+            e.key !== "ArrowLeft" &&
+            e.key !== "ArrowRight"
           ) {
             e.preventDefault();
           }
@@ -91,7 +98,7 @@ export default function Input({
         onMouseEnter={disableDrag}
         onMouseLeave={enableDrag}
       >
-        +5
+        +5s
       </div>
     </div>
   );
