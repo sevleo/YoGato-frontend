@@ -814,6 +814,10 @@ video {
   border-right-width: 1px;
 }
 
+.border-t-\[1px\] {
+  border-top-width: 1px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -974,6 +978,10 @@ video {
 
 .pr-\[5px\] {
   padding-right: 5px;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
 }
 
 .text-left {
