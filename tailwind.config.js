@@ -5,7 +5,10 @@ export default {
     extend: {
       gridTemplateColumns: {
         aspects: "repeat(auto-fill, minmax(100px, calc(50% - 2rem)))",
-        canvas: "repeat(auto-fill, minmax(100px, 1fr))",
+        canvas: "repeat(auto-fill, minmax(120px, 1fr))",
+      },
+      gridTemplateRows: {
+        canvas: "repeat(auto-fill, minmax(200px, 1fr))",
       },
     },
   },
