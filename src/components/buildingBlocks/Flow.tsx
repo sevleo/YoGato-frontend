@@ -167,7 +167,7 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
           <button className="mb-2 mt-5" onClick={onButtonClick}>
             Start
           </button>
-          <div className=" grid-cols-canvas grid auto-rows-fr  gap-5">
+          <div className=" grid-cols-canvas grid auto-rows-fr gap-5">
             <SortableContext
               items={flow.units}
               // strategy={verticalListSortingStrategy}

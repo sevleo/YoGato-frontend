@@ -153,7 +153,11 @@ function Unit({
           {...listeners}
         >
           <div className="h-full w-full border-b-[1px] pb-2">
-            <img className=" rounded-md bg-gray-200 p-2 " src={image} alt="" />
+            <img
+              className=" rounded-md bg-gray-100 p-2 outline outline-1 outline-slate-300 "
+              src={image}
+              alt=""
+            />
           </div>
           <div className="flex w-full flex-col text-xs ">
             <p className="mt-2 w-full text-left text-sm font-semibold">
@@ -173,8 +177,11 @@ function Unit({
           />
           {/* <p>Announce: {announcement}</p> */}
           <div className="  hover:cursor-pointer" onClick={onUnitCloseClick}>
-            <span className="material-symbols-outlined">close</span>
+            {/* <span className="material-symbols-outlined">close</span> */}
             {/* <span>delete</span> */}
+            <p className=" mt-2 select-none rounded-md border-[1px] border-red-300 bg-red-100 text-xs hover:border-red-400 hover:bg-red-200 active:border-red-500 active:bg-red-300">
+              Remove
+            </p>
           </div>
         </div>
       </div>
