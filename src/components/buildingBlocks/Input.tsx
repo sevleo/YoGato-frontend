@@ -57,14 +57,6 @@ export default function Input({
     setDragAllowed(true);
   };
 
-  const handleFocus = (event) => {
-    console.log(event);
-  };
-
-  const handleBlur = (event) => {
-    console.log(event);
-  };
-
   return (
     <div className="group relative flex flex-row items-center rounded-md bg-slate-100 outline outline-[1px] outline-gray-300 focus-within:outline-slate-400 ">
       <label htmlFor={id} className=" ">
@@ -88,8 +80,6 @@ export default function Input({
         pattern="[1-9]*"
         onMouseEnter={disableDrag}
         onMouseLeave={enableDrag}
-        onFocus={handleFocus}
-        onBlur={handleBlur}
         onKeyDown={(e) => {
           console.log(e);
           if (

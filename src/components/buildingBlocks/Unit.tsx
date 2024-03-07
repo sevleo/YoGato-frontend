@@ -136,37 +136,17 @@ function Unit({
     <div
       ref={setNodeRef}
       style={style}
-      className="step relative flex  cursor-default flex-col items-center justify-center text-black hover:cursor-pointer"
+      className="step relative flex  cursor-default flex-col items-center justify-center rounded-md text-black outline outline-[1px] outline-gray-300 hover:cursor-pointer"
       {...(dragAllowed ? { ...attributes } : null)}
       {...(dragAllowed ? { ...listeners } : null)}
     >
-      {/* <div
-        className=" absolute right-[0px] top-[0px] z-50 hover:cursor-pointer"
-        onClick={onUnitCloseClick}
-      >
-        <span className="material-symbols-outlined">delete</span>
-      </div> */}
-      {/* <div
-        {...attributes}
-        {...listeners}
-        className="mb-auto mt-auto flex cursor-pointer items-center justify-center"
-      >
-        <svg viewBox="0 0 20 20" width="20">
-          <path d="M7 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 2zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 7 14zm6-8a2 2 0 1 0-.001-4.001A2 2 0 0 0 13 6zm0 2a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 8zm0 6a2 2 0 1 0 .001 4.001A2 2 0 0 0 13 14z"></path>
-        </svg>
-      </div> */}
-      <div className="flexitems-center justify-center">
-        {index != null ? index + 1 : null}
+      <div className="flex w-full items-center justify-center rounded-t-md bg-gray-200">
+        {index != null ? Number(index + 1) : null}
       </div>
-      <div className="main-element flex h-full w-full flex-col justify-between rounded-md border border-gray-300 bg-gray-50 p-2 shadow-md">
+      <div className="main-element flex h-full w-full flex-col justify-between  border-t-[1px] border-gray-300 bg-gray-50 pb-2 pl-2 pr-2  shadow-md">
         <div className="flex flex-col items-center justify-center ">
           <div className="h-full w-full border-b-[1px] pb-2">
-            {/* <img
-              className=" rounded-md bg-gray-100 p-2 outline outline-1 outline-slate-300 "
-              src={image}
-              alt=""
-            /> */}
-            <img className=" rounded-md  p-2  " src={image} alt="" />
+            <img className=" rounded-md  pl-2 pr-2  " src={image} alt="" />
           </div>
           <div className="flex w-full flex-col text-xs ">
             <p className="mt-2 w-full text-left text-sm font-semibold">
@@ -176,7 +156,7 @@ function Unit({
           </div>
         </div>
 
-        <div className="mt-auto flex  flex-col rounded-b-md border-t-[1px] pt-2">
+        <div className="mt-auto flex  flex-col gap-2 rounded-b-md border-t-[1px] pt-2">
           <Input
             id={id}
             type="number"
@@ -185,16 +165,13 @@ function Unit({
             onChange={handleLengthChange}
             setDragAllowed={setDragAllowed}
           />
-          {/* <p>Announce: {announcement}</p> */}
           <div
             className="  hover:cursor-pointer"
             onClick={onUnitCloseClick}
             onMouseEnter={disableDrag}
             onMouseLeave={enableDrag}
           >
-            {/* <span className="material-symbols-outlined">close</span> */}
-            {/* <span>delete</span> */}
-            <p className=" mt-2 select-none rounded-md border-[1px] border-red-300 bg-red-100 text-xs hover:border-red-400 hover:bg-red-200 active:border-red-500 active:bg-red-300">
+            <p className=" select-none rounded-md border-[1px] border-red-300 bg-red-100 text-xs hover:border-red-400 hover:bg-red-200 active:border-red-500 active:bg-red-300">
               Remove
             </p>
           </div>
