@@ -52,6 +52,8 @@ function Unit({
   index,
   image,
   setFlow,
+  dragAllowed,
+  setDragAllowed,
 }: UnitProps) {
   // On delete button on unit
   function onUnitCloseClick() {
@@ -122,11 +124,21 @@ function Unit({
     });
   }
 
+  const disableDrag = (event) => {
+    setDragAllowed(false);
+  };
+
+  const enableDrag = (event) => {
+    setDragAllowed(true);
+  };
+
   return (
     <div
       ref={setNodeRef}
       style={style}
-      className="step relative flex  cursor-default flex-col items-center justify-center text-black"
+      className="step relative flex  cursor-default flex-col items-center justify-center text-black hover:cursor-pointer"
+      {...(dragAllowed ? { ...attributes } : null)}
+      {...(dragAllowed ? { ...listeners } : null)}
     >
       {/* <div
         className=" absolute right-[0px] top-[0px] z-50 hover:cursor-pointer"
@@ -147,11 +159,7 @@ function Unit({
         {index != null ? index + 1 : null}
       </div>
       <div className="main-element flex h-full w-full flex-col justify-between rounded-md border border-gray-300 bg-gray-50 p-2 shadow-md">
-        <div
-          className="flex flex-col items-center justify-center "
-          {...attributes}
-          {...listeners}
-        >
+        <div className="flex flex-col items-center justify-center ">
           <div className="h-full w-full border-b-[1px] pb-2">
             <img
               className=" rounded-md bg-gray-100 p-2 outline outline-1 outline-slate-300 "
@@ -174,9 +182,15 @@ function Unit({
             label=""
             defaultValue={duration}
             onChange={handleLengthChange}
+            setDragAllowed={setDragAllowed}
           />
           {/* <p>Announce: {announcement}</p> */}
-          <div className="  hover:cursor-pointer" onClick={onUnitCloseClick}>
+          <div
+            className="  hover:cursor-pointer"
+            onClick={onUnitCloseClick}
+            onMouseEnter={disableDrag}
+            onMouseLeave={enableDrag}
+          >
             {/* <span className="material-symbols-outlined">close</span> */}
             {/* <span>delete</span> */}
             <p className=" mt-2 select-none rounded-md border-[1px] border-red-300 bg-red-100 text-xs hover:border-red-400 hover:bg-red-200 active:border-red-500 active:bg-red-300">

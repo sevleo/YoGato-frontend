@@ -6,7 +6,12 @@ import { useState } from "react";
 import mp3Provider from "../../assets/mp3Provider";
 
 // DndKit
-import { DndContext, useDroppable, DragEndEvent } from "@dnd-kit/core";
+import {
+  DndContext,
+  useDroppable,
+  DragEndEvent,
+  DragStartEvent,
+} from "@dnd-kit/core";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
   closestCenter,
@@ -54,6 +59,8 @@ interface FlowProps {
 }
 
 function Flow({ flow, setFlow, isDragging }: FlowProps) {
+  const [dragAllowed, setDragAllowed] = useState(true);
+
   const { isOver, setNodeRef } = useDroppable({
     id: "flow",
   });
@@ -63,7 +70,12 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
   };
 
   const sensors = useSensors(
-    useSensor(PointerSensor),
+    useSensor(PointerSensor, {
+      // activationConstraint: {
+      //   delay: 200,
+      //   tolerance: 5,
+      // },
+    }),
     useSensor(KeyboardSensor, {
       coordinateGetter: sortableKeyboardCoordinates,
     })
@@ -185,6 +197,8 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
                     {...unit}
                     index={index}
                     setFlow={setFlow}
+                    dragAllowed={dragAllowed}
+                    setDragAllowed={setDragAllowed}
                   ></Unit>
                 );
               })}

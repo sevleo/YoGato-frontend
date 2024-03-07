@@ -14,6 +14,7 @@ export default function Input({
   label,
   defaultValue,
   onChange,
+  setDragAllowed,
 }: InputProps) {
   const [value, setValue] = useState(defaultValue);
 
@@ -38,6 +39,14 @@ export default function Input({
     }
   };
 
+  const disableDrag = (event) => {
+    setDragAllowed(false);
+  };
+
+  const enableDrag = (event) => {
+    setDragAllowed(true);
+  };
+
   return (
     <div className="group relative flex flex-row items-center rounded-md bg-slate-100 outline outline-[1px] outline-gray-300 focus-within:outline-slate-400 ">
       <label htmlFor={id} className=" ">
@@ -46,6 +55,8 @@ export default function Input({
       <div
         onClick={handleMinusFiveSeconds}
         className="mr-auto select-none rounded-l-md border-r border-gray-300 pb-[2px] pl-[5px] pr-[5px] pt-[2px] text-xs font-normal hover:cursor-pointer hover:bg-slate-200 active:bg-slate-300"
+        onMouseEnter={disableDrag}
+        onMouseLeave={enableDrag}
       >
         -5
       </div>
@@ -57,10 +68,14 @@ export default function Input({
         onChange={handleChange}
         inputMode="numeric"
         pattern="[0-9]*"
+        onMouseEnter={disableDrag}
+        onMouseLeave={enableDrag}
       />
       <div
         onClick={handlePlusFiveSeconds}
         className="ml-auto select-none rounded-r-md border-l border-gray-300 pb-[2px] pl-[5px] pr-[5px] pt-[2px] text-xs font-normal hover:cursor-pointer hover:bg-slate-200 active:bg-slate-300"
+        onMouseEnter={disableDrag}
+        onMouseLeave={enableDrag}
       >
         +5
       </div>
