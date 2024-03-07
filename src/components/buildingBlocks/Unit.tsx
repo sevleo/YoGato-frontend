@@ -161,6 +161,11 @@ function Unit({
       <div className="main-element flex h-full w-full flex-col justify-between rounded-md border border-gray-300 bg-gray-50 p-2 shadow-md">
         <div className="flex flex-col items-center justify-center ">
           <div className="h-full w-full border-b-[1px] pb-2">
+            {/* <img
+              className=" rounded-md bg-gray-100 p-2 outline outline-1 outline-slate-300 "
+              src={image}
+              alt=""
+            /> */}
             <img className=" rounded-md  p-2  " src={image} alt="" />
           </div>
           <div className="flex w-full flex-col text-xs ">

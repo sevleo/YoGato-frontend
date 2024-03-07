@@ -19,8 +19,13 @@ export default function Input({
   const [value, setValue] = useState(defaultValue);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(Number(event.target.value));
-    onChange(Number(event.target.value));
+    if (event.target.value === "") {
+      setValue(Number(1));
+      onChange(Number(1));
+    } else {
+      setValue(Number(event.target.value));
+      onChange(Number(event.target.value));
+    }
   };
 
   const handlePlusFiveSeconds = (event) => {
@@ -67,9 +72,18 @@ export default function Input({
         className=" w-full bg-transparent p-[2px] text-center text-xs font-normal outline-none focus-within:bg-slate-200 hover:bg-slate-200"
         onChange={handleChange}
         inputMode="numeric"
-        pattern="[0-9]*"
+        pattern="[1-9]*"
         onMouseEnter={disableDrag}
         onMouseLeave={enableDrag}
+        onKeyDown={(e) => {
+          if (
+            !/^\d$/.test(e.key) &&
+            e.key !== "Delete" &&
+            e.key !== "Backspace"
+          ) {
+            e.preventDefault();
+          }
+        }}
       />
       <div
         onClick={handlePlusFiveSeconds}
