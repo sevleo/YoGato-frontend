@@ -146,7 +146,7 @@ function Unit({
       <div className="flexitems-center justify-center">
         {index != null ? index + 1 : null}
       </div>
-      <div className="flex h-full w-full flex-col justify-between rounded-md border border-gray-300 bg-gray-50 p-2 shadow-md">
+      <div className="main-element flex h-full w-full flex-col justify-between rounded-md border border-gray-300 bg-gray-50 p-2 shadow-md">
         <div
           className="flex flex-col items-center justify-center "
           {...attributes}
