@@ -82,7 +82,7 @@ export default function Input({
         type="text"
         id={id}
         value={value}
-        className=" z-10 w-full bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-slate-200 hover:bg-slate-200 hover:opacity-100 focus:opacity-100"
+        className=" z-10 w-full bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-slate-200 hover:bg-slate-200 hover:text-transparent  hover:opacity-100 focus:z-20 focus:text-black focus:opacity-100"
         onChange={handleChange}
         inputMode="numeric"
         pattern="[1-9]*"
@@ -105,7 +105,7 @@ export default function Input({
           }
         }}
       />
-      <div className=" absolute z-0 ml-auto mr-auto w-full text-xs font-normal">
+      <div className=" pointer-events-none absolute z-10 ml-auto mr-auto w-full bg-transparent text-xs font-normal">
         {value + "s"}
       </div>
       <div
