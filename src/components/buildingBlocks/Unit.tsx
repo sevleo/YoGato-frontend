@@ -146,15 +146,19 @@ function Unit({
       <div className="flexitems-center justify-center">
         {index != null ? index + 1 : null}
       </div>
-      <div className="flex h-full w-full flex-col justify-between rounded-md border border-gray-200 bg-gray-50 p-2 shadow-sm">
+      <div className="flex h-full w-full flex-col justify-between rounded-md border border-gray-300 bg-gray-50 p-2 shadow-md">
         <div
           className="flex flex-col items-center justify-center "
           {...attributes}
           {...listeners}
         >
-          <img className=" bg-gray-200" src={image} alt="" />
+          <div className="h-full w-full border-b-[1px] pb-2">
+            <img className=" rounded-md bg-gray-200 p-2 " src={image} alt="" />
+          </div>
           <div className="flex w-full flex-col text-xs ">
-            <p className="w-full text-left text-sm font-semibold">{name}</p>
+            <p className="mt-2 w-full text-left text-sm font-semibold">
+              {name}
+            </p>
             <p className="mb-2 w-full text-wrap text-left">{sanskritName}</p>
           </div>
         </div>
