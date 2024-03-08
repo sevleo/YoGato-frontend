@@ -140,15 +140,21 @@ function Builder() {
   return (
     <>
       <header
-        className=" fixed left-[8px] z-50 flex h-[60px] w-full items-center  justify-center border-b-[0.5px] border-neutral-300 text-black"
-        style={{ backdropFilter: "blur(8px)", width: "calc(100% - 16px)" }}
+        className=" fixed z-50 flex h-[60px] w-full items-center  justify-center border-b-[0.5px] border-neutral-300 text-black"
+        style={
+          {
+            // backdropFilter: "blur(8px)",
+            // width: "calc(100% - 16px)",
+            // transform: "translateX(-50%)",
+          }
+        }
       ></header>
       <DndContext
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         // onDragCancel={handleDragCancel}
       >
-        <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl">
+        <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl pt-[60px]">
           <div className="rtl scrollbar-gutter canvas w-2/3 overflow-auto ">
             <Flow flow={flow} setFlow={setFlow} isDragging={isDragging}></Flow>
           </div>
