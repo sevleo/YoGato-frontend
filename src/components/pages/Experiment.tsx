@@ -26,8 +26,8 @@ import { v4 as uuidv4 } from "uuid";
 import { DragOverlay } from "@dnd-kit/core";
 
 // DndKit
-import { SortableItem } from "../experiment/SortableItem";
-import { Item } from "../experiment/Item";
+import { SortableItem } from "../experiment/dnd/SortableItem";
+import { Item } from "../experiment/dnd/Item";
 
 import Header from "../sections/Header";
 
