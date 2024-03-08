@@ -16,7 +16,7 @@ import { closestCenter } from "@dnd-kit/core";
 import { SortableContext } from "@dnd-kit/sortable";
 import { verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { arrayMove } from "@dnd-kit/sortable";
-import { DraggableItem } from "../DraggableItem";
+import { DraggableItem } from "../experiment/dnd/DraggableItem";
 import {
   restrictToVerticalAxis,
   restrictToWindowEdges,
@@ -26,8 +26,8 @@ import { v4 as uuidv4 } from "uuid";
 import { DragOverlay } from "@dnd-kit/core";
 
 // DndKit
-import { SortableItem } from "../SortableItem";
-import { Item } from "../Item";
+import { SortableItem } from "../experiment/SortableItem";
+import { Item } from "../experiment/Item";
 
 import Header from "../sections/Header";
 
