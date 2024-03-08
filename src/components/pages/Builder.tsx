@@ -13,6 +13,7 @@ import {
 import AspectGroup from "../buildingBlocks/AspectGroup";
 import Flow from "../buildingBlocks/Flow";
 import Aspect from "../buildingBlocks/Aspect/AspectDisplay";
+import Header from "../sections/Header";
 
 // Types & interfaces
 import { UnitType } from "../buildingBlocks/Unit";
@@ -139,16 +140,7 @@ function Builder() {
 
   return (
     <>
-      <header
-        className=" fixed z-50 flex h-[60px] w-full items-center  justify-center border-b-[0.5px] border-neutral-300 text-black"
-        style={
-          {
-            // backdropFilter: "blur(8px)",
-            // width: "calc(100% - 16px)",
-            // transform: "translateX(-50%)",
-          }
-        }
-      ></header>
+      <Header />
       <DndContext
         onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
