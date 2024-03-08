@@ -148,11 +148,11 @@ function Builder() {
         // onDragCancel={handleDragCancel}
       >
         <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl pt-[60px]">
-          <div className="rtl scrollbar-gutter canvas w-2/3 overflow-auto ">
+          <div className="rtl scrollbar-gutter canvas w-2/3 overflow-auto pl-[40px] pr-[40px] ">
             <Flow flow={flow} setFlow={setFlow} isDragging={isDragging}></Flow>
           </div>
           <div className="h-3/4 w-[0.5px] self-center bg-neutral-300"></div>
-          <div className=" scrollbar-gutter flex w-1/3 flex-row justify-start gap-5 overflow-auto ">
+          <div className=" scrollbar-gutter flex w-1/3 flex-row justify-start gap-5 overflow-auto pl-[40px] pr-[40px] ">
             <AspectCollection
               aspectGroups={aspectGroups}
               flow={flow}
