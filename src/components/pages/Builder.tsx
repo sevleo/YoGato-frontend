@@ -14,6 +14,7 @@ import AspectGroup from "../buildingBlocks/AspectGroup";
 import Flow from "../buildingBlocks/Flow";
 import Aspect from "../buildingBlocks/Aspect/AspectDisplay";
 import Header from "../sections/Header";
+import AspectCollection from "../buildingBlocks/AspectCollection";
 
 // Types & interfaces
 import { UnitType } from "../buildingBlocks/Unit";
@@ -152,19 +153,10 @@ function Builder() {
           </div>
           <div className="h-3/4 w-[0.5px] self-center bg-neutral-300"></div>
           <div className=" scrollbar-gutter flex w-1/3 flex-row justify-start gap-5 overflow-auto ">
-            <div className="h-fit min-h-full w-full gap-5 p-5">
-              {/* <div className=" border-[1px] border-solid border-neutral-200 p-5"> */}
-              <div className=" p-5">
-                {aspectGroups.map((aspectGroup) => (
-                  <AspectGroup
-                    key={aspectGroup.category_name}
-                    category_name={aspectGroup.category_name}
-                    poses={aspectGroup.poses}
-                    uniqueAspects={flow.uniqueAspects}
-                  ></AspectGroup>
-                ))}
-              </div>
-            </div>
+            <AspectCollection
+              aspectGroups={aspectGroups}
+              flow={flow}
+            ></AspectCollection>
           </div>
         </div>
         <DragOverlay

@@ -165,9 +165,9 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
       onDragEnd={handleDragEnd}
       // modifiers={[restrictToVerticalAxis]}
     >
-      <div className="ltr grid h-fit min-h-full p-5">
+      <div className="ltr grid h-fit min-h-full">
         <div
-          className="droppable-area  h-fit min-h-full  p-5"
+          className="droppable-area  h-fit min-h-full"
           ref={setNodeRef}
           style={{ ...style }}
         >
