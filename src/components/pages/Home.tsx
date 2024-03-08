@@ -185,6 +185,8 @@ function Home() {
 
   return (
     <>
+      <div className="text-black">test</div>
+
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}

@@ -24,16 +24,19 @@
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
   background: #f1f1f1;
+  border-left: 1px solid #e5e7eb;
+  border-right: 1px solid #e5e7eb;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 3px;
+  border-radius: 1px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -91,6 +94,7 @@ button:focus-visible {
 
 .scrollbar-gutter {
   scrollbar-gutter: stable both-edges;
+  overflow-y: scroll;
 }
 
 @media (prefers-color-scheme: light) {
