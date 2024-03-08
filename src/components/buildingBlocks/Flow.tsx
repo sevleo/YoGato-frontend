@@ -6,13 +6,8 @@ import { useState } from "react";
 import mp3Provider from "../../assets/mp3Provider";
 
 // DndKit
-import {
-  DndContext,
-  useDroppable,
-  DragEndEvent,
-  DragStartEvent,
-} from "@dnd-kit/core";
-import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { DndContext, useDroppable, DragEndEvent } from "@dnd-kit/core";
+// import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
   closestCenter,
   KeyboardSensor,
@@ -25,7 +20,7 @@ import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
+  // verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
 // Components
@@ -59,7 +54,10 @@ interface FlowProps {
 }
 
 function Flow({ flow, setFlow, isDragging }: FlowProps) {
-  const [dragAllowed, setDragAllowed] = useState(true);
+  const [dragAllowed, setDragAllowed]: [
+    boolean,
+    Dispatch<React.SetStateAction<boolean>>,
+  ] = useState<boolean>(true);
 
   const { isOver, setNodeRef } = useDroppable({
     id: "flow",
@@ -168,10 +166,7 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
       // modifiers={[restrictToVerticalAxis]}
     >
       <div className="ltr grid h-fit min-h-full p-5">
-        {/* <div>{flow.flowName}</div> */}
-
         <div
-          // className="droppable-area  h-fit min-h-full border-[1px] border-solid border-neutral-200 p-5"
           className="droppable-area  h-fit min-h-full  p-5"
           ref={setNodeRef}
           style={{ ...style }}
@@ -179,19 +174,13 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
           <button className="mb-2 mt-5" onClick={onButtonClick}>
             Start
           </button>
-          <div className=" grid-cols-canvas grid auto-rows-fr gap-5">
+          <div className=" grid auto-rows-fr grid-cols-canvas gap-5">
             <SortableContext
               items={flow.units}
               // strategy={verticalListSortingStrategy}
             >
               {flow.units.map((unit, index) => {
                 return (
-                  // <div key={unit.id}>
-                  //   <Unit key={unit.id}{...unit} index={index} setFlow={setFlow}></Unit>
-                  //   {/* <span className="material-symbols-outlined">
-                  //     keyboard_arrow_down
-                  //   </span> */}
-                  // </div>
                   <Unit
                     key={unit.id}
                     {...unit}
@@ -203,12 +192,6 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
                 );
               })}
             </SortableContext>
-            {/* <div
-              className="step-placeholder flex items-center justify-center text-black"
-              style={{ minHeight: "96px" }}
-            >
-              drop here
-            </div> */}
           </div>
         </div>
       </div>

@@ -85,7 +85,7 @@ function Builder() {
         id: uuidv4(),
         name: activeItem.english_name,
         sanskritName: activeItem.sanskrit_name_adapted,
-        duration: 2,
+        duration: 1,
         announcement: activeItem.english_name,
         image: svgProvider(activeItem.url_svg_alt_local),
         aspectId: activeItem.id,

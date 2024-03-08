@@ -41,6 +41,8 @@ interface UnitProps {
       }[];
     }>
   >;
+  dragAllowed: boolean;
+  setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
 }
 
 function Unit({
@@ -48,7 +50,7 @@ function Unit({
   name,
   sanskritName,
   duration,
-  announcement,
+  // announcement,
   index,
   image,
   setFlow,
@@ -57,7 +59,6 @@ function Unit({
 }: UnitProps) {
   // On delete button on unit
   function onUnitCloseClick() {
-    console.log("close");
     setFlow((prevFlow) => {
       const updatedUnits = prevFlow.units.filter((unit) => unit.id !== id);
       const updatedDuration = updatedUnits.reduce(
@@ -124,11 +125,11 @@ function Unit({
     });
   }
 
-  const disableDrag = (event) => {
+  const disableDrag = () => {
     setDragAllowed(false);
   };
 
-  const enableDrag = (event) => {
+  const enableDrag = () => {
     setDragAllowed(true);
   };
 

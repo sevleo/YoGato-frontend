@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Dispatch } from "react";
 
 interface InputProps {
   id: string;
@@ -6,11 +7,12 @@ interface InputProps {
   label: string;
   defaultValue: number;
   onChange: (newLength: number) => void;
+  setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Input({
   id,
-  type,
+  // type,
   label,
   defaultValue,
   onChange,
@@ -28,7 +30,7 @@ export default function Input({
     }
   };
 
-  const handlePlusFiveSeconds = (event) => {
+  const handlePlusFiveSeconds = () => {
     if (value === 1) {
       setValue(value + 4);
       onChange(value + 4);
@@ -38,7 +40,7 @@ export default function Input({
     }
   };
 
-  const handleMinusFiveSeconds = (event) => {
+  const handleMinusFiveSeconds = () => {
     const newValue = value - 5;
     if (newValue < 1) {
       setValue(1);
@@ -49,11 +51,11 @@ export default function Input({
     }
   };
 
-  const disableDrag = (event) => {
+  const disableDrag = () => {
     setDragAllowed(false);
   };
 
-  const enableDrag = (event) => {
+  const enableDrag = () => {
     setDragAllowed(true);
   };
 
