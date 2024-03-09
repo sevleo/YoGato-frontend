@@ -22,6 +22,7 @@ function AspectGroup({
   category_name,
   poses,
   uniqueAspects,
+  setFlow,
 }: AspectGroupProps) {
   // console.log(uniqueAspects);
   return (
@@ -41,6 +42,7 @@ function AspectGroup({
               key={pose.english_name + pose.category_name}
               aspect={pose}
               count={count}
+              setFlow={setFlow}
             ></AspectController>
           );
         })}

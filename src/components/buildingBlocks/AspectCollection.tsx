@@ -1,6 +1,6 @@
 import AspectGroup from "./AspectGroup";
 
-export default function AspectCollection({ aspectGroups, flow }) {
+export default function AspectCollection({ aspectGroups, flow, setFlow }) {
   return (
     <>
       <div className="h-fit min-h-full w-full gap-5">
@@ -12,6 +12,7 @@ export default function AspectCollection({ aspectGroups, flow }) {
               category_name={aspectGroup.category_name}
               poses={aspectGroup.poses}
               uniqueAspects={flow.uniqueAspects}
+              setFlow={setFlow}
             ></AspectGroup>
           ))}
         </div>

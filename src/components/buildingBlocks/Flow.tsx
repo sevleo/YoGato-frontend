@@ -6,7 +6,7 @@ import { useState } from "react";
 import mp3Provider from "../../assets/mp3Provider";
 
 // DndKit
-import { DndContext, useDroppable, DragEndEvent } from "@dnd-kit/core";
+import { DndContext, DragEndEvent } from "@dnd-kit/core";
 // import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
   closestCenter,
@@ -50,22 +50,13 @@ interface FlowProps {
       }[];
     }>
   >;
-  isDragging: boolean;
 }
 
-function Flow({ flow, setFlow, isDragging }: FlowProps) {
+function Flow({ flow, setFlow }: FlowProps) {
   const [dragAllowed, setDragAllowed]: [
     boolean,
     Dispatch<React.SetStateAction<boolean>>,
   ] = useState<boolean>(true);
-
-  const { isOver, setNodeRef } = useDroppable({
-    id: "flow",
-  });
-
-  const style = {
-    border: isOver ? "1px solid green" : isDragging ? "1px solid gold" : "",
-  };
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -166,11 +157,7 @@ function Flow({ flow, setFlow, isDragging }: FlowProps) {
       // modifiers={[restrictToVerticalAxis]}
     >
       <div className="ltr grid h-fit min-h-full">
-        <div
-          className="droppable-area  h-fit min-h-full"
-          ref={setNodeRef}
-          style={{ ...style }}
-        >
+        <div className="droppable-area  h-fit min-h-full">
           <button className="mb-2 mt-5" onClick={onButtonClick}>
             Start
           </button>

@@ -1,8 +1,7 @@
 // React
 import { HTMLAttributes } from "react";
-
-// DndKit
-import { useDraggable } from "@dnd-kit/core";
+import { v4 as uuidv4 } from "uuid";
+import svgProvider from "../../../assets/svgProvider";
 
 // Components
 import Aspect from "./AspectDisplay";
@@ -21,20 +20,50 @@ type Props = {
   count: number;
 } & HTMLAttributes<HTMLDivElement>;
 
-export default function AspectController({ aspect, count }: Props) {
-  const { attributes, isDragging, listeners, setNodeRef } = useDraggable({
-    id: aspect.english_name + aspect.category_name,
-  });
+export default function AspectController({ aspect, count, setFlow }: Props) {
+  const handleClick = () => {
+    console.log(aspect);
+    const newUnit = {
+      id: uuidv4(),
+      name: aspect.english_name,
+      sanskritName: aspect.sanskrit_name_adapted,
+      duration: 1,
+      announcement: aspect.english_name,
+      image: svgProvider(aspect.url_svg_alt_local),
+      aspectId: aspect.id,
+      url_svg_alt_local: aspect.url_svg_alt_local,
+    };
 
-  return (
-    <Aspect
-      aspect={aspect}
-      count={count}
-      ref={setNodeRef}
-      isOpacityEnabled={isDragging}
-      isDragging={isDragging}
-      {...attributes}
-      {...listeners}
-    />
-  );
+    setFlow((prevFlow) => {
+      const updatedUnits = [...prevFlow.units, newUnit];
+      const totalDuration = updatedUnits.reduce(
+        (acc, unit) => acc + unit.duration,
+        0
+      );
+      // Update aspect count
+      const uniqueAspects: { id: number; count: number }[] = [];
+      updatedUnits.forEach((unit) => {
+        const matchingAspectIndex = uniqueAspects.findIndex(
+          (aspect) => aspect.id === unit.aspectId
+        );
+        if (matchingAspectIndex !== -1) {
+          uniqueAspects[matchingAspectIndex].count += 1;
+        } else {
+          const uniqueAspect = {
+            id: unit.aspectId,
+            count: 1,
+          };
+          uniqueAspects.push(uniqueAspect);
+        }
+      });
+      return {
+        ...prevFlow,
+        units: updatedUnits,
+        duration: totalDuration,
+        uniqueAspects: uniqueAspects,
+      };
+    });
+  };
+
+  return <Aspect aspect={aspect} count={count} handleClick={handleClick} />;
 }
