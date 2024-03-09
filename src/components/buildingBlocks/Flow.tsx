@@ -54,7 +54,7 @@ interface FlowProps {
   >;
 }
 
-function Flow({ flow, setFlow }: FlowProps) {
+function Flow({ flow, setFlow, setFlowState }: FlowProps) {
   const [dragAllowed, setDragAllowed]: [
     boolean,
     Dispatch<React.SetStateAction<boolean>>,
@@ -142,13 +142,18 @@ function Flow({ flow, setFlow }: FlowProps) {
   }, [startFlow, flow, currentUnitIndex]);
 
   // Triggers flow start
-  function onButtonClick() {
+  function onStartButtonClick() {
     setStartFlow(!startFlow);
     setCurrentUnitIndex(0);
     console.log(`Count active: ${!startFlow}`);
     const audio = new Audio(mp3Provider(flow.units[0].url_svg_alt_local));
     audio.play();
     console.log(flow.units[0].announcement);
+  }
+
+  function onPreviewButtonClick() {
+    console.log("ss");
+    setFlowState("preview");
   }
 
   return (
@@ -160,8 +165,11 @@ function Flow({ flow, setFlow }: FlowProps) {
     >
       <div className="ltr grid h-fit min-h-full">
         <div className="droppable-area  h-fit min-h-full">
-          <button className="mb-2 mt-5" onClick={onButtonClick}>
+          <button className="mb-2 mr-2 mt-5" onClick={onStartButtonClick}>
             Start
+          </button>
+          <button className="mb-2 ml-2 mt-5" onClick={onPreviewButtonClick}>
+            Preview
           </button>
           <div className=" grid auto-rows-fr grid-cols-canvas gap-5">
             <SortableContext
