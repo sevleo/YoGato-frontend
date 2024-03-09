@@ -7,19 +7,9 @@ import Header from "../sections/Header";
 import AspectCollection from "../buildingBlocks/AspectCollection";
 
 // Types & interfaces
-import { UnitType } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import categories from "../../db/categories.json";
-
-export interface FlowType {
-  flowName: string;
-  units: UnitType[];
-  duration: number;
-  uniqueAspects: {
-    id: number;
-    count: number;
-  }[];
-}
+import { FlowType } from "../buildingBlocks/Flow";
 
 function Builder() {
   const aspectGroups: AspectGroupType[] = categories;

@@ -29,16 +29,18 @@ import Unit from "./Unit";
 // Types & interfaces
 import { UnitType } from "./Unit";
 
+export interface FlowType {
+  flowName: string;
+  units: UnitType[];
+  duration: number;
+  uniqueAspects: {
+    id: number;
+    count: number;
+  }[];
+}
+
 interface FlowProps {
-  flow: {
-    flowName: string;
-    units: UnitType[];
-    duration: number;
-    uniqueAspects: {
-      id: number;
-      count: number;
-    }[];
-  };
+  flow: FlowType;
   setFlow: Dispatch<
     SetStateAction<{
       flowName: string;

@@ -1,6 +1,6 @@
 import AspectGroup from "./AspectGroup";
 import { AspectGroupType } from "./AspectGroup";
-import { FlowType } from "../pages/Builder";
+import { FlowType } from "./Flow";
 import { Dispatch, SetStateAction } from "react";
 import { UnitType } from "./Unit";
 
