@@ -21,11 +21,11 @@ function Aspect({ aspect, count, handleClick }: Props) {
         objectFit: "cover",
       }}
       key={aspect.english_name}
-      className=" border-rad relative flex flex-col items-center justify-between rounded-md border  border-gray-200 bg-white shadow-sm hover:cursor-pointer"
+      className=" border-rad relative flex select-none flex-col items-center justify-between rounded-md border  border-gray-200 bg-white shadow-sm hover:cursor-pointer"
       onClick={handleClick}
     >
       <div className="h-full w-full pb-2">
-        <img className=" pl-2 pr-2" src={svg} alt="" />
+        <img className=" pl-2 pr-2" src={svg} alt="" draggable="false" />
       </div>
       <p className=" mb-2 mt-2 text-xs">{aspect.english_name}</p>
       <div>Add</div>

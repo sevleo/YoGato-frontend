@@ -137,7 +137,7 @@ function Unit({
     <div
       ref={setNodeRef}
       style={style}
-      className="step relative flex  cursor-default flex-col items-center justify-center rounded-md text-black outline outline-[1px] outline-gray-300 hover:cursor-pointer"
+      className="step relative flex cursor-default  select-none flex-col items-center justify-center rounded-md text-black outline outline-[1px] outline-gray-300 hover:cursor-pointer"
       {...(dragAllowed ? { ...attributes } : null)}
       {...(dragAllowed ? { ...listeners } : null)}
     >
