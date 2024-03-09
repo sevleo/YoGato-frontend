@@ -1,4 +1,5 @@
 // React
+import { MouseEventHandler } from "react";
 import svgProvider from "../../../assets/svgProvider";
 
 // Types & interfaces
@@ -9,6 +10,7 @@ svgProvider("boatstraightlegs");
 type Props = {
   aspect: AspectType;
   count: number;
+  handleClick: MouseEventHandler<HTMLDivElement>;
 };
 
 function Aspect({ aspect, count, handleClick }: Props) {

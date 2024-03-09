@@ -1,6 +1,30 @@
 import AspectGroup from "./AspectGroup";
+import { AspectGroupType } from "./AspectGroup";
+import { FlowType } from "../pages/Builder";
+import { Dispatch, SetStateAction } from "react";
+import { UnitType } from "./Unit";
 
-export default function AspectCollection({ aspectGroups, flow, setFlow }) {
+interface AspectCollectionProps {
+  aspectGroups: AspectGroupType[];
+  flow: FlowType;
+  setFlow: Dispatch<
+    SetStateAction<{
+      flowName: string;
+      units: UnitType[];
+      duration: number;
+      uniqueAspects: {
+        id: number;
+        count: number;
+      }[];
+    }>
+  >;
+}
+
+export default function AspectCollection({
+  aspectGroups,
+  flow,
+  setFlow,
+}: AspectCollectionProps) {
   return (
     <>
       <div className="h-fit min-h-full w-full gap-5">

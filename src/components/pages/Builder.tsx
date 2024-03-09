@@ -11,27 +11,27 @@ import { UnitType } from "../buildingBlocks/Unit";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import categories from "../../db/categories.json";
 
+export interface FlowType {
+  flowName: string;
+  units: UnitType[];
+  duration: number;
+  uniqueAspects: {
+    id: number;
+    count: number;
+  }[];
+}
+
 function Builder() {
   const aspectGroups: AspectGroupType[] = categories;
 
-  interface Flow {
-    flowName: string;
-    units: UnitType[];
-    duration: number;
-    uniqueAspects: {
-      id: number;
-      count: number;
-    }[];
-  }
-
-  const defaultFlow: Flow = {
+  const defaultFlow: FlowType = {
     flowName: "my fancy flow",
     units: [],
     duration: 0,
     uniqueAspects: [],
   };
 
-  const [flow, setFlow] = useState<Flow>(defaultFlow);
+  const [flow, setFlow] = useState<FlowType>(defaultFlow);
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {

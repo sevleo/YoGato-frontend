@@ -4,6 +4,9 @@ import AspectController from "./Aspect/AspectController";
 // Types & Interfaces
 import { AspectType } from "./Aspect/AspectController";
 
+import { Dispatch, SetStateAction } from "react";
+import { UnitType } from "./Unit";
+
 export interface AspectGroupType {
   category_name: string;
   poses: AspectType[];
@@ -16,6 +19,17 @@ interface AspectGroupProps {
     id: number;
     count: number;
   }[];
+  setFlow: Dispatch<
+    SetStateAction<{
+      flowName: string;
+      units: UnitType[];
+      duration: number;
+      uniqueAspects: {
+        id: number;
+        count: number;
+      }[];
+    }>
+  >;
 }
 
 function AspectGroup({
