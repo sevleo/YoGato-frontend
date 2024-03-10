@@ -52,6 +52,7 @@ interface FlowProps {
       }[];
     }>
   >;
+  setFlowState: Dispatch<SetStateAction<string>>;
 }
 
 function Flow({ flow, setFlow, setFlowState }: FlowProps) {
@@ -152,7 +153,6 @@ function Flow({ flow, setFlow, setFlowState }: FlowProps) {
   }
 
   function onPreviewButtonClick() {
-    console.log("ss");
     setFlowState("preview");
   }
 

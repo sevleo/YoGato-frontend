@@ -14,7 +14,7 @@ import { FlowType } from "../buildingBlocks/Flow";
 function Builder() {
   const aspectGroups: AspectGroupType[] = categories;
 
-  const [flowState, setFlowState] = useState("builder");
+  const [flowState, setFlowState] = useState<string>("builder");
 
   const defaultFlow: FlowType = {
     flowName: "my fancy flow",
