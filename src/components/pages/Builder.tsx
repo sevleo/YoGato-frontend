@@ -14,8 +14,6 @@ import { FlowType } from "../buildingBlocks/Flow";
 function Builder() {
   const aspectGroups: AspectGroupType[] = categories;
 
-  const [flowState, setFlowState] = useState<string>("builder");
-
   const defaultFlow: FlowType = {
     flowName: "my fancy flow",
     units: [],
@@ -23,6 +21,7 @@ function Builder() {
     uniqueAspects: [],
   };
 
+  const [flowState, setFlowState] = useState<string>("builder");
   const [flow, setFlow] = useState<FlowType>(defaultFlow);
 
   useEffect(() => {
@@ -42,26 +41,22 @@ function Builder() {
       <Header />
       {flowState === "builder" && (
         <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl pt-[60px]">
-          <div className="rtl scrollbar-gutter canvas w-2/3 overflow-auto pl-[40px] pr-[40px] ">
-            <Flow
-              flow={flow}
-              setFlow={setFlow}
-              setFlowState={setFlowState}
-            ></Flow>
-          </div>
+          <Flow
+            flow={flow}
+            setFlow={setFlow}
+            setFlowState={setFlowState}
+          ></Flow>
           <div className="h-3/4 w-[0.5px] self-center bg-neutral-300"></div>
-          <div className=" scrollbar-gutter flex w-1/3 flex-row justify-start gap-5 overflow-auto pl-[40px] pr-[40px] ">
-            <AspectCollection
-              aspectGroups={aspectGroups}
-              flow={flow}
-              setFlow={setFlow}
-            ></AspectCollection>
-          </div>
+          <AspectCollection
+            aspectGroups={aspectGroups}
+            flow={flow}
+            setFlow={setFlow}
+          ></AspectCollection>
         </div>
       )}
 
       {flowState === "preview" && (
-        <div className="pt-[60px] text-black">preview</div>
+        <div className="preview pt-[60px] text-black">preview</div>
       )}
 
       {flowState === "going" && (

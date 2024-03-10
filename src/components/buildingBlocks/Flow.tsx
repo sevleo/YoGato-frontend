@@ -157,42 +157,44 @@ function Flow({ flow, setFlow, setFlowState }: FlowProps) {
   }
 
   return (
-    <DndContext
-      sensors={sensors}
-      collisionDetection={closestCenter}
-      onDragEnd={handleDragEnd}
-      // modifiers={[restrictToVerticalAxis]}
-    >
-      <div className="ltr grid h-fit min-h-full">
-        <div className="droppable-area  h-fit min-h-full">
-          <button className="mb-2 mr-2 mt-5" onClick={onStartButtonClick}>
-            Start
-          </button>
-          <button className="mb-2 ml-2 mt-5" onClick={onPreviewButtonClick}>
-            Preview
-          </button>
-          <div className=" grid auto-rows-fr grid-cols-canvas gap-5">
-            <SortableContext
-              items={flow.units}
-              // strategy={verticalListSortingStrategy}
-            >
-              {flow.units.map((unit, index) => {
-                return (
-                  <Unit
-                    key={unit.id}
-                    {...unit}
-                    index={index}
-                    setFlow={setFlow}
-                    dragAllowed={dragAllowed}
-                    setDragAllowed={setDragAllowed}
-                  ></Unit>
-                );
-              })}
-            </SortableContext>
+    <div className="rtl scrollbar-gutter canvas w-2/3 overflow-auto pl-[40px] pr-[40px] ">
+      <DndContext
+        sensors={sensors}
+        collisionDetection={closestCenter}
+        onDragEnd={handleDragEnd}
+        // modifiers={[restrictToVerticalAxis]}
+      >
+        <div className="ltr grid h-fit min-h-full">
+          <div className="droppable-area  h-fit min-h-full">
+            <button className="mb-2 mr-2 mt-5" onClick={onStartButtonClick}>
+              Start
+            </button>
+            <button className="mb-2 ml-2 mt-5" onClick={onPreviewButtonClick}>
+              Preview
+            </button>
+            <div className=" grid auto-rows-fr grid-cols-canvas gap-5">
+              <SortableContext
+                items={flow.units}
+                // strategy={verticalListSortingStrategy}
+              >
+                {flow.units.map((unit, index) => {
+                  return (
+                    <Unit
+                      key={unit.id}
+                      {...unit}
+                      index={index}
+                      setFlow={setFlow}
+                      dragAllowed={dragAllowed}
+                      setDragAllowed={setDragAllowed}
+                    ></Unit>
+                  );
+                })}
+              </SortableContext>
+            </div>
           </div>
         </div>
-      </div>
-    </DndContext>
+      </DndContext>
+    </div>
   );
 }
 

@@ -26,7 +26,7 @@ export default function AspectCollection({
   setFlow,
 }: AspectCollectionProps) {
   return (
-    <>
+    <div className=" scrollbar-gutter flex w-1/3 flex-row justify-start gap-5 overflow-auto pl-[40px] pr-[40px] ">
       <div className="h-fit min-h-full w-full gap-5">
         {/* <div className=" border-[1px] border-solid border-neutral-200 p-5"> */}
         <div className="">
@@ -41,6 +41,6 @@ export default function AspectCollection({
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
