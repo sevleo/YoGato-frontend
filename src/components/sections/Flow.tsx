@@ -1,9 +1,7 @@
 // React
-import { SetStateAction, useEffect } from "react";
+import { SetStateAction } from "react";
 import { Dispatch } from "react";
 import { useState } from "react";
-
-import mp3Provider from "../../assets/mp3Provider";
 
 // DndKit
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
@@ -24,10 +22,10 @@ import {
 } from "@dnd-kit/sortable";
 
 // Components
-import Unit from "./Unit";
+import Unit from "../buildingBlocks/Unit";
 
 // Types & interfaces
-import { UnitType } from "./Unit";
+import { UnitType } from "../buildingBlocks/Unit";
 
 export interface FlowType {
   flowName: string;
@@ -39,7 +37,7 @@ export interface FlowType {
   }[];
 }
 
-interface FlowProps {
+export interface FlowProps {
   flow: FlowType;
   setFlow: Dispatch<
     SetStateAction<{
@@ -93,66 +91,7 @@ function Flow({ flow, setFlow, setFlowState }: FlowProps) {
     }
   }
 
-  const [startFlow, setStartFlow] = useState<boolean>(false);
-  const [, setFlowCount] = useState<number>(0);
-  const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
-  const [, setUnitCount] = useState<number>(0);
-
-  // Flowing :)
-  useEffect(() => {
-    let id: number;
-    if (startFlow) {
-      id = setInterval(() => {
-        setUnitCount((unitCount: number) => {
-          // console.log(`Unit count: ${unitCount + 1}`);
-          let newUnitCount: number;
-
-          if (unitCount + 1 === flow.units[currentUnitIndex].duration) {
-            if (flow.units[currentUnitIndex + 1]) {
-              const audio = new Audio(
-                mp3Provider(flow.units[currentUnitIndex + 1].url_svg_alt_local)
-              );
-              audio.play();
-              console.log(flow.units[currentUnitIndex + 1].announcement);
-            }
-            setCurrentUnitIndex(currentUnitIndex + 1);
-            newUnitCount = 0;
-          } else {
-            newUnitCount = unitCount + 1;
-          }
-          return newUnitCount;
-        });
-
-        setFlowCount((flowCount: number) => {
-          console.log(`Total count: ${flowCount + 1}`);
-          let newFlowCount: number;
-
-          if (flowCount + 1 === flow.duration) {
-            newFlowCount = 0;
-            setStartFlow(false);
-            console.log(`End of flow.`);
-          } else {
-            newFlowCount = flowCount + 1;
-          }
-          return newFlowCount;
-        });
-      }, 1000);
-    }
-
-    return () => clearInterval(id);
-  }, [startFlow, flow, currentUnitIndex]);
-
-  // Triggers flow start
-  function onStartButtonClick() {
-    setStartFlow(!startFlow);
-    setCurrentUnitIndex(0);
-    console.log(`Count active: ${!startFlow}`);
-    const audio = new Audio(mp3Provider(flow.units[0].url_svg_alt_local));
-    audio.play();
-    console.log(flow.units[0].announcement);
-  }
-
-  function onPreviewButtonClick() {
+  function handlePreviewButtonClick() {
     setFlowState("preview");
   }
 
@@ -166,10 +105,10 @@ function Flow({ flow, setFlow, setFlowState }: FlowProps) {
       >
         <div className="ltr grid h-fit min-h-full">
           <div className="droppable-area  h-fit min-h-full">
-            <button className="mb-2 mr-2 mt-5" onClick={onStartButtonClick}>
-              Start
-            </button>
-            <button className="mb-2 ml-2 mt-5" onClick={onPreviewButtonClick}>
+            <button
+              className="mb-2 ml-2 mt-5"
+              onClick={handlePreviewButtonClick}
+            >
               Preview
             </button>
             <div className=" grid auto-rows-fr grid-cols-canvas gap-5">

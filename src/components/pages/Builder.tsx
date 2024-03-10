@@ -2,14 +2,15 @@
 import { useEffect, useState } from "react";
 
 // Components
-import Flow from "../buildingBlocks/Flow";
 import Header from "../sections/Header";
-import AspectCollection from "../buildingBlocks/AspectCollection";
+import Preview from "../sections/Preview";
+import Going from "../sections/Going";
+import Setup from "../sections/Setup";
 
 // Types & interfaces
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import categories from "../../db/categories.json";
-import { FlowType } from "../buildingBlocks/Flow";
+import { FlowType } from "../sections/Flow";
 
 function Builder() {
   const aspectGroups: AspectGroupType[] = categories;
@@ -21,7 +22,7 @@ function Builder() {
     uniqueAspects: [],
   };
 
-  const [flowState, setFlowState] = useState<string>("builder");
+  const [flowState, setFlowState] = useState<string>("setup");
   const [flow, setFlow] = useState<FlowType>(defaultFlow);
 
   useEffect(() => {
@@ -39,29 +40,20 @@ function Builder() {
   return (
     <>
       <Header />
-      {flowState === "builder" && (
-        <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl pt-[60px]">
-          <Flow
-            flow={flow}
-            setFlow={setFlow}
-            setFlowState={setFlowState}
-          ></Flow>
-          <div className="h-3/4 w-[0.5px] self-center bg-neutral-300"></div>
-          <AspectCollection
-            aspectGroups={aspectGroups}
-            flow={flow}
-            setFlow={setFlow}
-          ></AspectCollection>
-        </div>
+      {flowState === "setup" && (
+        <Setup
+          flow={flow}
+          setFlow={setFlow}
+          setFlowState={setFlowState}
+          aspectGroups={aspectGroups}
+        ></Setup>
       )}
 
       {flowState === "preview" && (
-        <div className="preview pt-[60px] text-black">preview</div>
+        <Preview flow={flow} setFlowState={setFlowState}></Preview>
       )}
 
-      {flowState === "going" && (
-        <div className="pt-[60px] text-black">going</div>
-      )}
+      {flowState === "going" && <Going></Going>}
     </>
   );
 }
