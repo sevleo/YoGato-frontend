@@ -2,12 +2,16 @@ import { useEffect, useState, useRef, useCallback } from "react";
 
 function Wheel() {
   // default values
-  const max = 30;
+  const angle = 1;
+  const max = 10;
   const cards = [];
 
   //   global variables
+  let current = 0;
   let theta = 0;
   let radius = 0;
+  let timer = null;
+  let speed = 1;
 
   const [width, setWidth] = useState(0);
   const wheelRef = useRef(null);
@@ -25,8 +29,9 @@ function Wheel() {
     theta = max ? 360 / max : 1;
     radius = Math.max(100, Math.round(width / 2 / Math.tan(Math.PI / max)));
 
-    const cards = document.querySelectorAll(".wheel .card");
-    cards.forEach(function (card, idx) {
+    const cards2 = document.querySelectorAll(".card");
+
+    cards2.forEach(function (card, idx) {
       if (idx < max) {
         card.style.opacity = "1";
         card.style.transform = `rotateY(${
@@ -37,6 +42,26 @@ function Wheel() {
         card.style.transform = "none";
       }
     });
+
+    // Rotate
+    let wheel = document.querySelector(".wheel");
+    wheel.style.transform = `translateZ(${-radius}px) rotateX(${-angle}deg) rotateY(${
+      -theta * current
+    }deg)`;
+
+    let cards = document.querySelectorAll(".card");
+    cards.forEach(function (card) {
+      card.classList.remove("current");
+    });
+
+    clearTimeout(timer);
+    timer = setTimeout(
+      function () {
+        let currentCard = document.getElementById(`card_${id(current)}`);
+        currentCard.classList.add("current");
+      },
+      0.9 * (speed * 1000)
+    );
   }, [max, width]);
 
   useEffect(() => {
