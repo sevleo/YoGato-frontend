@@ -2,6 +2,8 @@ import { Dispatch, SetStateAction } from "react";
 import { useState, useEffect } from "react";
 import mp3Provider from "../../assets/mp3Provider";
 import { FlowType } from "./Flow";
+import "./Preview.css";
+import Wheel from "../experiment/Wheel";
 
 interface PreviewProps {
   flow: FlowType;
@@ -71,6 +73,11 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     setFlowState("setup");
   }
 
+  const duration = flow.duration;
+  const hours = Math.floor(duration / 3600);
+  const minutes = Math.floor((duration % 3600) / 60);
+  const seconds = duration % 60;
+
   return (
     <div className="preview pt-[60px] text-black">
       <button
@@ -85,6 +92,28 @@ function Preview({ flow, setFlowState }: PreviewProps) {
       >
         Cancel
       </button>
+      <div>
+        <p>Flow summary</p>
+        <br />
+        <p>
+          Duration: {hours} hours, {minutes} minutes, {seconds} seconds
+        </p>
+        <p>Poses: {flow.units.length}</p>
+        <p>Unique poses: {flow.uniqueAspects.length}</p>
+        <p>Breakdown of poses:</p>
+        <br />
+        <div className="flex w-full justify-center">
+          {flow.units.map((unit) => (
+            <div key={unit.id} className="w-[100px] border">
+              <p>{unit.name}</p>
+              <p>{unit.sanskritName}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div id="container">
+        <Wheel></Wheel>
+      </div>
     </div>
   );
 }

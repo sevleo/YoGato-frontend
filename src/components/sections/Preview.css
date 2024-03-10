@@ -1,0 +1,41 @@
+#container {
+  left: 50%;
+  margin: -1% auto;
+  perspective: 1000px;
+  position: fixed;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  width: 350px;
+}
+
+.wheel {
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  transition: transform 1s;
+  width: 100%;
+}
+
+.wheel .card {
+  background: lightgrey;
+  border-radius: 10px;
+  border: 1px solid grey;
+  box-shadow:
+    0 3px 6px rgba(0, 0, 0, 0.1),
+    0 3px 6px rgba(0, 0, 0, 0.2);
+  color: #666;
+  font-size: 3rem;
+  height: 200px;
+  line-height: 6rem;
+  position: absolute;
+  text-align: center;
+  transition:
+    transform 1s,
+    opacity 1s;
+  width: 300px;
+}
+
+.wheel .card.current {
+  background: darkgrey;
+  color: #ddd;
+}
