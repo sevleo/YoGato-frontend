@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 
 function Wheel() {
   // default values
@@ -20,12 +20,12 @@ function Wheel() {
     console.log(width);
   }, [width]);
 
-  function change() {
+  const change = useCallback(() => {
     console.log("change");
     theta = max ? 360 / max : 1;
     radius = Math.max(100, Math.round(width / 2 / Math.tan(Math.PI / max)));
 
-    var cards = document.querySelectorAll(".wheel .card");
+    const cards = document.querySelectorAll(".wheel .card");
     cards.forEach(function (card, idx) {
       if (idx < max) {
         card.style.opacity = "1";
@@ -37,7 +37,8 @@ function Wheel() {
         card.style.transform = "none";
       }
     });
-  }
+  }, [max, width]);
+
   useEffect(() => {
     // Call the change function after the wheel div and its children are created
     change();
