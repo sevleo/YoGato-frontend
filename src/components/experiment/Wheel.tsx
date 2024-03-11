@@ -10,11 +10,11 @@ function Wheel() {
   let current = 0;
   let theta = 0;
   let radius = 0;
-  let timer = null;
   let speed = 1;
 
   const [width, setWidth] = useState(0);
   const wheelRef = useRef(null);
+  const timerRef = useRef(null);
 
   useEffect(() => {
     // Update the width state when the component mounts or when the wheel element changes
@@ -23,6 +23,27 @@ function Wheel() {
     }
     console.log(width);
   }, [width]);
+
+  function rotate() {
+    let wheel = document.querySelector(".wheel");
+    wheel.style.transform = `translateZ(${-radius}px) rotateX(${-angle}deg) rotateY(${
+      -theta * current
+    }deg)`;
+
+    let cards = document.querySelectorAll(".card");
+    cards.forEach(function (card) {
+      card.classList.remove("current");
+    });
+
+    clearTimeout(timerRef.current);
+    timerRef.current = setTimeout(
+      function () {
+        let currentCard = document.getElementById(`card_${id(current)}`);
+        currentCard.classList.add("current");
+      },
+      0.9 * (speed * 1000)
+    );
+  }
 
   const change = useCallback(() => {
     console.log("change");
@@ -44,24 +65,7 @@ function Wheel() {
     });
 
     // Rotate
-    let wheel = document.querySelector(".wheel");
-    wheel.style.transform = `translateZ(${-radius}px) rotateX(${-angle}deg) rotateY(${
-      -theta * current
-    }deg)`;
-
-    let cards = document.querySelectorAll(".card");
-    cards.forEach(function (card) {
-      card.classList.remove("current");
-    });
-
-    clearTimeout(timer);
-    timer = setTimeout(
-      function () {
-        let currentCard = document.getElementById(`card_${id(current)}`);
-        currentCard.classList.add("current");
-      },
-      0.9 * (speed * 1000)
-    );
+    rotate();
   }, [max, width]);
 
   useEffect(() => {
@@ -69,9 +73,15 @@ function Wheel() {
     change();
   }, [change]); // Empty dependency array ensures this effect runs only once, after the initial render
 
-  function id(idx, max) {
-    idx %= max;
-    return (idx < 0 ? idx + max : idx).toString().padStart(2, "0");
+  function id(idx, count = max) {
+    idx %= count;
+    return (idx < 0 ? idx + count : idx).toString().padStart(2, "0");
+  }
+
+  function handleClick() {
+    console.log("click");
+    current++;
+    rotate();
   }
 
   function setup() {
@@ -85,9 +95,14 @@ function Wheel() {
     }
 
     return (
-      <div className="wheel" ref={wheelRef}>
-        {cards}
-      </div>
+      <>
+        <button className="mb-[200px]" onClick={handleClick}>
+          test
+        </button>
+        <div className="wheel" ref={wheelRef}>
+          {cards}
+        </div>
+      </>
     );
   }
 
