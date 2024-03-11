@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 
-function Wheel() {
+function Wheel({ units }) {
   // Tracks the width of the spinning wheel element
   const [width, setWidth] = useState(0);
 
@@ -17,7 +17,7 @@ function Wheel() {
   const [speed] = useState(1);
 
   // Maximum number of cards on the wheel
-  const [max, setMax] = useState(10);
+  const [max] = useState(units.length);
 
   // Used to reference the spinning wheel DOM element
   const wheelRef = useRef(null);
@@ -102,21 +102,23 @@ function Wheel() {
   }
 
   const cards = [];
-  for (let i = 0; i < max; i++) {
-    const name = id(i, max);
+  units.forEach((unit, index) => {
+    const name = id(index, max);
     cards.push(
       <div
-        key={i}
+        key={index}
         className="card opacity-1"
         id={"card_" + name}
         style={{
-          transform: `rotateY(${theta * i}deg) translateZ(${radius}px)`,
+          transform: `rotateY(${theta * index}deg) translateZ(${radius}px)`,
         }}
       >
-        {i}
+        {unit.name}
+        {unit.sanskritName}
+        <img src={unit.image} alt="" />
       </div>
     );
-  }
+  });
 
   return (
     <>

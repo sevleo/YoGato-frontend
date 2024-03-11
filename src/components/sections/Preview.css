@@ -20,22 +20,22 @@
 }
 
 .wheel .card {
-  background: lightgrey;
+  /* background: lightgrey;
   border-radius: 10px;
   border: 1px solid grey;
   box-shadow:
     0 3px 6px rgba(0, 0, 0, 0.1),
     0 3px 6px rgba(0, 0, 0, 0.2);
   color: #666;
-  font-size: 3rem;
-  height: 200px;
-  line-height: 6rem;
+  font-size: 3rem; */
+  /* height: 200px; */
+  /* line-height: 6rem; */
   position: absolute;
-  text-align: center;
+  /* text-align: center; */
   transition:
     transform 1s,
     opacity 1s;
-  width: 90%;
+  /* width: 90%; */
 }
 
 .wheel .card.current {

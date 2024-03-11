@@ -103,16 +103,16 @@ function Preview({ flow, setFlowState }: PreviewProps) {
         <p>Breakdown of poses:</p>
         <br />
         <div className="flex w-full justify-center">
-          {flow.units.map((unit) => (
+          {/* {flow.units.map((unit) => (
             <div key={unit.id} className="w-[100px] border">
               <p>{unit.name}</p>
               <p>{unit.sanskritName}</p>
             </div>
-          ))}
+          ))} */}
         </div>
       </div>
       <div id="container">
-        <Wheel></Wheel>
+        <Wheel units={flow.units}></Wheel>
       </div>
     </div>
   );
