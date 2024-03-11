@@ -42,6 +42,23 @@ function Wheel() {
     }
   }, []);
 
+  // Used to calculate and update the width of the spinning wheel element after resizing.
+  useEffect(() => {
+    const handleResize = () => {
+      console.log("resizing");
+      console.log(wheelRef.current.offsetWidth);
+      if (wheelRef.current) {
+        setWidth(wheelRef.current.offsetWidth);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   // Used to handle the rotation of the spinning wheel.
   useEffect(() => {
     const wheel = wheelRef.current;
@@ -103,8 +120,8 @@ function Wheel() {
 
   return (
     <>
-      <button className="mb-[50px]" onClick={handleClick}>
-        testdad
+      <button className="mb-[100px]" onClick={handleClick}>
+        test
       </button>
       <div className="wheel" ref={wheelRef}>
         {cards}

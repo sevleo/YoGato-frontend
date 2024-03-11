@@ -765,6 +765,10 @@ video {
           user-select: none;
 }
 
+.resize {
+  resize: both;
+}
+
 .auto-rows-fr {
   grid-auto-rows: minmax(0, 1fr);
 }

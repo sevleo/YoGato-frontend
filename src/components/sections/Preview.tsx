@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import mp3Provider from "../../assets/mp3Provider";
 import { FlowType } from "./Flow";
 import "./Preview.css";
-import Wheel from "../experiment/Wheel";
+import Wheel from "../buildingBlocks/Wheel";
 
 interface PreviewProps {
   flow: FlowType;
