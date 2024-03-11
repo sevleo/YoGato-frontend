@@ -1,9 +1,9 @@
 // React
 import { MouseEventHandler } from "react";
-import svgProvider from "../../assets/svgProvider";
+import svgProvider from "../../../assets/svgProvider";
 
 // Types & interfaces
-import { AspectType } from "../buildingBlocks/Aspect/AspectController";
+import { AspectType } from "./AspectController";
 
 svgProvider("boatstraightlegs");
 

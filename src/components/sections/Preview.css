@@ -1,15 +1,18 @@
 #container {
-  left: 50%;
-  margin: -1% auto;
+  /* left: 50%; */
+  /* margin: -1% auto; */
   perspective: 1000px;
-  position: fixed;
-  top: 40%;
-  transform: translate(-50%, -50%);
+  /* position: fixed; */
+  /* top: 40%; */
+  /* transform: translate(-50%, -50%); */
   width: 20%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
 }
 
 .wheel {
-  height: 100%;
+  height: auto;
   position: absolute;
   transform-style: preserve-3d;
   transition: transform 1s;
@@ -17,6 +20,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 300px;
 }
 
 .wheel .card {
@@ -39,6 +43,8 @@
 }
 
 .wheel .card.current {
-  background: darkgrey;
-  color: #ddd;
+  /* background: darkgrey; */
+  /* color: #ddd; */
+  outline: 2px solid gold;
+  /* background-color: azure; */
 }

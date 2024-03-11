@@ -6,7 +6,7 @@ import { Dispatch, SetStateAction } from "react";
 import { UnitType } from "../Unit";
 
 // Components
-import Aspect from "../../sections/AspectDisplay";
+import Aspect from "./AspectDisplay";
 
 export interface AspectType {
   english_name: string;

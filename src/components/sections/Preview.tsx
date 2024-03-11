@@ -15,6 +15,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   const [, setFlowCount] = useState<number>(0);
   const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
   const [, setUnitCount] = useState<number>(0);
+  const [updateWheel, setUpdateWheel] = useState(false);
 
   // Flowing :)
   useEffect(() => {
@@ -34,6 +35,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
               console.log(flow.units[currentUnitIndex + 1].announcement);
             }
             setCurrentUnitIndex(currentUnitIndex + 1);
+            setUpdateWheel(true);
             newUnitCount = 0;
           } else {
             newUnitCount = unitCount + 1;
@@ -58,7 +60,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     }
 
     return () => clearInterval(id);
-  }, [startFlow, flow, currentUnitIndex]);
+  }, [startFlow, flow, currentUnitIndex, updateWheel]);
 
   function handleStartButtonClick() {
     setStartFlow(!startFlow);
@@ -112,7 +114,11 @@ function Preview({ flow, setFlowState }: PreviewProps) {
         </div>
       </div>
       <div id="container">
-        <Wheel units={flow.units}></Wheel>
+        <Wheel
+          units={flow.units}
+          updateWheel={updateWheel}
+          setUpdateWheel={setUpdateWheel}
+        ></Wheel>
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef, useCallback } from "react";
 
-function Wheel({ units }) {
+function Wheel({ units, updateWheel, setUpdateWheel }) {
   // Tracks the width of the spinning wheel element
   const [width, setWidth] = useState(0);
 
@@ -45,7 +45,6 @@ function Wheel({ units }) {
   // Used to calculate and update the width of the spinning wheel element after resizing.
   useEffect(() => {
     const handleResize = () => {
-      console.log("resizing");
       console.log(wheelRef.current.offsetWidth);
       if (wheelRef.current) {
         setWidth(wheelRef.current.offsetWidth);
@@ -76,7 +75,9 @@ function Wheel({ units }) {
         timerRef.current = setTimeout(
           () => {
             const currentCard = wheel.querySelector(`#card_${id(current)}`);
-            if (currentCard) currentCard.classList.add("current");
+            if (currentCard) {
+              currentCard.classList.add("current");
+            }
           },
           0.9 * (speed * 1000)
         );
@@ -96,10 +97,12 @@ function Wheel({ units }) {
     setRadius(newRadius);
   }, [max, width]);
 
-  function handleClick() {
-    // setMax((prevMax) => prevMax - 1);
-    setCurrent((prevCurrent) => prevCurrent + 1);
-  }
+  useEffect(() => {
+    if (updateWheel) {
+      setCurrent((prevCurrent) => prevCurrent + 1);
+      setUpdateWheel(false);
+    }
+  }, [updateWheel, setUpdateWheel]);
 
   const cards = [];
   units.forEach((unit, index) => {
@@ -107,24 +110,33 @@ function Wheel({ units }) {
     cards.push(
       <div
         key={index}
-        className="card opacity-1"
+        className=" card opacity-1 flex h-full w-9/12 select-none flex-col items-center justify-center rounded-md border-[1px] border-gray-300 bg-gray-50 p-2"
         id={"card_" + name}
         style={{
           transform: `rotateY(${theta * index}deg) translateZ(${radius}px)`,
         }}
       >
-        {unit.name}
-        {unit.sanskritName}
-        <img src={unit.image} alt="" />
+        <div className="h-fit w-full border-b-[1px]">
+          <img
+            src={unit.image}
+            alt=""
+            className=" rounded-md  pl-2 pr-2  "
+            draggable="false"
+          />
+        </div>
+        <div className="h-full">
+          <p> {unit.name}</p>
+          <p> {unit.sanskritName}</p>
+        </div>
       </div>
     );
   });
 
   return (
     <>
-      <button className="mb-[100px]" onClick={handleClick}>
+      {/* <button className="mb-[100px] mt-[100px]" onClick={handleClick}>
         test
-      </button>
+      </button> */}
       <div className="wheel" ref={wheelRef}>
         {cards}
       </div>
