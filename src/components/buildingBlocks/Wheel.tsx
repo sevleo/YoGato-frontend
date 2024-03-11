@@ -1,6 +1,20 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import {
+  useEffect,
+  useState,
+  useRef,
+  useCallback,
+  Dispatch,
+  SetStateAction,
+} from "react";
+import { UnitType } from "./Unit";
 
-function Wheel({ units, updateWheel, setUpdateWheel }) {
+interface WheelProps {
+  units: UnitType[];
+  updateWheel: boolean;
+  setUpdateWheel: Dispatch<SetStateAction<boolean>>;
+}
+
+function Wheel({ units, updateWheel, setUpdateWheel }: WheelProps) {
   // Tracks the width of the spinning wheel element
   const [width, setWidth] = useState(0);
 
@@ -20,14 +34,14 @@ function Wheel({ units, updateWheel, setUpdateWheel }) {
   const [max] = useState(units.length);
 
   // Used to reference the spinning wheel DOM element
-  const wheelRef = useRef(null);
+  const wheelRef = useRef<HTMLDivElement>(null);
 
   // Used to store the ID of the rotation timer
-  const timerRef = useRef(null);
+  const timerRef = useRef<number | null>(null);
 
   // generates an ID for a card based on its index and the maximum number of cards
   const id = useCallback(
-    (idx, count = max) => {
+    (idx: number, count = max) => {
       idx %= count;
       return (idx < 0 ? idx + count : idx).toString().padStart(2, "0");
     },
@@ -45,7 +59,6 @@ function Wheel({ units, updateWheel, setUpdateWheel }) {
   // Used to calculate and update the width of the spinning wheel element after resizing.
   useEffect(() => {
     const handleResize = () => {
-      console.log(wheelRef.current.offsetWidth);
       if (wheelRef.current) {
         setWidth(wheelRef.current.offsetWidth);
       }
@@ -71,7 +84,9 @@ function Wheel({ units, updateWheel, setUpdateWheel }) {
         // Highlights the current card by adding a CSS class after a delay
         const cards = wheel.querySelectorAll(".card");
         cards.forEach((card) => card.classList.remove("current"));
-        clearTimeout(timerRef.current);
+        if (timerRef.current !== null) {
+          clearTimeout(timerRef.current);
+        }
         timerRef.current = setTimeout(
           () => {
             const currentCard = wheel.querySelector(`#card_${id(current)}`);
@@ -104,7 +119,7 @@ function Wheel({ units, updateWheel, setUpdateWheel }) {
     }
   }, [updateWheel, setUpdateWheel]);
 
-  const cards = [];
+  const cards: JSX.Element[] = [];
   units.forEach((unit, index) => {
     const name = id(index, max);
     cards.push(
@@ -134,11 +149,10 @@ function Wheel({ units, updateWheel, setUpdateWheel }) {
 
   return (
     <>
-      {/* <button className="mb-[100px] mt-[100px]" onClick={handleClick}>
-        test
-      </button> */}
-      <div className="wheel" ref={wheelRef}>
-        {cards}
+      <div id="container">
+        <div className="wheel" ref={wheelRef}>
+          {cards}
+        </div>
       </div>
     </>
   );

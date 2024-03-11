@@ -31,7 +31,9 @@ function Preview({ flow, setFlowState }: PreviewProps) {
               const audio = new Audio(
                 mp3Provider(flow.units[currentUnitIndex + 1].url_svg_alt_local)
               );
-              audio.play();
+              setTimeout(() => {
+                audio.play();
+              }, 1000);
               console.log(flow.units[currentUnitIndex + 1].announcement);
             }
             setCurrentUnitIndex(currentUnitIndex + 1);
@@ -104,22 +106,13 @@ function Preview({ flow, setFlowState }: PreviewProps) {
         <p>Unique poses: {flow.uniqueAspects.length}</p>
         <p>Breakdown of poses:</p>
         <br />
-        <div className="flex w-full justify-center">
-          {/* {flow.units.map((unit) => (
-            <div key={unit.id} className="w-[100px] border">
-              <p>{unit.name}</p>
-              <p>{unit.sanskritName}</p>
-            </div>
-          ))} */}
-        </div>
       </div>
-      <div id="container">
-        <Wheel
-          units={flow.units}
-          updateWheel={updateWheel}
-          setUpdateWheel={setUpdateWheel}
-        ></Wheel>
-      </div>
+
+      <Wheel
+        units={flow.units}
+        updateWheel={updateWheel}
+        setUpdateWheel={setUpdateWheel}
+      ></Wheel>
     </div>
   );
 }
