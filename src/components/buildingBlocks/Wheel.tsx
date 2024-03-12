@@ -125,23 +125,23 @@ function Wheel({ units, updateWheel, setUpdateWheel }: WheelProps) {
     cards.push(
       <div
         key={index}
-        className=" card opacity-1 flex  h-min w-9/12 select-none flex-col items-center justify-center rounded-md border-[1px] border-gray-300 bg-gray-50 p-2"
+        className=" card opacity-1 flex w-10/12 select-none flex-col items-center justify-center rounded-md border-[1px] border-gray-300 bg-gray-50 p-2"
         id={"card_" + name}
         style={{
           transform: `rotateY(${theta * index}deg) translateZ(${radius}px)`,
         }}
       >
-        <div className="h-fit  w-full  border-b-[1px]">
+        <div className=" h-full border-b-[1px]">
           <img
             src={unit.image}
             alt=""
-            className=" rounded-md pl-2 pr-2"
+            className="w-full rounded-md pl-2 pr-2"
             draggable="false"
           />
         </div>
-        <div className="h-full">
+        <div className="h-full pb-[10px] pt-[10px]">
           <p> {unit.name}</p>
-          <p> {unit.sanskritName}</p>
+          <p className=""> {unit.sanskritName}</p>
         </div>
       </div>
     );
@@ -151,7 +151,7 @@ function Wheel({ units, updateWheel, setUpdateWheel }: WheelProps) {
     <>
       <div className="rtl scrollbar-gutter canvas w-full overflow-auto pb-[40px] pl-[40px] pr-[40px] pt-[40px]">
         <div id="container" className="ltr">
-          <div className="wheel pt-[200px]" ref={wheelRef}>
+          <div className="wheel" ref={wheelRef}>
             {cards}
           </div>
         </div>
