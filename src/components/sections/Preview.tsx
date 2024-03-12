@@ -83,7 +83,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   }
 
   return (
-    <div className="preview flex h-full w-full pt-[60px] text-black">
+    <div className="scrollbar-gutter preview flex h-full w-full pt-[60px] text-black">
       <div className="flex w-[200px] flex-col border-b border-l border-t bg-gray-100 p-2">
         <button className=" text-white" onClick={handleStartButtonClick}>
           Start
@@ -112,12 +112,15 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           </div>
         </div>
       </div>
-
-      <Wheel
-        units={flow.units}
-        updateWheel={updateWheel}
-        setUpdateWheel={setUpdateWheel}
-      ></Wheel>
+      <div className="rtl scrollbar-gutter canvas w-full overflow-auto pb-[40px] pl-[40px] pr-[40px] pt-[40px]">
+        <p>total time: 0/60 seconds</p>
+        <p>unit time: 0/10 seconds</p>
+        <Wheel
+          units={flow.units}
+          updateWheel={updateWheel}
+          setUpdateWheel={setUpdateWheel}
+        ></Wheel>
+      </div>
     </div>
   );
 }
