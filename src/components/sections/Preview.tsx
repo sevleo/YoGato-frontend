@@ -17,6 +17,11 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   const [, setUnitCount] = useState<number>(0);
   const [updateWheel, setUpdateWheel] = useState(false);
 
+  const duration = flow.duration;
+  const hours = Math.floor(duration / 3600);
+  const minutes = Math.floor((duration % 3600) / 60);
+  const seconds = duration % 60;
+
   // Flowing :)
   useEffect(() => {
     let id: number;
@@ -77,35 +82,35 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     setFlowState("setup");
   }
 
-  const duration = flow.duration;
-  const hours = Math.floor(duration / 3600);
-  const minutes = Math.floor((duration % 3600) / 60);
-  const seconds = duration % 60;
-
   return (
-    <div className="preview pt-[60px] text-black">
-      <button
-        className="mb-2 mr-2 mt-5 text-white"
-        onClick={handleStartButtonClick}
-      >
-        Start
-      </button>
-      <button
-        className="mb-2 mr-2 mt-5 text-white"
-        onClick={handleCancelButtonClick}
-      >
-        Cancel
-      </button>
-      <div>
-        <p>Flow summary</p>
-        <br />
-        <p>
-          Duration: {hours} hours, {minutes} minutes, {seconds} seconds
-        </p>
-        <p>Poses: {flow.units.length}</p>
-        <p>Unique poses: {flow.uniqueAspects.length}</p>
-        <p>Breakdown of poses:</p>
-        <br />
+    <div className="preview flex h-full w-full pt-[60px] text-black">
+      <div className="flex w-[200px] flex-col border-b border-l border-t bg-gray-100 p-2">
+        <button className=" text-white" onClick={handleStartButtonClick}>
+          Start
+        </button>
+        <div className="mb-2 mt-2 h-[0.5px] w-10/12 self-center bg-neutral-400"></div>
+        <button className=" text-white" onClick={handleCancelButtonClick}>
+          Cancel
+        </button>
+        <div className="mb-2 mt-2 h-[0.5px] w-10/12 self-center bg-neutral-400"></div>
+        <div className="flex flex-col items-start justify-center p-2 text-black">
+          <div>
+            <div className="flex flex-col items-start justify-center">
+              <p className=" font-bold">Duration</p>
+              {hours > 0 ? <p> - {hours} hours</p> : null}
+              {minutes > 0 ? <p> - {minutes} minutes</p> : null}
+              {seconds > 0 ? <p> - {seconds} seconds</p> : null}
+            </div>
+            <div className="flex flex-col items-start justify-center">
+              <p className=" font-bold">Poses</p>
+              <p> - {flow.units.length}</p>
+            </div>
+            <div className="flex flex-col items-start justify-center">
+              <p className=" font-bold">Unique poses</p>
+              <p> - {flow.uniqueAspects.length}</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <Wheel
