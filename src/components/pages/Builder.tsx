@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 // Components
 import Header from "../sections/Header";
 import Preview from "../sections/Preview";
-import Going from "../sections/Going";
 import Setup from "../sections/Setup";
 
 // Types & interfaces
@@ -53,7 +52,7 @@ function Builder() {
         <Preview flow={flow} setFlowState={setFlowState}></Preview>
       )}
 
-      {flowState === "going" && <Going></Going>}
+      {flowState === "going" && null}
     </>
   );
 }

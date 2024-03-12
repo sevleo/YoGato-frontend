@@ -50,10 +50,9 @@ export interface FlowProps {
       }[];
     }>
   >;
-  setFlowState: Dispatch<SetStateAction<string>>;
 }
 
-function Flow({ flow, setFlow, setFlowState }: FlowProps) {
+function Flow({ flow, setFlow }: FlowProps) {
   const [dragAllowed, setDragAllowed]: [
     boolean,
     Dispatch<React.SetStateAction<boolean>>,
@@ -91,12 +90,8 @@ function Flow({ flow, setFlow, setFlowState }: FlowProps) {
     }
   }
 
-  function handlePreviewButtonClick() {
-    setFlowState("preview");
-  }
-
   return (
-    <div className="rtl scrollbar-gutter canvas w-2/3 overflow-auto pl-[40px] pr-[40px] ">
+    <div className="rtl scrollbar-gutter canvas w-2/3 overflow-auto pb-[40px] pl-[40px] pr-[40px] pt-[40px]">
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
@@ -105,12 +100,6 @@ function Flow({ flow, setFlow, setFlowState }: FlowProps) {
       >
         <div className="ltr grid h-fit min-h-full">
           <div className="droppable-area  h-fit min-h-full">
-            <button
-              className="mb-2 ml-2 mt-5"
-              onClick={handlePreviewButtonClick}
-            >
-              Preview
-            </button>
             <div className=" grid auto-rows-fr grid-cols-canvas gap-5">
               <SortableContext
                 items={flow.units}
