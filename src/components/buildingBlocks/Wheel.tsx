@@ -146,7 +146,7 @@ function Wheel({ units, updateWheel, setUpdateWheel }: WheelProps) {
         </div>
         <div className="h-full pb-[10px] pt-[10px]">
           <p> {unit.name}</p>
-          <p className=""> {unit.sanskritName}</p>
+          {/* <p className=""> {unit.sanskritName}</p> */}
         </div>
       </div>
     );
