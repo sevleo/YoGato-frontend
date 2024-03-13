@@ -12,10 +12,12 @@ interface PreviewProps {
 
 function Preview({ flow, setFlowState }: PreviewProps) {
   const [startFlow, setStartFlow] = useState<boolean>(false);
+  const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
   const [flowCount, setFlowCount] = useState<number>(0);
   const [flowPercent, setFlowPercent] = useState<number>(0);
-  const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
   const [unitCount, setUnitCount] = useState<number>(0);
+  const [unitPercent, setUnitPercent] = useState<number>(0);
+
   const [updateWheel, setUpdateWheel] = useState(false);
 
   const duration = flow.duration;
@@ -45,6 +47,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             }
             setCurrentUnitIndex(currentUnitIndex + 1);
             setUpdateWheel(true);
+            setUnitPercent(0);
             newUnitCount = 0;
           } else {
             newUnitCount = unitCount + 1;
@@ -66,13 +69,22 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           return newFlowCount;
         });
       }, 1000);
+
       percentCounter = setInterval(() => {
         setFlowPercent((flowPercent) => {
           const increment = 100 / (flow.duration * 100);
           let newFlowPercent: number;
           newFlowPercent = Math.min(flowPercent + increment, 100);
-          console.log(newFlowPercent);
+          //   console.log(newFlowPercent);
           return newFlowPercent;
+        });
+
+        setUnitPercent((unitPercent) => {
+          const increment = 100 / (flow.units[currentUnitIndex].duration * 100);
+          let newUnitPercent: number;
+          newUnitPercent = Math.min(unitPercent + increment, 100);
+          console.log(newUnitPercent);
+          return newUnitPercent;
         });
       }, 10);
     }
@@ -86,6 +98,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   function handleStartButtonClick() {
     setStartFlow(!startFlow);
     setCurrentUnitIndex(0);
+    setFlowPercent(0);
     console.log(`Count active: ${!startFlow}`);
     const audio = new Audio(mp3Provider(flow.units[0].url_svg_alt_local));
     audio.play();
@@ -128,14 +141,19 @@ function Preview({ flow, setFlowState }: PreviewProps) {
       </div>
       <div className="rtl scrollbar-gutter canvas w-full overflow-auto pb-[40px] pl-[40px] pr-[40px] pt-[40px]">
         <p className="ltr">
-          Total flow: {flowCount + 1} / {flow.duration}
+          Total flow: {flowCount + 1} / {flow.duration} seconds
         </p>
+        <p className="ltr">Total progress: {Math.round(flowPercent)} %</p>
+        <br />
         <p className="ltr">
-          Current pose: {unitCount + 1} /{" "}
+          Current pose: {unitCount + 1} /
           {flow.units[currentUnitIndex]
             ? flow.units[currentUnitIndex].duration
-            : flow.units[0].duration}
+            : flow.units[0].duration}{" "}
+          seconds
         </p>
+        <p className="ltr">Total progress: {Math.round(unitPercent)} %</p>
+
         <Wheel
           units={flow.units}
           updateWheel={updateWheel}
