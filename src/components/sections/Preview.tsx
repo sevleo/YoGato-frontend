@@ -146,7 +146,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
         <p className="ltr">Total progress: {Math.round(flowPercent)} %</p>
         <br />
         <p className="ltr">
-          Current pose: {unitCount + 1} /
+          Current pose: {unitCount + 1} /{" "}
           {flow.units[currentUnitIndex]
             ? flow.units[currentUnitIndex].duration
             : flow.units[0].duration}{" "}
