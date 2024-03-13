@@ -30,6 +30,7 @@ import { SortableItem } from "../experiment/dnd/SortableItem";
 import { Item } from "../experiment/dnd/Item";
 
 import Header from "../sections/Header";
+import BasicExample from "../experiment/ProgressB";
 
 function Experiment() {
   const [items1, setItems1] = useState([
@@ -255,6 +256,9 @@ function Experiment() {
           ) : null}
         </DragOverlay> */}
       </DndContext>
+      <div className=" h-[300px] w-[300px]">
+        <BasicExample />
+      </div>
     </>
   );
 }

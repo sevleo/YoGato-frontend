@@ -4,6 +4,7 @@ import mp3Provider from "../../assets/mp3Provider";
 import { FlowType } from "./Flow";
 import "./Preview.css";
 import Wheel from "../buildingBlocks/Wheel";
+import ProgressBar from "react-bootstrap/ProgressBar";
 
 interface PreviewProps {
   flow: FlowType;
@@ -159,6 +160,9 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           updateWheel={updateWheel}
           setUpdateWheel={setUpdateWheel}
         ></Wheel>
+        <div className="ltr">
+          <ProgressBar now={flowPercent}></ProgressBar>
+        </div>
       </div>
     </div>
   );
