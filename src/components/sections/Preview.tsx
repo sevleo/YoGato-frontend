@@ -13,6 +13,7 @@ interface PreviewProps {
 function Preview({ flow, setFlowState }: PreviewProps) {
   const [startFlow, setStartFlow] = useState<boolean>(false);
   const [flowCount, setFlowCount] = useState<number>(0);
+  const [flowPercent, setFlowPercent] = useState<number>(0);
   const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
   const [unitCount, setUnitCount] = useState<number>(0);
   const [updateWheel, setUpdateWheel] = useState(false);
@@ -24,9 +25,10 @@ function Preview({ flow, setFlowState }: PreviewProps) {
 
   // Flowing :)
   useEffect(() => {
-    let id: number;
+    let secondCounter: number;
+    let percentCounter: number;
     if (startFlow) {
-      id = setInterval(() => {
+      secondCounter = setInterval(() => {
         setUnitCount((unitCount: number) => {
           // console.log(`Unit count: ${unitCount + 1}`);
           let newUnitCount: number;
@@ -64,9 +66,21 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           return newFlowCount;
         });
       }, 1000);
+      percentCounter = setInterval(() => {
+        setFlowPercent((flowPercent) => {
+          const increment = 100 / (flow.duration * 100);
+          let newFlowPercent: number;
+          newFlowPercent = Math.min(flowPercent + increment, 100);
+          console.log(newFlowPercent);
+          return newFlowPercent;
+        });
+      }, 10);
     }
 
-    return () => clearInterval(id);
+    return () => {
+      clearInterval(secondCounter);
+      clearInterval(percentCounter);
+    };
   }, [startFlow, flow, currentUnitIndex, updateWheel]);
 
   function handleStartButtonClick() {
