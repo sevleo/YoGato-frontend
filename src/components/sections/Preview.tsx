@@ -145,6 +145,13 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           Total flow: {flowCount + 1} / {flow.duration} seconds
         </p>
         <p className="ltr">Total progress: {Math.round(flowPercent)} %</p>
+        <div className="ltr">
+          <ProgressBar
+            variant="success"
+            key={flowPercent}
+            now={flowPercent}
+          ></ProgressBar>
+        </div>
         <br />
         <p className="ltr">
           Current pose: {unitCount + 1} /{" "}
@@ -154,15 +161,19 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           seconds
         </p>
         <p className="ltr">Total progress: {Math.round(unitPercent)} %</p>
+        <div className="ltr">
+          <ProgressBar
+            variant="warning"
+            key={unitPercent}
+            now={unitPercent}
+          ></ProgressBar>
+        </div>
 
         <Wheel
           units={flow.units}
           updateWheel={updateWheel}
           setUpdateWheel={setUpdateWheel}
         ></Wheel>
-        <div className="ltr">
-          <ProgressBar now={flowPercent}></ProgressBar>
-        </div>
       </div>
     </div>
   );
