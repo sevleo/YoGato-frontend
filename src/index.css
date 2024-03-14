@@ -112,8 +112,8 @@ button:focus-visible {
 
 /* This fixes the Input element styles - at some point the hover/focus effect stopped working
 so adding "important" modifiers until we can track down the issue */
-.input:focus,
+/* .input:focus,
 .input:hover {
   opacity: 1 !important;
   background-color: rgb(226 232 240) !important;
-}
+} */
