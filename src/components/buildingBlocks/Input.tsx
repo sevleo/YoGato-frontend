@@ -76,7 +76,7 @@ export default function Input({
         type="text"
         id={id}
         value={value}
-        className="input !focus:opacity-100 !focus-within:bg-slate-200 z-10 w-full bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none hover:bg-slate-200 hover:text-transparent hover:opacity-100 focus:z-20 focus:text-black"
+        className="input z-10 w-full p-[2px] text-center text-xs font-normal opacity-0 outline-none hover:text-transparent focus:z-20 focus:text-black "
         onChange={handleChange}
         inputMode="numeric"
         pattern="[1-9]*"

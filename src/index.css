@@ -110,7 +110,8 @@ button:focus-visible {
   }
 }
 
-.input:focus {
-  /* opacity: 1 !important; */
-  /* background-color: red !important; */
+.input:focus,
+.input:hover {
+  opacity: 1 !important;
+  background-color: rgb(226 232 240) !important;
 }
