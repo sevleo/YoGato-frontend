@@ -42,9 +42,10 @@ function Preview({ flow, setFlowState }: PreviewProps) {
               const audio = new Audio(
                 mp3Provider(flow.units[currentUnitIndex + 1].url_svg_alt_local)
               );
-              setTimeout(() => {
-                audio.play();
-              }, 1000);
+              // setTimeout(() => {
+              //   audio.play();
+              // }, 1000);
+              audio.play();
               console.log(flow.units[currentUnitIndex + 1].announcement);
             }
             setCurrentUnitIndex(currentUnitIndex + 1);
@@ -169,12 +170,12 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           </div>
           <div>
             <p className="ltr flex h-full items-center justify-center p-2">
-              Total flow: {flowCount + 1} / {flow.duration} seconds
+              Total flow: {flowCount} / {flow.duration} seconds
             </p>
           </div>
           <div>
             <p className="ltr flex h-full items-center justify-center p-2">
-              Current pose: {unitCount + 1} /{" "}
+              Current pose: {unitCount} /{" "}
               {flow.units[currentUnitIndex]
                 ? flow.units[currentUnitIndex].duration
                 : flow.units[0].duration}{" "}
