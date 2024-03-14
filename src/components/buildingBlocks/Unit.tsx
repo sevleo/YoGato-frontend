@@ -172,7 +172,7 @@ function Unit({
             onMouseEnter={disableDrag}
             onMouseLeave={enableDrag}
           >
-            <p className=" select-none rounded-md border-[1px] border-red-300 bg-red-100 text-xs hover:border-red-400 hover:bg-red-200 active:border-red-500 active:bg-red-300">
+            <p className=" mb-0 select-none rounded-md border-[1px] border-red-300 bg-red-100 text-xs hover:border-red-400 hover:bg-red-200 active:border-red-500 active:bg-red-300">
               Remove
             </p>
           </div>

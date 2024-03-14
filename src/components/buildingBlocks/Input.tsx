@@ -30,6 +30,25 @@ export default function Input({
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Backspace" && value >= 0 && value <= 10) {
+      // setValue(Number(1));
+      // onChange(Number(1));
+      e.preventDefault();
+      e.currentTarget.select();
+    } else if (
+      !/^\d$/.test(e.key) &&
+      e.key !== "Delete" &&
+      e.key !== "Backspace" &&
+      e.key !== "ArrowLeft" &&
+      e.key !== "ArrowRight" &&
+      e.key !== "Tab" &&
+      e.key !== "Escape"
+    ) {
+      e.preventDefault();
+    }
+  };
+
   const handlePlusFiveSeconds = () => {
     if (value === 1) {
       setValue(value + 4);
@@ -82,20 +101,7 @@ export default function Input({
         pattern="[1-9]*"
         onMouseEnter={disableDrag}
         onMouseLeave={enableDrag}
-        onKeyDown={(e) => {
-          console.log(e);
-          if (
-            !/^\d$/.test(e.key) &&
-            e.key !== "Delete" &&
-            e.key !== "Backspace" &&
-            e.key !== "ArrowLeft" &&
-            e.key !== "ArrowRight" &&
-            e.key !== "Tab" &&
-            e.key !== "Escape"
-          ) {
-            e.preventDefault();
-          }
-        }}
+        onKeyDown={handleKeyDown}
       />
       <div className=" pointer-events-none absolute z-10 ml-auto mr-auto w-full bg-transparent text-xs font-normal">
         {value + "s"}

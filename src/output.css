@@ -610,6 +610,10 @@ video {
   z-index: 50;
 }
 
+.mb-0 {
+  margin-bottom: 0px;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -1256,6 +1260,9 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* This fixes the Input element styles - at some point the hover/focus effect stopped working
+so adding "important" modifiers until we can track down the issue */
 
 .input:focus,
 .input:hover {
