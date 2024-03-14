@@ -4,7 +4,6 @@ import mp3Provider from "../../assets/mp3Provider";
 import { FlowType } from "./Flow";
 import "./Preview.css";
 import Wheel from "../buildingBlocks/Wheel";
-import ProgressBar from "react-bootstrap/ProgressBar";
 import CircularProgressBar from "../buildingBlocks/CircularProgressBar/CircularProgressBar";
 
 interface PreviewProps {
@@ -146,11 +145,6 @@ function Preview({ flow, setFlowState }: PreviewProps) {
         <div className="ltr grid w-2/3 grid-cols-2">
           <div>
             <div className="ltr">
-              {/* <ProgressBar
-            variant="success"
-            key={flowPercent}
-            now={flowPercent}
-          ></ProgressBar> */}
               <CircularProgressBar
                 percentValue={Math.round(flowPercent)}
               ></CircularProgressBar>
@@ -158,11 +152,6 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           </div>
           <div>
             <div className="ltr">
-              {/* <ProgressBar
-            variant="warning"
-            key={unitPercent}
-            now={unitPercent}
-          ></ProgressBar> */}
               <CircularProgressBar
                 percentValue={Math.round(unitPercent)}
               ></CircularProgressBar>
