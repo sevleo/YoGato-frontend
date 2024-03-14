@@ -5,6 +5,7 @@ import { FlowType } from "./Flow";
 import "./Preview.css";
 import Wheel from "../buildingBlocks/Wheel";
 import ProgressBar from "react-bootstrap/ProgressBar";
+import CustomProgressBar from "../experiment/CustomProgressBar";
 
 interface PreviewProps {
   flow: FlowType;
@@ -168,6 +169,10 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             now={unitPercent}
           ></ProgressBar>
         </div>
+        <br />
+        <CustomProgressBar
+          percentValue={Math.round(flowPercent)}
+        ></CustomProgressBar>
 
         <Wheel
           units={flow.units}
