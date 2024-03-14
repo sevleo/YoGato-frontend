@@ -610,6 +610,10 @@ video {
   z-index: 50;
 }
 
+.\!z-10 {
+  z-index: 10 !important;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -662,6 +666,10 @@ video {
   height: 16px;
 }
 
+.h-\[300px\] {
+  height: 300px;
+}
+
 .h-\[60px\] {
   height: 60px;
 }
@@ -673,10 +681,6 @@ video {
 
 .h-full {
   height: 100%;
-}
-
-.h-\[300px\] {
-  height: 300px;
 }
 
 .min-h-80 {
@@ -707,28 +711,16 @@ video {
   width: 0.5px;
 }
 
-.w-\[200px\] {
-  width: 200px;
+.w-\[300px\] {
+  width: 300px;
 }
 
 .w-full {
   width: 100%;
 }
 
-.w-\[300px\] {
-  width: 300px;
-}
-
-.w-1\/2 {
-  width: 50%;
-}
-
 .min-w-\[16px\] {
   min-width: 16px;
-}
-
-.min-w-\[200px\] {
-  min-width: 200px;
 }
 
 .min-w-\[180px\] {
@@ -761,6 +753,10 @@ video {
   grid-auto-rows: minmax(0, 1fr);
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .grid-cols-aspects {
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
 }
@@ -769,16 +765,8 @@ video {
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 }
 
-.grid-cols-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
 .grid-rows-aspects {
   grid-template-rows: repeat(auto-fill, minmax(120px, 1fr));
-}
-
-.grid-rows-2 {
-  grid-template-rows: repeat(2, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -801,10 +789,6 @@ video {
   justify-content: flex-start;
 }
 
-.justify-end {
-  justify-content: flex-end;
-}
-
 .justify-center {
   justify-content: center;
 }
@@ -823,14 +807,6 @@ video {
 
 .gap-5 {
   gap: 1.25rem;
-}
-
-.self-start {
-  align-self: flex-start;
-}
-
-.self-end {
-  align-self: flex-end;
 }
 
 .self-center {
@@ -1065,10 +1041,6 @@ video {
   padding-top: 0.5rem;
 }
 
-.pt-\[100px\] {
-  padding-top: 100px;
-}
-
 .pt-\[10px\] {
   padding-top: 10px;
 }
@@ -1081,12 +1053,12 @@ video {
   padding-top: 40px;
 }
 
-.pt-\[60px\] {
-  padding-top: 60px;
-}
-
 .pt-\[50px\] {
   padding-top: 50px;
+}
+
+.pt-\[60px\] {
+  padding-top: 60px;
 }
 
 .text-left {
@@ -1289,6 +1261,11 @@ button:focus-visible {
   }
 }
 
+.input:focus {
+  /* opacity: 1 !important; */
+  /* background-color: red !important; */
+}
+
 .focus-within\:bg-slate-200:focus-within {
   --tw-bg-opacity: 1;
   background-color: rgb(226 232 240 / var(--tw-bg-opacity));
@@ -1334,10 +1311,6 @@ button:focus-visible {
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 
-.focus\:opacity-100:focus {
-  opacity: 1;
-}
-
 .active\:border-red-500:active {
   --tw-border-opacity: 1;
   border-color: rgb(239 68 68 / var(--tw-border-opacity));
@@ -1351,4 +1324,9 @@ button:focus-visible {
 .active\:bg-slate-300:active {
   --tw-bg-opacity: 1;
   background-color: rgb(203 213 225 / var(--tw-bg-opacity));
+}
+
+.active\:bg-slate-500:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(100 116 139 / var(--tw-bg-opacity));
 }
