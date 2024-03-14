@@ -33,7 +33,7 @@ function Setup({ flow, setFlow, setFlowState, aspectGroups }: SetupProps) {
 
   return (
     <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl pt-[60px]">
-      <div className="flex w-[200px] flex-col border-b border-l border-t bg-gray-100 p-2">
+      <div className="flex min-w-[180px] flex-col border-b border-l border-t bg-gray-100 p-2">
         <button className="" onClick={handlePreviewButtonClick}>
           Preview
         </button>

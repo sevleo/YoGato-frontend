@@ -1,7 +1,7 @@
-import "./CustomProgressBar.css";
+import "./CircularProgressBar.css";
 import { useRef, useEffect } from "react";
 
-export default function CustomProgressBar({ percentValue }) {
+export default function CircularProgressBar({ percentValue }) {
   const circularProgressRef = useRef(null);
   const progressValueRef = useRef(null);
 
@@ -23,7 +23,6 @@ export default function CustomProgressBar({ percentValue }) {
           {percentValue}%
         </span>
       </div>
-      <span>HTML & CSS</span>
     </div>
   );
 }

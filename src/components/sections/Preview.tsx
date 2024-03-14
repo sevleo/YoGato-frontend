@@ -5,7 +5,7 @@ import { FlowType } from "./Flow";
 import "./Preview.css";
 import Wheel from "../buildingBlocks/Wheel";
 import ProgressBar from "react-bootstrap/ProgressBar";
-import CustomProgressBar from "../experiment/CustomProgressBar";
+import CircularProgressBar from "../buildingBlocks/CircularProgressBar/CircularProgressBar";
 
 interface PreviewProps {
   flow: FlowType;
@@ -112,8 +112,8 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   }
 
   return (
-    <div className=" preview flex h-full w-full pt-[60px] text-black">
-      <div className="flex w-[200px] flex-col border-b border-l border-t bg-gray-100 p-2">
+    <div className=" preview ml-auto mr-auto flex h-full w-full max-w-screen-2xl pt-[60px] text-black">
+      <div className="flex min-w-[180px] flex-col border-b border-l border-t bg-gray-100 p-2">
         <button className=" text-white" onClick={handleStartButtonClick}>
           Start
         </button>
@@ -141,38 +141,48 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           </div>
         </div>
       </div>
-      <div className="rtl scrollbar-gutter canvas w-full overflow-auto pb-[40px] pl-[40px] pr-[40px] pt-[40px]">
-        <p className="ltr">
-          Total flow: {flowCount + 1} / {flow.duration} seconds
-        </p>
-        <p className="ltr">Total progress: {Math.round(flowPercent)} %</p>
-        <div className="ltr">
-          <ProgressBar
+      <div className="rtl scrollbar-gutter canvas flex w-full flex-col items-center pb-[40px] pl-[40px] pr-[40px] pt-[40px]">
+        <div className="ltr grid w-2/3 grid-cols-2">
+          <div>
+            <div className="ltr">
+              {/* <ProgressBar
             variant="success"
             key={flowPercent}
             now={flowPercent}
-          ></ProgressBar>
-        </div>
-        <br />
-        <p className="ltr">
-          Current pose: {unitCount + 1} /{" "}
-          {flow.units[currentUnitIndex]
-            ? flow.units[currentUnitIndex].duration
-            : flow.units[0].duration}{" "}
-          seconds
-        </p>
-        <p className="ltr">Total progress: {Math.round(unitPercent)} %</p>
-        <div className="ltr">
-          <ProgressBar
+          ></ProgressBar> */}
+              <CircularProgressBar
+                percentValue={Math.round(flowPercent)}
+              ></CircularProgressBar>
+            </div>
+          </div>
+          <div>
+            <div className="ltr">
+              {/* <ProgressBar
             variant="warning"
             key={unitPercent}
             now={unitPercent}
-          ></ProgressBar>
+          ></ProgressBar> */}
+              <CircularProgressBar
+                percentValue={Math.round(unitPercent)}
+              ></CircularProgressBar>
+            </div>
+          </div>
+          <div>
+            <p className="ltr flex h-full items-center justify-center p-2">
+              Total flow: {flowCount + 1} / {flow.duration} seconds
+            </p>
+          </div>
+          <div>
+            <p className="ltr flex h-full items-center justify-center p-2">
+              Current pose: {unitCount + 1} /{" "}
+              {flow.units[currentUnitIndex]
+                ? flow.units[currentUnitIndex].duration
+                : flow.units[0].duration}{" "}
+              seconds
+            </p>
+          </div>
         </div>
         <br />
-        <CustomProgressBar
-          percentValue={Math.round(flowPercent)}
-        ></CustomProgressBar>
 
         <Wheel
           units={flow.units}

@@ -155,7 +155,7 @@ function Wheel({ units, updateWheel, setUpdateWheel }: WheelProps) {
   return (
     <>
       <div id="container" className="ltr">
-        <div className="wheel pt-[100px]" ref={wheelRef}>
+        <div className="wheel pt-[50px]" ref={wheelRef}>
           {cards}
         </div>
       </div>
