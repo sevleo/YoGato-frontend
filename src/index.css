@@ -112,10 +112,15 @@ button:focus-visible {
 
 /* Aspect hover & active animation START */
 .fancy-wrapper {
-  --offset: 0.5px;
+  --offset: 1px;
   position: relative;
-  background: white;
+  /* background: white; */
   overflow: hidden;
+  /* transition: outline 0.5s ease-in-out; */
+}
+
+.fancy-wrapper:hover {
+  outline: 0.5px solid #065f46;
 }
 
 .fancy-wrapper.active {
@@ -123,7 +128,7 @@ button:focus-visible {
   background-color: #ecfdf5;
 }
 .fancy-wrapper:active {
-  outline: 3px solid #065f46;
+  outline: 1px solid #065f46;
   background-color: #ecfdf5;
 }
 
