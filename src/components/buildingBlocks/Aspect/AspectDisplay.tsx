@@ -26,7 +26,7 @@ function Aspect({ aspect, count, handleClick }: Props) {
         objectFit: "cover",
       }}
       key={aspect.english_name}
-      className={` fancy-wrapper relative rounded-md bg-gray-50 shadow-md outline outline-1 outline-gray-300 transition-all hover:cursor-pointer ${isActive ? "active" : ""}`}
+      className={` fancy-wrapper relative rounded-md bg-gray-50 shadow-md outline outline-1 outline-gray-300 hover:cursor-pointer ${isActive ? "active" : ""}`}
       onClick={(e) => {
         setActive(true);
         setTimeout(() => {
@@ -35,9 +35,14 @@ function Aspect({ aspect, count, handleClick }: Props) {
         handleClick(e);
       }}
     >
-      <div className=" bg-red fancy-content flex select-none flex-col items-center justify-between  ">
-        <div className="h-full w-full pb-2">
-          <img className=" pl-2 pr-2" src={svg} alt="" draggable="false" />
+      <div className=" fancy-content flex select-none flex-col items-center justify-between p-2  ">
+        <div className="h-full w-full ">
+          <img
+            className=" border-b-[1px] p-1"
+            src={svg}
+            alt=""
+            draggable="false"
+          />
         </div>
         <p className=" mb-2 mt-2 text-xs">{aspect.english_name}</p>
         {count > 0 && (

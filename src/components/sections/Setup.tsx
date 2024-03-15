@@ -1,5 +1,5 @@
 import Flow, { FlowType } from "./Flow";
-import AspectCollection from "../buildingBlocks/AspectCollection";
+import AspectCollection from "./AspectCollection";
 import { Dispatch, SetStateAction } from "react";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { UnitType } from "../buildingBlocks/Unit";

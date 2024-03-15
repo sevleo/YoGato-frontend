@@ -1,8 +1,8 @@
-import AspectGroup from "./AspectGroup";
-import { AspectGroupType } from "./AspectGroup";
-import { FlowType } from "../sections/Flow";
+import AspectGroup from "../buildingBlocks/AspectGroup";
+import { AspectGroupType } from "../buildingBlocks/AspectGroup";
+import { FlowType } from "./Flow";
 import { Dispatch, SetStateAction } from "react";
-import { UnitType } from "./Unit";
+import { UnitType } from "../buildingBlocks/Unit";
 
 interface AspectCollectionProps {
   aspectGroups: AspectGroupType[];
@@ -26,7 +26,10 @@ export default function AspectCollection({
   setFlow,
 }: AspectCollectionProps) {
   return (
-    <div className=" scrollbar-gutter flex w-1/3 flex-row justify-start gap-5 overflow-auto pl-[40px] pr-[40px] ">
+    <div className=" scrollbar-gutter flex w-1/3 flex-row flex-col justify-start gap-5 overflow-auto pl-[40px] pr-[40px] ">
+      <div>
+        <p className="text-black">Poses</p>
+      </div>
       <div className="h-fit min-h-full w-full gap-5">
         {/* <div className=" border-[1px] border-solid border-neutral-200 p-5"> */}
         <div className="">

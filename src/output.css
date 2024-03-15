@@ -987,6 +987,10 @@ video {
   padding: 0.125rem;
 }
 
+.p-1 {
+  padding: 0.25rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -1154,12 +1158,6 @@ video {
   transition-duration: 150ms;
 }
 
-.transition-all {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -1279,10 +1277,13 @@ button:focus-visible {
   /* background: white; */
   overflow: hidden;
   /* transition: outline 0.5s ease-in-out; */
+  /* transition-property: outline;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms; */
 }
 
 .fancy-wrapper:hover {
-  outline: 0.5px solid #065f46;
+  outline: 1px solid #065f46;
 }
 
 .fancy-wrapper.active {
@@ -1293,6 +1294,7 @@ button:focus-visible {
 .fancy-wrapper:active {
   outline: 1px solid #065f46;
   background-color: #ecfdf5;
+  transform: scale(1.05);
 }
 
 .fancy-wrapper:hover::before {
