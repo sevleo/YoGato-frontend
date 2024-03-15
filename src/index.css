@@ -119,7 +119,7 @@ button:focus-visible {
 }
 
 .fancy-wrapper.active {
-  outline: 3px solid #065f46;
+  outline: 1px solid #065f46;
   background-color: #ecfdf5;
 }
 .fancy-wrapper:active {
