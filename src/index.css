@@ -113,20 +113,24 @@ button:focus-visible {
 /* Aspect hover animation START */
 
 .fancy-wrapper {
-  --offset: 2px;
+  --offset: 0.5px;
   position: relative;
   background: white;
   overflow: hidden;
 }
 
-.fancy-wrapper:hover {
-  outline: 0.5px solid grey;
-  transform: scale(1.05);
+.fancy-wrapper.active {
+  outline: 3px solid #065f46;
+  background-color: #ecfdf5;
+}
+.fancy-wrapper:active {
+  outline: 3px solid #065f46;
+  background-color: #ecfdf5;
 }
 
 .fancy-wrapper:hover::before {
   content: "";
-  background: conic-gradient(transparent 270deg, rgb(255, 0, 221), transparent);
+  background: conic-gradient(transparent 270deg, #065f46, transparent);
   position: absolute;
   top: 50%;
   left: 50%;

@@ -1,6 +1,7 @@
 // React
 import { MouseEventHandler } from "react";
 import svgProvider from "../../../assets/svgProvider";
+import { useState } from "react";
 
 // Types & interfaces
 import { AspectType } from "./AspectController";
@@ -16,6 +17,8 @@ type Props = {
 function Aspect({ aspect, count, handleClick }: Props) {
   const svg = svgProvider(aspect.url_svg_alt_local);
 
+  const [isActive, setActive] = useState(false);
+
   return (
     <div
       style={{
@@ -23,8 +26,14 @@ function Aspect({ aspect, count, handleClick }: Props) {
         objectFit: "cover",
       }}
       key={aspect.english_name}
-      className=" fancy-wrapper relative rounded-md transition-all hover:cursor-pointer "
-      onClick={handleClick}
+      className={`fancy-wrapper relative rounded-md outline outline-1 outline-gray-300 transition-all hover:cursor-pointer ${isActive ? "active" : ""}`}
+      onClick={(e) => {
+        setActive(true);
+        setTimeout(() => {
+          setActive(false);
+        }, 100);
+        handleClick(e);
+      }}
     >
       <div className=" fancy-content flex select-none flex-col items-center justify-between bg-white ">
         <div className="h-full w-full pb-2">
