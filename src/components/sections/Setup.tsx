@@ -32,28 +32,28 @@ function Setup({ flow, setFlow, setFlowState, aspectGroups }: SetupProps) {
   const seconds = duration % 60;
 
   return (
-    <div className="builder ml-auto mr-auto flex h-full w-full max-w-screen-2xl bg-zinc-50 pt-[60px]">
-      <div className="flex min-w-[180px] flex-col border-b border-l border-t bg-zinc-100 p-2">
-        <button className="" onClick={handlePreviewButtonClick}>
-          Preview
-        </button>
-        <div className="mb-2 mt-2 h-[0.5px] w-10/12 self-center bg-neutral-400"></div>
-        <div className="flex flex-col items-start justify-center p-2 text-black">
-          <div>
-            <div className="flex flex-col items-start justify-center">
-              <p className=" font-bold">Duration</p>
-              {hours > 0 ? <p> - {hours} hours</p> : null}
-              {minutes > 0 ? <p> - {minutes} minutes</p> : null}
-              {seconds > 0 ? <p> - {seconds} seconds</p> : null}
-            </div>
-            <div className="flex flex-col items-start justify-center">
-              <p className=" font-bold">Poses</p>
-              <p> - {flow.units.length}</p>
-            </div>
-            <div className="flex flex-col items-start justify-center">
-              <p className=" font-bold">Unique poses</p>
-              <p> - {flow.uniqueAspects.length}</p>
-            </div>
+    <div
+      className="builder ml-auto mr-auto flex w-full max-w-screen-2xl pt-[60px]"
+      // style={{ backgroundColor: "#22201E" }}
+    >
+      <button className="" onClick={handlePreviewButtonClick}>
+        Preview
+      </button>
+      <div className="flex flex-col items-start justify-center p-2 text-black">
+        <div>
+          <div className="flex flex-col items-start justify-center">
+            <p className=" font-bold">Duration</p>
+            {hours > 0 ? <p> - {hours} hours</p> : null}
+            {minutes > 0 ? <p> - {minutes} minutes</p> : null}
+            {seconds > 0 ? <p> - {seconds} seconds</p> : null}
+          </div>
+          <div className="flex flex-col items-start justify-center">
+            <p className=" font-bold">Poses</p>
+            <p> - {flow.units.length}</p>
+          </div>
+          <div className="flex flex-col items-start justify-center">
+            <p className=" font-bold">Unique poses</p>
+            <p> - {flow.uniqueAspects.length}</p>
           </div>
         </div>
       </div>

@@ -9,7 +9,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #f5f5f4;
+  background-color: #09090b;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -66,6 +66,28 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  /* background-image: url(../src/assets/background_06.png);
+  background-position: left top;
+  background-size: auto;
+  background-repeat: repeat;
+  background-attachment: scroll;
+  background-color: #22201e; */
+}
+
+.canvas {
+  /* opacity: 1;
+  background-image: radial-gradient(#000000 0.45px, #22201e 0.45px);
+  background-size: 9px 9px; */
+}
+
+.builder {
+  background-color: #000000;
+  opacity: 1;
+  background-image: radial-gradient(
+    #22201e 0.9500000000000001px,
+    #000000 0.9500000000000001px
+  );
+  background-size: 19px 19px;
 }
 
 h1 {

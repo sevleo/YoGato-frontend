@@ -26,7 +26,7 @@ export default function AspectCollection({
   setFlow,
 }: AspectCollectionProps) {
   return (
-    <div className=" scrollbar-gutter flex w-1/3 flex-row flex-col justify-start gap-5 overflow-auto pl-[40px] pr-[40px] ">
+    <div className=" flex w-1/3 flex-col justify-start pl-[40px] pr-[40px] ">
       <div>
         <p className="text-black">Poses</p>
       </div>

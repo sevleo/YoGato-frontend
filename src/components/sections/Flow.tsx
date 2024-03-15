@@ -91,7 +91,7 @@ function Flow({ flow, setFlow }: FlowProps) {
   }
 
   return (
-    <div className=" canvas rtl scrollbar-gutter w-2/3 pb-[40px] pl-[40px] pr-[40px]">
+    <div className=" canvas w-2/3 pb-[40px] pl-[40px] pr-[40px]">
       <div>
         <p className="text-black">Your flow</p>
       </div>

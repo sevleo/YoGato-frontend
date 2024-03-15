@@ -26,7 +26,7 @@ function Aspect({ aspect, count, handleClick }: Props) {
         objectFit: "cover",
       }}
       key={aspect.english_name}
-      className={` fancy-wrapper relative rounded-md bg-gray-50 shadow-md outline outline-1 outline-gray-300 hover:cursor-pointer ${isActive ? "active" : ""}`}
+      className={` fancy-wrapper relative rounded-md bg-gray-50 shadow-md outline outline-1 outline-gray-300 transition-all hover:cursor-pointer ${isActive ? "active" : ""}`}
       onClick={(e) => {
         setActive(true);
         setTimeout(() => {
