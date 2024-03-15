@@ -1271,7 +1271,7 @@ button:focus-visible {
   }
 }
 
-/* Aspect hover animation START */
+/* Aspect hover & active animation START */
 
 .fancy-wrapper {
   --offset: 0.5px;

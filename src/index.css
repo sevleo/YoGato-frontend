@@ -110,8 +110,7 @@ button:focus-visible {
   }
 }
 
-/* Aspect hover animation START */
-
+/* Aspect hover & active animation START */
 .fancy-wrapper {
   --offset: 0.5px;
   position: relative;
@@ -165,5 +164,4 @@ button:focus-visible {
     transform: translate(-50%, -50%) scale(1.4) rotate(1turn);
   }
 }
-
 /* Aspect hover animation END */
