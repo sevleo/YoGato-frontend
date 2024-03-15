@@ -758,7 +758,7 @@ video {
 }
 
 .grid-cols-aspects {
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
 }
 
 .grid-cols-canvas {
@@ -766,7 +766,7 @@ video {
 }
 
 .grid-rows-aspects {
-  grid-template-rows: repeat(auto-fill, minmax(90px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
 }
 
 .flex-row {
@@ -849,10 +849,6 @@ video {
   border-top-right-radius: 0.375rem;
 }
 
-.border {
-  border-width: 1px;
-}
-
 .border-\[1px\] {
   border-width: 1px;
 }
@@ -887,11 +883,6 @@ video {
 
 .border-solid {
   border-style: solid;
-}
-
-.border-gray-200 {
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
 }
 
 .border-gray-300 {
@@ -1126,12 +1117,6 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
-.shadow-sm {
-  --tw-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-}
-
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -1161,6 +1146,12 @@ video {
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-all {
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1275,6 +1266,61 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* Aspect hover animation START */
+
+.fancy-wrapper {
+  --offset: 2px;
+  position: relative;
+  background: white;
+  overflow: hidden;
+}
+
+.fancy-wrapper:hover {
+  outline: 0.5px solid grey;
+  transform: scale(1.05);
+}
+
+.fancy-wrapper:hover::before {
+  content: "";
+  background: conic-gradient(transparent 270deg, rgb(255, 0, 221), transparent);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  aspect-ratio: 1;
+  width: 100%;
+  animation: rotate 1s linear infinite;
+}
+
+.fancy-wrapper::after {
+  content: "";
+  background: inherit;
+  border-radius: inherit;
+  position: absolute;
+  inset: var(--offset);
+  height: calc(100% - 2 * var(--offset));
+  width: calc(100% - 2 * var(--offset));
+}
+
+.fancy-content {
+  background: transparent;
+  position: relative;
+  inset: 0;
+  z-index: 10;
+}
+
+@keyframes rotate {
+  from {
+    transform: translate(-50%, -50%) scale(1.4) rotate(0turn);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1.4) rotate(1turn);
+  }
+}
+
+/* Aspect hover animation END */
 
 .focus-within\:bg-slate-200:focus-within {
   --tw-bg-opacity: 1;
