@@ -91,37 +91,45 @@ function Flow({ flow, setFlow }: FlowProps) {
   }
 
   return (
-    <div className=" canvas w-2/3 pb-[40px] pl-[40px] pr-[40px]">
-      <div>
+    <div className=" canvas w-2/3  pb-[40px] ">
+      {/* <div>
         <p className="text-black">Your flow</p>
-      </div>
+      </div> */}
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
         // modifiers={[restrictToVerticalAxis]}
       >
-        <div className="ltr grid h-fit min-h-full">
-          <div className="droppable-area  h-fit min-h-full">
-            <div className=" grid auto-rows-fr grid-cols-canvas gap-10">
-              <SortableContext
-                items={flow.units}
-                // strategy={verticalListSortingStrategy}
-              >
-                {flow.units.map((unit, index) => {
-                  return (
-                    <Unit
-                      key={unit.id}
-                      {...unit}
-                      index={index}
-                      setFlow={setFlow}
-                      dragAllowed={dragAllowed}
-                      setDragAllowed={setDragAllowed}
-                    ></Unit>
-                  );
-                })}
-              </SortableContext>
-            </div>
+        <div className="ltr grid h-fit min-h-[300px] bg-[#ffffff18] pb-[40px] pl-[40px] pr-[40px] pt-[40px]">
+          <div className="droppable-area h-full min-h-full">
+            {flow.units.length > 0 ? (
+              <div className=" grid auto-rows-fr grid-cols-canvas gap-10">
+                <SortableContext
+                  items={flow.units}
+                  // strategy={verticalListSortingStrategy}
+                >
+                  {flow.units.map((unit, index) => {
+                    return (
+                      <Unit
+                        key={unit.id}
+                        {...unit}
+                        index={index}
+                        setFlow={setFlow}
+                        dragAllowed={dragAllowed}
+                        setDragAllowed={setDragAllowed}
+                      ></Unit>
+                    );
+                  })}
+                </SortableContext>
+              </div>
+            ) : (
+              <div className="flex h-full w-full flex-col items-center justify-center">
+                <p className="text-2xl font-thin italic">
+                  Click on a pose from the right panel to add it to the flow
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </DndContext>

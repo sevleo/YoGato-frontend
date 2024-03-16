@@ -196,3 +196,7 @@ button:focus-visible {
   }
 }
 /* Aspect hover animation END */
+
+.unit {
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.75);
+}

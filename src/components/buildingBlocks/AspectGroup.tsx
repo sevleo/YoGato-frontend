@@ -41,9 +41,9 @@ function AspectGroup({
   // console.log(uniqueAspects);
   return (
     <div className=" flex flex-col justify-center text-black">
-      <p className="mb-2 mt-5 ">{category_name}</p>
+      <p className="mb-2 mt-5 text-white ">{category_name}</p>
       {/* <div className="grid grid-cols-aspects justify-center gap-5"> */}
-      <div className="auto-rows grid-rows-aspects grid grid-cols-aspects justify-center gap-5">
+      <div className="auto-rows grid grid-cols-aspects grid-rows-aspects justify-center gap-5">
         {poses.map((pose) => {
           let count = 0;
           uniqueAspects.some((uniqueAspect) => {

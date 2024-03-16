@@ -37,14 +37,20 @@ function Setup({ flow, setFlow, setFlowState, aspectGroups }: SetupProps) {
         <button className="" onClick={handlePreviewButtonClick}>
           Preview
         </button>
-        <div className="flex flex-col items-start justify-center p-2 text-black">
+        <div className="flex flex-col items-start justify-center pb-2 pt-2 text-black">
           <div className="flex w-full flex-row items-start justify-center  gap-10 border-b-[0.5px] border-[#7D6A3E] pb-[10px]">
             <div className="flex flex-col items-start justify-center">
               <p className=" font-bold text-white">Duration</p>
-              {hours > 0 ? <p className="text-white">{hours} hours</p> : null}
+              {hours > 0 ? (
+                <p className="text-white">{hours} hours</p>
+              ) : (
+                <p className="text-white">0 hours</p>
+              )}
               {minutes > 0 ? (
                 <p className="text-white">{minutes} minutes</p>
-              ) : null}
+              ) : (
+                <p className="text-white">0 minutes</p>
+              )}
               {seconds > 0 ? (
                 <p className="text-white">{seconds} seconds</p>
               ) : (
@@ -61,13 +67,12 @@ function Setup({ flow, setFlow, setFlowState, aspectGroups }: SetupProps) {
             </div>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex gap-10 pt-2">
           <Flow
             flow={flow}
             setFlow={setFlow}
             setFlowState={setFlowState}
           ></Flow>
-          <div className="h-3/4 w-[0.5px] self-center bg-neutral-300"></div>
           <AspectCollection
             aspectGroups={aspectGroups}
             flow={flow}

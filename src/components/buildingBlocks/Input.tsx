@@ -79,13 +79,13 @@ export default function Input({
   };
 
   return (
-    <div className="group relative flex flex-row items-center rounded-md bg-slate-100 outline outline-[1px] outline-gray-300 focus-within:outline-slate-400 ">
+    <div className="group relative flex flex-row items-center rounded-md bg-[#50422E] ">
       <label htmlFor={id} className=" ">
         {label}
       </label>
       <div
         onClick={handleMinusFiveSeconds}
-        className="z-10 mr-auto select-none rounded-l-md border-r border-gray-300 pb-[2px] pl-[5px] pr-[5px] pt-[2px] text-xs font-normal hover:cursor-pointer hover:bg-slate-200 active:bg-slate-300"
+        className="z-10 mr-auto select-none rounded-l-md border-r border-[#22201E] pb-[2px] pl-[5px] pr-[5px] pt-[2px] text-xs font-normal hover:cursor-pointer hover:bg-[#AA954E] active:bg-[#D3C55E]"
         onMouseEnter={disableDrag}
         onMouseLeave={enableDrag}
       >
@@ -95,7 +95,7 @@ export default function Input({
         type="text"
         id={id}
         value={value}
-        className=" z-10 w-full bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-slate-200 hover:bg-slate-200 hover:text-transparent  hover:opacity-100 focus:z-20 focus:text-black focus:opacity-100"
+        className=" z-10 w-full bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-[#AA954E] hover:bg-[#AA954E] hover:text-transparent  hover:opacity-100 focus:z-20 focus:text-black focus:opacity-100"
         onChange={handleChange}
         inputMode="numeric"
         pattern="[1-9]*"
@@ -108,7 +108,7 @@ export default function Input({
       </div>
       <div
         onClick={handlePlusFiveSeconds}
-        className="z-10 ml-auto select-none rounded-r-md border-l border-gray-300 pb-[2px] pl-[5px] pr-[5px] pt-[2px] text-xs font-normal hover:cursor-pointer hover:bg-slate-200 active:bg-slate-300"
+        className="z-10 ml-auto select-none rounded-r-md border-l border-[#22201E] pb-[2px] pl-[5px] pr-[5px] pt-[2px] text-xs font-normal hover:cursor-pointer hover:bg-[#AA954E] active:bg-[#D3C55E]"
         onMouseEnter={disableDrag}
         onMouseLeave={enableDrag}
       >

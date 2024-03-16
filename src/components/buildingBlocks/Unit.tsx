@@ -151,7 +151,7 @@ function Unit({
       onMouseLeave={disableUnitClose}
       ref={setNodeRef}
       style={style}
-      className="step relative flex cursor-default  select-none flex-col items-center justify-center text-black outline outline-[1px] outline-black hover:cursor-pointer"
+      className="unit step relative flex cursor-default select-none  flex-col items-center justify-center text-black shadow-md hover:cursor-pointer"
       {...(dragAllowed ? { ...attributes } : null)}
       {...(dragAllowed ? { ...listeners } : null)}
     >
@@ -176,9 +176,9 @@ function Unit({
         )}
       </div>
 
-      <div className="main-element flex h-full w-full flex-col justify-between  border-t-[1px] border-black bg-[#7D6A3E] pb-2 pl-2 pr-2  shadow-md">
+      <div className="main-element flex h-full w-full flex-col justify-between bg-[#7D6A3E] pb-2 pl-2 pr-2">
         <div className="flex flex-col items-center justify-center ">
-          <div className="h-full w-full border-b-[1px] border-black pb-2">
+          <div className="h-full w-full border-b-[0.5px] border-[#22201E] pb-2">
             <img
               className="  pl-2 pr-2  "
               src={image}
