@@ -103,7 +103,7 @@ function Flow({ flow, setFlow }: FlowProps) {
       >
         <div className="ltr grid h-fit min-h-full">
           <div className="droppable-area  h-fit min-h-full">
-            <div className=" grid auto-rows-fr grid-cols-canvas gap-5">
+            <div className=" grid auto-rows-fr grid-cols-canvas gap-10">
               <SortableContext
                 items={flow.units}
                 // strategy={verticalListSortingStrategy}

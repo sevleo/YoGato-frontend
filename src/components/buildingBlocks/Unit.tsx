@@ -137,16 +137,16 @@ function Unit({
     <div
       ref={setNodeRef}
       style={style}
-      className="step relative flex cursor-default  select-none flex-col items-center justify-center text-black outline outline-[1px] outline-gray-300 hover:cursor-pointer"
+      className="step relative flex cursor-default  select-none flex-col items-center justify-center text-black outline outline-[1px] outline-black hover:cursor-pointer"
       {...(dragAllowed ? { ...attributes } : null)}
       {...(dragAllowed ? { ...listeners } : null)}
     >
-      <div className="flex w-full items-center justify-center bg-gray-200">
+      <div className="flex w-full items-center justify-center bg-[#22201E]">
         {index != null ? Number(index + 1) : null}
       </div>
-      <div className="main-element flex h-full w-full flex-col justify-between  border-t-[1px] border-gray-300 bg-gray-50 pb-2 pl-2 pr-2  shadow-md">
+      <div className="main-element flex h-full w-full flex-col justify-between  border-t-[1px] border-black bg-[#50422e] pb-2 pl-2 pr-2  shadow-md">
         <div className="flex flex-col items-center justify-center ">
-          <div className="h-full w-full border-b-[1px] pb-2">
+          <div className="h-full w-full border-b-[1px] border-black pb-2">
             <img className="  pl-2 pr-2  " src={image} alt="" />
           </div>
           <div className="flex w-full flex-col text-xs ">
@@ -157,7 +157,7 @@ function Unit({
           </div>
         </div>
 
-        <div className="mt-auto flex  flex-col gap-2 border-t-[1px] pt-2">
+        <div className="mt-auto flex  flex-col gap-2 pt-2">
           <Input
             id={id}
             type="number"
