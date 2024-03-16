@@ -85,7 +85,7 @@ body {
   opacity: 1;
   background-image: radial-gradient(
     #22201e 0.9500000000000001px,
-    #000000 0.9500000000000001px
+    rgb(20, 20, 20) 0.9500000000000001px
   );
   background-size: 19px 19px;
 }
