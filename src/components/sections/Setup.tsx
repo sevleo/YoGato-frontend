@@ -32,38 +32,49 @@ function Setup({ flow, setFlow, setFlowState, aspectGroups }: SetupProps) {
   const seconds = duration % 60;
 
   return (
-    <div
-      className="builder ml-auto mr-auto flex w-full max-w-screen-2xl pt-[60px]"
-      // style={{ backgroundColor: "#22201E" }}
-    >
-      <button className="" onClick={handlePreviewButtonClick}>
-        Preview
-      </button>
-      <div className="flex flex-col items-start justify-center p-2 text-black">
-        <div>
-          <div className="flex flex-col items-start justify-center">
-            <p className=" font-bold">Duration</p>
-            {hours > 0 ? <p> - {hours} hours</p> : null}
-            {minutes > 0 ? <p> - {minutes} minutes</p> : null}
-            {seconds > 0 ? <p> - {seconds} seconds</p> : null}
-          </div>
-          <div className="flex flex-col items-start justify-center">
-            <p className=" font-bold">Poses</p>
-            <p> - {flow.units.length}</p>
-          </div>
-          <div className="flex flex-col items-start justify-center">
-            <p className=" font-bold">Unique poses</p>
-            <p> - {flow.uniqueAspects.length}</p>
+    <div className="builder ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
+      <div className="w-3/4">
+        <button className="" onClick={handlePreviewButtonClick}>
+          Preview
+        </button>
+        <div className="flex flex-col items-start justify-center p-2 text-black">
+          <div className="flex w-full flex-row items-start justify-center  gap-10 border-b-[0.5px] border-[#7D6A3E] pb-[10px]">
+            <div className="flex flex-col items-start justify-center">
+              <p className=" font-bold text-white">Duration</p>
+              {hours > 0 ? <p className="text-white">{hours} hours</p> : null}
+              {minutes > 0 ? (
+                <p className="text-white">{minutes} minutes</p>
+              ) : null}
+              {seconds > 0 ? (
+                <p className="text-white">{seconds} seconds</p>
+              ) : (
+                <p className="text-white">0 seconds</p>
+              )}
+            </div>
+            <div className="flex flex-col items-start justify-center">
+              <p className=" font-bold text-white">Poses</p>
+              <p className="text-white">{flow.units.length}</p>
+            </div>
+            <div className="flex flex-col items-start justify-center">
+              <p className=" font-bold text-white">Unique poses</p>
+              <p className="text-white">{flow.uniqueAspects.length}</p>
+            </div>
           </div>
         </div>
+        <div className="flex">
+          <Flow
+            flow={flow}
+            setFlow={setFlow}
+            setFlowState={setFlowState}
+          ></Flow>
+          <div className="h-3/4 w-[0.5px] self-center bg-neutral-300"></div>
+          <AspectCollection
+            aspectGroups={aspectGroups}
+            flow={flow}
+            setFlow={setFlow}
+          ></AspectCollection>
+        </div>
       </div>
-      <Flow flow={flow} setFlow={setFlow} setFlowState={setFlowState}></Flow>
-      <div className="h-3/4 w-[0.5px] self-center bg-neutral-300"></div>
-      <AspectCollection
-        aspectGroups={aspectGroups}
-        flow={flow}
-        setFlow={setFlow}
-      ></AspectCollection>
     </div>
   );
 }
