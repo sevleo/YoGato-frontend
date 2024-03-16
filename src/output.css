@@ -1068,6 +1068,14 @@ video {
   background-color: rgb(80 66 46 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#50422edc\] {
+  background-color: #50422edc;
+}
+
+.bg-\[\#50422ea7\] {
+  background-color: #50422ea7;
+}
+
 .p-0 {
   padding: 0px;
 }

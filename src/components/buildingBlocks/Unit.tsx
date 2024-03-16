@@ -1,5 +1,5 @@
 // React
-import { SetStateAction } from "react";
+import { SetStateAction, useState } from "react";
 import { Dispatch } from "react";
 
 // DndKit
@@ -91,6 +91,10 @@ function Unit({
     });
   }
 
+  const [showUnitClose, setShowUnitClose] = useState(false);
+
+  function handleOnHeaderHover() {}
+
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
       id: id,
@@ -133,21 +137,54 @@ function Unit({
     setDragAllowed(true);
   };
 
+  const enableUnitClose = () => {
+    setShowUnitClose(true);
+  };
+
+  const disableUnitClose = () => {
+    setShowUnitClose(false);
+  };
+
   return (
     <div
+      onMouseEnter={enableUnitClose}
+      onMouseLeave={disableUnitClose}
       ref={setNodeRef}
       style={style}
       className="step relative flex cursor-default  select-none flex-col items-center justify-center text-black outline outline-[1px] outline-black hover:cursor-pointer"
       {...(dragAllowed ? { ...attributes } : null)}
       {...(dragAllowed ? { ...listeners } : null)}
     >
-      <div className="flex w-full items-center justify-center bg-[#22201E]">
-        {index != null ? Number(index + 1) : null}
+      <div
+        className="flex h-full w-full items-center justify-center bg-[#50422E]"
+        onMouseLeave={enableDrag}
+      >
+        {!showUnitClose ? (
+          <div className="flex w-full items-center justify-center bg-[#50422E]">
+            {index != null ? Number(index + 1) : null}
+          </div>
+        ) : (
+          <div className="  hover:cursor-pointer" onClick={onUnitCloseClick}>
+            <p
+              onMouseEnter={disableDrag}
+              onMouseLeave={enableDrag}
+              className=" mb-0 flex select-none items-center justify-center"
+            >
+              <span className="material-symbols-outlined">close</span>
+            </p>
+          </div>
+        )}
       </div>
-      <div className="main-element flex h-full w-full flex-col justify-between  border-t-[1px] border-black bg-[#50422e] pb-2 pl-2 pr-2  shadow-md">
+
+      <div className="main-element flex h-full w-full flex-col justify-between  border-t-[1px] border-black bg-[#7D6A3E] pb-2 pl-2 pr-2  shadow-md">
         <div className="flex flex-col items-center justify-center ">
           <div className="h-full w-full border-b-[1px] border-black pb-2">
-            <img className="  pl-2 pr-2  " src={image} alt="" />
+            <img
+              className="  pl-2 pr-2  "
+              src={image}
+              alt=""
+              draggable="false"
+            />
           </div>
           <div className="flex w-full flex-col text-xs ">
             <p className="mt-2 w-full text-left text-sm font-semibold">
@@ -166,16 +203,6 @@ function Unit({
             onChange={handleLengthChange}
             setDragAllowed={setDragAllowed}
           />
-          <div
-            className="  hover:cursor-pointer"
-            onClick={onUnitCloseClick}
-            onMouseEnter={disableDrag}
-            onMouseLeave={enableDrag}
-          >
-            <p className=" mb-0 select-none border-[1px] border-red-300 bg-red-100 text-xs hover:border-red-400 hover:bg-red-200 active:border-red-500 active:bg-red-300">
-              Remove
-            </p>
-          </div>
         </div>
       </div>
     </div>
