@@ -151,7 +151,7 @@ function Unit({
       onMouseLeave={disableUnitClose}
       ref={setNodeRef}
       style={style}
-      className="unit step relative flex cursor-default select-none  flex-col items-center justify-center text-black shadow-md hover:cursor-pointer"
+      className="unit step relative flex cursor-default select-none  flex-col items-center justify-center text-black shadow-md hover:cursor-pointer "
       {...(dragAllowed ? { ...attributes } : null)}
       {...(dragAllowed ? { ...listeners } : null)}
     >
