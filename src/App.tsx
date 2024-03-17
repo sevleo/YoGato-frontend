@@ -8,6 +8,7 @@ import { useState } from "react";
 
 function App() {
   const [isHamburgerMenu, setIsHamburgerMenu] = useState(true);
+  const [location, setLocation] = useState(null);
 
   const router = createBrowserRouter([
     {
@@ -16,6 +17,8 @@ function App() {
         <Home
           isHamburgerMenu={isHamburgerMenu}
           setIsHamburgerMenu={setIsHamburgerMenu}
+          location={location}
+          setLocation={setLocation}
         ></Home>
       ),
       errorElement: <ErrorPage></ErrorPage>,
@@ -26,6 +29,8 @@ function App() {
         <Builder
           isHamburgerMenu={isHamburgerMenu}
           setIsHamburgerMenu={setIsHamburgerMenu}
+          location={location}
+          setLocation={setLocation}
         ></Builder>
       ),
     },
@@ -35,6 +40,8 @@ function App() {
         <Experiment
           isHamburgerMenu={isHamburgerMenu}
           setIsHamburgerMenu={setIsHamburgerMenu}
+          location={location}
+          setLocation={setLocation}
         ></Experiment>
       ),
     },

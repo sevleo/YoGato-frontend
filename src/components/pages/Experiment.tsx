@@ -31,7 +31,12 @@ import { Item } from "../experiment/dnd/Item";
 
 import Header from "../sections/Header";
 
-function Experiment({ isHamburgerMenu, setIsHamburgerMenu }) {
+function Experiment({
+  isHamburgerMenu,
+  setIsHamburgerMenu,
+  location,
+  setLocation,
+}) {
   const [items1, setItems1] = useState([
     {
       id: uuidv4(),
@@ -190,6 +195,8 @@ function Experiment({ isHamburgerMenu, setIsHamburgerMenu }) {
       <Header
         isHamburgerMenu={isHamburgerMenu}
         setIsHamburgerMenu={setIsHamburgerMenu}
+        location={location}
+        setLocation={setLocation}
       />
 
       <DndContext

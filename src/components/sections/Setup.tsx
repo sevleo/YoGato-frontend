@@ -22,10 +22,6 @@ interface SetupProps {
 }
 
 function Setup({ flow, setFlow, setFlowState, aspectGroups }: SetupProps) {
-  function handlePreviewButtonClick() {
-    setFlowState("preview");
-  }
-
   const duration = flow.duration;
   const hours = Math.floor(duration / 3600);
   const minutes = Math.floor((duration % 3600) / 60);
@@ -34,9 +30,6 @@ function Setup({ flow, setFlow, setFlowState, aspectGroups }: SetupProps) {
   return (
     <div className="builder ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
       <div className="w-3/4">
-        <button className="" onClick={handlePreviewButtonClick}>
-          Preview
-        </button>
         <div className="flex flex-col items-start justify-center pb-2 pt-2 text-black">
           <div className="flex w-full flex-row items-start justify-center  gap-10 border-b-[0.5px] border-[#7D6A3E] pb-[10px]">
             <div className="flex flex-col items-start justify-center">

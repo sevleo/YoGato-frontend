@@ -3,7 +3,19 @@ import { useState, useEffect } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import "./Header.css";
 
-export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
+export default function Header({
+  isHamburgerMenu,
+  setIsHamburgerMenu,
+  setFlowState,
+  location,
+  setLocation,
+}) {
+  function handlePreviewButtonClick() {
+    if (setFlowState) {
+      setFlowState("preview");
+    }
+  }
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setOpen] = useState(false);
 
@@ -11,12 +23,10 @@ export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
   const [showSlideAnimation, setShowSlideAnimation] = useState(true);
 
   function enableHamburger() {
-    console.log("enable");
     setIsHamburgerMenu(true);
   }
 
   function disableHamburger() {
-    console.log("disable");
     setIsHamburgerMenu(false);
   }
 
@@ -46,10 +56,10 @@ export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
   return (
     <>
       <header
-        className={`} relative z-50 flex h-[60px] w-full  items-center justify-center border-neutral-300 bg-black text-white`}
+        className={` relative z-50 flex h-[60px] w-full  items-center justify-center border-neutral-300 bg-black text-white`}
       >
         <div
-          className={`relative flex h-[60px] w-full max-w-screen-2xl flex-row items-center justify-start gap-10 p-2 pl-5 text-black ${isScrolled ? "blur-sm" : ""} shadow-lg`}
+          className={`relative flex h-[60px] w-full max-w-screen-2xl flex-row items-center justify-start gap-10 pl-5 pr-5 text-black ${isScrolled ? "blur-sm" : ""} shadow-lg`}
         >
           <HeaderDetails
             enableHamburger={enableHamburger}
@@ -60,6 +70,9 @@ export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
             showCollapsibleMenu={isScrolled ? false : true}
             showSlideAnimation={showSlideAnimation}
             setShowSlideAnimation={setShowSlideAnimation}
+            handlePreviewButtonClick={handlePreviewButtonClick}
+            location={location}
+            setLocation={setLocation}
           ></HeaderDetails>
         </div>
         <div
@@ -79,6 +92,9 @@ export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
             showCollapsibleMenu={isScrolled ? true : false}
             showSlideAnimation={showSlideAnimation}
             setShowSlideAnimation={setShowSlideAnimation}
+            handlePreviewButtonClick={handlePreviewButtonClick}
+            location={location}
+            setLocation={setLocation}
           ></HeaderDetails>
         </div>
       </header>
@@ -95,78 +111,113 @@ function HeaderDetails({
   showCollapsibleMenu,
   showSlideAnimation,
   setShowSlideAnimation,
+  handlePreviewButtonClick,
+  location,
+  setLocation,
 }) {
   // Disables burger slide animation to avoid showing animation when switching between headers views
   function handleAnimationEnd() {
     setShowSlideAnimation(false);
   }
 
-  return isHamburgerMenu ? (
+  function handleHomeLink() {
+    enableHamburger();
+    setLocation("home");
+  }
+
+  function handleFlowBuilderLink() {
+    disableHamburger();
+    setLocation("flow-builder");
+  }
+
+  function handleExperimentLink() {
+    enableHamburger();
+    setLocation("experiment");
+  }
+
+  return (
     <>
-      <Link
-        className="text-white hover:text-white hover:underline"
-        to="/"
-        onClick={enableHamburger}
-      >
-        Home
-      </Link>
+      {isHamburgerMenu ? (
+        <>
+          <Link
+            className="text-white hover:text-white hover:underline"
+            to="/"
+            onClick={handleHomeLink}
+          >
+            Home
+          </Link>
 
-      <Link
-        className=" text-white hover:text-white hover:underline"
-        to="/builder"
-        onClick={disableHamburger}
-      >
-        Flow Builder
-      </Link>
+          <Link
+            className=" text-white hover:text-white hover:underline"
+            to="/builder"
+            onClick={handleFlowBuilderLink}
+          >
+            Flow Builder
+          </Link>
 
-      <Link
-        className="text-white hover:text-white hover:underline"
-        to="/experiment"
-        onClick={enableHamburger}
-      >
-        Experiment...
-      </Link>
-    </>
-  ) : (
-    <>
-      <div className="">
-        <Hamburger toggled={isOpen} toggle={setOpen} color="white"></Hamburger>
-        {isOpen && showCollapsibleMenu ? (
-          <>
-            <div
-              className={`absolute top-[60px] flex flex-col items-start`}
-              style={{
-                animation: `${showSlideAnimation ? "slideIn" : null} 0.3s forwards`,
-              }}
-              onAnimationEnd={handleAnimationEnd}
-            >
-              <Link
-                onClick={enableHamburger}
-                className="text-white hover:text-white hover:underline"
-                to="/"
-              >
-                Home
-              </Link>
+          <Link
+            className="text-white hover:text-white hover:underline"
+            to="/experiment"
+            onClick={handleExperimentLink}
+          >
+            Experiment...
+          </Link>
+        </>
+      ) : (
+        <>
+          <div className="flex h-full w-[100px] items-center justify-start">
+            <Hamburger
+              toggled={isOpen}
+              toggle={setOpen}
+              color="white"
+            ></Hamburger>
+            {isOpen && showCollapsibleMenu ? (
+              <>
+                <div
+                  className={`absolute top-[60px] flex flex-col items-start`}
+                  style={{
+                    animation: `${showSlideAnimation ? "slideIn" : null} 0.3s forwards`,
+                  }}
+                  onAnimationEnd={handleAnimationEnd}
+                >
+                  <Link
+                    onClick={handleHomeLink}
+                    className="text-white hover:text-white hover:underline"
+                    to="/"
+                  >
+                    Home
+                  </Link>
 
-              <Link
-                onClick={disableHamburger}
-                className=" text-white hover:text-white hover:underline"
-                to="/builder"
-              >
-                Flow Builder
-              </Link>
+                  <Link
+                    onClick={handleFlowBuilderLink}
+                    className=" text-white hover:text-white hover:underline"
+                    to="/builder"
+                  >
+                    Flow Builder
+                  </Link>
 
-              <Link
-                onClick={enableHamburger}
-                className="text-white hover:text-white hover:underline"
-                to="/experiment"
-              >
-                Experiment...
-              </Link>
-            </div>
-          </>
-        ) : null}
-      </div>
+                  <Link
+                    onClick={handleExperimentLink}
+                    className="text-white hover:text-white hover:underline"
+                    to="/experiment"
+                  >
+                    Experiment...
+                  </Link>
+                </div>
+              </>
+            ) : null}
+          </div>
+        </>
+      )}
+      {location === "flow-builder" ? (
+        <div className="flex h-full w-full items-center justify-center">
+          <button className="" onClick={handlePreviewButtonClick}>
+            Preview
+          </button>
+        </div>
+      ) : null}
+
+      <div className="flex h-full w-[100px] items-center justify-start"></div>
     </>
   );
 }
