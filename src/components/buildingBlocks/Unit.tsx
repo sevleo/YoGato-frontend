@@ -48,7 +48,7 @@ interface UnitProps {
 function Unit({
   id,
   name,
-  sanskritName,
+  // sanskritName,
   duration,
   // announcement,
   index,
@@ -92,8 +92,6 @@ function Unit({
   }
 
   const [showUnitClose, setShowUnitClose] = useState(false);
-
-  function handleOnHeaderHover() {}
 
   const { attributes, listeners, setNodeRef, transform, transition } =
     useSortable({
