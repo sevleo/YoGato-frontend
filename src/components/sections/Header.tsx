@@ -1,8 +1,20 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Divide as Hamburger } from "hamburger-react";
 
-export default function Header() {
+export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+
+  function enableHamburger() {
+    console.log("enable");
+    setIsHamburgerMenu(true);
+  }
+
+  function disableHamburger() {
+    console.log("disable");
+    setIsHamburgerMenu(false);
+  }
 
   useEffect(() => {
     function handleScroll() {
@@ -28,7 +40,13 @@ export default function Header() {
         <div
           className={`flex h-[60px] w-full max-w-screen-2xl flex-row items-center justify-start gap-10 p-2 pl-5 text-black ${isScrolled ? "blur-sm" : ""} shadow-lg`}
         >
-          <HeaderDetails></HeaderDetails>
+          <HeaderDetails
+            enableHamburger={enableHamburger}
+            disableHamburger={disableHamburger}
+            isHamburgerMenu={isHamburgerMenu}
+            isOpen={isOpen}
+            setOpen={setOpen}
+          ></HeaderDetails>
         </div>
         <div
           className={`fixed z-10 flex h-[60px] w-full max-w-screen-2xl flex-row items-center justify-start gap-10 bg-black p-2 pl-5 shadow-lg`}
@@ -38,31 +56,55 @@ export default function Header() {
             transition: "top 0.3s ease-in-out",
           }}
         >
-          <HeaderDetails></HeaderDetails>
+          <HeaderDetails
+            enableHamburger={enableHamburger}
+            disableHamburger={disableHamburger}
+            isHamburgerMenu={isHamburgerMenu}
+            isOpen={isOpen}
+            setOpen={setOpen}
+          ></HeaderDetails>
         </div>
       </header>
     </>
   );
 }
 
-function HeaderDetails() {
-  return (
+function HeaderDetails({
+  enableHamburger,
+  disableHamburger,
+  isHamburgerMenu,
+  isOpen,
+  setOpen,
+}) {
+  return isHamburgerMenu ? (
     <>
-      <Link className="text-white hover:text-white hover:underline" to="/">
-        Home
-      </Link>
-      <Link
-        className=" text-white hover:text-white hover:underline"
-        to="/builder"
-      >
-        Flow Builder
-      </Link>
-      <Link
-        className="text-white hover:text-white hover:underline"
-        to="/experiment"
-      >
-        Experiment...
-      </Link>
+      <div onClick={enableHamburger}>
+        <Link className="text-white hover:text-white hover:underline" to="/">
+          Home
+        </Link>
+      </div>
+
+      <div onClick={disableHamburger}>
+        <Link
+          className=" text-white hover:text-white hover:underline"
+          to="/builder"
+        >
+          Flow Builder
+        </Link>
+      </div>
+
+      <div onClick={enableHamburger}>
+        <Link
+          className="text-white hover:text-white hover:underline"
+          to="/experiment"
+        >
+          Experiment...
+        </Link>
+      </div>
     </>
+  ) : (
+    <div>
+      <Hamburger toggled={isOpen} toggle={setOpen} color="white"></Hamburger>
+    </div>
   );
 }

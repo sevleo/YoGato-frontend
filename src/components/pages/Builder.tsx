@@ -11,7 +11,7 @@ import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import categories from "../../db/categories.json";
 import { FlowType } from "../sections/Flow";
 
-function Builder() {
+function Builder({ isHamburgerMenu, setIsHamburgerMenu }) {
   const aspectGroups: AspectGroupType[] = categories;
 
   const defaultFlow: FlowType = {
@@ -38,7 +38,10 @@ function Builder() {
 
   return (
     <>
-      <Header />
+      <Header
+        isHamburgerMenu={isHamburgerMenu}
+        setIsHamburgerMenu={setIsHamburgerMenu}
+      />
       {flowState === "setup" && (
         <Setup
           flow={flow}

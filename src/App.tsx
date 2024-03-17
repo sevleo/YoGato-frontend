@@ -4,21 +4,39 @@ import Home from "./components/pages/Home";
 import Builder from "./components/pages/Builder";
 import ErrorPage from "./components/pages/ErrorPage";
 import Experiment from "./components/pages/Experiment";
+import { useState } from "react";
 
 function App() {
+  const [isHamburgerMenu, setIsHamburgerMenu] = useState(false);
+
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Home></Home>,
+      element: (
+        <Home
+          isHamburgerMenu={isHamburgerMenu}
+          setIsHamburgerMenu={setIsHamburgerMenu}
+        ></Home>
+      ),
       errorElement: <ErrorPage></ErrorPage>,
     },
     {
       path: "/builder",
-      element: <Builder></Builder>,
+      element: (
+        <Builder
+          isHamburgerMenu={isHamburgerMenu}
+          setIsHamburgerMenu={setIsHamburgerMenu}
+        ></Builder>
+      ),
     },
     {
       path: "/experiment",
-      element: <Experiment></Experiment>,
+      element: (
+        <Experiment
+          isHamburgerMenu={isHamburgerMenu}
+          setIsHamburgerMenu={setIsHamburgerMenu}
+        ></Experiment>
+      ),
     },
   ]);
 
