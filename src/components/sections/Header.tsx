@@ -103,29 +103,29 @@ function HeaderDetails({
 
   return isHamburgerMenu ? (
     <>
-      <div onClick={enableHamburger}>
-        <Link className="text-white hover:text-white hover:underline" to="/">
-          Home
-        </Link>
-      </div>
+      <Link
+        className="text-white hover:text-white hover:underline"
+        to="/"
+        onClick={enableHamburger}
+      >
+        Home
+      </Link>
 
-      <div onClick={disableHamburger}>
-        <Link
-          className=" text-white hover:text-white hover:underline"
-          to="/builder"
-        >
-          Flow Builder
-        </Link>
-      </div>
+      <Link
+        className=" text-white hover:text-white hover:underline"
+        to="/builder"
+        onClick={disableHamburger}
+      >
+        Flow Builder
+      </Link>
 
-      <div onClick={enableHamburger}>
-        <Link
-          className="text-white hover:text-white hover:underline"
-          to="/experiment"
-        >
-          Experiment...
-        </Link>
-      </div>
+      <Link
+        className="text-white hover:text-white hover:underline"
+        to="/experiment"
+        onClick={enableHamburger}
+      >
+        Experiment...
+      </Link>
     </>
   ) : (
     <>
@@ -140,32 +140,29 @@ function HeaderDetails({
               }}
               onAnimationEnd={handleAnimationEnd}
             >
-              <div onClick={enableHamburger}>
-                <Link
-                  className="text-white hover:text-white hover:underline"
-                  to="/"
-                >
-                  Home
-                </Link>
-              </div>
+              <Link
+                onClick={enableHamburger}
+                className="text-white hover:text-white hover:underline"
+                to="/"
+              >
+                Home
+              </Link>
 
-              <div onClick={disableHamburger}>
-                <Link
-                  className=" text-white hover:text-white hover:underline"
-                  to="/builder"
-                >
-                  Flow Builder
-                </Link>
-              </div>
+              <Link
+                onClick={disableHamburger}
+                className=" text-white hover:text-white hover:underline"
+                to="/builder"
+              >
+                Flow Builder
+              </Link>
 
-              <div onClick={enableHamburger}>
-                <Link
-                  className="text-white hover:text-white hover:underline"
-                  to="/experiment"
-                >
-                  Experiment...
-                </Link>
-              </div>
+              <Link
+                onClick={enableHamburger}
+                className="text-white hover:text-white hover:underline"
+                to="/experiment"
+              >
+                Experiment...
+              </Link>
             </div>
           </>
         ) : null}
