@@ -85,7 +85,7 @@ export default function Header({
           ></HeaderDetails>
         </div>
         <div
-          className={`fixed z-10 flex h-[60px] w-full max-w-screen-2xl flex-row items-center justify-start gap-10 bg-black p-2 pl-5 shadow-lg`}
+          className={`fixed z-10 flex h-[60px] w-full max-w-screen-2xl flex-row items-center justify-start gap-10 bg-black pl-5 pr-5 shadow-lg`}
           style={{
             background: "rgba(34, 32, 30, 0.9)",
             top: isScrolled ? "0px" : "-60px",
@@ -234,7 +234,10 @@ function HeaderDetails({
       )}
       {location === "flow-builder" ? (
         <div className="flex h-full w-full items-center justify-center">
-          <button className="" onClick={handlePreviewButtonClick}>
+          <button
+            className="h-full rounded-none border-0 border-t-[10px] bg-[#838a0093] text-white hover:border-t-[10px]"
+            onClick={handlePreviewButtonClick}
+          >
             Preview
           </button>
         </div>
