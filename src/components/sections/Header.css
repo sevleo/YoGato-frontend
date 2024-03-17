@@ -1,0 +1,8 @@
+@keyframes slideIn {
+  from {
+    left: -100px;
+  }
+  to {
+    left: 20px;
+  }
+}

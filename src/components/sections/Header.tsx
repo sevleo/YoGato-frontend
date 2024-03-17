@@ -1,10 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Divide as Hamburger } from "hamburger-react";
+import "./Header.css";
 
 export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setOpen] = useState(false);
+
+  // Controls when to show hamburger menu slide animation
+  const [showSlideAnimation, setShowSlideAnimation] = useState(true);
 
   function enableHamburger() {
     console.log("enable");
@@ -32,6 +36,13 @@ export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
     };
   }, []);
 
+  // Enables hamburger slide animation
+  useEffect(() => {
+    if (!isOpen) {
+      setShowSlideAnimation(true);
+    }
+  }, [isOpen]);
+
   return (
     <>
       <header
@@ -47,6 +58,8 @@ export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
             isOpen={isOpen}
             setOpen={setOpen}
             showCollapsibleMenu={isScrolled ? false : true}
+            showSlideAnimation={showSlideAnimation}
+            setShowSlideAnimation={setShowSlideAnimation}
           ></HeaderDetails>
         </div>
         <div
@@ -63,8 +76,9 @@ export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
             isHamburgerMenu={isHamburgerMenu}
             isOpen={isOpen}
             setOpen={setOpen}
-            isScrolled={isScrolled}
             showCollapsibleMenu={isScrolled ? true : false}
+            showSlideAnimation={showSlideAnimation}
+            setShowSlideAnimation={setShowSlideAnimation}
           ></HeaderDetails>
         </div>
       </header>
@@ -79,7 +93,14 @@ function HeaderDetails({
   isOpen,
   setOpen,
   showCollapsibleMenu,
+  showSlideAnimation,
+  setShowSlideAnimation,
 }) {
+  // Disables burger slide animation to avoid showing animation when switching between headers views
+  function handleAnimationEnd() {
+    setShowSlideAnimation(false);
+  }
+
   return isHamburgerMenu ? (
     <>
       <div onClick={enableHamburger}>
@@ -108,21 +129,45 @@ function HeaderDetails({
     </>
   ) : (
     <>
-      <div className="absolute top-0">
-        <div className="flex h-[60px] items-center justify-center">
-          {" "}
-          <Hamburger
-            toggled={isOpen}
-            toggle={setOpen}
-            color="white"
-          ></Hamburger>
-        </div>
+      <div className="">
+        <Hamburger toggled={isOpen} toggle={setOpen} color="white"></Hamburger>
         {isOpen && showCollapsibleMenu ? (
-          <div>
-            <div>Item 1</div>
-            <div>Item 1</div>
-            <div>Item 1</div>
-          </div>
+          <>
+            <div
+              className={`absolute top-[60px] flex flex-col items-start`}
+              style={{
+                animation: `${showSlideAnimation ? "slideIn" : null} 0.3s forwards`,
+              }}
+              onAnimationEnd={handleAnimationEnd}
+            >
+              <div onClick={enableHamburger}>
+                <Link
+                  className="text-white hover:text-white hover:underline"
+                  to="/"
+                >
+                  Home
+                </Link>
+              </div>
+
+              <div onClick={disableHamburger}>
+                <Link
+                  className=" text-white hover:text-white hover:underline"
+                  to="/builder"
+                >
+                  Flow Builder
+                </Link>
+              </div>
+
+              <div onClick={enableHamburger}>
+                <Link
+                  className="text-white hover:text-white hover:underline"
+                  to="/experiment"
+                >
+                  Experiment...
+                </Link>
+              </div>
+            </div>
+          </>
         ) : null}
       </div>
     </>
