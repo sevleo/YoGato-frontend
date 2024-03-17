@@ -38,7 +38,7 @@ export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
         className={`} relative z-50 flex h-[60px] w-full  items-center justify-center border-neutral-300 bg-black text-white`}
       >
         <div
-          className={`flex h-[60px] w-full max-w-screen-2xl flex-row items-center justify-start gap-10 p-2 pl-5 text-black ${isScrolled ? "blur-sm" : ""} shadow-lg`}
+          className={`relative flex h-[60px] w-full max-w-screen-2xl flex-row items-center justify-start gap-10 p-2 pl-5 text-black ${isScrolled ? "blur-sm" : ""} shadow-lg`}
         >
           <HeaderDetails
             enableHamburger={enableHamburger}
@@ -46,6 +46,7 @@ export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
             isHamburgerMenu={isHamburgerMenu}
             isOpen={isOpen}
             setOpen={setOpen}
+            showCollapsibleMenu={isScrolled ? false : true}
           ></HeaderDetails>
         </div>
         <div
@@ -62,6 +63,8 @@ export default function Header({ isHamburgerMenu, setIsHamburgerMenu }) {
             isHamburgerMenu={isHamburgerMenu}
             isOpen={isOpen}
             setOpen={setOpen}
+            isScrolled={isScrolled}
+            showCollapsibleMenu={isScrolled ? true : false}
           ></HeaderDetails>
         </div>
       </header>
@@ -75,6 +78,7 @@ function HeaderDetails({
   isHamburgerMenu,
   isOpen,
   setOpen,
+  showCollapsibleMenu,
 }) {
   return isHamburgerMenu ? (
     <>
@@ -103,8 +107,24 @@ function HeaderDetails({
       </div>
     </>
   ) : (
-    <div>
-      <Hamburger toggled={isOpen} toggle={setOpen} color="white"></Hamburger>
-    </div>
+    <>
+      <div className="absolute top-0">
+        <div className="flex h-[60px] items-center justify-center">
+          {" "}
+          <Hamburger
+            toggled={isOpen}
+            toggle={setOpen}
+            color="white"
+          ></Hamburger>
+        </div>
+        {isOpen && showCollapsibleMenu ? (
+          <div>
+            <div>Item 1</div>
+            <div>Item 1</div>
+            <div>Item 1</div>
+          </div>
+        ) : null}
+      </div>
+    </>
   );
 }

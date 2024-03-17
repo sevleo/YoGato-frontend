@@ -7,7 +7,7 @@ import Experiment from "./components/pages/Experiment";
 import { useState } from "react";
 
 function App() {
-  const [isHamburgerMenu, setIsHamburgerMenu] = useState(false);
+  const [isHamburgerMenu, setIsHamburgerMenu] = useState(true);
 
   const router = createBrowserRouter([
     {
