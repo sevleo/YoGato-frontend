@@ -1,5 +1,6 @@
 // React
 import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 // Components
 import Header from "../sections/Header";
@@ -11,12 +12,19 @@ import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import categories from "../../db/categories.json";
 import { FlowType } from "../sections/Flow";
 
+interface BuilderProps {
+  isHamburgerMenu: boolean;
+  setIsHamburgerMenu: Dispatch<SetStateAction<boolean>>;
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+}
+
 function Builder({
   isHamburgerMenu,
   setIsHamburgerMenu,
   location,
   setLocation,
-}) {
+}: BuilderProps) {
   const aspectGroups: AspectGroupType[] = categories;
 
   const defaultFlow: FlowType = {

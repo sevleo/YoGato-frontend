@@ -75,16 +75,14 @@ function Preview({ flow, setFlowState }: PreviewProps) {
       percentCounter = setInterval(() => {
         setFlowPercent((flowPercent) => {
           const increment = 100 / (flow.duration * 100);
-          let newFlowPercent: number;
-          newFlowPercent = Math.min(flowPercent + increment, 100);
+          const newFlowPercent: number = Math.min(flowPercent + increment, 100);
           //   console.log(newFlowPercent);
           return newFlowPercent;
         });
 
         setUnitPercent((unitPercent) => {
           const increment = 100 / (flow.units[currentUnitIndex].duration * 100);
-          let newUnitPercent: number;
-          newUnitPercent = Math.min(unitPercent + increment, 100);
+          const newUnitPercent: number = Math.min(unitPercent + increment, 100);
           console.log(newUnitPercent);
           return newUnitPercent;
         });

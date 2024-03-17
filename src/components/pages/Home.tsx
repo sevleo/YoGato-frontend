@@ -1,6 +1,19 @@
 import Header from "../sections/Header";
+import { Dispatch, SetStateAction } from "react";
 
-function Home({ isHamburgerMenu, setIsHamburgerMenu, location, setLocation }) {
+interface HomeProps {
+  isHamburgerMenu: boolean;
+  setIsHamburgerMenu: Dispatch<SetStateAction<boolean>>;
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+}
+
+function Home({
+  isHamburgerMenu,
+  setIsHamburgerMenu,
+  location,
+  setLocation,
+}: HomeProps) {
   return (
     <>
       <Header
@@ -8,10 +21,9 @@ function Home({ isHamburgerMenu, setIsHamburgerMenu, location, setLocation }) {
         setIsHamburgerMenu={setIsHamburgerMenu}
         location={location}
         setLocation={setLocation}
+        setFlowState={null}
       />
-
-      <div className="pt-[60px] text-black">Welcome to YoGato</div>
-
+      <div className="pt-[60px] text-white">Welcome to YoGato</div>
       <br />
       <br />
       <br />

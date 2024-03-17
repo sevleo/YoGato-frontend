@@ -17,11 +17,11 @@ interface SetupProps {
       }[];
     }>
   >;
-  setFlowState: Dispatch<SetStateAction<string>>;
+  setFlowState: Dispatch<SetStateAction<string>> | undefined;
   aspectGroups: AspectGroupType[];
 }
 
-function Setup({ flow, setFlow, setFlowState, aspectGroups }: SetupProps) {
+function Setup({ flow, setFlow, aspectGroups }: SetupProps) {
   const duration = flow.duration;
   const hours = Math.floor(duration / 3600);
   const minutes = Math.floor((duration % 3600) / 60);
@@ -61,11 +61,7 @@ function Setup({ flow, setFlow, setFlowState, aspectGroups }: SetupProps) {
           </div>
         </div>
         <div className="flex gap-10 pt-2">
-          <Flow
-            flow={flow}
-            setFlow={setFlow}
-            setFlowState={setFlowState}
-          ></Flow>
+          <Flow flow={flow} setFlow={setFlow}></Flow>
           <AspectCollection
             aspectGroups={aspectGroups}
             flow={flow}

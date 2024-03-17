@@ -7,8 +7,8 @@ import Experiment from "./components/pages/Experiment";
 import { useState } from "react";
 
 function App() {
-  const [isHamburgerMenu, setIsHamburgerMenu] = useState(true);
-  const [location, setLocation] = useState(null);
+  const [isHamburgerMenu, setIsHamburgerMenu] = useState<boolean>(true);
+  const [location, setLocation] = useState<string>("");
 
   const router = createBrowserRouter([
     {

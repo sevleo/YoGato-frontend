@@ -2,14 +2,23 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import "./Header.css";
+import { Dispatch, SetStateAction } from "react";
+
+interface HeaderProps {
+  isHamburgerMenu: boolean;
+  setIsHamburgerMenu: Dispatch<SetStateAction<boolean>>;
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+  setFlowState: Dispatch<SetStateAction<string>> | null;
+}
 
 export default function Header({
   isHamburgerMenu,
   setIsHamburgerMenu,
-  setFlowState,
   location,
   setLocation,
-}) {
+  setFlowState,
+}: HeaderProps) {
   function handlePreviewButtonClick() {
     if (setFlowState) {
       setFlowState("preview");
@@ -102,6 +111,20 @@ export default function Header({
   );
 }
 
+interface HeaderDetailsProps {
+  enableHamburger: () => void;
+  disableHamburger: () => void;
+  isHamburgerMenu: boolean;
+  isOpen: boolean;
+  setOpen: Dispatch<SetStateAction<boolean>>;
+  showCollapsibleMenu: boolean;
+  showSlideAnimation: boolean;
+  setShowSlideAnimation: Dispatch<SetStateAction<boolean>>;
+  handlePreviewButtonClick: () => void;
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+}
+
 function HeaderDetails({
   enableHamburger,
   disableHamburger,
@@ -114,7 +137,7 @@ function HeaderDetails({
   handlePreviewButtonClick,
   location,
   setLocation,
-}) {
+}: HeaderDetailsProps) {
   // Disables burger slide animation to avoid showing animation when switching between headers views
   function handleAnimationEnd() {
     setShowSlideAnimation(false);
