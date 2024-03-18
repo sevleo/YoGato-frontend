@@ -57,6 +57,7 @@ function Builder({
         setFlowState={setFlowState}
         location={location}
         setLocation={setLocation}
+        setFlow={setFlow}
       />
       {flowState === "setup" && (
         <Setup
