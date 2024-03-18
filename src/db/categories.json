@@ -1,12 +1,12 @@
 [
   {
     "id": 1,
-    "category_name": "Core Yoga",
-    "category_description": "Engage your abdominal muscles with core yoga poses that build a strong and stable center like Boat Pose, Dolphin Pose and Side Plank Pose.",
+    "category_name": "Core",
+    "category_description": "Engage your abdominal muscles with Core poses that build a strong and stable center like Boat Pose, Dolphin Pose and Side Plank Pose.",
     "poses": [
       {
         "id": 1,
-        "category_name": "Core Yoga",
+        "category_name": "Core",
         "english_name": "Boat",
         "sanskrit_name_adapted": "Navasana",
         "sanskrit_name": "Nāvāsana",
@@ -20,7 +20,7 @@
       },
       {
         "id": 2,
-        "category_name": "Core Yoga",
+        "category_name": "Core",
         "english_name": "Half Boat",
         "sanskrit_name_adapted": "Ardha Navasana",
         "sanskrit_name": "Ardha Nāvāsana",
@@ -34,7 +34,7 @@
       },
       {
         "id": 7,
-        "category_name": "Core Yoga",
+        "category_name": "Core",
         "english_name": "Cat",
         "sanskrit_name_adapted": "Marjaryasana",
         "sanskrit_name": "Marjaryāsana",
@@ -48,7 +48,7 @@
       },
       {
         "id": 9,
-        "category_name": "Core Yoga",
+        "category_name": "Core",
         "english_name": "Chair",
         "sanskrit_name_adapted": "Utkatasana",
         "sanskrit_name": "Utkaṭāsana",
@@ -62,7 +62,7 @@
       },
       {
         "id": 13,
-        "category_name": "Core Yoga",
+        "category_name": "Core",
         "english_name": "Crow",
         "sanskrit_name_adapted": "Bakasana",
         "sanskrit_name": "Bakāsana",
@@ -76,7 +76,7 @@
       },
       {
         "id": 14,
-        "category_name": "Core Yoga",
+        "category_name": "Core",
         "english_name": "Dolphin",
         "sanskrit_name_adapted": "Ardha Pincha Mayurasana",
         "sanskrit_name": "Pīñcha Mayūrāsana",
@@ -90,7 +90,7 @@
       },
       {
         "id": 26,
-        "category_name": "Core Yoga",
+        "category_name": "Core",
         "english_name": "Plank",
         "sanskrit_name_adapted": "Phalakasana",
         "sanskrit_name": "Phalakāsana",
@@ -104,7 +104,7 @@
       },
       {
         "id": 34,
-        "category_name": "Core Yoga",
+        "category_name": "Core",
         "english_name": "Side Plank",
         "sanskrit_name_adapted": "Vasisthasana",
         "sanskrit_name": "Vasiṣṭhāsana",
@@ -118,7 +118,7 @@
       },
       {
         "id": 4,
-        "category_name": "Core Yoga",
+        "category_name": "Core",
         "english_name": "Bridge",
         "sanskrit_name_adapted": "Setu Bandha Sarvangasana",
         "sanskrit_name": "Setu Bandha Sarvāṅgāsana",
@@ -134,12 +134,12 @@
   },
   {
     "id": 2,
-    "category_name": "Seated Yoga",
-    "category_description": " Yoga practice with seated poses that help you find better alignment, increase your flexibility, and relieve lower back pain and discomfort. Tone the belly, massage your internal organs, and relieve lower back pain in these seated yoga poses. ",
+    "category_name": "Seated",
+    "category_description": " Yoga practice with seated poses that help you find better alignment, increase your flexibility, and relieve lower back pain and discomfort. Tone the belly, massage your internal organs, and relieve lower back pain in these Seated poses. ",
     "poses": [
       {
         "id": 1,
-        "category_name": "Seated Yoga",
+        "category_name": "Seated",
         "english_name": "Boat",
         "sanskrit_name_adapted": "Navasana",
         "sanskrit_name": "Nāvāsana",
@@ -153,7 +153,7 @@
       },
       {
         "id": 2,
-        "category_name": "Seated Yoga",
+        "category_name": "Seated",
         "english_name": "Half Boat",
         "sanskrit_name_adapted": "Ardha Navasana",
         "sanskrit_name": "Ardha Nāvāsana",
@@ -167,7 +167,7 @@
       },
       {
         "id": 5,
-        "category_name": "Seated Yoga",
+        "category_name": "Seated",
         "english_name": "Butterfly",
         "sanskrit_name_adapted": "Baddha Konasana",
         "sanskrit_name": "Baddha Koṇāsana",
@@ -181,7 +181,7 @@
       },
       {
         "id": 30,
-        "category_name": "Seated Yoga",
+        "category_name": "Seated",
         "english_name": "Seated Forward Bend",
         "sanskrit_name_adapted": "Paschimottanasana",
         "sanskrit_name": "Paśchimottānāsana",
@@ -195,7 +195,7 @@
       },
       {
         "id": 31,
-        "category_name": "Seated Yoga",
+        "category_name": "Seated",
         "english_name": "Lotus",
         "sanskrit_name_adapted": "Padmasana",
         "sanskrit_name": "Padmāsana",
@@ -209,7 +209,7 @@
       },
       {
         "id": 32,
-        "category_name": "Seated Yoga",
+        "category_name": "Seated",
         "english_name": "Seated Twist",
         "sanskrit_name_adapted": "Ardha Matsyendrasana",
         "sanskrit_name": "Ardhā Matsyendrāsana",
@@ -223,7 +223,7 @@
       },
       {
         "id": 36,
-        "category_name": "Seated Yoga",
+        "category_name": "Seated",
         "english_name": "Splits",
         "sanskrit_name_adapted": "Hanumanasana",
         "sanskrit_name": "Hanumānāsana",
@@ -237,7 +237,7 @@
       },
       {
         "id": 40,
-        "category_name": "Seated Yoga",
+        "category_name": "Seated",
         "english_name": "Side Splits",
         "sanskrit_name_adapted": "Upavistha Konasana",
         "sanskrit_name": "Upaviṣṭha Koṇāsana",
@@ -253,12 +253,12 @@
   },
   {
     "id": 3,
-    "category_name": "Strengthening Yoga",
-    "category_description": "Work and tone your entire body with strengthening yoga poses like Chair Pose, Warrior I Pose and Extended Side Angle Pose.",
+    "category_name": "Strengthening",
+    "category_description": "Work and tone your entire body with Strengthening poses like Chair Pose, Warrior I Pose and Extended Side Angle Pose.",
     "poses": [
       {
         "id": 1,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Boat",
         "sanskrit_name_adapted": "Navasana",
         "sanskrit_name": "Nāvāsana",
@@ -272,7 +272,7 @@
       },
       {
         "id": 2,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Half Boat",
         "sanskrit_name_adapted": "Ardha Navasana",
         "sanskrit_name": "Ardha Nāvāsana",
@@ -286,7 +286,7 @@
       },
       {
         "id": 9,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Chair",
         "sanskrit_name_adapted": "Utkatasana",
         "sanskrit_name": "Utkaṭāsana",
@@ -300,7 +300,7 @@
       },
       {
         "id": 14,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Dolphin",
         "sanskrit_name_adapted": "Ardha Pincha Mayurasana",
         "sanskrit_name": "Pīñcha Mayūrāsana",
@@ -314,7 +314,7 @@
       },
       {
         "id": 15,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Downward-Facing Dog",
         "sanskrit_name_adapted": "Adho Mukha Svanasana",
         "sanskrit_name": "Parivṛtta Adho Mukha Śvānāsana",
@@ -328,7 +328,7 @@
       },
       {
         "id": 18,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Extended Side Angle",
         "sanskrit_name_adapted": "Utthita Parsvakonasana",
         "sanskrit_name": "Utthita Pārśvakoṇāsana",
@@ -342,7 +342,7 @@
       },
       {
         "id": 19,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Forearm Stand",
         "sanskrit_name_adapted": "Pincha Mayurasana",
         "sanskrit_name": "Pīñcha Mayūrāsana",
@@ -356,7 +356,7 @@
       },
       {
         "id": 22,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Handstand",
         "sanskrit_name_adapted": "Adho Mukha Vrksasana",
         "sanskrit_name": "Adho Mukha Vṛkṣāsana",
@@ -370,7 +370,7 @@
       },
       {
         "id": 26,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Plank",
         "sanskrit_name_adapted": "Phalakasana",
         "sanskrit_name": "Phalakāsana",
@@ -384,7 +384,7 @@
       },
       {
         "id": 28,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Pyramid",
         "sanskrit_name_adapted": "Parsvottanasana",
         "sanskrit_name": "Pārśvottānāsana",
@@ -398,7 +398,7 @@
       },
       {
         "id": 42,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Triangle",
         "sanskrit_name_adapted": "Trikonasana",
         "sanskrit_name": "Trikoṇāsana",
@@ -412,7 +412,7 @@
       },
       {
         "id": 44,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Warrior One",
         "sanskrit_name_adapted": "Virabhadrasana One",
         "sanskrit_name": "Vīrabhadrāsana I",
@@ -426,7 +426,7 @@
       },
       {
         "id": 45,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Warrior Two",
         "sanskrit_name_adapted": "Virabhadrasana Two",
         "sanskrit_name": "Vīrabhadrāsana II",
@@ -440,7 +440,7 @@
       },
       {
         "id": 46,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Warrior Three",
         "sanskrit_name_adapted": "Virabhadrasana Three",
         "sanskrit_name": "Vīrabhadrāsana III",
@@ -454,7 +454,7 @@
       },
       {
         "id": 47,
-        "category_name": "Strengthening Yoga",
+        "category_name": "Strengthening",
         "english_name": "Wheel",
         "sanskrit_name_adapted": "Urdhva Dhanurasana",
         "sanskrit_name": "Ūrdhva Dhanurāsana",
@@ -470,12 +470,12 @@
   },
   {
     "id": 4,
-    "category_name": "Chest Opening Yoga",
-    "category_description": "Open your heart and shoulders in chest opening yoga poses like Camel Pose, Fish Pose and Wild Thing.",
+    "category_name": "Chest Opening",
+    "category_description": "Open your heart and shoulders in Chest Opening poses like Camel Pose, Fish Pose and Wild Thing.",
     "poses": [
       {
         "id": 3,
-        "category_name": "Chest Opening Yoga",
+        "category_name": "Chest Opening",
         "english_name": "Bow",
         "sanskrit_name_adapted": "Dhanurasana",
         "sanskrit_name": "Dhanurāsana",
@@ -489,7 +489,7 @@
       },
       {
         "id": 6,
-        "category_name": "Chest Opening Yoga",
+        "category_name": "Chest Opening",
         "english_name": "Camel",
         "sanskrit_name_adapted": "Ustrasana",
         "sanskrit_name": "Uṣṭrāsana",
@@ -503,7 +503,7 @@
       },
       {
         "id": 8,
-        "category_name": "Chest Opening Yoga",
+        "category_name": "Chest Opening",
         "english_name": "Cow",
         "sanskrit_name_adapted": "Bitilasana",
         "sanskrit_name": "Bitilāsana",
@@ -517,7 +517,7 @@
       },
       {
         "id": 35,
-        "category_name": "Chest Opening Yoga",
+        "category_name": "Chest Opening",
         "english_name": "Sphinx",
         "sanskrit_name_adapted": "Salamba Bhujangasana",
         "sanskrit_name": "Sālamba Bhujaṅgāsana",
@@ -531,7 +531,7 @@
       },
       {
         "id": 43,
-        "category_name": "Chest Opening Yoga",
+        "category_name": "Chest Opening",
         "english_name": "Upward-Facing Dog",
         "sanskrit_name_adapted": "Urdhva Mukha Svanasana",
         "sanskrit_name": "Ūrdhva Mukha Śvānāsana",
@@ -545,7 +545,7 @@
       },
       {
         "id": 47,
-        "category_name": "Chest Opening Yoga",
+        "category_name": "Chest Opening",
         "english_name": "Wheel",
         "sanskrit_name_adapted": "Urdhva Dhanurasana",
         "sanskrit_name": "Ūrdhva Dhanurāsana",
@@ -559,7 +559,7 @@
       },
       {
         "id": 48,
-        "category_name": "Chest Opening Yoga",
+        "category_name": "Chest Opening",
         "english_name": "Wild Thing",
         "sanskrit_name_adapted": "Camatkarasana",
         "sanskrit_name": "Camatkārāsana",
@@ -575,12 +575,12 @@
   },
   {
     "id": 5,
-    "category_name": "Backbend Yoga",
+    "category_name": "Backbend",
     "category_description": "Discover the powerful effects of yoga backbends with step-by-step instructions, sequences, and expert advice to keep your practice pain-free.",
     "poses": [
       {
         "id": 3,
-        "category_name": "Backbend Yoga",
+        "category_name": "Backbend",
         "english_name": "Bow",
         "sanskrit_name_adapted": "Dhanurasana",
         "sanskrit_name": "Dhanurāsana",
@@ -594,7 +594,7 @@
       },
       {
         "id": 4,
-        "category_name": "Backbend Yoga",
+        "category_name": "Backbend",
         "english_name": "Bridge",
         "sanskrit_name_adapted": "Setu Bandha Sarvangasana",
         "sanskrit_name": "Setu Bandha Sarvāṅgāsana",
@@ -608,7 +608,7 @@
       },
       {
         "id": 6,
-        "category_name": "Backbend Yoga",
+        "category_name": "Backbend",
         "english_name": "Camel",
         "sanskrit_name_adapted": "Ustrasana",
         "sanskrit_name": "Uṣṭrāsana",
@@ -622,7 +622,7 @@
       },
       {
         "id": 8,
-        "category_name": "Backbend Yoga",
+        "category_name": "Backbend",
         "english_name": "Cow",
         "sanskrit_name_adapted": "Bitilasana",
         "sanskrit_name": "Bitilāsana",
@@ -636,7 +636,7 @@
       },
       {
         "id": 24,
-        "category_name": "Backbend Yoga",
+        "category_name": "Backbend",
         "english_name": "Pigeon",
         "sanskrit_name_adapted": "Supta Kapotasana",
         "sanskrit_name": "Supta Kapotāsana",
@@ -650,7 +650,7 @@
       },
       {
         "id": 25,
-        "category_name": "Backbend Yoga",
+        "category_name": "Backbend",
         "english_name": "King Pigeon",
         "sanskrit_name_adapted": "Eka Pada Rajakapotasana",
         "sanskrit_name": "Eka Pāda Rājakapotāsana",
@@ -664,7 +664,7 @@
       },
       {
         "id": 35,
-        "category_name": "Backbend Yoga",
+        "category_name": "Backbend",
         "english_name": "Sphinx",
         "sanskrit_name_adapted": "Salamba Bhujangasana",
         "sanskrit_name": "Sālamba Bhujaṅgāsana",
@@ -678,7 +678,7 @@
       },
       {
         "id": 43,
-        "category_name": "Backbend Yoga",
+        "category_name": "Backbend",
         "english_name": "Upward-Facing Dog",
         "sanskrit_name_adapted": "Urdhva Mukha Svanasana",
         "sanskrit_name": "Ūrdhva Mukha Śvānāsana",
@@ -692,7 +692,7 @@
       },
       {
         "id": 47,
-        "category_name": "Backbend Yoga",
+        "category_name": "Backbend",
         "english_name": "Wheel",
         "sanskrit_name_adapted": "Urdhva Dhanurasana",
         "sanskrit_name": "Ūrdhva Dhanurāsana",
@@ -708,12 +708,12 @@
   },
   {
     "id": 6,
-    "category_name": "Forward Bend Yoga",
-    "category_description": "Learn how to work stiff muscles safely, promote lower-body flexibility, and find correct alignment with forward bend yoga poses.",
+    "category_name": "Forward Bend",
+    "category_description": "Learn how to work stiff muscles safely, promote lower-body flexibility, and find correct alignment with Forward Bend poses.",
     "poses": [
       {
         "id": 5,
-        "category_name": "Forward Bend Yoga",
+        "category_name": "Forward Bend",
         "english_name": "Butterfly",
         "sanskrit_name_adapted": "Baddha Konasana",
         "sanskrit_name": "Baddha Koṇāsana",
@@ -727,7 +727,7 @@
       },
       {
         "id": 10,
-        "category_name": "Forward Bend Yoga",
+        "category_name": "Forward Bend",
         "english_name": "Child's Pose",
         "sanskrit_name_adapted": "Balasana",
         "sanskrit_name": "Balāsana",
@@ -741,7 +741,7 @@
       },
       {
         "id": 15,
-        "category_name": "Forward Bend Yoga",
+        "category_name": "Forward Bend",
         "english_name": "Downward-Facing Dog",
         "sanskrit_name_adapted": "Adho Mukha Svanasana",
         "sanskrit_name": "Parivṛtta Adho Mukha Śvānāsana",
@@ -755,7 +755,7 @@
       },
       {
         "id": 20,
-        "category_name": "Forward Bend Yoga",
+        "category_name": "Forward Bend",
         "english_name": "Forward Bend with Shoulder Opener",
         "sanskrit_name_adapted": "Uttanasana",
         "sanskrit_name": "Uttānāsana",
@@ -769,7 +769,7 @@
       },
       {
         "id": 28,
-        "category_name": "Forward Bend Yoga",
+        "category_name": "Forward Bend",
         "english_name": "Pyramid",
         "sanskrit_name_adapted": "Parsvottanasana",
         "sanskrit_name": "Pārśvottānāsana",
@@ -783,7 +783,7 @@
       },
       {
         "id": 30,
-        "category_name": "Forward Bend Yoga",
+        "category_name": "Forward Bend",
         "english_name": "Seated Forward Bend",
         "sanskrit_name_adapted": "Paschimottanasana",
         "sanskrit_name": "Paśchimottānāsana",
@@ -797,7 +797,7 @@
       },
       {
         "id": 38,
-        "category_name": "Forward Bend Yoga",
+        "category_name": "Forward Bend",
         "english_name": "Standing Forward Bend",
         "sanskrit_name_adapted": "Uttanasana",
         "sanskrit_name": "Uttānāsana",
@@ -811,7 +811,7 @@
       },
       {
         "id": 40,
-        "category_name": "Forward Bend Yoga",
+        "category_name": "Forward Bend",
         "english_name": "Side Splits",
         "sanskrit_name_adapted": "Upavistha Konasana",
         "sanskrit_name": "Upaviṣṭha Koṇāsana",
@@ -827,12 +827,12 @@
   },
   {
     "id": 7,
-    "category_name": "Hip Opening Yoga",
+    "category_name": "Hip Opening",
     "category_description": "Loosen tight hips, improve your range of motion and circulation, alleviate back pain and more in these hip-opening yoga poses.",
     "poses": [
       {
         "id": 5,
-        "category_name": "Hip Opening Yoga",
+        "category_name": "Hip Opening",
         "english_name": "Butterfly",
         "sanskrit_name_adapted": "Baddha Konasana",
         "sanskrit_name": "Baddha Koṇāsana",
@@ -846,7 +846,7 @@
       },
       {
         "id": 10,
-        "category_name": "Hip Opening Yoga",
+        "category_name": "Hip Opening",
         "english_name": "Child's Pose",
         "sanskrit_name_adapted": "Balasana",
         "sanskrit_name": "Balāsana",
@@ -860,7 +860,7 @@
       },
       {
         "id": 16,
-        "category_name": "Hip Opening Yoga",
+        "category_name": "Hip Opening",
         "english_name": "Eagle",
         "sanskrit_name_adapted": "Garudasana",
         "sanskrit_name": "Garuḍāsana",
@@ -874,7 +874,7 @@
       },
       {
         "id": 17,
-        "category_name": "Hip Opening Yoga",
+        "category_name": "Hip Opening",
         "english_name": "Extended Hand to Toe",
         "sanskrit_name_adapted": "Utthita Hasta Padangusthasana",
         "sanskrit_name": "Utthita Hasta Pādāṅguṣṭhāsana",
@@ -888,7 +888,7 @@
       },
       {
         "id": 25,
-        "category_name": "Hip Opening Yoga",
+        "category_name": "Hip Opening",
         "english_name": "King Pigeon",
         "sanskrit_name_adapted": "Eka Pada Rajakapotasana",
         "sanskrit_name": "Eka Pāda Rājakapotāsana",
@@ -902,7 +902,7 @@
       },
       {
         "id": 32,
-        "category_name": "Hip Opening Yoga",
+        "category_name": "Hip Opening",
         "english_name": "Seated Twist",
         "sanskrit_name_adapted": "Ardha Matsyendrasana",
         "sanskrit_name": "Ardhā Matsyendrāsana",
@@ -916,7 +916,7 @@
       },
       {
         "id": 40,
-        "category_name": "Hip Opening Yoga",
+        "category_name": "Hip Opening",
         "english_name": "Side Splits",
         "sanskrit_name_adapted": "Upavistha Konasana",
         "sanskrit_name": "Upaviṣṭha Koṇāsana",
@@ -932,12 +932,12 @@
   },
   {
     "id": 8,
-    "category_name": "Standing Yoga",
+    "category_name": "Standing",
     "category_description": "Develop strength and stability in your standing poses, and feel the benefits throughout your practice. Build strength and set the foundation for a safe yoga practice. ",
     "poses": [
       {
         "id": 9,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Chair",
         "sanskrit_name_adapted": "Utkatasana",
         "sanskrit_name": "Utkaṭāsana",
@@ -951,7 +951,7 @@
       },
       {
         "id": 12,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Crescent Lunge",
         "sanskrit_name_adapted": "Alanasana",
         "sanskrit_name": "Ashta Chandrāsana",
@@ -965,7 +965,7 @@
       },
       {
         "id": 14,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Dolphin",
         "sanskrit_name_adapted": "Ardha Pincha Mayurasana",
         "sanskrit_name": "Pīñcha Mayūrāsana",
@@ -979,7 +979,7 @@
       },
       {
         "id": 15,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Downward-Facing Dog",
         "sanskrit_name_adapted": "Adho Mukha Svanasana",
         "sanskrit_name": "Parivṛtta Adho Mukha Śvānāsana",
@@ -993,7 +993,7 @@
       },
       {
         "id": 16,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Eagle",
         "sanskrit_name_adapted": "Garudasana",
         "sanskrit_name": "Garuḍāsana",
@@ -1007,7 +1007,7 @@
       },
       {
         "id": 17,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Extended Hand to Toe",
         "sanskrit_name_adapted": "Utthita Hasta Padangusthasana",
         "sanskrit_name": "Utthita Hasta Pādāṅguṣṭhāsana",
@@ -1021,7 +1021,7 @@
       },
       {
         "id": 18,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Extended Side Angle",
         "sanskrit_name_adapted": "Utthita Parsvakonasana",
         "sanskrit_name": "Utthita Pārśvakoṇāsana",
@@ -1035,7 +1035,7 @@
       },
       {
         "id": 21,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Half-Moon",
         "sanskrit_name_adapted": "Ardha Chandrasana",
         "sanskrit_name": "Ardha Chandrāsana",
@@ -1049,7 +1049,7 @@
       },
       {
         "id": 22,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Handstand",
         "sanskrit_name_adapted": "Adho Mukha Vrksasana",
         "sanskrit_name": "Adho Mukha Vṛkṣāsana",
@@ -1063,7 +1063,7 @@
       },
       {
         "id": 23,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Low Lunge",
         "sanskrit_name_adapted": "Anjaneyasana",
         "sanskrit_name": "Aṅjaneyāsana",
@@ -1077,7 +1077,7 @@
       },
       {
         "id": 28,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Pyramid",
         "sanskrit_name_adapted": "Parsvottanasana",
         "sanskrit_name": "Pārśvottānāsana",
@@ -1091,7 +1091,7 @@
       },
       {
         "id": 29,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Reverse Warrior",
         "sanskrit_name_adapted": "Parsva Virabhadrasana",
         "sanskrit_name": "Pārśva Vīrabhadrāsana",
@@ -1105,7 +1105,7 @@
       },
       {
         "id": 37,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Garland Pose",
         "sanskrit_name_adapted": "Malasana",
         "sanskrit_name": "Mālāsana",
@@ -1120,7 +1120,7 @@
       {
         "id": 39,
         "english_name": "Mountain Pose",
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "sanskrit_name_adapted": "Tadasana",
         "sanskrit_name": "Tādāsana",
         "translation_name": "tāda = mountain, āsana = pose",
@@ -1133,7 +1133,7 @@
       },
       {
         "id": 41,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Tree",
         "sanskrit_name_adapted": "Vrksasana",
         "sanskrit_name": "Vṛkṣāsana",
@@ -1147,7 +1147,7 @@
       },
       {
         "id": 42,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Triangle",
         "sanskrit_name_adapted": "Trikonasana",
         "sanskrit_name": "Trikoṇāsana",
@@ -1161,7 +1161,7 @@
       },
       {
         "id": 44,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Warrior One",
         "sanskrit_name_adapted": "Virabhadrasana One",
         "sanskrit_name": "Vīrabhadrāsana I",
@@ -1175,7 +1175,7 @@
       },
       {
         "id": 45,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Warrior Two",
         "sanskrit_name_adapted": "Virabhadrasana Two",
         "sanskrit_name": "Vīrabhadrāsana II",
@@ -1189,7 +1189,7 @@
       },
       {
         "id": 46,
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "english_name": "Warrior Three",
         "sanskrit_name_adapted": "Virabhadrasana Three",
         "sanskrit_name": "Vīrabhadrāsana III",
@@ -1205,12 +1205,12 @@
   },
   {
     "id": 9,
-    "category_name": "Restorative Yoga",
-    "category_description": "Restorative yoga focuses on winding down after a long day and relaxing your mind. At its core, this style focuses on body relaxation. You spend more time in fewer postures throughout the class. Many of the poses are modified to be easier and more relaxing. Restorative yoga also helps to cleanse and free your mind.",
+    "category_name": "Restorative",
+    "category_description": "Restorative focuses on winding down after a long day and relaxing your mind. At its core, this style focuses on body relaxation. You spend more time in fewer postures throughout the class. Many of the poses are modified to be easier and more relaxing. Restorative also helps to cleanse and free your mind.",
     "poses": [
       {
         "id": 10,
-        "category_name": "Restorative Yoga",
+        "category_name": "Restorative",
         "english_name": "Child's Pose",
         "sanskrit_name_adapted": "Balasana",
         "sanskrit_name": "Balāsana",
@@ -1224,7 +1224,7 @@
       },
       {
         "id": 11,
-        "category_name": "Restorative Yoga",
+        "category_name": "Restorative",
         "english_name": "Corpse",
         "sanskrit_name_adapted": "Sivasana",
         "sanskrit_name": "Śavāsana",
@@ -1240,12 +1240,12 @@
   },
   {
     "id": 10,
-    "category_name": "Arm Balance Yoga",
-    "category_description": "Move past fear, build better balance, and strengthen your body with arm balance yoga poses like Crane Pose, Plank Pose, Firefly Pose amd more.",
+    "category_name": "Arm Balance",
+    "category_description": "Move past fear, build better balance, and strengthen your body with Arm Balance poses like Crane Pose, Plank Pose, Firefly Pose amd more.",
     "poses": [
       {
         "id": 13,
-        "category_name": "Arm Balance Yoga",
+        "category_name": "Arm Balance",
         "english_name": "Crow",
         "sanskrit_name_adapted": "Bakasana",
         "sanskrit_name": "Bakāsana",
@@ -1259,7 +1259,7 @@
       },
       {
         "id": 26,
-        "category_name": "Arm Balance Yoga",
+        "category_name": "Arm Balance",
         "english_name": "Plank",
         "sanskrit_name_adapted": "Phalakasana",
         "sanskrit_name": "Phalakāsana",
@@ -1273,7 +1273,7 @@
       },
       {
         "id": 34,
-        "category_name": "Arm Balance Yoga",
+        "category_name": "Arm Balance",
         "english_name": "Side Plank",
         "sanskrit_name_adapted": "Vasisthasana",
         "sanskrit_name": "Vasiṣṭhāsana",
@@ -1287,7 +1287,7 @@
       },
       {
         "id": 48,
-        "category_name": "Arm Balance Yoga",
+        "category_name": "Arm Balance",
         "english_name": "Wild Thing",
         "sanskrit_name_adapted": "Camatkarasana",
         "sanskrit_name": "Camatkārāsana",
@@ -1303,12 +1303,12 @@
   },
   {
     "id": 11,
-    "category_name": "Balancing Yoga",
-    "category_description": "Build a strong foundation for your asana practice with these balancing yoga poses. Get step-by-step instructions and reap the benefits.",
+    "category_name": "Balancing",
+    "category_description": "Build a strong foundation for your asana practice with these Balancing poses. Get step-by-step instructions and reap the benefits.",
     "poses": [
       {
         "id": 16,
-        "category_name": "Balancing Yoga",
+        "category_name": "Balancing",
         "english_name": "Eagle",
         "sanskrit_name_adapted": "Garudasana",
         "sanskrit_name": "Garuḍāsana",
@@ -1322,7 +1322,7 @@
       },
       {
         "id": 17,
-        "category_name": "Balancing Yoga",
+        "category_name": "Balancing",
         "english_name": "Extended Hand to Toe",
         "sanskrit_name_adapted": "Utthita Hasta Padangusthasana",
         "sanskrit_name": "Utthita Hasta Pādāṅguṣṭhāsana",
@@ -1336,7 +1336,7 @@
       },
       {
         "id": 21,
-        "category_name": "Balancing Yoga",
+        "category_name": "Balancing",
         "english_name": "Half-Moon",
         "sanskrit_name_adapted": "Ardha Chandrasana",
         "sanskrit_name": "Ardha Chandrāsana",
@@ -1350,7 +1350,7 @@
       },
       {
         "id": 22,
-        "category_name": "Balancing Yoga",
+        "category_name": "Balancing",
         "english_name": "Handstand",
         "sanskrit_name_adapted": "Adho Mukha Vrksasana",
         "sanskrit_name": "Adho Mukha Vṛkṣāsana",
@@ -1364,7 +1364,7 @@
       },
       {
         "id": 33,
-        "category_name": "Balancing Yoga",
+        "category_name": "Balancing",
         "english_name": "Shoulder Stand",
         "sanskrit_name_adapted": "Salamba Sarvangasana",
         "sanskrit_name": "Sālamba Sarvāṅgāsana",
@@ -1378,7 +1378,7 @@
       },
       {
         "id": 34,
-        "category_name": "Balancing Yoga",
+        "category_name": "Balancing",
         "english_name": "Side Plank",
         "sanskrit_name_adapted": "Vasisthasana",
         "sanskrit_name": "Vasiṣṭhāsana",
@@ -1393,7 +1393,7 @@
       {
         "id": 39,
         "english_name": "Mountain Pose",
-        "category_name": "Standing Yoga",
+        "category_name": "Standing",
         "sanskrit_name_adapted": "Tadasana",
         "sanskrit_name": "Tādāsana",
         "translation_name": "tāda = mountain, āsana = pose",
@@ -1406,7 +1406,7 @@
       },
       {
         "id": 41,
-        "category_name": "Balancing Yoga",
+        "category_name": "Balancing",
         "english_name": "Tree",
         "sanskrit_name_adapted": "Vrksasana",
         "sanskrit_name": "Vṛkṣāsana",
@@ -1420,7 +1420,7 @@
       },
       {
         "id": 46,
-        "category_name": "Balancing Yoga",
+        "category_name": "Balancing",
         "english_name": "Warrior Three",
         "sanskrit_name_adapted": "Virabhadrasana Three",
         "sanskrit_name": "Vīrabhadrāsana III",
@@ -1436,12 +1436,12 @@
   },
   {
     "id": 12,
-    "category_name": "Inversion Yoga",
-    "category_description": "Master inversions—overcome fear and discover how to defy gravity with these step-by-step instructions. Learn how to prepare for and stay safe in inversion yoga poses.",
+    "category_name": "Inversion",
+    "category_description": "Master inversions—overcome fear and discover how to defy gravity with these step-by-step instructions. Learn how to prepare for and stay safe in Inversion poses.",
     "poses": [
       {
         "id": 19,
-        "category_name": "Inversion Yoga",
+        "category_name": "Inversion",
         "english_name": "Forearm Stand",
         "sanskrit_name_adapted": "Pincha Mayurasana",
         "sanskrit_name": "Pīñcha Mayūrāsana",
@@ -1455,7 +1455,7 @@
       },
       {
         "id": 27,
-        "category_name": "Inversion Yoga",
+        "category_name": "Inversion",
         "english_name": "Plow",
         "sanskrit_name_adapted": "Halasana",
         "sanskrit_name": "Halāsana",
@@ -1469,7 +1469,7 @@
       },
       {
         "id": 33,
-        "category_name": "Inversion Yoga",
+        "category_name": "Inversion",
         "english_name": "Shoulder Stand",
         "sanskrit_name_adapted": "Salamba Sarvangasana",
         "sanskrit_name": "Sālamba Sarvāṅgāsana",
