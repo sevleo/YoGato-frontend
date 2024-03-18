@@ -27,13 +27,13 @@ export default function AspectCollection({
   setFlow,
 }: AspectCollectionProps) {
   return (
-    <div className="flex  w-1/3 flex-col justify-start bg-[#ffffff18] pb-[40px] pl-[40px] pr-[40px]">
+    <div className="flex  w-1/3 flex-col justify-start bg-[#ffffff18]">
       {/* <div>
         <p className="text-black">Poses</p>
       </div> */}
       <div className="h-fit min-h-full w-full gap-5">
         {/* <div className=" border-[1px] border-solid border-neutral-200 p-5"> */}
-        <div className="accordion">
+        <div className="accordion w-full">
           {aspectGroups.map((aspectGroup) => (
             <AspectGroup
               key={aspectGroup.category_name}

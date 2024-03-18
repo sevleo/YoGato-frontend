@@ -12,7 +12,6 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Fade from "@mui/material/Fade";
 import { useState } from "react";
 
 export interface AspectGroupType {
@@ -46,25 +45,15 @@ function AspectGroup({
   uniqueAspects,
   setFlow,
 }: AspectGroupProps) {
-  const [expanded, setExpanded] = useState(false);
-
-  const handleExpansion = () => {
-    setExpanded((prevExpanded) => !prevExpanded);
-  };
   return (
     <>
       <Accordion
-        expanded={expanded}
-        onChange={handleExpansion}
-        slots={{ transition: Fade as AccordionSlots["transition"] }}
-        slotProps={{ transition: { timeout: 400 } }}
         sx={{
-          "& .MuiAccordion-region": { height: expanded ? "auto" : 0 },
-          "& .MuiAccordionDetails-root": {
-            display: expanded ? "block" : "none",
-          },
           borderRadius: "0px !important",
           border: "none",
+          // width: "100% !important",
+          backgroundColor: "transparent",
+          color: "white",
         }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
