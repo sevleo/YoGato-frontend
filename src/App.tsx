@@ -15,9 +15,9 @@ function App() {
       path: "/",
       element: (
         <Home
-          isHamburgerMenu={isHamburgerMenu}
+          isHamburgerMenu={true}
           setIsHamburgerMenu={setIsHamburgerMenu}
-          location={location}
+          location={"home"}
           setLocation={setLocation}
         ></Home>
       ),
@@ -27,9 +27,9 @@ function App() {
       path: "/builder",
       element: (
         <Builder
-          isHamburgerMenu={isHamburgerMenu}
+          isHamburgerMenu={false}
           setIsHamburgerMenu={setIsHamburgerMenu}
-          location={location}
+          location={"flow-builder"}
           setLocation={setLocation}
         ></Builder>
       ),
@@ -38,9 +38,9 @@ function App() {
       path: "/experiment",
       element: (
         <Experiment
-          isHamburgerMenu={isHamburgerMenu}
+          isHamburgerMenu={true}
           setIsHamburgerMenu={setIsHamburgerMenu}
-          location={location}
+          location={"experiment"}
           setLocation={setLocation}
         ></Experiment>
       ),

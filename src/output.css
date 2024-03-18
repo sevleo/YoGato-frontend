@@ -1187,6 +1187,11 @@ video {
   background-color: #bbd1be82;
 }
 
+.bg-\[\#545454\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(84 84 84 / var(--tw-bg-opacity));
+}
+
 .p-0 {
   padding: 0px;
 }
@@ -1338,6 +1343,10 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-\[\#ffffff88\] {
+  color: #ffffff88;
 }
 
 .opacity-0 {
@@ -1735,4 +1744,9 @@ button:focus-visible {
 
 .active\:bg-\[\#9b9b9b2a\]:active {
   background-color: #9b9b9b2a;
+}
+
+.active\:bg-\[\#143a1e\]:active {
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 58 30 / var(--tw-bg-opacity));
 }

@@ -19,6 +19,7 @@ export default function Header({
   setLocation,
   setFlowState,
   setFlow,
+  showPreview,
 }: HeaderProps) {
   function handlePreviewButtonClick() {
     if (setFlowState) {
@@ -84,6 +85,7 @@ export default function Header({
             location={location}
             setLocation={setLocation}
             setFlow={setFlow}
+            showPreview={showPreview}
           ></HeaderDetails>
         </div>
         <div
@@ -107,6 +109,7 @@ export default function Header({
             location={location}
             setLocation={setLocation}
             setFlow={setFlow}
+            showPreview={showPreview}
           ></HeaderDetails>
         </div>
       </header>
@@ -141,6 +144,7 @@ function HeaderDetails({
   location,
   setLocation,
   setFlow,
+  showPreview,
 }: HeaderDetailsProps) {
   // Disables burger slide animation to avoid showing animation when switching between headers views
   function handleAnimationEnd() {
@@ -250,8 +254,8 @@ function HeaderDetails({
       {location === "flow-builder" ? (
         <div className="flex h-full w-full items-center justify-center gap-3">
           <button
-            className=" h-full w-[100px] rounded-none border-0 border-b-[5px] border-t-[5px] bg-[#143a1e] text-white hover:border-t-[5px] hover:border-b-transparent hover:border-t-white hover:bg-[#143a1e] focus:outline-none active:bg-[#9b9b9b2a]"
-            onClick={handlePreviewButtonClick}
+            className={`h-full w-[100px] rounded-none border-0 border-b-[5px] border-t-[5px] ${showPreview ? "over:border-t-[5px] bg-[#143a1e] text-white hover:border-t-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-t-transparent"}  hover:border-b-transparent  focus:outline-none`}
+            onClick={showPreview ? handlePreviewButtonClick : null}
           >
             Preview
           </button>

@@ -58,6 +58,7 @@ function Builder({
         location={location}
         setLocation={setLocation}
         setFlow={setFlow}
+        showPreview={flow.units.length > 0 ? true : false}
       />
       {flowState === "setup" && (
         <Setup
