@@ -27,7 +27,7 @@ export default function AspectCollection({
   setFlow,
 }: AspectCollectionProps) {
   return (
-    <div className="flex  w-1/3 flex-col justify-start bg-[#ffffff18]">
+    <div className="flex w-1/3 flex-col justify-start">
       {/* <div>
         <p className="text-black">Poses</p>
       </div> */}

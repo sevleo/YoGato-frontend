@@ -71,13 +71,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #000000;
-  opacity: 1;
-  background-image: radial-gradient(
-    #22201e 0.9500000000000001px,
-    rgb(20, 20, 20) 0.9500000000000001px
-  );
-  background-size: 19px 19px;
+
   /* background-image: url(../src/assets/background_06.png);
   background-position: left top;
   background-size: auto;
@@ -93,6 +87,13 @@ body {
 }
 
 .builder {
+  background-color: #000000;
+  opacity: 1;
+  background-image: radial-gradient(
+    #22201e 0.9500000000000001px,
+    rgb(20, 20, 20) 0.9500000000000001px
+  );
+  background-size: 19px 19px;
 }
 
 h1 {

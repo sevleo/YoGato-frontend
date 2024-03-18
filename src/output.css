@@ -654,6 +654,10 @@ video {
   display: grid;
 }
 
+.h-3\/4 {
+  height: 75%;
+}
+
 .h-\[0\.5px\] {
   height: 0.5px;
 }
@@ -677,6 +681,10 @@ video {
 
 .h-full {
   height: 100%;
+}
+
+.max-h-\[30px\] {
+  max-height: 30px;
 }
 
 .min-h-80 {
@@ -766,7 +774,7 @@ video {
 }
 
 .grid-cols-canvas {
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
 }
 
 .grid-rows-aspects {
@@ -1101,11 +1109,6 @@ video {
   line-height: 2rem;
 }
 
-.text-sm {
-  font-size: 0.875rem;
-  line-height: 1.25rem;
-}
-
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
@@ -1281,13 +1284,6 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #000000;
-  opacity: 1;
-  background-image: radial-gradient(
-    #22201e 0.9500000000000001px,
-    rgb(20, 20, 20) 0.9500000000000001px
-  );
-  background-size: 19px 19px;
   /* background-image: url(../src/assets/background_06.png);
   background-position: left top;
   background-size: auto;
@@ -1303,6 +1299,13 @@ body {
 }
 
 .builder {
+  background-color: #000000;
+  opacity: 1;
+  background-image: radial-gradient(
+    #22201e 0.9500000000000001px,
+    rgb(20, 20, 20) 0.9500000000000001px
+  );
+  background-size: 19px 19px;
 }
 
 h1 {
@@ -1458,6 +1461,14 @@ button:focus-visible {
 .hover\:bg-\[\#AA954E\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(170 149 78 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-\[ffffff38\]:hover {
+  background-color: ffffff38;
+}
+
+.hover\:bg-\[\#ffffff38\]:hover {
+  background-color: #ffffff38;
 }
 
 .hover\:text-transparent:hover {

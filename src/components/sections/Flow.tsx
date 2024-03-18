@@ -101,7 +101,7 @@ function Flow({ flow, setFlow }: FlowProps) {
         onDragEnd={handleDragEnd}
         // modifiers={[restrictToVerticalAxis]}
       >
-        <div className="ltr grid h-fit min-h-[300px] bg-[#ffffff18] pb-[40px] pl-[40px] pr-[40px] pt-[40px]">
+        <div className="ltr grid h-fit min-h-[300px] bg-[#ffffff18] pb-[40px] pl-[40px] pr-[40px] pt-[40px] hover:bg-[#ffffff38]">
           <div className="droppable-area h-full min-h-full">
             {flow.units.length > 0 ? (
               <div className=" grid auto-rows-fr grid-cols-canvas gap-10">

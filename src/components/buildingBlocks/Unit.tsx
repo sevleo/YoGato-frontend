@@ -154,11 +154,11 @@ function Unit({
       {...(dragAllowed ? { ...listeners } : null)}
     >
       <div
-        className="flex h-full w-full items-center justify-center bg-[#50422E]"
+        className="flex max-h-[30px] w-full items-center justify-center bg-[#50422E]"
         onMouseLeave={enableDrag}
       >
         {!showUnitClose ? (
-          <div className="flex w-full items-center justify-center bg-[#50422E]">
+          <div className="flex  w-full items-center justify-center  bg-[#50422E]">
             {index != null ? Number(index + 1) : null}
           </div>
         ) : (
@@ -176,16 +176,16 @@ function Unit({
 
       <div className="main-element flex h-full w-full flex-col justify-between bg-[#7D6A3E] pb-2 pl-2 pr-2">
         <div className="flex flex-col items-center justify-center ">
-          <div className="h-full w-full border-b-[0.5px] border-[#22201E] pb-2">
+          <div className="flex h-full w-full items-center justify-center border-b-[0.5px] border-[#22201E] pb-2">
             <img
-              className="  pl-2 pr-2  "
+              className="  h-3/4 w-3/4 pl-2 pr-2   "
               src={image}
               alt=""
               draggable="false"
             />
           </div>
           <div className="flex w-full flex-col text-xs ">
-            <p className="mt-2 w-full text-left text-sm font-semibold">
+            <p className="text-xsm mt-2 w-full text-left font-semibold">
               {name}
             </p>
             {/* <p className="mb-2 w-full text-wrap text-left">{sanskritName}</p> */}

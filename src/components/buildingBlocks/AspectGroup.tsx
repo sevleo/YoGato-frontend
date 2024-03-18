@@ -52,11 +52,18 @@ function AspectGroup({
           borderRadius: "0px !important",
           border: "none",
           // width: "100% !important",
-          backgroundColor: "transparent",
+          backgroundColor: "#ffffff18",
           color: "white",
+          marginBottom: "3px",
+          "&:hover": {
+            backgroundColor: "#ffffff38",
+          },
         }}
       >
-        <AccordionSummary expandIcon={<ExpandMoreIcon />}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          sx={{ backgroundColor: "#ffffff18" }}
+        >
           <Typography>{category_name}</Typography>
         </AccordionSummary>
         <AccordionDetails>
