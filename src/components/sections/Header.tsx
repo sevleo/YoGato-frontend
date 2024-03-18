@@ -235,7 +235,7 @@ function HeaderDetails({
       {location === "flow-builder" ? (
         <div className="flex h-full w-full items-center justify-center">
           <button
-            className="h-full rounded-none border-0 border-t-[10px] bg-[#838a0093] text-white hover:border-t-[10px]"
+            className="h-full rounded-none border-0 border-b-[5px]  border-t-[5px] bg-[#143a1e] text-white hover:border-t-[5px] hover:border-b-transparent hover:border-t-white"
             onClick={handlePreviewButtonClick}
           >
             Preview

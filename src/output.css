@@ -962,6 +962,14 @@ video {
   border-top-width: 10px;
 }
 
+.border-b-\[5px\] {
+  border-bottom-width: 5px;
+}
+
+.border-t-\[5px\] {
+  border-top-width: 5px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -1099,6 +1107,52 @@ video {
 
 .bg-\[\#838a0093\] {
   background-color: #838a0093;
+}
+
+.bg-\[\#ffffff93\] {
+  background-color: #ffffff93;
+}
+
+.bg-\[\#00000093\] {
+  background-color: #00000093;
+}
+
+.bg-\[\#8a8a8a93\] {
+  background-color: #8a8a8a93;
+}
+
+.bg-\[\#8a8a8a4d\] {
+  background-color: #8a8a8a4d;
+}
+
+.bg-\[\#8a8a8a67\] {
+  background-color: #8a8a8a67;
+}
+
+.bg-\[\#82828267\] {
+  background-color: #82828267;
+}
+
+.bg-\[\#40a25a67\] {
+  background-color: #40a25a67;
+}
+
+.bg-\[\#47d16c67\] {
+  background-color: #47d16c67;
+}
+
+.bg-\[\#2e934967\] {
+  background-color: #2e934967;
+}
+
+.bg-\[\#2e9349\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(46 147 73 / var(--tw-bg-opacity));
+}
+
+.bg-\[\#143a1e\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(20 58 30 / var(--tw-bg-opacity));
 }
 
 .p-0 {
@@ -1549,6 +1603,28 @@ button:focus-visible {
   border-top-width: 10px;
 }
 
+.hover\:border-t-\[5px\]:hover {
+  border-top-width: 5px;
+}
+
+.hover\:border-white:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.hover\:border-t-white:hover {
+  --tw-border-opacity: 1;
+  border-top-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.hover\:border-t-transparent:hover {
+  border-top-color: transparent;
+}
+
+.hover\:border-b-transparent:hover {
+  border-bottom-color: transparent;
+}
+
 .hover\:bg-\[\#AA954E\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(170 149 78 / var(--tw-bg-opacity));
@@ -1571,6 +1647,11 @@ button:focus-visible {
   opacity: 1;
 }
 
+.hover\:outline-none:hover {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
+
 .focus\:z-20:focus {
   z-index: 20;
 }
@@ -1582,6 +1663,11 @@ button:focus-visible {
 
 .focus\:opacity-100:focus {
   opacity: 1;
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .active\:bg-\[\#D3C55E\]:active {
