@@ -63,6 +63,8 @@ function AspectGroup({
           "& .MuiAccordionDetails-root": {
             display: expanded ? "block" : "none",
           },
+          borderRadius: "0px !important",
+          border: "none",
         }}
       >
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
