@@ -37,3 +37,35 @@
   /* filter: blur(2px); */
   /* opacity: 0.5; */
 }
+
+.image-track {
+  /* display: flex;
+  gap: 4vmin;
+  width: 500px;
+
+  transform: translate(0%, 0%);
+  position: relative; */
+  /* overflow-x: hidden; */
+}
+
+.image-track > .image {
+  /* display: inline-block;
+  width: 100px;
+  height: 200px;
+  background-color: white;
+  color: black; */
+  /* left: 50%; */
+  /* transform: translate(50%, 0%); */
+}
+
+.center {
+  color: red;
+}
+
+.slick-slide > div {
+  /* margin: 0 10px; */
+}
+
+.slick-center > div > div {
+  /* background-color: red; */
+}

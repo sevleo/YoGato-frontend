@@ -1,10 +1,13 @@
 import { Dispatch, SetStateAction } from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import mp3Provider from "../../assets/mp3Provider";
 import { FlowType } from "./Flow";
 import "./Preview.css";
 import Wheel from "../buildingBlocks/Wheel";
 import CircularProgressBar from "../buildingBlocks/CircularProgressBar/CircularProgressBar";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
 
 interface PreviewProps {
   flow: FlowType;
@@ -26,6 +29,35 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   const minutes = Math.floor((duration % 3600) / 60);
   const seconds = duration % 60;
 
+  // Slider settings
+  const settings = {
+    // centerPadding: "50px",
+    // centerMode: true,
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    draggable: false,
+    fade: true,
+    // waitForAnimate: false,
+  };
+
+  const sliderRef = useRef<Slider>(null);
+
+  const next = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickNext();
+    }
+  };
+
+  const previous = () => {
+    if (sliderRef.current) {
+      sliderRef.current.slickPrev();
+    }
+  };
+
   // Flowing :)
   useEffect(() => {
     let secondCounter: number;
@@ -46,6 +78,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
               // }, 1000);
               audio.play();
               console.log(flow.units[currentUnitIndex + 1].announcement);
+              next();
             }
             setCurrentUnitIndex(currentUnitIndex + 1);
             setUpdateWheel(true);
@@ -65,6 +98,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             newFlowCount = 0;
             setStartFlow(false);
             console.log(`End of flow.`);
+            next();
           } else {
             newFlowCount = flowCount + 1;
           }
@@ -183,6 +217,38 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             </div>
           </div>
           <br />
+
+          <div className="image-track m-auto w-1/4">
+            <div className="mt-20">
+              <Slider {...settings} ref={sliderRef}>
+                {flow.units.map((unit) => {
+                  return (
+                    <div
+                      key={unit.id}
+                      className=" image h-[150px] bg-white text-black"
+                    >
+                      <div className="flex flex-col items-center justify-center">
+                        <img className="w-[100px]" src={unit.image} alt="" />
+                        <p className=" text-2xl"> {unit.name}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </Slider>
+            </div>
+          </div>
+
+          {/* 
+          <div>
+            {flow.units[currentUnitIndex]
+              ? flow.units[currentUnitIndex].name
+              : null}
+          </div>
+          <div>
+            {flow.units[currentUnitIndex + 1]
+              ? flow.units[currentUnitIndex + 1].name
+              : null}
+          </div> */}
 
           {/* <Wheel
             units={flow.units}
