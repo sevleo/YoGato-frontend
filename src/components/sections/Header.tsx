@@ -37,6 +37,8 @@ export default function Header({
   function handlePreviewButtonClick() {
     if (setFlowState) {
       setFlowState("preview");
+      setLocation("preview");
+      console.log(location);
     }
   }
 

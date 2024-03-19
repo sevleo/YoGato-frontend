@@ -17,7 +17,7 @@ function App() {
         <Home
           isHamburgerMenu={true}
           setIsHamburgerMenu={setIsHamburgerMenu}
-          location={"home"}
+          location={location === "" ? "Home" : location}
           setLocation={setLocation}
         ></Home>
       ),
@@ -29,7 +29,7 @@ function App() {
         <Builder
           isHamburgerMenu={false}
           setIsHamburgerMenu={setIsHamburgerMenu}
-          location={"flow-builder"}
+          location={location === "" ? "flow-builder" : location}
           setLocation={setLocation}
         ></Builder>
       ),
@@ -40,7 +40,7 @@ function App() {
         <Experiment
           isHamburgerMenu={true}
           setIsHamburgerMenu={setIsHamburgerMenu}
-          location={"experiment"}
+          location={location === "" ? "experiment" : location}
           setLocation={setLocation}
         ></Experiment>
       ),
