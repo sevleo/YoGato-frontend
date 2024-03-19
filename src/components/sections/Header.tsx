@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import "./Header.css";
 import { Dispatch, SetStateAction } from "react";
+import { UnitType } from "../buildingBlocks/Unit";
 
 interface HeaderProps {
   isHamburgerMenu: boolean;
@@ -10,6 +11,18 @@ interface HeaderProps {
   location: string;
   setLocation: Dispatch<SetStateAction<string>>;
   setFlowState: Dispatch<SetStateAction<string>> | null;
+  setFlow: Dispatch<
+    SetStateAction<{
+      flowName: string;
+      units: UnitType[];
+      duration: number;
+      uniqueAspects: {
+        id: number;
+        count: number;
+      }[];
+    }>
+  >;
+  showPreview: Dispatch<SetStateAction<string>>;
 }
 
 export default function Header({

@@ -662,6 +662,10 @@ video {
   height: 0.5px;
 }
 
+.h-\[100px\] {
+  height: 100px;
+}
+
 .h-\[16px\] {
   height: 16px;
 }
@@ -1461,10 +1465,6 @@ button:focus-visible {
 .hover\:bg-\[\#AA954E\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(170 149 78 / var(--tw-bg-opacity));
-}
-
-.hover\:bg-\[ffffff38\]:hover {
-  background-color: ffffff38;
 }
 
 .hover\:bg-\[\#ffffff38\]:hover {
