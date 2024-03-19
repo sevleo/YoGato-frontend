@@ -44,7 +44,11 @@ function AspectGroup({
   poses,
   uniqueAspects,
   setFlow,
+  aspectGroupCount,
+  aspectGroups,
 }: AspectGroupProps) {
+  const [groupCount, setGroupCount] = useState(0);
+
   return (
     <>
       <Accordion
@@ -64,11 +68,13 @@ function AspectGroup({
           expandIcon={<ExpandMoreIcon />}
           sx={{ backgroundColor: "#ffffff18" }}
         >
-          <Typography>{category_name}</Typography>
+          <Typography>
+            {category_name}{" "}
+            <span className="text-[red]">{aspectGroupCount}</span>
+          </Typography>
         </AccordionSummary>
         <AccordionDetails>
           <div className=" flex flex-col justify-center text-black">
-            {/* <div className="grid grid-cols-aspects justify-center gap-5"> */}
             <div className="auto-rows grid grid-cols-aspects grid-rows-aspects justify-center gap-5">
               {poses.map((pose) => {
                 let count = 0;
@@ -83,6 +89,7 @@ function AspectGroup({
                     aspect={pose}
                     count={count}
                     setFlow={setFlow}
+                    aspectGroups={aspectGroups}
                   ></AspectController>
                 );
               })}

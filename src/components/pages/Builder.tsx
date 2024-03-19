@@ -32,6 +32,7 @@ function Builder({
     units: [],
     duration: 0,
     uniqueAspects: [],
+    uniqueAspectGroups: [],
   };
 
   const [flowState, setFlowState] = useState<string>("setup");

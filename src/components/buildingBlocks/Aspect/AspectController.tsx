@@ -33,7 +33,12 @@ type Props = {
   >;
 } & HTMLAttributes<HTMLDivElement>;
 
-export default function AspectController({ aspect, count, setFlow }: Props) {
+export default function AspectController({
+  aspect,
+  count,
+  setFlow,
+  aspectGroups,
+}: Props) {
   const handleClick = () => {
     console.log(aspect);
     const newUnit = {
@@ -45,6 +50,7 @@ export default function AspectController({ aspect, count, setFlow }: Props) {
       image: svgProvider(aspect.url_svg_alt_local),
       aspectId: aspect.id,
       url_svg_alt_local: aspect.url_svg_alt_local,
+      aspectGroup: aspect.category_name,
     };
 
     setFlow((prevFlow) => {
@@ -55,7 +61,10 @@ export default function AspectController({ aspect, count, setFlow }: Props) {
       );
       // Update aspect count
       const uniqueAspects: { id: number; count: number }[] = [];
+      const uniqueAspectGroups: { groupName: string; count: number }[] = [];
+
       updatedUnits.forEach((unit) => {
+        // Save unique aspect
         const matchingAspectIndex = uniqueAspects.findIndex(
           (aspect) => aspect.id === unit.aspectId
         );
@@ -68,12 +77,35 @@ export default function AspectController({ aspect, count, setFlow }: Props) {
           };
           uniqueAspects.push(uniqueAspect);
         }
+
+        // Save unique aspect group
+        aspectGroups.forEach((group) => {
+          group.poses.forEach((pose) => {
+            if (pose.english_name === unit.name) {
+              console.log(pose.category_name);
+              const matchingAspectGroupIndex = uniqueAspectGroups.findIndex(
+                (aspectGroup) => aspectGroup.groupName === pose.category_name
+              );
+              if (matchingAspectGroupIndex !== -1) {
+                uniqueAspectGroups[matchingAspectGroupIndex].count += 1;
+              } else {
+                const uniqueAspectGroup = {
+                  groupName: pose.category_name,
+                  count: 1,
+                };
+                uniqueAspectGroups.push(uniqueAspectGroup);
+              }
+            }
+          });
+        });
       });
+
       return {
         ...prevFlow,
         units: updatedUnits,
         duration: totalDuration,
         uniqueAspects: uniqueAspects,
+        uniqueAspectGroups: uniqueAspectGroups,
       };
     });
   };

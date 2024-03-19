@@ -26,6 +26,8 @@ export default function AspectCollection({
   flow,
   setFlow,
 }: AspectCollectionProps) {
+  // console.log(aspectGroups);
+  // console.log(flow);
   return (
     <div className="flex w-1/3 flex-col justify-start">
       {/* <div>
@@ -34,15 +36,23 @@ export default function AspectCollection({
       <div className="h-fit min-h-full w-full gap-5">
         {/* <div className=" border-[1px] border-solid border-neutral-200 p-5"> */}
         <div className="accordion w-full">
-          {aspectGroups.map((aspectGroup) => (
-            <AspectGroup
-              key={aspectGroup.category_name}
-              category_name={aspectGroup.category_name}
-              poses={aspectGroup.poses}
-              uniqueAspects={flow.uniqueAspects}
-              setFlow={setFlow}
-            ></AspectGroup>
-          ))}
+          {aspectGroups.map((aspectGroup) => {
+            const aspectGroupCount = flow.uniqueAspectGroups.find(
+              (uniqueAspectGroup) =>
+                uniqueAspectGroup.groupName === aspectGroup.category_name
+            )?.count;
+            return (
+              <AspectGroup
+                key={aspectGroup.category_name}
+                category_name={aspectGroup.category_name}
+                poses={aspectGroup.poses}
+                uniqueAspects={flow.uniqueAspects}
+                setFlow={setFlow}
+                aspectGroupCount={aspectGroupCount}
+                aspectGroups={aspectGroups}
+              ></AspectGroup>
+            );
+          })}
         </div>
       </div>
     </div>

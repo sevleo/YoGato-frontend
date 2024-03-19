@@ -185,6 +185,7 @@ function HeaderDetails({
       units: [],
       duration: 0,
       uniqueAspects: [],
+      uniqueAspectGroups: [],
     };
 
     setFlow(defaultFlow);
