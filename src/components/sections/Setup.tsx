@@ -27,7 +27,7 @@ function Setup({
   aspectGroups,
   setFlowState,
   setLocation,
-  showPreview,
+  enablePreview,
 }: SetupProps) {
   const duration = flow.duration;
   const hours = Math.floor(duration / 3600);
@@ -59,8 +59,8 @@ function Setup({
       <div className="w-3/4">
         <div className="flex flex-col items-start justify-center pb-2 pt-2 text-black">
           <button
-            className={`h-full w-[100px] rounded-none border-0 border-b-[5px] border-t-[5px] ${showPreview ? "over:border-t-[5px] bg-[#143a1e] text-white hover:border-t-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-t-transparent"}  hover:border-b-transparent  focus:outline-none`}
-            onClick={showPreview ? handlePreviewButtonClick : null}
+            className={`h-full w-[100px] rounded-none border-0 border-b-[5px] border-t-[5px] ${enablePreview ? "over:border-t-[5px] bg-[#143a1e] text-white hover:border-t-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-t-transparent"}  hover:border-b-transparent  focus:outline-none`}
+            onClick={enablePreview ? handlePreviewButtonClick : null}
           >
             Preview
           </button>
