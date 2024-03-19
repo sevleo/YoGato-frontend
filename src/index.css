@@ -86,7 +86,8 @@ body {
   background-size: 9px 9px; */
 }
 
-.builder {
+.setup,
+.preview {
   background-color: #000000;
   opacity: 1;
   background-image: radial-gradient(

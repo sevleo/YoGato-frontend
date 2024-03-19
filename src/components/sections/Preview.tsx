@@ -110,73 +110,86 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   }
 
   return (
-    <div className=" preview ml-auto mr-auto flex h-full w-full max-w-screen-2xl pt-[60px] text-black">
-      <div className="flex min-w-[180px] flex-col border-b border-l border-t bg-gray-100 p-2">
-        <button className=" text-white" onClick={handleStartButtonClick}>
-          Start
-        </button>
-        <div className="mb-2 mt-2 h-[0.5px] w-10/12 self-center bg-neutral-400"></div>
-        <button className=" text-white" onClick={handleCancelButtonClick}>
-          Cancel
-        </button>
-        <div className="mb-2 mt-2 h-[0.5px] w-10/12 self-center bg-neutral-400"></div>
-        <div className="flex flex-col items-start justify-center p-2 text-black">
-          <div>
+    <div
+      className=" preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]"
+      style={{ minHeight: "calc(100% - 60px)" }}
+    >
+      <div className="w-3/4">
+        <div className="flex flex-col items-start justify-center pb-2 pt-2 text-black">
+          <button className=" text-white" onClick={handleStartButtonClick}>
+            Start
+          </button>
+          <button className=" text-white" onClick={handleCancelButtonClick}>
+            Cancel
+          </button>
+          <div className="flex w-full flex-row items-start justify-center  gap-10 border-b-[0.5px] border-[#7D6A3E] pb-[10px]">
             <div className="flex flex-col items-start justify-center">
-              <p className=" font-bold">Duration</p>
-              {hours > 0 ? <p> - {hours} hours</p> : null}
-              {minutes > 0 ? <p> - {minutes} minutes</p> : null}
-              {seconds > 0 ? <p> - {seconds} seconds</p> : null}
+              <p className=" font-bold text-white">Duration</p>
+              {hours > 0 ? (
+                <p className="text-white">{hours} hours</p>
+              ) : (
+                <p className="text-white">0 hours</p>
+              )}
+              {minutes > 0 ? (
+                <p className="text-white">{minutes} minutes</p>
+              ) : (
+                <p className="text-white">0 minutes</p>
+              )}
+              {seconds > 0 ? (
+                <p className="text-white">{seconds} seconds</p>
+              ) : (
+                <p className="text-white">0 seconds</p>
+              )}
             </div>
             <div className="flex flex-col items-start justify-center">
-              <p className=" font-bold">Poses</p>
-              <p> - {flow.units.length}</p>
+              <p className=" font-bold text-white">Poses</p>
+              <p className="text-white">{flow.units.length}</p>
             </div>
             <div className="flex flex-col items-start justify-center">
-              <p className=" font-bold">Unique poses</p>
-              <p> - {flow.uniqueAspects.length}</p>
+              <p className=" font-bold text-white">Unique poses</p>
+              <p className="text-white">{flow.uniqueAspects.length}</p>
             </div>
           </div>
         </div>
-      </div>
-      <div className="rtl scrollbar-gutter canvas flex w-full flex-col items-center pb-[40px] pl-[40px] pr-[40px] pt-[40px]">
-        <div className="ltr grid w-2/3 grid-cols-2">
-          <div>
-            <div className="ltr">
-              <CircularProgressBar
-                percentValue={Math.round(flowPercent)}
-              ></CircularProgressBar>
+        <div className="canvas flex w-full flex-col items-center pb-[40px] pl-[40px] pr-[40px] pt-[40px]">
+          <div className=" grid w-2/3 grid-cols-2">
+            <div>
+              <div className="">
+                <CircularProgressBar
+                  percentValue={Math.round(flowPercent)}
+                ></CircularProgressBar>
+              </div>
+            </div>
+            <div>
+              <div className="">
+                <CircularProgressBar
+                  percentValue={Math.round(unitPercent)}
+                ></CircularProgressBar>
+              </div>
+            </div>
+            <div>
+              <p className="ltr flex h-full items-center justify-center p-2">
+                Total flow: {flowCount} / {flow.duration} seconds
+              </p>
+            </div>
+            <div>
+              <p className="ltr flex h-full items-center justify-center p-2">
+                Current pose: {unitCount} /{" "}
+                {flow.units[currentUnitIndex]
+                  ? flow.units[currentUnitIndex].duration
+                  : flow.units[0].duration}{" "}
+                seconds
+              </p>
             </div>
           </div>
-          <div>
-            <div className="ltr">
-              <CircularProgressBar
-                percentValue={Math.round(unitPercent)}
-              ></CircularProgressBar>
-            </div>
-          </div>
-          <div>
-            <p className="ltr flex h-full items-center justify-center p-2">
-              Total flow: {flowCount} / {flow.duration} seconds
-            </p>
-          </div>
-          <div>
-            <p className="ltr flex h-full items-center justify-center p-2">
-              Current pose: {unitCount} /{" "}
-              {flow.units[currentUnitIndex]
-                ? flow.units[currentUnitIndex].duration
-                : flow.units[0].duration}{" "}
-              seconds
-            </p>
-          </div>
-        </div>
-        <br />
+          <br />
 
-        <Wheel
-          units={flow.units}
-          updateWheel={updateWheel}
-          setUpdateWheel={setUpdateWheel}
-        ></Wheel>
+          <Wheel
+            units={flow.units}
+            updateWheel={updateWheel}
+            setUpdateWheel={setUpdateWheel}
+          ></Wheel>
+        </div>
       </div>
     </div>
   );

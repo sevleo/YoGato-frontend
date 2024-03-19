@@ -28,7 +28,7 @@ function Setup({ flow, setFlow, aspectGroups }: SetupProps) {
   const seconds = duration % 60;
 
   return (
-    <div className="builder ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
+    <div className="setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
       <div className="w-3/4">
         <div className="flex flex-col items-start justify-center pb-2 pt-2 text-black">
           <div className="flex w-full flex-row items-start justify-center  gap-10 border-b-[0.5px] border-[#7D6A3E] pb-[10px]">
