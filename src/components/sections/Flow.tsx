@@ -52,7 +52,7 @@ export interface FlowProps {
   >;
 }
 
-function Flow({ flow, setFlow }: FlowProps) {
+function Flow({ flow, setFlow, aspectGroups }: FlowProps) {
   const [dragAllowed, setDragAllowed]: [
     boolean,
     Dispatch<React.SetStateAction<boolean>>,
@@ -118,6 +118,7 @@ function Flow({ flow, setFlow }: FlowProps) {
                         setFlow={setFlow}
                         dragAllowed={dragAllowed}
                         setDragAllowed={setDragAllowed}
+                        aspectGroups={aspectGroups}
                       ></Unit>
                     );
                   })}

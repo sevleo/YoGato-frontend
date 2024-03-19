@@ -56,6 +56,7 @@ function Unit({
   setFlow,
   dragAllowed,
   setDragAllowed,
+  aspectGroups,
 }: UnitProps) {
   // On delete button on unit
   function onUnitCloseClick() {
@@ -67,6 +68,8 @@ function Unit({
       );
       // Update aspect count
       const uniqueAspects: { id: number; count: number }[] = [];
+      const uniqueAspectGroups: { groupName: string; count: number }[] = [];
+
       updatedUnits.forEach((unit) => {
         const matchingAspectIndex = uniqueAspects.findIndex(
           (aspect) => aspect.id === unit.aspectId
@@ -80,6 +83,26 @@ function Unit({
           };
           uniqueAspects.push(uniqueAspect);
         }
+        // Save unique aspect group
+        aspectGroups.forEach((group) => {
+          group.poses.forEach((pose) => {
+            if (pose.english_name === unit.name) {
+              console.log(pose.category_name);
+              const matchingAspectGroupIndex = uniqueAspectGroups.findIndex(
+                (aspectGroup) => aspectGroup.groupName === pose.category_name
+              );
+              if (matchingAspectGroupIndex !== -1) {
+                uniqueAspectGroups[matchingAspectGroupIndex].count += 1;
+              } else {
+                const uniqueAspectGroup = {
+                  groupName: pose.category_name,
+                  count: 1,
+                };
+                uniqueAspectGroups.push(uniqueAspectGroup);
+              }
+            }
+          });
+        });
       });
 
       return {
@@ -87,6 +110,7 @@ function Unit({
         units: updatedUnits,
         duration: updatedDuration,
         uniqueAspects: uniqueAspects,
+        uniqueAspectGroups: uniqueAspectGroups,
       };
     });
   }

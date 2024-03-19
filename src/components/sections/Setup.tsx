@@ -61,7 +61,11 @@ function Setup({ flow, setFlow, aspectGroups }: SetupProps) {
           </div>
         </div>
         <div className="flex gap-10 pt-2">
-          <Flow flow={flow} setFlow={setFlow}></Flow>
+          <Flow
+            flow={flow}
+            setFlow={setFlow}
+            aspectGroups={aspectGroups}
+          ></Flow>
           <AspectCollection
             aspectGroups={aspectGroups}
             flow={flow}
