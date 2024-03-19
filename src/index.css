@@ -151,22 +151,22 @@ button:focus-visible {
 }
 
 .fancy-wrapper:hover {
-  outline: 1px solid #065f46;
+  outline: 1px solid #dbcc00;
 }
 
 .fancy-wrapper.active {
-  outline: 1px solid #065f46;
-  background-color: #ecfdf5;
+  outline: 1px solid #dbcc00;
+  /* background-color: #dbcc00; */
 }
 .fancy-wrapper:active {
-  outline: 1px solid #065f46;
-  background-color: #ecfdf5;
+  outline: 1px solid #dbcc00;
+  /* background-color: #dbcc00; */
   transform: scale(1.05);
 }
 
 .fancy-wrapper:hover::before {
   content: "";
-  background: conic-gradient(transparent 270deg, #065f46, transparent);
+  background: conic-gradient(transparent 270deg, #dbcc00, transparent);
   position: absolute;
   top: 50%;
   left: 50%;

@@ -774,15 +774,11 @@ video {
 }
 
 .grid-cols-aspects {
-  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
 }
 
 .grid-cols-canvas {
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-}
-
-.grid-rows-aspects {
-  grid-template-rows: repeat(auto-fill, minmax(80px, 1fr));
 }
 
 .flex-row {
@@ -837,6 +833,10 @@ video {
   text-wrap: wrap;
 }
 
+.rounded-\[50\%\] {
+  border-radius: 50%;
+}
+
 .rounded-full {
   border-radius: 9999px;
 }
@@ -884,10 +884,6 @@ video {
   border-bottom-width: 0.5px;
 }
 
-.border-b-\[1px\] {
-  border-bottom-width: 1px;
-}
-
 .border-b-\[5px\] {
   border-bottom-width: 5px;
 }
@@ -920,6 +916,10 @@ video {
 .border-\[\#7D6A3E\] {
   --tw-border-opacity: 1;
   border-color: rgb(125 106 62 / var(--tw-border-opacity));
+}
+
+.border-\[\#ffffff45\] {
+  border-color: #ffffff45;
 }
 
 .border-neutral-200 {
@@ -1008,12 +1008,12 @@ video {
   padding: 0.125rem;
 }
 
-.p-1 {
-  padding: 0.25rem;
-}
-
 .p-2 {
   padding: 0.5rem;
+}
+
+.p-3 {
+  padding: 0.75rem;
 }
 
 .p-5 {
@@ -1108,6 +1108,10 @@ video {
   text-align: center;
 }
 
+.text-start {
+  text-align: start;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -1142,6 +1146,11 @@ video {
   color: #ffffff88;
 }
 
+.text-\[red\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 0 0 / var(--tw-text-opacity));
+}
+
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -1150,11 +1159,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-\[red\] {
-  --tw-text-opacity: 1;
-  color: rgb(255 0 0 / var(--tw-text-opacity));
 }
 
 .opacity-0 {
@@ -1182,16 +1186,8 @@ video {
   outline-style: solid;
 }
 
-.outline-1 {
-  outline-width: 1px;
-}
-
 .outline-\[1px\] {
   outline-width: 1px;
-}
-
-.outline-gray-300 {
-  outline-color: #d1d5db;
 }
 
 .outline-gray-400 {
@@ -1377,23 +1373,23 @@ button:focus-visible {
 }
 
 .fancy-wrapper:hover {
-  outline: 1px solid #065f46;
+  outline: 1px solid #dbcc00;
 }
 
 .fancy-wrapper.active {
-  outline: 1px solid #065f46;
-  background-color: #ecfdf5;
+  outline: 1px solid #dbcc00;
+  /* background-color: #dbcc00; */
 }
 
 .fancy-wrapper:active {
-  outline: 1px solid #065f46;
-  background-color: #ecfdf5;
+  outline: 1px solid #dbcc00;
+  /* background-color: #dbcc00; */
   transform: scale(1.05);
 }
 
 .fancy-wrapper:hover::before {
   content: "";
-  background: conic-gradient(transparent 270deg, #065f46, transparent);
+  background: conic-gradient(transparent 270deg, #dbcc00, transparent);
   position: absolute;
   top: 50%;
   left: 50%;

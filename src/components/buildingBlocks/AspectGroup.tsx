@@ -75,7 +75,7 @@ function AspectGroup({
         </AccordionSummary>
         <AccordionDetails>
           <div className=" flex flex-col justify-center text-black">
-            <div className="auto-rows grid grid-cols-aspects grid-rows-aspects justify-center gap-5">
+            <div className="auto-rows grid grid-cols-aspects justify-center gap-5">
               {poses.map((pose) => {
                 let count = 0;
                 uniqueAspects.some((uniqueAspect) => {
