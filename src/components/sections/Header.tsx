@@ -3,26 +3,12 @@ import { useState, useEffect } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import "./Header.css";
 import { Dispatch, SetStateAction } from "react";
-import { UnitType } from "../buildingBlocks/Unit";
 
 interface HeaderProps {
   isHamburgerMenu: boolean;
   setIsHamburgerMenu: Dispatch<SetStateAction<boolean>>;
   location: string;
   setLocation: Dispatch<SetStateAction<string>>;
-  setFlowState: Dispatch<SetStateAction<string>> | null;
-  setFlow: Dispatch<
-    SetStateAction<{
-      flowName: string;
-      units: UnitType[];
-      duration: number;
-      uniqueAspects: {
-        id: number;
-        count: number;
-      }[];
-    }>
-  >;
-  showPreview: Dispatch<SetStateAction<string>>;
 }
 
 export default function Header({
@@ -30,18 +16,7 @@ export default function Header({
   setIsHamburgerMenu,
   location,
   setLocation,
-  setFlowState,
-  setFlow,
-  showPreview,
 }: HeaderProps) {
-  function handlePreviewButtonClick() {
-    if (setFlowState) {
-      setFlowState("preview");
-      setLocation("preview");
-      console.log(location);
-    }
-  }
-
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setOpen] = useState(false);
 
@@ -96,11 +71,8 @@ export default function Header({
             showCollapsibleMenu={isScrolled ? false : true}
             showSlideAnimation={showSlideAnimation}
             setShowSlideAnimation={setShowSlideAnimation}
-            handlePreviewButtonClick={handlePreviewButtonClick}
             location={location}
             setLocation={setLocation}
-            setFlow={setFlow}
-            showPreview={showPreview}
           ></HeaderDetails>
         </div>
         <div
@@ -120,11 +92,8 @@ export default function Header({
             showCollapsibleMenu={isScrolled ? true : false}
             showSlideAnimation={showSlideAnimation}
             setShowSlideAnimation={setShowSlideAnimation}
-            handlePreviewButtonClick={handlePreviewButtonClick}
             location={location}
             setLocation={setLocation}
-            setFlow={setFlow}
-            showPreview={showPreview}
           ></HeaderDetails>
         </div>
       </header>
@@ -141,7 +110,6 @@ interface HeaderDetailsProps {
   showCollapsibleMenu: boolean;
   showSlideAnimation: boolean;
   setShowSlideAnimation: Dispatch<SetStateAction<boolean>>;
-  handlePreviewButtonClick: () => void;
   location: string;
   setLocation: Dispatch<SetStateAction<string>>;
 }
@@ -155,11 +123,7 @@ function HeaderDetails({
   showCollapsibleMenu,
   showSlideAnimation,
   setShowSlideAnimation,
-  handlePreviewButtonClick,
-  location,
   setLocation,
-  setFlow,
-  showPreview,
 }: HeaderDetailsProps) {
   // Disables burger slide animation to avoid showing animation when switching between headers views
   function handleAnimationEnd() {
@@ -179,18 +143,6 @@ function HeaderDetails({
   function handleExperimentLink() {
     enableHamburger();
     setLocation("experiment");
-  }
-
-  function handleClearButton() {
-    const defaultFlow: FlowType = {
-      flowName: "my fancy flow",
-      units: [],
-      duration: 0,
-      uniqueAspects: [],
-      uniqueAspectGroups: [],
-    };
-
-    setFlow(defaultFlow);
   }
 
   return (
