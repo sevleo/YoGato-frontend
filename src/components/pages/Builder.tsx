@@ -55,7 +55,6 @@ function Builder({
       <Header
         isHamburgerMenu={isHamburgerMenu}
         setIsHamburgerMenu={setIsHamburgerMenu}
-        setFlowState={setFlowState}
         location={location}
         setLocation={setLocation}
         setFlow={setFlow}
@@ -67,6 +66,9 @@ function Builder({
           setFlow={setFlow}
           setFlowState={setFlowState}
           aspectGroups={aspectGroups}
+          setFlowState={setFlowState}
+          setLocation={setLocation}
+          showPreview={flow.units.length > 0 ? true : false}
         ></Setup>
       )}
 

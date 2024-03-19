@@ -267,22 +267,6 @@ function HeaderDetails({
           </div>
         </>
       )}
-      {location === "flow-builder" ? (
-        <div className="flex h-full w-full items-center justify-center gap-3">
-          <button
-            className={`h-full w-[100px] rounded-none border-0 border-b-[5px] border-t-[5px] ${showPreview ? "over:border-t-[5px] bg-[#143a1e] text-white hover:border-t-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-t-transparent"}  hover:border-b-transparent  focus:outline-none`}
-            onClick={showPreview ? handlePreviewButtonClick : null}
-          >
-            Preview
-          </button>
-          <button
-            className=" h-full w-[100px] rounded-none border-0 border-b-[5px] border-t-[5px]  bg-[#143a1e] text-white hover:border-t-[5px] hover:border-b-transparent hover:border-t-white hover:bg-[#143a1e] focus:outline-none active:bg-[#9b9b9b2a]"
-            onClick={handleClearButton}
-          >
-            Clear
-          </button>
-        </div>
-      ) : null}
 
       <div className="flex h-full w-[100px] items-center justify-start"></div>
     </>
