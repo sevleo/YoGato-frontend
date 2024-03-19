@@ -184,11 +184,11 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           </div>
           <br />
 
-          <Wheel
+          {/* <Wheel
             units={flow.units}
             updateWheel={updateWheel}
             setUpdateWheel={setUpdateWheel}
-          ></Wheel>
+          ></Wheel> */}
         </div>
       </div>
     </div>

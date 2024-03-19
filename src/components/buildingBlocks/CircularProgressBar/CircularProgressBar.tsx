@@ -25,7 +25,7 @@ export default function CircularProgressBar({
           background: `conic-gradient(red ${percentValue * 3.6}deg, rgb(215, 215, 215) 0deg)`,
         }}
       >
-        <span className="progress-value" ref={progressValueRef}>
+        <span className="progress-value text-black" ref={progressValueRef}>
           {percentValue}%
         </span>
       </div>
