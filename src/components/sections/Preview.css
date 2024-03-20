@@ -39,6 +39,11 @@
   margin: 0 10px;
 }
 
-.slick-slide > div > div {
-  background-color: red;
+.slick-current > div > div {
+  transition: all 1s ease-in-out;
+}
+
+.slick-slide:not(.slick-current) > div > div {
+  background-color: rgba(255, 0, 0, 0.277);
+  filter: blur(2px);
 }

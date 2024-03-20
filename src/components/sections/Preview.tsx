@@ -32,11 +32,11 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   // Slider settings
   const settings = {
     // centerPadding: "50px",
-    // centerMode: true,
+    centerMode: true,
     dots: false,
-    // infinite: true,
+    infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     arrows: false,
     draggable: false,
@@ -184,7 +184,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           </div>
         </div>
         <div className="canvas flex h-full w-full flex-row items-center justify-center pt-2">
-          <div className=" mr-[4px] grid h-full w-1/2 grid-cols-2 bg-[#ffffff18] p-2 ">
+          <div className=" mr-[4px] flex h-full w-1/2 flex-col bg-[#ffffff18] p-2 ">
             <div className="">
               <CircularProgressBar
                 percentValue={Math.round(flowPercent)}
@@ -196,27 +196,21 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                 Total flow: {flowCount} / {flow.duration} seconds
               </p>
             </div>
-            <div>
-              <p className="ltr flex h-full items-center justify-center p-2">
-                Current pose: {unitCount} /{" "}
-                {flow.units[currentUnitIndex]
-                  ? flow.units[currentUnitIndex].duration
-                  : flow.units[0].duration}{" "}
-                seconds
-              </p>
-            </div>
           </div>
           <div className="image-track m-auto ml-[4px] h-full w-1/2 bg-[#ffffff18] p-2">
             <div className=" flex h-full flex-col">
               <Slider {...settings} ref={sliderRef}>
-                {flow.units.map((unit) => {
+                {flow.units.map((unit, index) => {
                   return (
                     <div
                       key={unit.id}
-                      className=" image h-full bg-white text-black"
+                      className=" image h-full w-[200px] bg-white text-black"
                     >
                       <div className="flex flex-col items-center justify-center">
-                        <img className="w-[100px]" src={unit.image} alt="" />
+                        <p>
+                          {index + 1} / {flow.units.length}
+                        </p>
+                        <img className="w-[200px]" src={unit.image} alt="" />
                         <p className=" text-2xlg"> {unit.name}</p>
                       </div>
                     </div>
@@ -227,6 +221,15 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                 <CircularProgressBar
                   percentValue={Math.round(unitPercent)}
                 ></CircularProgressBar>
+              </div>
+              <div>
+                <p className="ltr flex h-full items-center justify-center p-2">
+                  Current pose: {unitCount} /{" "}
+                  {flow.units[currentUnitIndex]
+                    ? flow.units[currentUnitIndex].duration
+                    : flow.units[0].duration}{" "}
+                  seconds
+                </p>
               </div>
             </div>
           </div>
