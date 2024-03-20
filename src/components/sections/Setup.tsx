@@ -58,7 +58,7 @@ function Setup({
   return (
     <div className="setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
       <div className="w-3/4">
-        <div className="ml-auto mr-auto flex w-full flex-row items-start justify-center  bg-[#ffffff18] text-black hover:bg-[#ffffff38]">
+        {/* <div className="ml-auto mr-auto flex w-full flex-row items-start justify-center  bg-[#ffffff18] text-black hover:bg-[#ffffff38]">
           <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
             <div className="flex flex-row items-start justify-center">
               <p className=" text-white">Duration</p>
@@ -91,7 +91,7 @@ function Setup({
               Clear
             </button>
           </div>
-        </div>
+        </div> */}
         <div className="flex gap-2 pt-2">
           <Flow
             flow={flow}

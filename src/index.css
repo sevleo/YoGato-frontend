@@ -4,7 +4,16 @@
 
 html {
   scrollbar-gutter: stable;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  background-image: radial-gradient(
+    #22201e 0.9500000000000001px,
+    rgb(20, 20, 20) 0.9500000000000001px
+  ) !important;
+  background-size: 19px 19px;
+  background-color: transparent !important;
+}
+body {
+  /* background-color: transparent !important; */
 }
 
 :root {
@@ -79,6 +88,11 @@ body {
   background-repeat: repeat;
   background-attachment: scroll;
   background-color: #22201e; */
+  background-image: radial-gradient(
+    #22201e 0.9500000000000001px,
+    rgb(20, 20, 20) 0.9500000000000001px
+  );
+  background-size: 19px 19px;
 }
 
 .canvas {
@@ -89,13 +103,13 @@ body {
 
 .setup,
 .preview {
-  background-color: #000000;
+  /* background-color: #000000;
   opacity: 1;
   background-image: radial-gradient(
     #22201e 0.9500000000000001px,
     rgb(20, 20, 20) 0.9500000000000001px
   );
-  background-size: 19px 19px;
+  background-size: 19px 19px; */
 }
 
 h1 {
@@ -123,8 +137,8 @@ button:focus-visible {
 }
 
 .scrollbar-gutter {
-  scrollbar-gutter: stable both-edges;
-  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  /* overflow-y: scroll; */
 }
 
 @media (prefers-color-scheme: light) {

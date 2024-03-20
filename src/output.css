@@ -747,15 +747,6 @@ video {
   width: 100%;
 }
 
-.w-1\/2 {
-  width: 50%;
-}
-
-.w-fit {
-  width: -moz-fit-content;
-  width: fit-content;
-}
-
 .min-w-\[16px\] {
   min-width: 16px;
 }
@@ -826,6 +817,10 @@ video {
   justify-content: space-between;
 }
 
+.gap-1 {
+  gap: 0.25rem;
+}
+
 .gap-10 {
   gap: 2.5rem;
 }
@@ -836,10 +831,6 @@ video {
 
 .gap-5 {
   gap: 1.25rem;
-}
-
-.gap-1 {
-  gap: 0.25rem;
 }
 
 .text-wrap {
@@ -881,10 +872,6 @@ video {
   border-width: 1px;
 }
 
-.border-0 {
-  border-width: 0px;
-}
-
 .border-\[1px\] {
   border-width: 1px;
 }
@@ -893,20 +880,12 @@ video {
   border-bottom-width: 0.5px;
 }
 
-.border-b-\[5px\] {
-  border-bottom-width: 5px;
-}
-
 .border-l {
   border-left-width: 1px;
 }
 
 .border-r {
   border-right-width: 1px;
-}
-
-.border-t-\[5px\] {
-  border-top-width: 5px;
 }
 
 .border-solid {
@@ -993,11 +972,6 @@ video {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-\[red\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 0 0 / var(--tw-bg-opacity));
 }
 
 .p-0 {
@@ -1223,7 +1197,17 @@ video {
 
 html {
   scrollbar-gutter: stable;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
+  background-image: radial-gradient(
+    #22201e 0.9500000000000001px,
+    rgb(20, 20, 20) 0.9500000000000001px
+  ) !important;
+  background-size: 19px 19px;
+  background-color: transparent !important;
+}
+
+body {
+  /* background-color: transparent !important; */
 }
 
 :root {
@@ -1296,6 +1280,11 @@ body {
   background-repeat: repeat;
   background-attachment: scroll;
   background-color: #22201e; */
+  background-image: radial-gradient(
+    #22201e 0.9500000000000001px,
+    rgb(20, 20, 20) 0.9500000000000001px
+  );
+  background-size: 19px 19px;
 }
 
 .canvas {
@@ -1306,13 +1295,13 @@ body {
 
 .setup,
 .preview {
-  background-color: #000000;
+  /* background-color: #000000;
   opacity: 1;
   background-image: radial-gradient(
     #22201e 0.9500000000000001px,
     rgb(20, 20, 20) 0.9500000000000001px
   );
-  background-size: 19px 19px;
+  background-size: 19px 19px; */
 }
 
 h1 {
@@ -1342,8 +1331,8 @@ button:focus-visible {
 }
 
 .scrollbar-gutter {
-  scrollbar-gutter: stable both-edges;
-  overflow-y: scroll;
+  scrollbar-gutter: stable;
+  /* overflow-y: scroll; */
 }
 
 @media (prefers-color-scheme: light) {
@@ -1443,34 +1432,13 @@ button:focus-visible {
   cursor: pointer;
 }
 
-.hover\:border-0:hover {
-  border-width: 0px;
-}
-
-.hover\:border-t-\[5px\]:hover {
-  border-top-width: 5px;
+.hover\:border-transparent:hover {
+  border-color: transparent;
 }
 
 .hover\:border-white:hover {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
-}
-
-.hover\:border-transparent:hover {
-  border-color: transparent;
-}
-
-.hover\:border-b-transparent:hover {
-  border-bottom-color: transparent;
-}
-
-.hover\:border-t-transparent:hover {
-  border-top-color: transparent;
-}
-
-.hover\:border-t-white:hover {
-  --tw-border-opacity: 1;
-  border-top-color: rgb(255 255 255 / var(--tw-border-opacity));
 }
 
 .hover\:bg-\[\#143a1e\]:hover {
