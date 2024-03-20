@@ -28,6 +28,7 @@ function Setup({
   setFlowState,
   setLocation,
   enablePreview,
+  enableClear,
 }: SetupProps) {
   const duration = flow.duration;
   const hours = Math.floor(duration / 3600);
@@ -57,49 +58,41 @@ function Setup({
   return (
     <div className="setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
       <div className="w-3/4">
-        <div className="flex flex-col items-start justify-center pb-2 pt-2 text-black">
-          <button
-            className={`h-full w-[100px] rounded-none border-0 border-b-[5px] border-t-[5px] ${enablePreview ? "over:border-t-[5px] bg-[#143a1e] text-white hover:border-t-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-t-transparent"}  hover:border-b-transparent  focus:outline-none`}
-            onClick={enablePreview ? handlePreviewButtonClick : null}
-          >
-            Preview
-          </button>
-          <button
-            className=" h-full w-[100px] rounded-none border-0 border-b-[5px] border-t-[5px]  bg-[#143a1e] text-white hover:border-t-[5px] hover:border-b-transparent hover:border-t-white hover:bg-[#143a1e] focus:outline-none active:bg-[#9b9b9b2a]"
-            onClick={handleClearButton}
-          >
-            Clear
-          </button>
-          <div className="flex w-full flex-row items-start justify-center  gap-10 border-b-[0.5px] border-[#7D6A3E] pb-[10px]">
-            <div className="flex flex-col items-start justify-center">
-              <p className=" font-bold text-white">Duration</p>
-              {hours > 0 ? (
-                <p className="text-white">{hours} hours</p>
-              ) : (
-                <p className="text-white">0 hours</p>
-              )}
-              {minutes > 0 ? (
-                <p className="text-white">{minutes} minutes</p>
-              ) : (
-                <p className="text-white">0 minutes</p>
-              )}
-              {seconds > 0 ? (
-                <p className="text-white">{seconds} seconds</p>
-              ) : (
-                <p className="text-white">0 seconds</p>
-              )}
+        <div className="ml-auto mr-auto flex w-full flex-row items-start justify-center  bg-[#ffffff18] text-black hover:bg-[#ffffff38]">
+          <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
+            <div className="flex flex-row items-start justify-center">
+              <p className=" text-white">Duration</p>
+              <p className="text-white">
+                {hours > 0 ? <span>{hours} hours, </span> : null}
+                {minutes > 0 ? <span>{minutes} minutes, </span> : null}
+                {seconds > 0 ? <span>{seconds} seconds.</span> : null}
+              </p>
             </div>
-            <div className="flex flex-col items-start justify-center">
-              <p className=" font-bold text-white">Poses</p>
+            <div className="flex flex-row items-start justify-center">
+              <p className="  text-white">Poses</p>
               <p className="text-white">{flow.units.length}</p>
             </div>
-            <div className="flex flex-col items-start justify-center">
-              <p className=" font-bold text-white">Unique poses</p>
+            <div className="flex flex-row items-start justify-center">
+              <p className="  text-white">Unique poses</p>
               <p className="text-white">{flow.uniqueAspects.length}</p>
             </div>
           </div>
+          <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-5">
+            <button
+              className={`h-full w-[100px] rounded-none border-[1px] ${enablePreview ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
+              onClick={enablePreview ? handlePreviewButtonClick : null}
+            >
+              Preview
+            </button>
+            <button
+              className={`h-full w-[100px] rounded-none border-[1px] ${enableClear ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
+              onClick={enableClear ? handleClearButton : null}
+            >
+              Clear
+            </button>
+          </div>
         </div>
-        <div className="flex gap-10 pt-2">
+        <div className="flex gap-2 pt-2">
           <Flow
             flow={flow}
             setFlow={setFlow}

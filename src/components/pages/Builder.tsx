@@ -67,6 +67,7 @@ function Builder({
           setFlowState={setFlowState}
           setLocation={setLocation}
           enablePreview={flow.units.length > 0 ? true : false}
+          enableClear={flow.units.length > 0 ? true : false}
         ></Setup>
       )}
 
