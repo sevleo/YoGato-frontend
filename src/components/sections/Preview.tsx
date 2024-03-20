@@ -34,14 +34,12 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     // centerPadding: "50px",
     // centerMode: true,
     dots: false,
-    infinite: true,
+    // infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     draggable: false,
-    fade: true,
-    // waitForAnimate: false,
   };
 
   const sliderRef = useRef<Slider>(null);
@@ -229,7 +227,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                     >
                       <div className="flex flex-col items-center justify-center">
                         <img className="w-[100px]" src={unit.image} alt="" />
-                        <p className=" text-2xl"> {unit.name}</p>
+                        <p className=" text-2xlg"> {unit.name}</p>
                       </div>
                     </div>
                   );

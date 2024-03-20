@@ -715,6 +715,10 @@ video {
   width: 33.333333%;
 }
 
+.w-1\/4 {
+  width: 25%;
+}
+
 .w-10\/12 {
   width: 83.333333%;
 }
@@ -741,14 +745,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[50px\] {
-  width: 50px;
-}
-
-.w-1\/4 {
-  width: 25%;
 }
 
 .min-w-\[16px\] {
@@ -1108,15 +1104,6 @@ video {
   line-height: 1rem;
 }
 
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
-.text-\[50px\] {
-  font-size: 50px;
-}
-
 .font-bold {
   font-weight: 700;
 }
@@ -1284,6 +1271,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
   /* background-image: url(../src/assets/background_06.png);
   background-position: left top;
   background-size: auto;

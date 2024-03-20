@@ -71,6 +71,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 
   /* background-image: url(../src/assets/background_06.png);
   background-position: left top;
