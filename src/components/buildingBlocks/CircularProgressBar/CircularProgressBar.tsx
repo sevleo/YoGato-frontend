@@ -17,7 +17,7 @@ export default function CircularProgressBar({
   }, []);
 
   return (
-    <div className="container">
+    <div className="container ">
       <div
         className="circular-progress"
         ref={circularProgressRef}
