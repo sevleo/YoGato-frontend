@@ -58,26 +58,28 @@ function Setup({
   return (
     <div className="setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
       <div className="w-3/4">
-        {/* <div className="ml-auto mr-auto flex w-full flex-row items-start justify-center  bg-[#ffffff18] text-black hover:bg-[#ffffff38]">
+        <div className="ml-auto mr-auto grid w-full grid-cols-[2fr_1fr] items-start justify-center  bg-[#ffffff18] text-black hover:bg-[#ffffff38]">
           <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
-            <div className="flex flex-row items-start justify-center">
-              <p className=" text-white">Duration</p>
-              <p className="text-white">
+            <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
+              <p className=" text-start text-white">Duration</p>
+              <p className="text-start text-white">
                 {hours > 0 ? <span>{hours} hours, </span> : null}
                 {minutes > 0 ? <span>{minutes} minutes, </span> : null}
                 {seconds > 0 ? <span>{seconds} seconds.</span> : null}
               </p>
             </div>
-            <div className="flex flex-row items-start justify-center">
-              <p className="  text-white">Poses</p>
-              <p className="text-white">{flow.units.length}</p>
+            <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+              <p className="  text-start text-white">Poses</p>
+              <p className="text-start text-white">{flow.units.length}</p>
             </div>
-            <div className="flex flex-row items-start justify-center">
-              <p className="  text-white">Unique poses</p>
-              <p className="text-white">{flow.uniqueAspects.length}</p>
+            <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+              <p className="text-start text-white">Unique poses</p>
+              <p className="text-start text-white">
+                {flow.uniqueAspects.length}
+              </p>
             </div>
           </div>
-          <div className="flex h-full w-full flex-col items-center justify-center gap-2 p-5">
+          <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
             <button
               className={`h-full w-[100px] rounded-none border-[1px] ${enablePreview ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
               onClick={enablePreview ? handlePreviewButtonClick : null}
@@ -91,7 +93,7 @@ function Setup({
               Clear
             </button>
           </div>
-        </div> */}
+        </div>
         <div className="flex gap-2 pt-2">
           <Flow
             flow={flow}
