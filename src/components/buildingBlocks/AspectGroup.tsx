@@ -66,7 +66,15 @@ function AspectGroup({
       >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
-          sx={{ backgroundColor: "#ffffff18" }}
+          sx={{
+            backgroundColor: "",
+            "&:hover": {
+              // backgroundColor: "#ffffff38",
+            },
+            "&.Mui-expanded": {
+              backgroundColor: "#ffffff38",
+            },
+          }}
         >
           <Typography>
             {category_name}{" "}
