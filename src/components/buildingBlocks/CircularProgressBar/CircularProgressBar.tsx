@@ -23,7 +23,7 @@ export default function CircularProgressBar({
         className="circular-progress"
         ref={circularProgressRef}
         style={{
-          background: `conic-gradient(red ${percentValue * 3.6}deg, rgb(215, 215, 215) 0deg)`,
+          background: `conic-gradient(#dbcc00 ${percentValue * 3.6}deg, rgb(78, 67, 49) 0deg)`,
         }}
       >
         <div
