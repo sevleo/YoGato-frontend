@@ -199,7 +199,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             </div>
           </div>
           <div className="image-track m-auto ml-[4px] h-full w-1/2 bg-[#ffffff18] p-2">
-            <div className=" flex h-full flex-col">
+            <div className=" flex h-full max-w-[500px] flex-col">
               <Slider {...settings} ref={sliderRef}>
                 {flow.units.map((unit, index) => {
                   return (
