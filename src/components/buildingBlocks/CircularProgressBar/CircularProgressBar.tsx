@@ -7,6 +7,7 @@ interface CircularProgressBarProps {
 
 export default function CircularProgressBar({
   percentValue,
+  value,
 }: CircularProgressBarProps) {
   const circularProgressRef = useRef(null);
   const progressValueRef = useRef(null);
@@ -25,9 +26,14 @@ export default function CircularProgressBar({
           background: `conic-gradient(red ${percentValue * 3.6}deg, rgb(215, 215, 215) 0deg)`,
         }}
       >
-        <span className="progress-value text-black" ref={progressValueRef}>
-          {percentValue}%
-        </span>
+        <div
+          className="progress-value h-full w-full bg-[transparent] p-5 text-black"
+          ref={progressValueRef}
+        >
+          <div className="flex h-full w-full flex-col items-center justify-center bg-[transparent]">
+            {value}
+          </div>
+        </div>
       </div>
     </div>
   );

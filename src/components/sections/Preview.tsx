@@ -32,7 +32,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   // Slider settings
   const settings = {
     // centerPadding: "50px",
-    centerMode: true,
+    // centerMode: true,
     dots: false,
     infinite: true,
     speed: 500,
@@ -95,6 +95,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           if (flowCount + 1 === flow.duration) {
             newFlowCount = 0;
             setStartFlow(false);
+
             console.log(`End of flow.`);
             next();
           } else {
@@ -204,32 +205,49 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                   return (
                     <div
                       key={unit.id}
-                      className=" image h-full w-[200px] bg-white text-black"
+                      className=" image h-full w-[200px] bg-[transparent] text-black"
                     >
                       <div className="flex flex-col items-center justify-center">
-                        <p>
-                          {index + 1} / {flow.units.length}
-                        </p>
-                        <img className="w-[200px]" src={unit.image} alt="" />
-                        <p className=" text-2xlg"> {unit.name}</p>
+                        <CircularProgressBar
+                          percentValue={Math.round(unitPercent)}
+                          value={
+                            <>
+                              {
+                                <img
+                                  className="w-2/3"
+                                  src={unit.image}
+                                  alt=""
+                                />
+                              }
+                              {<p className=" text-2xlg"> {unit.name}</p>}
+                              {
+                                <p>
+                                  {index + 1} / {flow.units.length}
+                                </p>
+                              }
+                            </>
+                          }
+                        ></CircularProgressBar>
                       </div>
                     </div>
                   );
                 })}
               </Slider>
-              <div className="p-[10px]">
+              {/* <div className="p-[10px]">
                 <CircularProgressBar
                   percentValue={Math.round(unitPercent)}
                 ></CircularProgressBar>
-              </div>
+              </div> */}
+
               <div>
-                <p className="ltr flex h-full items-center justify-center p-2">
-                  Current pose: {unitCount} /{" "}
+                <p className="ltr flex items-center justify-center">
+                  Duration: {unitCount} /{" "}
                   {flow.units[currentUnitIndex]
                     ? flow.units[currentUnitIndex].duration
                     : flow.units[0].duration}{" "}
                   seconds
                 </p>
+                <p>Percent: {Math.round(unitPercent)}%</p>
               </div>
             </div>
           </div>

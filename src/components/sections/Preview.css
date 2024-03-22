@@ -36,14 +36,18 @@
 }
 
 .slick-slide > div {
-  margin: 0 10px;
+  /* margin: 0 10px; */
 }
 
 .slick-current > div > div {
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  /* transform: scale(1.2); */
 }
 
 .slick-slide:not(.slick-current) > div > div {
-  background-color: rgba(255, 0, 0, 0.277);
-  filter: blur(2px);
+  /* background-color: rgba(255, 0, 0, 0.277); */
+  transition: all 0.5s ease-in-out;
+  /* transform: scale(1); */
+
+  /* filter: blur(2px); */
 }
