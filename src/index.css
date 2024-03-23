@@ -13,7 +13,7 @@ html {
 }
 
 body {
-  scrollbar-gutter: stable;
+  /* scrollbar-gutter: stable; */
   width: 100%;
 }
 
@@ -135,11 +135,6 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-.scrollbar-gutter {
-  /* scrollbar-gutter: stable; */
-  /* overflow-y: scroll; */
 }
 
 @media (prefers-color-scheme: light) {

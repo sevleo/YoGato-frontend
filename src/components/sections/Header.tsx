@@ -79,7 +79,7 @@ export default function Header({
           ></HeaderDetails>
         </div>
         <div
-          className={`fixed z-10 flex h-[60px] w-full max-w-screen-2xl flex-row items-center justify-start gap-10 bg-black pl-5 pr-5 shadow-lg`}
+          className={`fixed left-[-1px] z-10 flex h-[60px] w-full flex-row items-center justify-center gap-10 bg-black pl-5 pr-5 shadow-lg`}
           style={{
             background: "rgba(34, 32, 30, 0.9)",
             top: isScrolled ? "0px" : "-60px",
@@ -150,80 +150,82 @@ function HeaderDetails({
 
   return (
     <>
-      {isHamburgerMenu ? (
-        <>
-          <Link
-            className="text-white hover:text-white hover:underline"
-            to="/"
-            onClick={handleHomeLink}
-          >
-            Home
-          </Link>
+      <div className="w-full max-w-screen-2xl">
+        {isHamburgerMenu ? (
+          <>
+            <Link
+              className="text-white hover:text-white hover:underline"
+              to="/"
+              onClick={handleHomeLink}
+            >
+              Home
+            </Link>
 
-          <Link
-            className=" text-white hover:text-white hover:underline"
-            to="/builder"
-            onClick={handleFlowBuilderLink}
-          >
-            Flow Builder
-          </Link>
+            <Link
+              className=" text-white hover:text-white hover:underline"
+              to="/builder"
+              onClick={handleFlowBuilderLink}
+            >
+              Flow Builder
+            </Link>
 
-          <Link
-            className="text-white hover:text-white hover:underline"
-            to="/experiment"
-            onClick={handleExperimentLink}
-          >
-            Experiment...
-          </Link>
-        </>
-      ) : (
-        <>
-          <div className="flex h-full w-[100px] items-center justify-start">
-            <Hamburger
-              toggled={isOpen}
-              toggle={setOpen}
-              color="white"
-            ></Hamburger>
-            {isOpen && showCollapsibleMenu ? (
-              <>
-                <div
-                  className={`absolute top-[60px] flex flex-col items-start`}
-                  style={{
-                    animation: `${showSlideAnimation ? "slideIn" : null} 0.3s forwards`,
-                  }}
-                  onAnimationEnd={handleAnimationEnd}
-                >
-                  <Link
-                    onClick={handleHomeLink}
-                    className="text-white hover:text-white hover:underline"
-                    to="/"
+            <Link
+              className="text-white hover:text-white hover:underline"
+              to="/experiment"
+              onClick={handleExperimentLink}
+            >
+              Experiment...
+            </Link>
+          </>
+        ) : (
+          <>
+            <div className="flex h-full w-[100px] items-center justify-start">
+              <Hamburger
+                toggled={isOpen}
+                toggle={setOpen}
+                color="white"
+              ></Hamburger>
+              {isOpen && showCollapsibleMenu ? (
+                <>
+                  <div
+                    className={`absolute top-[60px] flex flex-col items-start`}
+                    style={{
+                      animation: `${showSlideAnimation ? "slideIn" : null} 0.3s forwards`,
+                    }}
+                    onAnimationEnd={handleAnimationEnd}
                   >
-                    Home
-                  </Link>
+                    <Link
+                      onClick={handleHomeLink}
+                      className="text-white hover:text-white hover:underline"
+                      to="/"
+                    >
+                      Home
+                    </Link>
 
-                  <Link
-                    onClick={handleFlowBuilderLink}
-                    className=" text-white hover:text-white hover:underline"
-                    to="/builder"
-                  >
-                    Flow Builder
-                  </Link>
+                    <Link
+                      onClick={handleFlowBuilderLink}
+                      className=" text-white hover:text-white hover:underline"
+                      to="/builder"
+                    >
+                      Flow Builder
+                    </Link>
 
-                  <Link
-                    onClick={handleExperimentLink}
-                    className="text-white hover:text-white hover:underline"
-                    to="/experiment"
-                  >
-                    Experiment...
-                  </Link>
-                </div>
-              </>
-            ) : null}
-          </div>
-        </>
-      )}
+                    <Link
+                      onClick={handleExperimentLink}
+                      className="text-white hover:text-white hover:underline"
+                      to="/experiment"
+                    >
+                      Experiment...
+                    </Link>
+                  </div>
+                </>
+              ) : null}
+            </div>
+          </>
+        )}
 
-      <div className="flex h-full w-[100px] items-center justify-start"></div>
+        <div className="flex h-full w-[100px] items-center justify-start"></div>
+      </div>
     </>
   );
 }
