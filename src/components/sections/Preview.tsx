@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { LinearProgress, createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import { ProgressBar } from "react-bootstrap";
 
 interface PreviewProps {
   flow: FlowType;
@@ -335,6 +336,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             <div className="w-1/2">
               <ThemeProvider theme={linearProgressBarTheme}>
                 <LinearProgress
+                  key={flowPercent}
                   color="inherit"
                   variant="determinate"
                   value={flowPercent}
