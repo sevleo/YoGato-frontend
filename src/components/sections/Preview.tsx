@@ -148,7 +148,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
       // style={{ minHeight: "calc(100% - 60px)" }}
     >
       <div className="w-3/4">
-        <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black hover:bg-[#ffffff38]">
+        <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
           <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
             <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
               <p className=" text-start text-white">Duration</p>
@@ -184,9 +184,74 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             </button>
           </div>
         </div>
-        <div className="canvas flex h-full w-full flex-row items-center justify-center pt-2">
-          <div className=" mr-[4px] flex h-full w-1/2 flex-col bg-[#ffffff18] p-2 ">
-            <div className="">
+        <div className="canvas flex h-full w-full flex-col items-center justify-center pt-2">
+          <div className="flex h-full w-full flex-row items-center justify-center">
+            <div className="image-track m-auto mr-[4px] h-full w-1/2 bg-[#ffffff18] p-5 transition-colors hover:bg-[#ffffff38]">
+              <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
+                <Slider {...settings} ref={sliderRef}>
+                  {flow.units.map((unit, index) => {
+                    return (
+                      <div
+                        key={unit.id}
+                        className=" image h-full w-[200px] bg-[transparent] text-black"
+                      >
+                        <div className="flex flex-col items-center justify-center">
+                          <CircularProgressBar
+                            percentValue={Math.round(unitPercent)}
+                            value={
+                              <>
+                                {/* {<p className=" text-[2vw]"> {unit.name}</p>} */}
+                                {
+                                  <img
+                                    className="w-2/3"
+                                    src={unit.image}
+                                    alt=""
+                                  />
+                                }
+                              </>
+                            }
+                          ></CircularProgressBar>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </Slider>
+                {/* <div className="p-[10px]">
+                <CircularProgressBar
+                  percentValue={Math.round(unitPercent)}
+                ></CircularProgressBar>
+              </div> */}
+
+                {/* <div className="mt-2 flex flex-col items-start justify-center">
+                <div className="grid w-full grid-cols-[1fr_1fr]">
+                  <p className="ltr text-start ">Unit:</p>
+                  {currentUnitIndex + 1 > flow.units.length ? (
+                    <p className="text-start">0 / {flow.units.length}</p>
+                  ) : (
+                    <p className="text-start">
+                      {currentUnitIndex + 1} / {flow.units.length}
+                    </p>
+                  )}
+                </div>
+                <div className="grid w-full grid-cols-[1fr_1fr]">
+                  <p className="ltr text-start ">Duration:</p>
+                  <p className="text-start">
+                    {unitCount} /{" "}
+                    {flow.units[currentUnitIndex]
+                      ? flow.units[currentUnitIndex].duration
+                      : flow.units[0].duration}{" "}
+                    seconds
+                  </p>
+                </div>
+                <div className="grid w-full grid-cols-[1fr_1fr]">
+                  <p className="text-start">Percent: </p>
+                  <p className="text-start">{Math.round(unitPercent)}%</p>
+                </div>
+              </div> */}
+              </div>
+            </div>
+            <div className=" ml-[4px] flex h-full w-1/2 flex-col bg-[#ffffff18] p-2 transition-colors hover:bg-[#ffffff38]">
+              {/* <div className="">
               <CircularProgressBar
                 percentValue={Math.round(flowPercent)}
               ></CircularProgressBar>
@@ -196,60 +261,47 @@ function Preview({ flow, setFlowState }: PreviewProps) {
               <p className="ltr flex h-full items-center justify-center p-2">
                 Total flow: {flowCount} / {flow.duration} seconds
               </p>
-            </div>
-          </div>
-          <div className="image-track m-auto ml-[4px] h-full w-1/2 bg-[#ffffff18] p-2">
-            <div className=" ml-auto mr-auto flex h-full max-w-[500px] flex-col">
-              <Slider {...settings} ref={sliderRef}>
-                {flow.units.map((unit, index) => {
-                  return (
-                    <div
-                      key={unit.id}
-                      className=" image h-full w-[200px] bg-[transparent] text-black"
-                    >
-                      <div className="flex flex-col items-center justify-center">
-                        <CircularProgressBar
-                          percentValue={Math.round(unitPercent)}
-                          value={
-                            <>
-                              {
-                                <img
-                                  className="w-2/3"
-                                  src={unit.image}
-                                  alt=""
-                                />
-                              }
-                              {<p className=" text-2xlg"> {unit.name}</p>}
-                              {
-                                <p>
-                                  {index + 1} / {flow.units.length}
-                                </p>
-                              }
-                            </>
-                          }
-                        ></CircularProgressBar>
-                      </div>
-                    </div>
-                  );
-                })}
-              </Slider>
-              {/* <div className="p-[10px]">
-                <CircularProgressBar
-                  percentValue={Math.round(unitPercent)}
-                ></CircularProgressBar>
-              </div> */}
-
-              <div>
-                <p className="ltr flex items-center justify-center">
-                  Duration: {unitCount} /{" "}
-                  {flow.units[currentUnitIndex]
-                    ? flow.units[currentUnitIndex].duration
-                    : flow.units[0].duration}{" "}
-                  seconds
-                </p>
-                <p>Percent: {Math.round(unitPercent)}%</p>
+            </div> */}
+              <div className="mt-2 flex flex-col items-start justify-center">
+                <div className="flex w-full items-start justify-start">
+                  {currentUnitIndex + 1 > flow.units.length ? (
+                    <p className="text-start text-[20px]">
+                      1 / {flow.units.length}
+                    </p>
+                  ) : (
+                    <p className="text-start text-[20px]">
+                      {currentUnitIndex + 1} / {flow.units.length}
+                    </p>
+                  )}
+                </div>
+                <div>
+                  <p className="text-start text-[20px]">
+                    {flow.units[currentUnitIndex]
+                      ? flow.units[currentUnitIndex].name
+                      : flow.units[0].name}
+                  </p>
+                </div>
+                <div className="grid w-full grid-cols-[1fr_1fr]">
+                  <p className="ltr text-start text-[20px] ">Duration:</p>
+                  <p className="text-start text-[20px]">
+                    {unitCount} /{" "}
+                    {flow.units[currentUnitIndex]
+                      ? flow.units[currentUnitIndex].duration
+                      : flow.units[0].duration}{" "}
+                    seconds
+                  </p>
+                </div>
+                <div className="grid w-full grid-cols-[1fr_1fr]">
+                  <p className="text-start text-[20px]">Percent: </p>
+                  <p className="text-start text-[20px]">
+                    {Math.round(unitPercent)}%
+                  </p>
+                </div>
               </div>
             </div>
+          </div>
+          <div className="mt-[8px] h-full w-full bg-[#ffffff18] transition-colors hover:bg-[#ffffff38]">
+            test
           </div>
 
           {/* 
