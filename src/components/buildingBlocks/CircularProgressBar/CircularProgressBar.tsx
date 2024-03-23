@@ -1,8 +1,9 @@
 import "./CircularProgressBar.css";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, ReactNode } from "react";
 
 interface CircularProgressBarProps {
   percentValue: number;
+  value: ReactNode;
 }
 
 export default function CircularProgressBar({

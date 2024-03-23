@@ -3,14 +3,12 @@ import { useState, useEffect, useRef } from "react";
 import mp3Provider from "../../assets/mp3Provider";
 import { FlowType } from "./Flow";
 import "./Preview.css";
-import Wheel from "../buildingBlocks/Wheel";
 import CircularProgressBar from "../buildingBlocks/CircularProgressBar/CircularProgressBar";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { LinearProgress, createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
-import { ProgressBar } from "react-bootstrap";
 
 interface PreviewProps {
   flow: FlowType;
@@ -54,8 +52,6 @@ function Preview({ flow, setFlowState }: PreviewProps) {
 
   // Slider settings
   const settings = {
-    // centerPadding: "50px",
-    // centerMode: true,
     dots: false,
     infinite: true,
     speed: 500,
@@ -70,12 +66,6 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   const next = () => {
     if (sliderRef.current) {
       sliderRef.current.slickNext();
-    }
-  };
-
-  const previous = () => {
-    if (sliderRef.current) {
-      sliderRef.current.slickPrev();
     }
   };
 
@@ -166,10 +156,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   }
 
   return (
-    <div
-      className=" preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]"
-      // style={{ minHeight: "calc(100% - 60px)" }}
-    >
+    <div className=" preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
       <div className="w-3/4">
         <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
           <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
@@ -212,7 +199,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             <div className="image-track m-auto mr-[4px] h-full w-1/2 bg-[#ffffff18] p-5 transition-colors hover:bg-[#ffffff38]">
               <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
                 <Slider {...settings} ref={sliderRef}>
-                  {flow.units.map((unit, index) => {
+                  {flow.units.map((unit) => {
                     return (
                       <div
                         key={unit.id}
@@ -222,16 +209,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                           <CircularProgressBar
                             percentValue={Math.round(unitPercent)}
                             value={
-                              <>
-                                {/* {<p className=" text-[2vw]"> {unit.name}</p>} */}
-                                {
-                                  <img
-                                    className="w-2/3"
-                                    src={unit.image}
-                                    alt=""
-                                  />
-                                }
-                              </>
+                              <img className="w-2/3" src={unit.image} alt="" />
                             }
                           ></CircularProgressBar>
                         </div>
@@ -239,52 +217,9 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                     );
                   })}
                 </Slider>
-                {/* <div className="p-[10px]">
-                <CircularProgressBar
-                  percentValue={Math.round(unitPercent)}
-                ></CircularProgressBar>
-              </div> */}
-
-                {/* <div className="mt-2 flex flex-col items-start justify-center">
-                <div className="grid w-full grid-cols-[1fr_1fr]">
-                  <p className="ltr text-start ">Unit:</p>
-                  {currentUnitIndex + 1 > flow.units.length ? (
-                    <p className="text-start">0 / {flow.units.length}</p>
-                  ) : (
-                    <p className="text-start">
-                      {currentUnitIndex + 1} / {flow.units.length}
-                    </p>
-                  )}
-                </div>
-                <div className="grid w-full grid-cols-[1fr_1fr]">
-                  <p className="ltr text-start ">Duration:</p>
-                  <p className="text-start">
-                    {unitCount} /{" "}
-                    {flow.units[currentUnitIndex]
-                      ? flow.units[currentUnitIndex].duration
-                      : flow.units[0].duration}{" "}
-                    seconds
-                  </p>
-                </div>
-                <div className="grid w-full grid-cols-[1fr_1fr]">
-                  <p className="text-start">Percent: </p>
-                  <p className="text-start">{Math.round(unitPercent)}%</p>
-                </div>
-              </div> */}
               </div>
             </div>
             <div className=" ml-[4px] flex h-full w-1/2 flex-col bg-[#ffffff18] p-2 transition-colors hover:bg-[#ffffff38]">
-              {/* <div className="">
-              <CircularProgressBar
-                percentValue={Math.round(flowPercent)}
-              ></CircularProgressBar>
-            </div>
-
-            <div>
-              <p className="ltr flex h-full items-center justify-center p-2">
-                Total flow: {flowCount} / {flow.duration} seconds
-              </p>
-            </div> */}
               <div className="mt-2 flex flex-col items-start justify-center">
                 <div className="flex w-full items-start justify-start">
                   {currentUnitIndex + 1 > flow.units.length ? (
@@ -324,17 +259,6 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             </div>
           </div>
           <div className="mt-[8px] flex h-full w-full items-center justify-center bg-[#ffffff18] transition-colors hover:bg-[#ffffff38]">
-            {/* <div className="">
-              <CircularProgressBar
-                percentValue={Math.round(flowPercent)}
-              ></CircularProgressBar>
-            </div>
-
-            <div>
-              <p className="ltr flex h-full items-center justify-center p-2">
-                Total flow: {flowCount} / {flow.duration} seconds
-              </p>
-            </div> */}
             <div className="w-1/2">
               <ThemeProvider theme={linearProgressBarTheme}>
                 <LinearProgress
@@ -342,12 +266,6 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                   color="inherit"
                   variant="determinate"
                   value={flowPercent}
-                  sx={{
-                    "& .MuiLinearProgress-bar1Determinate": {
-                      // backgroundColor: "red",
-                      // height: "10px",
-                    },
-                  }}
                 />
               </ThemeProvider>
               <p>{Math.round(flowPercent)}%</p>
@@ -356,22 +274,6 @@ function Preview({ flow, setFlowState }: PreviewProps) {
               </p>
             </div>
           </div>
-          {/* 
-          <div>
-            {flow.units[currentUnitIndex]
-              ? flow.units[currentUnitIndex].name
-              : null}
-          </div>
-          <div>
-            {flow.units[currentUnitIndex + 1]
-              ? flow.units[currentUnitIndex + 1].name
-              : null}
-          </div> */}
-          {/* <Wheel
-            units={flow.units}
-            updateWheel={updateWheel}
-            setUpdateWheel={setUpdateWheel}
-          ></Wheel> */}
         </div>
       </div>
     </div>

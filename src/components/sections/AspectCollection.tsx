@@ -3,7 +3,6 @@ import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { FlowType } from "./Flow";
 import { Dispatch, SetStateAction } from "react";
 import { UnitType } from "../buildingBlocks/Unit";
-import { useState } from "react";
 
 interface AspectCollectionProps {
   aspectGroups: AspectGroupType[];
@@ -17,6 +16,7 @@ interface AspectCollectionProps {
         id: number;
         count: number;
       }[];
+      uniqueAspectGroups: [];
     }>
   >;
 }
@@ -26,21 +26,18 @@ export default function AspectCollection({
   flow,
   setFlow,
 }: AspectCollectionProps) {
-  // console.log(aspectGroups);
-  // console.log(flow);
   return (
     <div className="flex w-1/3 flex-col justify-start">
-      {/* <div>
-        <p className="text-black">Poses</p>
-      </div> */}
       <div className="h-fit min-h-full w-full gap-5">
-        {/* <div className=" border-[1px] border-solid border-neutral-200 p-5"> */}
         <div className="accordion w-full">
           {aspectGroups.map((aspectGroup) => {
-            const aspectGroupCount = flow.uniqueAspectGroups.find(
-              (uniqueAspectGroup) =>
-                uniqueAspectGroup.groupName === aspectGroup.category_name
+            const aspectGroupCount = (
+              flow.uniqueAspectGroups.find(
+                (uniqueAspectGroup: { groupName: string; count: number }) =>
+                  uniqueAspectGroup?.groupName === aspectGroup.category_name
+              ) as { groupName: string; count: number } | undefined
             )?.count;
+
             return (
               <AspectGroup
                 key={aspectGroup.category_name}

@@ -35,8 +35,11 @@ interface AspectGroupProps {
         id: number;
         count: number;
       }[];
+      uniqueAspectGroups: [];
     }>
   >;
+  aspectGroupCount: number | undefined;
+  aspectGroups: AspectGroupType[];
 }
 
 function AspectGroup({

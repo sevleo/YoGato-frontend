@@ -29,6 +29,7 @@ type Props = {
         id: number;
         count: number;
       }[];
+      uniqueAspectGroups: { groupName: string; count: number }[];
     }>
   >;
 } & HTMLAttributes<HTMLDivElement>;
