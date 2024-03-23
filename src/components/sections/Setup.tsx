@@ -3,6 +3,7 @@ import AspectCollection from "./AspectCollection";
 import { Dispatch, SetStateAction } from "react";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { UnitType } from "../buildingBlocks/Unit";
+import { MouseEventHandler } from "react";
 
 interface SetupProps {
   flow: FlowType;
@@ -15,11 +16,17 @@ interface SetupProps {
         id: number;
         count: number;
       }[];
+      uniqueAspectGroups: [];
     }>
   >;
-  setFlowState: Dispatch<SetStateAction<string>> | undefined;
   aspectGroups: AspectGroupType[];
+  setFlowState: Dispatch<SetStateAction<string>> | undefined;
+  setLocation: Dispatch<SetStateAction<string>>;
+  enablePreview: boolean;
+  enableClear: boolean;
 }
+
+type ClickHandler = MouseEventHandler<HTMLButtonElement>;
 
 function Setup({
   flow,
@@ -35,7 +42,7 @@ function Setup({
   const minutes = Math.floor((duration % 3600) / 60);
   const seconds = duration % 60;
 
-  function handleClearButton() {
+  const handleClearButton: ClickHandler = () => {
     const defaultFlow: FlowType = {
       flowName: "my fancy flow",
       units: [],
@@ -45,15 +52,15 @@ function Setup({
     };
 
     setFlow(defaultFlow);
-  }
+  };
 
-  function handlePreviewButtonClick() {
+  const handlePreviewButtonClick: ClickHandler = () => {
     if (setFlowState) {
       setFlowState("preview");
       setLocation("preview");
       console.log(location);
     }
-  }
+  };
 
   return (
     <div className="setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
@@ -82,13 +89,13 @@ function Setup({
           <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
             <button
               className={`h-full w-[100px] rounded-none border-[1px] ${enablePreview ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
-              onClick={enablePreview ? handlePreviewButtonClick : null}
+              onClick={enablePreview ? handlePreviewButtonClick : undefined}
             >
               Preview
             </button>
             <button
               className={`h-full w-[100px] rounded-none border-[1px] ${enableClear ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
-              onClick={enableClear ? handleClearButton : null}
+              onClick={enableClear ? handleClearButton : undefined}
             >
               Clear
             </button>

@@ -13,11 +13,18 @@ import categories from "../../db/categories.json";
 import { FlowType } from "../sections/Flow";
 
 interface BuilderProps {
+  isHamburgerMenu: boolean;
+  setIsHamburgerMenu: Dispatch<SetStateAction<boolean>>;
   location: string;
   setLocation: Dispatch<SetStateAction<string>>;
 }
 
-function Builder({ location, setLocation }: BuilderProps) {
+function Builder({
+  isHamburgerMenu,
+  setIsHamburgerMenu,
+  location,
+  setLocation,
+}: BuilderProps) {
   const aspectGroups: AspectGroupType[] = categories;
 
   const defaultFlow: FlowType = {
@@ -45,14 +52,18 @@ function Builder({ location, setLocation }: BuilderProps) {
 
   return (
     <>
-      <Header location={location} setLocation={setLocation} />
+      <Header
+        isHamburgerMenu={isHamburgerMenu}
+        setIsHamburgerMenu={setIsHamburgerMenu}
+        location={location}
+        setLocation={setLocation}
+      />
       {flowState === "setup" && (
         <Setup
           flow={flow}
           setFlow={setFlow}
           setFlowState={setFlowState}
           aspectGroups={aspectGroups}
-          setFlowState={setFlowState}
           setLocation={setLocation}
           enablePreview={flow.units.length > 0 ? true : false}
           enableClear={flow.units.length > 0 ? true : false}

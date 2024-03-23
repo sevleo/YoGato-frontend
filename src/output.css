@@ -861,10 +861,6 @@ video {
   gap: 1.25rem;
 }
 
-.gap-3 {
-  gap: 0.75rem;
-}
-
 .text-wrap {
   text-wrap: wrap;
 }

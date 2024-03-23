@@ -15,6 +15,8 @@ import { ProgressBar } from "react-bootstrap";
 interface PreviewProps {
   flow: FlowType;
   setFlowState: Dispatch<SetStateAction<string>>;
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
 }
 
 function Preview({ flow, setFlowState }: PreviewProps) {

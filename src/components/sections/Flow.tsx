@@ -2,6 +2,7 @@
 import { SetStateAction } from "react";
 import { Dispatch } from "react";
 import { useState } from "react";
+import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 
 // DndKit
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
@@ -35,6 +36,7 @@ export interface FlowType {
     id: number;
     count: number;
   }[];
+  uniqueAspectGroups: [];
 }
 
 export interface FlowProps {
@@ -50,6 +52,7 @@ export interface FlowProps {
       }[];
     }>
   >;
+  aspectGroups: AspectGroupType[];
 }
 
 function Flow({ flow, setFlow, aspectGroups }: FlowProps) {
