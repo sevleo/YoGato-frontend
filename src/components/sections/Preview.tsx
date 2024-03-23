@@ -8,7 +8,8 @@ import CircularProgressBar from "../buildingBlocks/CircularProgressBar/CircularP
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { LinearProgress } from "@mui/material";
+import { LinearProgress, createTheme } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
 
 interface PreviewProps {
   flow: FlowType;
@@ -16,6 +17,24 @@ interface PreviewProps {
 }
 
 function Preview({ flow, setFlowState }: PreviewProps) {
+  // Theme for linear progress bar
+  const linearProgressBarTheme = createTheme({
+    components: {
+      MuiLinearProgress: {
+        styleOverrides: {
+          root: {
+            height: "10px",
+            borderRadius: "10px",
+          },
+          bar: {
+            height: "10px",
+            borderRadius: "10px",
+          },
+        },
+      },
+    },
+  });
+
   const [startFlow, setStartFlow] = useState<boolean>(false);
   const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
   const [flowCount, setFlowCount] = useState<number>(0);
@@ -301,7 +320,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
               </div>
             </div>
           </div>
-          <div className="mt-[8px] h-full w-full bg-[#ffffff18] transition-colors hover:bg-[#ffffff38]">
+          <div className="mt-[8px] flex h-full w-full items-center justify-center bg-[#ffffff18] transition-colors hover:bg-[#ffffff38]">
             {/* <div className="">
               <CircularProgressBar
                 percentValue={Math.round(flowPercent)}
@@ -313,8 +332,26 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                 Total flow: {flowCount} / {flow.duration} seconds
               </p>
             </div> */}
+            <div className="w-1/2">
+              <ThemeProvider theme={linearProgressBarTheme}>
+                <LinearProgress
+                  color="inherit"
+                  variant="determinate"
+                  value={flowPercent}
+                  sx={{
+                    "& .MuiLinearProgress-bar1Determinate": {
+                      // backgroundColor: "red",
+                      // height: "10px",
+                    },
+                  }}
+                />
+              </ThemeProvider>
+              <p>{Math.round(flowPercent)}%</p>
+              <p className="ltr flex h-full items-center justify-center p-2">
+                Total flow: {flowCount} / {flow.duration} seconds
+              </p>
+            </div>
           </div>
-
           {/* 
           <div>
             {flow.units[currentUnitIndex]
@@ -326,7 +363,6 @@ function Preview({ flow, setFlowState }: PreviewProps) {
               ? flow.units[currentUnitIndex + 1].name
               : null}
           </div> */}
-
           {/* <Wheel
             units={flow.units}
             updateWheel={updateWheel}
