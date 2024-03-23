@@ -8,6 +8,7 @@ import CircularProgressBar from "../buildingBlocks/CircularProgressBar/CircularP
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
+import { LinearProgress } from "@mui/material";
 
 interface PreviewProps {
   flow: FlowType;
@@ -301,7 +302,17 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             </div>
           </div>
           <div className="mt-[8px] h-full w-full bg-[#ffffff18] transition-colors hover:bg-[#ffffff38]">
-            test
+            {/* <div className="">
+              <CircularProgressBar
+                percentValue={Math.round(flowPercent)}
+              ></CircularProgressBar>
+            </div>
+
+            <div>
+              <p className="ltr flex h-full items-center justify-center p-2">
+                Total flow: {flowCount} / {flow.duration} seconds
+              </p>
+            </div> */}
           </div>
 
           {/* 
