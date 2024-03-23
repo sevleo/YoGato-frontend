@@ -7,7 +7,6 @@ import Experiment from "./components/pages/Experiment";
 import { useState } from "react";
 
 function App() {
-  const [isHamburgerMenu, setIsHamburgerMenu] = useState<boolean>(true);
   const [location, setLocation] = useState<string>("");
 
   const router = createBrowserRouter([
@@ -15,8 +14,6 @@ function App() {
       path: "/",
       element: (
         <Home
-          isHamburgerMenu={true}
-          setIsHamburgerMenu={setIsHamburgerMenu}
           location={location === "" ? "Home" : location}
           setLocation={setLocation}
         ></Home>
@@ -27,8 +24,6 @@ function App() {
       path: "/builder",
       element: (
         <Builder
-          isHamburgerMenu={false}
-          setIsHamburgerMenu={setIsHamburgerMenu}
           location={location === "" ? "flow-builder" : location}
           setLocation={setLocation}
         ></Builder>
@@ -38,8 +33,6 @@ function App() {
       path: "/experiment",
       element: (
         <Experiment
-          isHamburgerMenu={true}
-          setIsHamburgerMenu={setIsHamburgerMenu}
           location={location === "" ? "experiment" : location}
           setLocation={setLocation}
         ></Experiment>
