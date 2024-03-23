@@ -9,6 +9,8 @@ import { CSS } from "@dnd-kit/utilities";
 // Components
 import Input from "./Input";
 
+import { FlowType } from "../sections/Flow";
+
 export interface UnitType {
   id: string;
   name: string;
@@ -30,17 +32,8 @@ interface UnitProps {
   index?: number;
   image: string | undefined;
   aspectId: number;
-  setFlow: Dispatch<
-    SetStateAction<{
-      flowName: string;
-      units: UnitType[];
-      duration: number;
-      uniqueAspects: {
-        id: number;
-        count: number;
-      }[];
-    }>
-  >;
+  setFlow: Dispatch<SetStateAction<FlowType>>;
+
   dragAllowed: boolean;
   setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
 }

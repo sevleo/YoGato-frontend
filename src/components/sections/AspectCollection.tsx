@@ -2,23 +2,11 @@ import AspectGroup from "../buildingBlocks/AspectGroup";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { FlowType } from "./Flow";
 import { Dispatch, SetStateAction } from "react";
-import { UnitType } from "../buildingBlocks/Unit";
 
 interface AspectCollectionProps {
   aspectGroups: AspectGroupType[];
   flow: FlowType;
-  setFlow: Dispatch<
-    SetStateAction<{
-      flowName: string;
-      units: UnitType[];
-      duration: number;
-      uniqueAspects: {
-        id: number;
-        count: number;
-      }[];
-      uniqueAspectGroups: [];
-    }>
-  >;
+  setFlow: Dispatch<SetStateAction<FlowType>>;
 }
 
 export default function AspectCollection({

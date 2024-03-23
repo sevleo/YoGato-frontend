@@ -13,6 +13,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useState } from "react";
+import { FlowType } from "../sections/Flow";
 
 export interface AspectGroupType {
   category_name: string;
@@ -26,18 +27,8 @@ interface AspectGroupProps {
     id: number;
     count: number;
   }[];
-  setFlow: Dispatch<
-    SetStateAction<{
-      flowName: string;
-      units: UnitType[];
-      duration: number;
-      uniqueAspects: {
-        id: number;
-        count: number;
-      }[];
-      uniqueAspectGroups: [];
-    }>
-  >;
+  setFlow: Dispatch<SetStateAction<FlowType>>;
+
   aspectGroupCount: number | undefined;
   aspectGroups: AspectGroupType[];
 }

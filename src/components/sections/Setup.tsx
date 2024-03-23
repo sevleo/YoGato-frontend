@@ -2,23 +2,11 @@ import Flow, { FlowType } from "./Flow";
 import AspectCollection from "./AspectCollection";
 import { Dispatch, SetStateAction } from "react";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
-import { UnitType } from "../buildingBlocks/Unit";
 import { MouseEventHandler } from "react";
 
 interface SetupProps {
   flow: FlowType;
-  setFlow: Dispatch<
-    SetStateAction<{
-      flowName: string;
-      units: UnitType[];
-      duration: number;
-      uniqueAspects: {
-        id: number;
-        count: number;
-      }[];
-      uniqueAspectGroups: [];
-    }>
-  >;
+  setFlow: Dispatch<SetStateAction<FlowType>>;
   aspectGroups: AspectGroupType[];
   setFlowState: Dispatch<SetStateAction<string>> | undefined;
   setLocation: Dispatch<SetStateAction<string>>;

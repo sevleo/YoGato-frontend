@@ -3,7 +3,7 @@ import { HTMLAttributes } from "react";
 import { v4 as uuidv4 } from "uuid";
 import svgProvider from "../../../assets/svgProvider";
 import { Dispatch, SetStateAction } from "react";
-import { UnitType } from "../Unit";
+import { FlowType } from "../../sections/Flow";
 
 // Components
 import Aspect from "./AspectDisplay";
@@ -20,18 +20,7 @@ export interface AspectType {
 type Props = {
   aspect: AspectType;
   count: number;
-  setFlow: Dispatch<
-    SetStateAction<{
-      flowName: string;
-      units: UnitType[];
-      duration: number;
-      uniqueAspects: {
-        id: number;
-        count: number;
-      }[];
-      uniqueAspectGroups: { groupName: string; count: number }[];
-    }>
-  >;
+  setFlow: Dispatch<SetStateAction<FlowType>>;
 } & HTMLAttributes<HTMLDivElement>;
 
 export default function AspectController({

@@ -36,7 +36,7 @@ export interface FlowType {
     id: number;
     count: number;
   }[];
-  uniqueAspectGroups: { groupName: string; count: number }[];
+  uniqueAspectGroups: UniqueAspectGroup[];
 }
 
 export interface UniqueAspectGroup {
@@ -44,24 +44,9 @@ export interface UniqueAspectGroup {
   count: number;
 }
 
-export interface setFlow {
-  setFlow: Dispatch<
-    SetStateAction<{
-      flowName: string;
-      units: UnitType[];
-      duration: number;
-      uniqueAspects: {
-        id: number;
-        count: number;
-      }[];
-      uniqueAspectGroups: UniqueAspectGroup[];
-    }>
-  >;
-}
-
 export interface FlowProps {
   flow: FlowType;
-  setFlow: setFlow;
+  setFlow: Dispatch<SetStateAction<FlowType>>;
   aspectGroups: AspectGroupType[];
 }
 
