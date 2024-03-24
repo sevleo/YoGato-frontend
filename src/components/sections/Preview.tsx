@@ -35,6 +35,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   });
 
   const [startFlow, setStartFlow] = useState<boolean>(false);
+  const [pauseFlow, setPauseFlow] = useState<boolean>(false);
   const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
   const [flowCount, setFlowCount] = useState<number>(0);
   const [flowPercent, setFlowPercent] = useState<number>(0);
@@ -71,7 +72,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   useEffect(() => {
     let secondCounter: number;
     let percentCounter: number;
-    if (startFlow) {
+    if (startFlow && !pauseFlow) {
       secondCounter = setInterval(() => {
         setUnitCount((unitCount: number) => {
           // console.log(`Unit count: ${unitCount + 1}`);
@@ -137,7 +138,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
       clearInterval(secondCounter);
       clearInterval(percentCounter);
     };
-  }, [startFlow, flow, currentUnitIndex, updateWheel]);
+  }, [startFlow, flow, currentUnitIndex, updateWheel, pauseFlow]);
 
   function handleStartButtonClick() {
     setStartFlow(!startFlow);
@@ -151,6 +152,10 @@ function Preview({ flow, setFlowState }: PreviewProps) {
 
   function handleCancelButtonClick() {
     setFlowState("setup");
+  }
+
+  function handlePauseButtonClick() {
+    setPauseFlow((prevValue) => !prevValue);
   }
 
   return (
@@ -186,7 +191,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             </button>
             <button
               className={` h-full w-[100px] ${startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
-              onClick={startFlow ? handleCancelButtonClick : undefined}
+              onClick={startFlow ? handlePauseButtonClick : undefined}
             >
               Pause
             </button>
