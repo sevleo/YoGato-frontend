@@ -193,7 +193,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
               className={` h-full w-[100px] ${startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
               onClick={startFlow ? handlePauseButtonClick : undefined}
             >
-              Pause
+              {pauseFlow ? "Resume" : "Pause"}
             </button>
             <button
               className={` h-full w-[100px] ${!startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
