@@ -95,22 +95,24 @@ function Preview({ flow, setFlowState }: PreviewProps) {
 
       percentCounter = setInterval(() => {
         setFlowPercent((flowPercent) => {
-          setFlowCount((prevValue) => +(prevValue + 0.01));
-          const increment = 100 / (flow.duration * 100);
+          setFlowCount((prevValue) => +(prevValue + 0.1));
+          const increment = 100 / (flow.duration * 10);
           const newFlowPercent: number = Math.min(flowPercent + increment, 100);
           return newFlowPercent;
         });
 
         setUnitPercent((unitPercent) => {
           if (flow.units[currentUnitIndex]) {
-            setUnitCount((prevValue) => +(prevValue + 0.01));
+            setUnitCount((prevValue) => +(prevValue + 0.1));
 
             const increment =
-              100 / (flow.units[currentUnitIndex].duration * 100);
+              100 / (flow.units[currentUnitIndex].duration * 10);
+            // console.log(increment);
             const newUnitPercent: number = Math.min(
               unitPercent + increment,
               100
             );
+            console.log(newUnitPercent);
 
             return newUnitPercent;
           } else {
@@ -124,7 +126,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             return 0;
           }
         });
-      }, 10);
+      }, 100);
     }
 
     return () => {
