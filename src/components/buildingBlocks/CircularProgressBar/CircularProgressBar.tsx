@@ -14,8 +14,8 @@ export default function CircularProgressBar({
   const progressValueRef = useRef(null);
 
   useEffect(() => {
-    console.log(circularProgressRef.current);
-    console.log(progressValueRef.current);
+    // console.log(circularProgressRef.current);
+    // console.log(progressValueRef.current);
   }, []);
 
   return (

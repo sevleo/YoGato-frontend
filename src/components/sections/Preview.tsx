@@ -37,6 +37,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   const [startFlow, setStartFlow] = useState<boolean>(false);
   const [pauseFlow, setPauseFlow] = useState<boolean>(false);
   const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
+
   const [flowCount, setFlowCount] = useState<number>(0);
   const [flowPercent, setFlowPercent] = useState<number>(0);
   const [unitCount, setUnitCount] = useState<number>(0);
@@ -74,31 +75,28 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     let percentCounter: number;
     if (startFlow && !pauseFlow) {
       secondCounter = setInterval(() => {
-        setUnitCount((unitCount: number) => {
-          // console.log(`Unit count: ${unitCount + 1}`);
-          let newUnitCount: number;
+        // setUnitCount((unitCount: number) => {
+        //   // console.log(`Unit count: ${unitCount + 1}`);
+        //   let newUnitCount: number;
 
-          if (unitCount + 1 === flow.units[currentUnitIndex].duration) {
-            if (flow.units[currentUnitIndex + 1]) {
-              const audio = new Audio(
-                mp3Provider(flow.units[currentUnitIndex + 1].url_svg_alt_local)
-              );
-              // setTimeout(() => {
-              //   audio.play();
-              // }, 1000);
-              audio.play();
-              console.log(flow.units[currentUnitIndex + 1].announcement);
-              next();
-            }
-            setCurrentUnitIndex(currentUnitIndex + 1);
-            setUpdateWheel(true);
-            setUnitPercent(0);
-            newUnitCount = 0;
-          } else {
-            newUnitCount = unitCount + 1;
-          }
-          return newUnitCount;
-        });
+        //   if (unitCount + 1 === flow.units[currentUnitIndex].duration) {
+        //     if (flow.units[currentUnitIndex + 1]) {
+        //       // const audio = new Audio(
+        //       //   mp3Provider(flow.units[currentUnitIndex + 1].url_svg_alt_local)
+        //       // );
+        //       // audio.play();
+        //       // console.log(flow.units[currentUnitIndex + 1].announcement);
+        //       // next();
+        //     }
+        //     // setCurrentUnitIndex(currentUnitIndex + 1);
+        //     // setUpdateWheel(true);
+        //     // setUnitPercent(0);
+        //     newUnitCount = 0;
+        //   } else {
+        //     newUnitCount = unitCount + 1;
+        //   }
+        //   return newUnitCount;
+        // });
 
         setFlowCount((flowCount: number) => {
           console.log(`Total count: ${flowCount + 1}`);
@@ -121,15 +119,34 @@ function Preview({ flow, setFlowState }: PreviewProps) {
         setFlowPercent((flowPercent) => {
           const increment = 100 / (flow.duration * 100);
           const newFlowPercent: number = Math.min(flowPercent + increment, 100);
-          //   console.log(newFlowPercent);
           return newFlowPercent;
         });
 
         setUnitPercent((unitPercent) => {
-          const increment = 100 / (flow.units[currentUnitIndex].duration * 100);
-          const newUnitPercent: number = Math.min(unitPercent + increment, 100);
-          console.log(newUnitPercent);
-          return newUnitPercent;
+          if (flow.units[currentUnitIndex]) {
+            // setUnitCount((prevValue) => +(prevValue + 0.01).toFixed(2));
+            const increment =
+              100 / (flow.units[currentUnitIndex].duration * 100);
+            const newUnitPercent: number = Math.min(
+              unitPercent + increment,
+              100
+            );
+            // console.log(newUnitPercent);
+            if (newUnitPercent === 100) {
+              setUnitPercent(0);
+              setUnitCount(0);
+              setCurrentUnitIndex(currentUnitIndex + 1);
+              setUpdateWheel(true);
+              const audio = new Audio(
+                mp3Provider(flow.units[currentUnitIndex + 1].url_svg_alt_local)
+              );
+              audio.play();
+              console.log(flow.units[currentUnitIndex + 1].announcement);
+              next();
+            }
+
+            return newUnitPercent;
+          }
         });
       }, 10);
     }
@@ -138,7 +155,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
       clearInterval(secondCounter);
       clearInterval(percentCounter);
     };
-  }, [startFlow, flow, currentUnitIndex, updateWheel, pauseFlow]);
+  }, [startFlow, flow, currentUnitIndex, updateWheel, pauseFlow, unitPercent]);
 
   function handleStartButtonClick() {
     setStartFlow(!startFlow);
