@@ -69,7 +69,8 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     }
   };
 
-  // Flowing ^:)
+  // Flowing :)
+  // Flowing :)
   useEffect(() => {
     let percentCounter: number;
     if (startFlow && !pauseFlow) {
@@ -96,7 +97,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
       percentCounter = setInterval(() => {
         setFlowPercent((flowPercent) => {
           setFlowCount((prevValue) => +(prevValue + 0.1));
-          const increment = 100 / (flow.duration * 1);
+          const increment = 100 / (flow.duration * 100);
           const newFlowPercent: number = Math.min(flowPercent + increment, 100);
           return newFlowPercent;
         });
@@ -105,7 +106,8 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           if (flow.units[currentUnitIndex]) {
             setUnitCount((prevValue) => +(prevValue + 0.1));
 
-            const increment = 100 / (flow.units[currentUnitIndex].duration * 1);
+            const increment =
+              100 / (flow.units[currentUnitIndex].duration * 100);
             // console.log(increment);
             const newUnitPercent: number = Math.min(
               unitPercent + increment,
@@ -125,85 +127,13 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             return 0;
           }
         });
-      }, 1000);
+      }, 10);
     }
 
     return () => {
       clearInterval(percentCounter);
     };
   }, [startFlow, flow, currentUnitIndex, updateWheel, pauseFlow, unitPercent]);
-
-  // Flowing :)
-  // useEffect(() => {
-  //   let secondCounter: number;
-  //   let percentCounter: number;
-  //   if (startFlow) {
-  //     secondCounter = setInterval(() => {
-  //       setUnitCount((unitCount: number) => {
-  //         // console.log(`Unit count: ${unitCount + 1}`);
-  //         let newUnitCount: number;
-
-  //         if (unitCount + 1 === flow.units[currentUnitIndex].duration) {
-  //           if (flow.units[currentUnitIndex + 1]) {
-  //             const audio = new Audio(
-  //               mp3Provider(flow.units[currentUnitIndex + 1].url_svg_alt_local)
-  //             );
-  //             // setTimeout(() => {
-  //             //   audio.play();
-  //             // }, 1000);
-  //             audio.play();
-  //             console.log(flow.units[currentUnitIndex + 1].announcement);
-  //             next();
-  //           }
-  //           setCurrentUnitIndex(currentUnitIndex + 1);
-  //           setUpdateWheel(true);
-  //           setUnitPercent(0);
-  //           newUnitCount = 0;
-  //         } else {
-  //           newUnitCount = unitCount + 1;
-  //         }
-  //         return newUnitCount;
-  //       });
-
-  //       setFlowCount((flowCount: number) => {
-  //         console.log(`Total count: ${flowCount + 1}`);
-  //         let newFlowCount: number;
-
-  //         if (flowCount + 1 === flow.duration) {
-  //           newFlowCount = 0;
-  //           setStartFlow(false);
-
-  //           console.log(`End of flow.`);
-  //           next();
-  //         } else {
-  //           newFlowCount = flowCount + 1;
-  //         }
-  //         return newFlowCount;
-  //       });
-  //     }, 1000);
-
-  //     percentCounter = setInterval(() => {
-  //       setFlowPercent((flowPercent) => {
-  //         const increment = 100 / (flow.duration * 100);
-  //         const newFlowPercent: number = Math.min(flowPercent + increment, 100);
-  //         //   console.log(newFlowPercent);
-  //         return newFlowPercent;
-  //       });
-
-  //       setUnitPercent((unitPercent) => {
-  //         const increment = 100 / (flow.units[currentUnitIndex].duration * 100);
-  //         const newUnitPercent: number = Math.min(unitPercent + increment, 100);
-  //         console.log(newUnitPercent);
-  //         return newUnitPercent;
-  //       });
-  //     }, 10);
-  //   }
-
-  //   return () => {
-  //     clearInterval(secondCounter);
-  //     clearInterval(percentCounter);
-  //   };
-  // }, [startFlow, flow, currentUnitIndex, updateWheel]);
 
   function handleStartButtonClick() {
     setStartFlow(!startFlow);
