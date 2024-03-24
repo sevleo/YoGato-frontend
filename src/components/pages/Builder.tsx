@@ -71,12 +71,7 @@ function Builder({
       )}
 
       {flowState === "preview" && (
-        <Preview
-          flow={flow}
-          setFlowState={setFlowState}
-          location={location}
-          setLocation={setLocation}
-        ></Preview>
+        <Preview flow={flow} setFlowState={setFlowState}></Preview>
       )}
 
       {flowState === "going" && null}
