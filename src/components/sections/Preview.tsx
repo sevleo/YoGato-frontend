@@ -9,7 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { LinearProgress, createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
-import { useTimer, useStopwatch } from "react-use-precision-timer";
+import { useTimer } from "react-use-precision-timer";
 
 interface PreviewProps {
   flow: FlowType;

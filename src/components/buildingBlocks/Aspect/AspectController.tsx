@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import svgProvider from "../../../assets/svgProvider";
 import { Dispatch, SetStateAction } from "react";
 import { FlowType } from "../../sections/Flow";
+import { AspectGroupType } from "../AspectGroup";
 
 // Components
 import Aspect from "./AspectDisplay";
@@ -21,6 +22,7 @@ type Props = {
   aspect: AspectType;
   count: number;
   setFlow: Dispatch<SetStateAction<FlowType>>;
+  aspectGroups: AspectGroupType[];
 } & HTMLAttributes<HTMLDivElement>;
 
 export default function AspectController({

@@ -5,14 +5,12 @@ import AspectController from "./Aspect/AspectController";
 import { AspectType } from "./Aspect/AspectController";
 
 import { Dispatch, SetStateAction } from "react";
-import { UnitType } from "./Unit";
 
-import Accordion, { AccordionSlots } from "@mui/material/Accordion";
+import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useState } from "react";
 import { FlowType } from "../sections/Flow";
 
 export interface AspectGroupType {
@@ -41,8 +39,6 @@ function AspectGroup({
   aspectGroupCount,
   aspectGroups,
 }: AspectGroupProps) {
-  const [groupCount, setGroupCount] = useState(0);
-
   return (
     <>
       <Accordion

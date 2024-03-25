@@ -11,6 +11,8 @@ import Input from "./Input";
 
 import { FlowType } from "../sections/Flow";
 
+import { AspectGroupType } from "./AspectGroup";
+
 export interface UnitType {
   id: string;
   name: string;
@@ -36,6 +38,7 @@ interface UnitProps {
 
   dragAllowed: boolean;
   setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
+  aspectGroups: AspectGroupType[];
 }
 
 function Unit({
