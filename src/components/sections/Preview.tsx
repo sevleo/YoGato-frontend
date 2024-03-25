@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import mp3Provider from "../../assets/mp3Provider";
 import { FlowType } from "./Flow";
 import "./Preview.css";
@@ -9,6 +9,7 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { LinearProgress, createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import { useTimer, useStopwatch } from "react-use-precision-timer";
 
 interface PreviewProps {
   flow: FlowType;
@@ -36,12 +37,19 @@ function Preview({ flow, setFlowState }: PreviewProps) {
 
   const [startFlow, setStartFlow] = useState<boolean>(false);
   const [pauseFlow, setPauseFlow] = useState<boolean>(false);
+  const [resumeFlow, setResumeFlow] = useState<boolean>(false);
+
   const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
 
   const [flowCount, setFlowCount] = useState<number>(0);
   const [flowPercent, setFlowPercent] = useState<number>(0);
   const [unitCount, setUnitCount] = useState<number>(0);
   const [unitPercent, setUnitPercent] = useState<number>(0);
+
+  const [flowIncrement, setFlowIncrement] = useState<number>(0);
+  const [unitIncrement, setUnitIncrement] = useState<number>(0);
+
+  const [timerCount, setTimerCount] = useState(0);
 
   const [updateWheel, setUpdateWheel] = useState(false);
 
@@ -69,79 +77,101 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     }
   };
 
-  // Flowing :)
-  // Flowing :)
+  // Flow timer
+  const callback = useCallback(() => {
+    setTimerCount((prevValue) => prevValue + 1);
+    setUnitCount((prevValue) => +(prevValue + 0.01));
+    setFlowCount((prevValue) => +(prevValue + 0.01));
+    setUnitPercent((prevValue) => prevValue + unitIncrement);
+    setFlowPercent((prevValue) => prevValue + flowIncrement);
+  }, [unitIncrement, flowIncrement]);
+
+  const timer = useTimer({ delay: 10, fireOnStart: true }, callback);
+
+  // Update Flow Increment to calculate percentages for progress bar
   useEffect(() => {
-    let percentCounter: number;
-    if (startFlow && !pauseFlow) {
-      // Handle unit end
-      if (unitPercent === 100) {
-        setUnitPercent(0);
-        setUnitCount(0);
-        setCurrentUnitIndex(currentUnitIndex + 1);
-        // setUpdateWheel(true);
-        next();
+    if (startFlow) {
+      const newIncrement = 100 / (flow.duration * 100);
+      setFlowIncrement(newIncrement);
+    }
+  }, [flow.duration, startFlow]);
+
+  // Update Unit Increment to calculate percentages for progress bar
+  useEffect(() => {
+    if (startFlow) {
+      console.log(flow.units);
+      console.log(currentUnitIndex);
+      if (flow.units[currentUnitIndex]) {
+        const newIncrement =
+          100 / (flow.units[currentUnitIndex].duration * 100);
+        setUnitIncrement(newIncrement);
       }
+    }
+  }, [flow.units, currentUnitIndex, startFlow]);
 
-      // Handle unit start
-      if (unitPercent === 0 && flow.units[currentUnitIndex]) {
-        if (flow.units[currentUnitIndex])
-          console.log(flow.units[currentUnitIndex].name);
-        const audio = new Audio(
-          mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
-        );
-        audio.play();
-        console.log(flow.units[currentUnitIndex].announcement);
-      }
+  // Flow end
+  useEffect(() => {
+    if (timerCount === flow.duration * 100) {
+      timer.stop();
+      setStartFlow(false);
+      setPauseFlow(false);
+      setResumeFlow(false);
 
-      percentCounter = setInterval(() => {
-        setFlowPercent((flowPercent) => {
-          setFlowCount((prevValue) => +(prevValue + 0.1));
-          const increment = 100 / (flow.duration * 100);
-          const newFlowPercent: number = Math.min(flowPercent + increment, 100);
-          return newFlowPercent;
-        });
+      setCurrentUnitIndex(0);
 
-        setUnitPercent((unitPercent) => {
-          if (flow.units[currentUnitIndex]) {
-            setUnitCount((prevValue) => +(prevValue + 0.1));
+      setFlowCount(0);
+      setFlowPercent(0);
+      setUnitCount(0);
+      setUnitPercent(0);
 
-            const increment =
-              100 / (flow.units[currentUnitIndex].duration * 100);
-            // console.log(increment);
-            const newUnitPercent: number = Math.min(
-              unitPercent + increment,
-              100
-            );
-            console.log(newUnitPercent);
+      setFlowIncrement(0);
+      setUnitIncrement(0);
 
-            return newUnitPercent;
-          } else {
-            setUnitPercent(0);
-            setUnitCount(0);
-            setFlowPercent(0);
-            setFlowCount(0);
-            setCurrentUnitIndex(0);
-            next();
-            setStartFlow(false);
-            return 0;
-          }
-        });
-      }, 10);
+      setTimerCount(0);
+    }
+  }, [timer, timerCount, flow.duration]);
+
+  // Unit end
+  useEffect(() => {
+    if (unitPercent >= 100) {
+      setUnitCount(0);
+      setUnitPercent(0);
+      next();
+      setCurrentUnitIndex((prevValue) => prevValue + 1);
+    }
+  }, [timerCount, unitPercent]);
+
+  // Audio play
+  useEffect(() => {
+    if (startFlow) {
+      const audio = new Audio(
+        mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
+      );
+      audio.play();
+    }
+  }, [currentUnitIndex, flow.units, startFlow]);
+
+  // Start/Pause/Resume controls
+  useEffect(() => {
+    if (startFlow && !pauseFlow && !resumeFlow) {
+      timer.start();
+    }
+    if (startFlow && pauseFlow && !resumeFlow) {
+      timer.pause();
     }
 
-    return () => {
-      clearInterval(percentCounter);
-    };
-  }, [startFlow, flow, currentUnitIndex, updateWheel, pauseFlow, unitPercent]);
+    if (startFlow && !pauseFlow && resumeFlow) {
+      timer.resume();
+    }
+  }, [timer, startFlow, pauseFlow, resumeFlow]);
 
   function handleStartButtonClick() {
-    setStartFlow(!startFlow);
+    setPauseFlow(false);
+    setResumeFlow(false);
+    setStartFlow(true);
     setCurrentUnitIndex(0);
     setFlowPercent(0);
     console.log(`Count active: ${!startFlow}`);
-    const audio = new Audio(mp3Provider(flow.units[0].url_svg_alt_local));
-    audio.play();
     console.log(flow.units[0].announcement);
   }
 
@@ -150,7 +180,13 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   }
 
   function handlePauseButtonClick() {
-    setPauseFlow((prevValue) => !prevValue);
+    if (pauseFlow) {
+      setPauseFlow(false);
+      setResumeFlow(true);
+    } else if (!pauseFlow) {
+      setPauseFlow(true);
+      setResumeFlow(false);
+    }
   }
 
   return (
@@ -226,7 +262,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             <div className=" ml-[4px] flex h-full w-1/2 flex-col bg-[#ffffff18] p-2 transition-colors hover:bg-[#ffffff38]">
               <div className="mt-2 flex flex-col items-start justify-center">
                 <div className="flex w-full items-start justify-start">
-                  {currentUnitIndex + 1 > flow.units.length ? (
+                  {!startFlow ? (
                     <p className="text-start text-[20px]">
                       1 / {flow.units.length}
                     </p>
