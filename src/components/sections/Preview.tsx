@@ -196,6 +196,27 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     }
   }
 
+  function handleStopButtonClick() {
+    console.log("stop!!");
+    setStartFlow(false);
+    setPauseFlow(false);
+    setResumeFlow(false);
+
+    setCurrentUnitIndex(0);
+
+    setFlowCount(0);
+    setFlowPercent(0);
+    setUnitCount(0);
+    setUnitPercent(0);
+
+    setFlowIncrement(0);
+    setUnitIncrement(0);
+
+    setTimerCount(0);
+
+    timer.stop();
+  }
+
   return (
     <div className=" preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
       <div className="w-3/4">
@@ -232,6 +253,12 @@ function Preview({ flow, setFlowState }: PreviewProps) {
               onClick={startFlow ? handlePauseButtonClick : undefined}
             >
               {pauseFlow ? "Resume" : "Pause"}
+            </button>
+            <button
+              className={` h-full w-[100px] ${startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+              onClick={startFlow ? handleStopButtonClick : undefined}
+            >
+              {"Stop"}
             </button>
             <button
               className={` h-full w-[100px] ${!startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
