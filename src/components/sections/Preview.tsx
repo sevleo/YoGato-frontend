@@ -51,8 +51,6 @@ function Preview({ flow, setFlowState }: PreviewProps) {
 
   const [timerCount, setTimerCount] = useState(0);
 
-  const [updateWheel, setUpdateWheel] = useState(false);
-
   const duration = flow.duration;
   const hours = Math.floor(duration / 3600);
   const minutes = Math.floor((duration % 3600) / 60);
@@ -82,8 +80,16 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     setTimerCount((prevValue) => prevValue + 1);
     setUnitCount((prevValue) => +(prevValue + 0.01));
     setFlowCount((prevValue) => +(prevValue + 0.01));
-    setUnitPercent((prevValue) => prevValue + unitIncrement);
-    setFlowPercent((prevValue) => prevValue + flowIncrement);
+    setUnitPercent((prevValue) => {
+      const updatedValue = prevValue + unitIncrement;
+      console.log("Updated value:", updatedValue);
+      return updatedValue;
+    });
+    setFlowPercent((prevValue) => {
+      const updatedValue = prevValue + flowIncrement;
+      // console.log("Updated value:", updatedValue);
+      return updatedValue;
+    });
   }, [unitIncrement, flowIncrement]);
 
   const timer = useTimer({ delay: 10, fireOnStart: true }, callback);
@@ -128,6 +134,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
       setUnitIncrement(0);
 
       setTimerCount(0);
+      next();
     }
   }, [timer, timerCount, flow.duration]);
 
@@ -247,7 +254,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                       >
                         <div className="flex flex-col items-center justify-center">
                           <CircularProgressBar
-                            percentValue={Math.round(unitPercent)}
+                            percentValue={unitPercent}
                             value={
                               <img className="w-2/3" src={unit.image} alt="" />
                             }
@@ -274,7 +281,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                 </div>
                 <div>
                   <p className="text-start text-[20px]">
-                    {flow.units[currentUnitIndex]
+                    {startFlow
                       ? flow.units[currentUnitIndex].name
                       : flow.units[0].name}
                   </p>
@@ -282,7 +289,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                 <div className="grid w-full grid-cols-[1fr_1fr]">
                   <p className="ltr text-start text-[20px] ">Duration:</p>
                   <p className="text-start text-[20px]">
-                    {unitCount} /{" "}
+                    {unitCount.toFixed(1)} /{" "}
                     {flow.units[currentUnitIndex]
                       ? flow.units[currentUnitIndex].duration
                       : flow.units[0].duration}{" "}
@@ -292,7 +299,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                 <div className="grid w-full grid-cols-[1fr_1fr]">
                   <p className="text-start text-[20px]">Percent: </p>
                   <p className="text-start text-[20px]">
-                    {Math.round(unitPercent)}%
+                    {unitPercent.toFixed(0)}%
                   </p>
                 </div>
               </div>
@@ -308,9 +315,9 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                   value={flowPercent}
                 />
               </ThemeProvider>
-              <p>{Math.round(flowPercent)}%</p>
+              <p>{flowPercent.toFixed(0)}%</p>
               <p className="ltr flex h-full items-center justify-center p-2">
-                Total flow: {flowCount} / {flow.duration} seconds
+                Total flow: {flowCount.toFixed(1)} / {flow.duration} seconds
               </p>
             </div>
           </div>
