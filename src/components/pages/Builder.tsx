@@ -9,8 +9,10 @@ import Setup from "../sections/Setup";
 
 // Types & interfaces
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
-import categories from "../../db/categories.json";
 import { FlowType } from "../sections/Flow";
+
+// Other
+import categories from "../../db/categories.json";
 
 interface BuilderProps {
   isHamburgerMenu: boolean;

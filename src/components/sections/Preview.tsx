@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useReducer } from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import mp3Provider from "../../assets/mp3Provider";
 import { FlowType } from "./Flow";
@@ -35,9 +35,46 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     },
   });
 
-  const [startFlow, setStartFlow] = useState<boolean>(false);
-  const [pauseFlow, setPauseFlow] = useState<boolean>(false);
-  const [resumeFlow, setResumeFlow] = useState<boolean>(false);
+  interface TimerStateActionType {
+    type: string;
+  }
+
+  interface TimerStateType {
+    startFlow: boolean;
+    pauseFlow: boolean;
+    resumeFlow: boolean;
+  }
+
+  const initialTimerState: TimerStateType = {
+    startFlow: false,
+    pauseFlow: false,
+    resumeFlow: false,
+  };
+
+  const START_FLOW = "START_FLOW";
+  const PAUSE_FLOW = "PAUSE_FLOW";
+  const RESUME_FLOW = "RESUME_FLOW";
+  const STOP_FLOW = "STOP_FLOW";
+
+  function flowReducer(
+    state: TimerStateType,
+    action: TimerStateActionType
+  ): TimerStateType {
+    switch (action.type) {
+      case START_FLOW:
+        return { startFlow: true, pauseFlow: false, resumeFlow: false };
+      case PAUSE_FLOW:
+        return { startFlow: true, pauseFlow: true, resumeFlow: false };
+      case RESUME_FLOW:
+        return { startFlow: true, pauseFlow: false, resumeFlow: true };
+      case STOP_FLOW:
+        return { startFlow: false, pauseFlow: false, resumeFlow: false };
+      default:
+        return state;
+    }
+  }
+
+  const [timerState, dispatch] = useReducer(flowReducer, initialTimerState);
 
   const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
 
@@ -82,12 +119,10 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     setFlowCount((prevValue) => +(prevValue + 0.01));
     setUnitPercent((prevValue) => {
       const updatedValue = prevValue + unitIncrement;
-      // console.log("Updated value:", updatedValue);
       return updatedValue;
     });
     setFlowPercent((prevValue) => {
       const updatedValue = prevValue + flowIncrement;
-      // console.log("Updated value:", updatedValue);
       return updatedValue;
     });
   }, [unitIncrement, flowIncrement]);
@@ -96,32 +131,30 @@ function Preview({ flow, setFlowState }: PreviewProps) {
 
   // Update Flow Increment to calculate percentages for progress bar
   useEffect(() => {
-    if (startFlow) {
+    if (timerState.startFlow) {
       const newIncrement = 100 / (flow.duration * 100);
       setFlowIncrement(newIncrement);
     }
-  }, [flow.duration, startFlow]);
+  }, [flow.duration, timerState.startFlow]);
 
   // Update Unit Increment to calculate percentages for progress bar
   useEffect(() => {
-    if (startFlow) {
-      // console.log(flow.units);
-      // console.log(currentUnitIndex);
+    if (timerState.startFlow) {
       if (flow.units[currentUnitIndex]) {
         const newIncrement =
           100 / (flow.units[currentUnitIndex].duration * 100);
         setUnitIncrement(newIncrement);
       }
     }
-  }, [flow.units, currentUnitIndex, startFlow]);
+  }, [flow.units, currentUnitIndex, timerState.startFlow]);
 
   // Flow end
   useEffect(() => {
     if (timerCount === flow.duration * 100) {
       timer.stop();
-      setStartFlow(false);
-      setPauseFlow(false);
-      setResumeFlow(false);
+      dispatch({
+        type: STOP_FLOW,
+      });
 
       setCurrentUnitIndex(0);
 
@@ -150,36 +183,58 @@ function Preview({ flow, setFlowState }: PreviewProps) {
 
   // Audio play
   useEffect(() => {
-    if (startFlow) {
+    if (timerState.startFlow) {
       const audio = new Audio(
         mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
       );
       audio.play();
     }
-  }, [currentUnitIndex, flow.units, startFlow]);
+  }, [currentUnitIndex, flow.units, timerState.startFlow]);
 
   // Start/Pause/Resume controls
   useEffect(() => {
-    if (startFlow && !pauseFlow && !resumeFlow) {
+    if (
+      timerState.startFlow &&
+      !timerState.pauseFlow &&
+      !timerState.resumeFlow
+    ) {
+      console.log("start");
       timer.start();
     }
-    if (startFlow && pauseFlow && !resumeFlow) {
+    if (
+      timerState.startFlow &&
+      timerState.pauseFlow &&
+      !timerState.resumeFlow
+    ) {
+      console.log("pause");
       timer.pause();
     }
 
-    if (startFlow && !pauseFlow && resumeFlow) {
+    if (
+      timerState.startFlow &&
+      !timerState.pauseFlow &&
+      timerState.resumeFlow
+    ) {
+      console.log("resume");
       timer.resume();
     }
-  }, [timer, startFlow, pauseFlow, resumeFlow]);
+
+    if (
+      !timerState.startFlow &&
+      !timerState.pauseFlow &&
+      !timerState.resumeFlow
+    ) {
+      console.log("stop");
+      timer.resume();
+    }
+  }, [timer, timerState]);
 
   function handleStartButtonClick() {
-    setPauseFlow(false);
-    setResumeFlow(false);
-    setStartFlow(true);
+    dispatch({
+      type: START_FLOW,
+    });
     setCurrentUnitIndex(0);
     setFlowPercent(0);
-    // console.log(`Count active: ${!startFlow}`);
-    // console.log(flow.units[0].announcement);
   }
 
   function handleCancelButtonClick() {
@@ -187,20 +242,21 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   }
 
   function handlePauseButtonClick() {
-    if (pauseFlow) {
-      setPauseFlow(false);
-      setResumeFlow(true);
-    } else if (!pauseFlow) {
-      setPauseFlow(true);
-      setResumeFlow(false);
+    if (timerState.pauseFlow === false) {
+      dispatch({
+        type: PAUSE_FLOW,
+      });
+    } else if (timerState.pauseFlow === true) {
+      dispatch({
+        type: RESUME_FLOW,
+      });
     }
   }
 
   function handleStopButtonClick() {
-    console.log("stop!!");
-    setStartFlow(false);
-    setPauseFlow(false);
-    setResumeFlow(false);
+    dispatch({
+      type: STOP_FLOW,
+    });
 
     setCurrentUnitIndex(0);
 
@@ -243,26 +299,32 @@ function Preview({ flow, setFlowState }: PreviewProps) {
           </div>
           <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
             <button
-              className={` h-full w-[100px] ${!startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
-              onClick={!startFlow ? handleStartButtonClick : undefined}
+              className={` h-full w-[100px] ${!timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+              onClick={
+                !timerState.startFlow ? handleStartButtonClick : undefined
+              }
             >
               Start
             </button>
             <button
-              className={` h-full w-[100px] ${startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
-              onClick={startFlow ? handlePauseButtonClick : undefined}
+              className={` h-full w-[100px] ${timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+              onClick={
+                timerState.startFlow ? handlePauseButtonClick : undefined
+              }
             >
-              {pauseFlow ? "Resume" : "Pause"}
+              {timerState.pauseFlow ? "Resume" : "Pause"}
             </button>
             <button
-              className={` h-full w-[100px] ${startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
-              onClick={startFlow ? handleStopButtonClick : undefined}
+              className={` h-full w-[100px] ${timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+              onClick={timerState.startFlow ? handleStopButtonClick : undefined}
             >
               {"Stop"}
             </button>
             <button
-              className={` h-full w-[100px] ${!startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
-              onClick={!startFlow ? handleCancelButtonClick : undefined}
+              className={` h-full w-[100px] ${!timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+              onClick={
+                !timerState.startFlow ? handleCancelButtonClick : undefined
+              }
             >
               Cancel
             </button>
@@ -296,7 +358,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
             <div className=" ml-[4px] flex h-full w-1/2 flex-col bg-[#ffffff18] p-2 transition-colors hover:bg-[#ffffff38]">
               <div className="mt-2 flex flex-col items-start justify-center">
                 <div className="flex w-full items-start justify-start">
-                  {!startFlow ? (
+                  {!timerState.startFlow ? (
                     <p className="text-start text-[20px]">
                       1 / {flow.units.length}
                     </p>
@@ -308,7 +370,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
                 </div>
                 <div>
                   <p className="text-start text-[20px]">
-                    {startFlow
+                    {timerState.startFlow
                       ? flow.units[currentUnitIndex].name
                       : flow.units[0].name}
                   </p>
