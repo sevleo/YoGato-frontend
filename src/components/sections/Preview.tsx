@@ -82,7 +82,7 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     setFlowCount((prevValue) => +(prevValue + 0.01));
     setUnitPercent((prevValue) => {
       const updatedValue = prevValue + unitIncrement;
-      console.log("Updated value:", updatedValue);
+      // console.log("Updated value:", updatedValue);
       return updatedValue;
     });
     setFlowPercent((prevValue) => {
@@ -105,8 +105,8 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   // Update Unit Increment to calculate percentages for progress bar
   useEffect(() => {
     if (startFlow) {
-      console.log(flow.units);
-      console.log(currentUnitIndex);
+      // console.log(flow.units);
+      // console.log(currentUnitIndex);
       if (flow.units[currentUnitIndex]) {
         const newIncrement =
           100 / (flow.units[currentUnitIndex].duration * 100);
@@ -178,8 +178,8 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     setStartFlow(true);
     setCurrentUnitIndex(0);
     setFlowPercent(0);
-    console.log(`Count active: ${!startFlow}`);
-    console.log(flow.units[0].announcement);
+    // console.log(`Count active: ${!startFlow}`);
+    // console.log(flow.units[0].announcement);
   }
 
   function handleCancelButtonClick() {

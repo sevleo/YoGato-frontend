@@ -46,7 +46,7 @@ function Setup({
     if (setFlowState) {
       setFlowState("preview");
       setLocation("preview");
-      console.log(location);
+      // console.log(location);
     }
   };
 
