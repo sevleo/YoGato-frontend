@@ -35,22 +35,26 @@ function Preview({ flow, setFlowState }: PreviewProps) {
     },
   });
 
+  // FlowReducer action type
   interface TimerStateActionType {
     type: string;
   }
 
+  // FlowReducer type
   interface TimerStateType {
     startFlow: boolean;
     pauseFlow: boolean;
     resumeFlow: boolean;
   }
 
+  // FlowReducer initial value
   const initialTimerState: TimerStateType = {
     startFlow: false,
     pauseFlow: false,
     resumeFlow: false,
   };
 
+  // FlowReducer types
   const START_FLOW = "START_FLOW";
   const PAUSE_FLOW = "PAUSE_FLOW";
   const RESUME_FLOW = "RESUME_FLOW";
