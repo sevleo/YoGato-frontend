@@ -1,5 +1,5 @@
 # YoGato
 
-Workout sequence builder
+Workout sequence builder!
 
 [Backend for YoGato](https://github.com/sevleo/YoGato)
