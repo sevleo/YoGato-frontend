@@ -148,9 +148,9 @@ function HeaderDetails({
     setLocation("experiment");
   }
 
-  function handleLoginLink() {
+  function handleSignInLink() {
     enableHamburger();
-    setLocation("login");
+    setLocation("sign-in");
   }
 
   return (
@@ -183,10 +183,10 @@ function HeaderDetails({
             </Link>
             <Link
               className="text-white hover:text-white hover:underline"
-              to="/login"
-              onClick={handleLoginLink}
+              to="/sign-in"
+              onClick={handleSignInLink}
             >
-              Login
+              Sign In
             </Link>
           </>
         ) : (

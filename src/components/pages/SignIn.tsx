@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Header from "../sections/Header";
 
-export default function Login() {
+export default function SignIn({
+  isHamburgerMenu,
+  setIsHamburgerMenu,
+  location,
+  setLocation,
+}) {
   const [signUpPage, setSignUpPage] = useState("");
 
   useEffect(() => {
@@ -17,9 +23,17 @@ export default function Login() {
   }, []);
 
   return (
-    <div>
-      <h2>Log In</h2>
-      <div dangerouslySetInnerHTML={{ __html: signUpPage }} />
-    </div>
+    <>
+      <Header
+        isHamburgerMenu={isHamburgerMenu}
+        setIsHamburgerMenu={setIsHamburgerMenu}
+        location={location}
+        setLocation={setLocation}
+      />
+      <div>
+        <h2>Log In</h2>
+        <div dangerouslySetInnerHTML={{ __html: signUpPage }} />
+      </div>
+    </>
   );
 }
