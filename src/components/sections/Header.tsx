@@ -148,6 +148,11 @@ function HeaderDetails({
     setLocation("experiment");
   }
 
+  function handleLoginLink() {
+    enableHamburger();
+    setLocation("login");
+  }
+
   return (
     <>
       <div className="flex w-full max-w-screen-2xl items-center justify-start gap-10">
@@ -175,6 +180,13 @@ function HeaderDetails({
               onClick={handleExperimentLink}
             >
               Experiment...
+            </Link>
+            <Link
+              className="text-white hover:text-white hover:underline"
+              to="/login"
+              onClick={handleLoginLink}
+            >
+              Login
             </Link>
           </>
         ) : (
