@@ -2,4 +2,4 @@
 
 Workout sequence builder!
 
-[YoGato](https://github.com/sevleo/YoGato)
+Frontend for [YoGato](https://github.com/sevleo/YoGato)
