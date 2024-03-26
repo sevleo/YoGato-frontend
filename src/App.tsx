@@ -4,6 +4,7 @@ import Home from "./components/pages/Home";
 import Builder from "./components/pages/Builder";
 import ErrorPage from "./components/pages/ErrorPage";
 import Experiment from "./components/pages/Experiment";
+import Login from "./components/pages/Login";
 import { useState } from "react";
 
 function App() {
@@ -44,6 +45,10 @@ function App() {
           setLocation={setLocation}
         ></Experiment>
       ),
+    },
+    {
+      path: "/login",
+      element: <Login></Login>,
     },
   ]);
 
