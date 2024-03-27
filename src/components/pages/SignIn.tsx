@@ -17,8 +17,9 @@ export default function SignIn({
       const response = await axios.get("http://localhost:3001/check-login", {
         withCredentials: true,
       });
-      console.log(response);
-      setIsLoggedIn(true);
+      if (response.data.isLoggedIn) {
+        setIsLoggedIn(true);
+      }
     } catch (error) {
       setIsLoggedIn(false);
     }
