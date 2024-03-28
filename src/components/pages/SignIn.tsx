@@ -8,9 +8,12 @@ export default function SignIn({
   location,
   setLocation,
 }) {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [usernameLogin, setUsernameLogin] = useState("");
+  const [passwordLogin, setPasswordLogin] = useState("");
+  const [usernameSignup, setUsernameSignup] = useState("");
+  const [passwordSignup, setPasswordSignup] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState("");
 
   async function checkLoggedIn() {
     try {
@@ -18,9 +21,12 @@ export default function SignIn({
         withCredentials: true,
       });
       if (response.data.isLoggedIn) {
+        setUser(response.data.user.username);
         setIsLoggedIn(true);
+        console.log(response);
       }
     } catch (error) {
+      setUser("");
       setIsLoggedIn(false);
     }
   }
@@ -29,21 +35,37 @@ export default function SignIn({
     checkLoggedIn();
   }, []);
 
+  async function handleSignup(event) {
+    event.preventDefault();
+    console.log(event);
+    try {
+      const response = await axios.post("http://localhost:3001/sign-up", {
+        username: usernameSignup,
+        password: passwordSignup,
+      });
+    } catch (error) {
+      console.error("Error signing up:", error);
+    }
+  }
+
   async function handleLogin(event) {
     event.preventDefault();
     console.log(event);
     try {
       const response = await axios.post(
         "http://localhost:3001/log-in",
-        { username: username, password: password },
+        { username: usernameLogin, password: passwordLogin },
         {
           withCredentials: true,
         }
       );
       console.log(response);
+      console.log(response.data.user);
+      setUser(response.data.user.username);
       setIsLoggedIn(true);
     } catch (error) {
       console.error("Error logging in:", error);
+      setUser("");
       setIsLoggedIn(false);
     }
   }
@@ -54,34 +76,12 @@ export default function SignIn({
         withCredentials: true,
       });
       console.log(response);
+      setUser("");
       setIsLoggedIn(false);
     } catch (error) {
       console.error("Error logging out:", error);
     }
   }
-
-  // async function handleLogin(event) {
-  //   event.preventDefault();
-
-  //   try {
-  //     const response = await fetch("http://localhost:3001/log-in", {
-  //       method: "POST",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify({ username: username, password: password }),
-  //     });
-
-  //     if (!response.ok) {
-  //       console.log(response);
-  //       throw new Error("Login failed");
-  //     }
-
-  //     window.location.href = "/";
-  //   } catch (error) {
-  //     console.error("Error logging in:", error);
-  //   }
-  // }
 
   return (
     <>
@@ -95,37 +95,64 @@ export default function SignIn({
         {/* <button onClick={checkLoggedIn}>Check log in</button> */}
         {isLoggedIn ? (
           <div>
-            <p>You are logged in</p>
+            <p>Welcome, {user}</p>
             <button onClick={handleLogout}>Log out</button>
           </div>
         ) : (
           <div>
-            <p>You are NOT logged in</p>
+            <p>Login:</p>
           </div>
         )}
         {!isLoggedIn ? (
-          <div>
-            <form method="POST" onSubmit={handleLogin}>
-              <label htmlFor="username">Username</label>
-              <input
-                id="username"
-                name="username"
-                placeholder="username"
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <button type="submit">Log In</button>
-            </form>
-          </div>
+          <>
+            <div>
+              <form method="POST" onSubmit={handleLogin}>
+                <label htmlFor="username-login">Username</label>
+                <input
+                  id="username-login"
+                  name="username-login"
+                  placeholder="username"
+                  type="text"
+                  value={usernameLogin}
+                  onChange={(e) => setUsernameLogin(e.target.value)}
+                />
+                <label htmlFor="password-login">Password</label>
+                <input
+                  id="password-login"
+                  name="password-login"
+                  type="password"
+                  value={passwordLogin}
+                  onChange={(e) => setPasswordLogin(e.target.value)}
+                />
+                <button type="submit">Log In</button>
+              </form>
+            </div>
+            <div>
+              <p>Or sign up:</p>
+            </div>
+            <div>
+              <form method="POST" onSubmit={handleSignup}>
+                <label htmlFor="username-signup">Username</label>
+                <input
+                  id="username-signup"
+                  name="username-signup"
+                  placeholder="username"
+                  type="text"
+                  value={usernameSignup}
+                  onChange={(e) => setUsernameSignup(e.target.value)}
+                />
+                <label htmlFor="password-signup">Password</label>
+                <input
+                  id="password-signup"
+                  name="password-signup"
+                  type="password"
+                  value={passwordSignup}
+                  onChange={(e) => setPasswordSignup(e.target.value)}
+                />
+                <button type="submit">Sign Up</button>
+              </form>
+            </div>
+          </>
         ) : null}
       </div>
     </>
