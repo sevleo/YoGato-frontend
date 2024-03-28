@@ -4,6 +4,7 @@ import Home from "./components/pages/Home";
 import Builder from "./components/pages/Builder";
 import ErrorPage from "./components/pages/ErrorPage";
 import Experiment from "./components/pages/Experiment";
+import SignIn from "./components/pages/SignIn";
 import { useState } from "react";
 
 function App() {
@@ -43,6 +44,17 @@ function App() {
           location={location === "" ? "experiment" : location}
           setLocation={setLocation}
         ></Experiment>
+      ),
+    },
+    {
+      path: "/sign-in",
+      element: (
+        <SignIn
+          isHamburgerMenu={true}
+          setIsHamburgerMenu={setIsHamburgerMenu}
+          location={location === "" ? "sign-in" : location}
+          setLocation={setLocation}
+        ></SignIn>
       ),
     },
   ]);
