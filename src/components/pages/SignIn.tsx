@@ -21,6 +21,7 @@ export default function SignIn({
         withCredentials: true,
       });
       if (response.data.isLoggedIn) {
+        console.log(response.data);
         setUser(response.data.user.username);
         setIsLoggedIn(true);
         console.log(response);
@@ -31,6 +32,7 @@ export default function SignIn({
     }
   }
 
+  // Check if the user is logged in at the page mount and then set the user
   useEffect(() => {
     checkLoggedIn();
   }, []);
@@ -53,7 +55,7 @@ export default function SignIn({
     console.log(event);
     try {
       const response = await axios.post(
-        "http://localhost:3001/log-in",
+        "http://localhost:3001/login/password",
         { username: usernameLogin, password: passwordLogin },
         {
           withCredentials: true,
@@ -99,9 +101,11 @@ export default function SignIn({
             <button onClick={handleLogout}>Log out</button>
           </div>
         ) : (
-          <div>
-            <p>Login:</p>
-          </div>
+          <>
+            <div>
+              <p>Login:</p>
+            </div>
+          </>
         )}
         {!isLoggedIn ? (
           <>
@@ -126,6 +130,11 @@ export default function SignIn({
                 />
                 <button type="submit">Log In</button>
               </form>
+              <div>
+                <a href="http://localhost:3001/login/federated/google/">
+                  <button>Google Login</button>
+                </a>
+              </div>
             </div>
             <div>
               <p>Or sign up:</p>
