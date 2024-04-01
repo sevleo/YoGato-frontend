@@ -15,6 +15,7 @@ export default function SignIn({
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState("");
   const [dataLoading, setDataLoading] = useState(true);
+  const [showLoginPopup, setShowLoginPopup] = useState(false);
 
   async function checkLoggedIn() {
     try {
@@ -89,6 +90,10 @@ export default function SignIn({
     }
   }
 
+  function handleLoginButtonClick() {
+    setShowLoginPopup(true);
+  }
+
   return (
     <>
       <Header
@@ -110,66 +115,67 @@ export default function SignIn({
           ) : (
             <>
               <div>
-                <p>Login:</p>
+                <button onClick={handleLoginButtonClick}>Login</button>
               </div>
             </>
           )}
-          {!isLoggedIn ? (
-            <>
+
+          <div
+            className={`fixed left-[50%]  translate-x-[-50%] translate-y-[-50%] transform bg-[#ffffff43] transition-all ${showLoginPopup ? "top-[50%] opacity-[1]" : "top-[40%] z-0 opacity-[0]"}`}
+          >
+            <div>
+              <form method="POST" onSubmit={handleLogin}>
+                <label htmlFor="username-login">Username</label>
+                <input
+                  id="username-login"
+                  name="username-login"
+                  placeholder="username"
+                  type="text"
+                  value={usernameLogin}
+                  onChange={(e) => setUsernameLogin(e.target.value)}
+                />
+                <label htmlFor="password-login">Password</label>
+                <input
+                  id="password-login"
+                  name="password-login"
+                  type="password"
+                  value={passwordLogin}
+                  onChange={(e) => setPasswordLogin(e.target.value)}
+                />
+                <button type="submit">Log In</button>
+              </form>
               <div>
-                <form method="POST" onSubmit={handleLogin}>
-                  <label htmlFor="username-login">Username</label>
-                  <input
-                    id="username-login"
-                    name="username-login"
-                    placeholder="username"
-                    type="text"
-                    value={usernameLogin}
-                    onChange={(e) => setUsernameLogin(e.target.value)}
-                  />
-                  <label htmlFor="password-login">Password</label>
-                  <input
-                    id="password-login"
-                    name="password-login"
-                    type="password"
-                    value={passwordLogin}
-                    onChange={(e) => setPasswordLogin(e.target.value)}
-                  />
-                  <button type="submit">Log In</button>
-                </form>
-                <div>
-                  <a href="http://localhost:3001/login/federated/google/">
-                    <button>Google Login</button>
-                  </a>
-                </div>
+                <a href="http://localhost:3001/login/federated/google/">
+                  <button>Google Login</button>
+                </a>
               </div>
-              <div>
-                <p>Or sign up:</p>
-              </div>
-              <div>
-                <form method="POST" onSubmit={handleSignup}>
-                  <label htmlFor="username-signup">Username</label>
-                  <input
-                    id="username-signup"
-                    name="username-signup"
-                    placeholder="username"
-                    type="text"
-                    value={usernameSignup}
-                    onChange={(e) => setUsernameSignup(e.target.value)}
-                  />
-                  <label htmlFor="password-signup">Password</label>
-                  <input
-                    id="password-signup"
-                    name="password-signup"
-                    type="password"
-                    value={passwordSignup}
-                    onChange={(e) => setPasswordSignup(e.target.value)}
-                  />
-                  <button type="submit">Sign Up</button>
-                </form>
-              </div>
-            </>
-          ) : null}
+            </div>
+            <div>
+              <p>Or sign up:</p>
+            </div>
+            <div>
+              <form method="POST" onSubmit={handleSignup}>
+                <label htmlFor="username-signup">Username</label>
+                <input
+                  id="username-signup"
+                  name="username-signup"
+                  placeholder="username"
+                  type="text"
+                  value={usernameSignup}
+                  onChange={(e) => setUsernameSignup(e.target.value)}
+                />
+                <label htmlFor="password-signup">Password</label>
+                <input
+                  id="password-signup"
+                  name="password-signup"
+                  type="password"
+                  value={passwordSignup}
+                  onChange={(e) => setPasswordSignup(e.target.value)}
+                />
+                <button type="submit">Sign Up</button>
+              </form>
+            </div>
+          </div>
         </div>
       )}
     </>
