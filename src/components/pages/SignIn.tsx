@@ -14,6 +14,7 @@ export default function SignIn({
   const [passwordSignup, setPasswordSignup] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [user, setUser] = useState("");
+  const [dataLoading, setDataLoading] = useState(true);
 
   async function checkLoggedIn() {
     try {
@@ -24,11 +25,14 @@ export default function SignIn({
         console.log(response.data);
         setUser(response.data.user.username);
         setIsLoggedIn(true);
-        console.log(response);
+      } else {
+        console.log(response.data);
       }
     } catch (error) {
       setUser("");
       setIsLoggedIn(false);
+    } finally {
+      setDataLoading(false);
     }
   }
 
@@ -93,77 +97,81 @@ export default function SignIn({
         location={location}
         setLocation={setLocation}
       />
-      <div>
-        {/* <button onClick={checkLoggedIn}>Check log in</button> */}
-        {isLoggedIn ? (
-          <div>
-            <p>Welcome, {user}</p>
-            <button onClick={handleLogout}>Log out</button>
-          </div>
-        ) : (
-          <>
+      {dataLoading ? (
+        <div></div>
+      ) : (
+        <div>
+          {/* <button onClick={checkLoggedIn}>Check log in</button> */}
+          {isLoggedIn ? (
             <div>
-              <p>Login:</p>
+              <p>Welcome, {user}</p>
+              <button onClick={handleLogout}>Log out</button>
             </div>
-          </>
-        )}
-        {!isLoggedIn ? (
-          <>
-            <div>
-              <form method="POST" onSubmit={handleLogin}>
-                <label htmlFor="username-login">Username</label>
-                <input
-                  id="username-login"
-                  name="username-login"
-                  placeholder="username"
-                  type="text"
-                  value={usernameLogin}
-                  onChange={(e) => setUsernameLogin(e.target.value)}
-                />
-                <label htmlFor="password-login">Password</label>
-                <input
-                  id="password-login"
-                  name="password-login"
-                  type="password"
-                  value={passwordLogin}
-                  onChange={(e) => setPasswordLogin(e.target.value)}
-                />
-                <button type="submit">Log In</button>
-              </form>
+          ) : (
+            <>
               <div>
-                <a href="http://localhost:3001/login/federated/google/">
-                  <button>Google Login</button>
-                </a>
+                <p>Login:</p>
               </div>
-            </div>
-            <div>
-              <p>Or sign up:</p>
-            </div>
-            <div>
-              <form method="POST" onSubmit={handleSignup}>
-                <label htmlFor="username-signup">Username</label>
-                <input
-                  id="username-signup"
-                  name="username-signup"
-                  placeholder="username"
-                  type="text"
-                  value={usernameSignup}
-                  onChange={(e) => setUsernameSignup(e.target.value)}
-                />
-                <label htmlFor="password-signup">Password</label>
-                <input
-                  id="password-signup"
-                  name="password-signup"
-                  type="password"
-                  value={passwordSignup}
-                  onChange={(e) => setPasswordSignup(e.target.value)}
-                />
-                <button type="submit">Sign Up</button>
-              </form>
-            </div>
-          </>
-        ) : null}
-      </div>
+            </>
+          )}
+          {!isLoggedIn ? (
+            <>
+              <div>
+                <form method="POST" onSubmit={handleLogin}>
+                  <label htmlFor="username-login">Username</label>
+                  <input
+                    id="username-login"
+                    name="username-login"
+                    placeholder="username"
+                    type="text"
+                    value={usernameLogin}
+                    onChange={(e) => setUsernameLogin(e.target.value)}
+                  />
+                  <label htmlFor="password-login">Password</label>
+                  <input
+                    id="password-login"
+                    name="password-login"
+                    type="password"
+                    value={passwordLogin}
+                    onChange={(e) => setPasswordLogin(e.target.value)}
+                  />
+                  <button type="submit">Log In</button>
+                </form>
+                <div>
+                  <a href="http://localhost:3001/login/federated/google/">
+                    <button>Google Login</button>
+                  </a>
+                </div>
+              </div>
+              <div>
+                <p>Or sign up:</p>
+              </div>
+              <div>
+                <form method="POST" onSubmit={handleSignup}>
+                  <label htmlFor="username-signup">Username</label>
+                  <input
+                    id="username-signup"
+                    name="username-signup"
+                    placeholder="username"
+                    type="text"
+                    value={usernameSignup}
+                    onChange={(e) => setUsernameSignup(e.target.value)}
+                  />
+                  <label htmlFor="password-signup">Password</label>
+                  <input
+                    id="password-signup"
+                    name="password-signup"
+                    type="password"
+                    value={passwordSignup}
+                    onChange={(e) => setPasswordSignup(e.target.value)}
+                  />
+                  <button type="submit">Sign Up</button>
+                </form>
+              </div>
+            </>
+          ) : null}
+        </div>
+      )}
     </>
   );
 }
