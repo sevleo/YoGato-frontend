@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Dispatch, useReducer, SetStateAction } from "react";
 import axios from "axios";
 import Header from "../sections/Header";
 
@@ -8,13 +9,68 @@ export default function SignIn({
   location,
   setLocation,
 }) {
+  const initialAuthState = {
+    isLoggedIn: false,
+    user: "",
+    dataLoading: true,
+  };
+
+  // Reducer types
+  const CHECK_LOGIN_SUCCESS = "CHECK_LOGIN_SUCCESS";
+  const CHECK_LOGIN_FAILURE = "CHECK_LOGIN_FAILURE";
+  const CHECK_LOGIN_FINISHED = "CHECK_LOGIN_FINISHED";
+  const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+  const LOGIN_FAILURE = "LOGIN_FAILURE";
+  const LOGOUT = "LOGOUT";
+
+  function authStateReducer(state, payload) {
+    switch (payload.type) {
+      case CHECK_LOGIN_SUCCESS:
+        return {
+          ...state,
+          user: payload.action.data.user.username,
+          isLoggedIn: true,
+        };
+      case CHECK_LOGIN_FAILURE:
+        return {
+          ...state,
+          user: "",
+          isLoggedIn: false,
+        };
+      case CHECK_LOGIN_FINISHED:
+        return {
+          ...state,
+          dataLoading: false,
+        };
+      case LOGIN_SUCCESS:
+        return {
+          ...state,
+          user: payload.action.data.user.username,
+          isLoggedIn: true,
+        };
+      case LOGIN_FAILURE:
+        return {
+          ...state,
+          user: "",
+          isLoggedIn: false,
+        };
+      case LOGOUT:
+        return {
+          ...state,
+          user: "",
+          isLoggedIn: false,
+        };
+      default:
+        state;
+    }
+  }
+
+  const [authState, dispatch] = useReducer(authStateReducer, initialAuthState);
+
   const [usernameLogin, setUsernameLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
   const [usernameSignup, setUsernameSignup] = useState("");
   const [passwordSignup, setPasswordSignup] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState("");
-  const [dataLoading, setDataLoading] = useState(true);
   const [showLoginPopup, setShowLoginPopup] = useState(false);
 
   async function checkLoggedIn() {
@@ -24,16 +80,21 @@ export default function SignIn({
       });
       if (response.data.isLoggedIn) {
         console.log(response.data);
-        setUser(response.data.user.username);
-        setIsLoggedIn(true);
+        dispatch({
+          type: CHECK_LOGIN_SUCCESS,
+          action: response,
+        });
       } else {
         console.log(response.data);
       }
     } catch (error) {
-      setUser("");
-      setIsLoggedIn(false);
+      dispatch({
+        type: CHECK_LOGIN_FAILURE,
+      });
     } finally {
-      setDataLoading(false);
+      dispatch({
+        type: CHECK_LOGIN_FINISHED,
+      });
     }
   }
 
@@ -66,14 +127,15 @@ export default function SignIn({
           withCredentials: true,
         }
       );
-      console.log(response);
-      console.log(response.data.user);
-      setUser(response.data.user.username);
-      setIsLoggedIn(true);
+      dispatch({
+        type: LOGIN_SUCCESS,
+        action: response,
+      });
     } catch (error) {
       console.error("Error logging in:", error);
-      setUser("");
-      setIsLoggedIn(false);
+      dispatch({
+        type: LOGIN_FAILURE,
+      });
     }
   }
 
@@ -83,8 +145,9 @@ export default function SignIn({
         withCredentials: true,
       });
       console.log(response);
-      setUser("");
-      setIsLoggedIn(false);
+      dispatch({
+        type: LOGOUT,
+      });
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -102,14 +165,14 @@ export default function SignIn({
         location={location}
         setLocation={setLocation}
       />
-      {dataLoading ? (
+      {authState.dataLoading ? (
         <div></div>
       ) : (
         <div>
           {/* <button onClick={checkLoggedIn}>Check log in</button> */}
-          {isLoggedIn ? (
+          {authState.isLoggedIn ? (
             <div>
-              <p>Welcome, {user}</p>
+              <p>Welcome, {authState.user}</p>
               <button onClick={handleLogout}>Log out</button>
             </div>
           ) : (
