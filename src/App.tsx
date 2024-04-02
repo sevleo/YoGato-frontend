@@ -6,6 +6,7 @@ import ErrorPage from "./components/pages/ErrorPage";
 import Experiment from "./components/pages/Experiment";
 import SignIn from "./components/pages/SignIn";
 import { useState } from "react";
+import { UserDataProvider } from "./components/utilities/UserContext";
 
 function App() {
   const [, setIsHamburgerMenu] = useState<boolean>(true);
@@ -61,7 +62,9 @@ function App() {
 
   return (
     <>
-      <RouterProvider router={router} />
+      <UserDataProvider>
+        <RouterProvider router={router} />
+      </UserDataProvider>
     </>
   );
 }

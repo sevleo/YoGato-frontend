@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import "./Header.css";
 import { Dispatch, SetStateAction } from "react";
+import { useUser } from "../utilities/UserContext";
 
 interface HeaderProps {
   isHamburgerMenu: boolean;
@@ -17,6 +18,7 @@ export default function Header({
   location,
   setLocation,
 }: HeaderProps) {
+  const user = useUser();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setOpen] = useState(false);
 
@@ -76,6 +78,7 @@ export default function Header({
             setShowSlideAnimation={setShowSlideAnimation}
             location={location}
             setLocation={setLocation}
+            user={user}
           ></HeaderDetails>
         </div>
         <div
@@ -97,6 +100,7 @@ export default function Header({
             setShowSlideAnimation={setShowSlideAnimation}
             location={location}
             setLocation={setLocation}
+            user={user}
           ></HeaderDetails>
         </div>
       </header>
@@ -127,6 +131,7 @@ function HeaderDetails({
   showSlideAnimation,
   setShowSlideAnimation,
   setLocation,
+  user,
 }: HeaderDetailsProps) {
   // Disables burger slide animation to avoid showing animation when switching between headers views
   function handleAnimationEnd() {
@@ -186,7 +191,7 @@ function HeaderDetails({
               to="/sign-in"
               onClick={handleSignInLink}
             >
-              Sign In
+              Sign In {user}
             </Link>
           </>
         ) : (

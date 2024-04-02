@@ -1,6 +1,7 @@
 import Header from "../sections/Header";
 import { Dispatch, SetStateAction } from "react";
 import CatLogo from "../../assets/cat_logo.jpeg";
+import { useUser } from "../utilities/UserContext";
 
 interface HomeProps {
   isHamburgerMenu: boolean;
@@ -15,6 +16,8 @@ function Home({
   location,
   setLocation,
 }: HomeProps) {
+  const user = useUser();
+
   return (
     <>
       <Header
@@ -23,7 +26,7 @@ function Home({
         location={location}
         setLocation={setLocation}
       />
-      <div className=" pt-[60px] text-white">Welcome to YoGato</div>
+      <div className=" pt-[60px] text-white">Welcome to YoGato {user}</div>
       <br />
 
       <div
