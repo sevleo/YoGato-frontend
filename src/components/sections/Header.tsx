@@ -18,7 +18,7 @@ export default function Header({
   location,
   setLocation,
 }: HeaderProps) {
-  const user = useUser();
+  const { authState, dispatch } = useUser();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setOpen] = useState(false);
 
@@ -78,7 +78,7 @@ export default function Header({
             setShowSlideAnimation={setShowSlideAnimation}
             location={location}
             setLocation={setLocation}
-            user={user}
+            authState={authState}
           ></HeaderDetails>
         </div>
         <div
@@ -100,7 +100,7 @@ export default function Header({
             setShowSlideAnimation={setShowSlideAnimation}
             location={location}
             setLocation={setLocation}
-            user={user}
+            authState={authState}
           ></HeaderDetails>
         </div>
       </header>
@@ -131,7 +131,7 @@ function HeaderDetails({
   showSlideAnimation,
   setShowSlideAnimation,
   setLocation,
-  user,
+  authState,
 }: HeaderDetailsProps) {
   // Disables burger slide animation to avoid showing animation when switching between headers views
   function handleAnimationEnd() {
@@ -191,7 +191,7 @@ function HeaderDetails({
               to="/sign-in"
               onClick={handleSignInLink}
             >
-              Sign In {user}
+              Sign In {authState.user}
             </Link>
           </>
         ) : (

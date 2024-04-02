@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Dispatch, useReducer, SetStateAction } from "react";
 import axios from "axios";
 import Header from "../sections/Header";
+import { useUser } from "../utilities/UserContext";
 
 export default function SignIn({
   isHamburgerMenu,
@@ -9,99 +9,13 @@ export default function SignIn({
   location,
   setLocation,
 }) {
-  const initialAuthState = {
-    isLoggedIn: false,
-    user: "",
-    dataLoading: true,
-  };
-
-  // Reducer types
-  const CHECK_LOGIN_SUCCESS = "CHECK_LOGIN_SUCCESS";
-  const CHECK_LOGIN_FAILURE = "CHECK_LOGIN_FAILURE";
-  const CHECK_LOGIN_FINISHED = "CHECK_LOGIN_FINISHED";
-  const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-  const LOGIN_FAILURE = "LOGIN_FAILURE";
-  const LOGOUT = "LOGOUT";
-
-  function authStateReducer(state, payload) {
-    switch (payload.type) {
-      case CHECK_LOGIN_SUCCESS:
-        return {
-          ...state,
-          user: payload.action.data.user.username,
-          isLoggedIn: true,
-        };
-      case CHECK_LOGIN_FAILURE:
-        return {
-          ...state,
-          user: "",
-          isLoggedIn: false,
-        };
-      case CHECK_LOGIN_FINISHED:
-        return {
-          ...state,
-          dataLoading: false,
-        };
-      case LOGIN_SUCCESS:
-        return {
-          ...state,
-          user: payload.action.data.user.username,
-          isLoggedIn: true,
-        };
-      case LOGIN_FAILURE:
-        return {
-          ...state,
-          user: "",
-          isLoggedIn: false,
-        };
-      case LOGOUT:
-        return {
-          ...state,
-          user: "",
-          isLoggedIn: false,
-        };
-      default:
-        state;
-    }
-  }
-
-  const [authState, dispatch] = useReducer(authStateReducer, initialAuthState);
+  const { authState, dispatch } = useUser();
 
   const [usernameLogin, setUsernameLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
   const [usernameSignup, setUsernameSignup] = useState("");
   const [passwordSignup, setPasswordSignup] = useState("");
   const [showLoginPopup, setShowLoginPopup] = useState(false);
-
-  async function checkLoggedIn() {
-    try {
-      const response = await axios.get("http://localhost:3001/check-login", {
-        withCredentials: true,
-      });
-      if (response.data.isLoggedIn) {
-        console.log(response.data);
-        dispatch({
-          type: CHECK_LOGIN_SUCCESS,
-          action: response,
-        });
-      } else {
-        console.log(response.data);
-      }
-    } catch (error) {
-      dispatch({
-        type: CHECK_LOGIN_FAILURE,
-      });
-    } finally {
-      dispatch({
-        type: CHECK_LOGIN_FINISHED,
-      });
-    }
-  }
-
-  // Check if the user is logged in at the page mount and then set the user
-  useEffect(() => {
-    checkLoggedIn();
-  }, []);
 
   async function handleSignup(event) {
     event.preventDefault();
@@ -128,13 +42,13 @@ export default function SignIn({
         }
       );
       dispatch({
-        type: LOGIN_SUCCESS,
+        type: "LOGIN_SUCCESS",
         action: response,
       });
     } catch (error) {
       console.error("Error logging in:", error);
       dispatch({
-        type: LOGIN_FAILURE,
+        type: "LOGIN_FAILURE",
       });
     }
   }
@@ -146,7 +60,7 @@ export default function SignIn({
       });
       console.log(response);
       dispatch({
-        type: LOGOUT,
+        type: "LOGOUT",
       });
     } catch (error) {
       console.error("Error logging out:", error);
