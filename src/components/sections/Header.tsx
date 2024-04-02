@@ -4,6 +4,7 @@ import { Divide as Hamburger } from "hamburger-react";
 import "./Header.css";
 import { Dispatch, SetStateAction } from "react";
 import { useUser } from "../utilities/UserContext";
+import axios from "axios";
 
 interface HeaderProps {
   isHamburgerMenu: boolean;
@@ -17,6 +18,8 @@ export default function Header({
   setIsHamburgerMenu,
   location,
   setLocation,
+  showLoginPopup,
+  setShowLoginPopup,
 }: HeaderProps) {
   const { authState, dispatch } = useUser();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,7 +65,7 @@ export default function Header({
   return (
     <>
       <header
-        className={` relative z-50 flex h-[60px] w-full  items-center justify-center border-neutral-300 bg-black text-white`}
+        className={` relative z-50 flex h-[60px] w-full  items-center justify-center border-neutral-300 bg-black text-white ${showLoginPopup ? "blur-sm" : ""}`}
       >
         <div
           className={`relative flex h-[60px] w-full flex-row items-center justify-center gap-10 pl-5 pr-5 text-black ${isScrolled ? "blur-sm" : ""} shadow-lg`}
@@ -79,6 +82,9 @@ export default function Header({
             location={location}
             setLocation={setLocation}
             authState={authState}
+            dispatch={dispatch}
+            showLoginPopup={showLoginPopup}
+            setShowLoginPopup={setShowLoginPopup}
           ></HeaderDetails>
         </div>
         <div
@@ -101,6 +107,9 @@ export default function Header({
             location={location}
             setLocation={setLocation}
             authState={authState}
+            dispatch={dispatch}
+            showLoginPopup={showLoginPopup}
+            setShowLoginPopup={setShowLoginPopup}
           ></HeaderDetails>
         </div>
       </header>
@@ -132,6 +141,9 @@ function HeaderDetails({
   setShowSlideAnimation,
   setLocation,
   authState,
+  dispatch,
+  showLoginPopup,
+  setShowLoginPopup,
 }: HeaderDetailsProps) {
   // Disables burger slide animation to avoid showing animation when switching between headers views
   function handleAnimationEnd() {
@@ -148,19 +160,29 @@ function HeaderDetails({
     setLocation("flow-builder");
   }
 
-  function handleExperimentLink() {
-    enableHamburger();
-    setLocation("experiment");
+  function handleLoginButtonClick() {
+    setShowLoginPopup(true);
   }
 
-  function handleSignInLink() {
-    enableHamburger();
-    setLocation("sign-in");
+  async function handleLogout(event) {
+    try {
+      const response = await axios.get("http://localhost:3001/log-out", {
+        withCredentials: true,
+      });
+      console.log(response);
+      dispatch({
+        type: "LOGOUT",
+      });
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   }
 
   return (
     <>
-      <div className="flex w-full max-w-screen-2xl items-center justify-start gap-10">
+      <div
+        className={`flex w-full max-w-screen-2xl items-center justify-start gap-10`}
+      >
         <>
           <Link
             className="text-white hover:text-white hover:underline"
@@ -178,20 +200,24 @@ function HeaderDetails({
             Flow Builder
           </Link>
 
-          <Link
-            className="text-white hover:text-white hover:underline"
-            to="/experiment"
-            onClick={handleExperimentLink}
-          >
-            Experiment...
-          </Link>
-          <Link
-            className="ml-auto text-white hover:text-white hover:underline"
-            to="/sign-in"
-            onClick={handleSignInLink}
-          >
-            Sign In {authState.user}
-          </Link>
+          {!authState.isLoggedIn ? (
+            <div
+              onClick={handleLoginButtonClick}
+              className="ml-auto font-medium text-white hover:cursor-pointer hover:text-white hover:underline"
+            >
+              Sign In
+            </div>
+          ) : (
+            <div className="ml-auto font-medium text-white ">
+              <span className="font-medium text-white">{authState.user},</span>{" "}
+              <span
+                className="font-medium text-white hover:cursor-pointer hover:text-white hover:underline"
+                onClick={handleLogout}
+              >
+                logout
+              </span>
+            </div>
+          )}
         </>
 
         {/* {isHamburgerMenu ? (
@@ -212,20 +238,8 @@ function HeaderDetails({
               Flow Builder
             </Link>
 
-            <Link
-              className="text-white hover:text-white hover:underline"
-              to="/experiment"
-              onClick={handleExperimentLink}
-            >
-              Experiment...
-            </Link>
-            <Link
-              className="ml-auto text-white hover:text-white hover:underline"
-              to="/sign-in"
-              onClick={handleSignInLink}
-            >
-              Sign In {authState.user}
-            </Link>
+
+
           </>
         ) : (
           <>
@@ -260,20 +274,8 @@ function HeaderDetails({
                       Flow Builder
                     </Link>
 
-                    <Link
-                      onClick={handleExperimentLink}
-                      className="text-white hover:text-white hover:underline"
-                      to="/experiment"
-                    >
-                      Experiment...
-                    </Link>
-                    <Link
-                      className="ml-auto text-white hover:text-white hover:underline"
-                      to="/sign-in"
-                      onClick={handleSignInLink}
-                    >
-                      Sign In {authState.user}
-                    </Link>
+
+
                   </div>
                 </>
               ) : null}

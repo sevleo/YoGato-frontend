@@ -24,6 +24,7 @@ function Setup({
   setLocation,
   enablePreview,
   enableClear,
+  showLoginPopup,
 }: SetupProps) {
   const duration = flow.duration;
   const hours = Math.floor(duration / 3600);
@@ -51,7 +52,9 @@ function Setup({
   };
 
   return (
-    <div className="setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
+    <div
+      className={`setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${showLoginPopup ? "blur-sm" : ""}`}
+    >
       <div className="w-3/4">
         <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
           <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">

@@ -16,7 +16,7 @@ interface PreviewProps {
   setFlowState: Dispatch<SetStateAction<string>>;
 }
 
-function Preview({ flow, setFlowState }: PreviewProps) {
+function Preview({ flow, setFlowState, showLoginPopup }: PreviewProps) {
   // Theme for linear progress bar
   const linearProgressBarTheme = createTheme({
     components: {
@@ -278,7 +278,9 @@ function Preview({ flow, setFlowState }: PreviewProps) {
   }
 
   return (
-    <div className=" preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px]">
+    <div
+      className={`preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${showLoginPopup ? "blur-sm" : ""}`}
+    >
       <div className="w-3/4">
         <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
           <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
