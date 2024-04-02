@@ -161,7 +161,40 @@ function HeaderDetails({
   return (
     <>
       <div className="flex w-full max-w-screen-2xl items-center justify-start gap-10">
-        {isHamburgerMenu ? (
+        <>
+          <Link
+            className="text-white hover:text-white hover:underline"
+            to="/"
+            onClick={handleHomeLink}
+          >
+            Home
+          </Link>
+
+          <Link
+            className=" text-white hover:text-white hover:underline"
+            to="/builder"
+            onClick={handleFlowBuilderLink}
+          >
+            Flow Builder
+          </Link>
+
+          <Link
+            className="text-white hover:text-white hover:underline"
+            to="/experiment"
+            onClick={handleExperimentLink}
+          >
+            Experiment...
+          </Link>
+          <Link
+            className="ml-auto text-white hover:text-white hover:underline"
+            to="/sign-in"
+            onClick={handleSignInLink}
+          >
+            Sign In {authState.user}
+          </Link>
+        </>
+
+        {/* {isHamburgerMenu ? (
           <>
             <Link
               className="text-white hover:text-white hover:underline"
@@ -187,7 +220,7 @@ function HeaderDetails({
               Experiment...
             </Link>
             <Link
-              className="text-white hover:text-white hover:underline"
+              className="ml-auto text-white hover:text-white hover:underline"
               to="/sign-in"
               onClick={handleSignInLink}
             >
@@ -234,14 +267,21 @@ function HeaderDetails({
                     >
                       Experiment...
                     </Link>
+                    <Link
+                      className="ml-auto text-white hover:text-white hover:underline"
+                      to="/sign-in"
+                      onClick={handleSignInLink}
+                    >
+                      Sign In {authState.user}
+                    </Link>
                   </div>
                 </>
               ) : null}
             </div>
           </>
-        )}
+        )} */}
 
-        <div className="flex h-full w-[100px] items-center justify-start"></div>
+        {/* <div className="flex h-full w-[100px] items-center justify-start"></div> */}
       </div>
     </>
   );

@@ -4,7 +4,7 @@ import axios from "axios";
 
 const initialAuthState = {
   isLoggedIn: false,
-  user: "test user",
+  user: "",
   dataLoading: true,
 };
 
