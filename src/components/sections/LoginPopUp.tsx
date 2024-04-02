@@ -48,10 +48,10 @@ export default function LogInPopUp({ showLoginPopup }) {
   return (
     <>
       <div
-        className={` fixed left-0 top-0  h-full w-full  ${showLoginPopup ? "z-[100] opacity-30" : "z-[0] opacity-0"}`}
+        className={` fixed left-0 top-0  h-full w-full bg-[black] ${showLoginPopup ? "pointer-events-auto z-[100] opacity-30" : "pointer-events-none z-[0] opacity-0"}`}
       ></div>
       <div
-        className={`fixed left-[50%]  translate-x-[-50%] translate-y-[-50%] transform bg-[#ffffff43] transition-all ${showLoginPopup ? "pointer-events-auto top-[50%] z-[110] opacity-[1]" : "pointer-events-none top-[40%] z-0 opacity-[0]"}`}
+        className={`fixed left-[50%]  translate-x-[-50%] translate-y-[-50%] transform bg-[#626262] transition-all ${showLoginPopup ? "pointer-events-auto top-[50%] z-[110] opacity-[1]" : "pointer-events-none top-[40%] z-0 opacity-[0]"}`}
       >
         <div>
           <form method="POST" onSubmit={handleLogin}>
