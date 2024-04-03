@@ -67,50 +67,57 @@ export default function Header({
       <header
         className={` relative z-50 flex h-[60px] w-full  items-center justify-center border-neutral-300 bg-black text-white `}
       >
-        <div
-          className={`relative flex h-[60px] w-full flex-row items-center justify-center gap-10 pl-5 pr-5 text-black ${isScrolled || showLoginPopup ? "blur-sm" : ""} shadow-lg`}
-        >
-          <HeaderDetails
-            enableHamburger={enableHamburger}
-            disableHamburger={disableHamburger}
-            isHamburgerMenu={isHamburgerMenu}
-            isOpen={isOpen}
-            setOpen={setOpen}
-            showCollapsibleMenu={isScrolled ? false : true}
-            showSlideAnimation={showSlideAnimation}
-            setShowSlideAnimation={setShowSlideAnimation}
-            location={location}
-            setLocation={setLocation}
-            authState={authState}
-            dispatch={dispatch}
-            showLoginPopup={showLoginPopup}
-            setShowLoginPopup={setShowLoginPopup}
-          ></HeaderDetails>
-        </div>
-        <div
-          className={`fixed left-[-1px] z-10  flex h-[60px] w-full flex-row items-center justify-center gap-10 bg-black pl-5 pr-5 shadow-lg ${showLoginPopup ? "blur-sm" : ""}`}
-          style={{
-            background: "rgba(34, 32, 30, 0.9)",
-            top: isScrolled ? "0px" : "-60px",
-            transition: "top 0.3s ease-in-out",
-          }}
-        >
-          <HeaderDetails
-            enableHamburger={enableHamburger}
-            disableHamburger={disableHamburger}
-            isHamburgerMenu={isHamburgerMenu}
-            isOpen={isOpen}
-            setOpen={setOpen}
-            showCollapsibleMenu={isScrolled ? true : false}
-            showSlideAnimation={showSlideAnimation}
-            setShowSlideAnimation={setShowSlideAnimation}
-            location={location}
-            setLocation={setLocation}
-            authState={authState}
-            dispatch={dispatch}
-            showLoginPopup={showLoginPopup}
-            setShowLoginPopup={setShowLoginPopup}
-          ></HeaderDetails>
+        <div className="flex w-full max-w-screen-2xl items-center justify-center">
+          <div
+            className={`relative flex h-[60px] w-3/4 flex-row items-center justify-center gap-10 text-black ${isScrolled || showLoginPopup ? "blur-sm" : ""} shadow-lg`}
+          >
+            <HeaderDetails
+              enableHamburger={enableHamburger}
+              disableHamburger={disableHamburger}
+              isHamburgerMenu={isHamburgerMenu}
+              isOpen={isOpen}
+              setOpen={setOpen}
+              showCollapsibleMenu={isScrolled ? false : true}
+              showSlideAnimation={showSlideAnimation}
+              setShowSlideAnimation={setShowSlideAnimation}
+              location={location}
+              setLocation={setLocation}
+              authState={authState}
+              dispatch={dispatch}
+              showLoginPopup={showLoginPopup}
+              setShowLoginPopup={setShowLoginPopup}
+            ></HeaderDetails>
+          </div>
+          <div
+            className={` fixed left-[-1px] z-10 flex  h-[60px] w-full flex-row items-center justify-center gap-10 bg-black shadow-lg ${showLoginPopup ? "blur-sm" : ""}`}
+            style={{
+              background: "rgba(34, 32, 30, 0.9)",
+              top: isScrolled ? "0px" : "-60px",
+              transition: "top 0.3s ease-in-out",
+              transform: "translateX(4px)",
+            }}
+          >
+            <div className="flex h-full w-full max-w-screen-2xl items-center justify-center">
+              <div style={{ width: "calc(75% + 8px)" }}>
+                <HeaderDetails
+                  enableHamburger={enableHamburger}
+                  disableHamburger={disableHamburger}
+                  isHamburgerMenu={isHamburgerMenu}
+                  isOpen={isOpen}
+                  setOpen={setOpen}
+                  showCollapsibleMenu={isScrolled ? true : false}
+                  showSlideAnimation={showSlideAnimation}
+                  setShowSlideAnimation={setShowSlideAnimation}
+                  location={location}
+                  setLocation={setLocation}
+                  authState={authState}
+                  dispatch={dispatch}
+                  showLoginPopup={showLoginPopup}
+                  setShowLoginPopup={setShowLoginPopup}
+                ></HeaderDetails>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
     </>
