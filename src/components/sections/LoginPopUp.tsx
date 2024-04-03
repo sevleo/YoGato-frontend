@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useUser } from "../utilities/UserContext";
 import axios from "axios";
 
-export default function LogInPopUp({ showLoginPopup }) {
+export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
   const { authState, dispatch } = useUser();
   const [usernameLogin, setUsernameLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
@@ -45,9 +45,14 @@ export default function LogInPopUp({ showLoginPopup }) {
     }
   }
 
+  function handleBackgroundClick() {
+    setShowLoginPopup(false);
+  }
+
   return (
     <>
       <div
+        onClick={handleBackgroundClick}
         className={` fixed left-0 top-0  h-full w-full bg-[black] ${showLoginPopup ? "pointer-events-auto z-[100] opacity-30" : "pointer-events-none z-[0] opacity-0"}`}
       ></div>
       <div

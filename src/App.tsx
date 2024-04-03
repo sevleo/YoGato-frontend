@@ -25,7 +25,10 @@ function App() {
             showLoginPopup={showLoginPopup}
             setShowLoginPopup={setShowLoginPopup}
           ></Home>
-          <LogInPopUp showLoginPopup={showLoginPopup}></LogInPopUp>
+          <LogInPopUp
+            showLoginPopup={showLoginPopup}
+            setShowLoginPopup={setShowLoginPopup}
+          ></LogInPopUp>
         </>
       ),
       errorElement: <ErrorPage></ErrorPage>,
@@ -42,7 +45,10 @@ function App() {
             showLoginPopup={showLoginPopup}
             setShowLoginPopup={setShowLoginPopup}
           ></Builder>
-          <LogInPopUp showLoginPopup={showLoginPopup}></LogInPopUp>
+          <LogInPopUp
+            showLoginPopup={showLoginPopup}
+            setShowLoginPopup={setShowLoginPopup}
+          ></LogInPopUp>
         </>
       ),
     },
