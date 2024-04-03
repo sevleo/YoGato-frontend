@@ -182,7 +182,7 @@ function Unit({
             {index != null ? Number(index + 1) : null}
           </div>
         ) : (
-          <div className="  hover:cursor-pointer" onClick={onUnitCloseClick}>
+          <div className=" hover:cursor-pointer" onClick={onUnitCloseClick}>
             <p
               onMouseEnter={disableDrag}
               onMouseLeave={enableDrag}

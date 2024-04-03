@@ -12,6 +12,14 @@ function App() {
   const [location, setLocation] = useState<string>("");
   const [showLoginPopup, setShowLoginPopup] = useState(false);
 
+  function handleKeyPress(event) {
+    if (event.key === "Escape") {
+      setShowLoginPopup(false);
+    }
+  }
+
+  document.addEventListener("keydown", handleKeyPress);
+
   const router = createBrowserRouter([
     {
       path: "/",

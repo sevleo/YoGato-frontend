@@ -57,9 +57,18 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
         className={` fixed left-0 top-0  h-full w-full bg-[black] ${showLoginPopup ? "pointer-events-auto z-[100] opacity-50" : "pointer-events-none z-[0] opacity-0"} transition-all`}
       ></div>
       <div
-        className={` fixed left-[50%] flex w-[450px] translate-x-[-50%] translate-y-[-50%] transform flex-col items-start  justify-center bg-[#1c1c1c] pb-10 pl-20 pr-20 pt-10 outline outline-[1px] outline-[#2e2e2e] transition-all ${showLoginPopup ? "pointer-events-auto top-[50%] z-[110] opacity-[1]" : "pointer-events-none top-[40%] z-0 opacity-[0]"}`}
+        className={` fixed left-[50%] flex w-[450px] translate-x-[-50%] translate-y-[-50%] transform flex-col items-start  justify-center bg-[#1c1c1c]  outline outline-[1px] outline-[#2e2e2e] transition-all ${showLoginPopup ? "pointer-events-auto top-[50%] z-[110] opacity-[1]" : "pointer-events-none top-[40%] z-0 opacity-[0]"}`}
       >
-        <div className="flex w-full flex-col gap-5">
+        <div className="relative flex w-full flex-col gap-5 pb-10 pl-20 pr-20 pt-10">
+          <div className="group absolute right-[10px] top-[10px] flex h-[24px] w-[24px] items-center justify-center rounded-[50%] hover:cursor-pointer ">
+            {" "}
+            <span
+              className="material-symbols-outlined transition-all group-hover:rotate-90"
+              onClick={() => setShowLoginPopup(false)}
+            >
+              close
+            </span>
+          </div>
           <div className=" mb-6">
             <p className="mb-1 text-start text-3xl font-medium">YoGato</p>
             <p className="text-start text-sm font-medium text-[#A0A0A0]">
