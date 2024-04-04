@@ -15,8 +15,6 @@ function Home({
   setIsHamburgerMenu,
   location,
   setLocation,
-  showLoginPopup,
-  setShowLoginPopup,
 }: HomeProps) {
   // const user = useUser();
   const { authState, dispatch } = useUser();
@@ -28,13 +26,11 @@ function Home({
         setIsHamburgerMenu={setIsHamburgerMenu}
         location={location}
         setLocation={setLocation}
-        showLoginPopup={showLoginPopup}
-        setShowLoginPopup={setShowLoginPopup}
       />
       {authState.dataLoading ? (
         <div></div>
       ) : (
-        <div className={`${showLoginPopup ? "blur-sm" : ""}`}>
+        <div className={`${authState.showLoginPopup ? "blur-sm" : ""}`}>
           <div className=" pt-[60px] text-white">
             Welcome to YoGato {authState.user}
           </div>

@@ -6,6 +6,7 @@ const initialAuthState = {
   isLoggedIn: false,
   user: "",
   dataLoading: true,
+  showLoginPopup: false,
 };
 
 const UserContext = React.createContext(initialAuthState);
@@ -18,9 +19,21 @@ export const UserDataProvider = ({ children }) => {
   const LOGIN_SUCCESS = "LOGIN_SUCCESS";
   const LOGIN_FAILURE = "LOGIN_FAILURE";
   const LOGOUT = "LOGOUT";
+  const OPEN_LOGIN_MODAL = "OPEN_LOGIN_MODAL";
+  const CLOSE_LOGIN_MODAL = "CLOSE_LOGIN_MODAL";
 
   function authStateReducer(state, payload) {
     switch (payload.type) {
+      case OPEN_LOGIN_MODAL:
+        return {
+          ...state,
+          showLoginPopup: true,
+        };
+      case CLOSE_LOGIN_MODAL:
+        return {
+          ...state,
+          showLoginPopup: false,
+        };
       case CHECK_LOGIN_SUCCESS:
         return {
           ...state,

@@ -5,6 +5,10 @@ import "./Header.css";
 import { Dispatch, SetStateAction } from "react";
 import { useUser } from "../utilities/UserContext";
 import axios from "axios";
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import { createTheme } from "@mui/material";
+import { ThemeProvider } from "@emotion/react";
 
 interface HeaderProps {
   isHamburgerMenu: boolean;
@@ -18,12 +22,58 @@ export default function Header({
   setIsHamburgerMenu,
   location,
   setLocation,
-  showLoginPopup,
-  setShowLoginPopup,
 }: HeaderProps) {
   const { authState, dispatch } = useUser();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setOpen] = useState(false);
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+
+  // Theme for menu
+  const menuTheme = createTheme({
+    components: {
+      MuiPaper: {
+        styleOverrides: {
+          root: {
+            backgroundColor: "#1c1c1c",
+            borderRadius: "4px",
+            border: "0.5px solid #2e2e2e",
+            color: "white",
+            boxShadow: "none",
+          },
+        },
+      },
+      MuiList: {
+        styleOverrides: {
+          root: {
+            width: "150px",
+          },
+        },
+      },
+      MuiMenuItem: {
+        styleOverrides: {
+          root: {
+            "&:hover": {
+              backgroundColor: "#343434",
+            },
+            fontSize: "14px",
+            fontFamily: "Nunito Sans",
+            // textAlign: "end",
+            // display: "flex",
+            // justifyContent: "end",
+          },
+        },
+      },
+    },
+  });
+
+  const handleMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   // Controls when to show hamburger menu slide animation
   const [showSlideAnimation, setShowSlideAnimation] = useState(true);
@@ -41,6 +91,7 @@ export default function Header({
       if (window.scrollY > 5) {
         console.log("scrolled");
         setIsScrolled(true);
+        setAnchorEl(null);
       } else {
         console.log("not scrolled");
 
@@ -69,7 +120,7 @@ export default function Header({
       >
         <div className="flex w-full max-w-screen-2xl items-center justify-center">
           <div
-            className={`relative flex h-[60px] w-3/4 flex-row items-center justify-center gap-10 text-black ${isScrolled || showLoginPopup ? "blur-sm" : ""} shadow-lg`}
+            className={`relative flex h-[60px] w-3/4 flex-row items-center justify-center gap-10 text-black ${isScrolled || authState.showLoginPopup ? "blur-sm" : ""} shadow-lg`}
           >
             <HeaderDetails
               enableHamburger={enableHamburger}
@@ -84,12 +135,15 @@ export default function Header({
               setLocation={setLocation}
               authState={authState}
               dispatch={dispatch}
-              showLoginPopup={showLoginPopup}
-              setShowLoginPopup={setShowLoginPopup}
+              handleMenu={handleMenu}
+              anchorEl={anchorEl}
+              setAnchorEl={setAnchorEl}
+              handleClose={handleClose}
+              menuTheme={menuTheme}
             ></HeaderDetails>
           </div>
           <div
-            className={` fixed left-[-1px] z-10 flex  h-[60px] w-full flex-row items-center justify-center gap-10 bg-black shadow-lg ${showLoginPopup ? "blur-sm" : ""}`}
+            className={` fixed left-[-1px] z-10 flex  h-[60px] w-full flex-row items-center justify-center gap-10 bg-black shadow-lg ${authState.showLoginPopup ? "blur-sm" : ""}`}
             style={{
               background: "rgba(34, 32, 30, 0.9)",
               top: isScrolled ? "0px" : "-60px",
@@ -98,7 +152,7 @@ export default function Header({
             }}
           >
             <div className="flex h-full w-full max-w-screen-2xl items-center justify-center">
-              <div style={{ width: "calc(75% + 8px)" }}>
+              <div style={{ width: "calc(75% + 8px)", height: "100%" }}>
                 <HeaderDetails
                   enableHamburger={enableHamburger}
                   disableHamburger={disableHamburger}
@@ -112,8 +166,11 @@ export default function Header({
                   setLocation={setLocation}
                   authState={authState}
                   dispatch={dispatch}
-                  showLoginPopup={showLoginPopup}
-                  setShowLoginPopup={setShowLoginPopup}
+                  handleMenu={handleMenu}
+                  anchorEl={anchorEl}
+                  setAnchorEl={setAnchorEl}
+                  handleClose={handleClose}
+                  menuTheme={menuTheme}
                 ></HeaderDetails>
               </div>
             </div>
@@ -149,8 +206,11 @@ function HeaderDetails({
   setLocation,
   authState,
   dispatch,
-  showLoginPopup,
-  setShowLoginPopup,
+  handleMenu,
+  anchorEl,
+  setAnchorEl,
+  handleClose,
+  menuTheme,
 }: HeaderDetailsProps) {
   // Disables burger slide animation to avoid showing animation when switching between headers views
   function handleAnimationEnd() {
@@ -167,8 +227,15 @@ function HeaderDetails({
     setLocation("flow-builder");
   }
 
+  function handleMyFlowsLink() {
+    disableHamburger();
+    setLocation("my-flows");
+  }
+
   function handleLoginButtonClick() {
-    setShowLoginPopup(true);
+    dispatch({
+      type: "OPEN_LOGIN_MODAL",
+    });
   }
 
   async function handleLogout(event) {
@@ -180,6 +247,7 @@ function HeaderDetails({
       dispatch({
         type: "LOGOUT",
       });
+      setAnchorEl(null);
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -188,11 +256,11 @@ function HeaderDetails({
   return (
     <>
       <div
-        className={`flex w-full max-w-screen-2xl items-center justify-start gap-10`}
+        className={`flex h-full  w-full max-w-screen-2xl items-center justify-start`}
       >
         <>
           <Link
-            className="text-white hover:text-white hover:underline"
+            className="flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
             to="/"
             onClick={handleHomeLink}
           >
@@ -200,29 +268,68 @@ function HeaderDetails({
           </Link>
 
           <Link
-            className=" text-white hover:text-white hover:underline"
+            className="flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
             to="/builder"
             onClick={handleFlowBuilderLink}
           >
-            Flow Builder
+            Builder
           </Link>
+          {authState.isLoggedIn ? (
+            <Link
+              className="flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
+              to="/my-flows"
+              onClick={handleMyFlowsLink}
+            >
+              My Flows
+            </Link>
+          ) : null}
 
-          {!authState.isLoggedIn ? (
+          {authState.dataLoading ? (
+            <div></div>
+          ) : !authState.isLoggedIn ? (
             <div
               onClick={handleLoginButtonClick}
-              className="ml-auto font-medium text-white hover:cursor-pointer hover:text-white hover:underline"
+              className="ml-auto flex h-full w-[100px] items-center justify-center font-medium text-white hover:cursor-pointer hover:bg-[#2e2e2e] hover:text-white"
             >
               Sign In
             </div>
           ) : (
-            <div className="ml-auto font-medium text-white ">
-              <span className="font-medium text-white">{authState.user},</span>{" "}
-              <span
-                className="font-medium text-white hover:cursor-pointer hover:text-white hover:underline"
-                onClick={handleLogout}
+            <div className="ml-auto flex h-full w-[100px] items-center justify-center font-medium text-white ">
+              <div
+                className="flex h-full w-[100px] items-center justify-center font-medium text-white  hover:cursor-pointer hover:bg-[#2e2e2e]"
+                onClick={handleMenu}
               >
-                logout
-              </span>
+                {authState.user}
+              </div>{" "}
+              {/* <AccountCircle
+                onClick={handleMenu}
+                sx={{
+                  height: "30px",
+                  width: "30px",
+                  cursor: "pointer",
+                }}
+              /> */}
+              <ThemeProvider theme={menuTheme}>
+                <Menu
+                  id="menu-appbar"
+                  anchorEl={anchorEl}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: "top",
+                    horizontal: "right",
+                  }}
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem onClick={handleClose}>Theme</MenuItem>
+                  <MenuItem onClick={handleClose}>Settings</MenuItem>
+                  <MenuItem onClick={handleLogout}>Log Out</MenuItem>
+                </Menu>
+              </ThemeProvider>
             </div>
           )}
         </>

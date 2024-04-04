@@ -26,8 +26,6 @@ function Builder({
   setIsHamburgerMenu,
   location,
   setLocation,
-  showLoginPopup,
-  setShowLoginPopup,
 }: BuilderProps) {
   const aspectGroups: AspectGroupType[] = categories;
 
@@ -61,8 +59,6 @@ function Builder({
         setIsHamburgerMenu={setIsHamburgerMenu}
         location={location}
         setLocation={setLocation}
-        showLoginPopup={showLoginPopup}
-        setShowLoginPopup={setShowLoginPopup}
       />
       {flowState === "setup" && (
         <Setup
@@ -73,16 +69,11 @@ function Builder({
           setLocation={setLocation}
           enablePreview={flow.units.length > 0 ? true : false}
           enableClear={flow.units.length > 0 ? true : false}
-          showLoginPopup={showLoginPopup}
         ></Setup>
       )}
 
       {flowState === "preview" && (
-        <Preview
-          flow={flow}
-          setFlowState={setFlowState}
-          showLoginPopup={showLoginPopup}
-        ></Preview>
+        <Preview flow={flow} setFlowState={setFlowState}></Preview>
       )}
 
       {flowState === "going" && null}
