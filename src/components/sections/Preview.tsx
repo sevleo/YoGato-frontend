@@ -191,6 +191,7 @@ function Preview({ flow, setFlowState, showLoginPopup }: PreviewProps) {
       const audio = new Audio(
         mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
       );
+      audio.volume = 1;
       audio.play();
     }
   }, [currentUnitIndex, flow.units, timerState.startFlow]);
@@ -304,6 +305,7 @@ function Preview({ flow, setFlowState, showLoginPopup }: PreviewProps) {
             </div>
           </div>
           <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
+            <p>volume slider</p>
             <button
               className={` h-full w-[100px] ${!timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
               onClick={

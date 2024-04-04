@@ -24,7 +24,7 @@ function App() {
     {
       path: "/",
       element: (
-        <>
+        <div className="main h-full w-full">
           <Home
             isHamburgerMenu={true}
             setIsHamburgerMenu={setIsHamburgerMenu}
@@ -37,14 +37,14 @@ function App() {
             showLoginPopup={showLoginPopup}
             setShowLoginPopup={setShowLoginPopup}
           ></LogInPopUp>
-        </>
+        </div>
       ),
       errorElement: <ErrorPage></ErrorPage>,
     },
     {
       path: "/builder",
       element: (
-        <>
+        <div className="main h-full w-full">
           <Builder
             isHamburgerMenu={false}
             setIsHamburgerMenu={setIsHamburgerMenu}
@@ -57,7 +57,7 @@ function App() {
             showLoginPopup={showLoginPopup}
             setShowLoginPopup={setShowLoginPopup}
           ></LogInPopUp>
-        </>
+        </div>
       ),
     },
   ]);
