@@ -9,11 +9,13 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
   const [usernameSignup, setUsernameSignup] = useState("");
   const [passwordSignup, setPasswordSignup] = useState("");
   const [popupState, setPopupState] = useState("signin");
+  const [errorMessage, setErrorMessage] = useState(null);
 
   // Ensure signin is always the default state of the LogInPopUp
   useEffect(() => {
     if (showLoginPopup) {
       setPopupState("signin");
+      setErrorMessage(null);
     }
   }, [showLoginPopup]);
 
@@ -28,6 +30,11 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
       setPopupState("signin");
     } catch (error) {
       console.error("Error signing up:", error);
+      if (error.response) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage(error.message);
+      }
     }
   }
 
@@ -49,6 +56,12 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
       setShowLoginPopup(false);
     } catch (error) {
       console.error("Error logging in:", error);
+      if (error.response) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage(error.message);
+      }
+
       dispatch({
         type: "LOGIN_FAILURE",
       });
@@ -133,6 +146,7 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
                         value={usernameLogin}
                         onChange={(e) => setUsernameLogin(e.target.value)}
                         className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+                        required
                       />
                     </div>
                     <div className="flex w-full flex-col items-start justify-center gap-2">
@@ -150,8 +164,13 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
                         onChange={(e) => setPasswordLogin(e.target.value)}
                         className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed50] focus:border-[#707070] focus:outline-[#232323]"
                         placeholder="••••••••"
+                        required
                       />
                     </div>
+                    <p className="h-[20px] w-full text-start text-[red]">
+                      {" "}
+                      {errorMessage ? errorMessage : null}{" "}
+                    </p>
 
                     <button
                       type="submit"
@@ -167,7 +186,10 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
                   Don't have an account?{" "}
                   <span
                     className="text-sm font-medium text-[white] hover:cursor-pointer hover:underline"
-                    onClick={() => setPopupState("signup")}
+                    onClick={() => {
+                      setPopupState("signup");
+                      setErrorMessage(null);
+                    }}
                   >
                     Sign Up Now
                   </span>
@@ -234,6 +256,8 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
                         value={usernameSignup}
                         onChange={(e) => setUsernameSignup(e.target.value)}
                         className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+                        required
+                        minLength={5}
                       />
                     </div>
                     <div className="flex w-full flex-col items-start justify-center gap-2">
@@ -251,8 +275,14 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
                         onChange={(e) => setPasswordSignup(e.target.value)}
                         className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed50] focus:border-[#707070] focus:outline-[#232323]"
                         placeholder="••••••••"
+                        required
+                        minLength={8}
                       />
                     </div>
+                    <p className="h-[20px] w-full text-start text-[red]">
+                      {" "}
+                      {errorMessage ? errorMessage : null}{" "}
+                    </p>
 
                     <button
                       type="submit"
@@ -268,7 +298,10 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
                   Have an account?{" "}
                   <span
                     className="text-sm font-medium text-[white] hover:cursor-pointer hover:underline"
-                    onClick={() => setPopupState("signin")}
+                    onClick={() => {
+                      setPopupState("signin");
+                      setErrorMessage(null);
+                    }}
                   >
                     Sign In Now
                   </span>
