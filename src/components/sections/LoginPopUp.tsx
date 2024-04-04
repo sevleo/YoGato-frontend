@@ -62,15 +62,17 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
   return (
     <>
       <div
-        onClick={handleBackgroundClick}
-        className={` fixed left-0 top-0  h-full w-full bg-[black] ${showLoginPopup ? "pointer-events-auto z-[100] opacity-50" : "pointer-events-none z-[0] opacity-0"} transition-all`}
-      ></div>
-      <div className="absolute top-0 flex h-full w-full">
+        className={`fixed top-0 flex h-full w-full ${showLoginPopup ? "pointer-events-auto z-[1000]" : "pointer-events-none"}`}
+      >
         <div
-          className={` m-auto mt-auto w-[450px] flex-col items-start  justify-center bg-[#1c1c1c]  outline outline-[1px] outline-[#2e2e2e] transition-all ${showLoginPopup ? "pointer-events-auto  z-[110] opacity-[1]" : "pointer-events-none z-0 opacity-[0]"}`}
+          onClick={handleBackgroundClick}
+          className={` fixed left-0 top-0  h-full w-full bg-[black] ${showLoginPopup ? "pointer-events-auto z-[100] opacity-50" : "pointer-events-none z-[0] opacity-0"} transition-all`}
+        ></div>
+        <div
+          className={` m-auto mt-auto h-auto max-h-[100%] w-[450px] flex-col items-start justify-center  overflow-auto bg-[#1c1c1c]  outline outline-[1px] outline-[#2e2e2e] transition-all ${showLoginPopup ? "pointer-events-auto  z-[110] opacity-[1]" : "pointer-events-none z-0 opacity-[0]"}`}
         >
           {popupState === "signin" ? (
-            <div className="relative flex w-full flex-col gap-5 pb-10 pl-20 pr-20 pt-10">
+            <div className="relative flex w-full flex-col gap-5 overflow-auto pb-10 pl-20 pr-20 pt-10">
               <div className="group absolute right-[10px] top-[10px] flex h-[24px] w-[24px] items-center justify-center rounded-[50%] hover:cursor-pointer ">
                 {" "}
                 <span
@@ -173,7 +175,7 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
               </div>
             </div>
           ) : (
-            <div className="relative flex w-full flex-col gap-5 pb-10 pl-20 pr-20 pt-10">
+            <div className="relative flex w-full flex-col gap-5 pb-10 pl-20 pr-20 pt-10 ">
               <div className="group absolute right-[10px] top-[10px] flex h-[24px] w-[24px] items-center justify-center rounded-[50%] hover:cursor-pointer ">
                 {" "}
                 <span

@@ -682,6 +682,10 @@ video {
   z-index: 200;
 }
 
+.z-\[1000\] {
+  z-index: 1000;
+}
+
 .m-auto {
   margin: auto;
 }
@@ -797,6 +801,10 @@ video {
 
 .max-h-\[30px\] {
   max-height: 30px;
+}
+
+.max-h-\[100\%\] {
+  max-height: 100%;
 }
 
 .min-h-\[300px\] {
