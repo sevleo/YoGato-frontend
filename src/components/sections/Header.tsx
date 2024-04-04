@@ -143,9 +143,9 @@ export default function Header({
             ></HeaderDetails>
           </div>
           <div
-            className={` fixed left-[-1px] z-10 flex  h-[60px] w-full flex-row items-center justify-center gap-10 bg-black shadow-lg ${authState.showLoginPopup ? "blur-sm" : ""}`}
+            className={` fixed left-[-4px] z-10 flex  h-[60px] w-full flex-row items-center justify-center gap-10 bg-black shadow-lg ${authState.showLoginPopup ? "blur-sm" : ""}`}
             style={{
-              background: "rgba(34, 32, 30, 0.9)",
+              background: "rgba(34, 32, 30, 1)",
               top: isScrolled ? "0px" : "-60px",
               transition: "top 0.3s ease-in-out",
               transform: "translateX(4px)",
