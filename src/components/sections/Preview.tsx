@@ -10,6 +10,11 @@ import Slider from "react-slick";
 import { LinearProgress, createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import { useTimer } from "react-use-precision-timer";
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import { Slider as VolumeSlider } from "@mui/material";
+import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
+import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 
 interface PreviewProps {
   flow: FlowType;
@@ -96,6 +101,14 @@ function Preview({ flow, setFlowState, showLoginPopup }: PreviewProps) {
   const hours = Math.floor(duration / 3600);
   const minutes = Math.floor((duration % 3600) / 60);
   const seconds = duration % 60;
+
+  const volumeRef = useRef(0.5);
+  const [volumeValue, setVolumeValue] = useState<number>(50);
+
+  const handleVolumeChange = (event: Event, newValue: number | number[]) => {
+    setVolumeValue(newValue as number);
+    volumeRef.current = newValue / 100;
+  };
 
   // Slider settings
   const settings = {
@@ -191,7 +204,7 @@ function Preview({ flow, setFlowState, showLoginPopup }: PreviewProps) {
       const audio = new Audio(
         mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
       );
-      audio.volume = 1;
+      audio.volume = volumeRef.current;
       audio.play();
     }
   }, [currentUnitIndex, flow.units, timerState.startFlow]);
@@ -304,8 +317,8 @@ function Preview({ flow, setFlowState, showLoginPopup }: PreviewProps) {
               </p>
             </div>
           </div>
+
           <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
-            <p>volume slider</p>
             <button
               className={` h-full w-[100px] ${!timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
               onClick={
@@ -361,6 +374,32 @@ function Preview({ flow, setFlowState, showLoginPopup }: PreviewProps) {
                     );
                   })}
                 </Slider>
+                <div className="flex flex-col items-center justify-center  gap-1 p-1">
+                  {" "}
+                  <Box sx={{ width: 300 }}>
+                    <Stack
+                      spacing={2}
+                      direction="row"
+                      sx={{ mb: 1 }}
+                      alignItems="center"
+                    >
+                      <VolumeDownRounded sx={{ color: "white" }} />
+                      <VolumeSlider
+                        aria-label="Volume"
+                        value={volumeValue}
+                        onChange={handleVolumeChange}
+                        // marks={true}
+                        // step={5}
+                        valueLabelDisplay="auto"
+                        sx={{
+                          // backgroundColor: "red",
+                          color: "white",
+                        }}
+                      />
+                      <VolumeUpRounded sx={{ color: "white" }} />
+                    </Stack>
+                  </Box>
+                </div>
               </div>
             </div>
             <div className=" ml-[4px] flex h-full w-1/2 flex-col bg-[#ffffff18] p-2 transition-colors hover:bg-[#ffffff38]">
