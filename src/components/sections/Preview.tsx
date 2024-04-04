@@ -15,13 +15,16 @@ import Stack from "@mui/material/Stack";
 import { Slider as VolumeSlider } from "@mui/material";
 import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
 import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
+import { useUser } from "../utilities/UserContext";
 
 interface PreviewProps {
   flow: FlowType;
   setFlowState: Dispatch<SetStateAction<string>>;
 }
 
-function Preview({ flow, setFlowState, showLoginPopup }: PreviewProps) {
+function Preview({ flow, setFlowState }: PreviewProps) {
+  const { authState } = useUser();
+
   // Theme for linear progress bar
   const linearProgressBarTheme = createTheme({
     components: {
@@ -293,7 +296,7 @@ function Preview({ flow, setFlowState, showLoginPopup }: PreviewProps) {
 
   return (
     <div
-      className={`preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${showLoginPopup ? "blur-sm" : ""}`}
+      className={`preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
     >
       <div className="w-3/4">
         <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">

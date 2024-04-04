@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
 import axios from "axios";
 
-export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
+export default function LogInPopUp() {
   const { authState, dispatch } = useUser();
   const [usernameLogin, setUsernameLogin] = useState("");
   const [passwordLogin, setPasswordLogin] = useState("");
@@ -13,11 +13,11 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
 
   // Ensure signin is always the default state of the LogInPopUp
   useEffect(() => {
-    if (showLoginPopup) {
+    if (authState.showLoginPopup) {
       setPopupState("signin");
       setErrorMessage(null);
     }
-  }, [showLoginPopup]);
+  }, [authState.showLoginPopup]);
 
   async function handleSignup(event) {
     event.preventDefault();
@@ -53,7 +53,9 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
         type: "LOGIN_SUCCESS",
         action: response,
       });
-      setShowLoginPopup(false);
+      dispatch({
+        type: "CLOSE_LOGIN_MODAL",
+      });
     } catch (error) {
       console.error("Error logging in:", error);
       if (error.response) {
@@ -69,20 +71,22 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
   }
 
   function handleBackgroundClick() {
-    setShowLoginPopup(false);
+    dispatch({
+      type: "CLOSE_LOGIN_MODAL",
+    });
   }
 
   return (
     <>
       <div
-        className={`fixed top-0 flex h-full w-full ${showLoginPopup ? "pointer-events-auto z-[1000]" : "pointer-events-none"}`}
+        className={`fixed top-0 flex h-full w-full ${authState.showLoginPopup ? "pointer-events-auto z-[1000]" : "pointer-events-none"}`}
       >
         <div
           onClick={handleBackgroundClick}
-          className={` fixed left-0 top-0  h-full w-full bg-[black] ${showLoginPopup ? "pointer-events-auto z-[100] opacity-50" : "pointer-events-none z-[0] opacity-0"} transition-all`}
+          className={` fixed left-0 top-0  h-full w-full bg-[black] ${authState.showLoginPopup ? "pointer-events-auto z-[100] opacity-50" : "pointer-events-none z-[0] opacity-0"} transition-all`}
         ></div>
         <div
-          className={` m-auto mt-auto h-auto max-h-[100%] w-[450px] flex-col items-start justify-center  overflow-auto bg-[#1c1c1c]  outline outline-[1px] outline-[#2e2e2e] transition-all ${showLoginPopup ? "pointer-events-auto  z-[110] opacity-[1]" : "pointer-events-none z-0 opacity-[0]"}`}
+          className={` m-auto mt-auto h-auto max-h-[100%] w-[450px] flex-col items-start justify-center  overflow-auto bg-[#1c1c1c]  outline outline-[1px] outline-[#2e2e2e] transition-all ${authState.showLoginPopup ? "pointer-events-auto  z-[110] opacity-[1]" : "pointer-events-none z-0 opacity-[0]"}`}
         >
           {popupState === "signin" ? (
             <div className="relative flex w-full flex-col gap-5 overflow-auto pb-10 pl-20 pr-20 pt-10">
@@ -91,7 +95,9 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
                 <span
                   className="material-symbols-outlined transition-all group-hover:rotate-90"
                   onClick={() => {
-                    setShowLoginPopup(false);
+                    dispatch({
+                      type: "CLOSE_LOGIN_MODAL",
+                    });
                   }}
                 >
                   close
@@ -202,7 +208,11 @@ export default function LogInPopUp({ showLoginPopup, setShowLoginPopup }) {
                 {" "}
                 <span
                   className="material-symbols-outlined transition-all group-hover:rotate-90"
-                  onClick={() => setShowLoginPopup(false)}
+                  onClick={() => {
+                    dispatch({
+                      type: "CLOSE_LOGIN_MODAL",
+                    });
+                  }}
                 >
                   close
                 </span>
