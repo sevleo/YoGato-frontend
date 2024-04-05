@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Dispatch, SetStateAction } from "react";
 
 // Components
-import Header from "../sections/Header";
 import Preview from "../sections/Preview";
 import Setup from "../sections/Setup";
 
@@ -14,19 +13,7 @@ import { FlowType } from "../sections/Flow";
 // Other
 import categories from "../../db/categories.json";
 
-interface BuilderProps {
-  isHamburgerMenu: boolean;
-  setIsHamburgerMenu: Dispatch<SetStateAction<boolean>>;
-  location: string;
-  setLocation: Dispatch<SetStateAction<string>>;
-}
-
-function Builder({
-  isHamburgerMenu,
-  setIsHamburgerMenu,
-  location,
-  setLocation,
-}: BuilderProps) {
+function Builder() {
   const aspectGroups: AspectGroupType[] = categories;
 
   const defaultFlow: FlowType = {
@@ -54,19 +41,12 @@ function Builder({
 
   return (
     <>
-      <Header
-        isHamburgerMenu={isHamburgerMenu}
-        setIsHamburgerMenu={setIsHamburgerMenu}
-        location={location}
-        setLocation={setLocation}
-      />
       {flowState === "setup" && (
         <Setup
           flow={flow}
           setFlow={setFlow}
           setFlowState={setFlowState}
           aspectGroups={aspectGroups}
-          setLocation={setLocation}
           enablePreview={flow.units.length > 0 ? true : false}
           enableClear={flow.units.length > 0 ? true : false}
         ></Setup>

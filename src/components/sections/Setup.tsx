@@ -10,7 +10,6 @@ interface SetupProps {
   setFlow: Dispatch<SetStateAction<FlowType>>;
   aspectGroups: AspectGroupType[];
   setFlowState: Dispatch<SetStateAction<string>> | undefined;
-  setLocation: Dispatch<SetStateAction<string>>;
   enablePreview: boolean;
   enableClear: boolean;
 }
@@ -22,7 +21,6 @@ function Setup({
   setFlow,
   aspectGroups,
   setFlowState,
-  setLocation,
   enablePreview,
   enableClear,
 }: SetupProps) {
@@ -48,8 +46,6 @@ function Setup({
   const handlePreviewButtonClick: ClickHandler = () => {
     if (setFlowState) {
       setFlowState("preview");
-      setLocation("preview");
-      // console.log(location);
     }
   };
 

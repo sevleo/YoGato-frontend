@@ -1,32 +1,12 @@
-import Header from "../sections/Header";
-import { Dispatch, SetStateAction } from "react";
 import CatLogo from "../../assets/cat_logo.jpeg";
 import { useUser } from "../utilities/UserContext";
 
-interface HomeProps {
-  isHamburgerMenu: boolean;
-  setIsHamburgerMenu: Dispatch<SetStateAction<boolean>>;
-  location: string;
-  setLocation: Dispatch<SetStateAction<string>>;
-}
-
-function Home({
-  isHamburgerMenu,
-  setIsHamburgerMenu,
-  location,
-  setLocation,
-}: HomeProps) {
+function Home() {
   // const user = useUser();
   const { authState, dispatch } = useUser();
 
   return (
     <>
-      <Header
-        isHamburgerMenu={isHamburgerMenu}
-        setIsHamburgerMenu={setIsHamburgerMenu}
-        location={location}
-        setLocation={setLocation}
-      />
       {authState.dataLoading ? (
         <div></div>
       ) : (

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import LogInPopUp from "./components/sections/LoginPopUp";
 import MyFlows from "./components/pages/MyFlows";
 import { useUser } from "../src/components/utilities/UserContext";
+import Header from "./components/sections/Header";
 
 function App() {
   const { authState, dispatch } = useUser();
@@ -27,39 +28,47 @@ function App() {
 
   document.addEventListener("keydown", handleKeyPress);
 
+  const header = (
+    <Header
+      isHamburgerMenu={false}
+      setIsHamburgerMenu={setIsHamburgerMenu}
+      location={location}
+      setLocation={setLocation}
+    />
+  );
+
   const router = createBrowserRouter([
     {
       path: "/",
       element: (
-        <Home
-          isHamburgerMenu={true}
-          setIsHamburgerMenu={setIsHamburgerMenu}
-          location={location === "" ? "Home" : location}
-          setLocation={setLocation}
-        ></Home>
+        <>
+          {header}
+          <Home></Home>
+        </>
       ),
-      errorElement: <ErrorPage></ErrorPage>,
+      errorElement: (
+        <>
+          {header}
+          <ErrorPage></ErrorPage>
+        </>
+      ),
     },
     {
       path: "/builder",
       element: (
-        <Builder
-          isHamburgerMenu={false}
-          setIsHamburgerMenu={setIsHamburgerMenu}
-          location={location === "" ? "flow-builder" : location}
-          setLocation={setLocation}
-        ></Builder>
+        <>
+          {header}
+          <Builder></Builder>
+        </>
       ),
     },
     {
       path: "/my-flows",
       element: (
-        <MyFlows
-          isHamburgerMenu={false}
-          setIsHamburgerMenu={setIsHamburgerMenu}
-          location={location === "" ? "flow-builder" : location}
-          setLocation={setLocation}
-        ></MyFlows>
+        <>
+          {header}
+          <MyFlows></MyFlows>
+        </>
       ),
     },
   ]);
