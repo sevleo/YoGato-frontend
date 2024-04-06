@@ -5,6 +5,7 @@ import axios from "axios";
 const initialAuthState = {
   isLoggedIn: false,
   user: "",
+  userId: "",
   dataLoading: true,
   showLoginPopup: false,
 };
@@ -38,12 +39,14 @@ export const UserDataProvider = ({ children }) => {
         return {
           ...state,
           user: payload.action.data.user.username,
+          userId: payload.action.data.user.id,
           isLoggedIn: true,
         };
       case CHECK_LOGIN_FAILURE:
         return {
           ...state,
           user: "",
+          userId: "",
           isLoggedIn: false,
         };
       case CHECK_LOGIN_FINISHED:
@@ -55,18 +58,21 @@ export const UserDataProvider = ({ children }) => {
         return {
           ...state,
           user: payload.action.data.user.username,
+          userId: payload.action.data.user.id,
           isLoggedIn: true,
         };
       case LOGIN_FAILURE:
         return {
           ...state,
           user: "",
+          userId: "",
           isLoggedIn: false,
         };
       case LOGOUT:
         return {
           ...state,
           user: "",
+          userId: "",
           isLoggedIn: false,
         };
       default:

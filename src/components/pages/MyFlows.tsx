@@ -1,13 +1,26 @@
 import axios from "axios";
+import { useState } from "react";
+import { useUser } from "../utilities/UserContext";
 
 function MyFlows() {
+  const { authState, dispatch } = useUser();
+
   async function handleNewFlowClick(event) {
+    event.preventDefault();
+    console.log(authState);
     try {
-      const response = await axios.post("http://localhost:3001/new-flow");
+      const response = await axios.post("http://localhost:3001/new-flow", {
+        userId: authState.userId,
+        flowName: flowName,
+        flowDifficulty: flowDifficulty,
+      });
     } catch (error) {
       console.error("Error adding flow:", error);
     }
   }
+
+  const [flowName, setFlowName] = useState("");
+  const [flowDifficulty, setFlowDifficulty] = useState("");
 
   return (
     <>
@@ -17,21 +30,43 @@ function MyFlows() {
             <form method="POST" onSubmit={handleNewFlowClick}>
               <div className="flex w-full flex-col items-start justify-center gap-2">
                 <label
-                  htmlFor="username-login"
+                  htmlFor="flowName"
                   className="text-sm font-medium text-[#A0A0A0]"
                 >
-                  Username
+                  Flow Name
                 </label>
                 <input
-                  id="username-login"
-                  name="username-login"
-                  placeholder="GracefulCat"
+                  id="flowName"
+                  name="flowName"
+                  placeholder="Whatever you like..."
                   type="text"
-                  // value={usernameLogin}
-                  // onChange={(e) => setUsernameLogin(e.target.value)}
+                  value={flowName}
+                  onChange={(e) => setFlowName(e.target.value)}
                   className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
                   required
                 />
+              </div>
+              <div className="flex w-full flex-col items-start justify-center gap-2">
+                <label
+                  htmlFor="flowDifficulty"
+                  className="text-sm font-medium text-[#A0A0A0]"
+                >
+                  Difficulty
+                </label>
+                <select
+                  id="flowDifficulty"
+                  name="flowDifficulty"
+                  value={flowDifficulty}
+                  onChange={(e) => setFlowDifficulty(e.target.value)}
+                  className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+                  required
+                >
+                  {" "}
+                  <option value="">Select difficulty</option>
+                  <option value="easy">Easy</option>
+                  <option value="medium">Medium</option>
+                  <option value="hard">Hard</option>
+                </select>
               </div>
               <button type="submit">Create</button>
             </form>
