@@ -1,6 +1,9 @@
 import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
+import FlowTable from "../buildingBlocks/FlowTable";
+import Flow from "../sections/Flow";
+import FlowTableCustom from "../buildingBlocks/FlowTableCustom";
 
 function MyFlows() {
   const { authState, dispatch } = useUser();
@@ -47,7 +50,7 @@ function MyFlows() {
     <>
       <div className="my-flows ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ">
         <div className="w-3/4">
-          <div className=" ml-auto mr-auto h-[500px] w-full items-start justify-center bg-[#ffffff18] text-white transition-colors hover:bg-[#ffffff38]">
+          <div className=" ml-auto mr-auto h-fit w-full items-start justify-center bg-[#ffffff18] text-white transition-colors hover:bg-[#ffffff38]">
             <form method="POST" onSubmit={handleNewFlowClick}>
               <div className="flex w-full flex-col items-start justify-center gap-2">
                 <label
@@ -91,16 +94,19 @@ function MyFlows() {
               </div>
               <button type="submit">Create</button>
             </form>
-            <div>
-              {flows && authState.isLoggedIn && !authState.dataLoading
-                ? flows.map((flow, index) => (
-                    <div key={index} className="flow">
-                      <p>{flow.flowName}</p>
-                      <p>{flow.difficulty}</p>
-                    </div>
-                  ))
-                : null}
+            <div className=" flex flex-col">
+              {flows && authState.isLoggedIn && !authState.dataLoading ? (
+                <FlowTableCustom
+                  flows={flows}
+                  showAllFlows={showAllFlows}
+                ></FlowTableCustom>
+              ) : null}
             </div>
+            {/* <div className="flex w-full items-center justify-center">
+              <div className="w-3/4">
+                <FlowTable flows={flows}></FlowTable>
+              </div>
+            </div> */}
           </div>
         </div>
       </div>
