@@ -58,7 +58,7 @@ export const UserDataProvider = ({ children }) => {
         return {
           ...state,
           user: payload.action.data.user.username,
-          userId: payload.action.data.user.id,
+          userId: payload.action.data.user._id,
           isLoggedIn: true,
         };
       case LOGIN_FAILURE:
@@ -110,6 +110,10 @@ export const UserDataProvider = ({ children }) => {
     }
     checkLoggedIn();
   }, [dispatch]);
+
+  useEffect(() => {
+    console.log(authState);
+  }, [authState]);
 
   return (
     <UserContext.Provider value={{ authState, dispatch }}>

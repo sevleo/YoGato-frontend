@@ -1,42 +1,40 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
 
 function MyFlows() {
   const { authState, dispatch } = useUser();
   const [flows, setFlows] = useState([]);
 
-  useEffect(() => {
-    async function showAllFlows() {
-      try {
-        const response = await axios.get("http://localhost:3001/flows", {
-          params: {
-            userId: authState.userId,
-            test: "test",
-          },
-        });
-        console.log(response.data.message);
-        console.log(authState);
-        setFlows(response.data.message);
-      } catch (error) {
-        console.error("Error adding flow:", error);
-      }
-    }
-
-    if (!authState.dataLoading && authState.isLoggedIn) {
-      showAllFlows();
+  const showAllFlows = useCallback(async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/flows", {
+        params: {
+          userId: authState.userId,
+          test: "test",
+        },
+      });
+      setFlows(response.data.message);
+    } catch (error) {
+      console.error("Error adding flow:", error);
     }
   }, [authState]);
 
+  useEffect(() => {
+    if (!authState.dataLoading && authState.isLoggedIn) {
+      showAllFlows();
+    }
+  }, [authState.dataLoading, authState.isLoggedIn, showAllFlows]);
+
   async function handleNewFlowClick(event) {
     event.preventDefault();
-    console.log(authState);
     try {
       const response = await axios.post("http://localhost:3001/new-flow", {
         userId: authState.userId,
         flowName: flowName,
         flowDifficulty: flowDifficulty,
       });
+      showAllFlows();
     } catch (error) {
       console.error("Error adding flow:", error);
     }
@@ -94,8 +92,13 @@ function MyFlows() {
               <button type="submit">Create</button>
             </form>
             <div>
-              {flows
-                ? flows.map((flow, index) => <p key={index}>{flow.flowName}</p>)
+              {flows && authState.isLoggedIn && !authState.dataLoading
+                ? flows.map((flow, index) => (
+                    <div key={index} className="flow">
+                      <p>{flow.flowName}</p>
+                      <p>{flow.difficulty}</p>
+                    </div>
+                  ))
                 : null}
             </div>
           </div>
