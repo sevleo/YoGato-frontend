@@ -1,9 +1,32 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
 
 function MyFlows() {
   const { authState, dispatch } = useUser();
+  const [flows, setFlows] = useState([]);
+
+  useEffect(() => {
+    async function showAllFlows() {
+      try {
+        const response = await axios.get("http://localhost:3001/flows", {
+          params: {
+            userId: authState.userId,
+            test: "test",
+          },
+        });
+        console.log(response.data.message);
+        console.log(authState);
+        setFlows(response.data.message);
+      } catch (error) {
+        console.error("Error adding flow:", error);
+      }
+    }
+
+    if (!authState.dataLoading && authState.isLoggedIn) {
+      showAllFlows();
+    }
+  }, [authState]);
 
   async function handleNewFlowClick(event) {
     event.preventDefault();
@@ -70,6 +93,11 @@ function MyFlows() {
               </div>
               <button type="submit">Create</button>
             </form>
+            <div>
+              {flows
+                ? flows.map((flow, index) => <p key={index}>{flow.flowName}</p>)
+                : null}
+            </div>
           </div>
         </div>
       </div>
