@@ -12,6 +12,7 @@ import Input from "./Input";
 import { FlowType } from "../sections/Flow";
 
 import { AspectGroupType } from "./AspectGroup";
+import { useFlow } from "../utilities/FlowContext";
 
 export interface UnitType {
   id: string;
@@ -34,8 +35,6 @@ interface UnitProps {
   index?: number;
   image: string | undefined;
   aspectId: number;
-  setFlow: Dispatch<SetStateAction<FlowType>>;
-
   dragAllowed: boolean;
   setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
   aspectGroups: AspectGroupType[];
@@ -49,11 +48,11 @@ function Unit({
   // announcement,
   index,
   image,
-  setFlow,
   dragAllowed,
   setDragAllowed,
   aspectGroups,
 }: UnitProps) {
+  const { setFlow } = useFlow();
   // On delete button on unit
   function onUnitCloseClick() {
     setFlow((prevFlow) => {

@@ -4,14 +4,12 @@ import AspectController from "./Aspect/AspectController";
 // Types & Interfaces
 import { AspectType } from "./Aspect/AspectController";
 
-import { Dispatch, SetStateAction } from "react";
-
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { FlowType } from "../sections/Flow";
+import { useFlow } from "../utilities/FlowContext";
 
 export interface AspectGroupType {
   category_name: string;
@@ -25,8 +23,6 @@ interface AspectGroupProps {
     id: number;
     count: number;
   }[];
-  setFlow: Dispatch<SetStateAction<FlowType>>;
-
   aspectGroupCount: number | undefined;
   aspectGroups: AspectGroupType[];
 }
@@ -35,10 +31,11 @@ function AspectGroup({
   category_name,
   poses,
   uniqueAspects,
-  setFlow,
   aspectGroupCount,
   aspectGroups,
 }: AspectGroupProps) {
+  const { setFlow } = useFlow();
+
   return (
     <>
       <Accordion
@@ -90,7 +87,6 @@ function AspectGroup({
                     key={pose.english_name + pose.category_name}
                     aspect={pose}
                     count={count}
-                    setFlow={setFlow}
                     aspectGroups={aspectGroups}
                   ></AspectController>
                 );

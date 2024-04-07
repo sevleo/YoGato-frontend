@@ -22,7 +22,6 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
           <tr>
             <th className=" text-start">Flow Name</th>
             <th className=" text-start">Difficulty</th>
-            <th></th>
             <th className=" text-start">Length</th>
             <th className=" text-start">Poses</th>
 
@@ -94,6 +93,10 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows }) {
       <TableData>{flow.difficulty}</TableData>
       <TableData>length</TableData>
       <TableData>poses</TableData>
+      <TableData>
+        {" "}
+        <button>edit</button>
+      </TableData>
       <TableData>
         {" "}
         <button>preview</button>

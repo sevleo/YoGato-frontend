@@ -1,30 +1,22 @@
 import Flow, { FlowType } from "./Flow";
 import AspectCollection from "./AspectCollection";
-import { Dispatch, SetStateAction } from "react";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { MouseEventHandler } from "react";
 import { useUser } from "../utilities/UserContext";
+import axios from "axios";
+import { useFlow } from "../utilities/FlowContext";
 
 interface SetupProps {
-  flow: FlowType;
-  setFlow: Dispatch<SetStateAction<FlowType>>;
   aspectGroups: AspectGroupType[];
-  setFlowState: Dispatch<SetStateAction<string>> | undefined;
   enablePreview: boolean;
   enableClear: boolean;
 }
 
 type ClickHandler = MouseEventHandler<HTMLButtonElement>;
 
-function Setup({
-  flow,
-  setFlow,
-  aspectGroups,
-  setFlowState,
-  enablePreview,
-  enableClear,
-}: SetupProps) {
+function Setup({ aspectGroups, enablePreview, enableClear }: SetupProps) {
   const { authState } = useUser();
+  const { flow, setFlow, setFlowState } = useFlow();
 
   const duration = flow.duration;
   const hours = Math.floor(duration / 3600);
@@ -48,6 +40,20 @@ function Setup({
       setFlowState("preview");
     }
   };
+
+  async function handleSave(event) {
+    event.preventDefault();
+    try {
+      const response = await axios.post("http://localhost:3001/new-flow", {
+        userId: authState.userId,
+        flowName: "flow from builder",
+        flowDifficulty: "hard",
+        flowData: flow,
+      });
+    } catch (error) {
+      console.error("Error adding flow:", error);
+    }
+  }
 
   return (
     <div
@@ -76,6 +82,7 @@ function Setup({
             </div>
           </div>
           <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
+            <button onClick={handleSave}>Save</button>
             <button
               className={`h-full w-[100px] rounded-none border-[1px] ${enablePreview ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
               onClick={enablePreview ? handlePreviewButtonClick : undefined}
@@ -91,16 +98,8 @@ function Setup({
           </div>
         </div>
         <div className="flex gap-2 pt-2">
-          <Flow
-            flow={flow}
-            setFlow={setFlow}
-            aspectGroups={aspectGroups}
-          ></Flow>
-          <AspectCollection
-            aspectGroups={aspectGroups}
-            flow={flow}
-            setFlow={setFlow}
-          ></AspectCollection>
+          <Flow aspectGroups={aspectGroups}></Flow>
+          <AspectCollection aspectGroups={aspectGroups}></AspectCollection>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { SetStateAction } from "react";
 import { Dispatch } from "react";
 import { useState } from "react";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
+import { useFlow } from "../utilities/FlowContext";
 
 // DndKit
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
@@ -45,12 +46,11 @@ export interface UniqueAspectGroup {
 }
 
 export interface FlowProps {
-  flow: FlowType;
-  setFlow: Dispatch<SetStateAction<FlowType>>;
   aspectGroups: AspectGroupType[];
 }
 
-function Flow({ flow, setFlow, aspectGroups }: FlowProps) {
+function Flow({ aspectGroups }: FlowProps) {
+  const { flow, setFlow } = useFlow();
   const [dragAllowed, setDragAllowed]: [
     boolean,
     Dispatch<React.SetStateAction<boolean>>,
@@ -113,7 +113,6 @@ function Flow({ flow, setFlow, aspectGroups }: FlowProps) {
                         key={unit.id}
                         {...unit}
                         index={index}
-                        setFlow={setFlow}
                         dragAllowed={dragAllowed}
                         setDragAllowed={setDragAllowed}
                         aspectGroups={aspectGroups}

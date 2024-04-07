@@ -1,6 +1,5 @@
 // React
-import { useEffect, useState } from "react";
-import { Dispatch, SetStateAction } from "react";
+import { useEffect } from "react";
 
 // Components
 import Preview from "../sections/Preview";
@@ -8,24 +7,15 @@ import Setup from "../sections/Setup";
 
 // Types & interfaces
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
-import { FlowType } from "../sections/Flow";
 
 // Other
 import categories from "../../db/categories.json";
+import { useFlow } from "../utilities/FlowContext";
 
 function Builder() {
   const aspectGroups: AspectGroupType[] = categories;
 
-  const defaultFlow: FlowType = {
-    flowName: "my fancy flow",
-    units: [],
-    duration: 0,
-    uniqueAspects: [],
-    uniqueAspectGroups: [],
-  };
-
-  const [flowState, setFlowState] = useState<string>("setup");
-  const [flow, setFlow] = useState<FlowType>(defaultFlow);
+  const { flow, flowState } = useFlow();
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -43,18 +33,13 @@ function Builder() {
     <>
       {flowState === "setup" && (
         <Setup
-          flow={flow}
-          setFlow={setFlow}
-          setFlowState={setFlowState}
           aspectGroups={aspectGroups}
           enablePreview={flow.units.length > 0 ? true : false}
           enableClear={flow.units.length > 0 ? true : false}
         ></Setup>
       )}
 
-      {flowState === "preview" && (
-        <Preview flow={flow} setFlowState={setFlowState}></Preview>
-      )}
+      {flowState === "preview" && <Preview></Preview>}
 
       {flowState === "going" && null}
     </>

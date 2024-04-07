@@ -1,7 +1,6 @@
-import { Dispatch, SetStateAction, useReducer } from "react";
+import { useReducer } from "react";
 import { useState, useEffect, useRef, useCallback } from "react";
 import mp3Provider from "../../assets/mp3Provider";
-import { FlowType } from "./Flow";
 import "./Preview.css";
 import CircularProgressBar from "../buildingBlocks/CircularProgressBar/CircularProgressBar";
 import "slick-carousel/slick/slick.css";
@@ -16,13 +15,10 @@ import { Slider as VolumeSlider } from "@mui/material";
 import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
 import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 import { useUser } from "../utilities/UserContext";
+import { useFlow } from "../utilities/FlowContext";
 
-interface PreviewProps {
-  flow: FlowType;
-  setFlowState: Dispatch<SetStateAction<string>>;
-}
-
-function Preview({ flow, setFlowState }: PreviewProps) {
+function Preview() {
+  const { flow, setFlowState } = useFlow();
   const { authState } = useUser();
 
   // Theme for linear progress bar

@@ -1,19 +1,16 @@
 import AspectGroup from "../buildingBlocks/AspectGroup";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
-import { FlowType } from "./Flow";
-import { Dispatch, SetStateAction } from "react";
+import { useFlow } from "../utilities/FlowContext";
 
 interface AspectCollectionProps {
   aspectGroups: AspectGroupType[];
-  flow: FlowType;
-  setFlow: Dispatch<SetStateAction<FlowType>>;
 }
 
 export default function AspectCollection({
   aspectGroups,
-  flow,
-  setFlow,
 }: AspectCollectionProps) {
+  const { flow } = useFlow();
+
   return (
     <div className="flex w-1/3 flex-col justify-start">
       <div className="h-fit min-h-full w-full gap-5">
@@ -32,7 +29,6 @@ export default function AspectCollection({
                 category_name={aspectGroup.category_name}
                 poses={aspectGroup.poses}
                 uniqueAspects={flow.uniqueAspects}
-                setFlow={setFlow}
                 aspectGroupCount={aspectGroupCount}
                 aspectGroups={aspectGroups}
               ></AspectGroup>
