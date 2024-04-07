@@ -1,14 +1,7 @@
-// React
 import { useEffect } from "react";
-
-// Components
 import Preview from "../sections/Preview";
 import Setup from "../sections/Setup";
-
-// Types & interfaces
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
-
-// Other
 import categories from "../../db/categories.json";
 import { useFlow } from "../utilities/FlowContext";
 

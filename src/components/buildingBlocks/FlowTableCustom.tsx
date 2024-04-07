@@ -1,7 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useFlow } from "../utilities/FlowContext";
 
 export default function FlowTableCustom({ flows, showAllFlows }) {
+  const navigate = useNavigate();
+  const { setFlow } = useFlow();
+
   async function handleDeleteFlow(flowId) {
     try {
       const response = await axios.get("http://localhost:3001/delete-flow", {
@@ -36,6 +42,8 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
               flow={flow}
               handleDeleteFlow={handleDeleteFlow}
               showAllFlows={showAllFlows}
+              navigate={navigate}
+              setFlow={setFlow}
             ></TableRow>
           ))}
         </tbody>
@@ -44,7 +52,7 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
   );
 }
 
-function TableRow({ flow, handleDeleteFlow, showAllFlows }) {
+function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
   const [editable, setEditable] = useState(false);
   const [editedFlowName, setEditedFlowName] = useState(flow.flowName);
 
@@ -55,6 +63,12 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows }) {
   function handleBlur() {
     setEditable(false);
     saveFlowNameUpdate();
+  }
+
+  function handleBuilderClick() {
+    console.log(flow);
+    navigate("/builder");
+    setFlow(flow.flowData);
   }
 
   async function saveFlowNameUpdate() {
@@ -99,7 +113,10 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows }) {
       </TableData>
       <TableData>
         {" "}
-        <button>preview</button>
+        <button onClick={handleBuilderClick}>Builder</button>
+        {/* <Link to="/builder" onClick={handleBuilderClick}>
+          Builder
+        </Link> */}
       </TableData>
 
       <TableData>
