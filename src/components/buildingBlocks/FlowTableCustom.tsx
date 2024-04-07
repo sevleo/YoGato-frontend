@@ -5,7 +5,7 @@ import { useFlow } from "../utilities/FlowContext";
 
 export default function FlowTableCustom({ flows, showAllFlows }) {
   const navigate = useNavigate();
-  const { setFlow, setFlowState } = useFlow();
+  const { setFlow } = useFlow();
 
   async function handleDeleteFlow(flowId) {
     try {
@@ -43,7 +43,6 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
               showAllFlows={showAllFlows}
               navigate={navigate}
               setFlow={setFlow}
-              setFlowState={setFlowState}
             ></TableRow>
           ))}
         </tbody>
@@ -52,14 +51,7 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
   );
 }
 
-function TableRow({
-  flow,
-  handleDeleteFlow,
-  showAllFlows,
-  navigate,
-  setFlow,
-  setFlowState,
-}) {
+function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
   const [editable, setEditable] = useState(false);
   const [editedFlowName, setEditedFlowName] = useState(flow.flowName);
 
@@ -74,14 +66,12 @@ function TableRow({
 
   function handleBuilderClick(flowId) {
     navigate("/builder");
-    setFlowState("setup");
     setFlow({ ...flow.flowData, flowId: flowId });
   }
 
   function handlePreviewClick(flowId) {
-    navigate("/builder");
+    navigate("/preview");
     setFlow({ ...flow.flowData, flowId: flowId });
-    setFlowState("preview");
   }
 
   async function saveFlowNameUpdate() {

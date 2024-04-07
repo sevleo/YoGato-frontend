@@ -16,9 +16,12 @@ import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
 import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 import { useUser } from "../utilities/UserContext";
 import { useFlow } from "../utilities/FlowContext";
+import { useNavigate } from "react-router-dom";
 
 function Preview() {
-  const { flow, setFlowState } = useFlow();
+  const navigate = useNavigate();
+
+  const { flow } = useFlow();
   const { authState } = useUser();
 
   // Theme for linear progress bar
@@ -251,7 +254,7 @@ function Preview() {
   }
 
   function handleCancelButtonClick() {
-    setFlowState("setup");
+    navigate("/builder");
   }
 
   function handlePauseButtonClick() {

@@ -15,20 +15,17 @@ interface FlowContextType {
   flow: FlowType;
   setFlow: React.Dispatch<React.SetStateAction<FlowType>>;
   flowState: string;
-  setFlowState: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const defaultFlowContext: FlowContextType = {
   flow: defaultFlow,
   setFlow: () => {},
   flowState: "setup",
-  setFlowState: () => {},
 };
 
 const FlowContext = React.createContext(defaultFlowContext);
 
 export const FlowDataProvider = ({ children }) => {
-  const [flowState, setFlowState] = useState<string>("setup");
   const [flow, setFlow] = useState<FlowType>(defaultFlow);
 
   useEffect(() => {
@@ -44,7 +41,7 @@ export const FlowDataProvider = ({ children }) => {
   }, [flow]);
 
   return (
-    <FlowContext.Provider value={{ flow, setFlow, flowState, setFlowState }}>
+    <FlowContext.Provider value={{ flow, setFlow }}>
       {children}
     </FlowContext.Provider>
   );

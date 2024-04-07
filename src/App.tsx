@@ -8,6 +8,7 @@ import LogInPopUp from "./components/sections/LoginPopUp";
 import MyFlows from "./components/pages/MyFlows";
 import { useUser } from "../src/components/utilities/UserContext";
 import Header from "./components/sections/Header";
+import Preview from "./components/sections/Preview";
 
 function App() {
   const { authState, dispatch } = useUser();
@@ -59,6 +60,15 @@ function App() {
         <>
           {header}
           <Builder></Builder>
+        </>
+      ),
+    },
+    {
+      path: "/preview",
+      element: (
+        <>
+          {header}
+          <Preview></Preview>
         </>
       ),
     },
