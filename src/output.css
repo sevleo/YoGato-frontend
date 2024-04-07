@@ -1408,6 +1408,10 @@ video {
   outline-color: transparent;
 }
 
+.outline-black {
+  outline-color: #000;
+}
+
 .blur-sm {
   --tw-blur: blur(4px);
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
@@ -1703,6 +1707,10 @@ button:focus-visible {
   cursor: pointer;
 }
 
+.hover\:cursor-text:hover {
+  cursor: text;
+}
+
 .hover\:border-\[\#505050\]:hover {
   --tw-border-opacity: 1;
   border-color: rgb(80 80 80 / var(--tw-border-opacity));
@@ -1771,6 +1779,14 @@ button:focus-visible {
 .hover\:outline-none:hover {
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.hover\:outline-1:hover {
+  outline-width: 1px;
+}
+
+.hover\:outline-\[black\]:hover {
+  outline-color: black;
 }
 
 .focus\:z-20:focus {

@@ -83,7 +83,6 @@ function MyFlows() {
                   value={flowDifficulty}
                   onChange={(e) => setFlowDifficulty(e.target.value)}
                   className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
-                  required
                 >
                   {" "}
                   <option value="">Select difficulty</option>
