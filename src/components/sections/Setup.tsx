@@ -44,7 +44,6 @@ function Setup({ aspectGroups, enablePreview, enableClear }: SetupProps) {
 
   async function handleSave(event) {
     event.preventDefault();
-    console.log(flow.flowId);
     // Create new one
     if (!flow.flowId) {
       try {

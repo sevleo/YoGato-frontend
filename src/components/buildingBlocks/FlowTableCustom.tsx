@@ -5,7 +5,7 @@ import { useFlow } from "../utilities/FlowContext";
 
 export default function FlowTableCustom({ flows, showAllFlows }) {
   const navigate = useNavigate();
-  const { setFlow } = useFlow();
+  const { setFlow, setFlowState } = useFlow();
 
   async function handleDeleteFlow(flowId) {
     try {
@@ -43,6 +43,7 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
               showAllFlows={showAllFlows}
               navigate={navigate}
               setFlow={setFlow}
+              setFlowState={setFlowState}
             ></TableRow>
           ))}
         </tbody>
@@ -51,7 +52,14 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
   );
 }
 
-function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
+function TableRow({
+  flow,
+  handleDeleteFlow,
+  showAllFlows,
+  navigate,
+  setFlow,
+  setFlowState,
+}) {
   const [editable, setEditable] = useState(false);
   const [editedFlowName, setEditedFlowName] = useState(flow.flowName);
 
@@ -66,7 +74,14 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
 
   function handleBuilderClick(flowId) {
     navigate("/builder");
+    setFlowState("setup");
     setFlow({ ...flow.flowData, flowId: flowId });
+  }
+
+  function handlePreviewClick(flowId) {
+    navigate("/builder");
+    setFlow({ ...flow.flowData, flowId: flowId });
+    setFlowState("preview");
   }
 
   async function saveFlowNameUpdate() {
@@ -107,11 +122,11 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
       <TableData>poses</TableData>
       <TableData>
         {" "}
-        <button>edit</button>
+        <button onClick={() => handlePreviewClick(flow._id)}>Preview</button>
       </TableData>
       <TableData>
         {" "}
-        <button onClick={() => handleBuilderClick(flow._id)}>Builder</button>
+        <button onClick={() => handleBuilderClick(flow._id)}>Edit</button>
         {/* <Link to="/builder" onClick={handleBuilderClick}>
           Builder
         </Link> */}
