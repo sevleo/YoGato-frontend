@@ -4,17 +4,18 @@ import { useUser } from "../utilities/UserContext";
 import FlowTable from "../buildingBlocks/FlowTable";
 import Flow from "../sections/Flow";
 import FlowTableCustom from "../buildingBlocks/FlowTableCustom";
+import { useFlow } from "../utilities/FlowContext";
 
 function MyFlows() {
   const { authState, dispatch } = useUser();
   const [flows, setFlows] = useState([]);
+  const { flow } = useFlow();
 
   const showAllFlows = useCallback(async () => {
     try {
       const response = await axios.get("http://localhost:3001/flows", {
         params: {
           userId: authState.userId,
-          test: "test",
         },
       });
       setFlows(response.data.message);
@@ -36,6 +37,7 @@ function MyFlows() {
         userId: authState.userId,
         flowName: flowName,
         flowDifficulty: flowDifficulty,
+        flowData: flow,
       });
       showAllFlows();
     } catch (error) {

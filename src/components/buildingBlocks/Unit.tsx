@@ -82,7 +82,6 @@ function Unit({
         aspectGroups.forEach((group) => {
           group.poses.forEach((pose) => {
             if (pose.english_name === unit.name) {
-              console.log(pose.category_name);
               const matchingAspectGroupIndex = uniqueAspectGroups.findIndex(
                 (aspectGroup) => aspectGroup.groupName === pose.category_name
               );

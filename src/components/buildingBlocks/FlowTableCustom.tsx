@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useFlow } from "../utilities/FlowContext";
 
@@ -65,10 +64,9 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
     saveFlowNameUpdate();
   }
 
-  function handleBuilderClick() {
-    console.log(flow);
+  function handleBuilderClick(flowId) {
     navigate("/builder");
-    setFlow(flow.flowData);
+    setFlow({ ...flow.flowData, flowId: flowId });
   }
 
   async function saveFlowNameUpdate() {
@@ -113,7 +111,7 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
       </TableData>
       <TableData>
         {" "}
-        <button onClick={handleBuilderClick}>Builder</button>
+        <button onClick={() => handleBuilderClick(flow._id)}>Builder</button>
         {/* <Link to="/builder" onClick={handleBuilderClick}>
           Builder
         </Link> */}

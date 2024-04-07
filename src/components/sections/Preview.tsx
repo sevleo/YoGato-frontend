@@ -215,7 +215,6 @@ function Preview() {
       !timerState.pauseFlow &&
       !timerState.resumeFlow
     ) {
-      console.log("start");
       timer.start();
     }
     if (
@@ -223,7 +222,6 @@ function Preview() {
       timerState.pauseFlow &&
       !timerState.resumeFlow
     ) {
-      console.log("pause");
       timer.pause();
     }
 
@@ -232,7 +230,6 @@ function Preview() {
       !timerState.pauseFlow &&
       timerState.resumeFlow
     ) {
-      console.log("resume");
       timer.resume();
     }
 
@@ -241,7 +238,6 @@ function Preview() {
       !timerState.pauseFlow &&
       !timerState.resumeFlow
     ) {
-      console.log("stop");
       timer.resume();
     }
   }, [timer, timerState]);

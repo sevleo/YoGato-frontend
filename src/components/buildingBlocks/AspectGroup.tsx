@@ -9,7 +9,6 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useFlow } from "../utilities/FlowContext";
 
 export interface AspectGroupType {
   category_name: string;
@@ -34,8 +33,6 @@ function AspectGroup({
   aspectGroupCount,
   aspectGroups,
 }: AspectGroupProps) {
-  const { setFlow } = useFlow();
-
   return (
     <>
       <Accordion

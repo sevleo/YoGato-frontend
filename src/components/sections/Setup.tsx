@@ -18,7 +18,7 @@ function Setup({ aspectGroups, enablePreview, enableClear }: SetupProps) {
   const { authState } = useUser();
   const { flow, setFlow, setFlowState } = useFlow();
 
-  const duration = flow.duration;
+  const duration = flow ? flow.duration : 0;
   const hours = Math.floor(duration / 3600);
   const minutes = Math.floor((duration % 3600) / 60);
   const seconds = duration % 60;
@@ -30,6 +30,7 @@ function Setup({ aspectGroups, enablePreview, enableClear }: SetupProps) {
       duration: 0,
       uniqueAspects: [],
       uniqueAspectGroups: [],
+      flowId: "",
     };
 
     setFlow(defaultFlow);
@@ -43,15 +44,30 @@ function Setup({ aspectGroups, enablePreview, enableClear }: SetupProps) {
 
   async function handleSave(event) {
     event.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3001/new-flow", {
-        userId: authState.userId,
-        flowName: "flow from builder",
-        flowDifficulty: "hard",
-        flowData: flow,
-      });
-    } catch (error) {
-      console.error("Error adding flow:", error);
+    console.log(flow.flowId);
+    // Create new one
+    if (!flow.flowId) {
+      try {
+        const response = await axios.post("http://localhost:3001/new-flow", {
+          userId: authState.userId,
+          flowName: "flow from builder",
+          flowDifficulty: "hard",
+          flowData: flow,
+        });
+        setFlow({ ...flow, flowId: response.data.message._id });
+      } catch (error) {
+        console.error("Error adding flow:", error);
+      }
+    } else {
+      // Update existing one
+      try {
+        const response = await axios.put("http://localhost:3001/update-flow", {
+          flowId: flow.flowId,
+          flowData: flow,
+        });
+      } catch (error) {
+        console.error("Error updating flow:", error);
+      }
     }
   }
 
@@ -72,12 +88,14 @@ function Setup({ aspectGroups, enablePreview, enableClear }: SetupProps) {
             </div>
             <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
               <p className="  text-start text-white">Poses</p>
-              <p className="text-start text-white">{flow.units.length}</p>
+              <p className="text-start text-white">
+                {flow ? flow.units.length : 0}
+              </p>
             </div>
             <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
               <p className="text-start text-white">Unique poses</p>
               <p className="text-start text-white">
-                {flow.uniqueAspects.length}
+                {flow ? flow.uniqueAspects.length : 0}
               </p>
             </div>
           </div>

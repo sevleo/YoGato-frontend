@@ -27,8 +27,8 @@ function Builder() {
       {flowState === "setup" && (
         <Setup
           aspectGroups={aspectGroups}
-          enablePreview={flow.units.length > 0 ? true : false}
-          enableClear={flow.units.length > 0 ? true : false}
+          enablePreview={flow && flow.units.length > 0 ? true : false}
+          enableClear={flow && flow.units.length > 0 ? true : false}
         ></Setup>
       )}
 

@@ -38,6 +38,7 @@ export interface FlowType {
     count: number;
   }[];
   uniqueAspectGroups: UniqueAspectGroup[];
+  flowId: string;
 }
 
 export interface UniqueAspectGroup {
@@ -101,7 +102,7 @@ function Flow({ aspectGroups }: FlowProps) {
       >
         <div className="ltr grid h-fit min-h-[300px] bg-[#ffffff18] pb-[40px] pl-[40px] pr-[40px] pt-[40px] transition-colors hover:bg-[#ffffff38]">
           <div className="droppable-area h-full min-h-full">
-            {flow.units.length > 0 ? (
+            {flow && flow.units.length > 0 ? (
               <div className=" grid auto-rows-fr grid-cols-canvas gap-10">
                 <SortableContext
                   items={flow.units}

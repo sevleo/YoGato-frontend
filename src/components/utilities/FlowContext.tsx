@@ -8,6 +8,7 @@ const defaultFlow: FlowType = {
   duration: 0,
   uniqueAspects: [],
   uniqueAspectGroups: [],
+  flowId: "",
 };
 
 interface FlowContextType {
