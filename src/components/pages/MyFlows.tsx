@@ -10,7 +10,9 @@ function MyFlows() {
   const [flows, setFlows] = useState([]);
   const { flow } = useFlow();
 
+  // Display all flows
   const showAllFlows = useCallback(() => {
+    // API call to fetch flows
     showAllFlowsAPI(authState, setFlows);
   }, [authState]);
 
@@ -20,6 +22,7 @@ function MyFlows() {
     }
   }, [authState.dataLoading, authState.isLoggedIn, showAllFlows]);
 
+  // Save flow to DB
   function handleNewFlowClick(event) {
     createFlow(event, authState, flowName, flowDifficulty, flow, showAllFlows);
   }

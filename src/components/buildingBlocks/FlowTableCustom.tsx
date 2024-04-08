@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFlow } from "../utilities/FlowContext";
-import { handleDeleteFlow } from "../utilities/api";
-import { saveFlowNameUpdate } from "../utilities/api";
+import { deleteFlow } from "../utilities/api";
+import { updateFlowName } from "../utilities/api";
 
 export default function FlowTableCustom({ flows, showAllFlows }) {
   const navigate = useNavigate();
   const { setFlow } = useFlow();
 
+  // Delete flow from DB
   function handleDelete(flowId) {
-    handleDeleteFlow(flowId, showAllFlows);
+    deleteFlow(flowId, showAllFlows);
   }
 
   return (
@@ -53,7 +54,9 @@ function TableRow({ flow, handleDelete, showAllFlows, navigate, setFlow }) {
 
   function handleBlur() {
     setEditable(false);
-    saveFlowNameUpdate(flow, editedFlowName, setEditable, showAllFlows);
+
+    // Update flow name in DB
+    updateFlowName(flow, editedFlowName, setEditable, showAllFlows);
   }
 
   function handleBuilderClick(flowId) {

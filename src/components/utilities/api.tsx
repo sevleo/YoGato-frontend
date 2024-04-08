@@ -1,5 +1,6 @@
 import axios from "axios";
 
+// Check if user is logged in
 export async function checkLoggedIn(dispatch) {
   try {
     const response = await axios.get("http://localhost:3001/check-login", {
@@ -25,101 +26,7 @@ export async function checkLoggedIn(dispatch) {
   }
 }
 
-// Save flow to DB
-export async function saveFlow(event, flow, setFlow, authState) {
-  event.preventDefault();
-  // Create new one
-  if (!flow.flowId) {
-    try {
-      const response = await axios.post("http://localhost:3001/new-flow", {
-        userId: authState.userId,
-        flowName: "flow from builder",
-        flowDifficulty: "hard",
-        flowData: flow,
-      });
-      setFlow({ ...flow, flowId: response.data.message._id });
-    } catch (error) {
-      console.error("Error adding flow:", error);
-    }
-  } else {
-    // Update existing one
-    try {
-      const response = await axios.put("http://localhost:3001/update-flow", {
-        flowId: flow.flowId,
-        flowData: flow,
-      });
-    } catch (error) {
-      console.error("Error updating flow:", error);
-    }
-  }
-}
-
-export async function showAllFlowsAPI(authState, setFlows) {
-  try {
-    const response = await axios.get("http://localhost:3001/flows", {
-      params: {
-        userId: authState.userId,
-      },
-    });
-    setFlows(response.data.message);
-  } catch (error) {
-    console.error("Error adding flow:", error);
-  }
-}
-
-export async function createFlow(
-  event,
-  authState,
-  flowName,
-  flowDifficulty,
-  flow,
-  showAllFlows
-) {
-  event.preventDefault();
-  try {
-    const response = await axios.post("http://localhost:3001/new-flow", {
-      userId: authState.userId,
-      flowName: flowName,
-      flowDifficulty: flowDifficulty,
-      flowData: flow,
-    });
-    showAllFlows();
-  } catch (error) {
-    console.error("Error adding flow:", error);
-  }
-}
-
-export async function handleDeleteFlow(flowId, showAllFlows) {
-  try {
-    const response = await axios.get("http://localhost:3001/delete-flow", {
-      params: {
-        flowId: flowId,
-      },
-    });
-    showAllFlows();
-  } catch (error) {
-    console.log("Error deleting flow:", error);
-  }
-}
-
-export async function saveFlowNameUpdate(
-  flow,
-  editedFlowName,
-  setEditable,
-  showAllFlows
-) {
-  try {
-    const response = await axios.put(`http://localhost:3001/update-flow`, {
-      flowId: flow._id,
-      flowName: editedFlowName,
-    });
-    setEditable(false);
-    showAllFlows();
-  } catch (error) {
-    console.log("Error updating flow:", error);
-  }
-}
-
+// Handle user logout event
 export async function logout(dispatch, setAnchorEl) {
   try {
     const response = await axios.get("http://localhost:3001/log-out", {
@@ -135,6 +42,7 @@ export async function logout(dispatch, setAnchorEl) {
   }
 }
 
+// Handle user signup event
 export async function signup(
   event,
   usernameSignup,
@@ -160,6 +68,7 @@ export async function signup(
   }
 }
 
+// Handle user login event
 export async function login(
   event,
   usernameLogin,
@@ -195,5 +104,104 @@ export async function login(
     dispatch({
       type: "LOGIN_FAILURE",
     });
+  }
+}
+
+// Save flow to DB or update flow
+export async function createOrUpdateFlow(event, flow, setFlow, authState) {
+  event.preventDefault();
+  // Create new one
+  if (!flow.flowId) {
+    try {
+      const response = await axios.post("http://localhost:3001/new-flow", {
+        userId: authState.userId,
+        flowName: "flow from builder",
+        flowDifficulty: "hard",
+        flowData: flow,
+      });
+      setFlow({ ...flow, flowId: response.data.message._id });
+    } catch (error) {
+      console.error("Error adding flow:", error);
+    }
+  } else {
+    // Update existing one
+    try {
+      const response = await axios.put("http://localhost:3001/update-flow", {
+        flowId: flow.flowId,
+        flowData: flow,
+      });
+    } catch (error) {
+      console.error("Error updating flow:", error);
+    }
+  }
+}
+
+// Fetch flows
+export async function showAllFlowsAPI(authState, setFlows) {
+  try {
+    const response = await axios.get("http://localhost:3001/flows", {
+      params: {
+        userId: authState.userId,
+      },
+    });
+    setFlows(response.data.message);
+  } catch (error) {
+    console.error("Error adding flow:", error);
+  }
+}
+
+// Save flow to DB
+export async function createFlow(
+  event,
+  authState,
+  flowName,
+  flowDifficulty,
+  flow,
+  showAllFlows
+) {
+  event.preventDefault();
+  try {
+    const response = await axios.post("http://localhost:3001/new-flow", {
+      userId: authState.userId,
+      flowName: flowName,
+      flowDifficulty: flowDifficulty,
+      flowData: flow,
+    });
+    showAllFlows();
+  } catch (error) {
+    console.error("Error adding flow:", error);
+  }
+}
+
+// Delete flow from DB
+export async function deleteFlow(flowId, showAllFlows) {
+  try {
+    const response = await axios.get("http://localhost:3001/delete-flow", {
+      params: {
+        flowId: flowId,
+      },
+    });
+    showAllFlows();
+  } catch (error) {
+    console.log("Error deleting flow:", error);
+  }
+}
+
+// Update flow name in DB
+export async function updateFlowName(
+  flow,
+  editedFlowName,
+  setEditable,
+  showAllFlows
+) {
+  try {
+    const response = await axios.put(`http://localhost:3001/update-flow`, {
+      flowId: flow._id,
+      flowName: editedFlowName,
+    });
+    setEditable(false);
+    showAllFlows();
+  } catch (error) {
+    console.log("Error updating flow:", error);
   }
 }

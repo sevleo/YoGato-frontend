@@ -6,7 +6,7 @@ import { MouseEventHandler } from "react";
 import { useUser } from "../utilities/UserContext";
 import { useFlow } from "../utilities/FlowContext";
 import { useNavigate } from "react-router-dom";
-import { saveFlow } from "../utilities/api";
+import { createOrUpdateFlow } from "../utilities/api";
 
 function Builder() {
   const navigate = useNavigate();
@@ -43,9 +43,9 @@ function Builder() {
     navigate("/preview");
   };
 
-  // API call to save flow
+  // Create or update flow in DB
   function handleSave(event) {
-    saveFlow(event, flow, setFlow, authState);
+    createOrUpdateFlow(event, flow, setFlow, authState);
   }
 
   return (

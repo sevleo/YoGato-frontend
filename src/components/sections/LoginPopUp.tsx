@@ -19,6 +19,7 @@ export default function LogInPopUp() {
     }
   }, [authState.showLoginPopup]);
 
+  // Handle user signup event
   function handleSignup(event) {
     signup(
       event,
@@ -29,6 +30,7 @@ export default function LogInPopUp() {
     );
   }
 
+  // Handle user login event
   function handleLogin(event) {
     login(event, usernameLogin, passwordLogin, dispatch, setErrorMessage);
   }

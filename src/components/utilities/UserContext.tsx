@@ -82,7 +82,7 @@ export const UserDataProvider = ({ children }) => {
 
   const [authState, dispatch] = useReducer(authStateReducer, initialAuthState);
 
-  // Check if the user is logged in at the page mount and then set the user
+  // API call to check if the user is logged in
   useEffect(() => {
     checkLoggedIn(dispatch);
   }, [dispatch]);

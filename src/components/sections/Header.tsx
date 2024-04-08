@@ -238,6 +238,7 @@ function HeaderDetails({
     });
   }
 
+  // Handle user logout event
   function handleLogout(event) {
     logout(dispatch, setAnchorEl);
   }
