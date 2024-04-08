@@ -1,27 +1,17 @@
-import axios from "axios";
 import { useCallback, useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
-import FlowTable from "../buildingBlocks/FlowTable";
-import Flow from "../sections/Flow";
 import FlowTableCustom from "../buildingBlocks/FlowTableCustom";
 import { useFlow } from "../utilities/FlowContext";
+import { showAllFlowsAPI } from "../utilities/api";
+import { createFlow } from "../utilities/api";
 
 function MyFlows() {
   const { authState, dispatch } = useUser();
   const [flows, setFlows] = useState([]);
   const { flow } = useFlow();
 
-  const showAllFlows = useCallback(async () => {
-    try {
-      const response = await axios.get("http://localhost:3001/flows", {
-        params: {
-          userId: authState.userId,
-        },
-      });
-      setFlows(response.data.message);
-    } catch (error) {
-      console.error("Error adding flow:", error);
-    }
+  const showAllFlows = useCallback(() => {
+    showAllFlowsAPI(authState, setFlows);
   }, [authState]);
 
   useEffect(() => {
@@ -30,19 +20,8 @@ function MyFlows() {
     }
   }, [authState.dataLoading, authState.isLoggedIn, showAllFlows]);
 
-  async function handleNewFlowClick(event) {
-    event.preventDefault();
-    try {
-      const response = await axios.post("http://localhost:3001/new-flow", {
-        userId: authState.userId,
-        flowName: flowName,
-        flowDifficulty: flowDifficulty,
-        flowData: flow,
-      });
-      showAllFlows();
-    } catch (error) {
-      console.error("Error adding flow:", error);
-    }
+  function handleNewFlowClick(event) {
+    createFlow(event, authState, flowName, flowDifficulty, flow, showAllFlows);
   }
 
   const [flowName, setFlowName] = useState("");

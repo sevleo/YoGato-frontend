@@ -4,11 +4,11 @@ import { Divide as Hamburger } from "hamburger-react";
 import "./Header.css";
 import { Dispatch, SetStateAction } from "react";
 import { useUser } from "../utilities/UserContext";
-import axios from "axios";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
+import { logout } from "../utilities/api";
 
 interface HeaderProps {
   isHamburgerMenu: boolean;
@@ -238,19 +238,8 @@ function HeaderDetails({
     });
   }
 
-  async function handleLogout(event) {
-    try {
-      const response = await axios.get("http://localhost:3001/log-out", {
-        withCredentials: true,
-      });
-      console.log(response);
-      dispatch({
-        type: "LOGOUT",
-      });
-      setAnchorEl(null);
-    } catch (error) {
-      console.error("Error logging out:", error);
-    }
+  function handleLogout(event) {
+    logout(dispatch, setAnchorEl);
   }
 
   return (

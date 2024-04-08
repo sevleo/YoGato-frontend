@@ -1,23 +1,15 @@
-import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFlow } from "../utilities/FlowContext";
+import { handleDeleteFlow } from "../utilities/api";
+import { saveFlowNameUpdate } from "../utilities/api";
 
 export default function FlowTableCustom({ flows, showAllFlows }) {
   const navigate = useNavigate();
   const { setFlow } = useFlow();
 
-  async function handleDeleteFlow(flowId) {
-    try {
-      const response = await axios.get("http://localhost:3001/delete-flow", {
-        params: {
-          flowId: flowId,
-        },
-      });
-      showAllFlows();
-    } catch (error) {
-      console.log("Error deleting flow:", error);
-    }
+  function handleDelete(flowId) {
+    handleDeleteFlow(flowId, showAllFlows);
   }
 
   return (
@@ -39,7 +31,7 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
             <TableRow
               key={flow._id}
               flow={flow}
-              handleDeleteFlow={handleDeleteFlow}
+              handleDelete={handleDelete}
               showAllFlows={showAllFlows}
               navigate={navigate}
               setFlow={setFlow}
@@ -51,7 +43,7 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
   );
 }
 
-function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
+function TableRow({ flow, handleDelete, showAllFlows, navigate, setFlow }) {
   const [editable, setEditable] = useState(false);
   const [editedFlowName, setEditedFlowName] = useState(flow.flowName);
 
@@ -61,7 +53,7 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
 
   function handleBlur() {
     setEditable(false);
-    saveFlowNameUpdate();
+    saveFlowNameUpdate(flow, editedFlowName, setEditable, showAllFlows);
   }
 
   function handleBuilderClick(flowId) {
@@ -72,19 +64,6 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
   function handlePreviewClick(flowId) {
     navigate("/preview");
     setFlow({ ...flow.flowData, flowId: flowId });
-  }
-
-  async function saveFlowNameUpdate() {
-    try {
-      const response = await axios.put(`http://localhost:3001/update-flow`, {
-        flowId: flow._id,
-        flowName: editedFlowName,
-      });
-      setEditable(false);
-      showAllFlows();
-    } catch (error) {
-      console.log("Error updating flow:", error);
-    }
   }
 
   return (
@@ -129,7 +108,7 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
 
       <TableData>
         {" "}
-        <button onClick={() => handleDeleteFlow(flow._id)}>delete</button>
+        <button onClick={() => handleDelete(flow._id)}>delete</button>
       </TableData>
     </tr>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useContext, useReducer } from "react";
-import axios from "axios";
+import { checkLoggedIn } from "./api";
 
 const initialAuthState = {
   isLoggedIn: false,
@@ -84,31 +84,7 @@ export const UserDataProvider = ({ children }) => {
 
   // Check if the user is logged in at the page mount and then set the user
   useEffect(() => {
-    async function checkLoggedIn() {
-      try {
-        const response = await axios.get("http://localhost:3001/check-login", {
-          withCredentials: true,
-        });
-        if (response.data.isLoggedIn) {
-          console.log(response.data);
-          dispatch({
-            type: "CHECK_LOGIN_SUCCESS",
-            action: response,
-          });
-        } else {
-          console.log(response.data);
-        }
-      } catch (error) {
-        dispatch({
-          type: "CHECK_LOGIN_FAILURE",
-        });
-      } finally {
-        dispatch({
-          type: "CHECK_LOGIN_FINISHED",
-        });
-      }
-    }
-    checkLoggedIn();
+    checkLoggedIn(dispatch);
   }, [dispatch]);
 
   useEffect(() => {

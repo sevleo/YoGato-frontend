@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
-import axios from "axios";
+import { signup, login } from "../utilities/api";
 
 export default function LogInPopUp() {
   const { authState, dispatch } = useUser();
@@ -19,55 +19,18 @@ export default function LogInPopUp() {
     }
   }, [authState.showLoginPopup]);
 
-  async function handleSignup(event) {
-    event.preventDefault();
-    console.log(event);
-    try {
-      const response = await axios.post("http://localhost:3001/sign-up", {
-        username: usernameSignup,
-        password: passwordSignup,
-      });
-      setPopupState("signin");
-    } catch (error) {
-      console.error("Error signing up:", error);
-      if (error.response) {
-        setErrorMessage(error.response.data.message);
-      } else {
-        setErrorMessage(error.message);
-      }
-    }
+  function handleSignup(event) {
+    signup(
+      event,
+      usernameSignup,
+      passwordSignup,
+      setPopupState,
+      setErrorMessage
+    );
   }
 
-  async function handleLogin(event) {
-    event.preventDefault();
-    console.log(event);
-    try {
-      const response = await axios.post(
-        "http://localhost:3001/login/password",
-        { username: usernameLogin, password: passwordLogin },
-        {
-          withCredentials: true,
-        }
-      );
-      dispatch({
-        type: "LOGIN_SUCCESS",
-        action: response,
-      });
-      dispatch({
-        type: "CLOSE_LOGIN_MODAL",
-      });
-    } catch (error) {
-      console.error("Error logging in:", error);
-      if (error.response) {
-        setErrorMessage(error.response.data.message);
-      } else {
-        setErrorMessage(error.message);
-      }
-
-      dispatch({
-        type: "LOGIN_FAILURE",
-      });
-    }
+  function handleLogin(event) {
+    login(event, usernameLogin, passwordLogin, dispatch, setErrorMessage);
   }
 
   function handleBackgroundClick() {

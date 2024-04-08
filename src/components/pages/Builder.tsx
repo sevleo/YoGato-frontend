@@ -4,9 +4,9 @@ import AspectCollection from "../sections/AspectCollection";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { MouseEventHandler } from "react";
 import { useUser } from "../utilities/UserContext";
-import axios from "axios";
 import { useFlow } from "../utilities/FlowContext";
 import { useNavigate } from "react-router-dom";
+import { saveFlow } from "../utilities/api";
 
 function Builder() {
   const navigate = useNavigate();
@@ -43,32 +43,9 @@ function Builder() {
     navigate("/preview");
   };
 
-  async function handleSave(event) {
-    event.preventDefault();
-    // Create new one
-    if (!flow.flowId) {
-      try {
-        const response = await axios.post("http://localhost:3001/new-flow", {
-          userId: authState.userId,
-          flowName: "flow from builder",
-          flowDifficulty: "hard",
-          flowData: flow,
-        });
-        setFlow({ ...flow, flowId: response.data.message._id });
-      } catch (error) {
-        console.error("Error adding flow:", error);
-      }
-    } else {
-      // Update existing one
-      try {
-        const response = await axios.put("http://localhost:3001/update-flow", {
-          flowId: flow.flowId,
-          flowData: flow,
-        });
-      } catch (error) {
-        console.error("Error updating flow:", error);
-      }
-    }
+  // API call to save flow
+  function handleSave(event) {
+    saveFlow(event, flow, setFlow, authState);
   }
 
   return (
