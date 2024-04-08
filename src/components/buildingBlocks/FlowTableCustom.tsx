@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useFlow } from "../utilities/FlowContext";
 import { deleteFlow } from "../utilities/api";
 import { updateFlowName } from "../utilities/api";
+import { parseISO, format } from "date-fns";
 
 export default function FlowTableCustom({ flows, showAllFlows }) {
   const navigate = useNavigate();
@@ -22,9 +23,10 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
             <th className=" text-start">Difficulty</th>
             <th className=" text-start">Length</th>
             <th className=" text-start">Poses</th>
-
             <th></th>
             <th></th>
+            <th></th>
+            <th className=" text-start">Created</th>
           </tr>
         </thead>
         <tbody>
@@ -92,6 +94,7 @@ function TableRow({ flow, handleDelete, showAllFlows, navigate, setFlow }) {
       <TableData>{flow.difficulty}</TableData>
       <TableData>{flow.flowData.duration}</TableData>
       <TableData>{flow.flowData.units.length}</TableData>
+
       <TableData>
         {" "}
         <button
@@ -112,6 +115,9 @@ function TableRow({ flow, handleDelete, showAllFlows, navigate, setFlow }) {
       <TableData>
         {" "}
         <button onClick={() => handleDelete(flow._id)}>delete</button>
+      </TableData>
+      <TableData>
+        {format(parseISO(flow.creationDate).toString(), "d LLL yyyy")}
       </TableData>
     </tr>
   );

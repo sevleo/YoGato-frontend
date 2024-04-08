@@ -85,11 +85,6 @@ function MyFlows() {
                 ></FlowTableCustom>
               ) : null}
             </div>
-            {/* <div className="flex w-full items-center justify-center">
-              <div className="w-3/4">
-                <FlowTable flows={flows}></FlowTable>
-              </div>
-            </div> */}
           </div>
         </div>
       </div>
