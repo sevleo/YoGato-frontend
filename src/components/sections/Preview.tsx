@@ -24,6 +24,7 @@ function Preview() {
   const { flow } = useFlow();
   const { authState } = useUser();
 
+  // Redirect from preview to builder when flow has no units
   useEffect(() => {
     if (flow.units.length === 0) {
       navigate("/builder");
