@@ -108,11 +108,16 @@ function TableRow({ flow, handleDeleteFlow, showAllFlows, navigate, setFlow }) {
         )}
       </TableData>
       <TableData>{flow.difficulty}</TableData>
-      <TableData>length</TableData>
-      <TableData>poses</TableData>
+      <TableData>{flow.flowData.duration}</TableData>
+      <TableData>{flow.flowData.units.length}</TableData>
       <TableData>
         {" "}
-        <button onClick={() => handlePreviewClick(flow._id)}>Preview</button>
+        <button
+          onClick={() => handlePreviewClick(flow._id)}
+          className={`${flow.flowData.units.length > 0 ? "pointer-events-auto" : "pointer-events-none bg-[#8080806b] text-[gray]"}`}
+        >
+          Preview
+        </button>
       </TableData>
       <TableData>
         {" "}
