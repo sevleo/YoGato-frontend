@@ -24,6 +24,12 @@ function Preview() {
   const { flow } = useFlow();
   const { authState } = useUser();
 
+  useEffect(() => {
+    if (flow.units.length === 0) {
+      navigate("/builder");
+    }
+  }, [navigate, flow]);
+
   // Theme for linear progress bar
   const linearProgressBarTheme = createTheme({
     components: {
@@ -289,176 +295,184 @@ function Preview() {
     timer.stop();
   }
 
-  return (
-    <div
-      className={`preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
-    >
-      <div className="w-3/4">
-        <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
-          <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
-            <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
-              <p className=" text-start text-white">Duration</p>
-              <p className="text-start text-white">
-                {hours > 0 ? <span>{hours} hours, </span> : null}
-                {minutes > 0 ? <span>{minutes} minutes, </span> : null}
-                {seconds > 0 ? <span>{seconds} seconds.</span> : null}
-              </p>
+  return flow.units.length > 0 ? (
+    <>
+      <div
+        className={`preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
+      >
+        <div className="w-3/4">
+          <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
+            <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
+              <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
+                <p className=" text-start text-white">Duration</p>
+                <p className="text-start text-white">
+                  {hours > 0 ? <span>{hours} hours, </span> : null}
+                  {minutes > 0 ? <span>{minutes} minutes, </span> : null}
+                  {seconds > 0 ? <span>{seconds} seconds.</span> : null}
+                </p>
+              </div>
+              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                <p className="  text-start text-white">Poses</p>
+                <p className="text-start text-white">{flow.units.length}</p>
+              </div>
+              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                <p className="text-start text-white">Unique poses</p>
+                <p className="text-start text-white">
+                  {flow.uniqueAspects.length}
+                </p>
+              </div>
             </div>
-            <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-              <p className="  text-start text-white">Poses</p>
-              <p className="text-start text-white">{flow.units.length}</p>
-            </div>
-            <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-              <p className="text-start text-white">Unique poses</p>
-              <p className="text-start text-white">
-                {flow.uniqueAspects.length}
-              </p>
-            </div>
-          </div>
 
-          <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
-            <button
-              className={` h-full w-[100px] ${!timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
-              onClick={
-                !timerState.startFlow ? handleStartButtonClick : undefined
-              }
-            >
-              Start
-            </button>
-            <button
-              className={` h-full w-[100px] ${timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
-              onClick={
-                timerState.startFlow ? handlePauseButtonClick : undefined
-              }
-            >
-              {timerState.pauseFlow ? "Resume" : "Pause"}
-            </button>
-            <button
-              className={` h-full w-[100px] ${timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
-              onClick={timerState.startFlow ? handleStopButtonClick : undefined}
-            >
-              {"Stop"}
-            </button>
-            <button
-              className={` h-full w-[100px] ${!timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
-              onClick={
-                !timerState.startFlow ? handleCancelButtonClick : undefined
-              }
-            >
-              Cancel
-            </button>
+            <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
+              <button
+                className={` h-full w-[100px] ${!timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+                onClick={
+                  !timerState.startFlow ? handleStartButtonClick : undefined
+                }
+              >
+                Start
+              </button>
+              <button
+                className={` h-full w-[100px] ${timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+                onClick={
+                  timerState.startFlow ? handlePauseButtonClick : undefined
+                }
+              >
+                {timerState.pauseFlow ? "Resume" : "Pause"}
+              </button>
+              <button
+                className={` h-full w-[100px] ${timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+                onClick={
+                  timerState.startFlow ? handleStopButtonClick : undefined
+                }
+              >
+                {"Stop"}
+              </button>
+              <button
+                className={` h-full w-[100px] ${!timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+                onClick={
+                  !timerState.startFlow ? handleCancelButtonClick : undefined
+                }
+              >
+                Cancel
+              </button>
+            </div>
           </div>
-        </div>
-        <div className="canvas flex h-full w-full flex-col items-center justify-center pt-2">
-          <div className="flex h-full w-full flex-row items-center justify-center">
-            <div className="image-track m-auto mr-[4px] h-full w-1/2 bg-[#ffffff18] p-5 transition-colors hover:bg-[#ffffff38]">
-              <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
-                <Slider {...settings} ref={sliderRef}>
-                  {flow.units.map((unit) => {
-                    return (
-                      <div
-                        key={unit.id}
-                        className=" image h-full w-[200px] bg-[transparent] text-black"
-                      >
-                        <div className="flex flex-col items-center justify-center">
-                          <CircularProgressBar
-                            percentValue={unitPercent}
-                            value={
-                              <img className="w-2/3" src={unit.image} alt="" />
-                            }
-                          ></CircularProgressBar>
+          <div className="canvas flex h-full w-full flex-col items-center justify-center pt-2">
+            <div className="flex h-full w-full flex-row items-center justify-center">
+              <div className="image-track m-auto mr-[4px] h-full w-1/2 bg-[#ffffff18] p-5 transition-colors hover:bg-[#ffffff38]">
+                <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
+                  <Slider {...settings} ref={sliderRef}>
+                    {flow.units.map((unit) => {
+                      return (
+                        <div
+                          key={unit.id}
+                          className=" image h-full w-[200px] bg-[transparent] text-black"
+                        >
+                          <div className="flex flex-col items-center justify-center">
+                            <CircularProgressBar
+                              percentValue={unitPercent}
+                              value={
+                                <img
+                                  className="w-2/3"
+                                  src={unit.image}
+                                  alt=""
+                                />
+                              }
+                            ></CircularProgressBar>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
-                </Slider>
-                <div className="flex flex-col items-center justify-center  gap-1 p-1">
-                  {" "}
-                  <Box sx={{ width: 300 }}>
-                    <Stack
-                      spacing={2}
-                      direction="row"
-                      sx={{ mb: 1 }}
-                      alignItems="center"
-                    >
-                      <VolumeDownRounded sx={{ color: "white" }} />
-                      <VolumeSlider
-                        aria-label="Volume"
-                        value={volumeValue}
-                        onChange={handleVolumeChange}
-                        // marks={true}
-                        // step={5}
-                        valueLabelDisplay="auto"
-                        sx={{
-                          // backgroundColor: "red",
-                          color: "white",
-                        }}
-                      />
-                      <VolumeUpRounded sx={{ color: "white" }} />
-                    </Stack>
-                  </Box>
+                      );
+                    })}
+                  </Slider>
+                  <div className="flex flex-col items-center justify-center  gap-1 p-1">
+                    {" "}
+                    <Box sx={{ width: 300 }}>
+                      <Stack
+                        spacing={2}
+                        direction="row"
+                        sx={{ mb: 1 }}
+                        alignItems="center"
+                      >
+                        <VolumeDownRounded sx={{ color: "white" }} />
+                        <VolumeSlider
+                          aria-label="Volume"
+                          value={volumeValue}
+                          onChange={handleVolumeChange}
+                          // marks={true}
+                          // step={5}
+                          valueLabelDisplay="auto"
+                          sx={{
+                            // backgroundColor: "red",
+                            color: "white",
+                          }}
+                        />
+                        <VolumeUpRounded sx={{ color: "white" }} />
+                      </Stack>
+                    </Box>
+                  </div>
+                </div>
+              </div>
+              <div className=" ml-[4px] flex h-full w-1/2 flex-col bg-[#ffffff18] p-2 transition-colors hover:bg-[#ffffff38]">
+                <div className="mt-2 flex flex-col items-start justify-center">
+                  <div className="flex w-full items-start justify-start">
+                    {!timerState.startFlow ? (
+                      <p className="text-start text-[20px]">
+                        1 / {flow.units.length}
+                      </p>
+                    ) : (
+                      <p className="text-start text-[20px]">
+                        {currentUnitIndex + 1} / {flow.units.length}
+                      </p>
+                    )}
+                  </div>
+                  <div>
+                    <p className="text-start text-[20px]">
+                      {timerState.startFlow
+                        ? flow.units[currentUnitIndex].name
+                        : flow.units[0].name}
+                    </p>
+                  </div>
+                  <div className="grid w-full grid-cols-[1fr_1fr]">
+                    <p className="ltr text-start text-[20px] ">Duration:</p>
+                    <p className="text-start text-[20px]">
+                      {unitCount.toFixed(1)} /{" "}
+                      {flow.units[currentUnitIndex]
+                        ? flow.units[currentUnitIndex].duration
+                        : flow.units[0].duration}{" "}
+                      seconds
+                    </p>
+                  </div>
+                  <div className="grid w-full grid-cols-[1fr_1fr]">
+                    <p className="text-start text-[20px]">Percent: </p>
+                    <p className="text-start text-[20px]">
+                      {unitPercent.toFixed(0)}%
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className=" ml-[4px] flex h-full w-1/2 flex-col bg-[#ffffff18] p-2 transition-colors hover:bg-[#ffffff38]">
-              <div className="mt-2 flex flex-col items-start justify-center">
-                <div className="flex w-full items-start justify-start">
-                  {!timerState.startFlow ? (
-                    <p className="text-start text-[20px]">
-                      1 / {flow.units.length}
-                    </p>
-                  ) : (
-                    <p className="text-start text-[20px]">
-                      {currentUnitIndex + 1} / {flow.units.length}
-                    </p>
-                  )}
-                </div>
-                <div>
-                  <p className="text-start text-[20px]">
-                    {timerState.startFlow
-                      ? flow.units[currentUnitIndex].name
-                      : flow.units[0].name}
-                  </p>
-                </div>
-                <div className="grid w-full grid-cols-[1fr_1fr]">
-                  <p className="ltr text-start text-[20px] ">Duration:</p>
-                  <p className="text-start text-[20px]">
-                    {unitCount.toFixed(1)} /{" "}
-                    {flow.units[currentUnitIndex]
-                      ? flow.units[currentUnitIndex].duration
-                      : flow.units[0].duration}{" "}
-                    seconds
-                  </p>
-                </div>
-                <div className="grid w-full grid-cols-[1fr_1fr]">
-                  <p className="text-start text-[20px]">Percent: </p>
-                  <p className="text-start text-[20px]">
-                    {unitPercent.toFixed(0)}%
-                  </p>
-                </div>
+            <div className="mt-[8px] flex h-full w-full items-center justify-center bg-[#ffffff18] transition-colors hover:bg-[#ffffff38]">
+              <div className="w-1/2">
+                <ThemeProvider theme={linearProgressBarTheme}>
+                  <LinearProgress
+                    key={flowPercent}
+                    color="inherit"
+                    variant="determinate"
+                    value={flowPercent}
+                  />
+                </ThemeProvider>
+                <p>{flowPercent.toFixed(0)}%</p>
+                <p className="ltr flex h-full items-center justify-center p-2">
+                  Total flow: {flowCount.toFixed(1)} / {flow.duration} seconds
+                </p>
               </div>
-            </div>
-          </div>
-          <div className="mt-[8px] flex h-full w-full items-center justify-center bg-[#ffffff18] transition-colors hover:bg-[#ffffff38]">
-            <div className="w-1/2">
-              <ThemeProvider theme={linearProgressBarTheme}>
-                <LinearProgress
-                  key={flowPercent}
-                  color="inherit"
-                  variant="determinate"
-                  value={flowPercent}
-                />
-              </ThemeProvider>
-              <p>{flowPercent.toFixed(0)}%</p>
-              <p className="ltr flex h-full items-center justify-center p-2">
-                Total flow: {flowCount.toFixed(1)} / {flow.duration} seconds
-              </p>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  );
+    </>
+  ) : null;
 }
 
 export default Preview;
