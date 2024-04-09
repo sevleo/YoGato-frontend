@@ -41,7 +41,6 @@ function Builder() {
     } else if (!flow.flowId) {
       setPageLoaded(true);
     }
-    // setPageLoaded(true);
   }, [authState, fetchFlowData, flow]);
 
   const duration = flow ? flow.duration : 0;
@@ -80,102 +79,170 @@ function Builder() {
     );
   }
 
-  return pageLoaded ? (
+  return pageLoaded && !authState.dataLoading ? (
     <>
-      <div
-        className={`setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
-      >
-        <div className="w-3/4">
-          <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
-            <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
-              <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
-                <div className="flex w-full flex-col items-start justify-center gap-2">
-                  <label
-                    htmlFor="flowName"
-                    className="text-sm font-medium text-[#A0A0A0]"
+      {authState.isLoggedIn ? (
+        <>
+          {" "}
+          <div
+            className={`setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
+          >
+            <div className="w-3/4">
+              <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
+                <>
+                  <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
+                    <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
+                      <div className="flex w-full flex-col items-start justify-center gap-2">
+                        <label
+                          htmlFor="flowName"
+                          className="text-sm font-medium text-[#A0A0A0]"
+                        >
+                          Flow Name
+                        </label>
+                        <input
+                          id="flowName"
+                          name="flowName"
+                          placeholder="Whatever you like..."
+                          type="text"
+                          value={flowName}
+                          onChange={(e) => setFlowName(e.target.value)}
+                          className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                      <div className="flex w-full flex-col items-start justify-center gap-2">
+                        <label
+                          htmlFor="flowDifficulty"
+                          className="text-sm font-medium text-[#A0A0A0]"
+                        >
+                          Difficulty
+                        </label>
+                        <select
+                          id="flowDifficulty"
+                          name="flowDifficulty"
+                          value={flowDifficulty}
+                          onChange={(e) => setFlowDifficulty(e.target.value)}
+                          className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+                        >
+                          {" "}
+                          <option value="">Select difficulty</option>
+                          <option value="easy">Easy</option>
+                          <option value="medium">Medium</option>
+                          <option value="hard">Hard</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </>
+
+                <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
+                  <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
+                    <p className=" text-start text-white">Duration</p>
+                    <p className="text-start text-white">
+                      {hours > 0 ? <span>{hours} hours, </span> : null}
+                      {minutes > 0 ? <span>{minutes} minutes, </span> : null}
+                      {seconds > 0 ? <span>{seconds} seconds.</span> : null}
+                    </p>
+                  </div>
+                  <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                    <p className="  text-start text-white">Poses</p>
+                    <p className="text-start text-white">
+                      {flow ? flow.units.length : 0}
+                    </p>
+                  </div>
+                  <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                    <p className="text-start text-white">Unique poses</p>
+                    <p className="text-start text-white">
+                      {flow ? flow.uniqueAspects.length : 0}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
+                  {" "}
+                  <button onClick={handleSave}>Save</button>
+                  <button
+                    className={`h-full w-[100px] rounded-none border-[1px] ${enablePreview ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
+                    onClick={
+                      enablePreview ? handlePreviewButtonClick : undefined
+                    }
                   >
-                    Flow Name
-                  </label>
-                  <input
-                    id="flowName"
-                    name="flowName"
-                    placeholder="Whatever you like..."
-                    type="text"
-                    value={flowName}
-                    onChange={(e) => setFlowName(e.target.value)}
-                    className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
-                    required
-                  />
+                    Preview
+                  </button>
+                  <button
+                    className={`h-full w-[100px] rounded-none border-[1px] ${enableClear ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
+                    onClick={enableClear ? handleClearButton : undefined}
+                  >
+                    Clear
+                  </button>
                 </div>
               </div>
-              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                <div className="flex w-full flex-col items-start justify-center gap-2">
-                  <label
-                    htmlFor="flowDifficulty"
-                    className="text-sm font-medium text-[#A0A0A0]"
+              <div className="flex gap-2 pt-2">
+                <Flow aspectGroups={aspectGroups}></Flow>
+                <AspectCollection
+                  aspectGroups={aspectGroups}
+                ></AspectCollection>
+              </div>
+            </div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div
+            className={`setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
+          >
+            <div className="w-3/4">
+              <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
+                <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
+                  <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
+                    <p className=" text-start text-white">Duration</p>
+                    <p className="text-start text-white">
+                      {hours > 0 ? <span>{hours} hours, </span> : null}
+                      {minutes > 0 ? <span>{minutes} minutes, </span> : null}
+                      {seconds > 0 ? <span>{seconds} seconds.</span> : null}
+                    </p>
+                  </div>
+                  <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                    <p className="  text-start text-white">Poses</p>
+                    <p className="text-start text-white">
+                      {flow ? flow.units.length : 0}
+                    </p>
+                  </div>
+                  <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                    <p className="text-start text-white">Unique poses</p>
+                    <p className="text-start text-white">
+                      {flow ? flow.uniqueAspects.length : 0}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
+                  <button
+                    className={`h-full w-[100px] rounded-none border-[1px] ${enablePreview ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
+                    onClick={
+                      enablePreview ? handlePreviewButtonClick : undefined
+                    }
                   >
-                    Difficulty
-                  </label>
-                  <select
-                    id="flowDifficulty"
-                    name="flowDifficulty"
-                    value={flowDifficulty}
-                    onChange={(e) => setFlowDifficulty(e.target.value)}
-                    className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+                    Preview
+                  </button>
+                  <button
+                    className={`h-full w-[100px] rounded-none border-[1px] ${enableClear ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
+                    onClick={enableClear ? handleClearButton : undefined}
                   >
-                    {" "}
-                    <option value="">Select difficulty</option>
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                  </select>
+                    Clear
+                  </button>
                 </div>
               </div>
-            </div>
-            <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
-              <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
-                <p className=" text-start text-white">Duration</p>
-                <p className="text-start text-white">
-                  {hours > 0 ? <span>{hours} hours, </span> : null}
-                  {minutes > 0 ? <span>{minutes} minutes, </span> : null}
-                  {seconds > 0 ? <span>{seconds} seconds.</span> : null}
-                </p>
+              <div className="flex gap-2 pt-2">
+                <Flow aspectGroups={aspectGroups}></Flow>
+                <AspectCollection
+                  aspectGroups={aspectGroups}
+                ></AspectCollection>
               </div>
-              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                <p className="  text-start text-white">Poses</p>
-                <p className="text-start text-white">
-                  {flow ? flow.units.length : 0}
-                </p>
-              </div>
-              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                <p className="text-start text-white">Unique poses</p>
-                <p className="text-start text-white">
-                  {flow ? flow.uniqueAspects.length : 0}
-                </p>
-              </div>
-            </div>
-            <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
-              <button onClick={handleSave}>Save</button>
-              <button
-                className={`h-full w-[100px] rounded-none border-[1px] ${enablePreview ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
-                onClick={enablePreview ? handlePreviewButtonClick : undefined}
-              >
-                Preview
-              </button>
-              <button
-                className={`h-full w-[100px] rounded-none border-[1px] ${enableClear ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
-                onClick={enableClear ? handleClearButton : undefined}
-              >
-                Clear
-              </button>
             </div>
           </div>
-          <div className="flex gap-2 pt-2">
-            <Flow aspectGroups={aspectGroups}></Flow>
-            <AspectCollection aspectGroups={aspectGroups}></AspectCollection>
-          </div>
-        </div>
-      </div>
+        </>
+      )}
     </>
   ) : null;
 }
