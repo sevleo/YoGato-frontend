@@ -2,7 +2,15 @@ import React from "react";
 import { useEffect, useContext, useReducer } from "react";
 import { checkLoggedIn } from "./api";
 
-const initialAuthState = {
+interface AuthState {
+  isLoggedIn: boolean;
+  user: string;
+  userId: string;
+  dataLoading: boolean;
+  showLoginPopup: boolean;
+}
+
+const initialAuthState: AuthState = {
   isLoggedIn: false,
   user: "",
   userId: "",
@@ -10,65 +18,85 @@ const initialAuthState = {
   showLoginPopup: false,
 };
 
-const UserContext = React.createContext(initialAuthState);
+type Action =
+  | { type: "OPEN_LOGIN_MODAL" }
+  | { type: "CLOSE_LOGIN_MODAL" }
+  | {
+      type: "CHECK_LOGIN_SUCCESS";
+      action: {
+        data: {
+          user: {
+            username: string;
+            id: string;
+          };
+        };
+      };
+    }
+  | { type: "CHECK_LOGIN_FAILURE" }
+  | { type: "CHECK_LOGIN_FINISHED" }
+  | {
+      type: "LOGIN_SUCCESS";
+      action: {
+        data: {
+          user: {
+            username: string;
+            _id: string;
+          };
+        };
+      };
+    }
+  | { type: "LOGIN_FAILURE" }
+  | { type: "LOGOUT" };
 
-export const UserDataProvider = ({ children }) => {
-  // Reducer types
-  const CHECK_LOGIN_SUCCESS = "CHECK_LOGIN_SUCCESS";
-  const CHECK_LOGIN_FAILURE = "CHECK_LOGIN_FAILURE";
-  const CHECK_LOGIN_FINISHED = "CHECK_LOGIN_FINISHED";
-  const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-  const LOGIN_FAILURE = "LOGIN_FAILURE";
-  const LOGOUT = "LOGOUT";
-  const OPEN_LOGIN_MODAL = "OPEN_LOGIN_MODAL";
-  const CLOSE_LOGIN_MODAL = "CLOSE_LOGIN_MODAL";
-
-  function authStateReducer(state, payload) {
+export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  function authStateReducer(state: AuthState, payload: Action): AuthState {
     switch (payload.type) {
-      case OPEN_LOGIN_MODAL:
+      case "OPEN_LOGIN_MODAL":
         return {
           ...state,
           showLoginPopup: true,
         };
-      case CLOSE_LOGIN_MODAL:
+      case "CLOSE_LOGIN_MODAL":
         return {
           ...state,
           showLoginPopup: false,
         };
-      case CHECK_LOGIN_SUCCESS:
+      case "CHECK_LOGIN_SUCCESS":
         return {
           ...state,
           user: payload.action.data.user.username,
           userId: payload.action.data.user.id,
           isLoggedIn: true,
         };
-      case CHECK_LOGIN_FAILURE:
+      case "CHECK_LOGIN_FAILURE":
         return {
           ...state,
           user: "",
           userId: "",
           isLoggedIn: false,
         };
-      case CHECK_LOGIN_FINISHED:
+      case "CHECK_LOGIN_FINISHED":
         return {
           ...state,
           dataLoading: false,
         };
-      case LOGIN_SUCCESS:
+      case "LOGIN_SUCCESS":
         return {
           ...state,
           user: payload.action.data.user.username,
           userId: payload.action.data.user._id,
           isLoggedIn: true,
         };
-      case LOGIN_FAILURE:
+      case "LOGIN_FAILURE":
         return {
           ...state,
           user: "",
           userId: "",
           isLoggedIn: false,
         };
-      case LOGOUT:
+      case "LOGOUT":
         return {
           ...state,
           user: "",
@@ -76,7 +104,7 @@ export const UserDataProvider = ({ children }) => {
           isLoggedIn: false,
         };
       default:
-        state;
+        return state;
     }
   }
 
@@ -97,5 +125,13 @@ export const UserDataProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+
+const UserContext = React.createContext<{
+  authState: AuthState;
+  dispatch: React.Dispatch<Action>;
+}>({
+  authState: initialAuthState,
+  dispatch: () => null,
+});
 
 export const useUser = () => useContext(UserContext);

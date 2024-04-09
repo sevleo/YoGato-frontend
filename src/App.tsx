@@ -19,7 +19,7 @@ function App() {
     console.log(location);
   }, [location]);
 
-  function handleKeyPress(event) {
+  function handleKeyPress(event: KeyboardEvent) {
     if (event.key === "Escape") {
       dispatch({
         type: "CLOSE_LOGIN_MODAL",
