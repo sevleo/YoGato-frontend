@@ -23,9 +23,9 @@ const defaultFlowContext: FlowContextType = {
   flowState: "setup",
 };
 
-const FlowContext = React.createContext(defaultFlowContext);
-
-export const FlowDataProvider = ({ children }) => {
+export const FlowDataProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [flow, setFlow] = useState<FlowType>(defaultFlow);
 
   useEffect(() => {
@@ -41,10 +41,12 @@ export const FlowDataProvider = ({ children }) => {
   }, [flow]);
 
   return (
-    <FlowContext.Provider value={{ flow, setFlow }}>
+    <FlowContext.Provider value={{ flow, setFlow, flowState: "setup" }}>
       {children}
     </FlowContext.Provider>
   );
 };
+
+const FlowContext = React.createContext(defaultFlowContext);
 
 export const useFlow = (): FlowContextType => useContext(FlowContext);
