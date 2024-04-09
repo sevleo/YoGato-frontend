@@ -2,11 +2,12 @@ import categories from "../../db/categories.json";
 import Flow, { FlowType } from "../sections/Flow";
 import AspectCollection from "../sections/AspectCollection";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
 import { useFlow } from "../utilities/FlowContext";
 import { useNavigate } from "react-router-dom";
 import { createOrUpdateFlow } from "../utilities/api";
+import { fetchFlowDataAPI } from "../utilities/api";
 
 function Builder() {
   const navigate = useNavigate();
@@ -20,6 +21,28 @@ function Builder() {
   type ClickHandler = MouseEventHandler<HTMLButtonElement>;
 
   const { authState } = useUser();
+
+  console.log(authState);
+  console.log(flow);
+  console.log(flow.flowId);
+
+  const [flowName, setFlowName] = useState("");
+  const [flowDifficulty, setFlowDifficulty] = useState("");
+
+  const fetchFlowData = useCallback(() => {
+    fetchFlowDataAPI(flow, setFlowName, setFlowDifficulty, setPageLoaded);
+  }, [flow]);
+
+  const [pageLoaded, setPageLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!authState.dataLoading && authState.isLoggedIn && flow.flowId) {
+      fetchFlowData();
+    } else if (!flow.flowId) {
+      setPageLoaded(true);
+    }
+    // setPageLoaded(true);
+  }, [authState, fetchFlowData, flow]);
 
   const duration = flow ? flow.duration : 0;
   const hours = Math.floor(duration / 3600);
@@ -45,16 +68,70 @@ function Builder() {
 
   // Create or update flow in DB
   function handleSave(event) {
-    createOrUpdateFlow(event, flow, setFlow, authState);
+    createOrUpdateFlow(
+      event,
+      flow,
+      setFlow,
+      authState,
+      flowName,
+      setFlowName,
+      flowDifficulty,
+      setFlowDifficulty
+    );
   }
 
-  return (
+  return pageLoaded ? (
     <>
       <div
         className={`setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
       >
         <div className="w-3/4">
-          <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
+          <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
+            <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
+              <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
+                <div className="flex w-full flex-col items-start justify-center gap-2">
+                  <label
+                    htmlFor="flowName"
+                    className="text-sm font-medium text-[#A0A0A0]"
+                  >
+                    Flow Name
+                  </label>
+                  <input
+                    id="flowName"
+                    name="flowName"
+                    placeholder="Whatever you like..."
+                    type="text"
+                    value={flowName}
+                    onChange={(e) => setFlowName(e.target.value)}
+                    className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                <div className="flex w-full flex-col items-start justify-center gap-2">
+                  <label
+                    htmlFor="flowDifficulty"
+                    className="text-sm font-medium text-[#A0A0A0]"
+                  >
+                    Difficulty
+                  </label>
+                  <select
+                    id="flowDifficulty"
+                    name="flowDifficulty"
+                    value={flowDifficulty}
+                    onChange={(e) => setFlowDifficulty(e.target.value)}
+                    className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+                  >
+                    {" "}
+                    <option value="">Select difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                  </select>
+                </div>
+              </div>
+            </div>
             <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
               <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
                 <p className=" text-start text-white">Duration</p>
@@ -100,7 +177,7 @@ function Builder() {
         </div>
       </div>
     </>
-  );
+  ) : null;
 }
 
 export default Builder;
