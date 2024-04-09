@@ -1,7 +1,9 @@
 import axios from "axios";
+import { Action } from "./UserContext";
+import React from "react";
 
 // Check if user is logged in
-export async function checkLoggedIn(dispatch) {
+export async function checkLoggedIn(dispatch: React.Dispatch<Action>) {
   try {
     const response = await axios.get("http://localhost:3001/check-login", {
       withCredentials: true,
@@ -11,7 +13,6 @@ export async function checkLoggedIn(dispatch) {
         type: "CHECK_LOGIN_SUCCESS",
         action: response,
       });
-    } else {
     }
   } catch (error) {
     dispatch({
@@ -25,9 +26,12 @@ export async function checkLoggedIn(dispatch) {
 }
 
 // Handle user logout event
-export async function logout(dispatch, setAnchorEl) {
+export async function logout(
+  dispatch: React.Dispatch<Action>,
+  setAnchorEl: React.Dispatch<React.SetStateAction<null | HTMLElement>>
+) {
   try {
-    const response = await axios.get("http://localhost:3001/log-out", {
+    await axios.get("http://localhost:3001/log-out", {
       withCredentials: true,
     });
     dispatch({
@@ -49,7 +53,7 @@ export async function signup(
 ) {
   event.preventDefault();
   try {
-    const response = await axios.post("http://localhost:3001/sign-up", {
+    await axios.post("http://localhost:3001/sign-up", {
       username: usernameSignup,
       password: passwordSignup,
     });
@@ -132,7 +136,7 @@ export async function createOrUpdateFlow(
   } else {
     // Update existing one
     try {
-      const response = await axios.put("http://localhost:3001/update-flow", {
+      await axios.put("http://localhost:3001/update-flow", {
         flowId: flow.flowId,
         flowName: flowName,
         flowDifficulty: flowDifficulty,
@@ -190,7 +194,7 @@ export async function createFlow(
 ) {
   event.preventDefault();
   try {
-    const response = await axios.post("http://localhost:3001/new-flow", {
+    await axios.post("http://localhost:3001/new-flow", {
       userId: authState.userId,
       flowName: flowName,
       flowDifficulty: flowDifficulty,
@@ -205,7 +209,7 @@ export async function createFlow(
 // Delete flow from DB
 export async function deleteFlow(flowId, showAllFlows) {
   try {
-    const response = await axios.get("http://localhost:3001/delete-flow", {
+    await axios.get("http://localhost:3001/delete-flow", {
       params: {
         flowId: flowId,
       },
@@ -224,7 +228,7 @@ export async function updateFlowName(
   showAllFlows
 ) {
   try {
-    const response = await axios.put(`http://localhost:3001/update-flow`, {
+    await axios.put(`http://localhost:3001/update-flow`, {
       flowId: flow._id,
       flowName: editedFlowName,
     });

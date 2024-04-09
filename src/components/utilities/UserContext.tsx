@@ -18,7 +18,7 @@ const initialAuthState: AuthState = {
   showLoginPopup: false,
 };
 
-type Action =
+export type Action =
   | { type: "OPEN_LOGIN_MODAL" }
   | { type: "CLOSE_LOGIN_MODAL" }
   | {

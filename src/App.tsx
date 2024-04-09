@@ -11,7 +11,7 @@ import Header from "./components/sections/Header";
 import Preview from "./components/sections/Preview";
 
 function App() {
-  const { authState, dispatch } = useUser();
+  const { dispatch } = useUser();
   const [, setIsHamburgerMenu] = useState<boolean>(true);
   const [location, setLocation] = useState<string>("");
 
