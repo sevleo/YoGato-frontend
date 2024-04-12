@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useContext, useReducer } from "react";
 import { checkLoggedIn } from "./api";
 
-interface AuthState {
+export interface AuthStateTypes {
   isLoggedIn: boolean;
   user: string;
   userId: string;
@@ -10,7 +10,7 @@ interface AuthState {
   showLoginPopup: boolean;
 }
 
-const initialAuthState: AuthState = {
+const initialAuthState: AuthStateTypes = {
   isLoggedIn: false,
   user: "",
   userId: "",
@@ -51,7 +51,10 @@ export type Action =
 export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  function authStateReducer(state: AuthState, payload: Action): AuthState {
+  function authStateReducer(
+    state: AuthStateTypes,
+    payload: Action
+  ): AuthStateTypes {
     switch (payload.type) {
       case "OPEN_LOGIN_MODAL":
         return {
@@ -127,7 +130,7 @@ export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
 };
 
 const UserContext = React.createContext<{
-  authState: AuthState;
+  authState: AuthStateTypes;
   dispatch: React.Dispatch<Action>;
 }>({
   authState: initialAuthState,

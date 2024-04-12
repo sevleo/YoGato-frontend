@@ -1,8 +1,8 @@
 import React from "react";
 import { useContext, useEffect, useState } from "react";
-import { FlowType } from "../sections/Flow";
+import { FlowDataType } from "../sections/Flow";
 
-const defaultFlow: FlowType = {
+const defaultFlow: FlowDataType = {
   flowName: "my fancy flow",
   units: [],
   duration: 0,
@@ -12,8 +12,8 @@ const defaultFlow: FlowType = {
 };
 
 interface FlowContextType {
-  flow: FlowType;
-  setFlow: React.Dispatch<React.SetStateAction<FlowType>>;
+  flow: FlowDataType;
+  setFlow: React.Dispatch<React.SetStateAction<FlowDataType>>;
   flowState: string;
 }
 
@@ -26,7 +26,7 @@ const defaultFlowContext: FlowContextType = {
 export const FlowDataProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [flow, setFlow] = useState<FlowType>(defaultFlow);
+  const [flow, setFlow] = useState<FlowDataType>(defaultFlow);
 
   useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {

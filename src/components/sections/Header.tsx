@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Divide as Hamburger } from "hamburger-react";
+// import { Divide as Hamburger } from "hamburger-react";
 import "./Header.css";
 import { Dispatch, SetStateAction } from "react";
 import { useUser } from "../utilities/UserContext";
@@ -9,6 +9,8 @@ import Menu from "@mui/material/Menu";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import { logout } from "../utilities/api";
+import { AuthStateTypes } from "../utilities/UserContext";
+import { Action } from "../utilities/UserContext";
 
 interface HeaderProps {
   isHamburgerMenu: boolean;
@@ -20,7 +22,6 @@ interface HeaderProps {
 export default function Header({
   isHamburgerMenu,
   setIsHamburgerMenu,
-  location,
   setLocation,
 }: HeaderProps) {
   const { authState, dispatch } = useUser();
@@ -131,7 +132,6 @@ export default function Header({
               showCollapsibleMenu={isScrolled ? false : true}
               showSlideAnimation={showSlideAnimation}
               setShowSlideAnimation={setShowSlideAnimation}
-              location={location}
               setLocation={setLocation}
               authState={authState}
               dispatch={dispatch}
@@ -162,7 +162,6 @@ export default function Header({
                   showCollapsibleMenu={isScrolled ? true : false}
                   showSlideAnimation={showSlideAnimation}
                   setShowSlideAnimation={setShowSlideAnimation}
-                  location={location}
                   setLocation={setLocation}
                   authState={authState}
                   dispatch={dispatch}
@@ -190,19 +189,25 @@ interface HeaderDetailsProps {
   showCollapsibleMenu: boolean;
   showSlideAnimation: boolean;
   setShowSlideAnimation: Dispatch<SetStateAction<boolean>>;
-  location: string;
   setLocation: Dispatch<SetStateAction<string>>;
+  authState: AuthStateTypes;
+  dispatch: React.Dispatch<Action>;
+  handleMenu: (event: React.MouseEvent<HTMLElement>) => void;
+  anchorEl: HTMLElement | null;
+  setAnchorEl: Dispatch<SetStateAction<HTMLElement | null>>;
+  handleClose: (event: React.MouseEvent<HTMLElement>) => void;
+  menuTheme: any;
 }
 
 function HeaderDetails({
   enableHamburger,
   disableHamburger,
-  isHamburgerMenu,
-  isOpen,
-  setOpen,
-  showCollapsibleMenu,
-  showSlideAnimation,
-  setShowSlideAnimation,
+  // isHamburgerMenu,
+  // isOpen,
+  // setOpen,
+  // showCollapsibleMenu,
+  // showSlideAnimation,
+  // setShowSlideAnimation,
   setLocation,
   authState,
   dispatch,
@@ -213,9 +218,9 @@ function HeaderDetails({
   menuTheme,
 }: HeaderDetailsProps) {
   // Disables burger slide animation to avoid showing animation when switching between headers views
-  function handleAnimationEnd() {
-    setShowSlideAnimation(false);
-  }
+  // function handleAnimationEnd() {
+  //   setShowSlideAnimation(false);
+  // }
 
   function handleHomeLink() {
     enableHamburger();
@@ -239,7 +244,7 @@ function HeaderDetails({
   }
 
   // Handle user logout event
-  function handleLogout(event) {
+  function handleLogout() {
     logout(dispatch, setAnchorEl);
   }
 

@@ -1,5 +1,4 @@
 // React
-import { SetStateAction } from "react";
 import { Dispatch } from "react";
 import { useState } from "react";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
@@ -29,7 +28,7 @@ import Unit from "../buildingBlocks/Unit";
 // Types & interfaces
 import { UnitType } from "../buildingBlocks/Unit";
 
-export interface FlowType {
+export interface FlowDataType {
   flowName: string;
   units: UnitType[];
   duration: number;

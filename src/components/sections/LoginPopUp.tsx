@@ -4,12 +4,12 @@ import { signup, login } from "../utilities/api";
 
 export default function LogInPopUp() {
   const { authState, dispatch } = useUser();
-  const [usernameLogin, setUsernameLogin] = useState("");
-  const [passwordLogin, setPasswordLogin] = useState("");
-  const [usernameSignup, setUsernameSignup] = useState("");
-  const [passwordSignup, setPasswordSignup] = useState("");
-  const [popupState, setPopupState] = useState("signin");
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [usernameLogin, setUsernameLogin] = useState<string>("");
+  const [passwordLogin, setPasswordLogin] = useState<string>("");
+  const [usernameSignup, setUsernameSignup] = useState<string>("");
+  const [passwordSignup, setPasswordSignup] = useState<string>("");
+  const [popupState, setPopupState] = useState<string>("signin");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Ensure signin is always the default state of the LogInPopUp
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function LogInPopUp() {
   }, [authState.showLoginPopup]);
 
   // Handle user signup event
-  function handleSignup(event) {
+  function handleSignup(event: React.FormEvent<HTMLFormElement>) {
     signup(
       event,
       usernameSignup,
@@ -31,7 +31,7 @@ export default function LogInPopUp() {
   }
 
   // Handle user login event
-  function handleLogin(event) {
+  function handleLogin(event: React.FormEvent<HTMLFormElement>) {
     login(event, usernameLogin, passwordLogin, dispatch, setErrorMessage);
   }
 

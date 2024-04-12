@@ -1,5 +1,5 @@
 import categories from "../../db/categories.json";
-import Flow, { FlowType } from "../sections/Flow";
+import Flow, { FlowDataType } from "../sections/Flow";
 import AspectCollection from "../sections/AspectCollection";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { MouseEventHandler, useCallback, useEffect, useState } from "react";
@@ -49,7 +49,7 @@ function Builder() {
   const seconds = duration % 60;
 
   const handleClearButton: ClickHandler = () => {
-    const defaultFlow: FlowType = {
+    const defaultFlow: FlowDataType = {
       flowName: "my fancy flow",
       units: [],
       duration: 0,
@@ -66,7 +66,7 @@ function Builder() {
   };
 
   // Create or update flow in DB
-  function handleSave(event) {
+  function handleSave(event: React.MouseEvent<HTMLButtonElement>) {
     createOrUpdateFlow(
       event,
       flow,

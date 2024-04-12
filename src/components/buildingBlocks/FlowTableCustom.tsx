@@ -1,16 +1,26 @@
-import { useState } from "react";
+import { ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useFlow } from "../utilities/FlowContext";
 import { deleteFlow } from "../utilities/api";
 import { updateFlowName } from "../utilities/api";
 import { parseISO, format } from "date-fns";
+import { FlowType } from "../pages/MyFlows";
+import { FlowDataType } from "../sections/Flow";
 
-export default function FlowTableCustom({ flows, showAllFlows }) {
+interface FlowTableCustom {
+  flows: FlowType[];
+  showAllFlows: () => void;
+}
+
+export default function FlowTableCustom({
+  flows,
+  showAllFlows,
+}: FlowTableCustom) {
   const navigate = useNavigate();
   const { setFlow } = useFlow();
 
   // Delete flow from DB
-  function handleDelete(flowId) {
+  function handleDelete(flowId: string) {
     deleteFlow(flowId, showAllFlows);
   }
 
@@ -46,7 +56,21 @@ export default function FlowTableCustom({ flows, showAllFlows }) {
   );
 }
 
-function TableRow({ flow, handleDelete, showAllFlows, navigate, setFlow }) {
+interface TableRow {
+  flow: FlowType;
+  handleDelete: (flowId: string) => void;
+  showAllFlows: () => void;
+  navigate: (arg: string) => void;
+  setFlow: React.Dispatch<React.SetStateAction<FlowDataType>>;
+}
+
+function TableRow({
+  flow,
+  handleDelete,
+  showAllFlows,
+  navigate,
+  setFlow,
+}: TableRow) {
   const [editable, setEditable] = useState(false);
   const [editedFlowName, setEditedFlowName] = useState(flow.flowName);
 
@@ -61,12 +85,12 @@ function TableRow({ flow, handleDelete, showAllFlows, navigate, setFlow }) {
     updateFlowName(flow, editedFlowName, setEditable, showAllFlows);
   }
 
-  function handleBuilderClick(flowId) {
+  function handleBuilderClick(flowId: string) {
     navigate("/builder");
     setFlow({ ...flow.flowData, flowId: flowId });
   }
 
-  function handlePreviewClick(flowId) {
+  function handlePreviewClick(flowId: string) {
     navigate("/preview");
     setFlow({ ...flow.flowData, flowId: flowId });
   }
@@ -123,6 +147,6 @@ function TableRow({ flow, handleDelete, showAllFlows, navigate, setFlow }) {
   );
 }
 
-function TableData({ children }) {
+function TableData({ children }: { children: ReactNode }) {
   return <td className="text-start">{children}</td>;
 }

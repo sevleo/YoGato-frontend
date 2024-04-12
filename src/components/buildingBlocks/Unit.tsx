@@ -1,5 +1,5 @@
 // React
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { Dispatch } from "react";
 
 // DndKit
@@ -8,8 +8,6 @@ import { CSS } from "@dnd-kit/utilities";
 
 // Components
 import Input from "./Input";
-
-import { FlowType } from "../sections/Flow";
 
 import { AspectGroupType } from "./AspectGroup";
 import { useFlow } from "../utilities/FlowContext";

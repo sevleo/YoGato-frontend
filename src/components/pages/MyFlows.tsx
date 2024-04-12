@@ -4,10 +4,20 @@ import FlowTableCustom from "../buildingBlocks/FlowTableCustom";
 import { useFlow } from "../utilities/FlowContext";
 import { showAllFlowsAPI } from "../utilities/api";
 import { createFlow } from "../utilities/api";
+import { FlowDataType } from "../sections/Flow";
+
+export interface FlowType {
+  creationDate: string;
+  difficulty: string;
+  flowData: FlowDataType;
+  flowName: string;
+  userId: string;
+  _id: string;
+}
 
 function MyFlows() {
-  const { authState, dispatch } = useUser();
-  const [flows, setFlows] = useState([]);
+  const { authState } = useUser();
+  const [flows, setFlows] = useState<FlowType[]>([]);
   const { flow } = useFlow();
 
   // Display all flows
@@ -23,7 +33,7 @@ function MyFlows() {
   }, [authState.dataLoading, authState.isLoggedIn, showAllFlows]);
 
   // Save flow to DB
-  function handleNewFlowClick(event) {
+  function handleNewFlowClick(event: React.FormEvent<HTMLFormElement>) {
     createFlow(event, authState, flowName, flowDifficulty, flow, showAllFlows);
   }
 

@@ -3,7 +3,7 @@ import { useUser } from "../utilities/UserContext";
 
 function Home() {
   // const user = useUser();
-  const { authState, dispatch } = useUser();
+  const { authState } = useUser();
 
   return (
     <>

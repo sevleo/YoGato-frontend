@@ -1,6 +1,9 @@
 import axios from "axios";
-import { Action } from "./UserContext";
-import React from "react";
+import { Action, AuthStateTypes } from "./UserContext";
+import React, { SetStateAction } from "react";
+import { Dispatch } from "react";
+import { FlowDataType } from "../sections/Flow";
+import { FlowType } from "../pages/MyFlows";
 
 // Check if user is logged in
 export async function checkLoggedIn(dispatch: React.Dispatch<Action>) {
@@ -45,11 +48,11 @@ export async function logout(
 
 // Handle user signup event
 export async function signup(
-  event,
-  usernameSignup,
-  passwordSignup,
-  setPopupState,
-  setErrorMessage
+  event: React.FormEvent<HTMLFormElement>,
+  usernameSignup: string,
+  passwordSignup: string,
+  setPopupState: Dispatch<SetStateAction<string>>,
+  setErrorMessage: Dispatch<SetStateAction<string | null>>
 ) {
   event.preventDefault();
   try {
@@ -58,7 +61,7 @@ export async function signup(
       password: passwordSignup,
     });
     setPopupState("signin");
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error signing up:", error);
     if (error.response) {
       setErrorMessage(error.response.data.message);
@@ -70,11 +73,11 @@ export async function signup(
 
 // Handle user login event
 export async function login(
-  event,
-  usernameLogin,
-  passwordLogin,
-  dispatch,
-  setErrorMessage
+  event: React.FormEvent<HTMLFormElement>,
+  usernameLogin: string,
+  passwordLogin: string,
+  dispatch: React.Dispatch<Action>,
+  setErrorMessage: Dispatch<SetStateAction<string | null>>
 ) {
   event.preventDefault();
   try {
@@ -92,7 +95,7 @@ export async function login(
     dispatch({
       type: "CLOSE_LOGIN_MODAL",
     });
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error logging in:", error);
     if (error.response) {
       setErrorMessage(error.response.data.message);
@@ -108,14 +111,14 @@ export async function login(
 
 // Save flow to DB or update flow
 export async function createOrUpdateFlow(
-  event,
-  flow,
-  setFlow,
-  authState,
-  flowName,
-  setFlowName,
-  flowDifficulty,
-  setFlowDifficulty
+  event: React.MouseEvent<HTMLButtonElement>,
+  flow: FlowDataType,
+  setFlow: Dispatch<SetStateAction<FlowDataType>>,
+  authState: AuthStateTypes,
+  flowName: string,
+  setFlowName: Dispatch<SetStateAction<string>>,
+  flowDifficulty: string,
+  setFlowDifficulty: Dispatch<SetStateAction<string>>
 ) {
   event.preventDefault();
   // Create new one
@@ -150,10 +153,10 @@ export async function createOrUpdateFlow(
 
 // Fetch a flow
 export async function fetchFlowDataAPI(
-  flow,
-  setFlowName,
-  setFlowDifficulty,
-  setPageLoaded
+  flow: FlowDataType,
+  setFlowName: Dispatch<SetStateAction<string>>,
+  setFlowDifficulty: Dispatch<SetStateAction<string>>,
+  setPageLoaded: Dispatch<SetStateAction<boolean>>
 ) {
   try {
     const response = await axios.get("http://localhost:3001/get-flow", {
@@ -170,7 +173,10 @@ export async function fetchFlowDataAPI(
 }
 
 // Fetch flows
-export async function showAllFlowsAPI(authState, setFlows) {
+export async function showAllFlowsAPI(
+  authState: AuthStateTypes,
+  setFlows: Dispatch<SetStateAction<FlowType[]>>
+) {
   try {
     const response = await axios.get("http://localhost:3001/flows", {
       params: {
@@ -185,12 +191,12 @@ export async function showAllFlowsAPI(authState, setFlows) {
 
 // Save flow to DB
 export async function createFlow(
-  event,
-  authState,
-  flowName,
-  flowDifficulty,
-  flow,
-  showAllFlows
+  event: React.FormEvent<HTMLFormElement>,
+  authState: AuthStateTypes,
+  flowName: string,
+  flowDifficulty: string,
+  flow: FlowDataType,
+  showAllFlows: () => void
 ) {
   event.preventDefault();
   try {
@@ -207,7 +213,7 @@ export async function createFlow(
 }
 
 // Delete flow from DB
-export async function deleteFlow(flowId, showAllFlows) {
+export async function deleteFlow(flowId: string, showAllFlows: () => void) {
   try {
     await axios.get("http://localhost:3001/delete-flow", {
       params: {
@@ -222,10 +228,10 @@ export async function deleteFlow(flowId, showAllFlows) {
 
 // Update flow name in DB
 export async function updateFlowName(
-  flow,
-  editedFlowName,
-  setEditable,
-  showAllFlows
+  flow: FlowType,
+  editedFlowName: string,
+  setEditable: Dispatch<SetStateAction<boolean>>,
+  showAllFlows: () => void
 ) {
   try {
     await axios.put(`http://localhost:3001/update-flow`, {

@@ -116,7 +116,7 @@ function Preview() {
 
   const handleVolumeChange = (event: Event, newValue: number | number[]) => {
     setVolumeValue(newValue as number);
-    volumeRef.current = newValue / 100;
+    volumeRef.current = (newValue as number) / 100;
   };
 
   // Slider settings
