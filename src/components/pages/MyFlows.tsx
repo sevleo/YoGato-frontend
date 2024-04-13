@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
 import FlowTableCustom from "../buildingBlocks/FlowTableCustom";
-import { useFlow } from "../utilities/FlowContext";
 import { showAllFlowsAPI } from "../utilities/api";
 import { createFlow } from "../utilities/api";
 import { FlowDataType } from "../sections/Flow";
@@ -18,7 +17,6 @@ export interface FlowType {
 function MyFlows() {
   const { authState } = useUser();
   const [flows, setFlows] = useState<FlowType[]>([]);
-  const { flow } = useFlow();
 
   // Display all flows
   const showAllFlows = useCallback(() => {
