@@ -34,7 +34,22 @@ function MyFlows() {
 
   // Save flow to DB
   function handleNewFlowClick(event: React.FormEvent<HTMLFormElement>) {
-    createFlow(event, authState, flowName, flowDifficulty, flow, showAllFlows);
+    const defaultFlow: FlowDataType = {
+      flowName: "my fancy flow",
+      units: [],
+      duration: 0,
+      uniqueAspects: [],
+      uniqueAspectGroups: [],
+      flowId: "",
+    };
+    createFlow(
+      event,
+      authState,
+      flowName,
+      flowDifficulty,
+      defaultFlow,
+      showAllFlows
+    );
   }
 
   const [flowName, setFlowName] = useState("");
