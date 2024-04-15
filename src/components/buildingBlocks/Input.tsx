@@ -18,7 +18,7 @@ interface InputProps {
   required?: boolean;
   minLength?: number;
   maxLength?: number;
-  setEditableName: Dispatch<React.SetStateAction<boolean>>;
+  setEditableName?: Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Input(props: InputProps) {
@@ -70,7 +70,9 @@ export default function Input(props: InputProps) {
         required={props.required as boolean}
         minLength={props.minLength as number}
         maxLength={props.maxLength as number}
-        setEditableName={props.setEditableName}
+        setEditableName={
+          props.setEditableName as Dispatch<React.SetStateAction<boolean>>
+        }
       ></FlowBuilderTextInput>
     );
   }
@@ -239,6 +241,12 @@ interface FlowBuilderTextInputProps {
 }
 
 function FlowBuilderTextInput(props: FlowBuilderTextInputProps) {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      props.setEditableName(false);
+    }
+  };
+
   return (
     <div className="flex w-full flex-col items-start justify-center gap-2">
       <label
@@ -254,6 +262,7 @@ function FlowBuilderTextInput(props: FlowBuilderTextInputProps) {
         type={props.type}
         value={props.inputValue}
         onChange={props.onChange}
+        onKeyDown={handleKeyDown}
         className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 text-[#dedede] outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
         required={props.required}
         minLength={props.minLength}
