@@ -211,11 +211,11 @@ function Unit({
         <div className="mt-auto flex  flex-col gap-2 pt-2">
           <Input
             id={id}
-            type="number"
             label=""
             defaultValue={duration}
             onChange={handleLengthChange}
             setDragAllowed={setDragAllowed}
+            inputType="unitDurationInput"
           />
         </div>
       </div>

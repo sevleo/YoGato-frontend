@@ -50,7 +50,7 @@ function Builder() {
 
   const handleClearButton: ClickHandler = () => {
     const defaultFlow: FlowDataType = {
-      flowName: "my fancy flow",
+      flowName: "",
       units: [],
       duration: 0,
       uniqueAspects: [],
@@ -88,16 +88,16 @@ function Builder() {
             className={`setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
           >
             <div className="w-3/4">
-              <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
+              <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
                 <>
                   <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
-                    <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
-                      <div className="flex w-full flex-col items-start justify-center gap-2">
+                    <div className=" grid w-full grid-cols-[1fr] gap-2">
+                      <div className="flex w-full flex-row items-start justify-center gap-2">
                         <label
                           htmlFor="flowName"
                           className="text-sm font-medium text-[#A0A0A0]"
                         >
-                          Flow Name
+                          Name
                         </label>
                         <input
                           id="flowName"
@@ -111,8 +111,8 @@ function Builder() {
                         />
                       </div>
                     </div>
-                    <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                      <div className="flex w-full flex-col items-start justify-center gap-2">
+                    <div className="grid w-full grid-cols-[1fr] gap-2">
+                      <div className="flex w-full flex-row items-start justify-center gap-2">
                         <label
                           htmlFor="flowDifficulty"
                           className="text-sm font-medium text-[#A0A0A0]"

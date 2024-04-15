@@ -3,21 +3,49 @@ import { Dispatch } from "react";
 
 interface InputProps {
   id: string;
-  type: string;
+  label: string;
+  defaultValue: number;
+  onChange: (newLength: number) => void;
+  setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
+  inputType: string;
+}
+
+export default function Input({
+  id,
+  label,
+  defaultValue,
+  onChange,
+  setDragAllowed,
+  inputType,
+}: InputProps) {
+  if (inputType === "unitDurationInput") {
+    return (
+      <UnitDurationInput
+        id={id}
+        label={label}
+        defaultValue={defaultValue}
+        onChange={onChange}
+        setDragAllowed={setDragAllowed}
+      ></UnitDurationInput>
+    );
+  }
+}
+
+interface UnitDurationInputTypes {
+  id: string;
   label: string;
   defaultValue: number;
   onChange: (newLength: number) => void;
   setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Input({
+function UnitDurationInput({
   id,
-  // type,
   label,
   defaultValue,
   onChange,
   setDragAllowed,
-}: InputProps) {
+}: UnitDurationInputTypes) {
   const [value, setValue] = useState(defaultValue);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

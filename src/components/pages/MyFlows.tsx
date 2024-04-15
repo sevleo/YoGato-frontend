@@ -33,7 +33,7 @@ function MyFlows() {
   // Save flow to DB
   function handleNewFlowClick(event: React.FormEvent<HTMLFormElement>) {
     const defaultFlow: FlowDataType = {
-      flowName: "my fancy flow",
+      flowName: "",
       units: [],
       duration: 0,
       uniqueAspects: [],

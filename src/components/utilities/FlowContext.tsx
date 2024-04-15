@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { FlowDataType } from "../sections/Flow";
 
 const defaultFlow: FlowDataType = {
-  flowName: "my fancy flow",
+  flowName: "",
   units: [],
   duration: 0,
   uniqueAspects: [],
