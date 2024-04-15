@@ -17,6 +17,8 @@ interface InputProps {
   setDragAllowed?: Dispatch<React.SetStateAction<boolean>>;
   required?: boolean;
   minLength?: number;
+  maxLength?: number;
+  setEditableName: Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Input(props: InputProps) {
@@ -34,9 +36,9 @@ export default function Input(props: InputProps) {
       ></UnitDurationInput>
     );
   }
-  if (props.inputType === "textInput") {
+  if (props.inputType === "authTextInput") {
     return (
-      <TextInput
+      <AuthTextInput
         type={props.type as string}
         labelValue={props.labelValue}
         labelFor={props.labelFor}
@@ -49,7 +51,27 @@ export default function Input(props: InputProps) {
         inputName={props.inputName as string}
         required={props.required as boolean}
         minLength={props.minLength as number}
-      ></TextInput>
+      ></AuthTextInput>
+    );
+  }
+  if (props.inputType === "flowBuilderTextInput") {
+    return (
+      <FlowBuilderTextInput
+        type={props.type as string}
+        labelValue={props.labelValue}
+        labelFor={props.labelFor}
+        onChange={
+          props.onChange as (e: React.ChangeEvent<HTMLInputElement>) => void
+        }
+        inputValue={props.inputValue as string}
+        inputPlaceholder={props.inputPlaceholder as string}
+        inputId={props.inputId}
+        inputName={props.inputName as string}
+        required={props.required as boolean}
+        minLength={props.minLength as number}
+        maxLength={props.maxLength as number}
+        setEditableName={props.setEditableName}
+      ></FlowBuilderTextInput>
     );
   }
 }
@@ -164,7 +186,7 @@ function UnitDurationInput(props: UnitDurationInputProps) {
   );
 }
 
-interface TextInputProps {
+interface AuthTextInputProps {
   type: string;
   labelValue: string;
   labelFor: string;
@@ -177,7 +199,7 @@ interface TextInputProps {
   minLength: number;
 }
 
-function TextInput(props: TextInputProps) {
+function AuthTextInput(props: AuthTextInputProps) {
   return (
     <div className="flex w-full flex-col items-start justify-center gap-2">
       <label
@@ -193,9 +215,51 @@ function TextInput(props: TextInputProps) {
         type={props.type}
         value={props.inputValue}
         onChange={props.onChange}
-        className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+        className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 text-[#dedede] outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
         required={props.required}
         minLength={props.minLength}
+      />
+    </div>
+  );
+}
+
+interface FlowBuilderTextInputProps {
+  type: string;
+  labelValue: string;
+  labelFor: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputValue: string;
+  inputPlaceholder: string;
+  inputId: string;
+  inputName: string;
+  required: boolean;
+  minLength: number;
+  maxLength: number;
+  setEditableName: Dispatch<React.SetStateAction<boolean>>;
+}
+
+function FlowBuilderTextInput(props: FlowBuilderTextInputProps) {
+  return (
+    <div className="flex w-full flex-col items-start justify-center gap-2">
+      <label
+        htmlFor={props.labelFor}
+        className="text-sm font-medium text-[#A0A0A0]"
+      >
+        {props.labelValue}
+      </label>
+      <input
+        id={props.inputId}
+        name={props.inputName}
+        placeholder={props.inputPlaceholder}
+        type={props.type}
+        value={props.inputValue}
+        onChange={props.onChange}
+        className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 text-[#dedede] outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+        required={props.required}
+        minLength={props.minLength}
+        maxLength={props.maxLength}
+        autoFocus
+        onBlur={() => props.setEditableName(false)}
       />
     </div>
   );

@@ -104,7 +104,7 @@ export default function LogInPopUp() {
                 >
                   <div className=" flex w-full flex-col items-start justify-center gap-5">
                     <Input
-                      inputType="textInput"
+                      inputType="authTextInput"
                       type="text"
                       labelFor="username-login"
                       labelValue="Username"
@@ -119,7 +119,7 @@ export default function LogInPopUp() {
                       minLength={5}
                     ></Input>
                     <Input
-                      inputType="textInput"
+                      inputType="authTextInput"
                       type="password"
                       labelFor="password-login"
                       labelValue="Password"
@@ -212,7 +212,7 @@ export default function LogInPopUp() {
                 >
                   <div className=" flex w-full flex-col items-start justify-center gap-5">
                     <Input
-                      inputType="textInput"
+                      inputType="authTextInput"
                       type="text"
                       labelFor="username-signup"
                       labelValue="Username"
@@ -227,7 +227,7 @@ export default function LogInPopUp() {
                       minLength={5}
                     ></Input>
                     <Input
-                      inputType="textInput"
+                      inputType="authTextInput"
                       type="password"
                       labelFor="password-signup"
                       labelValue="Password"

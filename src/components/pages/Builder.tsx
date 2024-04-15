@@ -8,6 +8,7 @@ import { useFlow } from "../utilities/FlowContext";
 import { useNavigate } from "react-router-dom";
 import { createOrUpdateFlow } from "../utilities/api";
 import { fetchFlowDataAPI } from "../utilities/api";
+import Input from "../buildingBlocks/Input";
 
 function Builder() {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ function Builder() {
   const { flow, setFlow } = useFlow();
   const enablePreview = flow && flow.units.length > 0 ? true : false;
   const enableClear = flow && flow.units.length > 0 ? true : false;
+  const [editableName, setEditableName] = useState<boolean>(false);
 
   type ClickHandler = MouseEventHandler<HTMLButtonElement>;
 
@@ -91,48 +93,38 @@ function Builder() {
               <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
                 <>
                   <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
-                    <div className=" grid w-full grid-cols-[1fr] gap-2">
-                      <div className="flex w-full flex-row items-start justify-center gap-2">
-                        <label
-                          htmlFor="flowName"
-                          className="text-sm font-medium text-[#A0A0A0]"
-                        >
-                          Name
-                        </label>
-                        <input
-                          id="flowName"
-                          name="flowName"
-                          placeholder="Whatever you like..."
-                          type="text"
-                          value={flowName}
-                          onChange={(e) => setFlowName(e.target.value)}
-                          className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
-                          required
-                        />
-                      </div>
-                    </div>
-                    <div className="grid w-full grid-cols-[1fr] gap-2">
-                      <div className="flex w-full flex-row items-start justify-center gap-2">
-                        <label
-                          htmlFor="flowDifficulty"
-                          className="text-sm font-medium text-[#A0A0A0]"
-                        >
-                          Difficulty
-                        </label>
-                        <select
-                          id="flowDifficulty"
-                          name="flowDifficulty"
-                          value={flowDifficulty}
-                          onChange={(e) => setFlowDifficulty(e.target.value)}
-                          className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
-                        >
+                    <div
+                      className="flex w-full items-center justify-start hover:cursor-pointer"
+                      onClick={() => setEditableName(true)}
+                    >
+                      {editableName ? (
+                        <>
                           {" "}
-                          <option value="">Select difficulty</option>
-                          <option value="easy">Easy</option>
-                          <option value="medium">Medium</option>
-                          <option value="hard">Hard</option>
-                        </select>
-                      </div>
+                          <Input
+                            inputType="flowBuilderTextInput"
+                            type="text"
+                            labelFor="flowName"
+                            labelValue=""
+                            onChange={(
+                              e: React.ChangeEvent<HTMLInputElement>
+                            ) => setFlowName(e.target.value)}
+                            inputValue={flowName}
+                            inputPlaceholder="Some fancy name"
+                            inputId="flowName"
+                            inputName="flowName"
+                            required={true}
+                            maxLength={20}
+                            setEditableName={setEditableName}
+                          ></Input>
+                        </>
+                      ) : (
+                        <>
+                          {" "}
+                          <p className="text-[30px] text-[#dedede]">
+                            {flowName ? flowName : "No name"}
+                          </p>
+                        </>
+                      )}
                     </div>
                   </div>
                 </>
