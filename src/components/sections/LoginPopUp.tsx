@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
 import { signup, login } from "../utilities/api";
+import Input from "../buildingBlocks/Input";
 
 export default function LogInPopUp() {
   const { authState, dispatch } = useUser();
@@ -216,25 +217,18 @@ export default function LogInPopUp() {
                   className="flex flex-col items-start justify-center"
                 >
                   <div className=" flex w-full flex-col items-start justify-center gap-5">
-                    <div className="flex w-full flex-col items-start justify-center gap-2">
-                      <label
-                        htmlFor="username-signup"
-                        className="text-sm font-medium text-[#A0A0A0]"
-                      >
-                        Username
-                      </label>
-                      <input
-                        id="username-signup"
-                        name="username-signup"
-                        placeholder="GracefulCat"
-                        type="text"
-                        value={usernameSignup}
-                        onChange={(e) => setUsernameSignup(e.target.value)}
-                        className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
-                        required
-                        minLength={5}
-                      />
-                    </div>
+                    <Input
+                      inputType="textInput"
+                      labelFor="username-signup"
+                      labelValue="Username"
+                      inputValue={usernameSignup}
+                      inputPlaceholder="GracefulCat"
+                      inputId="username-signup"
+                      inputName="username-signup"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setUsernameSignup(e.target.value)
+                      }
+                    ></Input>
                     <div className="flex w-full flex-col items-start justify-center gap-2">
                       <label
                         htmlFor="password-signup"

@@ -120,13 +120,13 @@ function Unit({
   };
 
   // On changing length on unit
-  function handleLengthChange(newLength: number) {
+  function handleLengthChange(newValue: number) {
     setFlow((prevFlow) => {
       const updatedUnits = prevFlow.units.map((unit) => {
         if (unit.id === id) {
           return {
             ...unit,
-            duration: newLength,
+            duration: newValue,
           };
         }
         return unit;
@@ -210,12 +210,13 @@ function Unit({
 
         <div className="mt-auto flex  flex-col gap-2 pt-2">
           <Input
-            id={id}
-            label=""
+            inputType="unitDurationInput"
+            labelValue=""
+            labelFor={id}
             defaultValue={duration}
             onChange={handleLengthChange}
+            inputId={id}
             setDragAllowed={setDragAllowed}
-            inputType="unitDurationInput"
           />
         </div>
       </div>

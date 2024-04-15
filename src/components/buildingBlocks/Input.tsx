@@ -2,59 +2,71 @@ import { useState } from "react";
 import { Dispatch } from "react";
 
 interface InputProps {
-  id: string;
-  label: string;
-  defaultValue: number;
-  onChange: (newLength: number) => void;
-  setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
   inputType: string;
+  labelValue: string;
+  labelFor: string;
+  defaultValue?: number;
+  onChange:
+    | ((e: React.ChangeEvent<HTMLInputElement>) => void)
+    | ((newValue: number) => void);
+  inputValue?: string;
+  inputPlaceholder?: string;
+  inputId: string;
+  inputName?: string;
+  setDragAllowed?: Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function Input({
-  id,
-  label,
-  defaultValue,
-  onChange,
-  setDragAllowed,
-  inputType,
-}: InputProps) {
-  if (inputType === "unitDurationInput") {
+export default function Input(props: InputProps) {
+  if (props.inputType === "unitDurationInput") {
     return (
       <UnitDurationInput
-        id={id}
-        label={label}
-        defaultValue={defaultValue}
-        onChange={onChange}
-        setDragAllowed={setDragAllowed}
+        labelValue={props.labelValue}
+        labelFor={props.labelFor}
+        defaultValue={props.defaultValue as number}
+        onChange={props.onChange as (newValue: number) => void}
+        inputId={props.inputId}
+        setDragAllowed={
+          props.setDragAllowed as Dispatch<React.SetStateAction<boolean>>
+        }
       ></UnitDurationInput>
+    );
+  }
+  if (props.inputType === "textInput") {
+    return (
+      <TextInput
+        labelValue={props.labelValue}
+        labelFor={props.labelFor}
+        onChange={
+          props.onChange as (e: React.ChangeEvent<HTMLInputElement>) => void
+        }
+        inputValue={props.inputValue as string}
+        inputPlaceholder={props.inputPlaceholder as string}
+        inputId={props.inputId}
+        inputName={props.inputName as string}
+      ></TextInput>
     );
   }
 }
 
-interface UnitDurationInputTypes {
-  id: string;
-  label: string;
+interface UnitDurationInputProps {
+  labelValue: string;
+  labelFor: string;
   defaultValue: number;
-  onChange: (newLength: number) => void;
+  onChange: (newValue: number) => void;
+  inputId: string;
   setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
 }
 
-function UnitDurationInput({
-  id,
-  label,
-  defaultValue,
-  onChange,
-  setDragAllowed,
-}: UnitDurationInputTypes) {
-  const [value, setValue] = useState(defaultValue);
+function UnitDurationInput(props: UnitDurationInputProps) {
+  const [value, setValue] = useState(props.defaultValue);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.value === "" || event.target.value.startsWith("0")) {
       setValue(Number(1));
-      onChange(Number(1));
+      props.onChange(Number(1));
     } else {
       setValue(Number(event.target.value));
-      onChange(Number(event.target.value));
+      props.onChange(Number(event.target.value));
     }
   };
 
@@ -80,10 +92,10 @@ function UnitDurationInput({
   const handlePlusFiveSeconds = () => {
     if (value === 1) {
       setValue(value + 4);
-      onChange(value + 4);
+      props.onChange(value + 4);
     } else {
       setValue(value + 5);
-      onChange(value + 5);
+      props.onChange(value + 5);
     }
   };
 
@@ -91,25 +103,25 @@ function UnitDurationInput({
     const newValue = value - 5;
     if (newValue < 1) {
       setValue(1);
-      onChange(1);
+      props.onChange(1);
     } else {
       setValue(newValue);
-      onChange(newValue);
+      props.onChange(newValue);
     }
   };
 
   const disableDrag = () => {
-    setDragAllowed(false);
+    props.setDragAllowed(false);
   };
 
   const enableDrag = () => {
-    setDragAllowed(true);
+    props.setDragAllowed(true);
   };
 
   return (
     <div className="group relative flex flex-row items-center rounded-md bg-[#50422E] ">
-      <label htmlFor={id} className=" ">
-        {label}
+      <label htmlFor={props.labelFor} className=" ">
+        {props.labelValue}
       </label>
       <div
         onClick={handleMinusFiveSeconds}
@@ -121,7 +133,7 @@ function UnitDurationInput({
       </div>
       <input
         type="text"
-        id={id}
+        id={props.inputId}
         value={value}
         className=" z-10 w-full bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-[#AA954E] hover:bg-[#AA954E] hover:text-transparent  hover:opacity-100 focus:z-20 focus:text-black focus:opacity-100"
         onChange={handleChange}
@@ -142,6 +154,40 @@ function UnitDurationInput({
       >
         +5
       </div>
+    </div>
+  );
+}
+
+interface TextInputProps {
+  labelValue: string;
+  labelFor: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputValue: string;
+  inputPlaceholder: string;
+  inputId: string;
+  inputName: string;
+}
+
+function TextInput(props: TextInputProps) {
+  return (
+    <div className="flex w-full flex-col items-start justify-center gap-2">
+      <label
+        htmlFor={props.labelFor}
+        className="text-sm font-medium text-[#A0A0A0]"
+      >
+        {props.labelValue}
+      </label>
+      <input
+        id={props.inputId}
+        name={props.inputName}
+        placeholder={props.inputPlaceholder}
+        type="text"
+        value={props.inputValue}
+        onChange={props.onChange}
+        className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+        required
+        minLength={5}
+      />
     </div>
   );
 }
