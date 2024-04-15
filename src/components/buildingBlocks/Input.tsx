@@ -3,6 +3,7 @@ import { Dispatch } from "react";
 
 interface InputProps {
   inputType: string;
+  type?: string;
   labelValue: string;
   labelFor: string;
   defaultValue?: number;
@@ -14,6 +15,8 @@ interface InputProps {
   inputId: string;
   inputName?: string;
   setDragAllowed?: Dispatch<React.SetStateAction<boolean>>;
+  required?: boolean;
+  minLength?: number;
 }
 
 export default function Input(props: InputProps) {
@@ -34,6 +37,7 @@ export default function Input(props: InputProps) {
   if (props.inputType === "textInput") {
     return (
       <TextInput
+        type={props.type as string}
         labelValue={props.labelValue}
         labelFor={props.labelFor}
         onChange={
@@ -43,6 +47,8 @@ export default function Input(props: InputProps) {
         inputPlaceholder={props.inputPlaceholder as string}
         inputId={props.inputId}
         inputName={props.inputName as string}
+        required={props.required as boolean}
+        minLength={props.minLength as number}
       ></TextInput>
     );
   }
@@ -159,6 +165,7 @@ function UnitDurationInput(props: UnitDurationInputProps) {
 }
 
 interface TextInputProps {
+  type: string;
   labelValue: string;
   labelFor: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
@@ -166,6 +173,8 @@ interface TextInputProps {
   inputPlaceholder: string;
   inputId: string;
   inputName: string;
+  required: boolean;
+  minLength: number;
 }
 
 function TextInput(props: TextInputProps) {
@@ -181,12 +190,12 @@ function TextInput(props: TextInputProps) {
         id={props.inputId}
         name={props.inputName}
         placeholder={props.inputPlaceholder}
-        type="text"
+        type={props.type}
         value={props.inputValue}
         onChange={props.onChange}
         className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
-        required
-        minLength={5}
+        required={props.required}
+        minLength={props.minLength}
       />
     </div>
   );

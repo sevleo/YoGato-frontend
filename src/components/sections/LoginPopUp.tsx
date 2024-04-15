@@ -103,42 +103,36 @@ export default function LogInPopUp() {
                   className="flex flex-col items-start justify-center"
                 >
                   <div className=" flex w-full flex-col items-start justify-center gap-5">
-                    <div className="flex w-full flex-col items-start justify-center gap-2">
-                      <label
-                        htmlFor="username-login"
-                        className="text-sm font-medium text-[#A0A0A0]"
-                      >
-                        Username
-                      </label>
-                      <input
-                        id="username-login"
-                        name="username-login"
-                        placeholder="GracefulCat"
-                        type="text"
-                        value={usernameLogin}
-                        onChange={(e) => setUsernameLogin(e.target.value)}
-                        className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
-                        required
-                      />
-                    </div>
-                    <div className="flex w-full flex-col items-start justify-center gap-2">
-                      <label
-                        htmlFor="password-login"
-                        className="text-sm font-medium text-[#A0A0A0]"
-                      >
-                        Password
-                      </label>
-                      <input
-                        id="password-login"
-                        name="password-login"
-                        type="password"
-                        value={passwordLogin}
-                        onChange={(e) => setPasswordLogin(e.target.value)}
-                        className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed50] focus:border-[#707070] focus:outline-[#232323]"
-                        placeholder="••••••••"
-                        required
-                      />
-                    </div>
+                    <Input
+                      inputType="textInput"
+                      type="text"
+                      labelFor="username-login"
+                      labelValue="Username"
+                      inputValue={usernameLogin}
+                      inputPlaceholder="GracefulCat"
+                      inputId="username-login"
+                      inputName="username-login"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setUsernameLogin(e.target.value)
+                      }
+                      required={true}
+                      minLength={5}
+                    ></Input>
+                    <Input
+                      inputType="textInput"
+                      type="password"
+                      labelFor="password-login"
+                      labelValue="Password"
+                      inputValue={passwordLogin}
+                      inputPlaceholder="••••••••"
+                      inputId="password-login"
+                      inputName="password-login"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setPasswordLogin(e.target.value)
+                      }
+                      required={true}
+                      minLength={8}
+                    ></Input>
                     <p className="h-[20px] w-full text-start text-[red]">
                       {" "}
                       {errorMessage ? errorMessage : null}{" "}
@@ -219,6 +213,7 @@ export default function LogInPopUp() {
                   <div className=" flex w-full flex-col items-start justify-center gap-5">
                     <Input
                       inputType="textInput"
+                      type="text"
                       labelFor="username-signup"
                       labelValue="Username"
                       inputValue={usernameSignup}
@@ -228,26 +223,24 @@ export default function LogInPopUp() {
                       onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                         setUsernameSignup(e.target.value)
                       }
+                      required={true}
+                      minLength={5}
                     ></Input>
-                    <div className="flex w-full flex-col items-start justify-center gap-2">
-                      <label
-                        htmlFor="password-signup"
-                        className="text-sm font-medium text-[#A0A0A0]"
-                      >
-                        Password
-                      </label>
-                      <input
-                        id="password-signup"
-                        name="password-signup"
-                        type="password"
-                        value={passwordSignup}
-                        onChange={(e) => setPasswordSignup(e.target.value)}
-                        className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed50] focus:border-[#707070] focus:outline-[#232323]"
-                        placeholder="••••••••"
-                        required
-                        minLength={8}
-                      />
-                    </div>
+                    <Input
+                      inputType="textInput"
+                      type="password"
+                      labelFor="password-signup"
+                      labelValue="Password"
+                      inputValue={passwordSignup}
+                      inputPlaceholder="••••••••"
+                      inputId="password-signup"
+                      inputName="password-signup"
+                      onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                        setPasswordSignup(e.target.value)
+                      }
+                      required={true}
+                      minLength={8}
+                    ></Input>
                     <p className="h-[20px] w-full text-start text-[red]">
                       {" "}
                       {errorMessage ? errorMessage : null}{" "}
