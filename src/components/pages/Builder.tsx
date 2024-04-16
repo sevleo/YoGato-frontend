@@ -167,12 +167,12 @@ function Builder() {
                     label="Preview"
                     enabled={enablePreview}
                   ></Button>
-                  <button
-                    className={`h-full w-[100px] rounded-none border-[1px] ${enableClear ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
+                  <Button
+                    type="builderClear"
                     onClick={enableClear ? handleClearButton : undefined}
-                  >
-                    Clear
-                  </button>
+                    label="Clear"
+                    enabled={enableClear}
+                  ></Button>
                 </div>
               </div>
               <div className="flex gap-2 pt-2">
