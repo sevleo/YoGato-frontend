@@ -78,7 +78,7 @@ function MyFlows() {
                   required
                 />
               </div>
-              <div className="flex w-full flex-col items-start justify-center gap-2">
+              {/* <div className="flex w-full flex-col items-start justify-center gap-2">
                 <label
                   htmlFor="flowDifficulty"
                   className="text-sm font-medium text-[#A0A0A0]"
@@ -98,7 +98,7 @@ function MyFlows() {
                   <option value="medium">Medium</option>
                   <option value="hard">Hard</option>
                 </select>
-              </div>
+              </div> */}
               <Button
                 type="submit"
                 componentType="myFlowsCreate"
