@@ -1,6 +1,6 @@
 // React
 import { useState } from "react";
-import { Dispatch } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 // DndKit
 import { useSortable } from "@dnd-kit/sortable";
@@ -36,6 +36,7 @@ interface UnitProps {
   dragAllowed: boolean;
   setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
   aspectGroups: AspectGroupType[];
+  setEnableSave: Dispatch<SetStateAction<boolean>>;
 }
 
 function Unit({
@@ -49,6 +50,7 @@ function Unit({
   dragAllowed,
   setDragAllowed,
   aspectGroups,
+  setEnableSave,
 }: UnitProps) {
   const { setFlow } = useFlow();
   // On delete button on unit
@@ -105,6 +107,7 @@ function Unit({
         uniqueAspectGroups: uniqueAspectGroups,
       };
     });
+    setEnableSave(true);
   }
 
   const [showUnitClose, setShowUnitClose] = useState(false);
@@ -141,6 +144,7 @@ function Unit({
         duration: updatedDuration,
       };
     });
+    setEnableSave(true);
   }
 
   const disableDrag = () => {

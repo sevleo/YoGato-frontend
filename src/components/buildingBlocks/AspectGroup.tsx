@@ -9,6 +9,7 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { Dispatch, SetStateAction } from "react";
 
 export interface AspectGroupType {
   category_name: string;
@@ -24,6 +25,7 @@ interface AspectGroupProps {
   }[];
   aspectGroupCount: number | undefined;
   aspectGroups: AspectGroupType[];
+  setEnableSave: Dispatch<SetStateAction<boolean>>;
 }
 
 function AspectGroup({
@@ -32,6 +34,7 @@ function AspectGroup({
   uniqueAspects,
   aspectGroupCount,
   aspectGroups,
+  setEnableSave,
 }: AspectGroupProps) {
   return (
     <>
@@ -85,6 +88,7 @@ function AspectGroup({
                     aspect={pose}
                     count={count}
                     aspectGroups={aspectGroups}
+                    setEnableSave={setEnableSave}
                   ></AspectController>
                 );
               })}

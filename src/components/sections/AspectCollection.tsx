@@ -1,13 +1,16 @@
 import AspectGroup from "../buildingBlocks/AspectGroup";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { useFlow } from "../utilities/FlowContext";
+import { Dispatch, SetStateAction } from "react";
 
 interface AspectCollectionProps {
   aspectGroups: AspectGroupType[];
+  setEnableSave: Dispatch<SetStateAction<boolean>>;
 }
 
 export default function AspectCollection({
   aspectGroups,
+  setEnableSave,
 }: AspectCollectionProps) {
   const { flow } = useFlow();
 
@@ -35,6 +38,7 @@ export default function AspectCollection({
                   aspectGroupCount ? aspectGroupCount : undefined
                 }
                 aspectGroups={aspectGroups}
+                setEnableSave={setEnableSave}
               ></AspectGroup>
             );
           })}

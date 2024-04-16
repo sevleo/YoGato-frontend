@@ -4,6 +4,7 @@ import { v4 as uuidv4 } from "uuid";
 import svgProvider from "../../../assets/svgProvider";
 import { AspectGroupType } from "../AspectGroup";
 import { useFlow } from "../../utilities/FlowContext";
+import { Dispatch, SetStateAction } from "react";
 
 // Components
 import Aspect from "./AspectDisplay";
@@ -21,12 +22,14 @@ type Props = {
   aspect: AspectType;
   count: number;
   aspectGroups: AspectGroupType[];
+  setEnableSave: Dispatch<SetStateAction<boolean>>;
 } & HTMLAttributes<HTMLDivElement>;
 
 export default function AspectController({
   aspect,
   count,
   aspectGroups,
+  setEnableSave,
 }: Props) {
   const { setFlow } = useFlow();
   const handleClick = () => {
@@ -98,6 +101,7 @@ export default function AspectController({
         uniqueAspectGroups: uniqueAspectGroups,
       };
     });
+    setEnableSave(true);
   };
 
   return <Aspect aspect={aspect} count={count} handleClick={handleClick} />;

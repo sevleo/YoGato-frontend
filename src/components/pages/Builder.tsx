@@ -92,9 +92,6 @@ function Builder() {
     setFlow({ ...flow, flowName: flowName });
   }
 
-  console.log(flow);
-  console.log(flowName);
-
   return pageLoaded && !authState.dataLoading ? (
     <>
       {authState.isLoggedIn ? (
@@ -203,9 +200,13 @@ function Builder() {
                 </div>
               </div>
               <div className="flex gap-2 pt-2">
-                <Flow aspectGroups={aspectGroups}></Flow>
+                <Flow
+                  aspectGroups={aspectGroups}
+                  setEnableSave={setEnableSave}
+                ></Flow>
                 <AspectCollection
                   aspectGroups={aspectGroups}
+                  setEnableSave={setEnableSave}
                 ></AspectCollection>
               </div>
             </div>
@@ -258,9 +259,13 @@ function Builder() {
                 </div>
               </div>
               <div className="flex gap-2 pt-2">
-                <Flow aspectGroups={aspectGroups}></Flow>
+                <Flow
+                  aspectGroups={aspectGroups}
+                  setEnableSave={setEnableSave}
+                ></Flow>
                 <AspectCollection
                   aspectGroups={aspectGroups}
+                  setEnableSave={setEnableSave}
                 ></AspectCollection>
               </div>
             </div>

@@ -1,5 +1,5 @@
 // React
-import { Dispatch } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { useFlow } from "../utilities/FlowContext";
@@ -47,9 +47,10 @@ export interface UniqueAspectGroup {
 
 export interface FlowProps {
   aspectGroups: AspectGroupType[];
+  setEnableSave: Dispatch<SetStateAction<boolean>>;
 }
 
-function Flow({ aspectGroups }: FlowProps) {
+function Flow({ aspectGroups, setEnableSave }: FlowProps) {
   const { flow, setFlow } = useFlow();
   const [dragAllowed, setDragAllowed]: [
     boolean,
@@ -116,6 +117,7 @@ function Flow({ aspectGroups }: FlowProps) {
                         dragAllowed={dragAllowed}
                         setDragAllowed={setDragAllowed}
                         aspectGroups={aspectGroups}
+                        setEnableSave={setEnableSave}
                       ></Unit>
                     );
                   })}
