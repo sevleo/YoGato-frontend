@@ -17,6 +17,7 @@ import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 import { useUser } from "../utilities/UserContext";
 import { useFlow } from "../utilities/FlowContext";
 import { useNavigate } from "react-router-dom";
+import Button from "../buildingBlocks/Button";
 
 function Preview() {
   const navigate = useNavigate();
@@ -325,38 +326,38 @@ function Preview() {
             </div>
 
             <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
-              <button
-                className={` h-full w-[100px] ${!timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+              <Button
+                componentType="previewStart"
                 onClick={
                   !timerState.startFlow ? handleStartButtonClick : undefined
                 }
-              >
-                Start
-              </button>
-              <button
-                className={` h-full w-[100px] ${timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+                label="Start"
+                enabled={!timerState.startFlow}
+              ></Button>
+              <Button
+                componentType="previewResumePause"
                 onClick={
                   timerState.startFlow ? handlePauseButtonClick : undefined
                 }
-              >
-                {timerState.pauseFlow ? "Resume" : "Pause"}
-              </button>
-              <button
-                className={` h-full w-[100px] ${timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+                label={timerState.pauseFlow ? "Resume" : "Pause"}
+                enabled={timerState.startFlow}
+              ></Button>
+              <Button
+                componentType="previewStop"
                 onClick={
                   timerState.startFlow ? handleStopButtonClick : undefined
                 }
-              >
-                {"Stop"}
-              </button>
-              <button
-                className={` h-full w-[100px] ${!timerState.startFlow ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : "bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"} rounded-none border-[1px]   focus:outline-none `}
+                label="Stop"
+                enabled={timerState.startFlow}
+              ></Button>
+              <Button
+                componentType="previewCancel"
                 onClick={
                   !timerState.startFlow ? handleCancelButtonClick : undefined
                 }
-              >
-                Cancel
-              </button>
+                label="Cancel"
+                enabled={!timerState.startFlow}
+              ></Button>
             </div>
           </div>
           <div className="canvas flex h-full w-full flex-col items-center justify-center pt-2">

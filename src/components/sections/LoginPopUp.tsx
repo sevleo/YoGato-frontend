@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
 import { signup, login } from "../utilities/api";
 import Input from "../buildingBlocks/Input";
+import Button from "../buildingBlocks/Button";
 
 export default function LogInPopUp() {
   const { authState, dispatch } = useUser();
@@ -80,9 +81,10 @@ export default function LogInPopUp() {
 
               <div className="w-full">
                 <a href="http://localhost:3001/login/federated/google/">
-                  <button className="w-full border-[1px] border-[#3D3D3D] bg-[#2e2e2e] text-white outline-none transition-all duration-200 hover:border-[#505050] hover:bg-[#343434] focus:outline-none">
-                    Continue with Google
-                  </button>
+                  <Button
+                    componentType="loginPopupGoogle"
+                    label="Continue with Google"
+                  ></Button>
                 </a>
               </div>
 
@@ -137,13 +139,11 @@ export default function LogInPopUp() {
                       {" "}
                       {errorMessage ? errorMessage : null}{" "}
                     </p>
-
-                    <button
+                    <Button
+                      componentType="loginPopupSignin"
                       type="submit"
-                      className="border-box mt-4 w-full border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none"
-                    >
-                      Sign In
-                    </button>
+                      label="Sign In"
+                    ></Button>
                   </div>
                 </form>
               </div>
@@ -188,9 +188,10 @@ export default function LogInPopUp() {
 
               <div className="w-full">
                 <a href="http://localhost:3001/login/federated/google/">
-                  <button className="w-full border-[1px] border-[#3D3D3D] bg-[#2e2e2e] text-white outline-none transition-all duration-200 hover:border-[#505050] hover:bg-[#343434] focus:outline-none">
-                    Continue with Google
-                  </button>
+                  <Button
+                    componentType="loginPopupGoogle"
+                    label="Continue with Google"
+                  ></Button>
                 </a>
               </div>
 
@@ -245,13 +246,11 @@ export default function LogInPopUp() {
                       {" "}
                       {errorMessage ? errorMessage : null}{" "}
                     </p>
-
-                    <button
+                    <Button
+                      componentType="loginPopupSignun"
                       type="submit"
-                      className="border-box mt-4 w-full border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none"
-                    >
-                      Sign Up
-                    </button>
+                      label="Sign Up"
+                    ></Button>
                   </div>
                 </form>
               </div>

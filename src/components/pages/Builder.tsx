@@ -155,12 +155,12 @@ function Builder() {
                 <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
                   {" "}
                   <Button
-                    type="builderSave"
+                    componentType="builderSave"
                     onClick={handleSave}
                     label="Save"
                   ></Button>
                   <Button
-                    type="builderPreview"
+                    componentType="builderPreview"
                     onClick={
                       enablePreview ? handlePreviewButtonClick : undefined
                     }
@@ -168,7 +168,7 @@ function Builder() {
                     enabled={enablePreview}
                   ></Button>
                   <Button
-                    type="builderClear"
+                    componentType="builderClear"
                     onClick={enableClear ? handleClearButton : undefined}
                     label="Clear"
                     enabled={enableClear}
@@ -215,7 +215,7 @@ function Builder() {
                 </div>
                 <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
                   <Button
-                    type="builderPreview"
+                    componentType="builderPreview"
                     onClick={
                       enablePreview ? handlePreviewButtonClick : undefined
                     }
@@ -223,7 +223,7 @@ function Builder() {
                     enabled={enablePreview}
                   ></Button>
                   <Button
-                    type="builderClear"
+                    componentType="builderClear"
                     onClick={enableClear ? handleClearButton : undefined}
                     label="Clear"
                     enabled={enableClear}
