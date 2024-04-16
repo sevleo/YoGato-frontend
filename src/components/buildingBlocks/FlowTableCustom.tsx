@@ -6,6 +6,7 @@ import { updateFlowName } from "../utilities/api";
 import { parseISO, format } from "date-fns";
 import { FlowType } from "../pages/MyFlows";
 import { FlowDataType } from "../sections/Flow";
+import Button from "./Button";
 
 interface FlowTableCustom {
   flows: FlowType[];
@@ -121,16 +122,21 @@ function TableRow({
 
       <TableData>
         {" "}
-        <button
+        <Button
+          componentType="myFlowsPreview"
           onClick={() => handlePreviewClick(flow._id)}
-          className={`${flow.flowData.units.length > 0 ? "pointer-events-auto" : "pointer-events-none bg-[#8080806b] text-[gray]"}`}
-        >
-          Preview
-        </button>
+          label="Preview"
+          enabled={flow.flowData.units.length > 0}
+        ></Button>
       </TableData>
       <TableData>
         {" "}
-        <button onClick={() => handleBuilderClick(flow._id)}>Edit</button>
+        <Button
+          componentType="myFlowsEdit"
+          onClick={() => handleBuilderClick(flow._id)}
+          label="Edit"
+          enabled={true}
+        ></Button>
         {/* <Link to="/builder" onClick={handleBuilderClick}>
           Builder
         </Link> */}
@@ -138,7 +144,12 @@ function TableRow({
 
       <TableData>
         {" "}
-        <button onClick={() => handleDelete(flow._id)}>delete</button>
+        <Button
+          componentType="myFlowsDelete"
+          onClick={() => handleDelete(flow._id)}
+          label="Delete"
+          enabled={true}
+        ></Button>
       </TableData>
       <TableData>
         {format(parseISO(flow.creationDate).toString(), "d LLL yyyy")}

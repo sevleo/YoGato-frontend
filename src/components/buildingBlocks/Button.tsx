@@ -36,6 +36,12 @@ export default function Button(props: ButtonProps) {
   ) {
     styles =
       "border-box mt-4 w-full border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none";
+  } else if (
+    props.componentType === "myFlowsPreview" ||
+    props.componentType === "myFlowsEdit" ||
+    props.componentType === "myFlowsDelete"
+  ) {
+    styles = `${props.enabled ? "pointer-events-auto" : "pointer-events-none bg-[#8080806b] text-[gray]"}`;
   }
   return (
     <>

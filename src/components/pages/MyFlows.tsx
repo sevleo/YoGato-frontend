@@ -4,6 +4,7 @@ import FlowTableCustom from "../buildingBlocks/FlowTableCustom";
 import { showAllFlowsAPI } from "../utilities/api";
 import { createFlow } from "../utilities/api";
 import { FlowDataType } from "../sections/Flow";
+import Button from "../buildingBlocks/Button";
 
 export interface FlowType {
   creationDate: string;
@@ -98,7 +99,11 @@ function MyFlows() {
                   <option value="hard">Hard</option>
                 </select>
               </div>
-              <button type="submit">Create</button>
+              <Button
+                type="submit"
+                componentType="myFlowsCreate"
+                label="Create"
+              ></Button>
             </form>
             <div className=" flex flex-col">
               {flows && authState.isLoggedIn && !authState.dataLoading ? (
