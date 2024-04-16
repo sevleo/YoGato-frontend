@@ -74,19 +74,26 @@ function Builder() {
   // Create or update flow in DB
   function handleSave(event: React.MouseEvent<HTMLButtonElement>) {
     createOrUpdateFlow(
-      event,
       flow,
       setFlow,
       authState,
       flowName,
       setFlowName,
       flowDifficulty,
-      setFlowDifficulty
+      setFlowDifficulty,
+      event
     );
     console.log(flow);
     // setFlow({ ...flow, flowName: flowName });
     setEnableSave(false);
   }
+
+  function updateFlowContext() {
+    setFlow({ ...flow, flowName: flowName });
+  }
+
+  console.log(flow);
+  console.log(flowName);
 
   return pageLoaded && !authState.dataLoading ? (
     <>
@@ -102,7 +109,10 @@ function Builder() {
                   <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
                     <div
                       className="flex w-full items-center justify-start hover:cursor-pointer"
-                      onClick={() => setEditableName(true)}
+                      onClick={() => {
+                        updateFlowContext();
+                        setEditableName(true);
+                      }}
                     >
                       {editableName ? (
                         <>

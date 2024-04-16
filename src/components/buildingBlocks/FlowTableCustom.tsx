@@ -87,8 +87,8 @@ function TableRow({
   }
 
   function handleBuilderClick(flowId: string) {
+    setFlow({ ...flow.flowData, flowId: flowId, flowName: flow.flowName });
     navigate("/builder");
-    setFlow({ ...flow.flowData, flowId: flowId });
   }
 
   function handlePreviewClick(flowId: string) {

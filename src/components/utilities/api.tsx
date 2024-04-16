@@ -111,19 +111,22 @@ export async function login(
 
 // Save flow to DB or update flow
 export async function createOrUpdateFlow(
-  event: React.MouseEvent<HTMLButtonElement>,
   flow: FlowDataType,
   setFlow: Dispatch<SetStateAction<FlowDataType>>,
   authState: AuthStateTypes,
   flowName: string,
   setFlowName: Dispatch<SetStateAction<string>>,
   flowDifficulty: string,
-  setFlowDifficulty: Dispatch<SetStateAction<string>>
+  setFlowDifficulty: Dispatch<SetStateAction<string>>,
+  event?: React.MouseEvent<HTMLButtonElement>
 ) {
-  event.preventDefault();
+  if (event) {
+    event.preventDefault();
+  }
   // Create new one
   let response;
   if (!flow.flowId) {
+    console.log(flow);
     try {
       response = await axios.post("http://localhost:3001/new-flow", {
         userId: authState.userId,
@@ -150,6 +153,7 @@ export async function createOrUpdateFlow(
     }
   }
 
+  console.log(flowName);
   setFlowName(flowName);
   setFlowDifficulty(flowDifficulty);
 }
