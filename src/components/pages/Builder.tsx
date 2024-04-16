@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { createOrUpdateFlow } from "../utilities/api";
 import { fetchFlowDataAPI } from "../utilities/api";
 import Input from "../buildingBlocks/Input";
+import Button from "../buildingBlocks/Button";
 
 function Builder() {
   const navigate = useNavigate();
@@ -153,15 +154,19 @@ function Builder() {
                 </div>
                 <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
                   {" "}
-                  <button onClick={handleSave}>Save</button>
-                  <button
-                    className={`h-full w-[100px] rounded-none border-[1px] ${enablePreview ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
+                  <Button
+                    type="builderSave"
+                    onClick={handleSave}
+                    label="Save"
+                  ></Button>
+                  <Button
+                    type="builderPreview"
                     onClick={
                       enablePreview ? handlePreviewButtonClick : undefined
                     }
-                  >
-                    Preview
-                  </button>
+                    label="Preview"
+                    enabled={enablePreview}
+                  ></Button>
                   <button
                     className={`h-full w-[100px] rounded-none border-[1px] ${enableClear ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`}
                     onClick={enableClear ? handleClearButton : undefined}
