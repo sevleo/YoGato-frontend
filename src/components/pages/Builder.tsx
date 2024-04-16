@@ -18,8 +18,6 @@ function Builder() {
 
   const { flow, setFlow } = useFlow();
 
-  console.log(flow);
-
   const [editableName, setEditableName] = useState<boolean>(false);
 
   type ClickHandler = MouseEventHandler<HTMLButtonElement>;

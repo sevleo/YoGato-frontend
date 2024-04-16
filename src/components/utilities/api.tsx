@@ -131,6 +131,7 @@ export async function createOrUpdateFlow(
         flowDifficulty: flowDifficulty,
         flowData: { ...flow, flowName: flowName },
       });
+      setFlow({ ...flow, flowId: response.data.message._id });
     } catch (error) {
       console.error("Error adding flow:", error);
     }
@@ -143,15 +144,12 @@ export async function createOrUpdateFlow(
         flowDifficulty: flowDifficulty,
         flowData: { ...flow, flowName: flowName },
       });
+      setFlow({ ...flow, flowName: flowName });
     } catch (error) {
       console.error("Error updating flow:", error);
     }
   }
-  setFlow({
-    ...flow,
-    flowName: flowName,
-    flowId: response ? response.data.message._id : null,
-  });
+
   setFlowName(flowName);
   setFlowDifficulty(flowDifficulty);
 }
