@@ -85,6 +85,9 @@ function Builder() {
       flowDifficulty,
       setFlowDifficulty
     );
+    console.log(flow);
+    // setFlow({ ...flow, flowName: flowName });
+    setEnableSave(false);
   }
 
   return pageLoaded && !authState.dataLoading ? (

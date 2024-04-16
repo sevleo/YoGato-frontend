@@ -122,33 +122,38 @@ export async function createOrUpdateFlow(
 ) {
   event.preventDefault();
   // Create new one
+  let response;
   if (!flow.flowId) {
     try {
-      const response = await axios.post("http://localhost:3001/new-flow", {
+      response = await axios.post("http://localhost:3001/new-flow", {
         userId: authState.userId,
         flowName: flowName,
         flowDifficulty: flowDifficulty,
         flowData: { ...flow, flowName: flowName },
       });
-      setFlow({ ...flow, flowId: response.data.message._id });
-      setFlowName(flowName);
-      setFlowDifficulty(flowDifficulty);
     } catch (error) {
       console.error("Error adding flow:", error);
     }
   } else {
     // Update existing one
     try {
-      await axios.put("http://localhost:3001/update-flow", {
+      response = await axios.put("http://localhost:3001/update-flow", {
         flowId: flow.flowId,
         flowName: flowName,
         flowDifficulty: flowDifficulty,
-        flowData: flow,
+        flowData: { ...flow, flowName: flowName },
       });
     } catch (error) {
       console.error("Error updating flow:", error);
     }
   }
+  setFlow({
+    ...flow,
+    flowName: flowName,
+    flowId: response ? response.data.message._id : null,
+  });
+  setFlowName(flowName);
+  setFlowDifficulty(flowDifficulty);
 }
 
 // Fetch a flow
