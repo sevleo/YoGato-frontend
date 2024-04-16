@@ -128,7 +128,7 @@ export async function createOrUpdateFlow(
         userId: authState.userId,
         flowName: flowName,
         flowDifficulty: flowDifficulty,
-        flowData: flow,
+        flowData: { ...flow, flowName: flowName },
       });
       setFlow({ ...flow, flowId: response.data.message._id });
       setFlowName(flowName);
@@ -183,6 +183,7 @@ export async function showAllFlowsAPI(
         userId: authState.userId,
       },
     });
+    console.log(response.data.message);
     setFlows(response.data.message);
   } catch (error) {
     console.error("Error fetching flows:", error);
@@ -204,7 +205,7 @@ export async function createFlow(
       userId: authState.userId,
       flowName: flowName,
       flowDifficulty: flowDifficulty,
-      flowData: flow,
+      flowData: { ...flow, flowName: flowName },
     });
     showAllFlows();
   } catch (error) {
@@ -237,6 +238,7 @@ export async function updateFlowName(
     await axios.put(`http://localhost:3001/update-flow`, {
       flowId: flow._id,
       flowName: editedFlowName,
+      flowData: { ...flow.flowData, flowName: editedFlowName },
     });
     setEditable(false);
     showAllFlows();

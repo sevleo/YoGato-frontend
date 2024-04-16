@@ -819,10 +819,6 @@ video {
   width: 450px;
 }
 
-.w-\[500px\] {
-  width: 500px;
-}
-
 .w-full {
   width: 100%;
 }
@@ -865,6 +861,10 @@ video {
   grid-template-columns: 1fr 1fr;
 }
 
+.grid-cols-\[1fr_1fr_1fr\] {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
 .grid-cols-\[1fr_2fr\] {
   grid-template-columns: 1fr 2fr;
 }
@@ -875,14 +875,6 @@ video {
 
 .grid-cols-canvas {
   grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-}
-
-.grid-cols-\[1fr_1fr_1fr\] {
-  grid-template-columns: 1fr 1fr 1fr;
-}
-
-.grid-cols-\[1fr\] {
-  grid-template-columns: 1fr;
 }
 
 .flex-row {
@@ -978,10 +970,6 @@ video {
 
 .border-\[1px\] {
   border-width: 1px;
-}
-
-.border-\[10px\] {
-  border-width: 10px;
 }
 
 .border-b-\[0\.5px\] {
@@ -1103,11 +1091,6 @@ video {
 
 .bg-transparent {
   background-color: transparent;
-}
-
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .object-cover {
@@ -1271,6 +1254,10 @@ video {
   font-size: 20px;
 }
 
+.text-\[30px\] {
+  font-size: 30px;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1279,14 +1266,6 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[40px\] {
-  font-size: 40px;
-}
-
-.text-\[30px\] {
-  font-size: 30px;
 }
 
 .font-medium {
@@ -1312,6 +1291,11 @@ video {
 .text-\[\#A0A0A0\] {
   --tw-text-opacity: 1;
   color: rgb(160 160 160 / var(--tw-text-opacity));
+}
+
+.text-\[\#dedede\] {
+  --tw-text-opacity: 1;
+  color: rgb(222 222 222 / var(--tw-text-opacity));
 }
 
 .text-\[\#ffffff88\] {
@@ -1341,30 +1325,6 @@ video {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-\[\#b34848\] {
-  --tw-text-opacity: 1;
-  color: rgb(179 72 72 / var(--tw-text-opacity));
-}
-
-.text-red-500 {
-  --tw-text-opacity: 1;
-  color: rgb(239 68 68 / var(--tw-text-opacity));
-}
-
-.text-red-400 {
-  --tw-text-opacity: 1;
-  color: rgb(248 113 113 / var(--tw-text-opacity));
-}
-
-.text-\[\#\#dedede\] {
-  color: ##dedede;
-}
-
-.text-\[\#dedede\] {
-  --tw-text-opacity: 1;
-  color: rgb(222 222 222 / var(--tw-text-opacity));
 }
 
 .opacity-0 {
@@ -1693,14 +1653,6 @@ button:focus-visible {
   transform: rotate(90deg);
   transition: all 0.3s ease-in-out;
 } */
-
-.placeholder\:text-\[\#ededed50\]::-moz-placeholder {
-  color: #ededed50;
-}
-
-.placeholder\:text-\[\#ededed50\]::placeholder {
-  color: #ededed50;
-}
 
 .placeholder\:text-\[\#ededed80\]::-moz-placeholder {
   color: #ededed80;

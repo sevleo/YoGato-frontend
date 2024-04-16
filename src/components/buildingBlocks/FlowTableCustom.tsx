@@ -117,8 +117,12 @@ function TableRow({
         )}
       </TableData>
       <TableData>{flow.difficulty}</TableData>
-      <TableData>{flow.flowData.duration}</TableData>
-      <TableData>{flow.flowData.units.length}</TableData>
+      <TableData>
+        {flow.flowData.duration ? flow.flowData.duration : 0}
+      </TableData>
+      <TableData>
+        {flow.flowData.units ? flow.flowData.units.length : 0}
+      </TableData>
 
       <TableData>
         {" "}
@@ -126,7 +130,7 @@ function TableRow({
           componentType="myFlowsPreview"
           onClick={() => handlePreviewClick(flow._id)}
           label="Preview"
-          enabled={flow.flowData.units.length > 0}
+          enabled={flow.flowData.units ? flow.flowData.units.length > 0 : false}
         ></Button>
       </TableData>
       <TableData>

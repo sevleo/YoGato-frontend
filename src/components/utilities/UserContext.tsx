@@ -118,9 +118,9 @@ export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
     checkLoggedIn(dispatch);
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log(authState);
-  }, [authState]);
+  // useEffect(() => {
+  //   console.log(authState);
+  // }, [authState]);
 
   return (
     <UserContext.Provider value={{ authState, dispatch }}>

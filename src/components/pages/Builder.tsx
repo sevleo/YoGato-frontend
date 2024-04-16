@@ -17,20 +17,25 @@ function Builder() {
   const aspectGroups: AspectGroupType[] = categories;
 
   const { flow, setFlow } = useFlow();
-  const enablePreview = flow && flow.units.length > 0 ? true : false;
-  const enableClear = flow && flow.units.length > 0 ? true : false;
+
+  console.log(flow);
+
   const [editableName, setEditableName] = useState<boolean>(false);
 
   type ClickHandler = MouseEventHandler<HTMLButtonElement>;
 
   const { authState } = useUser();
 
-  console.log(authState);
-  console.log(flow);
-  console.log(flow.flowId);
+  // console.log(authState);
+  // console.log(flow);
+  // console.log(flow.flowId);
 
   const [flowName, setFlowName] = useState("");
   const [flowDifficulty, setFlowDifficulty] = useState("");
+
+  const enablePreview = flow && flow.units.length > 0 ? true : false;
+  const enableClear = flow && flow.units.length > 0 ? true : false;
+  const [enableSave, setEnableSave] = useState(false);
 
   const fetchFlowData = useCallback(() => {
     fetchFlowDataAPI(flow, setFlowName, setFlowDifficulty, setPageLoaded);
@@ -108,7 +113,17 @@ function Builder() {
                             labelValue=""
                             onChange={(
                               e: React.ChangeEvent<HTMLInputElement>
-                            ) => setFlowName(e.target.value)}
+                            ) => {
+                              setFlowName(e.target.value);
+                              console.log(flow);
+                              console.log(e.target.value);
+                              if (flow.flowName !== e.target.value) {
+                                setEnableSave(true);
+                              }
+                              if (flow.flowName === e.target.value) {
+                                setEnableSave(false);
+                              }
+                            }}
                             inputValue={flowName}
                             inputPlaceholder="Some fancy name"
                             inputId="flowName"
@@ -158,6 +173,7 @@ function Builder() {
                     componentType="builderSave"
                     onClick={handleSave}
                     label="Save"
+                    enabled={enableSave}
                   ></Button>
                   <Button
                     componentType="builderPreview"
