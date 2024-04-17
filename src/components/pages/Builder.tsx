@@ -65,6 +65,8 @@ function Builder() {
     };
 
     setFlow(defaultFlow);
+    setFlowName("");
+    setEnableSave(false);
   };
 
   const handlePreviewButtonClick: ClickHandler = () => {
