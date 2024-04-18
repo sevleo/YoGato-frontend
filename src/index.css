@@ -2,16 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  /* overflow-y: scroll; */
-  background-image: radial-gradient(
-    #22201e 0.9500000000000001px,
-    rgb(20, 20, 20) 0.9500000000000001px
-  ) !important;
-  background-size: 19px 19px;
-  background-color: transparent !important;
-}
-
 body {
   /* scrollbar-gutter: stable; */
   width: 100%;
@@ -25,7 +15,7 @@ body {
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #09090b;
+  background-color: rgb(28, 28, 28);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -78,36 +68,10 @@ a:hover {
 
 body {
   margin: 0;
-  /* display: flex; */
-  /* place-items: center; */
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
-
-  /* background-image: url(../src/assets/background_06.png);
-  background-position: left top;
-  background-size: auto;
-  background-repeat: repeat;
-  background-attachment: scroll;
-  background-color: #22201e; */
-  background-image: radial-gradient(
-    #22201e 0.9500000000000001px,
-    rgb(20, 20, 20) 0.9500000000000001px
-  );
-  background-size: 19px 19px;
-}
-
-.canvas {
-  /* opacity: 1;
-  background-image: radial-gradient(#000000 0.45px, #22201e 0.45px);
-  background-size: 9px 9px; */
-}
-
-.setup,
-.preview {
-  /* background-color: #000000;
-  opacity: 1;
-  background-image: radial-gradient(
+  /* background-image: radial-gradient(
     #22201e 0.9500000000000001px,
     rgb(20, 20, 20) 0.9500000000000001px
   );
@@ -155,12 +119,7 @@ button:focus-visible {
 .fancy-wrapper {
   --offset: 1px;
   position: relative;
-  /* background: white; */
   overflow: hidden;
-  /* transition: outline 0.5s ease-in-out; */
-  /* transition-property: outline;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms; */
 }
 
 .fancy-wrapper:hover {
@@ -169,11 +128,9 @@ button:focus-visible {
 
 .fancy-wrapper.active {
   outline: 1px solid #dbcc00;
-  /* background-color: #dbcc00; */
 }
 .fancy-wrapper:active {
   outline: 1px solid #dbcc00;
-  /* background-color: #dbcc00; */
   transform: scale(1.05);
 }
 
@@ -219,12 +176,3 @@ button:focus-visible {
 .unit {
   box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.75);
 }
-
-/* .rotate {
-  transition: all 0.3s ease-in-out;
-}
-
-.rotate:hover {
-  transform: rotate(90deg);
-  transition: all 0.3s ease-in-out;
-} */

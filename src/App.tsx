@@ -85,7 +85,7 @@ function App() {
 
   return (
     <>
-      <div className="main h-full w-full">
+      <div className="main flex h-full w-full flex-col">
         <RouterProvider router={router} />
       </div>
       <LogInPopUp></LogInPopUp>

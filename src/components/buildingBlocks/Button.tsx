@@ -42,6 +42,12 @@ export default function Button(props: ButtonProps) {
     props.componentType === "myFlowsDelete"
   ) {
     styles = `${props.enabled ? "pointer-events-auto" : "pointer-events-none bg-[#8080806b] text-[gray]"}`;
+  } else if (props.componentType === "heroSignIn") {
+    styles =
+      " w-[150px] h-[40px] border-box mt-4 border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none flex justify-center items-center";
+  } else if (props.componentType === "heroDemo") {
+    styles =
+      " w-[150px] h-[40px] border-box mt-4 border-[1px] border-[#3D3D3D] bg-[#2e2e2e] text-white outline-none transition-all duration-200 hover:border-[#505050] hover:bg-[#343434] focus:outline-none flex justify-center items-center";
   }
   return (
     <>
