@@ -45,7 +45,11 @@ export default function Button(props: ButtonProps) {
   }
   return (
     <>
-      <button type={props.type} className={styles} onClick={props.onClick}>
+      <button
+        type={props.type}
+        className={styles}
+        onClick={props.enabled ? props.onClick : undefined}
+      >
         {props.label}
       </button>
     </>

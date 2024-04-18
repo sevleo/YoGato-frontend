@@ -118,6 +118,7 @@ export async function createOrUpdateFlow(
   setFlowName: Dispatch<SetStateAction<string>>,
   flowDifficulty: string,
   setFlowDifficulty: Dispatch<SetStateAction<string>>,
+  setNameErrorMessage: Dispatch<SetStateAction<string>>,
   event?: React.MouseEvent<HTMLButtonElement>
 ) {
   if (event) {
@@ -130,18 +131,22 @@ export async function createOrUpdateFlow(
     try {
       response = await axios.post("http://localhost:3001/new-flow", {
         userId: authState.userId,
-        flowName: flowName,
+        flowName: flowName || "No name",
         flowDifficulty: flowDifficulty,
         flowData: { ...flow, flowName: flowName },
       });
       setFlow({ ...flow, flowId: response.data.message._id });
     } catch (error) {
       console.error("Error adding flow:", error);
+      if (error.response) {
+        setNameErrorMessage(error.response.data.message);
+      }
     }
   } else {
     // Update existing one
     try {
       response = await axios.put("http://localhost:3001/update-flow", {
+        userId: authState.userId,
         flowId: flow.flowId,
         flowName: flowName,
         flowDifficulty: flowDifficulty,
@@ -150,6 +155,9 @@ export async function createOrUpdateFlow(
       setFlow({ ...flow, flowName: flowName });
     } catch (error) {
       console.error("Error updating flow:", error);
+      if (error.response) {
+        setNameErrorMessage(error.response.data.message);
+      }
     }
   }
 

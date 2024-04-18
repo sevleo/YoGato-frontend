@@ -68,12 +68,15 @@ function Builder() {
 
     setFlow(defaultFlow);
     setFlowName("");
+    setEditedFlowName("");
     setEnableSave(false);
   };
 
   const handlePreviewButtonClick: ClickHandler = () => {
     navigate("/preview");
   };
+
+  const [nameErrorMessage, setNameErrorMessage] = useState("");
 
   // Create or update flow in DB
   function handleSave(event: React.MouseEvent<HTMLButtonElement>) {
@@ -85,6 +88,7 @@ function Builder() {
       setFlowName,
       flowDifficulty,
       setFlowDifficulty,
+      setNameErrorMessage,
       event
     );
     console.log(flow);
@@ -109,13 +113,14 @@ function Builder() {
                 <>
                   <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
                     <div
-                      className="flex w-full items-center justify-start hover:cursor-pointer"
+                      className="flex w-full flex-col items-start justify-center hover:cursor-pointer"
                       onClick={() => {
                         console.log(flow);
                         console.log(flowName);
                         // setFlowName(flowName);
                         updateFlowContext();
                         setEditableName(true);
+                        setNameErrorMessage("");
                       }}
                     >
                       {editableName ? (
@@ -163,6 +168,9 @@ function Builder() {
                           </p>
                         </>
                       )}
+                      <p className="h-[20px] w-full text-start text-[red]">
+                        {nameErrorMessage}
+                      </p>
                     </div>
                   </div>
                 </>
