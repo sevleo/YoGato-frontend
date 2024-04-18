@@ -133,10 +133,10 @@ function Builder() {
                               setEditedFlowName(e.target.value);
                               console.log(flow);
                               console.log(e.target.value);
-                              if (flow.flowName !== e.target.value) {
+                              if (editedFlowName !== e.target.value) {
                                 setEnableSave(true);
                               }
-                              if (flow.flowName === e.target.value) {
+                              if (editedFlowName === e.target.value) {
                                 setEnableSave(false);
                               }
                             }}
