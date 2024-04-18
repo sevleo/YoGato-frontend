@@ -3,6 +3,7 @@ import { useUser } from "../utilities/UserContext";
 import { signup, login } from "../utilities/api";
 import Input from "../buildingBlocks/Input";
 import Button from "../buildingBlocks/Button";
+import { useNavigate } from "react-router-dom";
 
 export default function LogInPopUp() {
   const { authState, dispatch } = useUser();
@@ -40,6 +41,11 @@ export function LogInForm({ type }) {
   const [passwordSignup, setPasswordSignup] = useState<string>("");
   const [popupState, setPopupState] = useState<string>("signin");
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const navigate = useNavigate();
+
+  const handleRedirect = () => {
+    navigate("/");
+  };
 
   // Ensure signin is always the default state of the LogInPopUp
   useEffect(() => {
@@ -62,7 +68,14 @@ export function LogInForm({ type }) {
 
   // Handle user login event
   function handleLogin(event: React.FormEvent<HTMLFormElement>) {
-    login(event, usernameLogin, passwordLogin, dispatch, setErrorMessage);
+    login(
+      event,
+      usernameLogin,
+      passwordLogin,
+      dispatch,
+      setErrorMessage,
+      handleRedirect
+    );
   }
 
   return (

@@ -77,7 +77,8 @@ export async function login(
   usernameLogin: string,
   passwordLogin: string,
   dispatch: React.Dispatch<Action>,
-  setErrorMessage: Dispatch<SetStateAction<string | null>>
+  setErrorMessage: Dispatch<SetStateAction<string | null>>,
+  handleRedirect: () => void
 ) {
   event.preventDefault();
   try {
@@ -95,6 +96,7 @@ export async function login(
     dispatch({
       type: "CLOSE_LOGIN_MODAL",
     });
+    handleRedirect();
   } catch (error: any) {
     console.error("Error logging in:", error);
     if (error.response) {

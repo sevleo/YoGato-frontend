@@ -23,11 +23,11 @@ function Home() {
         <div></div>
       ) : (
         <div
-          className={`${authState.showLoginPopup ? "blur-sm" : ""} flex justify-center`}
+          className={`${authState.showLoginPopup ? "blur-sm" : ""} mb-auto mt-auto flex justify-center`}
         >
           <div className="flex max-w-[600px] flex-col items-center justify-center">
             <div
-              className="mt-[50px] flex h-[100px] items-center justify-center"
+              className=" flex h-[100px] items-center justify-center"
               style={{ borderRadius: "50%" }}
             >
               <img
@@ -70,7 +70,7 @@ function Home() {
           </div>
         </div>
       )}
-      <div className="mt-auto">
+      <div className="">
         <p className=" pb-2 pt-2 text-[10px] font-normal text-[#c9c9c9]">
           YoGato @ 2024
         </p>
