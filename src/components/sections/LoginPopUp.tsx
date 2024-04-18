@@ -194,19 +194,27 @@ export function LogInForm({ type }) {
         </div>
       ) : (
         <div className="relative flex w-full flex-col gap-5 pb-10 pl-20 pr-20 pt-10 ">
-          <div className="group absolute right-[10px] top-[10px] flex h-[24px] w-[24px] items-center justify-center rounded-[50%] hover:cursor-pointer ">
-            {" "}
-            <span
-              className="material-symbols-outlined transition-all group-hover:rotate-90"
-              onClick={() => {
-                dispatch({
-                  type: "CLOSE_LOGIN_MODAL",
-                });
-              }}
-            >
-              close
-            </span>
-          </div>
+          {type === "popup" ? (
+            <>
+              {" "}
+              <div className="group absolute right-[10px] top-[10px] flex h-[24px] w-[24px] items-center justify-center rounded-[50%] hover:cursor-pointer ">
+                {" "}
+                <span
+                  className="material-symbols-outlined transition-all group-hover:rotate-90"
+                  onClick={() => {
+                    dispatch({
+                      type: "CLOSE_LOGIN_MODAL",
+                    });
+                  }}
+                >
+                  close
+                </span>
+              </div>
+            </>
+          ) : (
+            <></>
+          )}
+
           <div className=" mb-6">
             <p className="mb-1 text-start text-3xl font-medium">Get Started</p>
             <p className="text-start text-sm font-medium text-[#A0A0A0]">
