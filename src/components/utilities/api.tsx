@@ -133,7 +133,7 @@ export async function createOrUpdateFlow(
         flowData: { ...flow, flowName: flowName },
       });
       setFlow({ ...flow, flowId: response.data.message._id });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error adding flow:", error);
       if (error.response) {
         setNameErrorMessage(error.response.data.message);
@@ -149,7 +149,7 @@ export async function createOrUpdateFlow(
         flowData: { ...flow, flowName: flowName },
       });
       setFlow({ ...flow, flowName: flowName });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Error updating flow:", error);
       if (error.response) {
         setNameErrorMessage(error.response.data.message);

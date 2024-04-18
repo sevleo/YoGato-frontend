@@ -74,9 +74,9 @@ function TableRow({
   const [editable, setEditable] = useState(false);
   const [editedFlowName, setEditedFlowName] = useState(flow.flowName);
 
-  function handleEditClick() {
-    setEditable(true);
-  }
+  // function handleEditClick() {
+  //   setEditable(true);
+  // }
 
   function handleBlur() {
     setEditable(false);
@@ -108,8 +108,8 @@ function TableRow({
           />
         ) : (
           <p
-            onClick={handleEditClick}
-            className=" outline outline-transparent hover:cursor-text hover:outline-1 hover:outline-[black]"
+            // onClick={handleEditClick}
+            className=" outline outline-transparent"
           >
             {editedFlowName ? editedFlowName : flow.flowName}
           </p>
