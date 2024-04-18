@@ -100,7 +100,7 @@ export default function Header({ setLocation }: HeaderProps) {
             >
               <>
                 <Link
-                  className=" flex h-full w-[100px] items-center justify-center font-bold text-[#6ccc93]  hover:bg-[#2e2e2e] hover:text-white"
+                  className=" flex h-full w-[100px] items-center justify-center text-[25px] font-bold text-[#6ccc93]  hover:text-[#6ccc93]"
                   to="/"
                   onClick={handleHomeLink}
                 >

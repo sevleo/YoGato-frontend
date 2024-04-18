@@ -68,7 +68,7 @@ export function LogInForm({ type }) {
   return (
     <>
       {popupState === "signin" ? (
-        <div className="relative flex w-full flex-col gap-5 overflow-auto pb-10 pl-20 pr-20 pt-10">
+        <div className=" relative ml-auto mr-auto flex w-full max-w-[600px] flex-col gap-5 overflow-auto pb-10 pl-20 pr-20 pt-10">
           {type === "popup" ? (
             <>
               <div className="group absolute right-[10px] top-[10px] flex h-[24px] w-[24px] items-center justify-center rounded-[50%] hover:cursor-pointer ">

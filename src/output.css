@@ -1053,6 +1053,10 @@ video {
   gap: 0.75rem;
 }
 
+.self-end {
+  align-self: flex-end;
+}
+
 .self-center {
   align-self: center;
 }
