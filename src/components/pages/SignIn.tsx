@@ -1,0 +1,22 @@
+import { Link } from "react-router-dom";
+
+export default function SignIn() {
+  return (
+    <>
+      <div className="flex h-full w-full">
+        <div className="flex w-4/12 min-w-[400px] flex-1 shrink-0 flex-col border-r-[0.5px] border-[#323232] bg-[#1c1c1c] ">
+          <div className="h-[60px] p-5">
+            <Link
+              className=" flex h-full w-[100px] items-center justify-center text-[25px] font-bold text-[#6ccc93]  hover:text-[#6ccc93]"
+              to="/"
+            >
+              YoGato
+            </Link>
+            <div>test</div>
+          </div>
+        </div>
+        <div className="w-8/12 bg-[#161616]"></div>
+      </div>
+    </>
+  );
+}

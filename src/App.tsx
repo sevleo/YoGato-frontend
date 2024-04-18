@@ -9,10 +9,10 @@ import MyFlows from "./components/pages/MyFlows";
 import { useUser } from "../src/components/utilities/UserContext";
 import Header from "./components/sections/Header";
 import Preview from "./components/sections/Preview";
+import SignIn from "./components/pages/SignIn";
 
 function App() {
   const { dispatch } = useUser();
-  const [, setIsHamburgerMenu] = useState<boolean>(true);
   const [location, setLocation] = useState<string>("");
 
   useEffect(() => {
@@ -29,14 +29,7 @@ function App() {
 
   document.addEventListener("keydown", handleKeyPress);
 
-  const header = (
-    <Header
-      isHamburgerMenu={false}
-      setIsHamburgerMenu={setIsHamburgerMenu}
-      location={location}
-      setLocation={setLocation}
-    />
-  );
+  const header = <Header location={location} setLocation={setLocation} />;
 
   const router = createBrowserRouter([
     {
@@ -45,12 +38,21 @@ function App() {
         <>
           {header}
           <Home></Home>
+          <LogInPopUp></LogInPopUp>
         </>
       ),
       errorElement: (
         <>
           {header}
           <ErrorPage></ErrorPage>
+        </>
+      ),
+    },
+    {
+      path: "/sign-in",
+      element: (
+        <>
+          <SignIn></SignIn>
         </>
       ),
     },
@@ -88,7 +90,6 @@ function App() {
       <div className="main flex h-full w-full flex-col">
         <RouterProvider router={router} />
       </div>
-      <LogInPopUp></LogInPopUp>
     </>
   );
 }

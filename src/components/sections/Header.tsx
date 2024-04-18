@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 // import { Divide as Hamburger } from "hamburger-react";
 import "./Header.css";
 import { Dispatch, SetStateAction } from "react";
@@ -9,23 +9,14 @@ import Menu from "@mui/material/Menu";
 import { createTheme } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import { logout } from "../utilities/api";
-import { AuthStateTypes } from "../utilities/UserContext";
-import { Action } from "../utilities/UserContext";
 
 interface HeaderProps {
-  isHamburgerMenu: boolean;
-  setIsHamburgerMenu: Dispatch<SetStateAction<boolean>>;
   location: string;
   setLocation: Dispatch<SetStateAction<string>>;
 }
 
-export default function Header({
-  isHamburgerMenu,
-  setIsHamburgerMenu,
-  setLocation,
-}: HeaderProps) {
+export default function Header({ setLocation }: HeaderProps) {
   const { authState, dispatch } = useUser();
-  const [isOpen, setOpen] = useState(false);
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
 
@@ -72,26 +63,15 @@ export default function Header({
     setAnchorEl(null);
   };
 
-  function enableHamburger() {
-    setIsHamburgerMenu(true);
-  }
-
-  function disableHamburger() {
-    setIsHamburgerMenu(false);
-  }
-
   function handleHomeLink() {
-    enableHamburger();
     setLocation("home");
   }
 
   function handleFlowBuilderLink() {
-    disableHamburger();
     setLocation("flow-builder");
   }
 
   function handleMyFlowsLink() {
-    disableHamburger();
     setLocation("my-flows");
   }
 
@@ -109,7 +89,7 @@ export default function Header({
   return (
     <>
       <header
-        className={` bg-[rgb(28, 28, 28)] relative z-50 flex h-[60px] w-full items-center justify-center border-b-[0.5px] border-[#323232]   text-white `}
+        className={`relative z-50 flex h-[60px] w-full items-center justify-center border-b-[0.5px] border-[#323232]   text-white `}
       >
         <div className="flex w-full max-w-screen-2xl items-center justify-center">
           <div
@@ -120,7 +100,7 @@ export default function Header({
             >
               <>
                 <Link
-                  className="flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
+                  className=" flex h-full w-[100px] items-center justify-center font-bold text-[#6ccc93]  hover:bg-[#2e2e2e] hover:text-white"
                   to="/"
                   onClick={handleHomeLink}
                 >
