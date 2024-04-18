@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { LogInForm } from "../sections/LoginPopUp";
 
 export default function SignIn() {
   return (
@@ -12,7 +13,15 @@ export default function SignIn() {
             >
               YoGato
             </Link>
-            <div>test</div>
+          </div>
+          <div className="mb-auto mt-auto">
+            <LogInForm type="page"></LogInForm>
+          </div>
+          <div className="mt-auto">
+            {" "}
+            <p className=" pb-2 pt-2 text-[10px] font-normal text-[#c9c9c9]">
+              YoGato @ 2024
+            </p>
           </div>
         </div>
         <div className="w-8/12 bg-[#161616]"></div>
