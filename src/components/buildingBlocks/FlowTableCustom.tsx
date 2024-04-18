@@ -31,7 +31,6 @@ export default function FlowTableCustom({
         <thead>
           <tr>
             <th className=" text-start">Flow Name</th>
-            <th className=" text-start">Difficulty</th>
             <th className=" text-start">Length</th>
             <th className=" text-start">Poses</th>
             <th></th>
@@ -116,7 +115,6 @@ function TableRow({
           </p>
         )}
       </TableData>
-      <TableData>{flow.difficulty}</TableData>
       <TableData>
         {flow.flowData.duration ? flow.flowData.duration : 0}
       </TableData>

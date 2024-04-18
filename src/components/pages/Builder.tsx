@@ -29,7 +29,6 @@ function Builder() {
   // console.log(flow.flowId);
 
   const [flowName, setFlowName] = useState("");
-  const [flowDifficulty, setFlowDifficulty] = useState("");
 
   const [editedFlowName, setEditedFlowName] = useState("");
 
@@ -38,7 +37,7 @@ function Builder() {
   const [enableSave, setEnableSave] = useState(false);
 
   const fetchFlowData = useCallback(() => {
-    fetchFlowDataAPI(flow, setFlowName, setFlowDifficulty, setPageLoaded);
+    fetchFlowDataAPI(flow, setFlowName, setPageLoaded);
   }, [flow]);
 
   const [pageLoaded, setPageLoaded] = useState(false);
@@ -70,6 +69,7 @@ function Builder() {
     setFlowName("");
     setEditedFlowName("");
     setEnableSave(false);
+    setNameErrorMessage("");
   };
 
   const handlePreviewButtonClick: ClickHandler = () => {
@@ -86,8 +86,6 @@ function Builder() {
       authState,
       flowName,
       setFlowName,
-      flowDifficulty,
-      setFlowDifficulty,
       setNameErrorMessage,
       event
     );

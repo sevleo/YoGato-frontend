@@ -116,8 +116,6 @@ export async function createOrUpdateFlow(
   authState: AuthStateTypes,
   flowName: string,
   setFlowName: Dispatch<SetStateAction<string>>,
-  flowDifficulty: string,
-  setFlowDifficulty: Dispatch<SetStateAction<string>>,
   setNameErrorMessage: Dispatch<SetStateAction<string>>,
   event?: React.MouseEvent<HTMLButtonElement>
 ) {
@@ -132,7 +130,6 @@ export async function createOrUpdateFlow(
       response = await axios.post("http://localhost:3001/new-flow", {
         userId: authState.userId,
         flowName: flowName || "No name",
-        flowDifficulty: flowDifficulty,
         flowData: { ...flow, flowName: flowName },
       });
       setFlow({ ...flow, flowId: response.data.message._id });
@@ -149,7 +146,6 @@ export async function createOrUpdateFlow(
         userId: authState.userId,
         flowId: flow.flowId,
         flowName: flowName,
-        flowDifficulty: flowDifficulty,
         flowData: { ...flow, flowName: flowName },
       });
       setFlow({ ...flow, flowName: flowName });
@@ -163,14 +159,12 @@ export async function createOrUpdateFlow(
 
   console.log(flowName);
   setFlowName(flowName);
-  setFlowDifficulty(flowDifficulty);
 }
 
 // Fetch a flow
 export async function fetchFlowDataAPI(
   flow: FlowDataType,
   setFlowName: Dispatch<SetStateAction<string>>,
-  setFlowDifficulty: Dispatch<SetStateAction<string>>,
   setPageLoaded: Dispatch<SetStateAction<boolean>>
 ) {
   try {
@@ -180,7 +174,6 @@ export async function fetchFlowDataAPI(
       },
     });
     setFlowName(response.data.message.flowName);
-    setFlowDifficulty(response.data.message.difficulty);
   } catch (error) {
     console.error("Error fetching a flow:", error);
   }
@@ -210,7 +203,6 @@ export async function createFlow(
   event: React.FormEvent<HTMLFormElement>,
   authState: AuthStateTypes,
   flowName: string,
-  flowDifficulty: string,
   flow: FlowDataType,
   showAllFlows: () => void
 ) {
@@ -219,7 +211,6 @@ export async function createFlow(
     await axios.post("http://localhost:3001/new-flow", {
       userId: authState.userId,
       flowName: flowName,
-      flowDifficulty: flowDifficulty,
       flowData: { ...flow, flowName: flowName },
     });
     showAllFlows();
