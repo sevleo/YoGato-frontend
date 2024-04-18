@@ -31,6 +31,8 @@ function Builder() {
   const [flowName, setFlowName] = useState("");
   const [flowDifficulty, setFlowDifficulty] = useState("");
 
+  const [editedFlowName, setEditedFlowName] = useState("");
+
   const enablePreview = flow && flow.units.length > 0 ? true : false;
   const enableClear = flow && flow.units.length > 0 ? true : false;
   const [enableSave, setEnableSave] = useState(false);
@@ -109,6 +111,9 @@ function Builder() {
                     <div
                       className="flex w-full items-center justify-start hover:cursor-pointer"
                       onClick={() => {
+                        console.log(flow);
+                        console.log(flowName);
+                        // setFlowName(flowName);
                         updateFlowContext();
                         setEditableName(true);
                       }}
@@ -125,6 +130,7 @@ function Builder() {
                               e: React.ChangeEvent<HTMLInputElement>
                             ) => {
                               setFlowName(e.target.value);
+                              setEditedFlowName(e.target.value);
                               console.log(flow);
                               console.log(e.target.value);
                               if (flow.flowName !== e.target.value) {
@@ -134,7 +140,9 @@ function Builder() {
                                 setEnableSave(false);
                               }
                             }}
-                            inputValue={flowName}
+                            inputValue={
+                              editedFlowName ? editedFlowName : flowName
+                            }
                             inputPlaceholder="Some fancy name"
                             inputId="flowName"
                             inputName="flowName"
@@ -147,7 +155,11 @@ function Builder() {
                         <>
                           {" "}
                           <p className="text-[30px] text-[#dedede]">
-                            {flowName ? flowName : "No name"}
+                            {editedFlowName
+                              ? editedFlowName
+                              : flowName
+                                ? flowName
+                                : "No name"}
                           </p>
                         </>
                       )}

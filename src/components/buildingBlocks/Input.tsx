@@ -247,6 +247,13 @@ function FlowBuilderTextInput(props: FlowBuilderTextInputProps) {
     }
   };
 
+  const handleBlur = () => {
+    // props.onChange({
+    //   target: { value: props.inputValue },
+    // } as React.ChangeEvent<HTMLInputElement>);
+    props.setEditableName(false);
+  };
+
   return (
     <div className="flex w-full flex-col items-start justify-center gap-2">
       <label
@@ -268,7 +275,7 @@ function FlowBuilderTextInput(props: FlowBuilderTextInputProps) {
         minLength={props.minLength}
         maxLength={props.maxLength}
         autoFocus
-        onBlur={() => props.setEditableName(false)}
+        onBlur={handleBlur}
       />
     </div>
   );
