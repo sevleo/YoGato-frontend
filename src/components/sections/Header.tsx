@@ -121,50 +121,59 @@ export default function Header({ setLocation }: HeaderProps) {
                   <div></div>
                 ) : !authState.isLoggedIn ? (
                   <>
-                    <div
-                      onClick={handleLoginButtonClick}
-                      className=" ml-auto flex h-full w-[100px] items-center justify-center font-medium text-white hover:cursor-pointer hover:bg-[#2e2e2e] hover:text-white"
-                    >
-                      Sign In
-                    </div>
                     <Link
-                      className=" flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
+                      className="ml-auto flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
                       to="/builder"
                       onClick={handleFlowBuilderLink}
                     >
                       Demo
                     </Link>
+                    <div
+                      onClick={handleLoginButtonClick}
+                      className="flex h-full w-[100px] items-center justify-center font-medium text-white hover:cursor-pointer hover:bg-[#2e2e2e] hover:text-white"
+                    >
+                      Sign In
+                    </div>
                   </>
                 ) : (
-                  <div className="ml-auto flex h-full w-[100px] items-center justify-center font-medium text-white ">
-                    <div
-                      className="flex h-full w-[100px] items-center justify-center font-medium text-white  hover:cursor-pointer hover:bg-[#2e2e2e]"
-                      onClick={handleMenu}
+                  <>
+                    <Link
+                      className=" ml-auto flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
+                      to="/builder"
+                      onClick={handleFlowBuilderLink}
                     >
-                      {authState.user}
-                    </div>{" "}
-                    <ThemeProvider theme={menuTheme}>
-                      <Menu
-                        id="menu-appbar"
-                        anchorEl={anchorEl}
-                        anchorOrigin={{
-                          vertical: "bottom",
-                          horizontal: "right",
-                        }}
-                        keepMounted
-                        transformOrigin={{
-                          vertical: "top",
-                          horizontal: "right",
-                        }}
-                        open={Boolean(anchorEl)}
-                        onClose={handleClose}
+                      Dashboard
+                    </Link>
+                    <div className="flex h-full w-[100px] items-center justify-center font-medium text-white ">
+                      <div
+                        className="flex h-full w-[100px] items-center justify-center font-medium text-white  hover:cursor-pointer hover:bg-[#2e2e2e]"
+                        onClick={handleMenu}
                       >
-                        <MenuItem onClick={handleClose}>Theme</MenuItem>
-                        <MenuItem onClick={handleClose}>Settings</MenuItem>
-                        <MenuItem onClick={handleLogout}>Log Out</MenuItem>
-                      </Menu>
-                    </ThemeProvider>
-                  </div>
+                        {authState.user}
+                      </div>{" "}
+                      <ThemeProvider theme={menuTheme}>
+                        <Menu
+                          id="menu-appbar"
+                          anchorEl={anchorEl}
+                          anchorOrigin={{
+                            vertical: "bottom",
+                            horizontal: "right",
+                          }}
+                          keepMounted
+                          transformOrigin={{
+                            vertical: "top",
+                            horizontal: "right",
+                          }}
+                          open={Boolean(anchorEl)}
+                          onClose={handleClose}
+                        >
+                          <MenuItem onClick={handleClose}>Theme</MenuItem>
+                          <MenuItem onClick={handleClose}>Settings</MenuItem>
+                          <MenuItem onClick={handleLogout}>Log Out</MenuItem>
+                        </Menu>
+                      </ThemeProvider>
+                    </div>
+                  </>
                 )}
               </>
             </div>

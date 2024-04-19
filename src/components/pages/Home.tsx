@@ -17,6 +17,10 @@ function Home() {
     navigate("/builder");
   }
 
+  function handleLetsGoClick() {
+    navigate("/builder");
+  }
+
   return (
     <>
       {authState.dataLoading ? (
@@ -54,18 +58,33 @@ function Home() {
               craft and execute your practice with ease.
             </p>
             <div className="flex w-full flex-row items-center justify-center gap-2">
-              <Button
-                componentType="heroSignIn"
-                label="Sign In"
-                onClick={handleSignInClick}
-                enabled={true}
-              ></Button>
-              <Button
-                componentType="heroDemo"
-                label="Guest Demo"
-                onClick={handleDemoClick}
-                enabled={true}
-              ></Button>
+              {authState.isLoggedIn ? (
+                <>
+                  {" "}
+                  <Button
+                    componentType="heroLetsGo"
+                    label="Let's Go"
+                    onClick={handleLetsGoClick}
+                    enabled={true}
+                  ></Button>
+                </>
+              ) : (
+                <>
+                  {" "}
+                  <Button
+                    componentType="heroSignIn"
+                    label="Sign In"
+                    onClick={handleSignInClick}
+                    enabled={true}
+                  ></Button>
+                  <Button
+                    componentType="heroDemo"
+                    label="Guest Demo"
+                    onClick={handleDemoClick}
+                    enabled={true}
+                  ></Button>
+                </>
+              )}
             </div>
           </div>
         </div>
