@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../utilities/api";
 import { useUser } from "../utilities/UserContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const { authState, dispatch } = useUser();
+  const [pageState, setPageState] = useState("all-flows");
 
   function handleHomeLink() {
     navigate("/");
@@ -17,10 +18,10 @@ export default function Dashboard() {
   }
 
   useEffect(() => {
-    if (!authState.isLoggedIn) {
+    if (!authState.dataLoading && !authState.isLoggedIn) {
       navigate("/sign-in");
     }
-  }, [authState.isLoggedIn, navigate]);
+  }, [authState, navigate]);
 
   return (
     <div className="flex h-full">
@@ -46,22 +47,22 @@ export default function Dashboard() {
               <ul className="flex w-full flex-col space-y-2">
                 <div className="flex items-center justify-start">
                   {" "}
-                  <Link className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:text-[white]">
+                  <p className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                     All flows
-                  </Link>
+                  </p>
                 </div>
                 <div className="flex items-center justify-start">
                   {" "}
-                  <Link className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:text-[white]">
+                  <p className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                     Designing
-                  </Link>
+                  </p>
                 </div>
 
                 <div className="flex w-full items-center justify-start">
                   {" "}
-                  <Link className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:text-[white]">
+                  <p className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                     Moving
-                  </Link>
+                  </p>
                 </div>
               </ul>
             </div>
@@ -75,15 +76,15 @@ export default function Dashboard() {
               <ul className="space-y-2">
                 <div className="flex items-center justify-start">
                   {" "}
-                  <Link className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:text-[white]">
+                  <p className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                     Preferences
-                  </Link>
+                  </p>
                 </div>
                 <div className="flex items-center justify-start">
                   {" "}
-                  <Link className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:text-[white]">
+                  <p className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                     Theme
-                  </Link>
+                  </p>
                 </div>
               </ul>
             </div>
@@ -97,15 +98,15 @@ export default function Dashboard() {
               <ul className="space-y-2">
                 <div className="flex items-center justify-start">
                   {" "}
-                  <Link className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:text-[white]">
+                  <p className=" w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                     Catalog of poses
-                  </Link>
+                  </p>
                 </div>
                 <div className="flex items-center justify-start">
                   {" "}
-                  <Link className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:text-[white]">
+                  <p className=" w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                     Blogs
-                  </Link>
+                  </p>
                 </div>
               </ul>
             </div>
@@ -127,7 +128,25 @@ export default function Dashboard() {
         <div className="flex h-12 max-h-12 items-center justify-start border-b-[1px] border-[#323232] pl-4">
           <p>breadcrumbs</p>
         </div>
-        canvas
+        <div>
+          {pageState === "all-flows" ? (
+            <>
+              <p>all flows</p>
+            </>
+          ) : pageState === "designing" ? (
+            <>
+              <p>designing</p>
+            </>
+          ) : pageState === "moving" ? (
+            <>
+              <p>moving</p>
+            </>
+          ) : (
+            <>
+              <p>no such page</p>
+            </>
+          )}
+        </div>
       </div>
     </div>
   );

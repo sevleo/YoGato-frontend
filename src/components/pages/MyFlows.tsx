@@ -21,10 +21,10 @@ function MyFlows() {
   const [flows, setFlows] = useState<FlowType[]>([]);
 
   useEffect(() => {
-    if (!authState.isLoggedIn) {
+    if (!authState.dataLoading && !authState.isLoggedIn) {
       navigate("/builder");
     }
-  }, [authState.isLoggedIn, navigate]);
+  }, [authState, navigate]);
 
   // Display all flows
   const showAllFlows = useCallback(() => {
