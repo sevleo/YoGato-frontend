@@ -24,11 +24,11 @@ function Builder() {
 
   const { authState } = useUser();
 
-  useEffect(() => {
-    if (!authState.isLoggedIn) {
-      navigate("/sign-in");
-    }
-  }, [authState.isLoggedIn, navigate]);
+  // useEffect(() => {
+  //   if (!authState.isLoggedIn) {
+  //     navigate("/sign-in");
+  //   }
+  // }, [authState.isLoggedIn, navigate]);
 
   // console.log(authState);
   // console.log(flow);
