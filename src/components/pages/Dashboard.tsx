@@ -17,6 +17,30 @@ export default function Dashboard() {
     logout(dispatch);
   }
 
+  function handleDesigningClick() {
+    setPageState("designing");
+  }
+
+  function handleFlowsClick() {
+    setPageState("all-flows");
+  }
+
+  function handleMovingClick() {
+    setPageState("moving");
+  }
+
+  function handlePreferencesClick() {
+    setPageState("preferences");
+  }
+
+  function handleThemeClick() {
+    setPageState("theme");
+  }
+
+  function handleCatalogClick() {
+    setPageState("catalog");
+  }
+
   useEffect(() => {
     if (!authState.dataLoading && !authState.isLoggedIn) {
       navigate("/sign-in");
@@ -47,20 +71,29 @@ export default function Dashboard() {
               <ul className="flex w-full flex-col space-y-2">
                 <div className="flex items-center justify-start">
                   {" "}
-                  <p className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                  <p
+                    onClick={handleFlowsClick}
+                    className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                  >
                     All flows
                   </p>
                 </div>
                 <div className="flex items-center justify-start">
                   {" "}
-                  <p className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                  <p
+                    onClick={handleDesigningClick}
+                    className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                  >
                     Designing
                   </p>
                 </div>
 
                 <div className="flex w-full items-center justify-start">
                   {" "}
-                  <p className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                  <p
+                    onClick={handleMovingClick}
+                    className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                  >
                     Moving
                   </p>
                 </div>
@@ -76,13 +109,19 @@ export default function Dashboard() {
               <ul className="space-y-2">
                 <div className="flex items-center justify-start">
                   {" "}
-                  <p className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                  <p
+                    onClick={handlePreferencesClick}
+                    className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                  >
                     Preferences
                   </p>
                 </div>
                 <div className="flex items-center justify-start">
                   {" "}
-                  <p className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                  <p
+                    onClick={handleThemeClick}
+                    className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                  >
                     Theme
                   </p>
                 </div>
@@ -98,7 +137,10 @@ export default function Dashboard() {
               <ul className="space-y-2">
                 <div className="flex items-center justify-start">
                   {" "}
-                  <p className=" w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                  <p
+                    onClick={handleCatalogClick}
+                    className=" w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                  >
                     Catalog of poses
                   </p>
                 </div>
@@ -140,6 +182,18 @@ export default function Dashboard() {
           ) : pageState === "moving" ? (
             <>
               <p>moving</p>
+            </>
+          ) : pageState === "preferences" ? (
+            <>
+              <p>preferences</p>
+            </>
+          ) : pageState === "theme" ? (
+            <>
+              <p>theme</p>
+            </>
+          ) : pageState === "catalog" ? (
+            <>
+              <p>catalog</p>
             </>
           ) : (
             <>
