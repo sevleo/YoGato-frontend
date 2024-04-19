@@ -5,6 +5,7 @@ import { showAllFlowsAPI } from "../utilities/api";
 import { createFlow } from "../utilities/api";
 import { FlowDataType } from "../sections/Flow";
 import Button from "../buildingBlocks/Button";
+import { useNavigate } from "react-router-dom";
 
 export interface FlowType {
   creationDate: string;
@@ -16,7 +17,14 @@ export interface FlowType {
 
 function MyFlows() {
   const { authState } = useUser();
+  const navigate = useNavigate();
   const [flows, setFlows] = useState<FlowType[]>([]);
+
+  useEffect(() => {
+    if (!authState.isLoggedIn) {
+      navigate("/builder");
+    }
+  }, [authState.isLoggedIn, navigate]);
 
   // Display all flows
   const showAllFlows = useCallback(() => {

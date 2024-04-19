@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
 import { LogInForm } from "../sections/LoginPopUp";
+import { useUser } from "../utilities/UserContext";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function SignIn() {
+  const { authState } = useUser();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (authState.isLoggedIn) {
+      navigate("/builder");
+    }
+  }, [authState.isLoggedIn, navigate]);
+
   return (
     <>
       <div className="flex h-full w-full">
