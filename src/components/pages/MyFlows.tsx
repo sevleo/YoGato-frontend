@@ -1,11 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import { useUser } from "../utilities/UserContext";
 import FlowTableCustom from "../buildingBlocks/FlowTableCustom";
-import { showAllFlowsAPI } from "../utilities/api";
 import { createFlow } from "../utilities/api";
 import { FlowDataType } from "../sections/Flow";
 import Button from "../buildingBlocks/Button";
-import { useNavigate } from "react-router-dom";
 
 export interface FlowType {
   creationDate: string;
@@ -15,28 +13,13 @@ export interface FlowType {
   _id: string;
 }
 
-function MyFlows() {
+interface MyFlowsProps {
+  showAllFlows: () => void;
+  flows: FlowType[];
+}
+
+function MyFlows({ showAllFlows, flows }: MyFlowsProps) {
   const { authState } = useUser();
-  const navigate = useNavigate();
-  const [flows, setFlows] = useState<FlowType[]>([]);
-
-  useEffect(() => {
-    if (!authState.dataLoading && !authState.isLoggedIn) {
-      navigate("/builder");
-    }
-  }, [authState, navigate]);
-
-  // Display all flows
-  const showAllFlows = useCallback(() => {
-    // API call to fetch flows
-    showAllFlowsAPI(authState, setFlows);
-  }, [authState]);
-
-  useEffect(() => {
-    if (!authState.dataLoading && authState.isLoggedIn) {
-      showAllFlows();
-    }
-  }, [authState.dataLoading, authState.isLoggedIn, showAllFlows]);
 
   // Save flow to DB
   function handleNewFlowClick(event: React.FormEvent<HTMLFormElement>) {

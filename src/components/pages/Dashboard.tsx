@@ -2,12 +2,28 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../utilities/api";
 import { useUser } from "../utilities/UserContext";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import MyFlows from "./MyFlows";
+import { FlowType } from "./MyFlows";
+import { showAllFlowsAPI } from "../utilities/api";
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const { authState, dispatch } = useUser();
   const [pageState, setPageState] = useState("all-flows");
+  const [flows, setFlows] = useState<FlowType[]>([]);
+
+  // Display all flows
+  const showAllFlows = useCallback(() => {
+    // API call to fetch flows
+    showAllFlowsAPI(authState, setFlows);
+  }, [authState]);
+
+  useEffect(() => {
+    if (!authState.dataLoading && authState.isLoggedIn) {
+      showAllFlows();
+    }
+  }, [authState.dataLoading, authState.isLoggedIn, showAllFlows]);
 
   function handleHomeLink() {
     navigate("/");
@@ -168,12 +184,12 @@ export default function Dashboard() {
       </div>
       <div className="flex-1" id="canvas">
         <div className="flex h-12 max-h-12 items-center justify-start border-b-[1px] border-[#323232] pl-4">
-          <p>breadcrumbs</p>
+          <p>breadcrumbs placeholder</p>
         </div>
         <div>
           {pageState === "all-flows" ? (
             <>
-              <p>all flows</p>
+              <MyFlows showAllFlows={showAllFlows} flows={flows} />
             </>
           ) : pageState === "designing" ? (
             <>
