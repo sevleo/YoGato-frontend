@@ -10,6 +10,7 @@ import { useUser } from "../src/components/utilities/UserContext";
 import Header from "./components/sections/Header";
 import Preview from "./components/sections/Preview";
 import SignIn from "./components/pages/SignIn";
+import Dashboard from "./components/pages/Dashboard";
 
 function App() {
   const { dispatch } = useUser();
@@ -53,6 +54,14 @@ function App() {
       element: (
         <>
           <SignIn></SignIn>
+        </>
+      ),
+    },
+    {
+      path: "/dashboard",
+      element: (
+        <>
+          <Dashboard></Dashboard>
         </>
       ),
     },
