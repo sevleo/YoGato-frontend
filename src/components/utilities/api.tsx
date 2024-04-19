@@ -31,7 +31,7 @@ export async function checkLoggedIn(dispatch: React.Dispatch<Action>) {
 // Handle user logout event
 export async function logout(
   dispatch: React.Dispatch<Action>,
-  setAnchorEl: React.Dispatch<React.SetStateAction<null | HTMLElement>>
+  setAnchorEl?: React.Dispatch<React.SetStateAction<null | HTMLElement>>
 ) {
   try {
     await axios.get("http://localhost:3001/log-out", {
@@ -40,7 +40,9 @@ export async function logout(
     dispatch({
       type: "LOGOUT",
     });
-    setAnchorEl(null);
+    if (setAnchorEl) {
+      setAnchorEl(null);
+    }
   } catch (error) {
     console.error("Error logging out:", error);
   }

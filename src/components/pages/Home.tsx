@@ -18,7 +18,7 @@ function Home() {
   }
 
   function handleLetsGoClick() {
-    navigate("/builder");
+    navigate("/dashboard");
   }
 
   return (
