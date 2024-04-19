@@ -28,7 +28,7 @@ export default function Header({ setLocation }: HeaderProps) {
           root: {
             backgroundColor: "#1c1c1c",
             borderRadius: "4px",
-            border: "0.5px solid #2e2e2e",
+            border: "1x solid #2e2e2e",
             color: "white",
             boxShadow: "none",
           },
@@ -89,7 +89,7 @@ export default function Header({ setLocation }: HeaderProps) {
   return (
     <>
       <header
-        className={`relative z-50 flex h-[60px] w-full items-center justify-center border-b-[0.5px] border-[#323232]   text-white `}
+        className={`relative z-50 flex h-[60px] w-full items-center justify-center border-b-[1px] border-[#323232]   text-white `}
       >
         <div className="flex w-full max-w-screen-2xl items-center justify-center">
           <div

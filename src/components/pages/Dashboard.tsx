@@ -65,7 +65,7 @@ export default function Dashboard() {
 
   return (
     <div className="flex h-full">
-      <div className="w-64 border-r-[0.5px] border-[#323232]" id="sidebar">
+      <div className="w-64 border-r-[1px] border-[#323232]" id="sidebar">
         <div className=" flex h-12 max-h-12 items-center justify-start border-b-[1px] border-[#323232] pl-4">
           <Link
             className=" flex h-full w-[100px] items-center justify-center text-[25px] font-bold text-[#6ccc93]  hover:text-[#6ccc93]"
