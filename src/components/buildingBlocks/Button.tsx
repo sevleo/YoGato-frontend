@@ -35,7 +35,7 @@ export default function Button(props: ButtonProps) {
     props.componentType === "loginPopupSignun"
   ) {
     styles =
-      "border-box mt-4 w-full border-[1px] border-[#6ccc93] bg-[#3b7050] text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none";
+      "border-box mt-4 w-full border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none";
   } else if (
     props.componentType === "myFlowsPreview" ||
     props.componentType === "myFlowsEdit" ||
@@ -47,13 +47,13 @@ export default function Button(props: ButtonProps) {
     props.componentType === "heroLetsGo"
   ) {
     styles =
-      " w-[150px] h-[40px] border-box mt-4 border-[1px] border-[#6ccc93] bg-[#3b7050] text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none flex justify-center items-center";
+      " w-[150px] h-[40px] border-box mt-4 border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none flex justify-center items-center";
   } else if (props.componentType === "heroDemo") {
     styles =
       " w-[150px] h-[40px] border-box mt-4 border-[1px] border-[#3D3D3D] bg-[#2e2e2e] text-white outline-none transition-all duration-200 hover:border-[#505050] hover:bg-[#343434] focus:outline-none flex justify-center items-center";
   } else if (props.componentType === "myFlowsCreate") {
     styles =
-      " w-[100px] text-sm h-[36px] border-box border-[1px] border-[#6ccc93] bg-[#3b7050] text-white outline-none transition-all p-0 duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none flex justify-center items-center";
+      " w-[100px] text-sm h-[36px] border-box border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none transition-all p-0 duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none flex justify-center items-center";
   }
   return (
     <>

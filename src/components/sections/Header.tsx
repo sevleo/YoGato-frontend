@@ -106,17 +106,6 @@ export default function Header({ setLocation }: HeaderProps) {
                 >
                   YoGato
                 </Link>
-
-                {authState.isLoggedIn ? (
-                  <Link
-                    className="flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
-                    to="/my-flows"
-                    onClick={handleMyFlowsLink}
-                  >
-                    My Flows
-                  </Link>
-                ) : null}
-
                 {authState.dataLoading ? (
                   <div></div>
                 ) : !authState.isLoggedIn ? (

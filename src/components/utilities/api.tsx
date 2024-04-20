@@ -208,7 +208,9 @@ export async function createFlow(
   authState: AuthStateTypes,
   flowName: string,
   flow: FlowDataType,
-  showAllFlows: () => void
+  showAllFlows: () => void,
+  setErrorMessage: Dispatch<SetStateAction<string | null>>,
+  setFlowName: Dispatch<SetStateAction<string>>
 ) {
   event.preventDefault();
   try {
@@ -218,8 +220,11 @@ export async function createFlow(
       flowData: { ...flow, flowName: flowName },
     });
     showAllFlows();
+    setFlowName("");
+    setErrorMessage(null);
   } catch (error) {
     console.error("Error adding flow:", error);
+    setErrorMessage(error.response.data.message);
   }
 }
 
