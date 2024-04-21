@@ -89,7 +89,7 @@ export default function Header({ setLocation }: HeaderProps) {
   return (
     <>
       <header
-        className={`relative z-50 flex h-[60px] w-full items-center justify-center border-b-[1px] border-[#323232]   text-white `}
+        className={`relative z-50 flex h-[60px] w-full items-center justify-center border-b-[1px] border-[#323232] text-white `}
       >
         <div className="flex w-full max-w-screen-2xl items-center justify-center">
           <div
@@ -100,7 +100,7 @@ export default function Header({ setLocation }: HeaderProps) {
             >
               <>
                 <Link
-                  className=" flex h-full w-[100px] items-center justify-center text-[25px] font-bold text-[#6ccc93]  hover:text-[#6ccc93]"
+                  className=" flex h-full w-[100px] items-center justify-center text-[25px] font-bold text-[#6ccc93] hover:text-[#6ccc93]"
                   to="/"
                   onClick={handleHomeLink}
                 >

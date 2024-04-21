@@ -27,16 +27,24 @@ export default function FlowTableCustom({
 
   return (
     <>
-      <table>
-        <thead>
-          <tr>
-            <th className=" text-start">Flow Name</th>
-            <th className=" text-start">Length</th>
-            <th className=" text-start">Poses</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th className=" text-start">Created</th>
+      <table className="border-separate  border-spacing-0 rounded-t-md  bg-[#232323]">
+        <thead className="">
+          <tr className=" bg-[#282828]">
+            <th className=" rounded-tl-md border-b-[1px] border-l-[1px] border-t-[1px] border-[#323232] p-3 text-start">
+              Flow Name
+            </th>
+            <th className=" border-b-[1px] border-t-[1px] border-[#323232]  p-3 text-start">
+              Length
+            </th>
+            <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3 text-start">
+              Poses
+            </th>
+            <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3"></th>
+            <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3"></th>
+            <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3"></th>
+            <th className="rounded-tr-md border-b-[1px] border-r-[1px] border-t-[1px] border-[#323232] p-3 text-start">
+              Created
+            </th>
           </tr>
         </thead>
         <tbody>

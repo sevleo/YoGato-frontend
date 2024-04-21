@@ -222,7 +222,7 @@ export async function createFlow(
     showAllFlows();
     setFlowName("");
     setErrorMessage(null);
-  } catch (error) {
+  } catch (error: any) {
     console.error("Error adding flow:", error);
     setErrorMessage(error.response.data.message);
   }
