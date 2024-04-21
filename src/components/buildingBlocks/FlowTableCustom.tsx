@@ -39,8 +39,6 @@ export default function FlowTableCustom({
             <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3 text-start text-base font-medium text-[#a0a0a0]">
               Poses
             </th>
-            <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3"></th>
-            <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3"></th>
             <th className="border-b-[1px]  border-t-[1px] border-[#323232] p-3 text-start text-base font-medium text-[#a0a0a0]">
               Created
             </th>
@@ -130,40 +128,38 @@ function TableRow({
         {flow.flowData.units ? flow.flowData.units.length : 0}
       </TableData>
 
-      <TableData>
-        {" "}
-        <Button
-          componentType="myFlowsPreview"
-          onClick={() => handlePreviewClick(flow._id)}
-          label="Let's go"
-          enabled={flow.flowData.units ? flow.flowData.units.length > 0 : false}
-        ></Button>
-      </TableData>
-      <TableData>
-        {" "}
-        <Button
-          componentType="myFlowsEdit"
-          onClick={() => handleBuilderClick(flow._id)}
-          label="Edit"
-          enabled={true}
-        ></Button>
-        {/* <Link to="/builder" onClick={handleBuilderClick}>
-          Builder
-        </Link> */}
-      </TableData>
-
       <TableData style="">
         {format(parseISO(flow.creationDate).toString(), "d LLL yyyy")}
       </TableData>
+
       <TableData style="border-r-[1px]">
-        {" "}
-        <Button
-          componentType="myFlowsDelete"
-          onClick={() => handleDelete(flow._id)}
-          enabled={true}
-        >
-          <span className="material-symbols-outlined text-[18px] ">delete</span>
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            componentType="myFlowsPreview"
+            onClick={() => handlePreviewClick(flow._id)}
+            enabled={
+              flow.flowData.units ? flow.flowData.units.length > 0 : false
+            }
+          >
+            <span className="material-symbols-outlined">person_celebrate</span>
+          </Button>
+          <Button
+            componentType="myFlowsEdit"
+            onClick={() => handleBuilderClick(flow._id)}
+            enabled={true}
+          >
+            <span className="material-symbols-outlined text-[18px] ">tune</span>
+          </Button>
+          <Button
+            componentType="myFlowsDelete"
+            onClick={() => handleDelete(flow._id)}
+            enabled={true}
+          >
+            <span className="material-symbols-outlined text-[18px] ">
+              delete
+            </span>
+          </Button>
+        </div>
       </TableData>
     </tr>
   );
