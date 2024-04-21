@@ -30,21 +30,21 @@ export default function FlowTableCustom({
       <table className="border-separate  border-spacing-0 rounded-t-md  bg-[#232323]">
         <thead className="">
           <tr className=" bg-[#282828]">
-            <th className=" rounded-tl-md border-b-[1px] border-l-[1px] border-t-[1px] border-[#323232] p-3 text-start">
+            <th className="rounded-tl-md border-b-[1px] border-l-[1px] border-t-[1px] border-[#323232] p-3 text-start text-base font-medium text-[#a0a0a0]">
               Flow Name
             </th>
-            <th className=" border-b-[1px] border-t-[1px] border-[#323232]  p-3 text-start">
-              Length
+            <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3 text-start text-base  font-medium text-[#a0a0a0]">
+              Duration
             </th>
-            <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3 text-start">
+            <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3 text-start text-base font-medium text-[#a0a0a0]">
               Poses
             </th>
             <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3"></th>
             <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3"></th>
-            <th className="border-b-[1px] border-t-[1px] border-[#323232] p-3"></th>
-            <th className="rounded-tr-md border-b-[1px] border-r-[1px] border-t-[1px] border-[#323232] p-3 text-start">
+            <th className="border-b-[1px]  border-t-[1px] border-[#323232] p-3 text-start text-base font-medium text-[#a0a0a0]">
               Created
             </th>
+            <th className="rounded-tr-md border-b-[1px] border-r-[1px] border-t-[1px] border-[#323232] p-3"></th>
           </tr>
         </thead>
         <tbody>
@@ -117,7 +117,7 @@ function TableRow({
         ) : (
           <p
             // onClick={handleEditClick}
-            className=" outline outline-transparent"
+            className=" outline outline-transparent "
           >
             {editedFlowName ? editedFlowName : flow.flowName}
           </p>
@@ -135,7 +135,7 @@ function TableRow({
         <Button
           componentType="myFlowsPreview"
           onClick={() => handlePreviewClick(flow._id)}
-          label="Preview"
+          label="Let's go"
           enabled={flow.flowData.units ? flow.flowData.units.length > 0 : false}
         ></Button>
       </TableData>
@@ -152,17 +152,18 @@ function TableRow({
         </Link> */}
       </TableData>
 
-      <TableData>
+      <TableData style="">
+        {format(parseISO(flow.creationDate).toString(), "d LLL yyyy")}
+      </TableData>
+      <TableData style="border-r-[1px]">
         {" "}
         <Button
           componentType="myFlowsDelete"
           onClick={() => handleDelete(flow._id)}
-          label="Delete"
           enabled={true}
-        ></Button>
-      </TableData>
-      <TableData style="border-r-[1px]">
-        {format(parseISO(flow.creationDate).toString(), "d LLL yyyy")}
+        >
+          <span className="material-symbols-outlined text-[18px] ">delete</span>
+        </Button>
       </TableData>
     </tr>
   );
@@ -173,10 +174,12 @@ function TableData({
   style,
 }: {
   children: ReactNode;
-  style: string;
+  style?: string;
 }) {
   return (
-    <td className={`border-b-[1px] border-[#323232] text-start ${style || ""}`}>
+    <td
+      className={`border-b-[1px] border-[#323232] p-3 text-start text-sm font-medium text-[#a0a0a0] ${style || ""}`}
+    >
       {children}
     </td>
   );

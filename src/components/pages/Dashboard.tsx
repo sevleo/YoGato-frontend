@@ -80,7 +80,7 @@ export default function Dashboard() {
             <div className="border-b-[1px] border-[#323232] px-6 py-5">
               <div className="mb-3">
                 {" "}
-                <p className="text-start text-sm font-normal text-[#7e7e7e]">
+                <p className="text-start text-sm font-medium text-[#7e7e7e]">
                   Practice
                 </p>
               </div>
@@ -89,7 +89,7 @@ export default function Dashboard() {
                   {" "}
                   <p
                     onClick={handleFlowsClick}
-                    className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                   >
                     All flows
                   </p>
@@ -98,7 +98,7 @@ export default function Dashboard() {
                   {" "}
                   <p
                     onClick={handleDesigningClick}
-                    className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                   >
                     Designing
                   </p>
@@ -108,7 +108,7 @@ export default function Dashboard() {
                   {" "}
                   <p
                     onClick={handleMovingClick}
-                    className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                   >
                     Moving
                   </p>
@@ -118,7 +118,7 @@ export default function Dashboard() {
             <div className="border-b-[1px] border-[#323232] px-6 py-5">
               <div className="mb-3">
                 {" "}
-                <p className=" text-start text-sm font-normal text-[#7e7e7e]">
+                <p className=" text-start text-sm font-medium text-[#7e7e7e]">
                   Account
                 </p>
               </div>
@@ -127,7 +127,7 @@ export default function Dashboard() {
                   {" "}
                   <p
                     onClick={handlePreferencesClick}
-                    className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                   >
                     Preferences
                   </p>
@@ -136,7 +136,7 @@ export default function Dashboard() {
                   {" "}
                   <p
                     onClick={handleThemeClick}
-                    className="w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                   >
                     Theme
                   </p>
@@ -146,7 +146,7 @@ export default function Dashboard() {
             <div className="border-b-[1px] border-[#323232] px-6 py-5">
               <div className="mb-3">
                 {" "}
-                <p className=" text-start text-sm font-normal text-[#7e7e7e]">
+                <p className=" text-start text-sm font-medium text-[#7e7e7e]">
                   Library
                 </p>
               </div>
@@ -155,14 +155,14 @@ export default function Dashboard() {
                   {" "}
                   <p
                     onClick={handleCatalogClick}
-                    className=" w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    className=" w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                   >
                     Catalog of poses
                   </p>
                 </div>
                 <div className="flex items-center justify-start">
                   {" "}
-                  <p className=" w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                  <p className=" w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                     Blogs
                   </p>
                 </div>
@@ -172,7 +172,7 @@ export default function Dashboard() {
               <div className="flex items-center justify-start">
                 {" "}
                 <p
-                  className=" w-full text-start text-sm font-normal text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                  className=" w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                   onClick={handleLogout}
                 >
                   Logout

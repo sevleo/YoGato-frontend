@@ -52,7 +52,7 @@ function MyFlows({ showAllFlows, flows }: MyFlowsProps) {
           <form
             method="POST"
             onSubmit={handleNewFlowClick}
-            className="flex flex-col pb-10"
+            className="flex flex-col pb-6"
           >
             <div className="flex w-full flex-col items-start justify-center ">
               <div className="flex gap-[10px]">
@@ -85,7 +85,7 @@ function MyFlows({ showAllFlows, flows }: MyFlowsProps) {
               </div>
             </div>
           </form>
-          <div className=" flex flex-col">
+          <div className=" flex max-w-[1000px] flex-col">
             {flows && authState.isLoggedIn && !authState.dataLoading ? (
               <FlowTableCustom
                 flows={flows}
