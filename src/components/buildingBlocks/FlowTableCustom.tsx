@@ -104,8 +104,8 @@ function TableRow({
   }
 
   return (
-    <tr key={flow._id}>
-      <TableData>
+    <tr key={flow._id} className="">
+      <TableData style="border-l-[1px]">
         {editable ? (
           <input
             type="text"
@@ -161,13 +161,23 @@ function TableRow({
           enabled={true}
         ></Button>
       </TableData>
-      <TableData>
+      <TableData style="border-r-[1px]">
         {format(parseISO(flow.creationDate).toString(), "d LLL yyyy")}
       </TableData>
     </tr>
   );
 }
 
-function TableData({ children }: { children: ReactNode }) {
-  return <td className="text-start">{children}</td>;
+function TableData({
+  children,
+  style,
+}: {
+  children: ReactNode;
+  style: string;
+}) {
+  return (
+    <td className={`border-b-[1px] border-[#323232] text-start ${style || ""}`}>
+      {children}
+    </td>
+  );
 }
