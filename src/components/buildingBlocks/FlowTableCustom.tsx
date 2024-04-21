@@ -27,7 +27,7 @@ export default function FlowTableCustom({
 
   return (
     <>
-      <table className="border-separate  border-spacing-0 rounded-t-md  bg-[#232323]">
+      <table className=" max-w-[800px] border-separate border-spacing-0  rounded-t-md bg-[#232323]">
         <thead className="">
           <tr className=" bg-[#282828]">
             <th className="rounded-tl-md border-b-[1px] border-l-[1px] border-t-[1px] border-[#323232] p-3 text-start text-base font-medium text-[#a0a0a0]">
@@ -103,7 +103,7 @@ function TableRow({
 
   return (
     <tr key={flow._id} className="">
-      <TableData style="border-l-[1px]">
+      <TableData style="border-l-[1px] w-fit">
         {editable ? (
           <input
             type="text"
@@ -121,18 +121,18 @@ function TableRow({
           </p>
         )}
       </TableData>
-      <TableData>
+      <TableData style=" w-fit">
         {flow.flowData.duration ? flow.flowData.duration : 0}
       </TableData>
-      <TableData>
+      <TableData style=" w-fit">
         {flow.flowData.units ? flow.flowData.units.length : 0}
       </TableData>
 
-      <TableData style="">
+      <TableData style=" w-fit">
         {format(parseISO(flow.creationDate).toString(), "d LLL yyyy")}
       </TableData>
 
-      <TableData style="border-r-[1px]">
+      <TableData style="border-r-[1px] w-fit">
         <div className="flex gap-2">
           <Button
             componentType="myFlowsPreview"
@@ -141,7 +141,11 @@ function TableRow({
               flow.flowData.units ? flow.flowData.units.length > 0 : false
             }
           >
-            <span className="material-symbols-outlined">person_celebrate</span>
+            <span
+              className={`material-symbols-outlined ${flow.flowData.units.length > 0 ? "text-[#6ccc93]" : ""}`}
+            >
+              person_celebrate
+            </span>
           </Button>
           <Button
             componentType="myFlowsEdit"

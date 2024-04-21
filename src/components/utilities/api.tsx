@@ -146,6 +146,7 @@ export async function createOrUpdateFlow(
   } else {
     // Update existing one
     try {
+      console.log(flow.flowId);
       response = await axios.put("http://localhost:3001/update-flow", {
         userId: authState.userId,
         flowId: flow.flowId,

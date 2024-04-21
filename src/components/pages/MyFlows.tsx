@@ -85,7 +85,7 @@ function MyFlows({ showAllFlows, flows }: MyFlowsProps) {
               </div>
             </div>
           </form>
-          <div className=" flex max-w-[1000px] flex-col">
+          <div className=" flex flex-col">
             {flows && authState.isLoggedIn && !authState.dataLoading ? (
               <FlowTableCustom
                 flows={flows}
