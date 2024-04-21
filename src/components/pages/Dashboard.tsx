@@ -172,10 +172,13 @@ export default function Dashboard() {
               <div className="flex items-center justify-start">
                 {" "}
                 <p
-                  className=" w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                  className="flex w-full items-center justify-start gap-[4px] text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                   onClick={handleLogout}
                 >
-                  Logout
+                  <span className="material-symbols-outlined text-[14px]">
+                    logout
+                  </span>
+                  Log out
                 </p>
               </div>
             </div>
