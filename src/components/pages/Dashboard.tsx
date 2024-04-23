@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../utilities/api";
 import { useUser } from "../utilities/UserContext";
 import { useEffect, useState, useCallback } from "react";
-import MyFlows from "./MyFlows";
-import { FlowType } from "./MyFlows";
+import MyFlows from "../sections/MyFlows";
+import { FlowType } from "../sections/MyFlows";
 import { showAllFlowsAPI } from "../utilities/api";
+import Builder from "./Builder";
+import Preview from "../sections/Preview";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -192,15 +194,20 @@ export default function Dashboard() {
         <div>
           {pageState === "all-flows" ? (
             <>
-              <MyFlows showAllFlows={showAllFlows} flows={flows} />
+              <MyFlows
+                showAllFlows={showAllFlows}
+                flows={flows}
+                handleDesigningClick={handleDesigningClick}
+                handleMovingClick={handleMovingClick}
+              />
             </>
           ) : pageState === "designing" ? (
             <>
-              <p>designing</p>
+              <Builder handleMovingClick={handleMovingClick}></Builder>
             </>
           ) : pageState === "moving" ? (
             <>
-              <p>moving</p>
+              <Preview></Preview>
             </>
           ) : pageState === "preferences" ? (
             <>

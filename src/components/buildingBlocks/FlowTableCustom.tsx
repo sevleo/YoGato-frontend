@@ -4,18 +4,22 @@ import { useFlow } from "../utilities/FlowContext";
 import { deleteFlow } from "../utilities/api";
 import { updateFlowName } from "../utilities/api";
 import { parseISO, format } from "date-fns";
-import { FlowType } from "../pages/MyFlows";
+import { FlowType } from "../sections/MyFlows";
 import { FlowDataType } from "../sections/Flow";
 import Button from "./Button";
 
 interface FlowTableCustom {
   flows: FlowType[];
   showAllFlows: () => void;
+  handleDesigningClick: () => void;
+  handleMovingClick: () => void;
 }
 
 export default function FlowTableCustom({
   flows,
   showAllFlows,
+  handleDesigningClick,
+  handleMovingClick,
 }: FlowTableCustom) {
   const navigate = useNavigate();
   const { setFlow } = useFlow();
@@ -55,6 +59,8 @@ export default function FlowTableCustom({
                 showAllFlows={showAllFlows}
                 navigate={navigate}
                 setFlow={setFlow}
+                handleDesigningClick={handleDesigningClick}
+                handleMovingClick={handleMovingClick}
               ></TableRow>
             );
           })}
@@ -70,6 +76,8 @@ interface TableRow {
   showAllFlows: () => void;
   navigate: (arg: string) => void;
   setFlow: React.Dispatch<React.SetStateAction<FlowDataType>>;
+  handleDesigningClick: () => void;
+  handleMovingClick: () => void;
 }
 
 function TableRow({
@@ -78,6 +86,8 @@ function TableRow({
   showAllFlows,
   navigate,
   setFlow,
+  handleDesigningClick,
+  handleMovingClick,
 }: TableRow) {
   console.log(flow.flowData);
   const duration = flow.flowData.duration;
@@ -101,12 +111,12 @@ function TableRow({
 
   function handleBuilderClick(flowId: string) {
     setFlow({ ...flow.flowData, flowId: flowId, flowName: flow.flowName });
-    navigate("/builder");
+    handleDesigningClick();
   }
 
   function handlePreviewClick(flowId: string) {
-    navigate("/preview");
     setFlow({ ...flow.flowData, flowId: flowId });
+    handleMovingClick();
   }
 
   return (

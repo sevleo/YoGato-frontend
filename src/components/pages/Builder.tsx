@@ -5,34 +5,29 @@ import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 import { useUser } from "../utilities/UserContext";
 import { useFlow } from "../utilities/FlowContext";
-import { useNavigate } from "react-router-dom";
 import { createOrUpdateFlow } from "../utilities/api";
 import { fetchFlowDataAPI } from "../utilities/api";
 import Input from "../buildingBlocks/Input";
 import Button from "../buildingBlocks/Button";
 
-function Builder() {
-  const navigate = useNavigate();
+interface BuilderProps {
+  handleMovingClick: () => void;
+}
 
+function Builder({ handleMovingClick }: BuilderProps) {
   const aspectGroups: AspectGroupType[] = categories;
 
   const { flow, setFlow } = useFlow();
 
   const [editableName, setEditableName] = useState<boolean>(false);
 
+  const handlePreviewButtonClick: ClickHandler = () => {
+    handleMovingClick();
+  };
+
   type ClickHandler = MouseEventHandler<HTMLButtonElement>;
 
   const { authState } = useUser();
-
-  // useEffect(() => {
-  //   if (!authState.isLoggedIn) {
-  //     navigate("/sign-in");
-  //   }
-  // }, [authState.isLoggedIn, navigate]);
-
-  // console.log(authState);
-  // console.log(flow);
-  // console.log(flow.flowId);
 
   const [flowName, setFlowName] = useState("");
 
@@ -78,10 +73,6 @@ function Builder() {
     setNameErrorMessage("");
   };
 
-  const handlePreviewButtonClick: ClickHandler = () => {
-    navigate("/preview");
-  };
-
   const [nameErrorMessage, setNameErrorMessage] = useState("");
 
   // Create or update flow in DB
@@ -106,14 +97,14 @@ function Builder() {
 
   return pageLoaded && !authState.dataLoading ? (
     <>
-      {authState.isLoggedIn ? (
+      <div className="designing ml-auto mr-auto flex w-full max-w-screen-2xl justify-center p-6 ">
         <>
           {" "}
           <div
-            className={`setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
+            className={`setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center`}
           >
-            <div className="w-3/4">
-              <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
+            <div className="w-full ">
+              <div className="grid w-full grid-cols-[1fr_1fr] items-start justify-center  rounded-md border-[1px] border-[#323232] bg-[#232323]">
                 <>
                   <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
                     <div
@@ -163,7 +154,7 @@ function Builder() {
                       ) : (
                         <>
                           {" "}
-                          <p className="text-[30px] text-[#dedede]">
+                          <p className="text-[30px] text-[#a0a0a0]">
                             {editedFlowName
                               ? editedFlowName
                               : flowName
@@ -181,27 +172,27 @@ function Builder() {
 
                 <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
                   <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
-                    <p className=" text-start text-white">Duration</p>
-                    <p className="text-start text-white">
+                    <p className=" text-start text-[#a0a0a0]">Duration</p>
+                    <p className="text-start text-[#a0a0a0]">
                       {hours > 0 ? <span>{hours} hours, </span> : null}
                       {minutes > 0 ? <span>{minutes} minutes, </span> : null}
                       {seconds > 0 ? <span>{seconds} seconds.</span> : null}
                     </p>
                   </div>
                   <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                    <p className="  text-start text-white">Poses</p>
-                    <p className="text-start text-white">
+                    <p className="  text-start text-[#a0a0a0]">Poses</p>
+                    <p className="text-start text-[#a0a0a0]">
                       {flow ? flow.units.length : 0}
                     </p>
                   </div>
                   <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                    <p className="text-start text-white">Unique poses</p>
-                    <p className="text-start text-white">
+                    <p className="text-start text-[#a0a0a0]">Unique poses</p>
+                    <p className="text-start text-[#a0a0a0]">
                       {flow ? flow.uniqueAspects.length : 0}
                     </p>
                   </div>
                 </div>
-                <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
+                <div className="flex h-full w-full flex-row items-center justify-start gap-2 p-5">
                   {" "}
                   <Button
                     componentType="builderSave"
@@ -225,7 +216,7 @@ function Builder() {
                   ></Button>
                 </div>
               </div>
-              <div className="flex gap-2 pt-2">
+              <div className="flex gap-6 pt-6">
                 <Flow
                   aspectGroups={aspectGroups}
                   setEnableSave={setEnableSave}
@@ -238,66 +229,7 @@ function Builder() {
             </div>
           </div>
         </>
-      ) : (
-        <>
-          <div
-            className={`setup ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
-          >
-            <div className="w-3/4">
-              <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
-                <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
-                  <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
-                    <p className=" text-start text-white">Duration</p>
-                    <p className="text-start text-white">
-                      {hours > 0 ? <span>{hours} hours, </span> : null}
-                      {minutes > 0 ? <span>{minutes} minutes, </span> : null}
-                      {seconds > 0 ? <span>{seconds} seconds.</span> : null}
-                    </p>
-                  </div>
-                  <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                    <p className="  text-start text-white">Poses</p>
-                    <p className="text-start text-white">
-                      {flow ? flow.units.length : 0}
-                    </p>
-                  </div>
-                  <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                    <p className="text-start text-white">Unique poses</p>
-                    <p className="text-start text-white">
-                      {flow ? flow.uniqueAspects.length : 0}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
-                  <Button
-                    componentType="builderPreview"
-                    onClick={
-                      enablePreview ? handlePreviewButtonClick : undefined
-                    }
-                    label="Preview"
-                    enabled={enablePreview}
-                  ></Button>
-                  <Button
-                    componentType="builderClear"
-                    onClick={enableClear ? handleClearButton : undefined}
-                    label="Clear"
-                    enabled={enableClear}
-                  ></Button>
-                </div>
-              </div>
-              <div className="flex gap-2 pt-2">
-                <Flow
-                  aspectGroups={aspectGroups}
-                  setEnableSave={setEnableSave}
-                ></Flow>
-                <AspectCollection
-                  aspectGroups={aspectGroups}
-                  setEnableSave={setEnableSave}
-                ></AspectCollection>
-              </div>
-            </div>
-          </div>
-        </>
-      )}
+      </div>
     </>
   ) : null;
 }

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useUser } from "../utilities/UserContext";
 import FlowTableCustom from "../buildingBlocks/FlowTableCustom";
 import { createFlow } from "../utilities/api";
-import { FlowDataType } from "../sections/Flow";
+import { FlowDataType } from "./Flow";
 import Button from "../buildingBlocks/Button";
 
 export interface FlowType {
@@ -16,9 +16,16 @@ export interface FlowType {
 interface MyFlowsProps {
   showAllFlows: () => void;
   flows: FlowType[];
+  handleDesigningClick: () => void;
+  handleMovingClick: () => void;
 }
 
-function MyFlows({ showAllFlows, flows }: MyFlowsProps) {
+function MyFlows({
+  showAllFlows,
+  flows,
+  handleDesigningClick,
+  handleMovingClick,
+}: MyFlowsProps) {
   const { authState } = useUser();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -90,6 +97,8 @@ function MyFlows({ showAllFlows, flows }: MyFlowsProps) {
               <FlowTableCustom
                 flows={flows}
                 showAllFlows={showAllFlows}
+                handleDesigningClick={handleDesigningClick}
+                handleMovingClick={handleMovingClick}
               ></FlowTableCustom>
             ) : null}
           </div>

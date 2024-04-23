@@ -3,7 +3,7 @@ import { Action, AuthStateTypes } from "./UserContext";
 import React, { SetStateAction } from "react";
 import { Dispatch } from "react";
 import { FlowDataType } from "../sections/Flow";
-import { FlowType } from "../pages/MyFlows";
+import { FlowType } from "../sections/MyFlows";
 
 // Check if user is logged in
 export async function checkLoggedIn(dispatch: React.Dispatch<Action>) {

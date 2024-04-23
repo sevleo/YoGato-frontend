@@ -5,7 +5,7 @@ import Builder from "./components/pages/Builder";
 import ErrorPage from "./components/pages/ErrorPage";
 import { useEffect, useState } from "react";
 import LogInPopUp from "./components/sections/LoginPopUp";
-import MyFlows from "./components/pages/MyFlows";
+import MyFlows from "./components/sections/MyFlows";
 import { useUser } from "../src/components/utilities/UserContext";
 import Header from "./components/sections/Header";
 import Preview from "./components/sections/Preview";

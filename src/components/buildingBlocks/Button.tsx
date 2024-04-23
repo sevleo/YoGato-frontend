@@ -23,9 +23,7 @@ export default function Button(props: ButtonProps) {
     case "previewResumePause":
     case "previewStop":
     case "previewCancel":
-      styles = props.enabled
-        ? `h-full w-[100px] rounded-none border-[1px] over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" focus:outline-none`
-        : `h-full w-[100px] rounded-none border-[1px] ${props.enabled ? "over:border-[1px] bg-[#143a1e] text-white hover:border-white hover:bg-[#143a1e] active:bg-[#9b9b9b2a]" : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`;
+      styles = `w-[100px] text-sm h-[36px] border-box border-[1px] flex justify-center items-center text-white outline-none transition-all p-0 duration-200 focus:outline-none ${props.enabled ? "hover:border-[1px] hover:border-[#6ccc93] hover:bg-[#497f5e] bg-[#54976f] white " : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`;
       break;
     case "loginPopupGoogle":
       styles =

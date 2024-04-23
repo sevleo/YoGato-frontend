@@ -40,15 +40,12 @@ function AspectGroup({
     <>
       <Accordion
         sx={{
-          borderRadius: "0px !important",
-          border: "none",
+          borderRadius: "0.375rem !important",
+          border: "1px solid #323232",
           // width: "100% !important",
-          backgroundColor: "#ffffff18",
-          color: "white",
+          backgroundColor: "#232323",
+          color: "#a0a0a0",
           marginBottom: "3px",
-          "&:hover": {
-            backgroundColor: "#ffffff38",
-          },
           transitionProperty:
             "color, background-color, border-color, text-decoration-color, fill, stroke",
           transitionTimingFunction: "cubic-bezier(0.4, 0, 0.2, 1)",
@@ -61,9 +58,10 @@ function AspectGroup({
             backgroundColor: "",
             "&:hover": {
               // backgroundColor: "#ffffff38",
+              color: "white",
             },
             "&.Mui-expanded": {
-              backgroundColor: "#ffffff38",
+              backgroundColor: "",
             },
           }}
         >
