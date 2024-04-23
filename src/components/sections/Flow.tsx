@@ -6,7 +6,7 @@ import { useFlow } from "../utilities/FlowContext";
 
 // DndKit
 import { DndContext, DragEndEvent } from "@dnd-kit/core";
-// import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
+import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
   closestCenter,
   KeyboardSensor,
@@ -19,7 +19,7 @@ import {
   arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
-  // verticalListSortingStrategy,
+  verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
 
 // Components
@@ -98,15 +98,15 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
         sensors={sensors}
         collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
-        // modifiers={[restrictToVerticalAxis]}
+        modifiers={[restrictToVerticalAxis]}
       >
-        <div className="ltr grid h-fit min-h-[300px] rounded-md border-[1px] border-[#323232] bg-[#232323] pb-[40px] pl-[40px] pr-[40px] pt-[40px] transition-colors ">
+        <div className="ltr grid h-fit min-h-[300px] rounded-md border-[1px] border-[#323232] bg-[#232323] transition-colors ">
           <div className="droppable-area h-full min-h-full">
             {flow && flow.units.length > 0 ? (
-              <div className=" grid auto-rows-fr grid-cols-canvas gap-10">
+              <div className=" grid auto-rows-fr grid-rows-canvas">
                 <SortableContext
                   items={flow.units}
-                  // strategy={verticalListSortingStrategy}
+                  strategy={verticalListSortingStrategy}
                 >
                   {flow.units.map((unit, index) => {
                     return (

@@ -169,50 +169,21 @@ function Unit({
       onMouseLeave={disableUnitClose}
       ref={setNodeRef}
       style={style}
-      className="unit step relative flex cursor-default select-none  flex-col items-center justify-center text-black shadow-md hover:cursor-pointer "
+      className="unit step relative flex h-[60px] cursor-default select-none items-center justify-evenly  border-[1px] border-[#323232] text-black hover:cursor-pointer"
       {...(dragAllowed ? { ...attributes } : null)}
       {...(dragAllowed ? { ...listeners } : null)}
     >
-      <div
-        className="flex max-h-[30px] w-full items-center justify-center bg-[#50422E]"
-        onMouseLeave={enableDrag}
-      >
-        {!showUnitClose ? (
-          <div className="flex  w-full items-center justify-center  bg-[#50422E]">
-            {index != null ? Number(index + 1) : null}
-          </div>
-        ) : (
-          <div className=" hover:cursor-pointer" onClick={onUnitCloseClick}>
-            <p
-              onMouseEnter={disableDrag}
-              onMouseLeave={enableDrag}
-              className=" mb-0 flex select-none items-center justify-center"
-            >
-              <span className="material-symbols-outlined">close</span>
-            </p>
-          </div>
-        )}
+      <div className=" flex h-full min-w-[50px] items-center justify-center text-sm font-medium text-[#a0a0a0]">
+        {index != null ? Number(index + 1) : null}
       </div>
-
-      <div className="main-element flex h-full w-full flex-col justify-between bg-[#7D6A3E] pb-2 pl-2 pr-2">
-        <div className="flex flex-col items-center justify-center ">
-          <div className="flex h-full w-full items-center justify-center border-b-[0.5px] border-[#22201E] pb-2">
-            <img
-              className="  h-3/4 w-3/4 pl-2 pr-2   "
-              src={image}
-              alt=""
-              draggable="false"
-            />
-          </div>
-          <div className="flex w-full flex-col text-xs ">
-            <p className="text-xsm mt-2 w-full text-left font-semibold">
-              {name}
-            </p>
-            {/* <p className="mb-2 w-full text-wrap text-left">{sanskritName}</p> */}
-          </div>
-        </div>
-
-        <div className="mt-auto flex  flex-col gap-2 pt-2">
+      <div className=" flex min-w-[100px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0]">
+        <p className="text-xsm text-left font-semibold">{name}</p>
+      </div>
+      <div className="flex h-full w-[200px] items-center justify-center">
+        <img className="  h-3/4 w-3/4  " src={image} alt="" draggable="false" />
+      </div>
+      <div className="main-element flex h-full justify-between ">
+        <div className="mb-auto mt-auto flex  flex-col gap-2 ">
           <Input
             inputType="unitDurationInput"
             labelValue=""
@@ -222,6 +193,20 @@ function Unit({
             inputId={id}
             setDragAllowed={setDragAllowed}
           />
+        </div>
+      </div>
+      <div
+        className="flex max-h-[30px] w-[50px] items-center justify-center "
+        onMouseLeave={enableDrag}
+      >
+        <div className=" hover:cursor-pointer" onClick={onUnitCloseClick}>
+          <p
+            onMouseEnter={disableDrag}
+            onMouseLeave={enableDrag}
+            className=" mb-0 flex select-none items-center justify-center"
+          >
+            <span className="material-symbols-outlined">close</span>
+          </p>
         </div>
       </div>
     </div>
