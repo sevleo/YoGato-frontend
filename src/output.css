@@ -714,6 +714,14 @@ video {
   margin-top: auto;
 }
 
+.box-border {
+  box-sizing: border-box;
+}
+
+.box-content {
+  box-sizing: content-box;
+}
+
 .flex {
   display: flex;
 }
@@ -972,6 +980,10 @@ video {
   resize: both;
 }
 
+.auto-cols-auto {
+  grid-auto-columns: auto;
+}
+
 .auto-rows-fr {
   grid-auto-rows: minmax(0, 1fr);
 }
@@ -990,6 +1002,50 @@ video {
 
 .grid-cols-aspects {
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+}
+
+.grid-cols-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-cols-\[1fr_2fr_2fr_2fr_1fr\] {
+  grid-template-columns: 1fr 2fr 2fr 2fr 1fr;
+}
+
+.grid-cols-\[1fr_3fr_3fr_2fr_1fr\] {
+  grid-template-columns: 1fr 3fr 3fr 2fr 1fr;
+}
+
+.grid-cols-\[1fr_2fr_3fr_2fr_1fr\] {
+  grid-template-columns: 1fr 2fr 3fr 2fr 1fr;
+}
+
+.grid-cols-\[1fr_1fr_3fr_2fr_1fr\] {
+  grid-template-columns: 1fr 1fr 3fr 2fr 1fr;
+}
+
+.grid-cols-\[1fr_1fr_3fr_1fr_1fr\] {
+  grid-template-columns: 1fr 1fr 3fr 1fr 1fr;
+}
+
+.grid-cols-\[1fr_1fr_3fr_1\.5fr_1fr\] {
+  grid-template-columns: 1fr 1fr 3fr 1.5fr 1fr;
+}
+
+.grid-cols-\[1fr_1fr_3fr_1\2c 5fr_1fr\] {
+  grid-template-columns: 1fr 1fr 3fr 1 5fr 1fr;
+}
+
+.grid-cols-\[0\.5fr_1fr_3fr_1\.5fr_1fr\] {
+  grid-template-columns: 0.5fr 1fr 3fr 1.5fr 1fr;
+}
+
+.grid-cols-\[0\.5fr_1fr_3fr_1\.5fr_0\.5fr\] {
+  grid-template-columns: 0.5fr 1fr 3fr 1.5fr 0.5fr;
+}
+
+.grid-cols-\[0\.5fr_1fr_2fr_2fr_1\.5fr_0\.5fr\] {
+  grid-template-columns: 0.5fr 1fr 2fr 2fr 1.5fr 0.5fr;
 }
 
 .grid-rows-canvas {
@@ -1115,6 +1171,14 @@ video {
 
 .border-\[1px\] {
   border-width: 1px;
+}
+
+.border-\[2px\] {
+  border-width: 2px;
+}
+
+.border-\[0px\] {
+  border-width: 0px;
 }
 
 .border-b-\[0\.5px\] {
@@ -1633,6 +1697,30 @@ video {
 
 .outline-\[2px\] {
   outline-width: 2px;
+}
+
+.outline-offset-2 {
+  outline-offset: 2px;
+}
+
+.outline-offset-\[2px\] {
+  outline-offset: 2px;
+}
+
+.outline-offset-\[-2px\] {
+  outline-offset: -2px;
+}
+
+.outline-offset-\[12px\] {
+  outline-offset: 12px;
+}
+
+.outline-offset-\[-1px\] {
+  outline-offset: -1px;
+}
+
+.outline-offset-\[0px\] {
+  outline-offset: 0px;
 }
 
 .outline-\[\#2e2e2e\] {

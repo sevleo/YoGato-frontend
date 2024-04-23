@@ -12,6 +12,8 @@ import Input from "./Input";
 import { AspectGroupType } from "./AspectGroup";
 import { useFlow } from "../utilities/FlowContext";
 
+import Button from "./Button";
+
 export interface UnitType {
   id: string;
   name: string;
@@ -42,7 +44,7 @@ interface UnitProps {
 function Unit({
   id,
   name,
-  // sanskritName,
+  sanskritName,
   duration,
   // announcement,
   index,
@@ -169,20 +171,26 @@ function Unit({
       onMouseLeave={disableUnitClose}
       ref={setNodeRef}
       style={style}
-      className="unit step relative flex h-[60px] cursor-default select-none items-center justify-evenly  border-[1px] border-[#323232] text-black hover:cursor-pointer"
+      className="unit step relative grid  h-[60px] cursor-default select-none grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr_0.5fr]  items-center justify-between text-black  hover:cursor-pointer"
       {...(dragAllowed ? { ...attributes } : null)}
       {...(dragAllowed ? { ...listeners } : null)}
     >
-      <div className=" flex h-full min-w-[50px] items-center justify-center text-sm font-medium text-[#a0a0a0]">
+      <div className=" flex h-[60px] min-w-[50px] items-center justify-center text-sm font-medium text-[#a0a0a0]">
         {index != null ? Number(index + 1) : null}
       </div>
-      <div className=" flex min-w-[100px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0]">
-        <p className="text-xsm text-left font-semibold">{name}</p>
-      </div>
-      <div className="flex h-full w-[200px] items-center justify-center">
+
+      <div className="flex h-[60px] w-full items-center justify-center">
         <img className="  h-3/4 w-3/4  " src={image} alt="" draggable="false" />
       </div>
-      <div className="main-element flex h-full justify-between ">
+      <div className=" flex h-[60px] min-w-[100px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0]">
+        <p className="text-xsm w-full pl-4 text-left font-semibold">{name}</p>
+      </div>
+      <div className=" flex h-[60px] min-w-[100px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0]">
+        <p className="text-xsm w-full pl-4 text-left font-semibold">
+          {sanskritName}
+        </p>
+      </div>
+      <div className="main-element flex h-[60px] justify-between">
         <div className="mb-auto mt-auto flex  flex-col gap-2 ">
           <Input
             inputType="unitDurationInput"
@@ -196,17 +204,22 @@ function Unit({
         </div>
       </div>
       <div
-        className="flex max-h-[30px] w-[50px] items-center justify-center "
+        className="flex max-h-[30px] w-full items-center justify-center "
         onMouseLeave={enableDrag}
       >
-        <div className=" hover:cursor-pointer" onClick={onUnitCloseClick}>
-          <p
-            onMouseEnter={disableDrag}
-            onMouseLeave={enableDrag}
-            className=" mb-0 flex select-none items-center justify-center"
-          >
-            <span className="material-symbols-outlined">close</span>
-          </p>
+        <div
+          className=" hover:cursor-pointer"
+          onClick={onUnitCloseClick}
+          onMouseEnter={disableDrag}
+          onMouseLeave={enableDrag}
+        >
+          <Button componentType="unitDelete" enabled={true}>
+            <p className=" mb-0 flex select-none items-center justify-center">
+              <span className="material-symbols-outlined text-[18px] text-[#a0a0a0]">
+                delete
+              </span>
+            </p>
+          </Button>
         </div>
       </div>
     </div>
