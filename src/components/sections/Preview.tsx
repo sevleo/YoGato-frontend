@@ -16,12 +16,9 @@ import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
 import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 import { useUser } from "../utilities/UserContext";
 import { useFlow } from "../utilities/FlowContext";
-import { useNavigate } from "react-router-dom";
 import Button from "../buildingBlocks/Button";
 
-function Preview() {
-  const navigate = useNavigate();
-
+function Preview({ handleDesigningClick }) {
   const { flow } = useFlow();
   const { authState } = useUser();
 
@@ -255,7 +252,7 @@ function Preview() {
   }
 
   function handleCancelButtonClick() {
-    navigate("/builder");
+    handleDesigningClick();
   }
 
   function handlePauseButtonClick() {
@@ -292,53 +289,72 @@ function Preview() {
 
   return flow.units.length > 0 ? (
     <>
-      <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
-        <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
-          <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
-            <p className=" text-start text-white">Duration</p>
-            <p className="text-start text-white">
-              {hours > 0 ? <span>{hours} hours, </span> : null}
-              {minutes > 0 ? <span>{minutes} minutes, </span> : null}
-              {seconds > 0 ? <span>{seconds} seconds.</span> : null}
-            </p>
-          </div>
-          <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-            <p className="  text-start text-white">Poses</p>
-            <p className="text-start text-white">{flow.units.length}</p>
-          </div>
-          <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-            <p className="text-start text-white">Unique poses</p>
-            <p className="text-start text-white">{flow.uniqueAspects.length}</p>
+      <div className="grid w-full grid-cols-[2fr_1fr] items-start justify-center gap-6 ">
+        <div className="rounded-md border-[1px] border-[#323232] bg-[#232323]">
+          <div className="flex w-full flex-col items-start justify-center  gap-1 p-5  ">
+            <div className="flex w-full flex-col items-start justify-center">
+              <>
+                <p className="text-[30px] text-[#a0a0a0]">{flow.flowName}</p>
+                <p className="h-[20px] w-full text-start text-[red]"></p>
+              </>
+            </div>
+            <div className="flex h-full w-full flex-row items-center justify-start gap-2">
+              <Button
+                componentType="previewStart"
+                onClick={
+                  !timerState.startFlow ? handleStartButtonClick : undefined
+                }
+                label="Start"
+                enabled={!timerState.startFlow}
+              ></Button>
+              <Button
+                componentType="previewResumePause"
+                onClick={
+                  timerState.startFlow ? handlePauseButtonClick : undefined
+                }
+                label={timerState.pauseFlow ? "Resume" : "Pause"}
+                enabled={timerState.startFlow}
+              ></Button>
+              <Button
+                componentType="previewStop"
+                onClick={
+                  timerState.startFlow ? handleStopButtonClick : undefined
+                }
+                label="Stop"
+                enabled={timerState.startFlow}
+              ></Button>
+              <Button
+                componentType="previewCancel"
+                onClick={
+                  !timerState.startFlow ? handleCancelButtonClick : undefined
+                }
+                label="Cancel"
+                enabled={!timerState.startFlow}
+              ></Button>
+            </div>
           </div>
         </div>
-
-        <div className="flex h-full w-full flex-row items-center justify-end gap-2 p-5">
-          <Button
-            componentType="previewStart"
-            onClick={!timerState.startFlow ? handleStartButtonClick : undefined}
-            label="Start"
-            enabled={!timerState.startFlow}
-          ></Button>
-          <Button
-            componentType="previewResumePause"
-            onClick={timerState.startFlow ? handlePauseButtonClick : undefined}
-            label={timerState.pauseFlow ? "Resume" : "Pause"}
-            enabled={timerState.startFlow}
-          ></Button>
-          <Button
-            componentType="previewStop"
-            onClick={timerState.startFlow ? handleStopButtonClick : undefined}
-            label="Stop"
-            enabled={timerState.startFlow}
-          ></Button>
-          <Button
-            componentType="previewCancel"
-            onClick={
-              !timerState.startFlow ? handleCancelButtonClick : undefined
-            }
-            label="Cancel"
-            enabled={!timerState.startFlow}
-          ></Button>
+        <div className="h-full rounded-md border-[1px] border-[#323232] bg-[#232323]">
+          <div className=" flex h-full w-full flex-col items-start  justify-center gap-1 p-5">
+            <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+              <p className=" text-start text-[#a0a0a0]">Duration</p>
+              <p className="text-start text-[#a0a0a0]">
+                {hours > 0 ? <span>{hours} hours, </span> : null}
+                {minutes > 0 ? <span>{minutes} minutes, </span> : null}
+                {seconds > 0 ? <span>{seconds} seconds.</span> : null}
+              </p>
+            </div>
+            <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+              <p className="text-start text-[#a0a0a0]">Poses</p>
+              <p className="text-start text-[#a0a0a0]">{flow.units.length}</p>
+            </div>
+            <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+              <p className="text-start text-[#a0a0a0]">Unique poses</p>
+              <p className="text-start text-[#a0a0a0]">
+                {flow.uniqueAspects.length}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="canvas flex h-full w-full flex-col items-center justify-center pt-2">

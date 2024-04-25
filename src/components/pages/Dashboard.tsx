@@ -212,7 +212,7 @@ export default function Dashboard() {
           ) : pageState === "moving" ? (
             <>
               <Wrapper>
-                <Preview></Preview>
+                <Preview handleDesigningClick={handleDesigningClick}></Preview>
               </Wrapper>
             </>
           ) : pageState === "preferences" ? (

@@ -95,7 +95,7 @@ function Builder({ handleMovingClick }: BuilderProps) {
     setFlow({ ...flow, flowName: flowName });
   }
 
-  return pageLoaded && !authState.dataLoading ? (
+  return (
     <>
       <div className="grid w-full grid-cols-[2fr_1fr] items-start justify-center gap-6 ">
         <div className=" rounded-md border-[1px] border-[#323232] bg-[#232323]">
@@ -146,8 +146,8 @@ function Builder({ handleMovingClick }: BuilderProps) {
                   <p className="text-[30px] text-[#a0a0a0]">
                     {editedFlowName
                       ? editedFlowName
-                      : flowName
-                        ? flowName
+                      : flow.flowName
+                        ? flow.flowName
                         : "No name"}
                   </p>
                 </>
@@ -157,7 +157,6 @@ function Builder({ handleMovingClick }: BuilderProps) {
               </p>
             </div>
             <div className="flex h-full w-full flex-row items-center justify-start gap-2">
-              {" "}
               <Button
                 componentType="builderSave"
                 onClick={handleSave}
@@ -212,7 +211,7 @@ function Builder({ handleMovingClick }: BuilderProps) {
         ></AspectCollection>
       </div>
     </>
-  ) : null;
+  );
 }
 
 export default Builder;
