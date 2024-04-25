@@ -194,20 +194,26 @@ export default function Dashboard() {
         <div>
           {pageState === "all-flows" ? (
             <>
-              <MyFlows
-                showAllFlows={showAllFlows}
-                flows={flows}
-                handleDesigningClick={handleDesigningClick}
-                handleMovingClick={handleMovingClick}
-              />
+              <Wrapper>
+                <MyFlows
+                  showAllFlows={showAllFlows}
+                  flows={flows}
+                  handleDesigningClick={handleDesigningClick}
+                  handleMovingClick={handleMovingClick}
+                />
+              </Wrapper>
             </>
           ) : pageState === "designing" ? (
             <>
-              <Builder handleMovingClick={handleMovingClick}></Builder>
+              <Wrapper>
+                <Builder handleMovingClick={handleMovingClick}></Builder>
+              </Wrapper>
             </>
           ) : pageState === "moving" ? (
             <>
-              <Preview></Preview>
+              <Wrapper>
+                <Preview></Preview>
+              </Wrapper>
             </>
           ) : pageState === "preferences" ? (
             <>
@@ -228,6 +234,14 @@ export default function Dashboard() {
           )}
         </div>
       </div>
+    </div>
+  );
+}
+
+function Wrapper({ children }) {
+  return (
+    <div className="ml-auto mr-auto flex w-full max-w-screen-2xl justify-center p-6">
+      <div className="w-full">{children}</div>
     </div>
   );
 }

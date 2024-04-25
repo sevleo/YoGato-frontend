@@ -54,55 +54,51 @@ function MyFlows({
 
   return (
     <>
-      <div className="my-flows ml-auto mr-auto flex w-full max-w-screen-2xl justify-center p-6 ">
-        <div className=" w-full ">
-          <form
-            method="POST"
-            onSubmit={handleNewFlowClick}
-            className="flex flex-col pb-6"
-          >
-            <div className="flex w-full flex-col items-start justify-center ">
-              <div className="flex gap-[10px]">
-                <Button
-                  type="submit"
-                  componentType="myFlowsCreate"
-                  label="New Flow"
-                ></Button>
-                <div>
-                  {" "}
-                  <label
-                    htmlFor="flowName"
-                    className="text-sm font-medium text-[#A0A0A0]"
-                  ></label>
-                  <input
-                    id="flowName"
-                    name="flowName"
-                    placeholder="a catchy name..."
-                    type="text"
-                    value={flowName}
-                    onChange={(e) => {
-                      setFlowName(e.target.value);
-                      setErrorMessage(null);
-                    }}
-                    className=" h-9 w-full max-w-[300px] rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
-                    required
-                  />
-                  <p className="pl-4 text-start text-[red]">{errorMessage}</p>
-                </div>
-              </div>
+      <form
+        method="POST"
+        onSubmit={handleNewFlowClick}
+        className="flex flex-col pb-6"
+      >
+        <div className="flex w-full flex-col items-start justify-center ">
+          <div className="flex gap-[10px]">
+            <Button
+              type="submit"
+              componentType="myFlowsCreate"
+              label="New Flow"
+            ></Button>
+            <div>
+              {" "}
+              <label
+                htmlFor="flowName"
+                className="text-sm font-medium text-[#A0A0A0]"
+              ></label>
+              <input
+                id="flowName"
+                name="flowName"
+                placeholder="a catchy name..."
+                type="text"
+                value={flowName}
+                onChange={(e) => {
+                  setFlowName(e.target.value);
+                  setErrorMessage(null);
+                }}
+                className=" h-9 w-full max-w-[300px] rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+                required
+              />
+              <p className="pl-4 text-start text-[red]">{errorMessage}</p>
             </div>
-          </form>
-          <div className=" flex flex-col">
-            {flows && authState.isLoggedIn && !authState.dataLoading ? (
-              <FlowTableCustom
-                flows={flows}
-                showAllFlows={showAllFlows}
-                handleDesigningClick={handleDesigningClick}
-                handleMovingClick={handleMovingClick}
-              ></FlowTableCustom>
-            ) : null}
           </div>
         </div>
+      </form>
+      <div className=" flex flex-col">
+        {flows && authState.isLoggedIn && !authState.dataLoading ? (
+          <FlowTableCustom
+            flows={flows}
+            showAllFlows={showAllFlows}
+            handleDesigningClick={handleDesigningClick}
+            handleMovingClick={handleMovingClick}
+          ></FlowTableCustom>
+        ) : null}
       </div>
     </>
   );
