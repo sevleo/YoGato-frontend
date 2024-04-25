@@ -30,9 +30,9 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
 
   const { authState } = useUser();
 
-  const [flowName, setFlowName] = useState("");
+  const [flowName, setFlowName] = useState(flow.flowName);
 
-  const [editedFlowName, setEditedFlowName] = useState("");
+  const [editedFlowName, setEditedFlowName] = useState(flow.flowName);
 
   const enablePreview = flow && flow.units.length > 0 ? true : false;
   const enableClear = flow && flow.units.length > 0 ? true : false;
@@ -143,6 +143,7 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
                     required={true}
                     maxLength={20}
                     setEditableName={setEditableName}
+                    setEditedFlowName={setEditedFlowName}
                   ></Input>
                 </>
               ) : (
@@ -151,8 +152,8 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
                   <p className="text-[30px] text-[#a0a0a0]">
                     {editedFlowName
                       ? editedFlowName
-                      : flow.flowName
-                        ? flow.flowName
+                      : flowName
+                        ? flowName
                         : "No name"}
                   </p>
                 </>
@@ -166,7 +167,7 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
                 componentType="builderSave"
                 onClick={handleSave}
                 label="Save"
-                enabled={enableSave}
+                enabled={flowName ? enableSave : false}
               ></Button>
               <Button
                 componentType="builderPreview"

@@ -238,6 +238,7 @@ interface FlowBuilderTextInputProps {
   minLength: number;
   maxLength: number;
   setEditableName: Dispatch<React.SetStateAction<boolean>>;
+  setEditedFlowName: Dispatch<React.SetStateAction<string>>;
 }
 
 function FlowBuilderTextInput(props: FlowBuilderTextInputProps) {
@@ -252,6 +253,7 @@ function FlowBuilderTextInput(props: FlowBuilderTextInputProps) {
     //   target: { value: props.inputValue },
     // } as React.ChangeEvent<HTMLInputElement>);
     props.setEditableName(false);
+    props.setEditedFlowName("");
   };
 
   return (

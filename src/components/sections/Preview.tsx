@@ -294,7 +294,9 @@ function Preview({ handleDesigningClick }) {
           <div className="flex w-full flex-col items-start justify-center  gap-1 p-5  ">
             <div className="flex w-full flex-col items-start justify-center">
               <>
-                <p className="text-[30px] text-[#a0a0a0]">{flow.flowName}</p>
+                <p className="text-[30px] text-[#a0a0a0]">
+                  {flow.flowName ? flow.flowName : "No name"}
+                </p>
                 <p className="h-[20px] w-full text-start text-[red]"></p>
               </>
             </div>
