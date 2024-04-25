@@ -55,7 +55,7 @@ function MyFlows({
   return (
     <>
       <div className="my-flows ml-auto mr-auto flex w-full max-w-screen-2xl justify-center p-6 ">
-        <div className=" ml-auto mr-auto h-fit w-full items-start justify-center text-white">
+        <div className=" w-full ">
           <form
             method="POST"
             onSubmit={handleNewFlowClick}

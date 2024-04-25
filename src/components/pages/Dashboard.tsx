@@ -6,7 +6,7 @@ import { useEffect, useState, useCallback } from "react";
 import MyFlows from "../sections/MyFlows";
 import { FlowType } from "../sections/MyFlows";
 import { showAllFlowsAPI } from "../utilities/api";
-import Builder from "./Builder";
+import Builder from "../sections/Builder";
 import Preview from "../sections/Preview";
 
 export default function Dashboard() {

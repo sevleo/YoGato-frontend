@@ -292,10 +292,8 @@ function Preview() {
 
   return flow.units.length > 0 ? (
     <>
-      <div
-        className={`preview ml-auto mr-auto flex w-full max-w-screen-2xl justify-center pt-[20px] ${authState.showLoginPopup ? "blur-sm" : ""}`}
-      >
-        <div className="w-3/4">
+      <div className="moving ml-auto mr-auto flex w-full max-w-screen-2xl justify-center p-6">
+        <div className="w-full">
           <div className="ml-auto mr-auto grid w-full grid-cols-[1fr_1fr] items-start justify-center  bg-[#ffffff18] text-black transition-colors hover:bg-[#ffffff38]">
             <div className="flex w-full flex-col items-start justify-center  gap-1 p-5 ">
               <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">

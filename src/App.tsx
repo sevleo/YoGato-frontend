@@ -1,7 +1,7 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/pages/Home";
-import Builder from "./components/pages/Builder";
+import Builder from "./components/sections/Builder";
 import ErrorPage from "./components/pages/ErrorPage";
 import { useEffect, useState } from "react";
 import LogInPopUp from "./components/sections/LoginPopUp";
