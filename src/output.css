@@ -896,6 +896,14 @@ video {
   width: 300px;
 }
 
+.w-\[500px\] {
+  width: 500px;
+}
+
+.w-\[fit\] {
+  width: fit;
+}
+
 .min-w-\[16px\] {
   min-width: 16px;
 }
@@ -1050,6 +1058,10 @@ video {
 
 .grid-rows-canvas {
   grid-template-rows: repeat(auto-fill, minmax(60px, 1fr));
+}
+
+.grid-rows-\[2fr_1fr\] {
+  grid-template-rows: 2fr 1fr;
 }
 
 .flex-row {

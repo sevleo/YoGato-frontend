@@ -337,9 +337,9 @@ function Preview({ handleDesigningClick }) {
           </div>
         </div>
         <div className="h-full rounded-md border-[1px] border-[#323232] bg-[#232323]">
-          <div className=" flex h-full w-full flex-col items-start  justify-center gap-1 p-5">
+          <div className=" flex h-full w-full flex-col items-start justify-center gap-1 p-5">
             <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-              <p className=" text-start text-[#a0a0a0]">Duration</p>
+              <p className="text-start text-[#a0a0a0]">Duration</p>
               <p className="text-start text-[#a0a0a0]">
                 {hours > 0 ? <span>{hours} hours, </span> : null}
                 {minutes > 0 ? <span>{minutes} minutes, </span> : null}
@@ -359,110 +359,128 @@ function Preview({ handleDesigningClick }) {
           </div>
         </div>
       </div>
-      <div className="canvas flex h-full w-full flex-col items-center justify-center pt-2">
-        <div className="flex h-full w-full flex-row items-center justify-center">
-          <div className="image-track m-auto mr-[4px] h-full w-1/2 bg-[#ffffff18] p-5 transition-colors hover:bg-[#ffffff38]">
-            <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
-              <Slider {...settings} ref={sliderRef}>
-                {flow.units.map((unit) => {
-                  return (
-                    <div
-                      key={unit.id}
-                      className=" image h-full w-[200px] bg-[transparent] text-black"
-                    >
-                      <div className="flex flex-col items-center justify-center">
-                        <CircularProgressBar
-                          percentValue={unitPercent}
-                          value={
-                            <img className="w-2/3" src={unit.image} alt="" />
-                          }
-                        ></CircularProgressBar>
+      <div className="grid w-full grid-cols-[2fr_1fr] items-start justify-center gap-6 pt-6">
+        <div className="flex flex-col gap-6">
+          <div className="flex h-full w-full items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6">
+            <div className="flex w-full items-center">
+              <div className="w-full">
+                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                  <p className="text-start text-[#a0a0a0]">Duration</p>
+                  <p className="text-start text-[#a0a0a0]">
+                    {flowCount.toFixed(1)} / {flow.duration} seconds
+                  </p>
+                </div>
+                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                  <p className="text-start text-[#a0a0a0]">Percent</p>
+                  <p className="text-start text-[#a0a0a0]">
+                    {flowPercent.toFixed(0)}%
+                  </p>
+                </div>
+              </div>
+
+              <div className=" w-full">
+                <ThemeProvider theme={linearProgressBarTheme}>
+                  <LinearProgress
+                    key={flowPercent}
+                    color="inherit"
+                    variant="determinate"
+                    value={flowPercent}
+                  />
+                </ThemeProvider>
+              </div>
+            </div>
+          </div>
+          <div className="flex h-full w-full flex-row items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6">
+            <div className="  flex h-full w-full flex-col  items-start justify-center">
+              <div className="flex h-full w-full flex-col items-start justify-center gap-1">
+                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                  <p className="text-start text-[#a0a0a0]">Current</p>
+                  {!timerState.startFlow ? (
+                    <p className="text-start text-[#a0a0a0]">
+                      1 / {flow.units.length}
+                    </p>
+                  ) : (
+                    <p className="text-start text-[#a0a0a0]">
+                      {currentUnitIndex + 1} / {flow.units.length}
+                    </p>
+                  )}
+                </div>
+                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                  <p className="text-start text-[#a0a0a0]">Name</p>
+
+                  <p className="text-start text-[#a0a0a0]">
+                    {timerState.startFlow
+                      ? flow.units[currentUnitIndex].name
+                      : flow.units[0].name}
+                  </p>
+                </div>
+                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                  <p className="text-start text-[#a0a0a0] ">Duration</p>
+                  <p className="text-start text-[#a0a0a0]">
+                    {unitCount.toFixed(1)} /{" "}
+                    {flow.units[currentUnitIndex]
+                      ? flow.units[currentUnitIndex].duration
+                      : flow.units[0].duration}{" "}
+                    seconds
+                  </p>
+                </div>
+                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                  <p className="text-start text-[#a0a0a0]">Percent</p>
+                  <p className="text-start text-[#a0a0a0]">
+                    {unitPercent.toFixed(0)}%
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="image-track m-auto h-full w-1/2">
+              <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
+                <Slider {...settings} ref={sliderRef}>
+                  {flow.units.map((unit) => {
+                    return (
+                      <div
+                        key={unit.id}
+                        className=" image h-full w-[200px] bg-[transparent] text-black"
+                      >
+                        <div className="flex flex-col items-center justify-center">
+                          <CircularProgressBar
+                            percentValue={unitPercent}
+                            value={
+                              <img className="w-2/3" src={unit.image} alt="" />
+                            }
+                          ></CircularProgressBar>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </Slider>
-              <div className="flex flex-col items-center justify-center  gap-1 p-1">
-                {" "}
-                <Box sx={{ width: 300 }}>
-                  <Stack
-                    spacing={2}
-                    direction="row"
-                    sx={{ mb: 1 }}
-                    alignItems="center"
-                  >
-                    <VolumeDownRounded sx={{ color: "white" }} />
-                    <VolumeSlider
-                      aria-label="Volume"
-                      value={volumeValue}
-                      onChange={handleVolumeChange}
-                      // marks={true}
-                      // step={5}
-                      valueLabelDisplay="auto"
-                      sx={{
-                        // backgroundColor: "red",
-                        color: "white",
-                      }}
-                    />
-                    <VolumeUpRounded sx={{ color: "white" }} />
-                  </Stack>
-                </Box>
+                    );
+                  })}
+                </Slider>
+                <div className="flex flex-col items-center justify-center  gap-1 p-1">
+                  {" "}
+                  <Box sx={{ width: 300 }}>
+                    <Stack
+                      spacing={2}
+                      direction="row"
+                      sx={{ mb: 1 }}
+                      alignItems="center"
+                    >
+                      <VolumeDownRounded sx={{ color: "white" }} />
+                      <VolumeSlider
+                        aria-label="Volume"
+                        value={volumeValue}
+                        onChange={handleVolumeChange}
+                        // marks={true}
+                        // step={5}
+                        valueLabelDisplay="auto"
+                        sx={{
+                          // backgroundColor: "red",
+                          color: "white",
+                        }}
+                      />
+                      <VolumeUpRounded sx={{ color: "white" }} />
+                    </Stack>
+                  </Box>
+                </div>
               </div>
             </div>
-          </div>
-          <div className=" ml-[4px] flex h-full w-1/2 flex-col bg-[#ffffff18] p-2 transition-colors hover:bg-[#ffffff38]">
-            <div className="mt-2 flex flex-col items-start justify-center">
-              <div className="flex w-full items-start justify-start">
-                {!timerState.startFlow ? (
-                  <p className="text-start text-[20px]">
-                    1 / {flow.units.length}
-                  </p>
-                ) : (
-                  <p className="text-start text-[20px]">
-                    {currentUnitIndex + 1} / {flow.units.length}
-                  </p>
-                )}
-              </div>
-              <div>
-                <p className="text-start text-[20px]">
-                  {timerState.startFlow
-                    ? flow.units[currentUnitIndex].name
-                    : flow.units[0].name}
-                </p>
-              </div>
-              <div className="grid w-full grid-cols-[1fr_1fr]">
-                <p className="ltr text-start text-[20px] ">Duration:</p>
-                <p className="text-start text-[20px]">
-                  {unitCount.toFixed(1)} /{" "}
-                  {flow.units[currentUnitIndex]
-                    ? flow.units[currentUnitIndex].duration
-                    : flow.units[0].duration}{" "}
-                  seconds
-                </p>
-              </div>
-              <div className="grid w-full grid-cols-[1fr_1fr]">
-                <p className="text-start text-[20px]">Percent: </p>
-                <p className="text-start text-[20px]">
-                  {unitPercent.toFixed(0)}%
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-[8px] flex h-full w-full items-center justify-center bg-[#ffffff18] transition-colors hover:bg-[#ffffff38]">
-          <div className="w-1/2">
-            <ThemeProvider theme={linearProgressBarTheme}>
-              <LinearProgress
-                key={flowPercent}
-                color="inherit"
-                variant="determinate"
-                value={flowPercent}
-              />
-            </ThemeProvider>
-            <p>{flowPercent.toFixed(0)}%</p>
-            <p className="ltr flex h-full items-center justify-center p-2">
-              Total flow: {flowCount.toFixed(1)} / {flow.duration} seconds
-            </p>
           </div>
         </div>
       </div>

@@ -1,15 +1,9 @@
 .container {
   direction: ltr;
   display: flex;
-  /* width: 420px; */
-  /* padding: 50px; */
-  /* border-radius: 8px; */
   background-color: transparent;
-  /* row-gap: 30px; */
   flex-direction: column;
   align-items: center;
-  /* min-width: 100px; */
-  /* min-height: 100px; */
 }
 
 .circular-progress {
@@ -19,13 +13,11 @@
   position: relative;
   height: 70%;
   width: 70%;
-  /* border: 1px solid black; */
   background-color: red;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  /* background: conic-gradient(red 3.6deg, rgb(215, 215, 215) 0deg); */
   margin: 20px;
 }
 
@@ -34,24 +26,11 @@
   position: absolute;
   height: 97.5%;
   width: 97.5%;
-  /* border: 1px solid black; */
   border-radius: 50%;
-  /* background-image: radial-gradient(
-    rgb(55, 53, 51) 0.9500000000000001px,
-    rgb(42, 42, 42) 0.9500000000000001px
-  ); */
   background-color: rgb(122, 107, 68);
   background-size: 19px 19px;
-  /* background-color: rgb(42, 42, 42); */
 }
 
 .progress-value {
   position: relative;
 }
-
-/* .slick-slider.slick-initialized,
-.slick-list,
-.slick-track,
-.slick-slide > div {
-  height: 100%;
-} */
