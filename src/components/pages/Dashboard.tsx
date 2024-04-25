@@ -191,32 +191,26 @@ export default function Dashboard() {
         <div className="flex h-12 max-h-12 items-center justify-start border-b-[1px] border-[#323232] pl-4">
           <p>breadcrumbs placeholder</p>
         </div>
-        <div>
+        <Wrapper>
           {pageState === "all-flows" ? (
             <>
-              <Wrapper>
-                <MyFlows
-                  showAllFlows={showAllFlows}
-                  flows={flows}
-                  handleDesigningClick={handleDesigningClick}
-                  handleMovingClick={handleMovingClick}
-                />
-              </Wrapper>
+              <MyFlows
+                showAllFlows={showAllFlows}
+                flows={flows}
+                handleDesigningClick={handleDesigningClick}
+                handleMovingClick={handleMovingClick}
+              />
             </>
           ) : pageState === "designing" ? (
             <>
-              <Wrapper>
-                <Builder
-                  showAllFlows={showAllFlows}
-                  handleMovingClick={handleMovingClick}
-                ></Builder>
-              </Wrapper>
+              <Builder
+                showAllFlows={showAllFlows}
+                handleMovingClick={handleMovingClick}
+              ></Builder>
             </>
           ) : pageState === "moving" ? (
             <>
-              <Wrapper>
-                <Preview handleDesigningClick={handleDesigningClick}></Preview>
-              </Wrapper>
+              <Preview handleDesigningClick={handleDesigningClick}></Preview>
             </>
           ) : pageState === "preferences" ? (
             <>
@@ -235,7 +229,7 @@ export default function Dashboard() {
               <p>no such page</p>
             </>
           )}
-        </div>
+        </Wrapper>
       </div>
     </div>
   );
