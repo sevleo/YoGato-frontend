@@ -12,9 +12,10 @@ import Button from "../buildingBlocks/Button";
 
 interface BuilderProps {
   handleMovingClick: () => void;
+  showAllFlows: () => void;
 }
 
-function Builder({ handleMovingClick }: BuilderProps) {
+function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
   const aspectGroups: AspectGroupType[] = categories;
 
   const { flow, setFlow } = useFlow();
@@ -85,9 +86,13 @@ function Builder({ handleMovingClick }: BuilderProps) {
       setFlowName,
       setNameErrorMessage,
       event
-    );
-    console.log(flow);
-    // setFlow({ ...flow, flowName: flowName });
+    )
+      .then(() => {
+        showAllFlows();
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
     setEnableSave(false);
   }
 

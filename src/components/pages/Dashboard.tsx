@@ -206,7 +206,10 @@ export default function Dashboard() {
           ) : pageState === "designing" ? (
             <>
               <Wrapper>
-                <Builder handleMovingClick={handleMovingClick}></Builder>
+                <Builder
+                  showAllFlows={showAllFlows}
+                  handleMovingClick={handleMovingClick}
+                ></Builder>
               </Wrapper>
             </>
           ) : pageState === "moving" ? (
