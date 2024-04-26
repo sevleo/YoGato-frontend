@@ -34,7 +34,7 @@ function Aspect({ aspect, count, handleClick }: Props) {
       }}
     >
       <div className=" fancy-content relative flex select-none flex-col items-center justify-between pt-2">
-        <div className="relative flex h-auto w-full items-center justify-center border-b-[1px] border-[#1e1e1e]">
+        <div className="relative flex h-auto w-full items-center justify-center border-b-[1px] border-[#323232]">
           <img className="pb-2 pl-2 pr-2" src={svg} alt="" draggable="false" />
           <div>
             {" "}
@@ -76,7 +76,7 @@ function Aspect({ aspect, count, handleClick }: Props) {
           </div>
         </div>
 
-        <p className="w-full p-3 text-start text-[#a0a0a0]">
+        <p className="w-full p-3 text-start text-xs text-[#a0a0a0]">
           {aspect.english_name}
           {count > 0 ? (
             <span className="  flex h-[16px] min-w-[16px] items-center justify-start rounded-full p-0.5 text-xs text-[#6ccc93]">
