@@ -6,8 +6,6 @@ import { useState } from "react";
 // Types & interfaces
 import { AspectType } from "./AspectController";
 
-svgProvider("boatstraightlegs");
-
 type Props = {
   aspect: AspectType;
   count: number;
@@ -37,6 +35,7 @@ function Aspect({ aspect, count, handleClick }: Props) {
     >
       <div className=" fancy-content relative flex select-none flex-col items-center justify-between pt-2">
         <div className="relative flex h-auto w-full items-center justify-center border-b-[1px] border-[#1e1e1e]">
+          <img className="pb-2 pl-2 pr-2" src={svg} alt="" draggable="false" />
           <svg
             className="absolute inset-0 z-10 h-full w-full object-cover object-center"
             width="100%"
@@ -72,7 +71,6 @@ function Aspect({ aspect, count, handleClick }: Props) {
               </clipPath>
             </defs>
           </svg>
-          <img className="pb-2 pl-2 pr-2" src={svg} alt="" draggable="false" />
         </div>
 
         <p className="w-full p-2 text-start text-[#a0a0a0]">
