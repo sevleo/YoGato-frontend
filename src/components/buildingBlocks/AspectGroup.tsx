@@ -67,7 +67,7 @@ function AspectGroup({
         >
           <Typography>
             {category_name}{" "}
-            <span className="text-[red]">{aspectGroupCount}</span>
+            <span className="text-[#6ccc93]">{aspectGroupCount}</span>
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
