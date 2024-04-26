@@ -253,7 +253,6 @@ function FlowBuilderTextInput(props: FlowBuilderTextInputProps) {
     //   target: { value: props.inputValue },
     // } as React.ChangeEvent<HTMLInputElement>);
     props.setEditableName(false);
-    props.setEditedFlowName("");
   };
 
   return (

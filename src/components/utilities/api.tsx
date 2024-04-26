@@ -136,7 +136,11 @@ export async function createOrUpdateFlow(
         flowName: flowName || "No name",
         flowData: { ...flow, flowName: flowName },
       });
-      setFlow({ ...flow, flowId: response.data.message._id });
+      setFlow({
+        ...flow,
+        flowId: response.data.message._id,
+        flowName: flowName,
+      });
     } catch (error: any) {
       console.error("Error adding flow:", error);
       if (error.response) {

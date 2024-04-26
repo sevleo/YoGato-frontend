@@ -94,6 +94,8 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
         console.error("Error:", error);
       });
     setEnableSave(false);
+    console.log(flowName);
+    console.log(flow);
   }
 
   function updateFlowContext() {
@@ -143,7 +145,6 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
                     required={true}
                     maxLength={20}
                     setEditableName={setEditableName}
-                    setEditedFlowName={setEditedFlowName}
                   ></Input>
                 </>
               ) : (
