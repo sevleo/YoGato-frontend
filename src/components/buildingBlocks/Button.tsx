@@ -34,9 +34,6 @@ export default function Button(props: ButtonProps) {
       styles =
         "border-box mt-4 w-full border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none";
       break;
-      styles = `${props.enabled ? "pointer-events-auto" : "pointer-events-none bg-[#8080806b] text-[gray]"}`;
-      break;
-
     case "myFlowsDelete":
     case "myFlowsEdit":
       styles = ` focus:outline-none hover:border-[#525252] hover:bg-[#363636] w-[30px] h-[30px] p-0 flex justify-center items-center bg-[#2e2e2e] border-[1px] border-[#3e3e3e] ${props.enabled ? "pointer-events-auto" : "pointer-events-none bg-[#8080806b] text-[gray]"}`;
