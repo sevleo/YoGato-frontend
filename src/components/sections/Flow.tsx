@@ -23,10 +23,10 @@ import {
 } from "@dnd-kit/sortable";
 
 // Components
-import Unit from "../buildingBlocks/Unit";
+import Unit from "../buildingBlocks/Unit/UnitController";
 
 // Types & interfaces
-import { UnitType } from "../buildingBlocks/Unit";
+import { UnitType } from "../buildingBlocks/Unit/UnitController";
 
 export interface FlowDataType {
   flowName: string;

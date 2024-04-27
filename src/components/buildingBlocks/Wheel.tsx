@@ -6,7 +6,7 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
-import { UnitType } from "./Unit";
+import { UnitType } from "./Unit/UnitController";
 
 interface WheelProps {
   units: UnitType[];
