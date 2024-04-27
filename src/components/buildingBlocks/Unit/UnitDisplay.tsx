@@ -2,7 +2,6 @@ import Input from "../Input";
 import Button from "../Button";
 
 function UnitDisplay(props) {
-  console.log(props.image);
   return (
     <>
       <div

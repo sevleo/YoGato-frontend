@@ -7,9 +7,9 @@ import { useFlow } from "../../utilities/FlowContext";
 import { Dispatch, SetStateAction } from "react";
 
 // Components
-import Aspect from "./AspectDisplay";
+import AspectDisplay from "./AspectDisplay";
 
-export interface AspectType {
+export interface AspectControllerType {
   english_name: string;
   category_name: string;
   sanskrit_name_adapted: string;
@@ -18,8 +18,8 @@ export interface AspectType {
   id: number;
 }
 
-type Props = {
-  aspect: AspectType;
+type AspectControllerProps = {
+  aspect: AspectControllerType;
   count: number;
   aspectGroups: AspectGroupType[];
   setEnableSave: Dispatch<SetStateAction<boolean>>;
@@ -30,7 +30,7 @@ export default function AspectController({
   count,
   aspectGroups,
   setEnableSave,
-}: Props) {
+}: AspectControllerProps) {
   const { setFlow } = useFlow();
   const handleClick = () => {
     // console.log(aspect);
@@ -104,5 +104,7 @@ export default function AspectController({
     setEnableSave(true);
   };
 
-  return <Aspect aspect={aspect} count={count} handleClick={handleClick} />;
+  return (
+    <AspectDisplay aspect={aspect} count={count} handleClick={handleClick} />
+  );
 }

@@ -4,15 +4,15 @@ import svgProvider from "../../../assets/svgProvider";
 import { useState } from "react";
 
 // Types & interfaces
-import { AspectType } from "./AspectController";
+import { AspectControllerType } from "./AspectController";
 
-type Props = {
-  aspect: AspectType;
+type AspectDisplayProps = {
+  aspect: AspectControllerType;
   count: number;
   handleClick: MouseEventHandler<HTMLDivElement>;
 };
 
-function Aspect({ aspect, count, handleClick }: Props) {
+function AspectDisplay({ aspect, count, handleClick }: AspectDisplayProps) {
   const svg = svgProvider(aspect.url_svg_alt_local);
 
   const [isActive, setActive] = useState(false);
@@ -93,4 +93,4 @@ function Aspect({ aspect, count, handleClick }: Props) {
   );
 }
 
-export default Aspect;
+export default AspectDisplay;

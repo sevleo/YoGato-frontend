@@ -46,7 +46,6 @@ function UnitController({
   aspectGroups,
   setEnableSave,
 }: UnitControllerProps) {
-  console.log(image);
   const { setFlow } = useFlow();
   // On delete button on unit
   function onUnitCloseClick() {
