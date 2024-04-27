@@ -3,9 +3,15 @@ import { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { useFlow } from "../utilities/FlowContext";
+import UnitDisplay from "../buildingBlocks/Unit/UnitDisplay";
 
 // DndKit
-import { DndContext, DragEndEvent } from "@dnd-kit/core";
+import {
+  DndContext,
+  DragEndEvent,
+  DragOverlay,
+  DragStartEvent,
+} from "@dnd-kit/core";
 import { restrictToVerticalAxis } from "@dnd-kit/modifiers";
 import {
   closestCenter,
@@ -57,6 +63,8 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
     Dispatch<React.SetStateAction<boolean>>,
   ] = useState<boolean>(true);
 
+  const [activeId, setActiveId] = useState(null);
+
   const sensors = useSensors(
     useSensor(PointerSensor, {
       // activationConstraint: {
@@ -68,6 +76,11 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
       coordinateGetter: sortableKeyboardCoordinates,
     })
   );
+
+  function handleDragStart(event: DragStartEvent) {
+    console.log(event.active);
+    setActiveId(event.active.id);
+  }
 
   function handleDragEnd(event: DragEndEvent) {
     const { active, over } = event;
@@ -87,6 +100,8 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
         };
       });
     }
+
+    setActiveId(null);
   }
 
   return (
@@ -97,6 +112,7 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
       <DndContext
         sensors={sensors}
         collisionDetection={closestCenter}
+        onDragStart={handleDragStart}
         onDragEnd={handleDragEnd}
         modifiers={[restrictToVerticalAxis]}
       >
@@ -122,6 +138,9 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
                     );
                   })}
                 </SortableContext>
+                <DragOverlay>
+                  {activeId ? <UnitDisplay></UnitDisplay> : null}
+                </DragOverlay>
               </div>
             ) : (
               <div className="flex h-full w-full flex-col items-center justify-center">

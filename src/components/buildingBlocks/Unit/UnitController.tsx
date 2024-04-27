@@ -159,18 +159,18 @@ function UnitController({
 
   return (
     <UnitDisplay
+      id={id}
+      ref={setNodeRef}
+      style={style}
+      {...attributes}
+      {...listeners}
       enableUnitClose={enableUnitClose}
       disableUnitClose={disableUnitClose}
-      setNodeRef={setNodeRef}
-      style={style}
       dragAllowed={dragAllowed}
-      attributes={attributes}
-      listeners={listeners}
       index={index}
       image={image}
       name={name}
       sanskritName={sanskritName}
-      id={id}
       duration={duration}
       handleLengthChange={handleLengthChange}
       setDragAllowed={setDragAllowed}
