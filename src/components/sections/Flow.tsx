@@ -65,7 +65,6 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
 
   const [activeId, setActiveId] = useState(null);
   const [activeUnit, setActiveUnit] = useState<object>(null);
-  const [isDragging, setIsDragging] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -85,7 +84,6 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
       (item) => item.id === event.active.id
     )[0];
     setActiveUnit(activeUnit);
-    setIsDragging(true);
     console.log("drag start");
   }
 
@@ -110,14 +108,12 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
 
     setActiveId(null);
     setActiveUnit(null);
-    setIsDragging(false);
     console.log("drag end");
+    setEnableSave(true);
   }
 
   return (
-    <div
-      className={`canvas w-2/3  pb-[40px] ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
-    >
+    <div className=" canvas w-2/3  pb-[40px] ">
       {/* <div>
         <p className="text-black">Your flow</p>
       </div> */}
@@ -146,20 +142,21 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
                         setDragAllowed={setDragAllowed}
                         aspectGroups={aspectGroups}
                         setEnableSave={setEnableSave}
-                        isDragging={isDragging}
                         activeId={activeId}
+                        lastUnit={
+                          index + 1 === flow.units.length ? true : false
+                        }
                       ></Unit>
                     );
                   })}
                 </SortableContext>
-                <DragOverlay>
+                <DragOverlay adjustScale style={{ transformOrigin: "0 0 " }}>
                   {activeId ? (
                     <UnitDisplay
                       id={activeUnit.id}
                       {...activeUnit}
-                      styles="outline-[white] outline-[0.5px] outline"
-                      isDragging={isDragging}
-                    ></UnitDisplay>
+                      isDragging
+                    />
                   ) : null}
                 </DragOverlay>
               </div>

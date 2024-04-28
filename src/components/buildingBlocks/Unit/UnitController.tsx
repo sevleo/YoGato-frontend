@@ -31,6 +31,7 @@ interface UnitControllerProps {
   setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
   aspectGroups: AspectGroupType[];
   setEnableSave: Dispatch<SetStateAction<boolean>>;
+  lastUnit: boolean;
 }
 
 function UnitController({
@@ -45,8 +46,7 @@ function UnitController({
   setDragAllowed,
   aspectGroups,
   setEnableSave,
-  isDragging,
-  activeId,
+  lastUnit,
 }: UnitControllerProps) {
   const { setFlow } = useFlow();
   // On delete button on unit
@@ -108,15 +108,20 @@ function UnitController({
 
   const [showUnitClose, setShowUnitClose] = useState(false);
 
-  const { attributes, listeners, setNodeRef, transform, transition } =
-    useSortable({
-      id: id,
-    });
+  const {
+    isDragging,
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({
+    id: id,
+  });
 
   const style = {
     transform: CSS.Transform.toString(transform),
-    transition,
-    opacity: isDragging && activeId === id ? 0.3 : 1,
+    transition: transition || undefined,
   };
 
   // On changing length on unit
@@ -180,7 +185,8 @@ function UnitController({
       enableDrag={enableDrag}
       onUnitCloseClick={onUnitCloseClick}
       disableDrag={disableDrag}
-      isDragging={isDragging}
+      withOpacity={isDragging}
+      lastUnit={lastUnit}
     ></UnitDisplay>
   );
 }
