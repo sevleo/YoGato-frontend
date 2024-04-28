@@ -1192,6 +1192,11 @@ video {
   border-color: rgb(255 0 0 / var(--tw-border-opacity));
 }
 
+.border-\[white\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
 .bg-\[\#161616\] {
   --tw-bg-opacity: 1;
   background-color: rgb(22 22 22 / var(--tw-bg-opacity));
@@ -1287,6 +1292,16 @@ video {
 .bg-\[\#525252\] {
   --tw-bg-opacity: 1;
   background-color: rgb(82 82 82 / var(--tw-bg-opacity));
+}
+
+.bg-\[red\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 0 0 / var(--tw-bg-opacity));
+}
+
+.bg-\[white\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .object-cover {
@@ -1611,6 +1626,10 @@ video {
   opacity: 1;
 }
 
+.opacity-\[0\.1\] {
+  opacity: 0.1;
+}
+
 .shadow-md {
   --tw-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
@@ -1634,6 +1653,10 @@ video {
   outline-width: 2px;
 }
 
+.outline-\[0\.5px\] {
+  outline-width: 0.5px;
+}
+
 .outline-\[\#2e2e2e\] {
   outline-color: #2e2e2e;
 }
@@ -1652,6 +1675,10 @@ video {
 
 .outline-\[red\] {
   outline-color: red;
+}
+
+.outline-\[white\] {
+  outline-color: white;
 }
 
 .blur-sm {

@@ -20,6 +20,7 @@ const UnitDisplay = forwardRef(
       enableDrag,
       onUnitCloseClick,
       disableDrag,
+      styles,
       ...props
     },
     ref
@@ -31,7 +32,7 @@ const UnitDisplay = forwardRef(
           onMouseLeave={disableUnitClose}
           ref={ref}
           style={style}
-          className="unit step relative grid  h-[60px] cursor-default select-none grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr_0.5fr] items-center  justify-between gap-1 text-black  hover:cursor-pointer"
+          className={`${styles ? styles : ""} unit step relative grid  h-[60px] cursor-default select-none grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr_0.5fr] items-center  justify-between gap-1 text-black  hover:cursor-pointer`}
           {...(dragAllowed ? { ...props } : null)}
           {...(dragAllowed ? { ...props } : null)}
         >

@@ -64,6 +64,8 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
   ] = useState<boolean>(true);
 
   const [activeId, setActiveId] = useState(null);
+  const [activeUnit, setActiveUnit] = useState<object>(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -78,8 +80,12 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
   );
 
   function handleDragStart(event: DragStartEvent) {
-    console.log(event.active);
     setActiveId(event.active.id);
+    const activeUnit = flow.units.filter(
+      (item) => item.id === event.active.id
+    )[0];
+    setActiveUnit(activeUnit);
+    setIsDragging(true);
   }
 
   function handleDragEnd(event: DragEndEvent) {
@@ -102,6 +108,8 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
     }
 
     setActiveId(null);
+    setActiveUnit(null);
+    setIsDragging(false);
   }
 
   return (
@@ -134,12 +142,20 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
                         setDragAllowed={setDragAllowed}
                         aspectGroups={aspectGroups}
                         setEnableSave={setEnableSave}
+                        isDragging={isDragging}
+                        activeId={activeId}
                       ></Unit>
                     );
                   })}
                 </SortableContext>
                 <DragOverlay>
-                  {activeId ? <UnitDisplay></UnitDisplay> : null}
+                  {activeId ? (
+                    <UnitDisplay
+                      id={activeUnit.id}
+                      {...activeUnit}
+                      styles="outline-[white] outline-[0.5px] outline"
+                    ></UnitDisplay>
+                  ) : null}
                 </DragOverlay>
               </div>
             ) : (

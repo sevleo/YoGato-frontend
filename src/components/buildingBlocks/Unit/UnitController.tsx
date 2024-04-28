@@ -45,6 +45,8 @@ function UnitController({
   setDragAllowed,
   aspectGroups,
   setEnableSave,
+  isDragging,
+  activeId,
 }: UnitControllerProps) {
   const { setFlow } = useFlow();
   // On delete button on unit
@@ -114,6 +116,7 @@ function UnitController({
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
+    opacity: isDragging && activeId === id ? 0.3 : 1,
   };
 
   // On changing length on unit
