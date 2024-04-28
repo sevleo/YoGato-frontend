@@ -210,7 +210,7 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
           </div>
         </div>
       </div>
-      <div className="flex gap-6 pt-6">
+      <div className="flex gap-6 overflow-auto pt-6">
         <Flow aspectGroups={aspectGroups} setEnableSave={setEnableSave}></Flow>
         <AspectCollection
           aspectGroups={aspectGroups}

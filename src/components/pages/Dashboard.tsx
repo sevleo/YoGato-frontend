@@ -190,8 +190,8 @@ export default function Dashboard() {
           </ul>
         </nav>
       </div>
-      <div className="flex-1  overflow-auto" id="canvas">
-        <div className="flex h-12 max-h-12 items-center justify-start border-b-[1px] border-[#323232] pl-4">
+      <div className="relative flex-1" id="canvas">
+        <div className=" flex h-12 max-h-12 items-center justify-start  border-b-[1px] border-[#323232] pl-4">
           <p>breadcrumbs placeholder</p>
         </div>
         <Wrapper>
@@ -240,8 +240,8 @@ export default function Dashboard() {
 
 function Wrapper({ children }) {
   return (
-    <div className="ml-auto mr-auto flex w-full max-w-screen-2xl justify-center overflow-auto p-6">
-      <div className="w-full">{children}</div>
+    <div className="wrapper ml-auto mr-auto flex h-[calc(100%-48px)] w-full max-w-screen-2xl justify-center overflow-auto p-6">
+      <div className="w-full ">{children}</div>
     </div>
   );
 }
