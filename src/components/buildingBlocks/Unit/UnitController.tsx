@@ -180,6 +180,7 @@ function UnitController({
       enableDrag={enableDrag}
       onUnitCloseClick={onUnitCloseClick}
       disableDrag={disableDrag}
+      isDragging={isDragging}
     ></UnitDisplay>
   );
 }

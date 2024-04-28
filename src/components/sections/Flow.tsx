@@ -86,6 +86,7 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
     )[0];
     setActiveUnit(activeUnit);
     setIsDragging(true);
+    console.log("drag start");
   }
 
   function handleDragEnd(event: DragEndEvent) {
@@ -110,10 +111,13 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
     setActiveId(null);
     setActiveUnit(null);
     setIsDragging(false);
+    console.log("drag end");
   }
 
   return (
-    <div className=" canvas w-2/3  pb-[40px] ">
+    <div
+      className={`canvas w-2/3  pb-[40px] ${isDragging ? "cursor-grabbing" : "cursor-grab"}`}
+    >
       {/* <div>
         <p className="text-black">Your flow</p>
       </div> */}
@@ -154,6 +158,7 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
                       id={activeUnit.id}
                       {...activeUnit}
                       styles="outline-[white] outline-[0.5px] outline"
+                      isDragging={isDragging}
                     ></UnitDisplay>
                   ) : null}
                 </DragOverlay>
