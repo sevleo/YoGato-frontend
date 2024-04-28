@@ -19,12 +19,12 @@ export default function CircularProgressBar({
   }, []);
 
   return (
-    <div className="container">
+    <div className="container pl-6">
       <div
         className="circular-progress"
         ref={circularProgressRef}
         style={{
-          background: `conic-gradient(#6ccc93 ${percentValue * 3.6}deg, rgb(78, 67, 49) 0deg)`,
+          background: `conic-gradient(#6ccc93 ${percentValue * 3.6}deg, #545454 0deg)`,
         }}
       >
         <div

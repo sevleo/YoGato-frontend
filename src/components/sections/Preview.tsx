@@ -360,7 +360,7 @@ function Preview({ handleDesigningClick }) {
         </div>
       </div>
       <div className="grid w-full grid-cols-[2fr_1fr] items-start justify-center gap-6 pt-6">
-        <div className="flex flex-col gap-6">
+        <div className="flex h-full flex-col gap-6">
           <div className="flex h-full w-full items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6">
             <div className="flex w-full items-center">
               <div className="flex w-full flex-col gap-1">
@@ -391,8 +391,8 @@ function Preview({ handleDesigningClick }) {
             </div>
           </div>
           <div className="flex h-full w-full flex-row items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6">
-            <div className="  flex h-full w-full flex-col  items-start justify-center">
-              <div className="flex h-full w-full flex-col items-start justify-center gap-1">
+            <div className=" flex h-full w-1/2 flex-col items-start justify-center">
+              <div className="flex h-full w-full flex-col items-start justify-center gap-1 pr-6">
                 <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
                   <p className="text-start text-[#a0a0a0]">Current</p>
                   {!timerState.startFlow ? (
@@ -432,6 +432,7 @@ function Preview({ handleDesigningClick }) {
                 </div>
               </div>
             </div>
+            <div className="h-full w-[1px] bg-[#323232]"></div>
             <div className="image-track m-auto h-full w-1/2">
               <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
                 <Slider {...settings} ref={sliderRef}>
