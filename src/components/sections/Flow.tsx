@@ -84,7 +84,6 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
       (item) => item.id === event.active.id
     )[0];
     setActiveUnit(activeUnit);
-    console.log("drag start");
   }
 
   function handleDragEnd(event: DragEndEvent) {
@@ -108,7 +107,6 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
 
     setActiveId(null);
     setActiveUnit(null);
-    console.log("drag end");
     setEnableSave(true);
   }
 
