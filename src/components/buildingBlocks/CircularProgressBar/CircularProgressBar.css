@@ -24,8 +24,8 @@
 .circular-progress::before {
   content: "";
   position: absolute;
-  height: 97.5%;
-  width: 97.5%;
+  height: 93%;
+  width: 93%;
   border-radius: 50%;
   background-color: #1c1c1c;
   background-size: 19px 19px;

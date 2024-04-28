@@ -767,14 +767,6 @@ video {
   height: 100%;
 }
 
-.h-\[10px\] {
-  height: 10px;
-}
-
-.h-1\/2 {
-  height: 50%;
-}
-
 .max-h-12 {
   max-height: 3rem;
 }
@@ -835,6 +827,10 @@ video {
   width: 150px;
 }
 
+.w-\[1px\] {
+  width: 1px;
+}
+
 .w-\[200px\] {
   width: 200px;
 }
@@ -862,14 +858,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-\[1px\] {
-  width: 1px;
-}
-
-.w-\[0\.5px\] {
-  width: 0.5px;
 }
 
 .min-w-\[100px\] {
@@ -1151,6 +1139,11 @@ video {
   background-color: rgb(46 46 46 / var(--tw-bg-opacity));
 }
 
+.bg-\[\#323232\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(50 50 50 / var(--tw-bg-opacity));
+}
+
 .bg-\[\#545454\] {
   --tw-bg-opacity: 1;
   background-color: rgb(84 84 84 / var(--tw-bg-opacity));
@@ -1186,16 +1179,6 @@ video {
 
 .bg-transparent {
   background-color: transparent;
-}
-
-.bg-\[red\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 0 0 / var(--tw-bg-opacity));
-}
-
-.bg-\[\#323232\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(50 50 50 / var(--tw-bg-opacity));
 }
 
 .object-cover {
@@ -1291,6 +1274,10 @@ video {
   padding-left: 1rem;
 }
 
+.pl-6 {
+  padding-left: 1.5rem;
+}
+
 .pl-\[5px\] {
   padding-left: 5px;
 }
@@ -1305,6 +1292,10 @@ video {
 
 .pr-4 {
   padding-right: 1rem;
+}
+
+.pr-6 {
+  padding-right: 1.5rem;
 }
 
 .pr-\[5px\] {
@@ -1337,14 +1328,6 @@ video {
 
 .pt-\[50px\] {
   padding-top: 50px;
-}
-
-.pl-6 {
-  padding-left: 1.5rem;
-}
-
-.pr-6 {
-  padding-right: 1.5rem;
 }
 
 .text-left {
@@ -1590,7 +1573,7 @@ video {
 body {
   /* scrollbar-gutter: stable; */
   width: 100%;
-  overflow-y: visible !important;
+  /* overflow-y: visible !important; */
 }
 
 :root {
@@ -1610,6 +1593,10 @@ body {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 300;
   box-sizing: border-box;
+}
+
+#root {
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {
@@ -1764,6 +1751,10 @@ button:focus-visible {
 }
 
 /* Aspect hover animation END */
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
 
 .placeholder\:text-\[\#ededed80\]::-moz-placeholder {
   color: #ededed80;

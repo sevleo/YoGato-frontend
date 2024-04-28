@@ -67,7 +67,10 @@ export default function Dashboard() {
 
   return (
     <div className="flex h-full">
-      <div className=" w-64 border-r-[1px] border-[#323232]" id="sidebar">
+      <div
+        className=" hide-scrollbar h-full w-64 overflow-auto border-r-[1px] border-[#323232]"
+        id="sidebar"
+      >
         <div className=" flex h-12 max-h-12 items-center justify-start border-b-[1px] border-[#323232] pl-4">
           <Link
             className=" flex h-full w-[100px] items-center justify-center text-[25px] font-bold text-[#6ccc93]  hover:text-[#6ccc93]"
@@ -187,7 +190,7 @@ export default function Dashboard() {
           </ul>
         </nav>
       </div>
-      <div className="flex-1 " id="canvas">
+      <div className="flex-1  overflow-auto" id="canvas">
         <div className="flex h-12 max-h-12 items-center justify-start border-b-[1px] border-[#323232] pl-4">
           <p>breadcrumbs placeholder</p>
         </div>
@@ -237,7 +240,7 @@ export default function Dashboard() {
 
 function Wrapper({ children }) {
   return (
-    <div className="ml-auto mr-auto flex w-full max-w-screen-2xl justify-center p-6">
+    <div className="ml-auto mr-auto flex w-full max-w-screen-2xl justify-center overflow-auto p-6">
       <div className="w-full">{children}</div>
     </div>
   );
