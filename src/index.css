@@ -180,3 +180,21 @@ button:focus-visible {
 .hide-scrollbar {
   scrollbar-width: none;
 }
+
+.wrapper {
+  scrollbar-gutter: stable;
+  scrollbar-color: red;
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 5px;
+}
+
+.wrapper::-webkit-scrollbar-thumb {
+  background-color: #7e7e7e; /* color of the thumb */
+}
+
+.wrapper::-webkit-scrollbar-track {
+  background-color: #1c1c1c; /* color of the track */
+  border-color: transparent;
+}
