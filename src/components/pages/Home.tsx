@@ -18,7 +18,7 @@ function Home() {
   }
 
   function handleLetsGoClick() {
-    navigate("/dashboard");
+    navigate("/dashboard/flows");
   }
 
   return (

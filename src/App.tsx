@@ -1,20 +1,17 @@
 import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./components/pages/Home";
-import Builder from "./components/sections/Builder";
 import ErrorPage from "./components/pages/ErrorPage";
 import { useEffect, useState } from "react";
 import LogInPopUp from "./components/sections/LoginPopUp";
-import MyFlows from "./components/sections/MyFlows";
 import { useUser } from "../src/components/utilities/UserContext";
 import Header from "./components/sections/Header";
-import Preview from "./components/sections/Preview";
 import SignIn from "./components/pages/SignIn";
 import Dashboard from "./components/pages/Dashboard";
 
 function App() {
   const { dispatch } = useUser();
-  const [location, setLocation] = useState<string>("");
+  const [location, setLocation] = useState<string>("flows");
 
   useEffect(() => {
     console.log(location);
@@ -58,37 +55,74 @@ function App() {
       ),
     },
     {
-      path: "/dashboard",
+      path: "/dashboard/flows",
       element: (
         <>
-          <Dashboard></Dashboard>
+          <Dashboard
+            location={location ? location : "flows"}
+            setLocation={setLocation}
+            url="flows"
+          ></Dashboard>
         </>
       ),
     },
     {
-      path: "/builder",
+      path: "/dashboard/designing",
       element: (
         <>
-          {header}
-          <Builder></Builder>
+          <Dashboard
+            location={location}
+            setLocation={setLocation}
+            url="designing"
+          ></Dashboard>
         </>
       ),
     },
     {
-      path: "/preview",
+      path: "/dashboard/moving",
       element: (
         <>
-          {header}
-          <Preview></Preview>
+          <Dashboard
+            location={location}
+            setLocation={setLocation}
+            url="moving"
+          ></Dashboard>
         </>
       ),
     },
     {
-      path: "/my-flows",
+      path: "/dashboard/preferences",
       element: (
         <>
-          {header}
-          <MyFlows></MyFlows>
+          <Dashboard
+            location={location}
+            setLocation={setLocation}
+            url="preferences"
+          ></Dashboard>
+        </>
+      ),
+    },
+    {
+      path: "/dashboard/theme",
+      element: (
+        <>
+          <Dashboard
+            location={location}
+            setLocation={setLocation}
+            url="theme"
+          ></Dashboard>
+        </>
+      ),
+    },
+    {
+      path: "/dashboard/catalog",
+      element: (
+        <>
+          <Dashboard
+            location={location}
+            setLocation={setLocation}
+            url="catalog"
+          ></Dashboard>
         </>
       ),
     },

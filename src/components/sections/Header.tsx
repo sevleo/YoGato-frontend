@@ -67,12 +67,8 @@ export default function Header({ setLocation }: HeaderProps) {
     setLocation("home");
   }
 
-  function handleFlowBuilderLink() {
-    setLocation("flow-builder");
-  }
-
-  function handleMyFlowsLink() {
-    setLocation("my-flows");
+  function handleDashboardLink() {
+    setLocation("flows");
   }
 
   function handleLoginButtonClick() {
@@ -113,7 +109,7 @@ export default function Header({ setLocation }: HeaderProps) {
                     <Link
                       className="ml-auto flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
                       to="/builder"
-                      onClick={handleFlowBuilderLink}
+                      // onClick={handleFlowBuilderLink}
                     >
                       Demo
                     </Link>
@@ -128,8 +124,8 @@ export default function Header({ setLocation }: HeaderProps) {
                   <>
                     <Link
                       className=" ml-auto flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
-                      to="/dashboard"
-                      onClick={handleFlowBuilderLink}
+                      to="/dashboard/flows"
+                      onClick={handleDashboardLink}
                     >
                       Dashboard
                     </Link>

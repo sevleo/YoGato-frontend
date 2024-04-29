@@ -9,11 +9,14 @@ import { showAllFlowsAPI } from "../utilities/api";
 import Builder from "../sections/Builder";
 import Preview from "../sections/Preview";
 
-export default function Dashboard() {
+export default function Dashboard({ location, setLocation, url }) {
   const navigate = useNavigate();
   const { authState, dispatch } = useUser();
-  const [pageState, setPageState] = useState("all-flows");
   const [flows, setFlows] = useState<FlowType[]>([]);
+
+  useEffect(() => {
+    setLocation(url);
+  });
 
   // Display all flows
   const showAllFlows = useCallback(() => {
@@ -35,28 +38,34 @@ export default function Dashboard() {
     logout(dispatch);
   }
 
-  function handleDesigningClick() {
-    setPageState("designing");
+  function handleFlowsClick() {
+    setLocation("flows");
+    navigate("/dashboard/flows");
   }
 
-  function handleFlowsClick() {
-    setPageState("all-flows");
+  function handleDesigningClick() {
+    setLocation("designing");
+    navigate("/dashboard/designing");
   }
 
   function handleMovingClick() {
-    setPageState("moving");
+    setLocation("moving");
+    navigate("/dashboard/moving");
   }
 
   function handlePreferencesClick() {
-    setPageState("preferences");
+    setLocation("preferences");
+    navigate("/dashboard/preferences");
   }
 
   function handleThemeClick() {
-    setPageState("theme");
+    setLocation("theme");
+    navigate("/dashboard/theme");
   }
 
   function handleCatalogClick() {
-    setPageState("catalog");
+    setLocation("catalog");
+    navigate("/dashboard/catalog");
   }
 
   useEffect(() => {
@@ -195,7 +204,7 @@ export default function Dashboard() {
           <p>breadcrumbs placeholder</p>
         </div>
         <Wrapper>
-          {pageState === "all-flows" ? (
+          {location === "flows" ? (
             <>
               <MyFlows
                 showAllFlows={showAllFlows}
@@ -204,26 +213,26 @@ export default function Dashboard() {
                 handleMovingClick={handleMovingClick}
               />
             </>
-          ) : pageState === "designing" ? (
+          ) : location === "designing" ? (
             <>
               <Builder
                 showAllFlows={showAllFlows}
                 handleMovingClick={handleMovingClick}
               ></Builder>
             </>
-          ) : pageState === "moving" ? (
+          ) : location === "moving" ? (
             <>
               <Preview handleDesigningClick={handleDesigningClick}></Preview>
             </>
-          ) : pageState === "preferences" ? (
+          ) : location === "preferences" ? (
             <>
               <p>preferences</p>
             </>
-          ) : pageState === "theme" ? (
+          ) : location === "theme" ? (
             <>
               <p>theme</p>
             </>
-          ) : pageState === "catalog" ? (
+          ) : location === "catalog" ? (
             <>
               <p>catalog</p>
             </>
