@@ -119,6 +119,7 @@ export async function createOrUpdateFlow(
   setFlow: Dispatch<SetStateAction<FlowDataType>>,
   authState: AuthStateTypes,
   flowName: string,
+  editedFlowName: string,
   setFlowName: Dispatch<SetStateAction<string>>,
   setNameErrorMessage: Dispatch<SetStateAction<string>>,
   event?: React.MouseEvent<HTMLButtonElement>
@@ -129,7 +130,6 @@ export async function createOrUpdateFlow(
   // Create new one
   let response;
   if (!flow.flowId) {
-    console.log(flow);
     try {
       response = await axios.post("http://localhost:3001/new-flow", {
         userId: authState.userId,
@@ -150,14 +150,13 @@ export async function createOrUpdateFlow(
   } else {
     // Update existing one
     try {
-      console.log(flow.flowId);
       response = await axios.put("http://localhost:3001/update-flow", {
         userId: authState.userId,
         flowId: flow.flowId,
-        flowName: flowName,
-        flowData: { ...flow, flowName: flowName },
+        flowName: editedFlowName,
+        flowData: { ...flow, flowName: editedFlowName },
       });
-      setFlow({ ...flow, flowName: flowName });
+      setFlow({ ...flow, flowName: editedFlowName });
     } catch (error: any) {
       console.error("Error updating flow:", error);
       if (error.response) {
@@ -166,8 +165,7 @@ export async function createOrUpdateFlow(
     }
   }
 
-  console.log(flowName);
-  setFlowName(flowName);
+  // setFlowName(flowName);
 }
 
 // Fetch a flow
@@ -200,7 +198,6 @@ export async function showAllFlowsAPI(
         userId: authState.userId,
       },
     });
-    console.log(response.data.message);
     setFlows(response.data.message);
   } catch (error) {
     console.error("Error fetching flows:", error);

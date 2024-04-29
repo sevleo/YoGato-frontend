@@ -1,5 +1,4 @@
 import { ReactNode, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useFlow } from "../utilities/FlowContext";
 import { deleteFlow } from "../utilities/api";
 import { updateFlowName } from "../utilities/api";
@@ -21,7 +20,6 @@ export default function FlowTableCustom({
   handleDesigningClick,
   handleMovingClick,
 }: FlowTableCustom) {
-  const navigate = useNavigate();
   const { setFlow } = useFlow();
 
   // Delete flow from DB
@@ -57,7 +55,6 @@ export default function FlowTableCustom({
                 flow={flow}
                 handleDelete={handleDelete}
                 showAllFlows={showAllFlows}
-                navigate={navigate}
                 setFlow={setFlow}
                 handleDesigningClick={handleDesigningClick}
                 handleMovingClick={handleMovingClick}
@@ -74,7 +71,6 @@ interface TableRow {
   flow: FlowType;
   handleDelete: (flowId: string) => void;
   showAllFlows: () => void;
-  navigate: (arg: string) => void;
   setFlow: React.Dispatch<React.SetStateAction<FlowDataType>>;
   handleDesigningClick: () => void;
   handleMovingClick: () => void;
@@ -84,12 +80,10 @@ function TableRow({
   flow,
   handleDelete,
   showAllFlows,
-  navigate,
   setFlow,
   handleDesigningClick,
   handleMovingClick,
 }: TableRow) {
-  console.log(flow.flowData);
   const duration = flow.flowData.duration;
   const hours = Math.floor(duration / 3600);
   const minutes = Math.floor((duration % 3600) / 60);

@@ -83,6 +83,7 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
       setFlow,
       authState,
       flowName,
+      editedFlowName,
       setFlowName,
       setNameErrorMessage,
       event
@@ -94,8 +95,8 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
         console.error("Error:", error);
       });
     setEnableSave(false);
-    console.log(flowName);
-    console.log(flow);
+    // console.log(flowName);
+    // console.log(flow);
   }
 
   function updateFlowContext() {
@@ -110,8 +111,6 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
             <div
               className="flex w-full flex-col items-start justify-center hover:cursor-pointer"
               onClick={() => {
-                console.log(flow);
-                console.log(flowName);
                 // setFlowName(flowName);
                 updateFlowContext();
                 setEditableName(true);
