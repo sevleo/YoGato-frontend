@@ -8,11 +8,13 @@ import { FlowType } from "../sections/MyFlows";
 import { showAllFlowsAPI } from "../utilities/api";
 import Builder from "../sections/Builder";
 import Preview from "../sections/Preview";
+import { useFlow } from "../utilities/FlowContext";
 
 export default function Dashboard({ location, setLocation, url }) {
   const navigate = useNavigate();
   const { authState, dispatch } = useUser();
   const [flows, setFlows] = useState<FlowType[]>([]);
+  const { flow } = useFlow();
 
   useEffect(() => {
     setLocation(url);
@@ -201,7 +203,7 @@ export default function Dashboard({ location, setLocation, url }) {
       </div>
       <div className="relative flex-1" id="canvas">
         <div className=" flex h-12 max-h-12 items-center justify-start  border-b-[1px] border-[#323232] pl-4">
-          <p>breadcrumbs placeholder</p>
+          <p>{location.charAt(0).toUpperCase() + location.slice(1)}</p>
         </div>
         <Wrapper>
           {location === "flows" ? (
