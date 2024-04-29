@@ -8,9 +8,12 @@ import { FlowType } from "../sections/MyFlows";
 // Check if user is logged in
 export async function checkLoggedIn(dispatch: React.Dispatch<Action>) {
   try {
-    const response = await axios.get("http://localhost:3001/check-login", {
-      withCredentials: true,
-    });
+    const response = await axios.get(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/check-login`,
+      {
+        withCredentials: true,
+      }
+    );
     if (response.data.isLoggedIn) {
       dispatch({
         type: "CHECK_LOGIN_SUCCESS",
@@ -34,7 +37,7 @@ export async function logout(
   setAnchorEl?: React.Dispatch<React.SetStateAction<null | HTMLElement>>
 ) {
   try {
-    await axios.get("http://localhost:3001/log-out", {
+    await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/log-out`, {
       withCredentials: true,
     });
     dispatch({
@@ -58,7 +61,7 @@ export async function signup(
 ) {
   event.preventDefault();
   try {
-    await axios.post("http://localhost:3001/sign-up", {
+    await axios.post(`${import.meta.env.VITE_REACT_APP_API_URL}/sign-up`, {
       username: usernameSignup,
       password: passwordSignup,
     });
@@ -85,7 +88,7 @@ export async function login(
   event.preventDefault();
   try {
     const response = await axios.post(
-      "http://localhost:3001/login/password",
+      `${import.meta.env.VITE_REACT_APP_API_URL}/login/password`,
       { username: usernameLogin, password: passwordLogin },
       {
         withCredentials: true,
@@ -130,11 +133,14 @@ export async function createOrUpdateFlow(
   let response;
   if (!flow.flowId) {
     try {
-      response = await axios.post("http://localhost:3001/new-flow", {
-        userId: authState.userId,
-        flowName: flowName || "No name",
-        flowData: { ...flow, flowName: flowName },
-      });
+      response = await axios.post(
+        `${import.meta.env.VITE_REACT_APP_API_URL}/new-flow`,
+        {
+          userId: authState.userId,
+          flowName: flowName || "No name",
+          flowData: { ...flow, flowName: flowName },
+        }
+      );
       setFlow({
         ...flow,
         flowId: response.data.message._id,
@@ -149,12 +155,15 @@ export async function createOrUpdateFlow(
   } else {
     // Update existing one
     try {
-      response = await axios.put("http://localhost:3001/update-flow", {
-        userId: authState.userId,
-        flowId: flow.flowId,
-        flowName: editedFlowName,
-        flowData: { ...flow, flowName: editedFlowName },
-      });
+      response = await axios.put(
+        `${import.meta.env.VITE_REACT_APP_API_URL}/update-flow`,
+        {
+          userId: authState.userId,
+          flowId: flow.flowId,
+          flowName: editedFlowName,
+          flowData: { ...flow, flowName: editedFlowName },
+        }
+      );
       setFlow({ ...flow, flowName: editedFlowName });
     } catch (error: any) {
       console.error("Error updating flow:", error);
@@ -173,11 +182,14 @@ export async function fetchFlowDataAPI(
   setFlowName: Dispatch<SetStateAction<string>>
 ) {
   try {
-    const response = await axios.get("http://localhost:3001/get-flow", {
-      params: {
-        flowId: flow.flowId,
-      },
-    });
+    const response = await axios.get(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/get-flow`,
+      {
+        params: {
+          flowId: flow.flowId,
+        },
+      }
+    );
     setFlowName(response.data.message.flowName);
   } catch (error) {
     console.error("Error fetching a flow:", error);
@@ -190,11 +202,14 @@ export async function showAllFlowsAPI(
   setFlows: Dispatch<SetStateAction<FlowType[]>>
 ) {
   try {
-    const response = await axios.get("http://localhost:3001/flows", {
-      params: {
-        userId: authState.userId,
-      },
-    });
+    const response = await axios.get(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/flows`,
+      {
+        params: {
+          userId: authState.userId,
+        },
+      }
+    );
     setFlows(response.data.message);
   } catch (error) {
     console.error("Error fetching flows:", error);
@@ -213,7 +228,7 @@ export async function createFlow(
 ) {
   event.preventDefault();
   try {
-    await axios.post("http://localhost:3001/new-flow", {
+    await axios.post(`${import.meta.env.VITE_REACT_APP_API_URL}/new-flow`, {
       userId: authState.userId,
       flowName: flowName,
       flowData: { ...flow, flowName: flowName },
@@ -230,7 +245,7 @@ export async function createFlow(
 // Delete flow from DB
 export async function deleteFlow(flowId: string, showAllFlows: () => void) {
   try {
-    await axios.get("http://localhost:3001/delete-flow", {
+    await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/delete-flow`, {
       params: {
         flowId: flowId,
       },
@@ -249,7 +264,7 @@ export async function updateFlowName(
   showAllFlows: () => void
 ) {
   try {
-    await axios.put(`http://localhost:3001/update-flow`, {
+    await axios.put(`${import.meta.env.VITE_REACT_APP_API_URL}/update-flow`, {
       flowId: flow._id,
       flowName: editedFlowName,
       flowData: { ...flow.flowData, flowName: editedFlowName },

@@ -114,7 +114,9 @@ export function LogInForm({ type }: LogInFormProps) {
           </div>
 
           <div className="w-full">
-            <a href="http://localhost:3001/login/federated/google/">
+            <a
+              href={`${import.meta.env.VITE_REACT_APP_API_URL}/login/federated/google/`}
+            >
               <Button
                 componentType="loginPopupGoogle"
                 label="Continue with Google"
@@ -227,7 +229,9 @@ export function LogInForm({ type }: LogInFormProps) {
           </div>
 
           <div className="w-full">
-            <a href="http://localhost:3001/login/federated/google/">
+            <a
+              href={`${import.meta.env.VITE_REACT_APP_API_URL}/login/federated/google/`}
+            >
               <Button
                 componentType="loginPopupGoogle"
                 label="Continue with Google"

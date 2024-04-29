@@ -13,6 +13,8 @@ function App() {
   const { dispatch } = useUser();
   const [location, setLocation] = useState<string>("flows");
 
+  console.log(import.meta.env.VITE_REACT_APP_API_URL);
+
   useEffect(() => {
     console.log(location);
   }, [location]);
