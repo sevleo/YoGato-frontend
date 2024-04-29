@@ -33,7 +33,11 @@ export default function LogInPopUp() {
   );
 }
 
-export function LogInForm({ type }) {
+interface LogInFormProps {
+  type: string;
+}
+
+export function LogInForm({ type }: LogInFormProps) {
   const { authState, dispatch } = useUser();
   const [usernameLogin, setUsernameLogin] = useState<string>("");
   const [passwordLogin, setPasswordLogin] = useState<string>("");

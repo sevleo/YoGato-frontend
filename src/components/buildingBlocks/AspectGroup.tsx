@@ -2,7 +2,7 @@
 import AspectController from "./Aspect/AspectController";
 
 // Types & Interfaces
-import { AspectType } from "./Aspect/AspectController";
+import { AspectControllerType } from "./Aspect/AspectController";
 
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -13,12 +13,12 @@ import { Dispatch, SetStateAction } from "react";
 
 export interface AspectGroupType {
   category_name: string;
-  poses: AspectType[];
+  poses: AspectControllerType[];
 }
 
 interface AspectGroupProps {
   category_name: string;
-  poses: AspectType[];
+  poses: AspectControllerType[];
   uniqueAspects: {
     id: number;
     count: number;
@@ -42,7 +42,6 @@ function AspectGroup({
         sx={{
           borderRadius: "0.375rem !important",
           border: "1px solid #323232",
-          // width: "100% !important",
           backgroundColor: "#232323",
           color: "#a0a0a0",
           marginBottom: "3px",
@@ -57,7 +56,6 @@ function AspectGroup({
           sx={{
             backgroundColor: "",
             "&:hover": {
-              // backgroundColor: "#ffffff38",
               color: "white",
             },
             "&.Mui-expanded": {

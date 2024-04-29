@@ -49,4 +49,5 @@ export const FlowDataProvider: React.FC<{ children: React.ReactNode }> = ({
 
 const FlowContext = React.createContext(defaultFlowContext);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useFlow = (): FlowContextType => useContext(FlowContext);

@@ -14,13 +14,15 @@ import Stack from "@mui/material/Stack";
 import { Slider as VolumeSlider } from "@mui/material";
 import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
 import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
-import { useUser } from "../utilities/UserContext";
 import { useFlow } from "../utilities/FlowContext";
 import Button from "../buildingBlocks/Button";
 
-function Preview({ handleDesigningClick }) {
+interface PreviewProps {
+  handleDesigningClick: () => void;
+}
+
+function Preview({ handleDesigningClick }: PreviewProps) {
   const { flow } = useFlow();
-  const { authState } = useUser();
 
   // Theme for linear progress bar
   const linearProgressBarTheme = createTheme({

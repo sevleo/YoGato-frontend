@@ -120,7 +120,6 @@ export async function createOrUpdateFlow(
   authState: AuthStateTypes,
   flowName: string,
   editedFlowName: string,
-  setFlowName: Dispatch<SetStateAction<string>>,
   setNameErrorMessage: Dispatch<SetStateAction<string>>,
   event?: React.MouseEvent<HTMLButtonElement>
 ) {
@@ -171,8 +170,7 @@ export async function createOrUpdateFlow(
 // Fetch a flow
 export async function fetchFlowDataAPI(
   flow: FlowDataType,
-  setFlowName: Dispatch<SetStateAction<string>>,
-  setPageLoaded: Dispatch<SetStateAction<boolean>>
+  setFlowName: Dispatch<SetStateAction<string>>
 ) {
   try {
     const response = await axios.get("http://localhost:3001/get-flow", {
@@ -184,7 +182,6 @@ export async function fetchFlowDataAPI(
   } catch (error) {
     console.error("Error fetching a flow:", error);
   }
-  setPageLoaded(true);
 }
 
 // Fetch flows

@@ -39,16 +39,12 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
   const [enableSave, setEnableSave] = useState(false);
 
   const fetchFlowData = useCallback(() => {
-    fetchFlowDataAPI(flow, setFlowName, setPageLoaded);
+    fetchFlowDataAPI(flow, setFlowName);
   }, [flow]);
-
-  const [pageLoaded, setPageLoaded] = useState(false);
 
   useEffect(() => {
     if (!authState.dataLoading && authState.isLoggedIn && flow.flowId) {
       fetchFlowData();
-    } else if (!flow.flowId) {
-      setPageLoaded(true);
     }
   }, [authState, fetchFlowData, flow]);
 
@@ -84,7 +80,6 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
       authState,
       flowName,
       editedFlowName,
-      setFlowName,
       setNameErrorMessage,
       event
     )

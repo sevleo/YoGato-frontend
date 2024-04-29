@@ -32,11 +32,11 @@ import {
 import Unit from "../buildingBlocks/Unit/UnitController";
 
 // Types & interfaces
-import { UnitType } from "../buildingBlocks/Unit/UnitController";
+import { UnitControllerType } from "../buildingBlocks/Unit/UnitController";
 
 export interface FlowDataType {
   flowName: string;
-  units: UnitType[];
+  units: UnitControllerType[];
   duration: number;
   uniqueAspects: {
     id: number;
@@ -63,8 +63,8 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
     Dispatch<React.SetStateAction<boolean>>,
   ] = useState<boolean>(true);
 
-  const [activeId, setActiveId] = useState(null);
-  const [activeUnit, setActiveUnit] = useState<object>(null);
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const [activeUnit, setActiveUnit] = useState<object>({});
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -79,7 +79,7 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
   );
 
   function handleDragStart(event: DragStartEvent) {
-    setActiveId(event.active.id);
+    setActiveId(String(event.active.id));
     const activeUnit = flow.units.filter(
       (item) => item.id === event.active.id
     )[0];
@@ -106,7 +106,7 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
     }
 
     setActiveId(null);
-    setActiveUnit(null);
+    setActiveUnit({});
     setEnableSave(true);
   }
 
@@ -151,7 +151,7 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
                 <DragOverlay adjustScale style={{ transformOrigin: "0 0 " }}>
                   {activeId ? (
                     <UnitDisplay
-                      id={activeUnit.id}
+                      id={(activeUnit as UnitControllerType).id}
                       {...activeUnit}
                       isDragging
                     />

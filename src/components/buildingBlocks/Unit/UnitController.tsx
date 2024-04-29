@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Dispatch, SetStateAction } from "react";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
@@ -31,6 +30,7 @@ interface UnitControllerProps {
   setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
   aspectGroups: AspectGroupType[];
   setEnableSave: Dispatch<SetStateAction<boolean>>;
+  activeId: string | null;
   lastUnit: boolean;
 }
 
@@ -106,8 +106,6 @@ function UnitController({
     setEnableSave(true);
   }
 
-  const [showUnitClose, setShowUnitClose] = useState(false);
-
   const {
     isDragging,
     attributes,
@@ -157,23 +155,11 @@ function UnitController({
     setDragAllowed(true);
   };
 
-  const enableUnitClose = () => {
-    setShowUnitClose(true);
-  };
-
-  const disableUnitClose = () => {
-    setShowUnitClose(false);
-  };
-
   return (
     <UnitDisplay
-      id={id}
       ref={setNodeRef}
+      id={id}
       style={style}
-      {...attributes}
-      {...listeners}
-      enableUnitClose={enableUnitClose}
-      disableUnitClose={disableUnitClose}
       dragAllowed={dragAllowed}
       index={index}
       image={image}
@@ -187,6 +173,8 @@ function UnitController({
       disableDrag={disableDrag}
       withOpacity={isDragging}
       lastUnit={lastUnit}
+      {...attributes}
+      {...listeners}
     ></UnitDisplay>
   );
 }

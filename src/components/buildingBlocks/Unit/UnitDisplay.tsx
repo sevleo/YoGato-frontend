@@ -1,15 +1,33 @@
 import Input from "../Input";
 import Button from "../Button";
-import { forwardRef } from "react";
+import { ForwardedRef, forwardRef } from "react";
 import { CSSProperties } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-const UnitDisplay = forwardRef(
+interface UnitDisplayProps {
+  id?: string;
+  style?: object;
+  dragAllowed?: boolean;
+  index?: number | undefined;
+  image?: string | undefined;
+  name?: string;
+  sanskritName?: string;
+  duration?: number;
+  handleLengthChange?: (newValue: number) => void;
+  setDragAllowed?: Dispatch<SetStateAction<boolean>>;
+  enableDrag?: () => void;
+  onUnitCloseClick?: () => void;
+  disableDrag?: () => void;
+  withOpacity?: boolean;
+  lastUnit?: boolean;
+  isDragging?: boolean;
+}
+
+const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
   (
     {
       id,
       style,
-      enableUnitClose,
-      disableUnitClose,
       dragAllowed,
       index,
       image,
@@ -21,12 +39,12 @@ const UnitDisplay = forwardRef(
       enableDrag,
       onUnitCloseClick,
       disableDrag,
-      isDragging,
       withOpacity,
       lastUnit,
+      isDragging,
       ...props
     },
-    ref
+    ref: ForwardedRef<HTMLDivElement>
   ) => {
     const inlineStyles: CSSProperties = {
       opacity: withOpacity ? "0.3" : "1",
@@ -44,8 +62,6 @@ const UnitDisplay = forwardRef(
     return (
       <>
         <div
-          onMouseEnter={enableUnitClose}
-          onMouseLeave={disableUnitClose}
           ref={ref}
           style={inlineStyles}
           className={`  unit step relative grid  h-[60px] select-none grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr_0.5fr] items-center  justify-between gap-1 text-black `}

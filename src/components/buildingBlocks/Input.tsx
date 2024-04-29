@@ -5,20 +5,21 @@ interface InputProps {
   inputType: string;
   type?: string;
   labelValue: string;
-  labelFor: string;
+  labelFor?: string;
   defaultValue?: number;
-  onChange:
+  onChange?:
     | ((e: React.ChangeEvent<HTMLInputElement>) => void)
     | ((newValue: number) => void);
   inputValue?: string;
   inputPlaceholder?: string;
-  inputId: string;
+  inputId?: string;
   inputName?: string;
   setDragAllowed?: Dispatch<React.SetStateAction<boolean>>;
   required?: boolean;
   minLength?: number;
   maxLength?: number;
   setEditableName?: Dispatch<React.SetStateAction<boolean>>;
+  setEditedFlowName?: Dispatch<React.SetStateAction<string>>;
 }
 
 export default function Input(props: InputProps) {
@@ -79,11 +80,11 @@ export default function Input(props: InputProps) {
 }
 
 interface UnitDurationInputProps {
-  labelValue: string;
-  labelFor: string;
+  labelValue?: string;
+  labelFor?: string;
   defaultValue: number;
   onChange: (newValue: number) => void;
-  inputId: string;
+  inputId?: string;
   setDragAllowed: Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -191,11 +192,11 @@ function UnitDurationInput(props: UnitDurationInputProps) {
 interface AuthTextInputProps {
   type: string;
   labelValue: string;
-  labelFor: string;
+  labelFor?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputValue: string;
   inputPlaceholder: string;
-  inputId: string;
+  inputId?: string;
   inputName: string;
   required: boolean;
   minLength: number;
@@ -228,17 +229,16 @@ function AuthTextInput(props: AuthTextInputProps) {
 interface FlowBuilderTextInputProps {
   type: string;
   labelValue: string;
-  labelFor: string;
+  labelFor?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   inputValue: string;
   inputPlaceholder: string;
-  inputId: string;
+  inputId?: string;
   inputName: string;
   required: boolean;
   minLength: number;
   maxLength: number;
   setEditableName: Dispatch<React.SetStateAction<boolean>>;
-  setEditedFlowName: Dispatch<React.SetStateAction<string>>;
 }
 
 function FlowBuilderTextInput(props: FlowBuilderTextInputProps) {

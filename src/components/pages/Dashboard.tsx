@@ -2,19 +2,34 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { logout } from "../utilities/api";
 import { useUser } from "../utilities/UserContext";
-import { useEffect, useState, useCallback } from "react";
+import {
+  useEffect,
+  useState,
+  useCallback,
+  SetStateAction,
+  ReactNode,
+} from "react";
 import MyFlows from "../sections/MyFlows";
 import { FlowType } from "../sections/MyFlows";
 import { showAllFlowsAPI } from "../utilities/api";
 import Builder from "../sections/Builder";
 import Preview from "../sections/Preview";
-import { useFlow } from "../utilities/FlowContext";
+import { Dispatch } from "react";
 
-export default function Dashboard({ location, setLocation, url }) {
+interface DashboardProps {
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+  url: string;
+}
+
+export default function Dashboard({
+  location,
+  setLocation,
+  url,
+}: DashboardProps) {
   const navigate = useNavigate();
   const { authState, dispatch } = useUser();
   const [flows, setFlows] = useState<FlowType[]>([]);
-  const { flow } = useFlow();
 
   useEffect(() => {
     setLocation(url);
@@ -249,7 +264,11 @@ export default function Dashboard({ location, setLocation, url }) {
   );
 }
 
-function Wrapper({ children }) {
+interface WrapperProps {
+  children: ReactNode;
+}
+
+function Wrapper({ children }: WrapperProps) {
   return (
     <div className="wrapper ml-auto mr-auto flex h-[calc(100%-48px)] w-full max-w-screen-2xl justify-center overflow-auto p-6">
       <div className="w-full ">{children}</div>
