@@ -107,7 +107,7 @@ function Preview({ handleDesigningClick }: PreviewProps) {
   const volumeRef = useRef(0.5);
   const [volumeValue, setVolumeValue] = useState<number>(50);
 
-  const handleVolumeChange = (event: Event, newValue: number | number[]) => {
+  const handleVolumeChange = (_event: Event, newValue: number | number[]) => {
     setVolumeValue(newValue as number);
     volumeRef.current = (newValue as number) / 100;
   };
