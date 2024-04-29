@@ -6,10 +6,10 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
-import { UnitType } from "./Unit/UnitController";
+import { UnitControllerType } from "./Unit/UnitController";
 
 interface WheelProps {
-  units: UnitType[];
+  units: UnitControllerType[];
   updateWheel: boolean;
   setUpdateWheel: Dispatch<SetStateAction<boolean>>;
 }
