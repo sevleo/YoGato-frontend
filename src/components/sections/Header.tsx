@@ -106,16 +106,16 @@ export default function Header({ setLocation }: HeaderProps) {
                   <div></div>
                 ) : !authState.isLoggedIn ? (
                   <>
-                    <Link
+                    {/* <Link
                       className="ml-auto flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
                       to="/builder"
                       // onClick={handleFlowBuilderLink}
                     >
                       Demo
-                    </Link>
+                    </Link> */}
                     <div
                       onClick={handleLoginButtonClick}
-                      className="flex h-full w-[100px] items-center justify-center font-medium text-white hover:cursor-pointer hover:bg-[#2e2e2e] hover:text-white"
+                      className=" ml-auto flex h-full w-[100px] items-center justify-center font-medium text-white hover:cursor-pointer hover:bg-[#2e2e2e] hover:text-white"
                     >
                       Sign In
                     </div>

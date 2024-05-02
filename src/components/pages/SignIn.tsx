@@ -31,7 +31,7 @@ export default function SignIn() {
           </div>
           <div className="">
             {" "}
-            <p className=" pb-2 pt-2 text-[10px] font-normal text-[#c9c9c9]">
+            <p className="mt-auto pb-2 pt-2 text-[10px] font-normal text-[#c9c9c9]">
               YoGato @ 2024
             </p>
           </div>
