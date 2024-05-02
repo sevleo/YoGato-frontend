@@ -682,16 +682,12 @@ video {
   margin-top: 1rem;
 }
 
-.mt-\[50px\] {
-  margin-top: 50px;
+.mt-\[20px\] {
+  margin-top: 20px;
 }
 
 .mt-auto {
   margin-top: auto;
-}
-
-.mt-\[20px\] {
-  margin-top: 20px;
 }
 
 .box-border {
@@ -815,10 +811,6 @@ video {
   width: 75%;
 }
 
-.w-4\/12 {
-  width: 33.333333%;
-}
-
 .w-64 {
   width: 16rem;
 }
@@ -849,10 +841,6 @@ video {
 
 .w-\[30px\] {
   width: 30px;
-}
-
-.w-\[400px\] {
-  width: 400px;
 }
 
 .w-\[450px\] {
@@ -1201,6 +1189,10 @@ video {
   padding: 0.75rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .p-5 {
   padding: 1.25rem;
 }
@@ -1211,10 +1203,6 @@ video {
 
 .p-\[2px\] {
   padding: 2px;
-}
-
-.p-4 {
-  padding: 1rem;
 }
 
 .px-2 {
@@ -1579,6 +1567,7 @@ body {
 
 #root {
   overflow: auto;
+  /* scrollbar-gutter: stable; */
 }
 
 ::-webkit-scrollbar {
@@ -1897,18 +1886,6 @@ button:focus-visible {
   border-color: rgb(82 82 82 / var(--tw-border-opacity));
 }
 
-@media (min-width: 350px) {
-  .min-\[350px\]\:w-4\/12 {
-    width: 33.333333%;
-  }
-}
-
-@media (min-width: 600px) {
-  .min-\[600px\]\:flex {
-    display: flex;
-  }
-}
-
 @media (min-width: 675px) {
   .min-\[675px\]\:flex {
     display: flex;
@@ -1916,15 +1893,7 @@ button:focus-visible {
 }
 
 @media (min-width: 850px) {
-  .min-\[850px\]\:flex {
-    display: flex;
-  }
-
   .min-\[850px\]\:w-4\/12 {
     width: 33.333333%;
-  }
-
-  .min-\[850px\]\:w-8\/12 {
-    width: 66.666667%;
   }
 }
