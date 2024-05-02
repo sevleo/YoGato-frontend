@@ -15,7 +15,7 @@ export default function AspectCollection({
   const { flow } = useFlow();
 
   return (
-    <div className="flex w-1/3 min-w-[240px] flex-col justify-start rounded-md ">
+    <div className="hidden w-1/3 min-w-[240px] flex-col justify-start rounded-md min-[830px]:flex ">
       <div className="h-fit min-h-full w-full gap-5">
         <div className="accordion w-full">
           {aspectGroups.map((aspectGroup) => {

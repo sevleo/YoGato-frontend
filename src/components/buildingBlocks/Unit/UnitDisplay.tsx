@@ -64,7 +64,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
         <div
           ref={ref}
           style={inlineStyles}
-          className={`  unit step relative grid  h-[60px] select-none grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr_0.5fr] items-center  justify-between gap-1 text-black `}
+          className={`  unit step relative flex  h-[60px] select-none grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr] items-center justify-between gap-1  pl-2 pr-2 text-black min-[830px]:grid min-[1000px]:grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr_0.5fr]`}
           {...(dragAllowed ? { ...props } : null)}
           {...(dragAllowed ? { ...props } : null)}
         >
@@ -84,8 +84,11 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
             <p className="text-xsm w-full pl-4 text-left font-semibold">
               {name}
             </p>
+            <p className="text-xsm block w-full pl-4 text-left font-semibold min-[1000px]:hidden">
+              {sanskritName}
+            </p>
           </div>
-          <div className=" flex h-[60px] min-w-[100px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0]">
+          <div className="hidden h-[60px] min-w-[100px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0] min-[1000px]:flex">
             <p className="text-xsm w-full pl-4 text-left font-semibold">
               {sanskritName}
             </p>

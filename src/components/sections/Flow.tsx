@@ -111,7 +111,7 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
   }
 
   return (
-    <div className=" canvas w-2/3  pb-[40px] ">
+    <div className="canvas w-full pb-[40px] min-[830px]:w-2/3 ">
       {/* <div>
         <p className="text-black">Your flow</p>
       </div> */}

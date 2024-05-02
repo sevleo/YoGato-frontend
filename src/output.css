@@ -694,6 +694,10 @@ video {
   box-sizing: border-box;
 }
 
+.block {
+  display: block;
+}
+
 .flex {
   display: flex;
 }
@@ -970,6 +974,18 @@ video {
 
 .grid-cols-aspects {
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+}
+
+.grid-cols-\[0\.5fr_30px_2fr_2fr_1\.5fr_0\.5fr\] {
+  grid-template-columns: 0.5fr 30px 2fr 2fr 1.5fr 0.5fr;
+}
+
+.grid-cols-\[0\.5fr_100px_2fr_2fr_1\.5fr_0\.5fr\] {
+  grid-template-columns: 0.5fr 100px 2fr 2fr 1.5fr 0.5fr;
+}
+
+.grid-cols-\[0\.5fr_1fr_2fr_2fr_1\.5fr\] {
+  grid-template-columns: 0.5fr 1fr 2fr 2fr 1.5fr;
 }
 
 .grid-rows-canvas {
@@ -1927,6 +1943,12 @@ button:focus-visible {
   }
 }
 
+@media (min-width: 100px) {
+  .min-\[100px\]\:hidden {
+    display: none;
+  }
+}
+
 @media (min-width: 675px) {
   .min-\[675px\]\:flex {
     display: flex;
@@ -1955,6 +1977,14 @@ button:focus-visible {
   .min-\[830px\]\:hidden {
     display: none;
   }
+
+  .min-\[830px\]\:w-full {
+    width: 100%;
+  }
+
+  .min-\[830px\]\:w-2\/3 {
+    width: 66.666667%;
+  }
 }
 
 @media (min-width: 831px) {
@@ -1966,5 +1996,23 @@ button:focus-visible {
 @media (min-width: 850px) {
   .min-\[850px\]\:w-4\/12 {
     width: 33.333333%;
+  }
+}
+
+@media (min-width: 1000px) {
+  .min-\[1000px\]\:flex {
+    display: flex;
+  }
+
+  .min-\[1000px\]\:hidden {
+    display: none;
+  }
+
+  .min-\[1000px\]\:grid-cols-\[0\.5fr_1fr_2fr_2fr_1\.5fr\] {
+    grid-template-columns: 0.5fr 1fr 2fr 2fr 1.5fr;
+  }
+
+  .min-\[1000px\]\:grid-cols-\[0\.5fr_1fr_2fr_2fr_1\.5fr_0\.5fr\] {
+    grid-template-columns: 0.5fr 1fr 2fr 2fr 1.5fr 0.5fr;
   }
 }
