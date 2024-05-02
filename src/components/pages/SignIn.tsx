@@ -17,7 +17,7 @@ export default function SignIn() {
   return (
     <>
       <div className="flex h-full w-full">
-        <div className="flex  w-full min-w-[400px] flex-1 shrink-0 flex-col border-r-[1px] border-[#323232] bg-[#1c1c1c] min-[850px]:w-4/12 ">
+        <div className="flex  w-full min-w-[400px] flex-1 shrink-0 flex-col border-r-[1px] border-[#323232] bg-[#1c1c1c] min-[800px]:w-4/12 ">
           <div className="h-[60px] p-5">
             <Link
               className=" flex h-full w-[100px] items-center justify-center text-[25px] font-bold text-[#6ccc93]  hover:text-[#6ccc93]"

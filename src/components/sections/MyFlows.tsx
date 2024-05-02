@@ -57,7 +57,7 @@ function MyFlows({
       <form
         method="POST"
         onSubmit={handleNewFlowClick}
-        className="flex flex-col pb-6"
+        className="flex flex-col"
       >
         <div className="flex w-full flex-col items-start justify-center ">
           <div className="flex gap-[10px]">

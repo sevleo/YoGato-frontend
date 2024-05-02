@@ -916,6 +916,22 @@ video {
   min-width: 90px;
 }
 
+.min-w-\[60px\] {
+  min-width: 60px;
+}
+
+.min-w-\[120px\] {
+  min-width: 120px;
+}
+
+.min-w-\[200px\] {
+  min-width: 200px;
+}
+
+.min-w-\[170px\] {
+  min-width: 170px;
+}
+
 .max-w-\[300px\] {
   max-width: 300px;
 }
@@ -938,6 +954,18 @@ video {
 
 .max-w-screen-2xl {
   max-width: 1536px;
+}
+
+.max-w-\[850px\] {
+  max-width: 850px;
+}
+
+.max-w-\[200px\] {
+  max-width: 200px;
+}
+
+.max-w-\[170px\] {
+  max-width: 170px;
 }
 
 .flex-1 {
@@ -1000,8 +1028,44 @@ video {
   grid-template-columns: 0.5fr 1fr 2fr 2fr 1.5fr;
 }
 
+.grid-cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.grid-cols-\[1fr\] {
+  grid-template-columns: 1fr;
+}
+
+.grid-cols-\[2fr_1fr_1fr\] {
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
 .grid-rows-canvas {
   grid-template-rows: repeat(auto-fill, minmax(60px, 1fr));
+}
+
+.grid-rows-2 {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.grid-rows-\[fit_1fr\] {
+  grid-template-rows: fit 1fr;
+}
+
+.grid-rows-\[1fr_1fr\] {
+  grid-template-rows: 1fr 1fr;
+}
+
+.grid-rows-\[2fr_1fr\] {
+  grid-template-rows: 2fr 1fr;
+}
+
+.grid-rows-\[auto_1fr\] {
+  grid-template-rows: auto 1fr;
 }
 
 .flex-row {
@@ -1217,6 +1281,11 @@ video {
 
 .bg-transparent {
   background-color: transparent;
+}
+
+.bg-\[red\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 0 0 / var(--tw-bg-opacity));
 }
 
 .object-cover {
@@ -1957,6 +2026,12 @@ button:focus-visible {
   }
 }
 
+@media (max-width: 870px) {
+  .max-\[870px\]\:max-w-\[150px\] {
+    max-width: 150px;
+  }
+}
+
 @media (max-width: 850px) {
   .max-\[850px\]\:max-w-\[150px\] {
     max-width: 150px;
@@ -1984,6 +2059,12 @@ button:focus-visible {
 @media (min-width: 675px) {
   .min-\[675px\]\:flex {
     display: flex;
+  }
+}
+
+@media (min-width: 768px) {
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
@@ -2052,6 +2133,32 @@ button:focus-visible {
 
   .min-\[850px\]\:grid-cols-\[0\.5fr_1fr_2fr_2fr_1\.5fr_0\.5fr\] {
     grid-template-columns: 0.5fr 1fr 2fr 2fr 1.5fr 0.5fr;
+  }
+}
+
+@media (min-width: 870px) {
+  .min-\[870px\]\:block {
+    display: block;
+  }
+
+  .min-\[870px\]\:flex {
+    display: flex;
+  }
+
+  .min-\[870px\]\:grid {
+    display: grid;
+  }
+
+  .min-\[870px\]\:hidden {
+    display: none;
+  }
+
+  .min-\[870px\]\:w-4\/12 {
+    width: 33.333333%;
+  }
+
+  .min-\[870px\]\:w-2\/3 {
+    width: 66.666667%;
   }
 }
 

@@ -64,7 +64,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
         <div
           ref={ref}
           style={inlineStyles}
-          className={`  unit step relative flex  h-[60px] select-none grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr] items-center justify-between gap-1  pl-2 pr-2 text-black min-[850px]:grid min-[1000px]:grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr_0.5fr]`}
+          className={`  unit step relative flex  h-[60px] select-none grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr] items-center justify-between gap-1  pl-2 pr-2 text-black min-[800px]:grid min-[1000px]:grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr_0.5fr]`}
           {...(dragAllowed ? { ...props } : null)}
           {...(dragAllowed ? { ...props } : null)}
         >
@@ -80,7 +80,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
               draggable="false"
             />
           </div>
-          <div className=" flex h-[60px] min-w-[100px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0]">
+          <div className=" flex h-[60px] min-w-[60px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0]">
             <p className="text-xsm w-full pl-4 text-left font-semibold">
               {name}
             </p>
@@ -88,7 +88,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
               {sanskritName}
             </p>
           </div>
-          <div className="hidden h-[60px] min-w-[100px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0] min-[1000px]:flex">
+          <div className="hidden h-[60px] min-w-[60px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0] min-[1000px]:flex">
             <p className="text-xsm w-full pl-4 text-left font-semibold">
               {sanskritName}
             </p>

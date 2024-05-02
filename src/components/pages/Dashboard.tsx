@@ -94,7 +94,7 @@ export default function Dashboard({
   return (
     <div className="flex h-full w-full">
       <div
-        className=" hide-scrollbar h-full w-64 min-w-[150px] overflow-auto border-r-[1px] border-[#323232] max-[1000px]:max-w-[178px] max-[850px]:max-w-[150px] max-[650px]:hidden"
+        className=" hide-scrollbar h-full min-w-[170px] max-w-[170px] overflow-auto border-r-[1px] border-[#323232] max-[650px]:hidden"
         id="sidebar"
       >
         <div className=" flex h-12 max-h-12 items-center justify-start border-b-[1px] border-[#323232] pl-4">
@@ -223,19 +223,23 @@ export default function Dashboard({
         <Wrapper>
           {location === "flows" ? (
             <>
-              <MyFlows
-                showAllFlows={showAllFlows}
-                flows={flows}
-                handleDesigningClick={handleDesigningClick}
-                handleMovingClick={handleMovingClick}
-              />
+              <div className="flex w-full grid-rows-[auto_1fr] flex-col gap-6 min-[850px]:grid">
+                <MyFlows
+                  showAllFlows={showAllFlows}
+                  flows={flows}
+                  handleDesigningClick={handleDesigningClick}
+                  handleMovingClick={handleMovingClick}
+                />
+              </div>
             </>
           ) : location === "designing" ? (
             <>
-              <Builder
-                showAllFlows={showAllFlows}
-                handleMovingClick={handleMovingClick}
-              ></Builder>
+              <div className="flex w-full grid-cols-[2fr_1fr] grid-rows-[auto_1fr] flex-col gap-6 min-[850px]:grid">
+                <Builder
+                  showAllFlows={showAllFlows}
+                  handleMovingClick={handleMovingClick}
+                ></Builder>
+              </div>
             </>
           ) : location === "moving" ? (
             <>
@@ -271,7 +275,7 @@ interface WrapperProps {
 function Wrapper({ children }: WrapperProps) {
   return (
     <div className="wrapper ml-auto mr-auto flex h-[calc(100%-48px)] w-full max-w-screen-2xl justify-center overflow-auto p-6">
-      <div className="w-full">{children}</div>
+      {children}
     </div>
   );
 }
