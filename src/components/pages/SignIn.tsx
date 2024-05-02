@@ -17,7 +17,7 @@ export default function SignIn() {
   return (
     <>
       <div className="flex h-full w-full">
-        <div className="flex w-4/12 min-w-[400px] flex-1 shrink-0 flex-col border-r-[1px] border-[#323232] bg-[#1c1c1c] ">
+        <div className="flex  w-full min-w-[400px] flex-1 shrink-0 flex-col border-r-[1px] border-[#323232] bg-[#1c1c1c] min-[850px]:w-4/12 ">
           <div className="h-[60px] p-5">
             <Link
               className=" flex h-full w-[100px] items-center justify-center text-[25px] font-bold text-[#6ccc93]  hover:text-[#6ccc93]"
@@ -36,8 +36,8 @@ export default function SignIn() {
             </p>
           </div>
         </div>
-        <div className="flex w-8/12 items-center justify-center bg-[#161616]">
-          <div className="flex w-[400px] flex-col items-start">
+        <div className="hidden w-8/12 items-center justify-center bg-[#161616] min-[675px]:flex">
+          <div className="flex  max-w-[600px] flex-col items-start p-4">
             <blockquote className="text-start text-[30px]  italic">
               &ldquo;To the degree that we look clearly and compassionately at
               ourselves, we feel confident and fearless about looking into
