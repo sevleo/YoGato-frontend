@@ -90,7 +90,7 @@ function MyFlows({
           </div>
         </div>
       </form>
-      <div className=" flex flex-col">
+      <div className=" flex flex-col pb-6">
         {flows && authState.isLoggedIn && !authState.dataLoading ? (
           <FlowTableCustom
             flows={flows}

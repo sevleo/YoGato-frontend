@@ -92,9 +92,9 @@ export default function Dashboard({
   }, [authState, navigate]);
 
   return (
-    <div className="flex h-full">
+    <div className="flex h-full w-full">
       <div
-        className=" hide-scrollbar h-full w-64 overflow-auto border-r-[1px] border-[#323232]"
+        className=" hide-scrollbar h-full w-64 min-w-[150px] overflow-auto border-r-[1px] border-[#323232] max-[650px]:hidden"
         id="sidebar"
       >
         <div className=" flex h-12 max-h-12 items-center justify-start border-b-[1px] border-[#323232] pl-4">
@@ -216,7 +216,7 @@ export default function Dashboard({
           </ul>
         </nav>
       </div>
-      <div className="relative flex-1" id="canvas">
+      <div className="relative w-[calc(100%-150px)] flex-1" id="canvas">
         <div className=" flex h-12 max-h-12 items-center justify-start  border-b-[1px] border-[#323232] pl-4">
           <p>{location.charAt(0).toUpperCase() + location.slice(1)}</p>
         </div>
@@ -271,7 +271,7 @@ interface WrapperProps {
 function Wrapper({ children }: WrapperProps) {
   return (
     <div className="wrapper ml-auto mr-auto flex h-[calc(100%-48px)] w-full max-w-screen-2xl justify-center overflow-auto p-6">
-      <div className="w-full ">{children}</div>
+      <div className="w-full">{children}</div>
     </div>
   );
 }
