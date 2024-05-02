@@ -64,7 +64,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
         <div
           ref={ref}
           style={inlineStyles}
-          className={`  unit step relative flex  h-[60px] select-none grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr] items-center justify-between gap-1  pl-2 pr-2 text-black min-[830px]:grid min-[1000px]:grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr_0.5fr]`}
+          className={`  unit step relative flex  h-[60px] select-none grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr] items-center justify-between gap-1  pl-2 pr-2 text-black min-[850px]:grid min-[1000px]:grid-cols-[0.5fr_1fr_2fr_2fr_1.5fr_0.5fr]`}
           {...(dragAllowed ? { ...props } : null)}
           {...(dragAllowed ? { ...props } : null)}
         >
@@ -72,7 +72,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
             {index != null ? Number(index + 1) : null}
           </div>
 
-          <div className="flex h-[60px] w-full items-center justify-center">
+          <div className="flex h-[60px] w-fit min-w-[50px] items-center justify-center">
             <img
               className="  h-3/4 w-3/4  "
               src={image}
@@ -93,7 +93,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
               {sanskritName}
             </p>
           </div>
-          <div className="main-element flex h-[60px] justify-between">
+          <div className="main-element flex h-[60px] w-fit justify-between pl-2 pr-2">
             <div className="mb-auto mt-auto flex  flex-col gap-2 ">
               <Input
                 inputType="unitDurationInput"
@@ -107,7 +107,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
             </div>
           </div>
           <div
-            className="flex max-h-[30px] w-full items-center justify-center "
+            className="flex max-h-[30px] w-fit items-center justify-center"
             onMouseLeave={enableDrag}
           >
             <div

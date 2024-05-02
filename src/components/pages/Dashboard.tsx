@@ -94,7 +94,7 @@ export default function Dashboard({
   return (
     <div className="flex h-full w-full">
       <div
-        className=" hide-scrollbar h-full w-64 min-w-[150px] overflow-auto border-r-[1px] border-[#323232] max-[650px]:hidden"
+        className=" hide-scrollbar h-full w-64 min-w-[150px] overflow-auto border-r-[1px] border-[#323232] max-[1000px]:max-w-[178px] max-[850px]:max-w-[150px] max-[650px]:hidden"
         id="sidebar"
       >
         <div className=" flex h-12 max-h-12 items-center justify-start border-b-[1px] border-[#323232] pl-4">

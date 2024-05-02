@@ -150,7 +150,7 @@ function UnitDurationInput(props: UnitDurationInputProps) {
   };
 
   return (
-    <div className="group relative flex h-[30px] flex-row items-center rounded-md border-[1px] border-[#3e3e3e] bg-[#2e2e2e]  hover:border-[#525252]">
+    <div className=" group relative flex h-[30px] flex-row items-center rounded-md border-[1px] border-[#3e3e3e] bg-[#2e2e2e]  hover:border-[#525252]">
       <label htmlFor={props.labelFor} className=" ">
         {props.labelValue}
       </label>
@@ -166,7 +166,7 @@ function UnitDurationInput(props: UnitDurationInputProps) {
         type="text"
         id={props.inputId}
         value={value}
-        className="z-10 h-full w-full bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-[#4e4e4e] hover:bg-[#363636] hover:text-transparent hover:opacity-100 focus:z-20 focus:bg-[#4e4e4e] focus:text-[#a0a0a0] focus:opacity-100"
+        className="z-10 h-full w-[70px] min-w-[50px] bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-[#4e4e4e] hover:bg-[#363636] hover:text-transparent hover:opacity-100 focus:z-20 focus:bg-[#4e4e4e] focus:text-[#a0a0a0] focus:opacity-100"
         onChange={handleChange}
         inputMode="numeric"
         pattern="[1-9]*"

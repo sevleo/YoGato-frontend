@@ -100,7 +100,7 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
 
   return (
     <>
-      <div className="w-full grid-cols-[2fr_1fr] items-start justify-center gap-6 min-[830px]:grid ">
+      <div className="w-full grid-cols-[2fr_1fr] items-start justify-center gap-6 min-[850px]:grid ">
         <div className="w-full rounded-md border-[1px] border-[#323232] bg-[#232323]">
           <div className="flex flex-col items-start justify-center  gap-1 p-5  ">
             <div
@@ -157,7 +157,7 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
                 {nameErrorMessage}
               </p>
             </div>
-            <div className=" flex h-full w-full min-w-[240px] flex-col items-start  justify-center gap-1 pb-6 min-[830px]:hidden">
+            <div className=" flex h-full w-full min-w-[240px] flex-col items-start  justify-center gap-1 pb-6 min-[850px]:hidden">
               <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
                 <p className=" text-start text-[#a0a0a0]">Duration</p>
                 <p className="text-start text-[#a0a0a0]">
@@ -201,7 +201,7 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
             </div>
           </div>
         </div>
-        <div className="hidden h-full rounded-md border-[1px] border-[#323232] bg-[#232323] min-[830px]:block">
+        <div className="hidden h-full rounded-md border-[1px] border-[#323232] bg-[#232323] min-[850px]:block">
           <div className=" flex h-full w-full min-w-[240px] flex-col  items-start justify-center gap-1 p-5">
             <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
               <p className=" text-start text-[#a0a0a0]">Duration</p>
