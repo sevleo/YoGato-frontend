@@ -291,55 +291,17 @@ function Preview({ handleDesigningClick }: PreviewProps) {
 
   return flow.units.length > 0 ? (
     <>
-      <div className="grid w-full grid-cols-[2fr_1fr] items-start justify-center gap-6 ">
-        <div className="rounded-md border-[1px] border-[#323232] bg-[#232323]">
-          <div className="flex w-full flex-col items-start justify-center  gap-1 p-5  ">
-            <div className="flex w-full flex-col items-start justify-center">
-              <>
-                <p className="text-[30px] text-[#a0a0a0]">
-                  {flow.flowName ? flow.flowName : "No name"}
-                </p>
-                <p className="h-[20px] w-full text-start text-[red]"></p>
-              </>
-            </div>
-            <div className="flex h-full w-full flex-row items-center justify-start gap-2">
-              <Button
-                componentType="previewStart"
-                onClick={
-                  !timerState.startFlow ? handleStartButtonClick : undefined
-                }
-                label="Start"
-                enabled={!timerState.startFlow}
-              ></Button>
-              <Button
-                componentType="previewResumePause"
-                onClick={
-                  timerState.startFlow ? handlePauseButtonClick : undefined
-                }
-                label={timerState.pauseFlow ? "Resume" : "Pause"}
-                enabled={timerState.startFlow}
-              ></Button>
-              <Button
-                componentType="previewStop"
-                onClick={
-                  timerState.startFlow ? handleStopButtonClick : undefined
-                }
-                label="Stop"
-                enabled={timerState.startFlow}
-              ></Button>
-              <Button
-                componentType="previewCancel"
-                onClick={
-                  !timerState.startFlow ? handleCancelButtonClick : undefined
-                }
-                label="Cancel"
-                enabled={!timerState.startFlow}
-              ></Button>
-            </div>
+      <div className="rounded-md border-[1px] border-[#323232] bg-[#232323]">
+        <div className="flex w-full flex-col items-start justify-center  gap-1 p-5  ">
+          <div className="flex w-full flex-col items-start justify-center">
+            <>
+              <p className="text-[30px] text-[#a0a0a0]">
+                {flow.flowName ? flow.flowName : "No name"}
+              </p>
+              <p className="h-[20px] w-full text-start text-[red]"></p>
+            </>
           </div>
-        </div>
-        <div className="h-full rounded-md border-[1px] border-[#323232] bg-[#232323]">
-          <div className=" flex h-full w-full flex-col items-start justify-center gap-1 p-5">
+          <div className="flex h-full w-1/2 flex-col items-start justify-center gap-1 pb-6 min-[1180px]:hidden">
             <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
               <p className="text-start text-[#a0a0a0]">Duration</p>
               <p className="text-start text-[#a0a0a0]">
@@ -359,133 +321,180 @@ function Preview({ handleDesigningClick }: PreviewProps) {
               </p>
             </div>
           </div>
+          <div className="flex h-full w-full flex-row items-center justify-start gap-2">
+            <Button
+              componentType="previewStart"
+              onClick={
+                !timerState.startFlow ? handleStartButtonClick : undefined
+              }
+              label="Start"
+              enabled={!timerState.startFlow}
+            ></Button>
+            <Button
+              componentType="previewResumePause"
+              onClick={
+                timerState.startFlow ? handlePauseButtonClick : undefined
+              }
+              label={timerState.pauseFlow ? "Resume" : "Pause"}
+              enabled={timerState.startFlow}
+            ></Button>
+            <Button
+              componentType="previewStop"
+              onClick={timerState.startFlow ? handleStopButtonClick : undefined}
+              label="Stop"
+              enabled={timerState.startFlow}
+            ></Button>
+            <Button
+              componentType="previewCancel"
+              onClick={
+                !timerState.startFlow ? handleCancelButtonClick : undefined
+              }
+              label="Cancel"
+              enabled={!timerState.startFlow}
+            ></Button>
+          </div>
         </div>
       </div>
-      <div className="grid w-full grid-cols-[2fr_1fr] items-start justify-center gap-6 pt-6">
-        <div className="flex h-full flex-col gap-6">
-          <div className="flex h-full w-full items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6">
-            <div className="flex w-full items-center">
-              <div className="flex w-full flex-col gap-1">
-                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                  <p className="text-start text-[#a0a0a0]">Duration</p>
-                  <p className="text-start text-[#a0a0a0]">
-                    {flowCount.toFixed(1)} / {flow.duration} seconds
-                  </p>
-                </div>
-                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                  <p className="text-start text-[#a0a0a0]">Percent</p>
-                  <p className="text-start text-[#a0a0a0]">
-                    {flowPercent.toFixed(0)}%
-                  </p>
-                </div>
+      <div className="hidden h-full rounded-md border-[1px] border-[#323232] bg-[#232323] min-[1180px]:block">
+        <div className=" flex h-full w-full flex-col items-start justify-center gap-1 p-5">
+          <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+            <p className="text-start text-[#a0a0a0]">Duration</p>
+            <p className="text-start text-[#a0a0a0]">
+              {hours > 0 ? <span>{hours} hours, </span> : null}
+              {minutes > 0 ? <span>{minutes} minutes, </span> : null}
+              {seconds > 0 ? <span>{seconds} seconds.</span> : null}
+            </p>
+          </div>
+          <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+            <p className="text-start text-[#a0a0a0]">Poses</p>
+            <p className="text-start text-[#a0a0a0]">{flow.units.length}</p>
+          </div>
+          <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+            <p className="text-start text-[#a0a0a0]">Unique poses</p>
+            <p className="text-start text-[#a0a0a0]">
+              {flow.uniqueAspects.length}
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="flex h-full flex-col gap-6">
+        <div className="flex w-full items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6">
+          <div className="flex w-full items-center">
+            <div className="flex w-full flex-col gap-1">
+              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                <p className="text-start text-[#a0a0a0]">Duration</p>
+                <p className="text-start text-[#a0a0a0]">
+                  {flowCount.toFixed(1)} / {flow.duration} seconds
+                </p>
               </div>
+              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                <p className="text-start text-[#a0a0a0]">Percent</p>
+                <p className="text-start text-[#a0a0a0]">
+                  {flowPercent.toFixed(0)}%
+                </p>
+              </div>
+            </div>
 
-              <div className=" w-full">
-                <ThemeProvider theme={linearProgressBarTheme}>
-                  <LinearProgress
-                    key={flowPercent}
-                    color="inherit"
-                    variant="determinate"
-                    value={flowPercent}
-                  />
-                </ThemeProvider>
+            <div className=" w-full">
+              <ThemeProvider theme={linearProgressBarTheme}>
+                <LinearProgress
+                  key={flowPercent}
+                  color="inherit"
+                  variant="determinate"
+                  value={flowPercent}
+                />
+              </ThemeProvider>
+            </div>
+          </div>
+        </div>
+        <div className="hidden w-full flex-row items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6 min-[820px]:flex">
+          <div className=" flex h-full w-1/2 flex-col items-start justify-center">
+            <div className="flex h-full w-full flex-col items-start justify-center gap-1 pr-6">
+              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                <p className="text-start text-[#a0a0a0]">Current</p>
+                {!timerState.startFlow ? (
+                  <p className="text-start text-[#a0a0a0]">
+                    1 / {flow.units.length}
+                  </p>
+                ) : (
+                  <p className="text-start text-[#a0a0a0]">
+                    {currentUnitIndex + 1} / {flow.units.length}
+                  </p>
+                )}
+              </div>
+              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                <p className="text-start text-[#a0a0a0]">Name</p>
+
+                <p className="text-start text-[#a0a0a0]">
+                  {timerState.startFlow
+                    ? flow.units[currentUnitIndex].name
+                    : flow.units[0].name}
+                </p>
+              </div>
+              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                <p className="text-start text-[#a0a0a0] ">Duration</p>
+                <p className="text-start text-[#a0a0a0]">
+                  {unitCount.toFixed(1)} /{" "}
+                  {flow.units[currentUnitIndex]
+                    ? flow.units[currentUnitIndex].duration
+                    : flow.units[0].duration}{" "}
+                  seconds
+                </p>
+              </div>
+              <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
+                <p className="text-start text-[#a0a0a0]">Percent</p>
+                <p className="text-start text-[#a0a0a0]">
+                  {unitPercent.toFixed(0)}%
+                </p>
               </div>
             </div>
           </div>
-          <div className="flex h-full w-full flex-row items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6">
-            <div className=" flex h-full w-1/2 flex-col items-start justify-center">
-              <div className="flex h-full w-full flex-col items-start justify-center gap-1 pr-6">
-                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                  <p className="text-start text-[#a0a0a0]">Current</p>
-                  {!timerState.startFlow ? (
-                    <p className="text-start text-[#a0a0a0]">
-                      1 / {flow.units.length}
-                    </p>
-                  ) : (
-                    <p className="text-start text-[#a0a0a0]">
-                      {currentUnitIndex + 1} / {flow.units.length}
-                    </p>
-                  )}
-                </div>
-                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                  <p className="text-start text-[#a0a0a0]">Name</p>
-
-                  <p className="text-start text-[#a0a0a0]">
-                    {timerState.startFlow
-                      ? flow.units[currentUnitIndex].name
-                      : flow.units[0].name}
-                  </p>
-                </div>
-                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                  <p className="text-start text-[#a0a0a0] ">Duration</p>
-                  <p className="text-start text-[#a0a0a0]">
-                    {unitCount.toFixed(1)} /{" "}
-                    {flow.units[currentUnitIndex]
-                      ? flow.units[currentUnitIndex].duration
-                      : flow.units[0].duration}{" "}
-                    seconds
-                  </p>
-                </div>
-                <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-                  <p className="text-start text-[#a0a0a0]">Percent</p>
-                  <p className="text-start text-[#a0a0a0]">
-                    {unitPercent.toFixed(0)}%
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="h-full w-[1px] bg-[#323232]"></div>
-            <div className="image-track m-auto h-full w-1/2">
-              <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
-                <Slider {...settings} ref={sliderRef}>
-                  {flow.units.map((unit) => {
-                    return (
-                      <div
-                        key={unit.id}
-                        className=" image h-full w-[200px] bg-[transparent] text-black"
-                      >
-                        <div className="flex flex-col items-center justify-center">
-                          <CircularProgressBar
-                            percentValue={unitPercent}
-                            value={
-                              <img className="w-2/3" src={unit.image} alt="" />
-                            }
-                          ></CircularProgressBar>
-                        </div>
+          <div className="h-full w-[1px] bg-[#323232]"></div>
+          <div className="image-track m-auto h-full w-1/2">
+            <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
+              <Slider {...settings} ref={sliderRef}>
+                {flow.units.map((unit) => {
+                  return (
+                    <div
+                      key={unit.id}
+                      className=" image h-full w-[200px] bg-[transparent] text-black"
+                    >
+                      <div className="flex flex-col items-center justify-center">
+                        <CircularProgressBar
+                          percentValue={unitPercent}
+                          value={
+                            <img className="w-2/3" src={unit.image} alt="" />
+                          }
+                        ></CircularProgressBar>
                       </div>
-                    );
-                  })}
-                </Slider>
-              </div>
+                    </div>
+                  );
+                })}
+              </Slider>
             </div>
           </div>
         </div>
-        <div className="flex h-[102px] flex-col items-center justify-center gap-1 rounded-md border-[1px] border-[#323232] bg-[#232323] p-5">
-          <p className="text-start text-[#a0a0a0]">Volume</p>
-          <Box sx={{ width: 300 }}>
-            <Stack
-              spacing={2}
-              direction="row"
-              sx={{ mb: 1 }}
-              alignItems="center"
-            >
-              <VolumeDownRounded sx={{ color: "white" }} />
-              <VolumeSlider
-                aria-label="Volume"
-                value={volumeValue}
-                onChange={handleVolumeChange}
-                // marks={true}
-                // step={5}
-                valueLabelDisplay="auto"
-                sx={{
-                  // backgroundColor: "red",
-                  color: "white",
-                }}
-              />
-              <VolumeUpRounded sx={{ color: "white" }} />
-            </Stack>
-          </Box>
-        </div>
+      </div>
+      <div className="flex h-[102px] flex-col items-center justify-center gap-1 rounded-md border-[1px] border-[#323232] bg-[#232323] p-5">
+        <p className="text-start text-[#a0a0a0]">Volume</p>
+        <Box sx={{ width: 300 }}>
+          <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
+            <VolumeDownRounded sx={{ color: "white" }} />
+            <VolumeSlider
+              aria-label="Volume"
+              value={volumeValue}
+              onChange={handleVolumeChange}
+              // marks={true}
+              // step={5}
+              valueLabelDisplay="auto"
+              sx={{
+                // backgroundColor: "red",
+                color: "white",
+              }}
+            />
+            <VolumeUpRounded sx={{ color: "white" }} />
+          </Stack>
+        </Box>
       </div>
     </>
   ) : null;

@@ -216,7 +216,7 @@ export default function Dashboard({
           </ul>
         </nav>
       </div>
-      <div className="relative w-[calc(100%-150px)] flex-1" id="canvas">
+      <div className="relative flex-1" id="canvas">
         <div className=" flex h-12 max-h-12 items-center justify-start  border-b-[1px] border-[#323232] pl-4">
           <p>{location.charAt(0).toUpperCase() + location.slice(1)}</p>
         </div>
@@ -243,7 +243,9 @@ export default function Dashboard({
             </>
           ) : location === "moving" ? (
             <>
-              <Preview handleDesigningClick={handleDesigningClick}></Preview>
+              <div className="flex w-full grid-cols-[2fr_1fr] grid-rows-[auto_1fr] flex-col gap-6 min-[1180px]:grid">
+                <Preview handleDesigningClick={handleDesigningClick}></Preview>
+              </div>
             </>
           ) : location === "preferences" ? (
             <>

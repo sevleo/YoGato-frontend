@@ -80,7 +80,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
               draggable="false"
             />
           </div>
-          <div className=" flex h-[60px] min-w-[60px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0]">
+          <div className=" flex h-[60px] min-w-[100px] flex-col items-center justify-center text-sm font-medium text-[#a0a0a0]">
             <p className="text-xsm w-full pl-4 text-left font-semibold">
               {name}
             </p>
@@ -107,7 +107,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
             </div>
           </div>
           <div
-            className="flex max-h-[30px] w-fit items-center justify-center"
+            className="flex max-h-[30px] w-full items-center justify-center"
             onMouseLeave={enableDrag}
           >
             <div
