@@ -122,7 +122,7 @@ export default function Header({ setLocation }: HeaderProps) {
                 ) : (
                   <>
                     <Link
-                      className=" ml-auto flex h-full w-[100px] items-center justify-center  text-white hover:bg-[#2e2e2e] hover:text-white"
+                      className="ml-auto hidden h-full w-[100px] items-center justify-center text-white  hover:bg-[#2e2e2e] hover:text-white sm:flex"
                       to="/dashboard/flows"
                       onClick={handleDashboardLink}
                     >
