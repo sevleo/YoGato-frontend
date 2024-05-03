@@ -407,9 +407,9 @@ function Preview({ handleDesigningClick }: PreviewProps) {
             </div>
           </div>
         </div>
-        <div className="hidden w-full flex-row items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6 min-[820px]:flex">
+        <div className=" flex w-full flex-col items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] min-[820px]:flex-row">
           <div className=" flex h-full w-1/2 flex-col items-start justify-center">
-            <div className="flex h-full w-full flex-col items-start justify-center gap-1 pr-6">
+            <div className="flex h-full w-full flex-col items-start justify-center gap-1 pb-6 min-[820px]:pb-0 min-[820px]:pr-6">
               <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
                 <p className="text-start text-[#a0a0a0]">Current</p>
                 {!timerState.startFlow ? (
@@ -449,7 +449,7 @@ function Preview({ handleDesigningClick }: PreviewProps) {
               </div>
             </div>
           </div>
-          <div className="h-full w-[1px] bg-[#323232]"></div>
+          <div className="h-[1px] w-full bg-[#323232] min-[820px]:h-full min-[820px]:w-[1px]"></div>
           <div className="image-track m-auto h-full w-1/2">
             <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
               <Slider {...settings} ref={sliderRef}>
@@ -473,10 +473,38 @@ function Preview({ handleDesigningClick }: PreviewProps) {
               </Slider>
             </div>
           </div>
+          <div className="h-[1px] w-full bg-[#323232] min-[820px]:h-full min-[820px]:w-[1px]"></div>
+
+          <div className="p-6">
+            <Box sx={{ width: 300 }}>
+              <Stack
+                spacing={2}
+                direction="row"
+                sx={{ mb: 1 }}
+                alignItems="center"
+              >
+                <VolumeDownRounded sx={{ color: "white" }} />
+                <VolumeSlider
+                  aria-label="Volume"
+                  value={volumeValue}
+                  onChange={handleVolumeChange}
+                  // marks={true}
+                  // step={5}
+                  valueLabelDisplay="auto"
+                  sx={{
+                    // backgroundColor: "red",
+                    color: "white",
+                  }}
+                />
+                <VolumeUpRounded sx={{ color: "white" }} />
+              </Stack>
+            </Box>
+          </div>
         </div>
       </div>
-      <div className="flex h-[102px] flex-col items-center justify-center gap-1 rounded-md border-[1px] border-[#323232] bg-[#232323] p-5">
+      <div className="hidden h-[102px] flex-col items-center justify-center gap-1 rounded-md border-[1px] border-[#323232] bg-[#232323] p-5 min-[1180px]:flex">
         <p className="text-start text-[#a0a0a0]">Volume</p>
+
         <Box sx={{ width: 300 }}>
           <Stack spacing={2} direction="row" sx={{ mb: 1 }} alignItems="center">
             <VolumeDownRounded sx={{ color: "white" }} />

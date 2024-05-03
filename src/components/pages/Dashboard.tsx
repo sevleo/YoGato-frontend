@@ -250,7 +250,7 @@ export default function Dashboard({
           </div>
 
           <nav
-            className={`absolute left-0 top-[48px] w-[170px] border-r-[1px] border-[#323232] bg-[#1c1c1c] ${isHamburgerOpen ? "opacity-100" : "opacity-0"}  transition-all duration-200`}
+            className={`absolute left-0 top-[48px] w-[170px] border-r-[1px] border-[#323232] bg-[#1c1c1c] ${isHamburgerOpen ? "pointer-events-auto opacity-100" : " pointer-events-none opacity-0"}  transition-all duration-200`}
           >
             <ul>
               <div className="border-b-[1px] border-[#323232] px-6 py-5">

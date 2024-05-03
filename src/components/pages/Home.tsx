@@ -2,16 +2,26 @@ import CatLogo from "../../assets/cat_logo.jpeg";
 import { useUser } from "../utilities/UserContext";
 import Button from "../buildingBlocks/Button";
 import { useNavigate } from "react-router-dom";
+import { Dispatch, SetStateAction } from "react";
+import { useEffect } from "react";
 
-function Home() {
+interface HomeProps {
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+  url: string;
+}
+
+function Home({ setLocation, url }: HomeProps) {
   // const user = useUser();
   const { authState } = useUser();
-
   const navigate = useNavigate();
-
   function handleSignInClick() {
     navigate("/sign-in");
   }
+
+  useEffect(() => {
+    setLocation(url);
+  });
 
   // function handleDemoClick() {
   //   navigate("/builder");

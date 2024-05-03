@@ -37,7 +37,7 @@ function App() {
       element: (
         <>
           {header}
-          <Home></Home>
+          <Home location={location} setLocation={setLocation} url="home"></Home>
           <LogInPopUp></LogInPopUp>
         </>
       ),
@@ -52,7 +52,11 @@ function App() {
       path: "/sign-in",
       element: (
         <>
-          <SignIn></SignIn>
+          <SignIn
+            location={location}
+            setLocation={setLocation}
+            url="sign-in"
+          ></SignIn>
         </>
       ),
     },
@@ -132,7 +136,9 @@ function App() {
 
   return (
     <>
-      <div className="main flex h-full w-full flex-col">
+      <div
+        className={`main flex h-full w-full flex-col ${location === "home" || location === "sign-in" ? "overflow-auto" : "overflow-hidden"}`}
+      >
         <RouterProvider router={router} />
       </div>
     </>

@@ -3,10 +3,21 @@ import { LogInForm } from "../sections/LoginPopUp";
 import { useUser } from "../utilities/UserContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 
-export default function SignIn() {
+interface SignInProps {
+  location: string;
+  setLocation: Dispatch<SetStateAction<string>>;
+  url: string;
+}
+
+export default function SignIn({ setLocation, url }: SignInProps) {
   const { authState } = useUser();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setLocation(url);
+  });
 
   useEffect(() => {
     if (authState.isLoggedIn) {

@@ -107,7 +107,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
             </div>
           </div>
           <div
-            className="flex max-h-[30px] w-full items-center justify-center"
+            className="flex max-h-[30px] items-center justify-center"
             onMouseLeave={enableDrag}
           >
             <div
