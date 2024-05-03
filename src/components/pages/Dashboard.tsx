@@ -16,6 +16,7 @@ import Builder from "../sections/Builder";
 import Preview from "../sections/Preview";
 import { Dispatch } from "react";
 import { Divide as Hamburger } from "hamburger-react";
+import { useRef } from "react";
 
 interface DashboardProps {
   location: string;
@@ -32,6 +33,14 @@ export default function Dashboard({
   const { authState, dispatch } = useUser();
   const [flows, setFlows] = useState<FlowType[]>([]);
   const [isHamburgerOpen, setHamburgerOpen] = useState<boolean>(false);
+
+  const wrapperRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (wrapperRef.current) {
+      wrapperRef.current.scrollTo(0, 0);
+    }
+  }, [location]);
 
   useEffect(() => {
     const handleScreenResize = () => {
@@ -365,7 +374,7 @@ export default function Dashboard({
             {location.charAt(0).toUpperCase() + location.slice(1)}
           </p>
         </div>
-        <Wrapper>
+        <Wrapper wrapperRef={wrapperRef}>
           {location === "flows" ? (
             <>
               <div className="flex w-full grid-rows-[auto_1fr] flex-col gap-6 min-[850px]:grid">
@@ -417,11 +426,15 @@ export default function Dashboard({
 
 interface WrapperProps {
   children: ReactNode;
+  wrapperRef: React.RefObject<HTMLDivElement>;
 }
 
-function Wrapper({ children }: WrapperProps) {
+function Wrapper({ children, wrapperRef }: WrapperProps) {
   return (
-    <div className="wrapper mb-6 ml-auto mr-auto flex h-[calc(100%-48px)] w-full max-w-screen-2xl justify-center overflow-auto p-6">
+    <div
+      ref={wrapperRef}
+      className="wrapper mb-6 ml-auto mr-auto flex h-[calc(100%-48px)] w-full max-w-screen-2xl justify-center overflow-auto p-6"
+    >
       {children}
     </div>
   );

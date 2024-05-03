@@ -8,6 +8,7 @@ import { useUser } from "../src/components/utilities/UserContext";
 import Header from "./components/sections/Header";
 import SignIn from "./components/pages/SignIn";
 import Dashboard from "./components/pages/Dashboard";
+import ScrollToTop from "./components/utilities/scrollToTop";
 
 function App() {
   const { dispatch } = useUser();
@@ -36,6 +37,7 @@ function App() {
       path: "/",
       element: (
         <>
+          <ScrollToTop />
           {header}
           <Home location={location} setLocation={setLocation} url="home"></Home>
           <LogInPopUp></LogInPopUp>
@@ -52,6 +54,7 @@ function App() {
       path: "/sign-in",
       element: (
         <>
+          <ScrollToTop />
           <SignIn
             location={location}
             setLocation={setLocation}
@@ -64,6 +67,7 @@ function App() {
       path: "/dashboard/flows",
       element: (
         <>
+          <ScrollToTop />
           <Dashboard
             location={location ? location : "flows"}
             setLocation={setLocation}
@@ -76,6 +80,7 @@ function App() {
       path: "/dashboard/designing",
       element: (
         <>
+          <ScrollToTop />
           <Dashboard
             location={location}
             setLocation={setLocation}
@@ -88,6 +93,7 @@ function App() {
       path: "/dashboard/moving",
       element: (
         <>
+          <ScrollToTop />
           <Dashboard
             location={location}
             setLocation={setLocation}
@@ -100,6 +106,7 @@ function App() {
       path: "/dashboard/preferences",
       element: (
         <>
+          <ScrollToTop />
           <Dashboard
             location={location}
             setLocation={setLocation}
@@ -112,6 +119,7 @@ function App() {
       path: "/dashboard/theme",
       element: (
         <>
+          <ScrollToTop />
           <Dashboard
             location={location}
             setLocation={setLocation}
@@ -124,6 +132,7 @@ function App() {
       path: "/dashboard/catalog",
       element: (
         <>
+          <ScrollToTop />
           <Dashboard
             location={location}
             setLocation={setLocation}
