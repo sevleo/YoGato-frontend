@@ -15,6 +15,7 @@ import { showAllFlowsAPI } from "../utilities/api";
 import Builder from "../sections/Builder";
 import Preview from "../sections/Preview";
 import { Dispatch } from "react";
+import { Divide as Hamburger } from "hamburger-react";
 
 interface DashboardProps {
   location: string;
@@ -30,6 +31,7 @@ export default function Dashboard({
   const navigate = useNavigate();
   const { authState, dispatch } = useUser();
   const [flows, setFlows] = useState<FlowType[]>([]);
+  const [isHamburgerOpen, setHamburgerOpen] = useState<boolean>(false);
 
   useEffect(() => {
     setLocation(url);
@@ -217,8 +219,17 @@ export default function Dashboard({
         </nav>
       </div>
       <div className="relative flex-1" id="canvas">
-        <div className=" flex h-12 max-h-12 items-center justify-start  border-b-[1px] border-[#323232] pl-4">
-          <p>{location.charAt(0).toUpperCase() + location.slice(1)}</p>
+        <div className=" flex h-12 max-h-12 items-center justify-start  border-b-[1px] border-[#323232] ">
+          <div className=" hidden w-[170px] items-center justify-center border-r-[1px] border-[#323232] max-[650px]:flex ">
+            <Hamburger
+              rounded
+              toggled={isHamburgerOpen}
+              toggle={setHamburgerOpen}
+            ></Hamburger>
+          </div>
+          <p className="pl-4">
+            {location.charAt(0).toUpperCase() + location.slice(1)}
+          </p>
         </div>
         <Wrapper>
           {location === "flows" ? (
