@@ -34,6 +34,19 @@ export default function Dashboard({
   const [isHamburgerOpen, setHamburgerOpen] = useState<boolean>(false);
 
   useEffect(() => {
+    const handleScreenResize = () => {
+      if (window.innerWidth >= 650) {
+        setHamburgerOpen(false);
+      }
+    };
+    window.addEventListener("resize", handleScreenResize);
+
+    return () => {
+      window.removeEventListener("resize", handleScreenResize);
+    };
+  }, []);
+
+  useEffect(() => {
     setLocation(url);
   });
 
@@ -51,40 +64,48 @@ export default function Dashboard({
 
   function handleHomeLink() {
     navigate("/");
+    setHamburgerOpen(false);
   }
 
   function handleLogout() {
     logout(dispatch);
+    setHamburgerOpen(false);
   }
 
   function handleFlowsClick() {
     setLocation("flows");
     navigate("/dashboard/flows");
+    setHamburgerOpen(false);
   }
 
   function handleDesigningClick() {
     setLocation("designing");
     navigate("/dashboard/designing");
+    setHamburgerOpen(false);
   }
 
   function handleMovingClick() {
     setLocation("moving");
     navigate("/dashboard/moving");
+    setHamburgerOpen(false);
   }
 
   function handlePreferencesClick() {
     setLocation("preferences");
     navigate("/dashboard/preferences");
+    setHamburgerOpen(false);
   }
 
   function handleThemeClick() {
     setLocation("theme");
     navigate("/dashboard/theme");
+    setHamburgerOpen(false);
   }
 
   function handleCatalogClick() {
     setLocation("catalog");
     navigate("/dashboard/catalog");
+    setHamburgerOpen(false);
   }
 
   useEffect(() => {
@@ -219,7 +240,7 @@ export default function Dashboard({
         </nav>
       </div>
       <div className="relative flex-1" id="canvas">
-        <div className=" flex h-12 max-h-12 items-center justify-start  border-b-[1px] border-[#323232] ">
+        <div className="relative flex h-12 max-h-12 items-center justify-start  border-b-[1px] border-[#323232] ">
           <div className=" hidden w-[170px] items-center justify-center border-r-[1px] border-[#323232] max-[650px]:flex ">
             <Hamburger
               rounded
@@ -227,6 +248,119 @@ export default function Dashboard({
               toggle={setHamburgerOpen}
             ></Hamburger>
           </div>
+
+          <nav
+            className={`absolute left-0 top-[48px] w-[170px] border-r-[1px] border-[#323232] bg-[#1c1c1c] ${isHamburgerOpen ? "opacity-100" : "opacity-0"}  transition-all duration-200`}
+          >
+            <ul>
+              <div className="border-b-[1px] border-[#323232] px-6 py-5">
+                <div className="mb-3">
+                  {" "}
+                  <p className="text-start text-sm font-medium text-[#7e7e7e]">
+                    Practice
+                  </p>
+                </div>
+                <ul className="flex w-full flex-col space-y-2">
+                  <div className="flex items-center justify-start">
+                    {" "}
+                    <p
+                      onClick={handleFlowsClick}
+                      className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    >
+                      All flows
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-start">
+                    {" "}
+                    <p
+                      onClick={handleDesigningClick}
+                      className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    >
+                      Designing
+                    </p>
+                  </div>
+
+                  <div className="flex w-full items-center justify-start">
+                    {" "}
+                    <p
+                      onClick={handleMovingClick}
+                      className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    >
+                      Moving
+                    </p>
+                  </div>
+                </ul>
+              </div>
+              <div className="border-b-[1px] border-[#323232] px-6 py-5">
+                <div className="mb-3">
+                  {" "}
+                  <p className=" text-start text-sm font-medium text-[#7e7e7e]">
+                    Account
+                  </p>
+                </div>
+                <ul className="space-y-2">
+                  <div className="flex items-center justify-start">
+                    {" "}
+                    <p
+                      onClick={handlePreferencesClick}
+                      className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    >
+                      Preferences
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-start">
+                    {" "}
+                    <p
+                      onClick={handleThemeClick}
+                      className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    >
+                      Theme
+                    </p>
+                  </div>
+                </ul>
+              </div>
+              <div className="border-b-[1px] border-[#323232] px-6 py-5">
+                <div className="mb-3">
+                  {" "}
+                  <p className=" text-start text-sm font-medium text-[#7e7e7e]">
+                    Library
+                  </p>
+                </div>
+                <ul className="space-y-2">
+                  <div className="flex items-center justify-start">
+                    {" "}
+                    <p
+                      onClick={handleCatalogClick}
+                      className=" w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    >
+                      Catalog of poses
+                    </p>
+                  </div>
+                  <div className="flex items-center justify-start">
+                    {" "}
+                    <p className=" w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                      Blogs
+                    </p>
+                  </div>
+                </ul>
+              </div>
+              <div className="border-b-[1px] border-[#323232] px-6 py-5">
+                <div className="flex items-center justify-start">
+                  {" "}
+                  <p
+                    className="flex w-full items-center justify-start gap-[4px] text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    onClick={handleLogout}
+                  >
+                    <span className="material-symbols-outlined text-[14px]">
+                      logout
+                    </span>
+                    Log out
+                  </p>
+                </div>
+              </div>
+            </ul>
+          </nav>
+
           <p className="pl-4">
             {location.charAt(0).toUpperCase() + location.slice(1)}
           </p>
