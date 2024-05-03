@@ -407,7 +407,7 @@ function Preview({ handleDesigningClick }: PreviewProps) {
             </div>
           </div>
         </div>
-        <div className=" flex w-full flex-col items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] min-[820px]:flex-row">
+        <div className=" mb-6 flex w-full flex-col items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6 min-[820px]:flex-row">
           <div className=" flex h-full w-1/2 flex-col items-start justify-center">
             <div className="flex h-full w-full flex-col items-start justify-center gap-1 pb-6 min-[820px]:pb-0 min-[820px]:pr-6">
               <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
@@ -473,9 +473,9 @@ function Preview({ handleDesigningClick }: PreviewProps) {
               </Slider>
             </div>
           </div>
-          <div className="h-[1px] w-full bg-[#323232] min-[820px]:h-full min-[820px]:w-[1px]"></div>
+          <div className="h-[1px] w-full bg-[#323232] min-[820px]:hidden min-[820px]:h-full min-[820px]:w-[1px]"></div>
 
-          <div className="p-6">
+          <div className=" pl-6 pr-6 pt-6 min-[820px]:hidden">
             <Box sx={{ width: 300 }}>
               <Stack
                 spacing={2}
