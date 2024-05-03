@@ -1951,6 +1951,16 @@ button:focus-visible {
   }
 }
 
+@media (min-width: 640px) {
+  .sm\:flex {
+    display: flex;
+  }
+
+  .sm\:justify-start {
+    justify-content: flex-start;
+  }
+}
+
 @media (min-width: 675px) {
   .min-\[675px\]\:flex {
     display: flex;

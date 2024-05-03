@@ -84,14 +84,14 @@ export default function Header({ setLocation }: HeaderProps) {
   return (
     <>
       <header
-        className={`relative z-50 flex h-[60px] w-full items-center justify-center border-b-[1px] border-[#323232] text-white `}
+        className={` relative z-50 flex h-[60px] w-full items-center justify-center border-b-[1px] border-[#323232] text-white `}
       >
         <div className="flex w-full max-w-screen-2xl items-center justify-center">
           <div
             className={`  relative flex h-[60px] w-3/4 flex-row items-center justify-center gap-10 text-black ${authState.showLoginPopup ? "blur-sm" : ""}`}
           >
             <div
-              className={`flex h-full  w-full max-w-screen-2xl items-center justify-start`}
+              className={`flex h-full  w-full max-w-screen-2xl items-center justify-center sm:justify-start`}
             >
               <>
                 <Link
@@ -114,7 +114,7 @@ export default function Header({ setLocation }: HeaderProps) {
                     </Link> */}
                     <div
                       onClick={handleLoginButtonClick}
-                      className=" ml-auto flex h-full w-[100px] items-center justify-center font-medium text-white hover:cursor-pointer hover:bg-[#2e2e2e] hover:text-white"
+                      className="ml-auto hidden h-full w-[100px] items-center justify-center font-medium text-white hover:cursor-pointer hover:bg-[#2e2e2e] hover:text-white sm:flex"
                     >
                       Sign In
                     </div>
