@@ -91,7 +91,7 @@ export default function Header({ setLocation }: HeaderProps) {
             className={`  relative flex h-[60px] w-3/4 flex-row items-center justify-center gap-10 text-black ${authState.showLoginPopup ? "blur-sm" : ""}`}
           >
             <div
-              className={`flex h-full  w-full max-w-screen-2xl items-center justify-center sm:justify-start`}
+              className={`flex h-full  w-full max-w-screen-2xl items-center justify-between sm:justify-start`}
             >
               <>
                 <Link
