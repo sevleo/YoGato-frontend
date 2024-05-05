@@ -248,8 +248,8 @@ export default function Dashboard({
           </ul>
         </nav>
       </div>
-      <div className="relative w-[100vw] flex-1" id="canvas">
-        <div className="relative flex h-12 max-h-12 w-screen items-center  justify-between border-b-[1px] border-[#323232]">
+      <div className="relative  flex-1" id="canvas">
+        <div className="relative flex h-12 max-h-12 items-center justify-between  border-b-[1px] border-[#323232] max-[650px]:w-screen">
           <div className="flex h-full w-[170px] items-center justify-start  pl-6 ">
             <p className="text-lg min-[650px]:text-base">
               {location.charAt(0).toUpperCase() + location.slice(1)}
