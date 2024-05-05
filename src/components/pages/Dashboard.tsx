@@ -264,7 +264,7 @@ export default function Dashboard({
           </div>
 
           <nav
-            className={`absolute left-0 top-[48px] z-50 h-[100vh] w-full border-r-[1px] border-[#323232] bg-[#1c1c1c] sm:h-auto sm:w-[170px] ${isHamburgerOpen ? "pointer-events-auto opacity-100" : " pointer-events-none opacity-0"}  transition-all duration-200`}
+            className={`absolute left-0 top-[48px] z-50 h-auto w-[170px] border-r-[1px] border-[#323232] bg-[#1c1c1c] max-[650px]:h-[100vh] max-[650px]:w-full ${isHamburgerOpen ? "pointer-events-auto opacity-100" : " pointer-events-none opacity-0"}  transition-all duration-200`}
           >
             <ul className="hamburger">
               <div className="border-b-[1px] border-[#323232] px-6 py-5">

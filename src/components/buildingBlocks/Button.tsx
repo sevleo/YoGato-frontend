@@ -52,7 +52,7 @@ export default function Button(props: ButtonProps) {
       break;
     case "myFlowsCreate":
       styles =
-        "max-[650px]:order-2 max-[650px]:w-full w-[100px] text-sm h-[36px] border-box border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none transition-all p-0 duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none flex justify-center items-center";
+        "  min-w-[100px] max-[650px]:w-full w-[100px] text-sm h-[36px] border-box border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none  transition-colors p-0 duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none flex justify-center items-center";
       break;
     case "unitDelete":
       styles = `focus:outline-none hover:border-[#525252] hover:bg-[#363636] w-[30px] h-[30px] p-0 flex justify-center items-center bg-[#2e2e2e] border-[1px] border-[#3e3e3e] ${props.enabled ? "pointer-events-auto" : "pointer-events-none bg-[#8080806b] text-[gray]"}`;

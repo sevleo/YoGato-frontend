@@ -29,7 +29,49 @@ export default function FlowTableCustom({
 
   return (
     <>
-      <table className=" max-w-[800px] border-separate border-spacing-0  rounded-t-md bg-[#232323]">
+      <div className=" hidden h-5 border-separate border-spacing-0 bg-[#232323] max-[650px]:block sm:max-w-[800px]">
+        {flows.map((flow) => {
+          return (
+            <div>
+              <div>Flow: {flow.flowName}</div>
+              <div>Duration: {flow.flowData.duration}</div>
+              <div>Poses: {flow.flowData.units.length}</div>
+              <Button
+                componentType="myFlowsPreview"
+                onClick={() => handlePreviewClick(flow._id)}
+                enabled={
+                  flow.flowData.units ? flow.flowData.units.length > 0 : false
+                }
+              >
+                <span
+                  className={`material-symbols-outlined ${flow.flowData.units.length > 0 ? "text-[#6ccc93]" : ""}`}
+                >
+                  person_celebrate
+                </span>
+              </Button>
+              <Button
+                componentType="myFlowsEdit"
+                onClick={() => handleBuilderClick(flow._id)}
+                enabled={true}
+              >
+                <span className="material-symbols-outlined text-[18px] ">
+                  tune
+                </span>
+              </Button>
+              <Button
+                componentType="myFlowsDelete"
+                onClick={() => handleDelete(flow._id)}
+                enabled={true}
+              >
+                <span className="material-symbols-outlined text-[18px] ">
+                  delete
+                </span>
+              </Button>
+            </div>
+          );
+        })}
+      </div>
+      <table className=" border-separate border-spacing-0 rounded-t-md bg-[#232323] max-[650px]:hidden sm:max-w-[800px]">
         <thead className="">
           <tr className=" bg-[#282828]">
             <th className="rounded-tl-md border-b-[1px] border-l-[1px] border-t-[1px] border-[#323232] p-3 text-start text-base font-medium text-[#a0a0a0]">

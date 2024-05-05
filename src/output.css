@@ -795,6 +795,10 @@ video {
   height: 100%;
 }
 
+.h-5 {
+  height: 1.25rem;
+}
+
 .max-h-12 {
   max-height: 3rem;
 }
@@ -872,6 +876,10 @@ video {
   width: 100%;
 }
 
+.w-5 {
+  width: 1.25rem;
+}
+
 .min-w-\[100px\] {
   min-width: 100px;
 }
@@ -900,6 +908,10 @@ video {
   min-width: 60px;
 }
 
+.min-w-\[300px\] {
+  min-width: 300px;
+}
+
 .max-w-\[170px\] {
   max-width: 170px;
 }
@@ -922,6 +934,14 @@ video {
 
 .max-w-screen-2xl {
   max-width: 1536px;
+}
+
+.max-w-\[300px\] {
+  max-width: 300px;
+}
+
+.max-w-\[500px\] {
+  max-width: 500px;
 }
 
 .flex-1 {
@@ -1219,6 +1239,11 @@ video {
 
 .bg-transparent {
   background-color: transparent;
+}
+
+.bg-red-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
 }
 
 .object-cover {
@@ -1599,6 +1624,10 @@ video {
   transition-duration: 150ms;
 }
 
+.transition-none {
+  transition-property: none;
+}
+
 .duration-200 {
   transition-duration: 200ms;
 }
@@ -1958,12 +1987,24 @@ button:focus-visible {
     order: 2;
   }
 
+  .max-\[650px\]\:block {
+    display: block;
+  }
+
   .max-\[650px\]\:flex {
     display: flex;
   }
 
   .max-\[650px\]\:hidden {
     display: none;
+  }
+
+  .max-\[650px\]\:h-auto {
+    height: auto;
+  }
+
+  .max-\[650px\]\:h-\[100vh\] {
+    height: 100vh;
   }
 
   .max-\[650px\]\:w-full {
@@ -1974,12 +2015,26 @@ button:focus-visible {
     width: 100vw;
   }
 
+  .max-\[650px\]\:w-\[170px\] {
+    width: 170px;
+  }
+
+  .max-\[650px\]\:max-w-none {
+    max-width: none;
+  }
+
   .max-\[650px\]\:flex-row {
     flex-direction: row;
   }
 
   .max-\[650px\]\:flex-col {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 649px) {
+  .max-\[649px\]\:hidden {
+    display: none;
   }
 }
 
@@ -2000,12 +2055,46 @@ button:focus-visible {
     width: 170px;
   }
 
+  .sm\:max-w-\[800px\] {
+    max-width: 800px;
+  }
+
   .sm\:justify-start {
     justify-content: flex-start;
   }
 }
 
+@media (min-width: 649px) {
+  .min-\[649px\]\:max-w-\[300px\] {
+    max-width: 300px;
+  }
+}
+
 @media (min-width: 650px) {
+  .min-\[650px\]\:visible {
+    visibility: visible;
+  }
+
+  .min-\[650px\]\:block {
+    display: block;
+  }
+
+  .min-\[650px\]\:flex {
+    display: flex;
+  }
+
+  .min-\[650px\]\:hidden {
+    display: none;
+  }
+
+  .min-\[650px\]\:h-auto {
+    height: auto;
+  }
+
+  .min-\[650px\]\:w-\[170px\] {
+    width: 170px;
+  }
+
   .min-\[650px\]\:max-w-\[300px\] {
     max-width: 300px;
   }
@@ -2013,6 +2102,20 @@ button:focus-visible {
   .min-\[650px\]\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+}
+
+@media (min-width: 651px) {
+  .min-\[651px\]\:h-auto {
+    height: auto;
+  }
+
+  .min-\[651px\]\:w-\[170px\] {
+    width: 170px;
+  }
+
+  .min-\[651px\]\:max-w-\[300px\] {
+    max-width: 300px;
   }
 }
 
