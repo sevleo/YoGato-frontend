@@ -139,7 +139,7 @@ export default function Dashboard({
           </Link>
         </div>
         <nav>
-          <ul>
+          <ul className="">
             <div className="border-b-[1px] border-[#323232] px-6 py-5">
               <div className="mb-3">
                 {" "}
@@ -249,8 +249,13 @@ export default function Dashboard({
         </nav>
       </div>
       <div className="relative flex-1" id="canvas">
-        <div className="relative flex h-12 max-h-12 items-center justify-start  border-b-[1px] border-[#323232] ">
-          <div className=" hidden w-[170px] items-center justify-center border-r-[1px] border-[#323232] max-[650px]:flex ">
+        <div className="relative flex h-12 max-h-12 items-center justify-between  border-b-[1px] border-[#323232] ">
+          <div className="flex h-full w-[170px] items-center justify-start  pl-6 ">
+            <p className="">
+              {location.charAt(0).toUpperCase() + location.slice(1)}
+            </p>
+          </div>
+          <div className=" hidden w-[170px] items-center justify-end pr-6  max-[650px]:flex ">
             <Hamburger
               rounded
               toggled={isHamburgerOpen}
@@ -259,22 +264,22 @@ export default function Dashboard({
           </div>
 
           <nav
-            className={` absolute left-0 top-[48px] z-50 w-[170px] border-r-[1px] border-[#323232] bg-[#1c1c1c] ${isHamburgerOpen ? "pointer-events-auto opacity-100" : " pointer-events-none opacity-0"}  transition-all duration-200`}
+            className={`absolute left-0 top-[48px] z-50 h-[100vh] w-full border-r-[1px] border-[#323232] bg-[#1c1c1c] sm:h-auto sm:w-[170px] ${isHamburgerOpen ? "pointer-events-auto opacity-100" : " pointer-events-none opacity-0"}  transition-all duration-200`}
           >
-            <ul>
+            <ul className="hamburger">
               <div className="border-b-[1px] border-[#323232] px-6 py-5">
                 <div className="mb-3">
                   {" "}
-                  <p className="text-start text-sm font-medium text-[#7e7e7e]">
+                  <p className="text-start text-lg font-medium text-[#7e7e7e]">
                     Practice
                   </p>
                 </div>
-                <ul className="flex w-full flex-col space-y-2">
+                <ul className="flex w-full flex-col space-y-5">
                   <div className="flex items-center justify-start">
                     {" "}
                     <p
                       onClick={handleFlowsClick}
-                      className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className="w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       All flows
                     </p>
@@ -283,7 +288,7 @@ export default function Dashboard({
                     {" "}
                     <p
                       onClick={handleDesigningClick}
-                      className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className="w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       Designing
                     </p>
@@ -293,7 +298,7 @@ export default function Dashboard({
                     {" "}
                     <p
                       onClick={handleMovingClick}
-                      className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className="w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       Moving
                     </p>
@@ -303,16 +308,16 @@ export default function Dashboard({
               <div className="border-b-[1px] border-[#323232] px-6 py-5">
                 <div className="mb-3">
                   {" "}
-                  <p className=" text-start text-sm font-medium text-[#7e7e7e]">
+                  <p className=" text-start text-lg font-medium text-[#7e7e7e]">
                     Account
                   </p>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-5">
                   <div className="flex items-center justify-start">
                     {" "}
                     <p
                       onClick={handlePreferencesClick}
-                      className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className="w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       Preferences
                     </p>
@@ -321,7 +326,7 @@ export default function Dashboard({
                     {" "}
                     <p
                       onClick={handleThemeClick}
-                      className="w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className="w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       Theme
                     </p>
@@ -331,23 +336,23 @@ export default function Dashboard({
               <div className="border-b-[1px] border-[#323232] px-6 py-5">
                 <div className="mb-3">
                   {" "}
-                  <p className=" text-start text-sm font-medium text-[#7e7e7e]">
+                  <p className=" text-start text-lg font-medium text-[#7e7e7e]">
                     Library
                   </p>
                 </div>
-                <ul className="space-y-2">
+                <ul className="space-y-5">
                   <div className="flex items-center justify-start">
                     {" "}
                     <p
                       onClick={handleCatalogClick}
-                      className=" w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className=" w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       Catalog of poses
                     </p>
                   </div>
                   <div className="flex items-center justify-start">
                     {" "}
-                    <p className=" w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                    <p className=" w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                       Blogs
                     </p>
                   </div>
@@ -357,7 +362,7 @@ export default function Dashboard({
                 <div className="flex items-center justify-start">
                   {" "}
                   <p
-                    className="flex w-full items-center justify-start gap-[4px] text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    className="flex w-full items-center justify-start gap-[4px] text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     onClick={handleLogout}
                   >
                     <span className="material-symbols-outlined text-[14px]">
@@ -369,10 +374,6 @@ export default function Dashboard({
               </div>
             </ul>
           </nav>
-
-          <p className="pl-4">
-            {location.charAt(0).toUpperCase() + location.slice(1)}
-          </p>
         </div>
         <Wrapper wrapperRef={wrapperRef}>
           {location === "flows" ? (
