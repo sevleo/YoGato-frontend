@@ -248,10 +248,10 @@ export default function Dashboard({
           </ul>
         </nav>
       </div>
-      <div className="relative flex-1" id="canvas">
-        <div className="relative flex h-12 max-h-12 items-center justify-between  border-b-[1px] border-[#323232] ">
+      <div className="relative w-[100vw] flex-1" id="canvas">
+        <div className="relative flex h-12 max-h-12 w-screen items-center  justify-between border-b-[1px] border-[#323232]">
           <div className="flex h-full w-[170px] items-center justify-start  pl-6 ">
-            <p className="">
+            <p className="text-lg min-[650px]:text-base">
               {location.charAt(0).toUpperCase() + location.slice(1)}
             </p>
           </div>
@@ -268,37 +268,37 @@ export default function Dashboard({
           >
             <ul className="hamburger">
               <div className="border-b-[1px] border-[#323232] px-6 py-5">
-                <div className="mb-3">
+                <div className="mb-5">
                   {" "}
-                  <p className="text-start text-lg font-medium text-[#7e7e7e]">
+                  <p className="text-center text-lg font-medium text-[#7e7e7e]">
                     Practice
                   </p>
                 </div>
                 <ul className="flex w-full flex-col space-y-5">
-                  <div className="flex items-center justify-start">
+                  <div className="flex items-center justify-center">
                     {" "}
                     <p
                       onClick={handleFlowsClick}
-                      className="w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className="w-full text-center text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       All flows
                     </p>
                   </div>
-                  <div className="flex items-center justify-start">
+                  <div className="flex items-center justify-center">
                     {" "}
                     <p
                       onClick={handleDesigningClick}
-                      className="w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className="w-full text-center text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       Designing
                     </p>
                   </div>
 
-                  <div className="flex w-full items-center justify-start">
+                  <div className="flex w-full items-center justify-center">
                     {" "}
                     <p
                       onClick={handleMovingClick}
-                      className="w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className="w-full text-center text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       Moving
                     </p>
@@ -306,27 +306,27 @@ export default function Dashboard({
                 </ul>
               </div>
               <div className="border-b-[1px] border-[#323232] px-6 py-5">
-                <div className="mb-3">
+                <div className="mb-5">
                   {" "}
-                  <p className=" text-start text-lg font-medium text-[#7e7e7e]">
+                  <p className=" text-center text-lg font-medium text-[#7e7e7e]">
                     Account
                   </p>
                 </div>
                 <ul className="space-y-5">
-                  <div className="flex items-center justify-start">
+                  <div className="flex items-center justify-center">
                     {" "}
                     <p
                       onClick={handlePreferencesClick}
-                      className="w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className="w-full text-center text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       Preferences
                     </p>
                   </div>
-                  <div className="flex items-center justify-start">
+                  <div className="flex items-center justify-center">
                     {" "}
                     <p
                       onClick={handleThemeClick}
-                      className="w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className="w-full text-center text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       Theme
                     </p>
@@ -334,35 +334,35 @@ export default function Dashboard({
                 </ul>
               </div>
               <div className="border-b-[1px] border-[#323232] px-6 py-5">
-                <div className="mb-3">
+                <div className="mb-5">
                   {" "}
-                  <p className=" text-start text-lg font-medium text-[#7e7e7e]">
+                  <p className=" text-center text-lg font-medium text-[#7e7e7e]">
                     Library
                   </p>
                 </div>
                 <ul className="space-y-5">
-                  <div className="flex items-center justify-start">
+                  <div className="flex items-center justify-center">
                     {" "}
                     <p
                       onClick={handleCatalogClick}
-                      className=" w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                      className=" w-full text-center text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     >
                       Catalog of poses
                     </p>
                   </div>
-                  <div className="flex items-center justify-start">
+                  <div className="flex items-center justify-center">
                     {" "}
-                    <p className=" w-full text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                    <p className=" w-full text-center text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                       Blogs
                     </p>
                   </div>
                 </ul>
               </div>
               <div className="border-b-[1px] border-[#323232] px-6 py-5">
-                <div className="flex items-center justify-start">
+                <div className="flex items-center justify-center">
                   {" "}
                   <p
-                    className="flex w-full items-center justify-start gap-[4px] text-start text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
+                    className="flex w-full items-center justify-center gap-[4px] text-center text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]"
                     onClick={handleLogout}
                   >
                     <span className="material-symbols-outlined text-[14px]">

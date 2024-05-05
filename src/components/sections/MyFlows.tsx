@@ -59,14 +59,14 @@ function MyFlows({
         onSubmit={handleNewFlowClick}
         className="flex flex-col"
       >
-        <div className="flex w-full flex-col items-start justify-center ">
-          <div className="flex gap-[10px]">
+        <div className="flex w-full flex-col items-start justify-center max-[650px]:flex-row ">
+          <div className="flex flex-row gap-[10px] max-[650px]:w-full max-[650px]:flex-col">
             <Button
               type="submit"
               componentType="myFlowsCreate"
               label="New Flow"
             ></Button>
-            <div>
+            <div className="max-[650px]:order-1">
               {" "}
               <label
                 htmlFor="flowName"
@@ -82,7 +82,7 @@ function MyFlows({
                   setFlowName(e.target.value);
                   setErrorMessage(null);
                 }}
-                className=" h-9 w-full max-w-[300px] rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323]"
+                className=" h-9 w-full rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] pb-2 pl-4 pr-4 pt-2 outline outline-[2px] outline-transparent transition-all placeholder:text-[#ededed80] focus:border-[#707070] focus:outline-[#232323] min-[650px]:max-w-[300px]"
                 required
               />
               <p className="pl-4 text-start text-[red]">{errorMessage}</p>
