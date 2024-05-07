@@ -4,7 +4,6 @@ import { deleteFlow } from "../utilities/api";
 import { updateFlowName } from "../utilities/api";
 import { parseISO, format } from "date-fns";
 import { FlowType } from "../sections/MyFlows";
-import { FlowDataType } from "../sections/Flow";
 import Button from "./Button";
 
 interface FlowTableCustom {
@@ -27,46 +26,60 @@ export default function FlowTableCustom({
     deleteFlow(flowId, showAllFlows);
   }
 
+  function handleBuilderClick(flowId: string, flow: FlowType) {
+    setFlow({ ...flow.flowData, flowId: flowId, flowName: flow.flowName });
+    handleDesigningClick();
+  }
+
+  function handlePreviewClick(flowId: string, flow: FlowType) {
+    setFlow({ ...flow.flowData, flowId: flowId });
+    handleMovingClick();
+  }
+
   return (
     <>
-      <div className=" hidden h-5 border-separate border-spacing-0 bg-[#232323] max-[650px]:block sm:max-w-[800px]">
+      <div className=" hidden h-5 border-separate border-spacing-0 flex-col gap-5 bg-[#232323] max-[650px]:flex sm:max-w-[800px]">
         {flows.map((flow) => {
           return (
-            <div>
-              <div>Flow: {flow.flowName}</div>
-              <div>Duration: {flow.flowData.duration}</div>
-              <div>Poses: {flow.flowData.units.length}</div>
-              <Button
-                componentType="myFlowsPreview"
-                onClick={() => handlePreviewClick(flow._id)}
-                enabled={
-                  flow.flowData.units ? flow.flowData.units.length > 0 : false
-                }
-              >
-                <span
-                  className={`material-symbols-outlined ${flow.flowData.units.length > 0 ? "text-[#6ccc93]" : ""}`}
+            <div className="flex items-center justify-between">
+              <div className="flex flex-col items-start justify-center">
+                <div>Flow: {flow.flowName}</div>
+                <div>Duration: {flow.flowData.duration}</div>
+                <div>Poses: {flow.flowData.units.length}</div>
+              </div>
+              <div className="flex">
+                <Button
+                  componentType="myFlowsPreview"
+                  onClick={() => handlePreviewClick(flow._id, flow)}
+                  enabled={
+                    flow.flowData.units ? flow.flowData.units.length > 0 : false
+                  }
                 >
-                  person_celebrate
-                </span>
-              </Button>
-              <Button
-                componentType="myFlowsEdit"
-                onClick={() => handleBuilderClick(flow._id)}
-                enabled={true}
-              >
-                <span className="material-symbols-outlined text-[18px] ">
-                  tune
-                </span>
-              </Button>
-              <Button
-                componentType="myFlowsDelete"
-                onClick={() => handleDelete(flow._id)}
-                enabled={true}
-              >
-                <span className="material-symbols-outlined text-[18px] ">
-                  delete
-                </span>
-              </Button>
+                  <span
+                    className={`material-symbols-outlined ${flow.flowData.units.length > 0 ? "text-[#6ccc93]" : ""}`}
+                  >
+                    person_celebrate
+                  </span>
+                </Button>
+                <Button
+                  componentType="myFlowsEdit"
+                  onClick={() => handleBuilderClick(flow._id, flow)}
+                  enabled={true}
+                >
+                  <span className="material-symbols-outlined text-[18px] ">
+                    tune
+                  </span>
+                </Button>
+                <Button
+                  componentType="myFlowsDelete"
+                  onClick={() => handleDelete(flow._id)}
+                  enabled={true}
+                >
+                  <span className="material-symbols-outlined text-[18px] ">
+                    delete
+                  </span>
+                </Button>
+              </div>
             </div>
           );
         })}
@@ -97,9 +110,8 @@ export default function FlowTableCustom({
                 flow={flow}
                 handleDelete={handleDelete}
                 showAllFlows={showAllFlows}
-                setFlow={setFlow}
-                handleDesigningClick={handleDesigningClick}
-                handleMovingClick={handleMovingClick}
+                handlePreviewClick={handlePreviewClick}
+                handleBuilderClick={handleBuilderClick}
               ></TableRow>
             );
           })}
@@ -113,18 +125,16 @@ interface TableRow {
   flow: FlowType;
   handleDelete: (flowId: string) => void;
   showAllFlows: () => void;
-  setFlow: React.Dispatch<React.SetStateAction<FlowDataType>>;
-  handleDesigningClick: () => void;
-  handleMovingClick: () => void;
+  handlePreviewClick: (flowId: string, flow: FlowType) => void;
+  handleBuilderClick: (flowId: string, flow: FlowType) => void;
 }
 
 function TableRow({
   flow,
   handleDelete,
   showAllFlows,
-  setFlow,
-  handleDesigningClick,
-  handleMovingClick,
+  handlePreviewClick,
+  handleBuilderClick,
 }: TableRow) {
   const duration = flow.flowData.duration;
   const hours = Math.floor(duration / 3600);
@@ -143,16 +153,6 @@ function TableRow({
 
     // Update flow name in DB
     updateFlowName(flow, editedFlowName, setEditable, showAllFlows);
-  }
-
-  function handleBuilderClick(flowId: string) {
-    setFlow({ ...flow.flowData, flowId: flowId, flowName: flow.flowName });
-    handleDesigningClick();
-  }
-
-  function handlePreviewClick(flowId: string) {
-    setFlow({ ...flow.flowData, flowId: flowId });
-    handleMovingClick();
   }
 
   return (
@@ -196,7 +196,7 @@ function TableRow({
         <div className="flex items-center justify-center gap-2">
           <Button
             componentType="myFlowsPreview"
-            onClick={() => handlePreviewClick(flow._id)}
+            onClick={() => handlePreviewClick(flow._id, flow)}
             enabled={
               flow.flowData.units ? flow.flowData.units.length > 0 : false
             }
@@ -209,7 +209,7 @@ function TableRow({
           </Button>
           <Button
             componentType="myFlowsEdit"
-            onClick={() => handleBuilderClick(flow._id)}
+            onClick={() => handleBuilderClick(flow._id, flow)}
             enabled={true}
           >
             <span className="material-symbols-outlined text-[18px] ">tune</span>
