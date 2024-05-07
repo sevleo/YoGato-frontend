@@ -100,7 +100,7 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
 
   return (
     <>
-      <div className="rounded-md border-[1px] border-[#323232] bg-[#232323]">
+      <div className="rounded-md border-[1px] border-[#323232] bg-[#232323] ">
         <div className="flex w-full flex-col items-start justify-center  gap-1 p-5  ">
           <div
             className="flex w-full flex-col items-start justify-center hover:cursor-pointer"
@@ -200,7 +200,7 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
           </div>
         </div>
       </div>
-      <div className="hidden h-full rounded-md border-[1px] border-[#323232] bg-[#232323] min-[850px]:block">
+      <div className=" h-full rounded-md border-[1px] border-[#323232] bg-[#232323] min-[850px]:block">
         <div className=" flex h-full w-full  flex-col  items-start justify-center gap-1 p-5">
           <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
             <p className=" text-start text-[#a0a0a0]">Duration</p>
