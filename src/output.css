@@ -622,6 +622,34 @@ video {
   top: 48px;
 }
 
+.right-0 {
+  right: 0px;
+}
+
+.right-\[2px\] {
+  right: 2px;
+}
+
+.top-\[2px\] {
+  top: 2px;
+}
+
+.right-\[4px\] {
+  right: 4px;
+}
+
+.top-\[4px\] {
+  top: 4px;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
+.top-2 {
+  top: 0.5rem;
+}
+
 .z-0 {
   z-index: 0;
 }
@@ -791,6 +819,22 @@ video {
   height: 100%;
 }
 
+.h-\[110px\] {
+  height: 110px;
+}
+
+.h-\[300px\] {
+  height: 300px;
+}
+
+.h-\[120px\] {
+  height: 120px;
+}
+
+.h-\[80px\] {
+  height: 80px;
+}
+
 .max-h-12 {
   max-height: 3rem;
 }
@@ -868,6 +912,30 @@ video {
   width: 100%;
 }
 
+.w-\[20px\] {
+  width: 20px;
+}
+
+.w-auto {
+  width: auto;
+}
+
+.w-\[50px\] {
+  width: 50px;
+}
+
+.w-\[40px\] {
+  width: 40px;
+}
+
+.w-\[80px\] {
+  width: 80px;
+}
+
+.w-\[60px\] {
+  width: 60px;
+}
+
 .min-w-\[100px\] {
   min-width: 100px;
 }
@@ -898,6 +966,14 @@ video {
 
 .min-w-\[60px\] {
   min-width: 60px;
+}
+
+.min-w-\[20px\] {
+  min-width: 20px;
+}
+
+.min-w-\[80px\] {
+  min-width: 80px;
 }
 
 .max-w-\[170px\] {
@@ -1016,6 +1092,14 @@ video {
   justify-content: space-between;
 }
 
+.justify-around {
+  justify-content: space-around;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
 .gap-1 {
   gap: 0.25rem;
 }
@@ -1056,8 +1140,16 @@ video {
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
+.self-start {
+  align-self: flex-start;
+}
+
 .self-end {
   align-self: flex-end;
+}
+
+.self-center {
+  align-self: center;
 }
 
 .overflow-auto {
@@ -1362,6 +1454,18 @@ video {
 
 .pt-\[30px\] {
   padding-top: 30px;
+}
+
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
+.pr-8 {
+  padding-right: 2rem;
+}
+
+.pr-10 {
+  padding-right: 2.5rem;
 }
 
 .text-left {
@@ -2018,8 +2122,36 @@ button:focus-visible {
     display: flex;
   }
 
+  .sm\:grid {
+    display: grid;
+  }
+
+  .sm\:hidden {
+    display: none;
+  }
+
+  .sm\:h-\[30px\] {
+    height: 30px;
+  }
+
   .sm\:w-\[100px\] {
     width: 100px;
+  }
+
+  .sm\:w-auto {
+    width: auto;
+  }
+
+  .sm\:w-\[70px\] {
+    width: 70px;
+  }
+
+  .sm\:w-\[90px\] {
+    width: 90px;
+  }
+
+  .sm\:w-\[50px\] {
+    width: 50px;
   }
 
   .sm\:max-w-\[800px\] {
@@ -2032,6 +2164,10 @@ button:focus-visible {
 }
 
 @media (min-width: 650px) {
+  .min-\[650px\]\:grid {
+    display: grid;
+  }
+
   .min-\[650px\]\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
