@@ -45,10 +45,16 @@ export default function FlowTableCustom({
           const minutes = Math.floor((duration % 3600) / 60);
           const seconds = duration % 60;
           return (
-            <div className="flex items-center justify-start rounded-md border-[1px] border-[#323232] bg-[#232323] p-2">
+            <div
+              key={flow._id}
+              className="flex items-center justify-start rounded-md border-[1px] border-[#323232] bg-[#232323] p-2"
+            >
               <div className="flex w-full flex-col items-start justify-center gap-2">
                 <div>
-                  <p className="text-[24px] text-[white]"> {flow.flowName}</p>
+                  <p className="text-start text-[24px] text-[white]">
+                    {" "}
+                    {flow.flowName}
+                  </p>
                 </div>
                 <div className="flex w-full flex-col items-start justify-center">
                   <div className="flex justify-center text-[white]">
