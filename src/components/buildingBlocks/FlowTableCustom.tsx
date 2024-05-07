@@ -38,16 +38,38 @@ export default function FlowTableCustom({
 
   return (
     <>
-      <div className=" hidden h-5 border-separate border-spacing-0 flex-col gap-5 bg-[#232323] max-[650px]:flex sm:max-w-[800px]">
+      <div className=" hidden h-auto border-separate border-spacing-0 flex-col gap-5 bg-[#232323] max-[650px]:flex max-[650px]:bg-[transparent] sm:max-w-[800px]">
         {flows.map((flow) => {
+          const duration = flow.flowData.duration;
+          const hours = Math.floor(duration / 3600);
+          const minutes = Math.floor((duration % 3600) / 60);
+          const seconds = duration % 60;
           return (
-            <div className="flex items-center justify-between">
-              <div className="flex flex-col items-start justify-center">
-                <div>Flow: {flow.flowName}</div>
-                <div>Duration: {flow.flowData.duration}</div>
-                <div>Poses: {flow.flowData.units.length}</div>
+            <div className="flex items-center justify-start rounded-md border-[1px] border-[#323232] bg-[#232323] p-2">
+              <div className="flex w-full flex-col items-start justify-center gap-2">
+                <div>
+                  <p className="text-[24px] text-[white]"> {flow.flowName}</p>
+                </div>
+                <div className="flex w-full flex-col items-start justify-center">
+                  <div className="flex justify-center text-[white]">
+                    <p className="">
+                      {hours > 0 ? <span className=" ">{hours}h, </span> : null}
+                      {minutes > 0 ? (
+                        <span className="">{minutes}m, </span>
+                      ) : null}
+                      {seconds > 0 ? (
+                        <span className="">{seconds}s</span>
+                      ) : null}
+                    </p>
+                  </div>
+                  <div className="flex justify-center text-[white]">
+                    <p className="text-[white]">
+                      {flow.flowData.units.length} poses
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div className="flex">
+              <div className="flex gap-2">
                 <Button
                   componentType="myFlowsPreview"
                   onClick={() => handlePreviewClick(flow._id, flow)}
@@ -56,7 +78,7 @@ export default function FlowTableCustom({
                   }
                 >
                   <span
-                    className={`material-symbols-outlined ${flow.flowData.units.length > 0 ? "text-[#6ccc93]" : ""}`}
+                    className={`material-symbols-outlined ${flow.flowData.units.length > 0 ? "text-[18px] text-[#6ccc93] max-[650px]:text-[30px]" : ""}`}
                   >
                     person_celebrate
                   </span>
@@ -66,7 +88,7 @@ export default function FlowTableCustom({
                   onClick={() => handleBuilderClick(flow._id, flow)}
                   enabled={true}
                 >
-                  <span className="material-symbols-outlined text-[18px] ">
+                  <span className="material-symbols-outlined text-[18px] max-[650px]:text-[30px]">
                     tune
                   </span>
                 </Button>
@@ -75,7 +97,7 @@ export default function FlowTableCustom({
                   onClick={() => handleDelete(flow._id)}
                   enabled={true}
                 >
-                  <span className="material-symbols-outlined text-[18px] ">
+                  <span className="material-symbols-outlined text-[18px] max-[650px]:text-[30px] ">
                     delete
                   </span>
                 </Button>

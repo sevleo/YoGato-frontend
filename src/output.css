@@ -1044,6 +1044,10 @@ video {
   justify-content: space-around;
 }
 
+.justify-evenly {
+  justify-content: space-evenly;
+}
+
 .gap-1 {
   gap: 0.25rem;
 }
@@ -1187,6 +1191,15 @@ video {
   border-color: rgb(108 204 147 / var(--tw-border-opacity));
 }
 
+.border-\[white\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.border-\[transparent\] {
+  border-color: transparent;
+}
+
 .bg-\[\#161616\] {
   --tw-bg-opacity: 1;
   background-color: rgb(22 22 22 / var(--tw-bg-opacity));
@@ -1252,6 +1265,14 @@ video {
 .bg-red-400 {
   --tw-bg-opacity: 1;
   background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
+.bg-\[\] {
+  background-color: ;
+}
+
+.bg-none {
+  background-image: none;
 }
 
 .object-cover {
@@ -1391,6 +1412,10 @@ video {
   padding-top: 30px;
 }
 
+.pb-5 {
+  padding-bottom: 1.25rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -1455,6 +1480,14 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
+}
+
+.text-\[28px\] {
+  font-size: 28px;
+}
+
+.text-\[24px\] {
+  font-size: 24px;
 }
 
 .font-bold {
@@ -2015,6 +2048,14 @@ button:focus-visible {
     height: 100vh;
   }
 
+  .max-\[650px\]\:h-\[50px\] {
+    height: 50px;
+  }
+
+  .max-\[650px\]\:h-\[40px\] {
+    height: 40px;
+  }
+
   .max-\[650px\]\:w-full {
     width: 100%;
   }
@@ -2027,6 +2068,14 @@ button:focus-visible {
     width: 170px;
   }
 
+  .max-\[650px\]\:w-\[50px\] {
+    width: 50px;
+  }
+
+  .max-\[650px\]\:w-\[40px\] {
+    width: 40px;
+  }
+
   .max-\[650px\]\:max-w-none {
     max-width: none;
   }
@@ -2037,6 +2086,27 @@ button:focus-visible {
 
   .max-\[650px\]\:flex-col {
     flex-direction: column;
+  }
+
+  .max-\[650px\]\:bg-\[red\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(255 0 0 / var(--tw-bg-opacity));
+  }
+
+  .max-\[650px\]\:bg-\[transparent\] {
+    background-color: transparent;
+  }
+
+  .max-\[650px\]\:bg-\[none\] {
+    background-color: none;
+  }
+
+  .max-\[650px\]\:bg-none {
+    background-image: none;
+  }
+
+  .max-\[650px\]\:text-\[30px\] {
+    font-size: 30px;
   }
 }
 
@@ -2069,6 +2139,11 @@ button:focus-visible {
 
   .sm\:justify-start {
     justify-content: flex-start;
+  }
+
+  .sm\:bg-\[\#232323\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(35 35 35 / var(--tw-bg-opacity));
   }
 }
 
@@ -2107,6 +2182,11 @@ button:focus-visible {
     max-width: 300px;
   }
 
+  .min-\[650px\]\:bg-\[\#232323\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(35 35 35 / var(--tw-bg-opacity));
+  }
+
   .min-\[650px\]\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
@@ -2124,6 +2204,11 @@ button:focus-visible {
 
   .min-\[651px\]\:max-w-\[300px\] {
     max-width: 300px;
+  }
+
+  .min-\[651px\]\:bg-\[\#232323\] {
+    --tw-bg-opacity: 1;
+    background-color: rgb(35 35 35 / var(--tw-bg-opacity));
   }
 }
 
