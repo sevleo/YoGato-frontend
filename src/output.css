@@ -2154,6 +2154,10 @@ button:focus-visible {
     width: 50px;
   }
 
+  .sm\:min-w-\[400px\] {
+    min-width: 400px;
+  }
+
   .sm\:max-w-\[800px\] {
     max-width: 800px;
   }
