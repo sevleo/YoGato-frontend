@@ -936,6 +936,26 @@ video {
   width: 60px;
 }
 
+.w-\[300px\] {
+  width: 300px;
+}
+
+.w-\[400px\] {
+  width: 400px;
+}
+
+.w-\[260px\] {
+  width: 260px;
+}
+
+.w-\[250px\] {
+  width: 250px;
+}
+
+.w-\[280px\] {
+  width: 280px;
+}
+
 .min-w-\[100px\] {
   min-width: 100px;
 }
@@ -994,6 +1014,22 @@ video {
 
 .max-w-screen-2xl {
   max-width: 1536px;
+}
+
+.max-w-\[120px\] {
+  max-width: 120px;
+}
+
+.max-w-\[100px\] {
+  max-width: 100px;
+}
+
+.max-w-\[150px\] {
+  max-width: 150px;
+}
+
+.max-w-\[200px\] {
+  max-width: 200px;
 }
 
 .flex-1 {
@@ -1466,6 +1502,10 @@ video {
 
 .pr-10 {
   padding-right: 2.5rem;
+}
+
+.pt-4 {
+  padding-top: 1rem;
 }
 
 .text-left {
@@ -2154,6 +2194,14 @@ button:focus-visible {
     width: 50px;
   }
 
+  .sm\:w-\[60px\] {
+    width: 60px;
+  }
+
+  .sm\:w-1\/2 {
+    width: 50%;
+  }
+
   .sm\:min-w-\[400px\] {
     min-width: 400px;
   }
@@ -2162,8 +2210,20 @@ button:focus-visible {
     max-width: 800px;
   }
 
+  .sm\:flex-row {
+    flex-direction: row;
+  }
+
   .sm\:justify-start {
     justify-content: flex-start;
+  }
+
+  .sm\:p-0 {
+    padding: 0px;
+  }
+
+  .sm\:pt-6 {
+    padding-top: 1.5rem;
   }
 }
 

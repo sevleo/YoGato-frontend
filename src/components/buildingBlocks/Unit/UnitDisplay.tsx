@@ -148,7 +148,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
             </div>
             <div className="flex h-full w-full items-center justify-center">
               <div className="flex h-full w-full flex-col items-start justify-between">
-                <p className="w-full pt-2 text-left text-lg font-semibold  text-[#a0a0a0]">
+                <p className="w-full pb-2 pr-2 pt-2 text-left  text-lg font-semibold text-[#a0a0a0]">
                   {name}
                 </p>
                 <div
@@ -171,8 +171,8 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
                   </div>
                 </div>
 
-                <div className="main-element flex h-[60px] w-fit justify-between">
-                  <div className="flex flex-col  justify-end gap-2 pb-2 ">
+                <div className="main-element flex h-[60px] w-full justify-between">
+                  <div className="flex w-full  max-w-[200px] flex-col justify-end gap-2 pb-2 pt-2">
                     <Input
                       inputType="unitDurationInput"
                       labelValue=""

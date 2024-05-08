@@ -166,7 +166,7 @@ function UnitDurationInput(props: UnitDurationInputProps) {
         type="text"
         id={props.inputId}
         value={value}
-        className="z-10 h-full w-[60px] min-w-[50px] bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-[#4e4e4e] hover:bg-[#363636] hover:text-transparent hover:opacity-100 focus:z-20 focus:bg-[#4e4e4e] focus:text-[#a0a0a0] focus:opacity-100 sm:w-[50px] sm:w-[70px]"
+        className="z-10 h-full w-full min-w-[50px] bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-[#4e4e4e] hover:bg-[#363636] hover:text-transparent hover:opacity-100 focus:z-20 focus:bg-[#4e4e4e] focus:text-[#a0a0a0] focus:opacity-100 "
         onChange={handleChange}
         inputMode="numeric"
         pattern="[1-9]*"

@@ -19,7 +19,7 @@ export default function CircularProgressBar({
   }, []);
 
   return (
-    <div className="container pt-6 min-[820px]:pl-6 min-[820px]:pt-0">
+    <div className="container min-[820px]:pl-6 min-[820px]:pt-0">
       <div
         className="circular-progress"
         ref={circularProgressRef}

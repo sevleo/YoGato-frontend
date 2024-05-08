@@ -156,7 +156,7 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
               {nameErrorMessage}
             </p>
           </div>
-          <div className=" flex h-full w-1/2 min-w-[240px] flex-col items-start  justify-center gap-1 pb-6 min-[850px]:hidden">
+          <div className=" flex h-full w-full min-w-[240px] flex-col items-start justify-center  gap-1 pb-6 sm:w-1/2 min-[850px]:hidden">
             <div className=" grid w-full grid-cols-[1fr_2fr] gap-2">
               <p className=" text-start text-[#a0a0a0]">Duration</p>
               <p className="text-start text-[#a0a0a0]">

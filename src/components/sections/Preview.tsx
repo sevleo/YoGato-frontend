@@ -298,28 +298,7 @@ function Preview({ handleDesigningClick }: PreviewProps) {
               <p className="text-[30px] text-[#a0a0a0]">
                 {flow.flowName ? flow.flowName : "No name"}
               </p>
-              <p className="h-[20px] w-full text-start text-[red]"></p>
             </>
-          </div>
-          <div className="flex h-full w-1/2 flex-col items-start justify-center gap-1 pb-6 min-[1180px]:hidden">
-            <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-              <p className="text-start text-[#a0a0a0]">Duration</p>
-              <p className="text-start text-[#a0a0a0]">
-                {hours > 0 ? <span>{hours} hours, </span> : null}
-                {minutes > 0 ? <span>{minutes} minutes, </span> : null}
-                {seconds > 0 ? <span>{seconds} seconds.</span> : null}
-              </p>
-            </div>
-            <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-              <p className="text-start text-[#a0a0a0]">Poses</p>
-              <p className="text-start text-[#a0a0a0]">{flow.units.length}</p>
-            </div>
-            <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
-              <p className="text-start text-[#a0a0a0]">Unique poses</p>
-              <p className="text-start text-[#a0a0a0]">
-                {flow.uniqueAspects.length}
-              </p>
-            </div>
           </div>
           <div className="flex h-full w-full flex-row items-center justify-start gap-2">
             <Button
@@ -379,7 +358,7 @@ function Preview({ handleDesigningClick }: PreviewProps) {
       </div>
       <div className="flex h-full flex-col gap-6">
         <div className="flex w-full items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6">
-          <div className="flex w-full items-center">
+          <div className="flex w-full flex-col items-center sm:flex-row">
             <div className="flex w-full flex-col gap-1">
               <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
                 <p className="text-start text-[#a0a0a0]">Duration</p>
@@ -395,7 +374,7 @@ function Preview({ handleDesigningClick }: PreviewProps) {
               </div>
             </div>
 
-            <div className=" w-full">
+            <div className=" w-full pt-2 sm:p-0">
               <ThemeProvider theme={linearProgressBarTheme}>
                 <LinearProgress
                   key={flowPercent}
@@ -407,8 +386,8 @@ function Preview({ handleDesigningClick }: PreviewProps) {
             </div>
           </div>
         </div>
-        <div className=" mb-6 flex w-full flex-col items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6 min-[820px]:flex-row">
-          <div className=" flex h-full w-1/2 flex-col items-start justify-center">
+        <div className=" mb-6 w-full flex-col items-center justify-center rounded-md border-[1px] border-[#323232] bg-[#232323] p-6 sm:flex min-[820px]:flex-row">
+          <div className=" flex h-full w-full flex-col items-start justify-center sm:w-1/2">
             <div className="flex h-full w-full flex-col items-start justify-center gap-1 pb-6 min-[820px]:pb-0 min-[820px]:pr-6">
               <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
                 <p className="text-start text-[#a0a0a0]">Current</p>
@@ -450,7 +429,7 @@ function Preview({ handleDesigningClick }: PreviewProps) {
             </div>
           </div>
           <div className="h-[1px] w-full bg-[#323232] min-[820px]:h-full min-[820px]:w-[1px]"></div>
-          <div className="image-track m-auto h-full w-1/2">
+          <div className="image-track m-auto h-full w-[280px]">
             <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
               <Slider {...settings} ref={sliderRef}>
                 {flow.units.map((unit) => {
@@ -475,8 +454,8 @@ function Preview({ handleDesigningClick }: PreviewProps) {
           </div>
           <div className="h-[1px] w-full bg-[#323232] min-[820px]:hidden min-[820px]:h-full min-[820px]:w-[1px]"></div>
 
-          <div className=" pl-6 pr-6 pt-6 min-[820px]:hidden">
-            <Box sx={{ width: 300 }}>
+          <div className=" flex w-full items-center justify-center pl-6 pr-6 pt-6 min-[820px]:hidden">
+            <Box sx={{ width: 200 }}>
               <Stack
                 spacing={2}
                 direction="row"
