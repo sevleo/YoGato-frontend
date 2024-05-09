@@ -232,6 +232,7 @@ function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
         setEnableSave={setEnableSave}
         isMobile={isMobile}
         key={clearClicked ? "clear" : "not-clear"}
+        setClearClicked={setClearClicked}
       ></Flow>
       <AspectCollection
         aspectGroups={aspectGroups}

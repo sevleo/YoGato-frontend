@@ -55,9 +55,15 @@ export interface FlowProps {
   aspectGroups: AspectGroupType[];
   setEnableSave: Dispatch<SetStateAction<boolean>>;
   isMobile: boolean;
+  setClearClicked: Dispatch<SetStateAction<boolean>>;
 }
 
-function Flow({ aspectGroups, setEnableSave, isMobile }: FlowProps) {
+function Flow({
+  aspectGroups,
+  setEnableSave,
+  isMobile,
+  setClearClicked,
+}: FlowProps) {
   const { flow, setFlow } = useFlow();
   const [dragAllowed, setDragAllowed]: [
     boolean,
@@ -146,6 +152,7 @@ function Flow({ aspectGroups, setEnableSave, isMobile }: FlowProps) {
                           index + 1 === flow.units.length ? true : false
                         }
                         isMobile={isMobile}
+                        setClearClicked={setClearClicked}
                       ></Unit>
                     );
                   })}
