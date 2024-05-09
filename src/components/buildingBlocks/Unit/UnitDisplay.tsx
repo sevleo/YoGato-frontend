@@ -134,7 +134,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
           </div>
           {/* For mobile */}
           <div
-            className={` unit step relative flex h-full touch-none select-none items-center justify-start gap-2 pl-4 pr-10 text-black sm:hidden`}
+            className={` unit step relative flex h-full select-none items-center justify-start gap-2 pl-4 pr-10 text-black sm:hidden`}
           >
             <div className="hidden h-[60px] w-[20px] items-center justify-center text-sm font-medium text-[#a0a0a0] sm:flex">
               {index != null ? Number(index + 1) : null}
