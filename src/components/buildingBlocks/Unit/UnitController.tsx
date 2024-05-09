@@ -32,6 +32,7 @@ interface UnitControllerProps {
   setEnableSave: Dispatch<SetStateAction<boolean>>;
   activeId: string | null;
   lastUnit: boolean;
+  isMobile: boolean;
 }
 
 function UnitController({
@@ -47,6 +48,7 @@ function UnitController({
   aspectGroups,
   setEnableSave,
   lastUnit,
+  isMobile,
 }: UnitControllerProps) {
   const { setFlow } = useFlow();
   // On delete button on unit
@@ -173,11 +175,13 @@ function UnitController({
       disableDrag={disableDrag}
       withOpacity={isDragging}
       lastUnit={lastUnit}
-      // {...attributes}
-      // {...listeners}
+      {...(!isMobile && attributes)}
+      {...(!isMobile && listeners)}
     >
-      <p {...attributes} {...listeners} className="touch-none">
-        drag
+      <p {...attributes} {...listeners} className="touch-none ">
+        <span className="material-symbols-outlined text-[#a0a0a0]">
+          drag_pan
+        </span>
       </p>
     </UnitDisplay>
   );

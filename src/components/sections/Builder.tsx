@@ -13,9 +13,10 @@ import Button from "../buildingBlocks/Button";
 interface BuilderProps {
   handleMovingClick: () => void;
   showAllFlows: () => void;
+  isMobile: boolean;
 }
 
-function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
+function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
   const aspectGroups: AspectGroupType[] = categories;
 
   const { flow, setFlow } = useFlow();
@@ -224,7 +225,11 @@ function Builder({ handleMovingClick, showAllFlows }: BuilderProps) {
           </div>
         </div>
       </div>
-      <Flow aspectGroups={aspectGroups} setEnableSave={setEnableSave}></Flow>
+      <Flow
+        aspectGroups={aspectGroups}
+        setEnableSave={setEnableSave}
+        isMobile={isMobile}
+      ></Flow>
       <AspectCollection
         aspectGroups={aspectGroups}
         setEnableSave={setEnableSave}

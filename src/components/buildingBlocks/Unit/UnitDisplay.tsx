@@ -43,6 +43,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
       withOpacity,
       lastUnit,
       isDragging,
+      children,
       ...props
     },
     ref: ForwardedRef<HTMLDivElement>
@@ -66,11 +67,9 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
           ref={ref}
           style={inlineStyles}
           {...(dragAllowed ? { ...props } : null)}
-          {...(dragAllowed ? { ...props } : null)}
           className=""
         >
           {/* For desktop */}
-          {props.children}
           <div
             className={`unit step relative hidden h-[60px] select-none grid-cols-[0.2fr_1fr_2fr_2fr_1.5fr] items-center  justify-between gap-1 pl-2 pr-2 text-black sm:grid min-[1000px]:grid-cols-[0.2fr_1fr_2fr_2fr_1.5fr_0.5fr] `}
           >
@@ -136,6 +135,8 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
           <div
             className={` unit step relative flex h-full select-none items-center justify-start gap-2 pl-4 pr-10 text-black sm:hidden`}
           >
+            {children}
+
             <div className="hidden h-[60px] w-[20px] items-center justify-center text-sm font-medium text-[#a0a0a0] sm:flex">
               {index != null ? Number(index + 1) : null}
             </div>

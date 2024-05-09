@@ -54,9 +54,10 @@ export interface UniqueAspectGroup {
 export interface FlowProps {
   aspectGroups: AspectGroupType[];
   setEnableSave: Dispatch<SetStateAction<boolean>>;
+  isMobile: boolean;
 }
 
-function Flow({ aspectGroups, setEnableSave }: FlowProps) {
+function Flow({ aspectGroups, setEnableSave, isMobile }: FlowProps) {
   const { flow, setFlow } = useFlow();
   const [dragAllowed, setDragAllowed]: [
     boolean,
@@ -144,6 +145,7 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
                         lastUnit={
                           index + 1 === flow.units.length ? true : false
                         }
+                        isMobile={isMobile}
                       ></Unit>
                     );
                   })}
@@ -154,7 +156,13 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
                       id={(activeUnit as UnitControllerType).id}
                       {...activeUnit}
                       isDragging
-                    />
+                    >
+                      <p className="touch-none ">
+                        <span className="material-symbols-outlined text-[#a0a0a0]">
+                          drag_pan
+                        </span>
+                      </p>
+                    </UnitDisplay>
                   ) : null}
                 </DragOverlay>
               </div>

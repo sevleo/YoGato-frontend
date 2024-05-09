@@ -33,6 +33,7 @@ export default function Dashboard({
   const { authState, dispatch } = useUser();
   const [flows, setFlows] = useState<FlowType[]>([]);
   const [isHamburgerOpen, setHamburgerOpen] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
 
@@ -46,6 +47,12 @@ export default function Dashboard({
     const handleScreenResize = () => {
       if (window.innerWidth >= 650) {
         setHamburgerOpen(false);
+      }
+      if (window.innerWidth < 640) {
+        setIsMobile(true);
+      }
+      if (window.innerWidth >= 640) {
+        setIsMobile(false);
       }
     };
     window.addEventListener("resize", handleScreenResize);
@@ -393,6 +400,7 @@ export default function Dashboard({
                 <Builder
                   showAllFlows={showAllFlows}
                   handleMovingClick={handleMovingClick}
+                  isMobile={isMobile}
                 ></Builder>
               </div>
             </>
