@@ -70,7 +70,7 @@ function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
     setEditedFlowName("");
     setEnableSave(false);
     setNameErrorMessage("");
-    setClearClicked(true);
+    setClearClicked(!clearClicked);
   };
 
   const [nameErrorMessage, setNameErrorMessage] = useState("");
@@ -233,6 +233,7 @@ function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
         isMobile={isMobile}
         key={clearClicked ? "clear" : "not-clear"}
         setClearClicked={setClearClicked}
+        clearClicked={clearClicked}
       ></Flow>
       <AspectCollection
         aspectGroups={aspectGroups}

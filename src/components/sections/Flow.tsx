@@ -56,6 +56,7 @@ export interface FlowProps {
   setEnableSave: Dispatch<SetStateAction<boolean>>;
   isMobile: boolean;
   setClearClicked: Dispatch<SetStateAction<boolean>>;
+  clearClicked: boolean;
 }
 
 function Flow({
@@ -63,6 +64,7 @@ function Flow({
   setEnableSave,
   isMobile,
   setClearClicked,
+  clearClicked,
 }: FlowProps) {
   const { flow, setFlow } = useFlow();
   const [dragAllowed, setDragAllowed]: [
@@ -153,6 +155,7 @@ function Flow({
                         }
                         isMobile={isMobile}
                         setClearClicked={setClearClicked}
+                        clearClicked={clearClicked}
                       ></Unit>
                     );
                   })}

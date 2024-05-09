@@ -34,6 +34,7 @@ interface UnitControllerProps {
   lastUnit: boolean;
   isMobile: boolean;
   setClearClicked: Dispatch<SetStateAction<boolean>>;
+  clearClicked: boolean;
 }
 
 function UnitController({
@@ -51,6 +52,7 @@ function UnitController({
   lastUnit,
   isMobile,
   setClearClicked,
+  clearClicked,
 }: UnitControllerProps) {
   const { setFlow } = useFlow();
   // On delete button on unit
@@ -108,7 +110,7 @@ function UnitController({
       };
     });
     setEnableSave(true);
-    setClearClicked(true);
+    setClearClicked(!clearClicked);
   }
 
   const {
