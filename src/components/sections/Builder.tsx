@@ -22,7 +22,7 @@ function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
   const { flow, setFlow } = useFlow();
 
   const [editableName, setEditableName] = useState<boolean>(false);
-  const [clearClicked, setClearClicked] = useState<boolean>(false);
+  const [, setClearClicked] = useState<boolean>(false);
 
   const handlePreviewButtonClick: ClickHandler = () => {
     handleMovingClick();
