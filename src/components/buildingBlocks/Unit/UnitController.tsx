@@ -176,7 +176,7 @@ function UnitController({
       // {...attributes}
       // {...listeners}
     >
-      <p {...attributes} {...listeners}>
+      <p {...attributes} {...listeners} className="touch-none">
         drag
       </p>
     </UnitDisplay>
