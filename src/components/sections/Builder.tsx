@@ -22,7 +22,7 @@ function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
   const { flow, setFlow } = useFlow();
 
   const [editableName, setEditableName] = useState<boolean>(false);
-  const [, setClearClicked] = useState<boolean>(false);
+  const [clearClicked, setClearClicked] = useState<boolean>(false);
 
   const handlePreviewButtonClick: ClickHandler = () => {
     handleMovingClick();
@@ -231,6 +231,7 @@ function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
         aspectGroups={aspectGroups}
         setEnableSave={setEnableSave}
         isMobile={isMobile}
+        key={clearClicked ? "clear" : "not-clear"}
       ></Flow>
       <AspectCollection
         aspectGroups={aspectGroups}
