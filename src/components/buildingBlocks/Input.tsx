@@ -166,7 +166,7 @@ function UnitDurationInput(props: UnitDurationInputProps) {
         type="text"
         id={props.inputId}
         value={value}
-        className="z-10 h-full w-full min-w-[50px] bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-[#4e4e4e] hover:bg-[#363636] hover:text-transparent hover:opacity-100 focus:z-20 focus:bg-[#4e4e4e] focus:text-[#a0a0a0] focus:opacity-100 "
+        className="z-10 h-full w-full min-w-[40px] bg-transparent p-[2px] text-center text-xs font-normal opacity-0 outline-none focus-within:bg-[#4e4e4e] hover:bg-[#363636] hover:text-transparent hover:opacity-100 focus:z-20 focus:bg-[#4e4e4e] focus:text-[#a0a0a0] focus:opacity-100 "
         onChange={handleChange}
         inputMode="numeric"
         pattern="[1-9]*"
@@ -179,7 +179,7 @@ function UnitDurationInput(props: UnitDurationInputProps) {
       </div>
       <div
         onClick={handlePlusFiveSeconds}
-        className="z-10 ml-auto flex h-full w-[50px] select-none items-center justify-center rounded-r-[5px] border-l-[1px] border-[#3e3e3e] pb-[2px] pl-[5px] pr-[5px] pt-[2px] text-xs font-normal text-[#a0a0a0] hover:cursor-pointer hover:border-[#525252] hover:bg-[#363636] active:bg-[#4e4e4e] group-hover:border-[#525252] sm:w-auto"
+        className="z-10 ml-auto flex h-full w-[60px] select-none items-center justify-center rounded-r-[5px] border-l-[1px] border-[#3e3e3e] pb-[2px] pl-[5px] pr-[5px] pt-[2px] text-xs font-normal text-[#a0a0a0] hover:cursor-pointer hover:border-[#525252] hover:bg-[#363636] active:bg-[#4e4e4e] group-hover:border-[#525252] sm:w-auto"
         onMouseEnter={disableDrag}
         onMouseLeave={enableDrag}
       >
