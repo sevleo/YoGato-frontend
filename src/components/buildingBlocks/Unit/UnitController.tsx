@@ -173,9 +173,13 @@ function UnitController({
       disableDrag={disableDrag}
       withOpacity={isDragging}
       lastUnit={lastUnit}
-      {...attributes}
-      {...listeners}
-    ></UnitDisplay>
+      // {...attributes}
+      // {...listeners}
+    >
+      <p {...attributes} {...listeners}>
+        drag
+      </p>
+    </UnitDisplay>
   );
 }
 

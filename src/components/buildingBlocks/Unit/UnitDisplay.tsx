@@ -69,6 +69,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
           className=""
         >
           {/* For desktop */}
+          {props.children}
           <div
             className={`unit step relative hidden h-[60px] select-none grid-cols-[0.2fr_1fr_2fr_2fr_1.5fr] items-center  justify-between gap-1 pl-2 pr-2 text-black sm:grid min-[1000px]:grid-cols-[0.2fr_1fr_2fr_2fr_1.5fr_0.5fr] `}
           >
