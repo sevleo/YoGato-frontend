@@ -70,7 +70,7 @@ const UnitDisplay = forwardRef<HTMLDivElement, UnitDisplayProps>(
         >
           {/* For desktop */}
           <div
-            className={`unit step relative hidden h-[60px] touch-none select-none grid-cols-[0.2fr_1fr_2fr_2fr_1.5fr] items-center  justify-between gap-1 pl-2 pr-2 text-black sm:grid min-[1000px]:grid-cols-[0.2fr_1fr_2fr_2fr_1.5fr_0.5fr] `}
+            className={`unit step relative hidden h-[60px] select-none grid-cols-[0.2fr_1fr_2fr_2fr_1.5fr] items-center  justify-between gap-1 pl-2 pr-2 text-black sm:grid min-[1000px]:grid-cols-[0.2fr_1fr_2fr_2fr_1.5fr_0.5fr] `}
           >
             <div className=" flex h-[60px] min-w-[50px] items-center justify-center text-sm font-medium text-[#a0a0a0]">
               {index != null ? Number(index + 1) : null}
