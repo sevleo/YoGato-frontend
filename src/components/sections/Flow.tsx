@@ -160,8 +160,11 @@ function Flow({ aspectGroups, setEnableSave }: FlowProps) {
               </div>
             ) : (
               <div className="flex h-full w-full flex-col items-center justify-center">
-                <p className=" select-none p-2 text-2xl font-thin italic text-[#a0a0a0]">
+                <p className="hidden select-none p-2 text-2xl font-thin italic text-[#a0a0a0] min-[850px]:block">
                   Click on a pose from the right panel to add it to the flow
+                </p>
+                <p className="block select-none p-2 text-2xl font-thin italic text-[#a0a0a0] min-[850px]:hidden">
+                  Click on a pose from the bottom panel to add it to the flow
                 </p>
               </div>
             )}
