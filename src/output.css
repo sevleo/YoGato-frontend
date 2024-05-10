@@ -1869,16 +1869,19 @@ button:focus-visible {
   scrollbar-color: red;
 }
 
-.wrapper::-webkit-scrollbar {
+.wrapper::-webkit-scrollbar,
+.mobile-aspects::-webkit-scrollbar {
   width: 5px;
 }
 
-.wrapper::-webkit-scrollbar-thumb {
+.wrapper::-webkit-scrollbar-thumb,
+.mobile-aspects::-webkit-scrollbar-thumb {
   background-color: #7e7e7e;
   /* color of the thumb */
 }
 
-.wrapper::-webkit-scrollbar-track {
+.wrapper::-webkit-scrollbar-track,
+.mobile-aspects::-webkit-scrollbar-track {
   background-color: #1c1c1c;
   /* color of the track */
   border-color: transparent;

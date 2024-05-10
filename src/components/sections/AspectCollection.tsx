@@ -62,7 +62,7 @@ export default function AspectCollection({
       </div>
       <div
         style={{ boxShadow: "10px 10px 5px 10px rgb(0 0 0 / 75%)" }}
-        className="fixed bottom-0 left-0 z-50 hidden h-[200px] w-full flex-col overflow-auto border-t-[1px] border-[#323232] bg-[#1c1c1c] pl-4 pr-4  max-[650px]:flex"
+        className="mobile-aspects fixed bottom-0 left-0 z-50 hidden h-[200px] w-full flex-col overflow-auto border-t-[1px] border-[#323232] bg-[#1c1c1c] pl-4 pr-4  max-[650px]:flex"
       >
         <p className="self-start pl-4 pt-4 font-medium text-[#7e7e7e]">
           Select poses:
