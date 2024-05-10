@@ -662,6 +662,10 @@ video {
   z-index: 110;
 }
 
+.z-\[51\] {
+  z-index: 51;
+}
+
 .m-auto {
   margin: auto;
 }
