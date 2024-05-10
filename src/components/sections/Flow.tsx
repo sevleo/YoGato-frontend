@@ -120,7 +120,7 @@ function Flow({
   }
 
   return (
-    <div className="canvas w-full min-[850px]:pb-[24px] ">
+    <div className="canvas w-full max-[650px]:pb-6 min-[850px]:pb-[24px] ">
       {/* <div>
         <p className="text-black">Your flow</p>
       </div> */}

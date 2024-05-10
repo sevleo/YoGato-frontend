@@ -58,7 +58,7 @@ export default function AspectCollection({
           </div>
         </div>
       </div>
-      <div className="fixed bottom-0 left-0 hidden h-[200px] w-full bg-[#0000ff4b] max-[650px]:flex">
+      <div className=" fixed bottom-0 left-0 z-50 hidden h-[200px] w-full flex-wrap items-center justify-center gap-2 overflow-auto border-t-[1px] border-[#323232] bg-[#1c1c1c] pb-4 pt-4 max-[650px]:flex">
         {sortedUniqueAspects.map((aspect) => {
           return (
             <AspectController

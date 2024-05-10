@@ -383,7 +383,7 @@ export default function Dashboard({
             </ul>
           </nav>
         </div>
-        <Wrapper wrapperRef={wrapperRef}>
+        <Wrapper wrapperRef={wrapperRef} location={location}>
           {location === "flows" ? (
             <>
               <div className="flex w-full grid-rows-[auto_1fr] flex-col gap-6 min-[850px]:grid">
@@ -437,13 +437,14 @@ export default function Dashboard({
 interface WrapperProps {
   children: ReactNode;
   wrapperRef: React.RefObject<HTMLDivElement>;
+  location: string;
 }
 
-function Wrapper({ children, wrapperRef }: WrapperProps) {
+function Wrapper({ children, wrapperRef, location }: WrapperProps) {
   return (
     <div
       ref={wrapperRef}
-      className="wrapper mb-6 ml-auto mr-auto flex h-[calc(100%-48px)] w-full max-w-screen-2xl justify-center overflow-auto p-6"
+      className={`wrapper mb-6 ml-auto mr-auto flex h-[calc(100%-48px)] w-full max-w-screen-2xl justify-center overflow-auto p-6  ${location === "designing" ? "max-[650px]:h-[calc(100%-248px)]" : ""}`}
     >
       {children}
     </div>
