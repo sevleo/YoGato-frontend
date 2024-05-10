@@ -257,7 +257,10 @@ export default function Dashboard({
         </nav>
       </div>
       <div className="relative  flex-1" id="canvas">
-        <div className="relative flex h-12 max-h-12 items-center justify-between  border-b-[1px] border-[#323232] max-[650px]:w-screen">
+        <div
+          // style={{ boxShadow: "0px 1px 3px 1px rgb(0 0 0 / 75%)" }}
+          className="relative flex h-12 max-h-12 items-center justify-between  border-b-[1px] border-[#323232] max-[650px]:w-screen"
+        >
           <div className="flex h-full w-[170px] items-center justify-start  pl-6 ">
             <p className="text-lg min-[650px]:text-base">
               {location.charAt(0).toUpperCase() + location.slice(1)}

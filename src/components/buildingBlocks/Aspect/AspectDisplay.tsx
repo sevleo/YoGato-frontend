@@ -24,7 +24,7 @@ function AspectDisplay({ aspect, count, handleClick }: AspectDisplayProps) {
         objectFit: "cover",
       }}
       key={aspect.english_name}
-      className={`fancy-wrapper relative rounded-md bg-[#161616]  shadow-md outline outline-[1px] outline-[#323232] transition-all hover:cursor-pointer ${isActive ? "active" : ""} max-[650px]:w-min-[100px] max-[650px]:h-[60px] max-[650px]:w-[60px]`}
+      className={`fancy-wrapper relative rounded-md bg-[#161616]  shadow-md outline outline-[1px] outline-[#323232] transition-all hover:cursor-pointer ${isActive ? "active" : ""} max-[650px]:w-min-[100px] h-fit max-[650px]:h-[140px] max-[650px]:w-[90px]`}
       onClick={(e) => {
         setActive(true);
         setTimeout(() => {
@@ -33,11 +33,15 @@ function AspectDisplay({ aspect, count, handleClick }: AspectDisplayProps) {
         handleClick(e);
       }}
     >
-      <div className=" fancy-content relative flex select-none flex-col items-center justify-between pt-2">
-        <div className="relative flex h-auto w-full items-center justify-center border-b-[1px] border-[#323232]">
-          <img className="pb-2 pl-2 pr-2" src={svg} alt="" draggable="false" />
+      <div className=" fancy-content relative flex h-full max-h-full select-none flex-col items-center justify-between pt-2 max-[650px]:pt-0">
+        <div className="relative flex w-[70%] items-center justify-center border-b-[1px] border-[#323232]">
+          <img
+            className="pb-2 pl-2 pr-2 pt-2"
+            src={svg}
+            alt=""
+            draggable="false"
+          />
           <div>
-            {" "}
             {/* <svg
               className="absolute inset-0 z-10 h-full w-full object-cover object-center"
               width="100%"
@@ -76,7 +80,7 @@ function AspectDisplay({ aspect, count, handleClick }: AspectDisplayProps) {
           </div>
         </div>
 
-        <p className="w-full p-3 text-start text-xs text-[#a0a0a0]">
+        <p className="w-full p-3 text-start text-xs text-[#a0a0a0] max-[650px]:text-[10px] ">
           {aspect.english_name}
           {count > 0 ? (
             <span className="  flex h-[16px] min-w-[16px] items-center justify-start rounded-full p-0.5 text-xs text-[#6ccc93]">

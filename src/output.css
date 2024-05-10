@@ -811,26 +811,6 @@ video {
   height: 100%;
 }
 
-.h-\[50px\] {
-  height: 50px;
-}
-
-.h-\[calc\(100\%-40px\)\] {
-  height: calc(100% - 40px);
-}
-
-.h-\[calc\(100\%-480px\)\] {
-  height: calc(100% - 480px);
-}
-
-.h-\[calc\(100\%-248px\)\] {
-  height: calc(100% - 248px);
-}
-
-.h-\[calc\(100\%-268px\)\] {
-  height: calc(100% - 268px);
-}
-
 .max-h-12 {
   max-height: 3rem;
 }
@@ -841,6 +821,10 @@ video {
 
 .max-h-\[30px\] {
   max-height: 30px;
+}
+
+.max-h-full {
+  max-height: 100%;
 }
 
 .min-h-\[300px\] {
@@ -909,6 +893,10 @@ video {
 
 .w-\[65px\] {
   width: 65px;
+}
+
+.w-\[70\%\] {
+  width: 70%;
 }
 
 .w-\[80px\] {
@@ -1124,6 +1112,10 @@ video {
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
+.self-start {
+  align-self: flex-start;
+}
+
 .self-end {
   align-self: flex-end;
 }
@@ -1223,14 +1215,6 @@ video {
   border-color: rgb(108 204 147 / var(--tw-border-opacity));
 }
 
-.border-t-\[10x\] {
-  border-top-color: 10x;
-}
-
-.bg-\[\#0000ff4b\] {
-  background-color: #0000ff4b;
-}
-
 .bg-\[\#161616\] {
   --tw-bg-opacity: 1;
   background-color: rgb(22 22 22 / var(--tw-bg-opacity));
@@ -1291,11 +1275,6 @@ video {
 
 .bg-transparent {
   background-color: transparent;
-}
-
-.bg-\[red\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 0 0 / var(--tw-bg-opacity));
 }
 
 .object-cover {
@@ -1363,6 +1342,10 @@ video {
   padding-bottom: 0.5rem;
 }
 
+.pb-4 {
+  padding-bottom: 1rem;
+}
+
 .pb-6 {
   padding-bottom: 1.5rem;
 }
@@ -1427,6 +1410,10 @@ video {
   padding-top: 0.5rem;
 }
 
+.pt-4 {
+  padding-top: 1rem;
+}
+
 .pt-6 {
   padding-top: 1.5rem;
 }
@@ -1437,18 +1424,6 @@ video {
 
 .pt-\[30px\] {
   padding-top: 30px;
-}
-
-.pb-4 {
-  padding-bottom: 1rem;
-}
-
-.pt-4 {
-  padding-top: 1rem;
-}
-
-.pb-\[400px\] {
-  padding-bottom: 400px;
 }
 
 .text-left {
@@ -1829,10 +1804,6 @@ button:focus-visible {
   overflow: hidden;
 }
 
-.fancy-wrapper:hover {
-  outline: 0.5px solid #6ccc93;
-}
-
 .fancy-wrapper.active {
   outline: 0.5px solid #6ccc93;
 }
@@ -1842,16 +1813,22 @@ button:focus-visible {
   transform: scale(1.05);
 }
 
-.fancy-wrapper:hover::before {
-  content: "";
-  background: conic-gradient(transparent 270deg, #6ccc93, transparent);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  aspect-ratio: 1;
-  width: 100%;
-  animation: rotate 1s linear infinite;
+@media (min-width: 651px) {
+  .fancy-wrapper:hover::before {
+    content: "";
+    background: conic-gradient(transparent 270deg, #6ccc93, transparent);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 1;
+    width: 100%;
+    animation: rotate 1s linear infinite;
+  }
+
+  .fancy-wrapper:hover {
+    outline: 0.5px solid #6ccc93;
+  }
 }
 
 .fancy-wrapper::after {
@@ -2059,20 +2036,12 @@ button:focus-visible {
     height: 100vh;
   }
 
+  .max-\[650px\]\:h-\[140px\] {
+    height: 140px;
+  }
+
   .max-\[650px\]\:h-\[40px\] {
     height: 40px;
-  }
-
-  .max-\[650px\]\:h-\[50px\] {
-    height: 50px;
-  }
-
-  .max-\[650px\]\:h-\[100px\] {
-    height: 100px;
-  }
-
-  .max-\[650px\]\:h-\[60px\] {
-    height: 60px;
   }
 
   .max-\[650px\]\:h-\[calc\(100\%-248px\)\] {
@@ -2083,20 +2052,16 @@ button:focus-visible {
     width: 40px;
   }
 
+  .max-\[650px\]\:w-\[90px\] {
+    width: 90px;
+  }
+
   .max-\[650px\]\:w-full {
     width: 100%;
   }
 
   .max-\[650px\]\:w-screen {
     width: 100vw;
-  }
-
-  .max-\[650px\]\:w-\[100px\] {
-    width: 100px;
-  }
-
-  .max-\[650px\]\:w-\[60px\] {
-    width: 60px;
   }
 
   .max-\[650px\]\:max-w-none {
@@ -2117,6 +2082,14 @@ button:focus-visible {
 
   .max-\[650px\]\:pb-6 {
     padding-bottom: 1.5rem;
+  }
+
+  .max-\[650px\]\:pt-0 {
+    padding-top: 0px;
+  }
+
+  .max-\[650px\]\:text-\[10px\] {
+    font-size: 10px;
   }
 
   .max-\[650px\]\:text-\[30px\] {

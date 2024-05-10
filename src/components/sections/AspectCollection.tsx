@@ -3,7 +3,9 @@ import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { useFlow } from "../utilities/FlowContext";
 import { Dispatch, SetStateAction } from "react";
 import _ from "lodash";
-import AspectController from "../buildingBlocks/Aspect/AspectController";
+import AspectController, {
+  AspectControllerType,
+} from "../buildingBlocks/Aspect/AspectController";
 
 interface AspectCollectionProps {
   aspectGroups: AspectGroupType[];
@@ -15,7 +17,7 @@ export default function AspectCollection({
   setEnableSave,
 }: AspectCollectionProps) {
   const { flow } = useFlow();
-  const aspects = [];
+  const aspects: AspectControllerType[] = [];
   aspectGroups.map((aspectGroup) => {
     aspects.push(...aspectGroup.poses);
   });
@@ -58,18 +60,26 @@ export default function AspectCollection({
           </div>
         </div>
       </div>
-      <div className=" fixed bottom-0 left-0 z-50 hidden h-[200px] w-full flex-wrap items-center justify-center gap-2 overflow-auto border-t-[1px] border-[#323232] bg-[#1c1c1c] pb-4 pt-4 max-[650px]:flex">
-        {sortedUniqueAspects.map((aspect) => {
-          return (
-            <AspectController
-              key={aspect.english_name + aspect.category_name}
-              aspect={aspect}
-              count={2}
-              aspectGroups={aspectGroups}
-              setEnableSave={setEnableSave}
-            ></AspectController>
-          );
-        })}
+      <div
+        style={{ boxShadow: "10px 10px 5px 10px rgb(0 0 0 / 75%)" }}
+        className="fixed bottom-0 left-0 z-50 hidden h-[200px] w-full flex-col overflow-auto border-t-[1px] border-[#323232] bg-[#1c1c1c] pl-4 pr-4  max-[650px]:flex"
+      >
+        <p className="self-start pl-4 pt-4 font-medium text-[#7e7e7e]">
+          Select poses:
+        </p>
+        <div className="flex flex-wrap items-center justify-center gap-2 pb-4 pt-4">
+          {sortedUniqueAspects.map((aspect) => {
+            return (
+              <AspectController
+                key={aspect.english_name + aspect.category_name}
+                aspect={aspect}
+                count={2}
+                aspectGroups={aspectGroups}
+                setEnableSave={setEnableSave}
+              ></AspectController>
+            );
+          })}
+        </div>
       </div>
     </>
   );
