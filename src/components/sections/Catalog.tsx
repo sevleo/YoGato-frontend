@@ -1,0 +1,66 @@
+import categories from "../../db/categories.json";
+import { AspectGroupType } from "../buildingBlocks/AspectGroup";
+import { AspectControllerType } from "../buildingBlocks/Aspect/AspectController";
+import _ from "lodash";
+import svgProvider from "../../assets/svgProvider";
+
+function Catalog() {
+  const aspectGroups: AspectGroupType[] = categories;
+  const aspects: AspectControllerType[] = [];
+  aspectGroups.map((aspectGroup) => {
+    aspects.push(...aspectGroup.poses);
+  });
+  const sortedUniqueAspects = _.sortBy(_.uniqBy(aspects, "id"), "english_name");
+
+  return (
+    <>
+      <div className="flex w-full flex-col gap-10">
+        {sortedUniqueAspects.map((aspect) => {
+          const image = svgProvider(aspect.url_svg_alt_local);
+          return (
+            <>
+              <div className="flex max-w-[700px]">
+                <div className="flex w-[200px] items-center justify-center pl-4 pr-10">
+                  <img src={image} alt="" />
+                </div>
+                <div className="w-full">
+                  <p className="pl-[5px] text-start text-[30px]">
+                    {aspect.english_name} | {aspect.sanskrit_name}{" "}
+                  </p>
+                  <p className="pl-[5px] text-start">
+                    {aspect.translation_name}
+                  </p>
+                  <br />
+                  <div className="flex h-full w-full flex-col ">
+                    <div className="flex w-full gap-2">
+                      <p className="min-w-[80px] text-end text-[#a0a0a0]">
+                        Instruction
+                      </p>
+                      <div className="h-full w-[1px] bg-[#323232]"></div>
+                      <p className="w-full pb-4 text-start text-[#a0a0a0]">
+                        {aspect.pose_description}
+                      </p>
+                    </div>
+                    <div className="flex w-full gap-2">
+                      <p className="min-w-[80px] text-end text-[#a0a0a0]">
+                        Benefits
+                      </p>
+                      <div className="h-full w-[1px] bg-[#323232]"></div>
+
+                      <p className="w-full pb-4 text-start text-[#a0a0a0]">
+                        {aspect.pose_benefits}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="h-[1px] min-h-[1px] w-[700px] bg-[#323232]"></div>
+            </>
+          );
+        })}
+      </div>
+    </>
+  );
+}
+
+export default Catalog;

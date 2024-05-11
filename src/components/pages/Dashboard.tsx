@@ -17,6 +17,7 @@ import Preview from "../sections/Preview";
 import { Dispatch } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import { useRef } from "react";
+import Catalog from "../sections/Catalog";
 
 interface DashboardProps {
   location: string;
@@ -427,7 +428,7 @@ export default function Dashboard({
             </>
           ) : location === "catalog" ? (
             <>
-              <p>catalog</p>
+              <Catalog />
             </>
           ) : (
             <>
