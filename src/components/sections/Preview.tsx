@@ -24,6 +24,8 @@ interface PreviewProps {
 function Preview({ handleDesigningClick }: PreviewProps) {
   const { flow } = useFlow();
 
+  const [play, setPlay] = useState<number>(0);
+
   // Theme for linear progress bar
   const linearProgressBarTheme = createTheme({
     components: {
@@ -208,6 +210,7 @@ function Preview({ handleDesigningClick }: PreviewProps) {
       );
       audio.volume = volumeRef.current;
       audio.play();
+      setPlay((prevValue) => prevValue + 1);
     }
   }, [currentUnitIndex, flow.units, timerState.startFlow]);
 
@@ -298,6 +301,7 @@ function Preview({ handleDesigningClick }: PreviewProps) {
               <p className="text-[30px] text-[#a0a0a0]">
                 {flow.flowName ? flow.flowName : "No name"}
               </p>
+              <p>{play}</p>
             </>
           </div>
           <div className="flex h-full w-full flex-row items-center justify-start gap-2">
