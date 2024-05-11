@@ -209,7 +209,11 @@ function Preview({ handleDesigningClick }: PreviewProps) {
         mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
       );
       audio.volume = volumeRef.current;
-      audio.play();
+
+      setTimeout(() => {
+        audio.play();
+      }, 100);
+
       setPlay((prevValue) => prevValue + 1);
     }
   }, [currentUnitIndex, flow.units, timerState.startFlow]);
