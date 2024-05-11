@@ -37,8 +37,6 @@ function Preview({ handleDesigningClick }: PreviewProps) {
     };
   }, []);
 
-  const [play, setPlay] = useState<number>(0);
-
   // Theme for linear progress bar
   const linearProgressBarTheme = createTheme({
     components: {
@@ -215,7 +213,7 @@ function Preview({ handleDesigningClick }: PreviewProps) {
     }
   }, [timerCount, unitPercent]);
 
-  // Audio play
+  // Audio play (added Web Audio API to support mobile browser)
   useEffect(() => {
     if (timerState.startFlow && audioContext) {
       const audioSrc = mp3Provider(
@@ -239,7 +237,6 @@ function Preview({ handleDesigningClick }: PreviewProps) {
         });
       // audio.volume = volumeRef.current;
       // audio.play();
-      setPlay((prevValue) => prevValue + 1);
     }
   }, [currentUnitIndex, flow.units, timerState.startFlow, audioContext]);
 
@@ -330,7 +327,6 @@ function Preview({ handleDesigningClick }: PreviewProps) {
               <p className="text-[30px] text-[#a0a0a0]">
                 {flow.flowName ? flow.flowName : "No name"}
               </p>
-              <p>{play}</p>
             </>
           </div>
           <div className="flex h-full w-full flex-row items-center justify-start gap-2">
