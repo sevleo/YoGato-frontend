@@ -69,11 +69,17 @@ export default function AspectCollection({
         </p>
         <div className="flex flex-wrap items-center justify-center gap-2 pb-4 pt-4">
           {sortedUniqueAspects.map((aspect) => {
+            let count = 0;
+            flow.uniqueAspects.some((uniqueAspect) => {
+              if (uniqueAspect.id === aspect.id) {
+                count = uniqueAspect.count;
+              }
+            });
             return (
               <AspectController
                 key={aspect.english_name + aspect.category_name}
                 aspect={aspect}
-                count={2}
+                count={count}
                 aspectGroups={aspectGroups}
                 setEnableSave={setEnableSave}
               ></AspectController>
