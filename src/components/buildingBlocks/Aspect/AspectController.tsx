@@ -16,6 +16,10 @@ export interface AspectControllerType {
   url_svg_alt: string;
   url_svg_alt_local: string;
   id: number;
+  sanskrit_name?: string;
+  translation_name?: string;
+  pose_description?: string;
+  pose_benefits?: string;
 }
 
 type AspectControllerProps = {
