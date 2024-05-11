@@ -106,7 +106,7 @@ function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
       <div className="rounded-md border-[1px] border-[#323232] bg-[#232323] ">
         <div className="flex w-full flex-col items-start justify-center  gap-1 p-5  ">
           <div
-            className="flex w-full flex-col items-start justify-center hover:cursor-pointer"
+            className="relative flex w-full flex-col items-start justify-center hover:cursor-pointer"
             onClick={() => {
               // setFlowName(flowName);
               updateFlowContext();
@@ -155,7 +155,7 @@ function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
                 </p>
               </>
             )}
-            <p className="h-[20px] w-full text-start text-[red]">
+            <p className="absolute top-[-15px] h-[20px] w-full text-start text-sm text-[red]">
               {nameErrorMessage}
             </p>
           </div>

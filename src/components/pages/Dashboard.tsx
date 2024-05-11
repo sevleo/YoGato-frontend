@@ -411,7 +411,10 @@ export default function Dashboard({
           ) : location === "moving" ? (
             <>
               <div className="flex h-fit w-full grid-cols-[2fr_1fr] grid-rows-[auto_1fr] flex-col gap-6 min-[1180px]:grid">
-                <Preview handleDesigningClick={handleDesigningClick}></Preview>
+                <Preview
+                  handleDesigningClick={handleDesigningClick}
+                  handleFlowsClick={handleFlowsClick}
+                ></Preview>
               </div>
             </>
           ) : location === "preferences" ? (

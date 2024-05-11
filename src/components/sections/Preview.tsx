@@ -19,9 +19,10 @@ import Button from "../buildingBlocks/Button";
 
 interface PreviewProps {
   handleDesigningClick: () => void;
+  handleFlowsClick: () => void;
 }
 
-function Preview({ handleDesigningClick }: PreviewProps) {
+function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
   const { flow } = useFlow();
 
   // Web Audio API
@@ -533,7 +534,33 @@ function Preview({ handleDesigningClick }: PreviewProps) {
         </Box>
       </div>
     </>
-  ) : null;
+  ) : (
+    <div className="text-2xl text-[#a0a0a0]">
+      <p className="text-start">No active flow.</p>
+      <br />
+      <p className="text-start ">
+        To start moving,{" "}
+        <span
+          className="text-[#6ccc93] hover:cursor-pointer hover:underline"
+          onClick={handleDesigningClick}
+        >
+          select
+        </span>{" "}
+        an existing flow or{" "}
+        <span
+          className="text-[#6ccc93] hover:cursor-pointer hover:underline"
+          onClick={handleFlowsClick}
+        >
+          create
+        </span>{" "}
+        a new one!
+      </p>
+      {/* <br />
+      <p className="text-start">
+        You may also select a sequence shared by others!
+      </p> */}
+    </div>
+  );
 }
 
 export default Preview;
