@@ -24,6 +24,19 @@ interface PreviewProps {
 function Preview({ handleDesigningClick }: PreviewProps) {
   const { flow } = useFlow();
 
+  // Web Audio API
+  const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
+
+  useEffect(() => {
+    // Create an AudioContext when the component mounts
+    const context = new AudioContext();
+    setAudioContext(context);
+    return () => {
+      // Clean up the AudioContext when the component unmounts
+      context.close();
+    };
+  }, []);
+
   const [play, setPlay] = useState<number>(0);
 
   // Theme for linear progress bar
@@ -204,19 +217,31 @@ function Preview({ handleDesigningClick }: PreviewProps) {
 
   // Audio play
   useEffect(() => {
-    if (timerState.startFlow) {
-      const audio = new Audio(
-        mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
+    if (timerState.startFlow && audioContext) {
+      const audioSrc = mp3Provider(
+        flow.units[currentUnitIndex].url_svg_alt_local
       );
-      audio.volume = volumeRef.current;
-
-      setTimeout(() => {
-        audio.play();
-      }, 100);
-
+      fetch(audioSrc)
+        .then((response) => response.arrayBuffer())
+        .then((buffer) => {
+          audioContext.decodeAudioData(buffer, (decodedData) => {
+            const source = audioContext.createBufferSource();
+            source.buffer = decodedData;
+            const gainNode = audioContext.createGain();
+            gainNode.gain.value = volumeRef.current;
+            source.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            source.start(0);
+          });
+        })
+        .catch((error) => {
+          console.error("Error fetching or decoding audio data:", error);
+        });
+      // audio.volume = volumeRef.current;
+      // audio.play();
       setPlay((prevValue) => prevValue + 1);
     }
-  }, [currentUnitIndex, flow.units, timerState.startFlow]);
+  }, [currentUnitIndex, flow.units, timerState.startFlow, audioContext]);
 
   // Start/Pause/Resume controls
   useEffect(() => {
