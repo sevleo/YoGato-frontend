@@ -101,7 +101,7 @@ const Headings = ({ headings, activeId }: any) => (
       return (
         <li
           key={heading.id}
-          className={`${heading.id === activeId ? "active" : ""} text-start text-[20px]`}
+          className={`${heading.id === activeId ? "active" : ""} text-start text-[16px]`}
         >
           <a
             href={`#${heading.id}`}
