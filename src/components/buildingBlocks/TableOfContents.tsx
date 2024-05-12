@@ -196,7 +196,7 @@ const TableOfContents = () => {
   return (
     <nav
       aria-label="Table of contents"
-      className="table-of-contents w-[300px]"
+      className="table-of-contents hidden w-[300px] min-w-[300px] min-[1150px]:flex"
       // ref={tocRef}
     >
       <Headings headings={nestedHeadings} activeId={activeId} />{" "}

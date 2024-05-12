@@ -944,6 +944,10 @@ video {
   width: 100%;
 }
 
+.w-auto {
+  width: auto;
+}
+
 .min-w-\[100px\] {
   min-width: 100px;
 }
@@ -1014,6 +1018,10 @@ video {
 
 .shrink-0 {
   flex-shrink: 0;
+}
+
+.shrink {
+  flex-shrink: 1;
 }
 
 .border-separate {
@@ -2346,6 +2354,12 @@ li > a:hover {
 
   .min-\[1000px\]\:grid-cols-\[0\.2fr_1fr_2fr_2fr_1\.5fr_0\.5fr\] {
     grid-template-columns: 0.2fr 1fr 2fr 2fr 1.5fr 0.5fr;
+  }
+}
+
+@media (min-width: 1150px) {
+  .min-\[1150px\]\:flex {
+    display: flex;
   }
 }
 
