@@ -101,7 +101,7 @@ const Headings = ({ headings, activeId }: any) => (
       return (
         <li
           key={heading.id}
-          className={`${heading.id === activeId ? "active" : ""} text-start`}
+          className={`${heading.id === activeId ? "active" : ""} text-start text-[20px]`}
         >
           <a
             href={`#${heading.id}`}
@@ -119,7 +119,7 @@ const Headings = ({ headings, activeId }: any) => (
               {heading.items.map((child: any) => (
                 <li
                   key={child.id}
-                  className={child.id === activeId ? "active" : ""}
+                  className={`${child.id === activeId ? "active" : ""}`}
                 >
                   <a
                     href={`#${child.id}`}
@@ -147,8 +147,58 @@ const TableOfContents = () => {
   const [activeId, setActiveId] = useState(undefined);
   useIntersectionObserver(setActiveId);
 
+  // const tocRef = useRef(null);
+
+  // const scrollToSmooth = (element, to, duration) => {
+  //   const start = element.scrollTop;
+  //   const change = to - start;
+  //   const startTime = performance.now();
+
+  //   const animateScroll = (timestamp) => {
+  //     const currentTime = timestamp - startTime;
+  //     const newPosition = easeInOutQuad(currentTime, start, change, duration);
+  //     element.scrollTop = newPosition;
+
+  //     if (currentTime < duration) {
+  //       requestAnimationFrame(animateScroll);
+  //     }
+  //   };
+
+  //   requestAnimationFrame(animateScroll);
+  // };
+
+  // const easeInOutQuad = (t, b, c, d) => {
+  //   t /= d / 2;
+  //   if (t < 1) return (c / 2) * t * t + b;
+  //   t--;
+  //   return (-c / 2) * (t * (t - 2) - 1) + b;
+  // };
+
+  // useEffect(() => {
+  //   // Scroll to the active heading in the Table of Contents
+  //   if (activeId && tocRef.current) {
+  //     const activeHeading = tocRef.current.querySelector(
+  //       `[href="#${activeId}"]`
+  //     );
+  //     if (activeHeading) {
+  //       const boundingRect = activeHeading.getBoundingClientRect();
+  //       if (
+  //         boundingRect.top < 0 ||
+  //         boundingRect.bottom + 100 > window.innerHeight
+  //       ) {
+  //         // Smooth scrolling to the active heading
+  //         scrollToSmooth(tocRef.current, tocRef.current.scrollTop + 100, 500);
+  //       }
+  //     }
+  //   }
+  // }, [activeId]);
+
   return (
-    <nav aria-label="Table of contents" className="table-of-contents w-[300px]">
+    <nav
+      aria-label="Table of contents"
+      className="table-of-contents w-[300px]"
+      // ref={tocRef}
+    >
       <Headings headings={nestedHeadings} activeId={activeId} />{" "}
     </nav>
   );
