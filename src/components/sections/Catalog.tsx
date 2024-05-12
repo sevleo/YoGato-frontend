@@ -15,7 +15,7 @@ function Catalog() {
 
   return (
     <>
-      <div className="flex h-fit w-full flex-col gap-10">
+      <div className="flex h-fit flex-col gap-10">
         {sortedUniqueAspects.map((aspect) => {
           const image = svgProvider(aspect.url_svg_alt_local);
           return (

@@ -192,17 +192,20 @@ button:focus-visible {
 }
 
 .wrapper::-webkit-scrollbar,
-.mobile-aspects::-webkit-scrollbar {
+.mobile-aspects::-webkit-scrollbar,
+.table-of-contents::-webkit-scrollbar {
   width: 5px;
 }
 
 .wrapper::-webkit-scrollbar-thumb,
-.mobile-aspects::-webkit-scrollbar-thumb {
+.mobile-aspects::-webkit-scrollbar-thumb,
+.table-of-contents::-webkit-scrollbar-thumb {
   background-color: #7e7e7e; /* color of the thumb */
 }
 
 .wrapper::-webkit-scrollbar-track,
-.mobile-aspects::-webkit-scrollbar-track {
+.mobile-aspects::-webkit-scrollbar-track,
+.table-of-contents::-webkit-scrollbar-track {
   background-color: #1c1c1c; /* color of the track */
   border-color: transparent;
 }
@@ -211,11 +214,13 @@ button:focus-visible {
 .table-of-contents {
   position: sticky;
   position: -webkit-sticky; /* For Safari */
-  top: 24px; /* How far down the page you want your ToC to live */
+  top: 0px; /* How far down the page you want your ToC to live */
 
   /* Give table of contents a scrollbar */
   max-height: calc(100vh - 40px);
   overflow: auto;
+  border-left: 1px solid #323232;
+  padding-left: 10px;
 }
 
 h2,

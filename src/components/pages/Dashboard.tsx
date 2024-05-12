@@ -451,7 +451,7 @@ function Wrapper({ children, wrapperRef, location }: WrapperProps) {
   return (
     <div
       ref={wrapperRef}
-      className={`wrapper mb-6 ml-auto mr-auto flex h-[calc(100%-48px)] w-full max-w-screen-2xl justify-center overflow-auto p-6  ${location === "designing" ? "max-[650px]:h-[calc(100%-248px)]" : ""}`}
+      className={`wrapper mb-6 ml-auto mr-auto flex h-[calc(100%-48px)] w-full max-w-screen-2xl justify-center overflow-auto p-6  ${location === "designing" ? "max-[650px]:h-[calc(100%-248px)]" : ""} ${location === "catalog" ? "justify-between" : ""}`}
     >
       {children}
     </div>
