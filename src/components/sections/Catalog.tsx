@@ -3,6 +3,7 @@ import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { AspectControllerType } from "../buildingBlocks/Aspect/AspectController";
 import _ from "lodash";
 import svgProvider from "../../assets/svgProvider";
+import TableOfContents from "../buildingBlocks/TableOfContents";
 
 function Catalog() {
   const aspectGroups: AspectGroupType[] = categories;
@@ -14,7 +15,7 @@ function Catalog() {
 
   return (
     <>
-      <div className="flex w-full flex-col gap-10">
+      <div className="flex h-fit w-full flex-col gap-10">
         {sortedUniqueAspects.map((aspect) => {
           const image = svgProvider(aspect.url_svg_alt_local);
           return (
@@ -24,9 +25,12 @@ function Catalog() {
                   <img src={image} alt="" />
                 </div>
                 <div className="w-full">
-                  <p className="pl-[5px] text-start text-[30px]">
+                  <h2
+                    className="pl-[5px] text-start text-[30px]"
+                    id={aspect.url_svg_alt_local}
+                  >
                     {aspect.english_name} | {aspect.sanskrit_name}{" "}
-                  </p>
+                  </h2>
                   <p className="pl-[5px] text-start">
                     {aspect.translation_name}
                   </p>
@@ -59,6 +63,7 @@ function Catalog() {
           );
         })}
       </div>
+      <TableOfContents />
     </>
   );
 }

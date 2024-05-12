@@ -626,28 +626,16 @@ video {
   top: 0.5rem;
 }
 
+.top-\[-15px\] {
+  top: -15px;
+}
+
 .top-\[10px\] {
   top: 10px;
 }
 
 .top-\[48px\] {
   top: 48px;
-}
-
-.top-\[-10px\] {
-  top: -10px;
-}
-
-.top-\[-12px\] {
-  top: -12px;
-}
-
-.top-\[-20px\] {
-  top: -20px;
-}
-
-.top-\[-15px\] {
-  top: -15px;
 }
 
 .z-0 {
@@ -750,6 +738,10 @@ video {
   display: grid;
 }
 
+.contents {
+  display: contents;
+}
+
 .hidden {
   display: none;
 }
@@ -831,10 +823,6 @@ video {
   height: 100%;
 }
 
-.h-\[10px\] {
-  height: 10px;
-}
-
 .max-h-12 {
   max-height: 3rem;
 }
@@ -851,32 +839,16 @@ video {
   max-height: 100%;
 }
 
+.min-h-\[1px\] {
+  min-height: 1px;
+}
+
 .min-h-\[300px\] {
   min-height: 300px;
 }
 
 .min-h-full {
   min-height: 100%;
-}
-
-.min-h-\[10px\] {
-  min-height: 10px;
-}
-
-.min-h-\[11px\] {
-  min-height: 11px;
-}
-
-.min-h-\[1px\] {
-  min-height: 1px;
-}
-
-.min-h-\[0\.5px\] {
-  min-height: 0.5px;
-}
-
-.min-h-\[2px\] {
-  min-height: 2px;
 }
 
 .w-2\/3 {
@@ -901,6 +873,10 @@ video {
 
 .w-\[170px\] {
   width: 170px;
+}
+
+.w-\[1px\] {
+  width: 1px;
 }
 
 .w-\[200px\] {
@@ -943,6 +919,10 @@ video {
   width: 70%;
 }
 
+.w-\[700px\] {
+  width: 700px;
+}
+
 .w-\[80px\] {
   width: 80px;
 }
@@ -954,22 +934,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.w-1\/2 {
-  width: 50%;
-}
-
-.w-\[700px\] {
-  width: 700px;
-}
-
-.w-\[110px\] {
-  width: 110px;
-}
-
-.w-\[1px\] {
-  width: 1px;
 }
 
 .min-w-\[100px\] {
@@ -1008,10 +972,6 @@ video {
   min-width: 80px;
 }
 
-.min-w-\[110px\] {
-  min-width: 110px;
-}
-
 .max-w-\[170px\] {
   max-width: 170px;
 }
@@ -1032,16 +992,12 @@ video {
   max-width: 600px;
 }
 
-.max-w-screen-2xl {
-  max-width: 1536px;
-}
-
-.max-w-\[500px\] {
-  max-width: 500px;
-}
-
 .max-w-\[700px\] {
   max-width: 700px;
+}
+
+.max-w-screen-2xl {
+  max-width: 1536px;
 }
 
 .flex-1 {
@@ -1172,14 +1128,6 @@ video {
   gap: 4px;
 }
 
-.gap-4 {
-  gap: 1rem;
-}
-
-.gap-8 {
-  gap: 2rem;
-}
-
 .space-y-2 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1192,20 +1140,12 @@ video {
   margin-bottom: calc(1.25rem * var(--tw-space-y-reverse));
 }
 
-.place-self-start {
-  place-self: start;
-}
-
 .self-start {
   align-self: flex-start;
 }
 
 .self-end {
   align-self: flex-end;
-}
-
-.justify-self-start {
-  justify-self: start;
 }
 
 .overflow-auto {
@@ -1281,10 +1221,6 @@ video {
 
 .border-t-\[1px\] {
   border-top-width: 1px;
-}
-
-.border-l-\[0\.5px\] {
-  border-left-width: 0.5px;
 }
 
 .border-\[\#323232\] {
@@ -1367,21 +1303,6 @@ video {
 
 .bg-transparent {
   background-color: transparent;
-}
-
-.bg-\[white\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-red-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
-}
-
-.bg-\[red\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 0 0 / var(--tw-bg-opacity));
 }
 
 .object-cover {
@@ -1533,26 +1454,6 @@ video {
   padding-top: 30px;
 }
 
-.pl-\[80px\] {
-  padding-left: 80px;
-}
-
-.pl-\[90px\] {
-  padding-left: 90px;
-}
-
-.pl-\[95px\] {
-  padding-left: 95px;
-}
-
-.pl-\[94px\] {
-  padding-left: 94px;
-}
-
-.pl-10 {
-  padding-left: 2.5rem;
-}
-
 .text-left {
   text-align: left;
 }
@@ -1625,14 +1526,6 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-
-.text-\[16px\] {
-  font-size: 16px;
-}
-
-.text-\[12px\] {
-  font-size: 12px;
 }
 
 .font-bold {
@@ -2024,6 +1917,47 @@ button:focus-visible {
   background-color: #1c1c1c;
   /* color of the track */
   border-color: transparent;
+}
+
+/* Sticky Table of Contents */
+
+.table-of-contents {
+  position: sticky;
+  position: -webkit-sticky;
+  /* For Safari */
+  top: 24px;
+  /* How far down the page you want your ToC to live */
+  /* Give table of contents a scrollbar */
+  max-height: calc(100vh - 40px);
+  overflow: auto;
+}
+
+h2,
+h3 {
+  scroll-margin-top: 16px;
+}
+
+/* Safari-only */
+
+@supports (-webkit-hyphens: none) {
+  h2,
+  h3 {
+    padding-top: 16px;
+    margin-top: -16px;
+  }
+}
+
+a {
+  color: grey;
+  text-decoration: none;
+}
+
+li.active > a {
+  color: white;
+}
+
+li > a:hover {
+  color: white;
 }
 
 .placeholder\:text-\[\#ededed80\]::-moz-placeholder {
