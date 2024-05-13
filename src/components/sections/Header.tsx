@@ -37,6 +37,7 @@ export default function Header({ setLocation }: HeaderProps) {
         styleOverrides: {
           root: {
             width: "150px",
+            // background: "red",
           },
         },
       },
@@ -46,8 +47,13 @@ export default function Header({ setLocation }: HeaderProps) {
             "&:hover": {
               backgroundColor: "#343434",
             },
+            "&:focus": {
+              backgroundColor: "#1c1c1c",
+            },
             fontSize: "14px",
             fontFamily: "Nunito Sans",
+            justifyContent: "end",
+            // backgroundColor: "blue",
           },
         },
       },
@@ -151,8 +157,8 @@ export default function Header({ setLocation }: HeaderProps) {
                           open={Boolean(anchorEl)}
                           onClose={handleClose}
                         >
-                          <MenuItem onClick={handleClose}>Theme</MenuItem>
-                          <MenuItem onClick={handleClose}>Settings</MenuItem>
+                          {/* <MenuItem onClick={handleClose}>Theme</MenuItem> */}
+                          {/* <MenuItem onClick={handleClose}>Settings</MenuItem> */}
                           <MenuItem onClick={handleLogout}>Log Out</MenuItem>
                         </Menu>
                       </ThemeProvider>

@@ -108,17 +108,17 @@ export default function Dashboard({
     setHamburgerOpen(false);
   }
 
-  function handlePreferencesClick() {
-    setLocation("preferences");
-    navigate("/dashboard/preferences");
-    setHamburgerOpen(false);
-  }
+  // function handlePreferencesClick() {
+  //   setLocation("preferences");
+  //   navigate("/dashboard/preferences");
+  //   setHamburgerOpen(false);
+  // }
 
-  function handleThemeClick() {
-    setLocation("theme");
-    navigate("/dashboard/theme");
-    setHamburgerOpen(false);
-  }
+  // function handleThemeClick() {
+  //   setLocation("theme");
+  //   navigate("/dashboard/theme");
+  //   setHamburgerOpen(false);
+  // }
 
   function handleCatalogClick() {
     setLocation("catalog");
@@ -187,7 +187,7 @@ export default function Dashboard({
                 </div>
               </ul>
             </div>
-            <div className="border-b-[1px] border-[#323232] px-6 py-5">
+            {/* <div className="border-b-[1px] border-[#323232] px-6 py-5">
               <div className="mb-3">
                 {" "}
                 <p className=" text-start text-sm font-medium text-[#7e7e7e]">
@@ -214,7 +214,7 @@ export default function Dashboard({
                   </p>
                 </div>
               </ul>
-            </div>
+            </div> */}
             <div className="border-b-[1px] border-[#323232] px-6 py-5">
               <div className="mb-3">
                 {" "}
@@ -222,7 +222,7 @@ export default function Dashboard({
                   Library
                 </p>
               </div>
-              <ul className="space-y-2">
+              <ul className="space-y-0">
                 <div className="flex items-center justify-start">
                   {" "}
                   <p
@@ -234,9 +234,9 @@ export default function Dashboard({
                 </div>
                 <div className="flex items-center justify-start">
                   {" "}
-                  <p className=" w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
+                  {/* <p className=" w-full text-start text-sm font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                     Blogs
-                  </p>
+                  </p> */}
                 </div>
               </ul>
             </div>
@@ -317,7 +317,7 @@ export default function Dashboard({
                   </div>
                 </ul>
               </div>
-              <div className="border-b-[1px] border-[#323232] px-6 py-5">
+              {/* <div className="border-b-[1px] border-[#323232] px-6 py-5">
                 <div className="mb-5">
                   {" "}
                   <p className=" text-center text-lg font-medium text-[#7e7e7e]">
@@ -344,7 +344,7 @@ export default function Dashboard({
                     </p>
                   </div>
                 </ul>
-              </div>
+              </div> */}
               <div className="border-b-[1px] border-[#323232] px-6 py-5">
                 <div className="mb-5">
                   {" "}
@@ -362,12 +362,11 @@ export default function Dashboard({
                       Catalog of poses
                     </p>
                   </div>
-                  <div className="flex items-center justify-center">
-                    {" "}
+                  {/* <div className="flex items-center justify-center">
                     <p className=" w-full text-center text-lg font-medium text-[#a0a0a0] hover:cursor-pointer hover:text-[white]">
                       Blogs
                     </p>
-                  </div>
+                  </div> */}
                 </ul>
               </div>
               <div className="border-b-[1px] border-[#323232] px-6 py-5">
