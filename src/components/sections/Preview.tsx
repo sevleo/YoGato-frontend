@@ -26,17 +26,19 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
   const { flow } = useFlow();
 
   // Web Audio API
-  const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
+  // const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
 
-  useEffect(() => {
-    // Create an AudioContext when the component mounts
-    const context = new AudioContext();
-    setAudioContext(context);
-    return () => {
-      // Clean up the AudioContext when the component unmounts
-      context.close();
-    };
-  }, []);
+  // useEffect(() => {
+  //   // Create an AudioContext when the component mounts
+  //   const context = new AudioContext();
+  //   setAudioContext(context);
+  //   return () => {
+  //     // Clean up the AudioContext when the component unmounts
+  //     context.close();
+  //   };
+  // }, []);
+
+  const [, setPlay] = useState<number>(0);
 
   // Theme for linear progress bar
   const linearProgressBarTheme = createTheme({
@@ -215,31 +217,46 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
   }, [timerCount, unitPercent]);
 
   // Audio play (added Web Audio API to support mobile browser)
+  // useEffect(() => {
+  //   if (timerState.startFlow && audioContext) {
+  //     const audioSrc = mp3Provider(
+  //       flow.units[currentUnitIndex].url_svg_alt_local
+  //     );
+  //     fetch(audioSrc)
+  //       .then((response) => response.arrayBuffer())
+  //       .then((buffer) => {
+  //         audioContext.decodeAudioData(buffer, (decodedData) => {
+  //           const source = audioContext.createBufferSource();
+  //           source.buffer = decodedData;
+  //           const gainNode = audioContext.createGain();
+  //           gainNode.gain.value = volumeRef.current;
+  //           source.connect(gainNode);
+  //           gainNode.connect(audioContext.destination);
+  //           source.start(0);
+  //         });
+  //       })
+  //       .catch((error) => {
+  //         console.error("Error fetching or decoding audio data:", error);
+  //       });
+  //     // audio.volume = volumeRef.current;
+  //     // audio.play();
+  //   }
+  // }, [currentUnitIndex, flow.units, timerState.startFlow, audioContext]);
+
   useEffect(() => {
-    if (timerState.startFlow && audioContext) {
-      const audioSrc = mp3Provider(
-        flow.units[currentUnitIndex].url_svg_alt_local
+    if (timerState.startFlow) {
+      const audio = new Audio(
+        mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
       );
-      // fetch(audioSrc)
-      //   .then((response) => response.arrayBuffer())
-      //   .then((buffer) => {
-      //     audioContext.decodeAudioData(buffer, (decodedData) => {
-      //       const source = audioContext.createBufferSource();
-      //       source.buffer = decodedData;
-      //       const gainNode = audioContext.createGain();
-      //       gainNode.gain.value = volumeRef.current;
-      //       source.connect(gainNode);
-      //       gainNode.connect(audioContext.destination);
-      //       source.start(0);
-      //     });
-      //   })
-      //   .catch((error) => {
-      //     console.error("Error fetching or decoding audio data:", error);
-      //   });
-      // audioSrc.volume = volumeRef.current;
-      audioSrc.play();
+
+      audio.volume = volumeRef.current;
+
+      setTimeout(() => {
+        audio.play();
+      }, 100);
+      setPlay((prevValue) => prevValue + 1);
     }
-  }, [currentUnitIndex, flow.units, timerState.startFlow, audioContext]);
+  }, [currentUnitIndex, flow.units, timerState.startFlow]);
 
   // Start/Pause/Resume controls
   useEffect(() => {
