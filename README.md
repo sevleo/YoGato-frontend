@@ -1,5 +1,3 @@
-# YoGato
+# YoGato-Frontend
 
-Workout sequence builder.
-
-Frontend for [YoGato](https://github.com/sevleo/YoGato)
+Frontend for [YoGato](https://github.com/sevleo/YoGato).
