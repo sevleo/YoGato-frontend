@@ -236,7 +236,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
       //   .catch((error) => {
       //     console.error("Error fetching or decoding audio data:", error);
       //   });
-      audioSrc.volume = volumeRef.current;
+      // audioSrc.volume = volumeRef.current;
       audioSrc.play();
     }
   }, [currentUnitIndex, flow.units, timerState.startFlow, audioContext]);
