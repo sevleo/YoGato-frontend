@@ -38,8 +38,6 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
     };
   }, []);
 
-  // const [, setPlay] = useState<number>(0);
-
   // Theme for linear progress bar
   const linearProgressBarTheme = createTheme({
     components: {
@@ -238,25 +236,8 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
         .catch((error) => {
           console.error("Error fetching or decoding audio data:", error);
         });
-      // audio.volume = volumeRef.current;
-      // audio.play();
     }
   }, [currentUnitIndex, flow.units, timerState.startFlow, audioContext]);
-
-  // useEffect(() => {
-  //   if (timerState.startFlow) {
-  //     const audio = new Audio(
-  //       mp3Provider(flow.units[currentUnitIndex].url_svg_alt_local)
-  //     );
-
-  //     audio.volume = volumeRef.current;
-
-  //     setTimeout(() => {
-  //       audio.play();
-  //     }, 100);
-  //     setPlay((prevValue) => prevValue + 1);
-  //   }
-  // }, [currentUnitIndex, flow.units, timerState.startFlow]);
 
   // Start/Pause/Resume controls
   useEffect(() => {
