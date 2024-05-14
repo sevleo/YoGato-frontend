@@ -220,24 +220,24 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
       const audioSrc = mp3Provider(
         flow.units[currentUnitIndex].url_svg_alt_local
       );
-      fetch(audioSrc)
-        .then((response) => response.arrayBuffer())
-        .then((buffer) => {
-          audioContext.decodeAudioData(buffer, (decodedData) => {
-            const source = audioContext.createBufferSource();
-            source.buffer = decodedData;
-            const gainNode = audioContext.createGain();
-            gainNode.gain.value = volumeRef.current;
-            source.connect(gainNode);
-            gainNode.connect(audioContext.destination);
-            source.start(0);
-          });
-        })
-        .catch((error) => {
-          console.error("Error fetching or decoding audio data:", error);
-        });
-      // audio.volume = volumeRef.current;
-      // audio.play();
+      // fetch(audioSrc)
+      //   .then((response) => response.arrayBuffer())
+      //   .then((buffer) => {
+      //     audioContext.decodeAudioData(buffer, (decodedData) => {
+      //       const source = audioContext.createBufferSource();
+      //       source.buffer = decodedData;
+      //       const gainNode = audioContext.createGain();
+      //       gainNode.gain.value = volumeRef.current;
+      //       source.connect(gainNode);
+      //       gainNode.connect(audioContext.destination);
+      //       source.start(0);
+      //     });
+      //   })
+      //   .catch((error) => {
+      //     console.error("Error fetching or decoding audio data:", error);
+      //   });
+      audioSrc.volume = volumeRef.current;
+      audioSrc.play();
     }
   }, [currentUnitIndex, flow.units, timerState.startFlow, audioContext]);
 
