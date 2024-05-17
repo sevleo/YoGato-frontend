@@ -92,13 +92,15 @@ export default function AspectCollection({
                     }
                   });
                   return (
-                    <AspectController
-                      key={aspect.english_name + aspect.category_name}
-                      aspect={aspect}
-                      count={count}
-                      aspectGroups={aspectGroups}
-                      setEnableSave={setEnableSave}
-                    ></AspectController>
+                    <div className="aspect-[4/3]">
+                      <AspectController
+                        key={aspect.english_name + aspect.category_name}
+                        aspect={aspect}
+                        count={count}
+                        aspectGroups={aspectGroups}
+                        setEnableSave={setEnableSave}
+                      ></AspectController>
+                    </div>
                   );
                 })}
               </div>

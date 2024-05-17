@@ -750,6 +750,18 @@ video {
   aspect-ratio: 1 / 1;
 }
 
+.aspect-\[4\/3\] {
+  aspect-ratio: 4/3;
+}
+
+.aspect-\[8\/3\] {
+  aspect-ratio: 8/3;
+}
+
+.aspect-\[1\/1\] {
+  aspect-ratio: 1/1;
+}
+
 .h-12 {
   height: 3rem;
 }
