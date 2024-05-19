@@ -24,7 +24,7 @@ function AspectDisplay({ aspect, count, handleClick }: AspectDisplayProps) {
         objectFit: "cover",
       }}
       key={aspect.english_name}
-      className={`fancy-wrapper relative max-w-[120px] rounded-md bg-[#161616] shadow-md outline outline-[1px] outline-[#323232] transition-all hover:cursor-pointer ${isActive ? "active" : ""} max-[650px]:w-min-[100px] h-fit max-[650px]:h-[140px] max-[650px]:w-[90px]`}
+      className={`fancy-wrapper relative max-w-[120px] rounded-md bg-[#161616] shadow-md outline outline-[1px] outline-[#323232] transition-all hover:cursor-pointer ${isActive ? "active" : ""} max-[650px]:w-min-[100px] h-full max-[650px]:h-[140px] max-[650px]:w-[90px]`}
       onClick={(e) => {
         setActive(true);
         setTimeout(() => {

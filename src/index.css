@@ -249,3 +249,9 @@ li.active > a {
 li > a:hover {
   color: white;
 }
+
+.aspects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 100px));
+  justify-content: start;
+}

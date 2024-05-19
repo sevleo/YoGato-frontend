@@ -2,10 +2,11 @@ import AspectGroup from "../buildingBlocks/AspectGroup";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { useFlow } from "../utilities/FlowContext";
 import { Dispatch, SetStateAction, useState } from "react";
-import _ from "lodash";
+import _, { update } from "lodash";
 import AspectController, {
   AspectControllerType,
 } from "../buildingBlocks/Aspect/AspectController";
+import { TextField, Autocomplete } from "@mui/material";
 
 interface AspectCollectionProps {
   aspectGroups: AspectGroupType[];
@@ -22,22 +23,44 @@ export default function AspectCollection({
     aspects.push(...aspectGroup.poses);
   });
 
-  const [view, setView] = useState("category");
+  const [view, setView] = useState("name");
 
   const sortedUniqueAspects = _.sortBy(_.uniqBy(aspects, "id"), "english_name");
+
+  const top100Films = [
+    { label: "The Shawshank Redemption", year: 1994 },
+    { label: "The Godfather", year: 1972 },
+    { label: "The Godfather: Part II", year: 1974 },
+    { label: "The Dark Knight", year: 2008 },
+  ];
+
+  const [inputValue, setInputValue] = useState("");
+
+  function updateInputValue(e) {
+    setInputValue(e.target.value);
+  }
 
   return (
     <>
       <div className="w-full flex-col justify-start rounded-md pb-6 max-[650px]:hidden min-[850px]:flex">
+        <div>
+          <Autocomplete
+            disablePortal
+            id="combo-box"
+            options={top100Films}
+            sx={{ width: 300 }}
+            renderInput={(params) => <TextField {...params} label="Movie" />}
+          />
+        </div>
+        <div>
+          <input
+            className="text-[red]"
+            type="text"
+            value={inputValue}
+            onChange={updateInputValue}
+          />
+        </div>
         <div className="mb-2 flex gap-2">
-          <div
-            onClick={() => {
-              setView("category");
-            }}
-            className={`${view === "category" ? "cursor-default border-[#6ccc93] bg-[#54976f]" : "cursor-pointer border-[#6ccc93] border-transparent bg-[#545454]"} rounded-md border-[1px]  p-1 text-sm font-medium  `}
-          >
-            By Category
-          </div>
           <div
             onClick={() => {
               setView("name");
@@ -45,6 +68,14 @@ export default function AspectCollection({
             className={`${view === "name" ? "cursor-default border-[#6ccc93] bg-[#54976f]" : "cursor-pointer border-[#6ccc93] border-transparent bg-[#545454]"} rounded-md border-[1px]  p-1  text-sm font-medium `}
           >
             By Name
+          </div>
+          <div
+            onClick={() => {
+              setView("category");
+            }}
+            className={`${view === "category" ? "cursor-default border-[#6ccc93] bg-[#54976f]" : "cursor-pointer border-[#6ccc93] border-transparent bg-[#545454]"} rounded-md border-[1px]  p-1 text-sm font-medium  `}
+          >
+            By Category
           </div>
         </div>
         <div className="h-fit min-h-full w-full gap-5">
@@ -83,7 +114,7 @@ export default function AspectCollection({
             </>
           ) : view === "name" ? (
             <>
-              <div className="grid grid-cols-3 gap-2">
+              <div className="aspects-grid gap-2">
                 {sortedUniqueAspects.map((aspect) => {
                   let count = 0;
                   flow.uniqueAspects.some((uniqueAspect) => {
@@ -91,17 +122,24 @@ export default function AspectCollection({
                       count = uniqueAspect.count;
                     }
                   });
-                  return (
-                    <div className="aspect-[4/3]">
-                      <AspectController
-                        key={aspect.english_name + aspect.category_name}
-                        aspect={aspect}
-                        count={count}
-                        aspectGroups={aspectGroups}
-                        setEnableSave={setEnableSave}
-                      ></AspectController>
-                    </div>
-                  );
+                  if (
+                    _.startsWith(
+                      aspect.english_name.toLowerCase(),
+                      inputValue.toLowerCase()
+                    )
+                  ) {
+                    return (
+                      <div className="h-full w-[100px]">
+                        <AspectController
+                          key={aspect.english_name + aspect.category_name}
+                          aspect={aspect}
+                          count={count}
+                          aspectGroups={aspectGroups}
+                          setEnableSave={setEnableSave}
+                        ></AspectController>
+                      </div>
+                    );
+                  }
                 })}
               </div>
             </>
