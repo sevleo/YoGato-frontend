@@ -540,14 +540,14 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
         To start moving,{" "}
         <span
           className="text-[#6ccc93] hover:cursor-pointer hover:underline"
-          onClick={handleDesigningClick}
+          onClick={handleFlowsClick}
         >
           select
         </span>{" "}
         an existing flow or{" "}
         <span
           className="text-[#6ccc93] hover:cursor-pointer hover:underline"
-          onClick={handleFlowsClick}
+          onClick={handleDesigningClick}
         >
           create
         </span>{" "}
