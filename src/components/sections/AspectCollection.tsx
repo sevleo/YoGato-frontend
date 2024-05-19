@@ -31,8 +31,6 @@ export default function AspectCollection({
 
   const sortedUniqueAspects = _.sortBy(_.uniqBy(aspects, "id"), "english_name");
 
-  console.log(sortedUniqueAspects);
-
   const [inputValue, setInputValue] = useState("");
 
   function updateInputValue(e: React.ChangeEvent<HTMLInputElement>) {
@@ -111,19 +109,31 @@ export default function AspectCollection({
                       )?.count
                     : null;
 
-                  return (
-                    <AspectGroup
-                      key={aspectGroup.category_name}
-                      category_name={aspectGroup.category_name}
-                      poses={aspectGroup.poses}
-                      uniqueAspects={flow ? flow.uniqueAspects : []}
-                      aspectGroupCount={
-                        aspectGroupCount ? aspectGroupCount : undefined
-                      }
-                      aspectGroups={aspectGroups}
-                      setEnableSave={setEnableSave}
-                    ></AspectGroup>
-                  );
+                  console.log(aspectGroup.poses);
+
+                  if (
+                    _.some(aspectGroup.poses, (pose) =>
+                      _.startsWith(
+                        pose.english_name.toLowerCase(),
+                        inputValue.toLowerCase()
+                      )
+                    )
+                  ) {
+                    return (
+                      <AspectGroup
+                        key={aspectGroup.category_name}
+                        category_name={aspectGroup.category_name}
+                        poses={aspectGroup.poses}
+                        uniqueAspects={flow ? flow.uniqueAspects : []}
+                        aspectGroupCount={
+                          aspectGroupCount ? aspectGroupCount : undefined
+                        }
+                        aspectGroups={aspectGroups}
+                        setEnableSave={setEnableSave}
+                        searchValue={inputValue}
+                      ></AspectGroup>
+                    );
+                  }
                 })}
               </div>
             </>

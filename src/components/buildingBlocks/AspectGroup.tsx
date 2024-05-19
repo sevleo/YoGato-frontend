@@ -10,6 +10,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Dispatch, SetStateAction } from "react";
+import _ from "lodash";
 
 export interface AspectGroupType {
   category_name: string;
@@ -26,6 +27,7 @@ interface AspectGroupProps {
   aspectGroupCount: number | undefined;
   aspectGroups: AspectGroupType[];
   setEnableSave: Dispatch<SetStateAction<boolean>>;
+  searchValue: string;
 }
 
 function AspectGroup({
@@ -35,6 +37,7 @@ function AspectGroup({
   aspectGroupCount,
   aspectGroups,
   setEnableSave,
+  searchValue,
 }: AspectGroupProps) {
   return (
     <>
@@ -78,15 +81,23 @@ function AspectGroup({
                     count = uniqueAspect.count;
                   }
                 });
-                return (
-                  <AspectController
-                    key={pose.english_name + pose.category_name}
-                    aspect={pose}
-                    count={count}
-                    aspectGroups={aspectGroups}
-                    setEnableSave={setEnableSave}
-                  ></AspectController>
-                );
+
+                if (
+                  _.startsWith(
+                    pose.english_name.toLowerCase(),
+                    searchValue.toLowerCase()
+                  )
+                ) {
+                  return (
+                    <AspectController
+                      key={pose.english_name + pose.category_name}
+                      aspect={pose}
+                      count={count}
+                      aspectGroups={aspectGroups}
+                      setEnableSave={setEnableSave}
+                    ></AspectController>
+                  );
+                }
               })}
             </div>
           </div>
