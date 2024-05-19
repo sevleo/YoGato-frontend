@@ -28,13 +28,13 @@ export default function AspectCollection({
 
   return (
     <>
-      <div className=" w-full flex-col justify-start rounded-md pb-6 max-[650px]:hidden min-[850px]:flex">
-        <div>
-          <div>View</div>
+      <div className="w-full flex-col justify-start rounded-md pb-6 max-[650px]:hidden min-[850px]:flex">
+        <div className="mb-2 flex gap-2">
           <div
             onClick={() => {
               setView("category");
             }}
+            className={`${view === "category" ? "cursor-default border-[#6ccc93] bg-[#54976f]" : "cursor-pointer border-[#6ccc93] border-transparent bg-[#545454]"} rounded-md border-[1px]  p-1 text-sm font-medium  `}
           >
             By Category
           </div>
@@ -42,10 +42,10 @@ export default function AspectCollection({
             onClick={() => {
               setView("name");
             }}
+            className={`${view === "name" ? "cursor-default border-[#6ccc93] bg-[#54976f]" : "cursor-pointer border-[#6ccc93] border-transparent bg-[#545454]"} rounded-md border-[1px]  p-1  text-sm font-medium `}
           >
             By Name
           </div>
-          <div>{view}</div>
         </div>
         <div className="h-fit min-h-full w-full gap-5">
           {view === "category" ? (
