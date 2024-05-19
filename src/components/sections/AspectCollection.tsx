@@ -109,8 +109,6 @@ export default function AspectCollection({
                       )?.count
                     : null;
 
-                  console.log(aspectGroup.poses);
-
                   if (
                     _.some(aspectGroup.poses, (pose) =>
                       _.startsWith(
