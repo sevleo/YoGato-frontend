@@ -20,6 +20,7 @@ export interface AspectControllerType {
   translation_name?: string;
   pose_description?: string;
   pose_benefits?: string;
+  label?: string; // Need label for Autocomplete MUI component
 }
 
 type AspectControllerProps = {

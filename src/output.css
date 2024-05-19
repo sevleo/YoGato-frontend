@@ -944,6 +944,18 @@ video {
   width: 100%;
 }
 
+.w-\[80\%\] {
+  width: 80%;
+}
+
+.w-\[220px\] {
+  width: 220px;
+}
+
+.w-\[210px\] {
+  width: 210px;
+}
+
 .min-w-\[100px\] {
   min-width: 100px;
 }
@@ -1333,6 +1345,11 @@ video {
 
 .bg-transparent {
   background-color: transparent;
+}
+
+.bg-\[red\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 0 0 / var(--tw-bg-opacity));
 }
 
 .object-cover {

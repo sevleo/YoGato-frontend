@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Dispatch } from "react";
 
 interface InputProps {
-  inputType: string;
-  type?: string;
+  inputType: string; // Type for component below
+  type?: string; // "text", "number"
   labelValue: string;
   labelFor?: string;
   defaultValue?: number;
@@ -75,6 +75,21 @@ export default function Input(props: InputProps) {
           props.setEditableName as Dispatch<React.SetStateAction<boolean>>
         }
       ></FlowBuilderTextInput>
+    );
+  }
+
+  if (props.inputType === "aspectSearchInput") {
+    return (
+      <AspectSearchInput
+        type={props.type as string}
+        labelValue={props.labelValue}
+        onChange={
+          props.onChange as (e: React.ChangeEvent<HTMLInputElement>) => void
+        }
+        inputValue={props.inputValue}
+        labelFor={props.labelFor}
+        inputId={props.inputId}
+      ></AspectSearchInput>
     );
   }
 }
@@ -277,6 +292,35 @@ function FlowBuilderTextInput(props: FlowBuilderTextInputProps) {
         maxLength={props.maxLength}
         autoFocus
         onBlur={handleBlur}
+      />
+    </div>
+  );
+}
+
+interface AspectSearchInputProps {
+  type: string;
+  labelValue: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  inputValue?: string;
+  labelFor?: string;
+  inputId?: string;
+}
+
+function AspectSearchInput(props: AspectSearchInputProps) {
+  return (
+    <div className="mb-2 flex flex-col items-start  justify-center">
+      <label
+        htmlFor={props.labelFor}
+        className="text-sm font-medium text-[#A0A0A0]"
+      >
+        {props.labelValue}
+      </label>
+      <input
+        className="w-[210px] rounded-md border-[1px] border-[#3D3D3D] bg-[#212121] p-2 text-sm font-medium text-[#A0A0A0] outline-none focus:border-[#707070]"
+        type={props.type}
+        value={props.inputValue}
+        onChange={props.onChange}
+        id={props.inputId}
       />
     </div>
   );

@@ -2,11 +2,12 @@ import AspectGroup from "../buildingBlocks/AspectGroup";
 import { AspectGroupType } from "../buildingBlocks/AspectGroup";
 import { useFlow } from "../utilities/FlowContext";
 import { Dispatch, SetStateAction, useState } from "react";
-import _, { update } from "lodash";
+import _ from "lodash";
 import AspectController, {
   AspectControllerType,
 } from "../buildingBlocks/Aspect/AspectController";
-import { TextField, Autocomplete } from "@mui/material";
+// import { TextField, Autocomplete } from "@mui/material";
+import Input from "../buildingBlocks/Input";
 
 interface AspectCollectionProps {
   aspectGroups: AspectGroupType[];
@@ -22,21 +23,19 @@ export default function AspectCollection({
   aspectGroups.map((aspectGroup) => {
     aspects.push(...aspectGroup.poses);
   });
+  aspects.forEach((aspect) => {
+    aspect.label = aspect.english_name;
+  });
 
   const [view, setView] = useState("name");
 
   const sortedUniqueAspects = _.sortBy(_.uniqBy(aspects, "id"), "english_name");
 
-  const top100Films = [
-    { label: "The Shawshank Redemption", year: 1994 },
-    { label: "The Godfather", year: 1972 },
-    { label: "The Godfather: Part II", year: 1974 },
-    { label: "The Dark Knight", year: 2008 },
-  ];
+  console.log(sortedUniqueAspects);
 
   const [inputValue, setInputValue] = useState("");
 
-  function updateInputValue(e) {
+  function updateInputValue(e: React.ChangeEvent<HTMLInputElement>) {
     setInputValue(e.target.value);
   }
 
@@ -44,40 +43,56 @@ export default function AspectCollection({
     <>
       <div className="w-full flex-col justify-start rounded-md pb-6 max-[650px]:hidden min-[850px]:flex">
         <div>
-          <Autocomplete
+          {/* <Autocomplete
             disablePortal
+            freeSolo
             id="combo-box"
-            options={top100Films}
-            sx={{ width: 300 }}
-            renderInput={(params) => <TextField {...params} label="Movie" />}
-          />
+            options={sortedUniqueAspects}
+            sx={{ width: 250 }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Pose"
+                onChange={updateInputValue}
+                onSelect={updateInputValue}
+                className=""
+              />
+            )}
+          /> */}
         </div>
-        <div>
-          <input
-            className="text-[red]"
-            type="text"
-            value={inputValue}
-            onChange={updateInputValue}
-          />
-        </div>
-        <div className="mb-2 flex gap-2">
-          <div
-            onClick={() => {
-              setView("name");
-            }}
-            className={`${view === "name" ? "cursor-default border-[#6ccc93] bg-[#54976f]" : "cursor-pointer border-[#6ccc93] border-transparent bg-[#545454]"} rounded-md border-[1px]  p-1  text-sm font-medium `}
-          >
-            By Name
+
+        <div className="mb-2 flex-col gap-2">
+          <p className="text-start text-sm font-medium text-[#A0A0A0]">
+            View poses
+          </p>
+          <div className="flex gap-2">
+            <div
+              onClick={() => {
+                setView("name");
+              }}
+              className={`${view === "name" ? "cursor-default border-[#6ccc93] bg-[#54976f]" : "cursor-pointer border-[#6ccc93] border-transparent bg-[#545454]"} w-[100px] rounded-md  border-[1px]  p-1 text-sm font-medium`}
+            >
+              By Name
+            </div>
+            <div
+              onClick={() => {
+                setView("category");
+              }}
+              className={`${view === "category" ? "cursor-default border-[#6ccc93] bg-[#54976f]" : "cursor-pointer border-[#6ccc93] border-transparent bg-[#545454]"} w-[100px] rounded-md  border-[1px] p-1 text-sm font-medium `}
+            >
+              By Category
+            </div>
           </div>
-          <div
-            onClick={() => {
-              setView("category");
-            }}
-            className={`${view === "category" ? "cursor-default border-[#6ccc93] bg-[#54976f]" : "cursor-pointer border-[#6ccc93] border-transparent bg-[#545454]"} rounded-md border-[1px]  p-1 text-sm font-medium  `}
-          >
-            By Category
-          </div>
         </div>
+        <Input
+          type="text"
+          inputValue={inputValue}
+          onChange={updateInputValue}
+          inputType="aspectSearchInput"
+          labelValue="Search pose"
+          labelFor="aspectSearchInput"
+          inputId="aspectSearchInput"
+        ></Input>
         <div className="h-fit min-h-full w-full gap-5">
           {view === "category" ? (
             <>
