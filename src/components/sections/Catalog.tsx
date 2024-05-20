@@ -21,7 +21,7 @@ function Catalog() {
 
           {
             return (
-              <>
+              <div key={aspect.id}>
                 <div className="hidden max-w-[700px] min-[570px]:flex">
                   <div className="flex w-[200px] items-center justify-center pl-4 pr-10">
                     <img src={image} alt="" />
@@ -95,7 +95,7 @@ function Catalog() {
                   </div>
                 </div>
                 <div className="h-[1px] min-h-[1px] w-auto bg-[#323232]"></div>
-              </>
+              </div>
             );
           }
         })}

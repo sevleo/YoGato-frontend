@@ -18,6 +18,7 @@ import { Dispatch } from "react";
 import { Divide as Hamburger } from "hamburger-react";
 import { useRef } from "react";
 import Catalog from "../sections/Catalog";
+import Preferences from "../sections/Preferences";
 
 interface DashboardProps {
   location: string;
@@ -108,11 +109,11 @@ export default function Dashboard({
     setHamburgerOpen(false);
   }
 
-  // function handlePreferencesClick() {
-  //   setLocation("preferences");
-  //   navigate("/dashboard/preferences");
-  //   setHamburgerOpen(false);
-  // }
+  function handlePreferencesClick() {
+    setLocation("preferences");
+    navigate("/dashboard/preferences");
+    setHamburgerOpen(false);
+  }
 
   // function handleThemeClick() {
   //   setLocation("theme");
@@ -134,6 +135,7 @@ export default function Dashboard({
 
   return (
     <div className="flex h-full w-full">
+      {/* Sidebar */}
       <div
         className=" hide-scrollbar h-full min-w-[170px] max-w-[170px] overflow-auto border-r-[1px] border-[#323232] max-[650px]:hidden"
         id="sidebar"
@@ -187,7 +189,7 @@ export default function Dashboard({
                 </div>
               </ul>
             </div>
-            {/* <div className="border-b-[1px] border-[#323232] px-6 py-5">
+            <div className="border-b-[1px] border-[#323232] px-6 py-5">
               <div className="mb-3">
                 {" "}
                 <p className=" text-start text-sm font-medium text-[#7e7e7e]">
@@ -204,7 +206,7 @@ export default function Dashboard({
                     Preferences
                   </p>
                 </div>
-                <div className="flex items-center justify-start">
+                {/* <div className="flex items-center justify-start">
                   {" "}
                   <p
                     onClick={handleThemeClick}
@@ -212,9 +214,9 @@ export default function Dashboard({
                   >
                     Theme
                   </p>
-                </div>
+                </div> */}
               </ul>
-            </div> */}
+            </div>
             <div className="border-b-[1px] border-[#323232] px-6 py-5">
               <div className="mb-3">
                 {" "}
@@ -257,6 +259,8 @@ export default function Dashboard({
           </ul>
         </nav>
       </div>
+
+      {/* Canvas */}
       <div className="relative  flex-1" id="canvas">
         <div
           // style={{ boxShadow: "0px 1px 3px 1px rgb(0 0 0 / 75%)" }}
@@ -275,6 +279,7 @@ export default function Dashboard({
             ></Hamburger>
           </div>
 
+          {/* Hamburget navigation */}
           <nav
             className={`absolute left-0 top-[48px] z-[51] h-auto w-[170px] border-r-[1px] border-[#323232] bg-[#1c1c1c] max-[650px]:h-[100vh] max-[650px]:w-full ${isHamburgerOpen ? "pointer-events-auto opacity-100" : " pointer-events-none opacity-0"}  transition-all duration-200`}
           >
@@ -317,7 +322,7 @@ export default function Dashboard({
                   </div>
                 </ul>
               </div>
-              {/* <div className="border-b-[1px] border-[#323232] px-6 py-5">
+              <div className="border-b-[1px] border-[#323232] px-6 py-5">
                 <div className="mb-5">
                   {" "}
                   <p className=" text-center text-lg font-medium text-[#7e7e7e]">
@@ -334,7 +339,7 @@ export default function Dashboard({
                       Preferences
                     </p>
                   </div>
-                  <div className="flex items-center justify-center">
+                  {/* <div className="flex items-center justify-center">
                     {" "}
                     <p
                       onClick={handleThemeClick}
@@ -342,9 +347,9 @@ export default function Dashboard({
                     >
                       Theme
                     </p>
-                  </div>
+                  </div> */}
                 </ul>
-              </div> */}
+              </div>
               <div className="border-b-[1px] border-[#323232] px-6 py-5">
                 <div className="mb-5">
                   {" "}
@@ -419,7 +424,7 @@ export default function Dashboard({
             </>
           ) : location === "preferences" ? (
             <>
-              <p>preferences</p>
+              <Preferences></Preferences>
             </>
           ) : location === "theme" ? (
             <>
