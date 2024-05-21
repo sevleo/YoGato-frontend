@@ -8,6 +8,7 @@ export interface AuthStateTypes {
   userId: string;
   dataLoading: boolean;
   showLoginPopup: boolean;
+  type: string;
 }
 
 const initialAuthState: AuthStateTypes = {
@@ -16,6 +17,7 @@ const initialAuthState: AuthStateTypes = {
   userId: "",
   dataLoading: true,
   showLoginPopup: false,
+  type: "",
 };
 
 export type Action =
@@ -29,6 +31,7 @@ export type Action =
             username: string;
             id: string;
           };
+          type: string;
         };
       };
     }
@@ -42,6 +45,7 @@ export type Action =
             username: string;
             _id: string;
           };
+          type: string;
         };
       };
     }
@@ -67,11 +71,13 @@ export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
           showLoginPopup: false,
         };
       case "CHECK_LOGIN_SUCCESS":
+        console.log(payload);
         return {
           ...state,
           user: payload.action.data.user.username,
           userId: payload.action.data.user.id,
           isLoggedIn: true,
+          type: payload.action.data.type,
         };
       case "CHECK_LOGIN_FAILURE":
         return {
@@ -86,11 +92,13 @@ export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
           dataLoading: false,
         };
       case "LOGIN_SUCCESS":
+        console.log(payload);
         return {
           ...state,
           user: payload.action.data.user.username,
           userId: payload.action.data.user._id,
           isLoggedIn: true,
+          type: payload.action.data.type,
         };
       case "LOGIN_FAILURE":
         return {

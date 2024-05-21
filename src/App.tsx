@@ -28,7 +28,7 @@ function App() {
     }
   }
 
-  document.addEventListener("keydown", handleKeyPress);
+  // document.addEventListener("keydown", handleKeyPress);
 
   const header = <Header location={location} setLocation={setLocation} />;
 
