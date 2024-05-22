@@ -35,7 +35,7 @@ export default function Button(props: ButtonProps) {
         "border-box mt-4 w-full border-[1px] border-[#6ccc93] bg-[#54976f] text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none";
       break;
     case "passwordUpdate":
-      styles = `border-box w-[100px] border-[1px] p-1 border-[#6ccc93]  text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none ${!props.enabled ? "bg-[#54976f]" : "bg-[#8080806b] text-[red] border-none hover:bg-[#8080806b] pointer-events-none"}`;
+      styles = `border-box w-[100px] border-[1px] p-1 border-[#6ccc93]  text-white outline-none transition-all duration-200 hover:border-[#6ccc93] hover:bg-[#497f5e] focus:outline-none ${!props.enabled ? "bg-[#54976f]" : "bg-[#8080806b] text-[red] border-[transparent] hover:bg-[#8080806b] pointer-events-none"}`;
       break;
     case "myFlowsDelete":
     case "myFlowsEdit":
