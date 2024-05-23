@@ -435,9 +435,7 @@ export default function Dashboard({
               <Catalog />
             </>
           ) : (
-            <>
-              <p>no such page</p>
-            </>
+            <>{/* <p>no such page</p> */}</>
           )}
         </Wrapper>
       </div>

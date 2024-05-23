@@ -12,7 +12,7 @@ import ScrollToTop from "./components/utilities/scrollToTop";
 
 function App() {
   const { dispatch } = useUser();
-  const [location, setLocation] = useState<string>("flows");
+  const [location, setLocation] = useState<string>("");
 
   console.log(import.meta.env.VITE_REACT_APP_API_URL);
 
