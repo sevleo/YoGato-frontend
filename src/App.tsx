@@ -4,14 +4,14 @@ import Home from "./components/pages/Home";
 import ErrorPage from "./components/pages/ErrorPage";
 import { useEffect, useState } from "react";
 import LogInPopUp from "./components/sections/LoginPopUp";
-import { useUser } from "../src/components/utilities/UserContext";
+// import { useUser } from "../src/components/utilities/UserContext";
 import Header from "./components/sections/Header";
 import SignIn from "./components/pages/SignIn";
 import Dashboard from "./components/pages/Dashboard";
 import ScrollToTop from "./components/utilities/scrollToTop";
 
 function App() {
-  const { dispatch } = useUser();
+  // const { dispatch } = useUser();
   const [location, setLocation] = useState<string>("");
 
   console.log(import.meta.env.VITE_REACT_APP_API_URL);
@@ -20,13 +20,13 @@ function App() {
     console.log(location);
   }, [location]);
 
-  function handleKeyPress(event: KeyboardEvent) {
-    if (event.key === "Escape") {
-      dispatch({
-        type: "CLOSE_LOGIN_MODAL",
-      });
-    }
-  }
+  // function handleKeyPress(event: KeyboardEvent) {
+  //   if (event.key === "Escape") {
+  //     dispatch({
+  //       type: "CLOSE_LOGIN_MODAL",
+  //     });
+  //   }
+  // }
 
   // document.addEventListener("keydown", handleKeyPress);
 
