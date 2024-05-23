@@ -125,7 +125,10 @@ export async function updatePassword(
   setErrorMessage: Dispatch<SetStateAction<string>>,
   setCurrentPassword: Dispatch<SetStateAction<string>>,
   setNewPassword: Dispatch<SetStateAction<string>>,
-  setNewPassword2: Dispatch<SetStateAction<string>>
+  setNewPassword2: Dispatch<SetStateAction<string>>,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  setNotificationMessage: Dispatch<SetStateAction<string>>,
+  setSeverity: Dispatch<SetStateAction<string>>
 ) {
   event.preventDefault();
   try {
@@ -142,6 +145,9 @@ export async function updatePassword(
       setCurrentPassword("");
       setNewPassword("");
       setNewPassword2("");
+      setOpen(true);
+      setNotificationMessage("Password updated");
+      setSeverity("success");
     }
   } catch (error: any) {
     console.error("Error updating password:", error);
@@ -154,6 +160,9 @@ export async function updatePassword(
     } else {
       setErrorMessage(error.message);
     }
+    setOpen(true);
+    setNotificationMessage("Password not updated");
+    setSeverity("error");
   }
 }
 
@@ -165,6 +174,9 @@ export async function createOrUpdateFlow(
   flowName: string,
   editedFlowName: string,
   setNameErrorMessage: Dispatch<SetStateAction<string>>,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  setNotificationMessage: Dispatch<SetStateAction<string>>,
+  setSeverity: Dispatch<SetStateAction<string>>,
   event?: React.MouseEvent<HTMLButtonElement>
 ) {
   if (event) {
@@ -187,11 +199,17 @@ export async function createOrUpdateFlow(
         flowId: response.data.message._id,
         flowName: flowName,
       });
+      setOpen(true);
+      setNotificationMessage("Created flow");
+      setSeverity("success");
     } catch (error: any) {
       console.error("Error adding flow:", error);
       if (error.response) {
         setNameErrorMessage(error.response.data.message);
       }
+      setOpen(true);
+      setNotificationMessage("Something went wrong");
+      setSeverity("error");
     }
   } else {
     // Update existing one
@@ -206,11 +224,17 @@ export async function createOrUpdateFlow(
         }
       );
       setFlow({ ...flow, flowName: editedFlowName });
+      setOpen(true);
+      setNotificationMessage("Saved flow");
+      setSeverity("success");
     } catch (error: any) {
       console.error("Error updating flow:", error);
       if (error.response) {
         setNameErrorMessage(error.response.data.message);
       }
+      setOpen(true);
+      setNotificationMessage("Something went wrong");
+      setSeverity("error");
     }
   }
 
@@ -265,7 +289,10 @@ export async function createFlow(
   flow: FlowDataType,
   showAllFlows: () => void,
   setErrorMessage: Dispatch<SetStateAction<string | null>>,
-  setFlowName: Dispatch<SetStateAction<string>>
+  setFlowName: Dispatch<SetStateAction<string>>,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  setNotificationMessage: Dispatch<SetStateAction<string>>,
+  setSeverity: Dispatch<SetStateAction<string>>
 ) {
   event.preventDefault();
   try {
@@ -277,14 +304,26 @@ export async function createFlow(
     showAllFlows();
     setFlowName("");
     setErrorMessage(null);
+    setOpen(true);
+    setNotificationMessage("New flow added");
+    setSeverity("success");
   } catch (error: any) {
     console.error("Error adding flow:", error);
     setErrorMessage(error.response.data.message);
+    setOpen(true);
+    setNotificationMessage("Something went wrong");
+    setSeverity("error");
   }
 }
 
 // Delete flow from DB
-export async function deleteFlow(flowId: string, showAllFlows: () => void) {
+export async function deleteFlow(
+  flowId: string,
+  showAllFlows: () => void,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  setNotificationMessage: Dispatch<SetStateAction<string>>,
+  setSeverity: Dispatch<SetStateAction<string>>
+) {
   try {
     await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/delete-flow`, {
       params: {
@@ -292,8 +331,14 @@ export async function deleteFlow(flowId: string, showAllFlows: () => void) {
       },
     });
     showAllFlows();
+    setOpen(true);
+    setNotificationMessage("Flow deleted");
+    setSeverity("success");
   } catch (error) {
     console.log("Error deleting flow:", error);
+    setOpen(true);
+    setNotificationMessage("Something went wrong");
+    setSeverity("error");
   }
 }
 

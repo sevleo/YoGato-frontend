@@ -3,6 +3,7 @@ import Input from "../buildingBlocks/Input";
 import { useEffect, useState } from "react";
 import Button from "../buildingBlocks/Button";
 import { updatePassword } from "../utilities/api";
+import Notification from "../buildingBlocks/Notification";
 
 export default function Preferences() {
   const { authState } = useUser();
@@ -37,8 +38,6 @@ export default function Preferences() {
   }, [newPassword, newPassword2, currentPassword]);
 
   function handlePasswordUpdate(event: React.FormEvent<HTMLFormElement>) {
-    console.log("api call to update password");
-    console.log(authState.userId);
     updatePassword(
       event,
       authState.userId,
@@ -47,13 +46,29 @@ export default function Preferences() {
       setErrorMessage,
       setCurrentPassword,
       setNewPassword,
-      setNewPassword2
+      setNewPassword2,
+      setOpen,
+      setNotificationMessage,
+      setSeverity
     );
+  }
+
+  // Notification settings
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const [notificationMessage, setNotificationMessage] = useState<string>("");
+  const [severity, setSeverity] = useState<string>("");
+  function handleNotificationClose() {
+    setOpen(false);
   }
 
   return (
     <>
-      {" "}
+      <Notification
+        open={isOpen}
+        message={notificationMessage}
+        handleClose={handleNotificationClose}
+        severity={severity}
+      />
       {!authState.dataLoading ? (
         <>
           <div className="w-full">

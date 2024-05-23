@@ -4,6 +4,7 @@ import FlowTableCustom from "../buildingBlocks/FlowTableCustom";
 import { createFlow } from "../utilities/api";
 import { FlowDataType } from "./Flow";
 import Button from "../buildingBlocks/Button";
+import Notification from "../buildingBlocks/Notification";
 
 export interface FlowType {
   creationDate: string;
@@ -46,14 +47,31 @@ function MyFlows({
       defaultFlow,
       showAllFlows,
       setErrorMessage,
-      setFlowName
+      setFlowName,
+      setOpen,
+      setNotificationMessage,
+      setSeverity
     );
   }
 
   const [flowName, setFlowName] = useState("");
 
+  // Notification settings
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const [notificationMessage, setNotificationMessage] = useState<string>("");
+  const [severity, setSeverity] = useState<string>("");
+  function handleNotificationClose() {
+    setOpen(false);
+  }
+
   return (
     <>
+      <Notification
+        open={isOpen}
+        message={notificationMessage}
+        handleClose={handleNotificationClose}
+        severity={severity}
+      />
       <form
         method="POST"
         onSubmit={handleNewFlowClick}

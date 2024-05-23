@@ -9,6 +9,7 @@ import { createOrUpdateFlow } from "../utilities/api";
 import { fetchFlowDataAPI } from "../utilities/api";
 import Input from "../buildingBlocks/Input";
 import Button from "../buildingBlocks/Button";
+import Notification from "../buildingBlocks/Notification";
 
 interface BuilderProps {
   handleMovingClick: () => void;
@@ -84,6 +85,9 @@ function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
       flowName,
       editedFlowName,
       setNameErrorMessage,
+      setOpen,
+      setNotificationMessage,
+      setSeverity,
       event
     )
       .then(() => {
@@ -101,8 +105,22 @@ function Builder({ handleMovingClick, showAllFlows, isMobile }: BuilderProps) {
     setFlow({ ...flow, flowName: flowName });
   }
 
+  // Notification settings
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const [notificationMessage, setNotificationMessage] = useState<string>("");
+  const [severity, setSeverity] = useState<string>("");
+  function handleNotificationClose() {
+    setOpen(false);
+  }
+
   return (
     <>
+      <Notification
+        open={isOpen}
+        message={notificationMessage}
+        handleClose={handleNotificationClose}
+        severity={severity}
+      />
       <div className="rounded-md border-[1px] border-[#323232] bg-[#232323] ">
         <div className="flex w-full flex-col items-start justify-center  gap-1 p-5  ">
           <div

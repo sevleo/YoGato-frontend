@@ -5,6 +5,7 @@ import { updateFlowName } from "../utilities/api";
 import { parseISO, format } from "date-fns";
 import { FlowType } from "../sections/MyFlows";
 import Button from "./Button";
+import Notification from "./Notification";
 
 interface FlowTableCustom {
   flows: FlowType[];
@@ -23,7 +24,13 @@ export default function FlowTableCustom({
 
   // Delete flow from DB
   function handleDelete(flowId: string) {
-    deleteFlow(flowId, showAllFlows);
+    deleteFlow(
+      flowId,
+      showAllFlows,
+      setOpen,
+      setNotificationMessage,
+      setSeverity
+    );
   }
 
   function handleBuilderClick(flowId: string, flow: FlowType) {
@@ -36,8 +43,22 @@ export default function FlowTableCustom({
     handleMovingClick();
   }
 
+  // Notification settings
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const [notificationMessage, setNotificationMessage] = useState<string>("");
+  const [severity, setSeverity] = useState<string>("");
+  function handleNotificationClose() {
+    setOpen(false);
+  }
+
   return (
     <>
+      <Notification
+        open={isOpen}
+        message={notificationMessage}
+        handleClose={handleNotificationClose}
+        severity={severity}
+      />
       <div className=" hidden h-auto border-separate border-spacing-0 flex-col gap-5 bg-[#232323] max-[650px]:flex max-[650px]:bg-[transparent] sm:max-w-[800px]">
         {flows.map((flow) => {
           const duration = flow.flowData.duration;
