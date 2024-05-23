@@ -267,7 +267,7 @@ export default function Dashboard({
           className="relative flex h-12 max-h-12 items-center justify-between  border-b-[1px] border-[#323232] max-[650px]:w-screen"
         >
           <div className="flex h-full w-[170px] items-center justify-start  pl-6 ">
-            <p className="text-lg min-[650px]:text-base">
+            <p className="text-lg font-medium min-[650px]:text-base">
               {location.charAt(0).toUpperCase() + location.slice(1)}
             </p>
           </div>
