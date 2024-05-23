@@ -116,6 +116,47 @@ export async function login(
   }
 }
 
+// Handle password update event
+export async function updatePassword(
+  event: React.FormEvent<HTMLFormElement>,
+  userId: string,
+  currentPassword: string,
+  newPassword: string,
+  setErrorMessage: Dispatch<SetStateAction<string>>,
+  setCurrentPassword: Dispatch<SetStateAction<string>>,
+  setNewPassword: Dispatch<SetStateAction<string>>,
+  setNewPassword2: Dispatch<SetStateAction<string>>
+) {
+  event.preventDefault();
+  try {
+    const response = await axios.post(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/update-password`,
+      {
+        userId: userId,
+        currentPassword: currentPassword,
+        newPassword: newPassword,
+      }
+    );
+    console.log(response);
+    if (response.status === 200) {
+      setCurrentPassword("");
+      setNewPassword("");
+      setNewPassword2("");
+    }
+  } catch (error: any) {
+    console.error("Error updating password:", error);
+    if (error.response) {
+      if (error.response.data.message) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage(error.message);
+      }
+    } else {
+      setErrorMessage(error.message);
+    }
+  }
+}
+
 // Save flow to DB or update flow
 export async function createOrUpdateFlow(
   flow: FlowDataType,

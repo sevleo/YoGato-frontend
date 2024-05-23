@@ -2,6 +2,7 @@ import { useUser } from "../utilities/UserContext";
 import Input from "../buildingBlocks/Input";
 import { useEffect, useState } from "react";
 import Button from "../buildingBlocks/Button";
+import { updatePassword } from "../utilities/api";
 
 export default function Preferences() {
   const { authState } = useUser();
@@ -35,9 +36,19 @@ export default function Preferences() {
     }
   }, [newPassword, newPassword2, currentPassword]);
 
-  function handlePasswordUpdate() {
-    event.preventDefault();
+  function handlePasswordUpdate(event: React.FormEvent<HTMLFormElement>) {
     console.log("api call to update password");
+    console.log(authState.userId);
+    updatePassword(
+      event,
+      authState.userId,
+      currentPassword,
+      newPassword,
+      setErrorMessage,
+      setCurrentPassword,
+      setNewPassword,
+      setNewPassword2
+    );
   }
 
   return (
@@ -108,7 +119,7 @@ export default function Preferences() {
                 </div>
 
                 <p className="mb-2 mt-2 h-[20px] w-full text-start text-sm font-medium text-[red]">
-                  {errorMessage ? errorMessage : null}{" "}
+                  {errorMessage ? errorMessage : null}
                 </p>
                 <Button
                   componentType="passwordUpdate"
