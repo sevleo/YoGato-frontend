@@ -113,8 +113,9 @@ export function LogInForm({ type }: LogInFormProps) {
             </p>
           </div>
 
-          <div className="w-full">
+          <div className="flex w-full flex-col gap-2">
             <a
+              className=""
               href={`${import.meta.env.VITE_REACT_APP_API_URL}/login/federated/google/`}
             >
               <Button
