@@ -9,6 +9,7 @@ import Header from "./components/sections/Header";
 import SignIn from "./components/pages/SignIn";
 import Dashboard from "./components/pages/Dashboard";
 import ScrollToTop from "./components/utilities/scrollToTop";
+import PrivacyPolicy from "./components/pages/PrivacyPolicy";
 
 function App() {
   // const { dispatch } = useUser();
@@ -60,6 +61,15 @@ function App() {
             setLocation={setLocation}
             url="sign-in"
           ></SignIn>
+        </>
+      ),
+    },
+    {
+      path: "/privacy",
+      element: (
+        <>
+          <ScrollToTop />
+          <PrivacyPolicy></PrivacyPolicy>
         </>
       ),
     },
