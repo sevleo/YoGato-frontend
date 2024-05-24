@@ -122,6 +122,14 @@ export function LogInForm({ type }: LogInFormProps) {
                 label="Continue with Google"
               ></Button>
             </a>
+            <a
+              href={`${import.meta.env.VITE_REACT_APP_API_URL}/login/federated/facebook/`}
+            >
+              <Button
+                componentType="loginPopupFacebook"
+                label="Continue with Facebook"
+              ></Button>
+            </a>
           </div>
 
           <div className="relative">
@@ -235,6 +243,14 @@ export function LogInForm({ type }: LogInFormProps) {
               <Button
                 componentType="loginPopupGoogle"
                 label="Continue with Google"
+              ></Button>
+            </a>
+            <a
+              href={`${import.meta.env.VITE_REACT_APP_API_URL}/login/federated/facebook/`}
+            >
+              <Button
+                componentType="loginPopupFacebook"
+                label="Continue with Facebook"
               ></Button>
             </a>
           </div>

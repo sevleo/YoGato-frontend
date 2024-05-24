@@ -26,6 +26,7 @@ export default function Button(props: ButtonProps) {
       styles = `w-[65px] sm:w-[100px] text-sm h-[36px] border-box border-[1px] flex justify-center items-center text-white outline-none transition-all p-0 duration-200 focus:outline-none ${props.enabled ? "border-[#6ccc93] hover:border-[1px] hover:border-[#6ccc93] hover:bg-[#497f5e] bg-[#54976f] white " : " bg-[#545454]  text-[#ffffff88] hover:border-transparent hover:outline-none"}  focus:outline-none`;
       break;
     case "loginPopupGoogle":
+    case "loginPopupFacebook":
       styles =
         "w-full border-[1px] border-[#3D3D3D] bg-[#2e2e2e] text-white outline-none transition-all duration-200 hover:border-[#505050] hover:bg-[#343434] focus:outline-none";
       break;
