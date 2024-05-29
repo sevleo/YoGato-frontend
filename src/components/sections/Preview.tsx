@@ -32,30 +32,30 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
 
     const secondOne = {
       id: "1",
-      announcement: "one",
+      announcement: "",
       duration: 1,
       image: "1",
-      name: "one",
+      name: "Three...",
       url_svg_alt_local: "secondCountdown",
       sanskritName: "",
       aspectId: 0,
     };
     const secondTwo = {
       id: "2",
-      announcement: "two",
+      announcement: "",
       duration: 1,
       image: "2",
-      name: "two",
+      name: "Two...",
       url_svg_alt_local: "secondCountdown",
       sanskritName: "",
       aspectId: 0,
     };
     const secondThree = {
       id: "3",
-      announcement: "three",
+      announcement: "",
       duration: 1,
       image: "3",
-      name: "three",
+      name: "One...",
       url_svg_alt_local: "secondCountdown",
       sanskritName: "",
       aspectId: 0,

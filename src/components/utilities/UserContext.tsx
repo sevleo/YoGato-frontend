@@ -5,6 +5,7 @@ import { checkLoggedIn } from "./api";
 export interface AuthStateTypes {
   isLoggedIn: boolean;
   user: string;
+  displayName: string;
   userId: string;
   dataLoading: boolean;
   showLoginPopup: boolean;
@@ -14,6 +15,7 @@ export interface AuthStateTypes {
 const initialAuthState: AuthStateTypes = {
   isLoggedIn: false,
   user: "",
+  displayName: "",
   userId: "",
   dataLoading: true,
   showLoginPopup: false,
@@ -32,6 +34,7 @@ export type Action =
             id: string;
           };
           type: string;
+          displayName: string;
         };
       };
     }
@@ -43,6 +46,7 @@ export type Action =
         data: {
           user: {
             username: string;
+            displayName: string;
             _id: string;
           };
           type: string;
@@ -71,10 +75,10 @@ export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
           showLoginPopup: false,
         };
       case "CHECK_LOGIN_SUCCESS":
-        console.log(payload);
         return {
           ...state,
           user: payload.action.data.user.username,
+          displayName: payload.action.data.displayName,
           userId: payload.action.data.user.id,
           isLoggedIn: true,
           type: payload.action.data.type,
@@ -96,6 +100,7 @@ export const UserDataProvider: React.FC<{ children: React.ReactNode }> = ({
         return {
           ...state,
           user: payload.action.data.user.username,
+          displayName: payload.action.data.user.displayName,
           userId: payload.action.data.user._id,
           isLoggedIn: true,
           type: payload.action.data.type,

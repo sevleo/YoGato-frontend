@@ -14,6 +14,7 @@ export async function checkLoggedIn(dispatch: React.Dispatch<Action>) {
         withCredentials: true,
       }
     );
+    console.log(response);
     if (response.data.isLoggedIn) {
       dispatch({
         type: "CHECK_LOGIN_SUCCESS",
@@ -162,6 +163,48 @@ export async function updatePassword(
     }
     setOpen(true);
     setNotificationMessage("Password not updated");
+    setSeverity("error");
+  }
+}
+
+// Handle username update event
+export async function updateDisplayName(
+  event: React.FormEvent<HTMLFormElement>,
+  userId: string,
+  displayName: string,
+  setErrorMessage: Dispatch<SetStateAction<string>>,
+  setOpen: Dispatch<SetStateAction<boolean>>,
+  setNotificationMessage: Dispatch<SetStateAction<string>>,
+  setSeverity: Dispatch<SetStateAction<string>>
+) {
+  event.preventDefault();
+  try {
+    const response = await axios.post(
+      `${import.meta.env.VITE_REACT_APP_API_URL}/update-displayname`,
+      {
+        userId: userId,
+        displayName: displayName,
+      }
+    );
+    console.log(response);
+    if (response.status === 200) {
+      setOpen(true);
+      setNotificationMessage("Display Name updated");
+      setSeverity("success");
+    }
+  } catch (error: any) {
+    console.error("Error updating Display Name:", error);
+    if (error.response) {
+      if (error.response.data.message) {
+        setErrorMessage(error.response.data.message);
+      } else {
+        setErrorMessage(error.message);
+      }
+    } else {
+      setErrorMessage(error.message);
+    }
+    setOpen(true);
+    setNotificationMessage("Display Name not updated");
     setSeverity("error");
   }
 }

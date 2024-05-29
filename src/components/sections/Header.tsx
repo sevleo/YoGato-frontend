@@ -139,7 +139,7 @@ export default function Header({ setLocation }: HeaderProps) {
                         className="flex h-full w-[100px] items-center justify-center font-medium text-white  hover:cursor-pointer hover:bg-[#2e2e2e]"
                         onClick={handleMenu}
                       >
-                        {authState.user}
+                        {authState.displayName}
                       </div>{" "}
                       <ThemeProvider theme={menuTheme}>
                         <Menu

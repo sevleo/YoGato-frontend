@@ -2,27 +2,44 @@ import { useUser } from "../utilities/UserContext";
 import Input from "../buildingBlocks/Input";
 import { useEffect, useState } from "react";
 import Button from "../buildingBlocks/Button";
-import { updatePassword } from "../utilities/api";
+import { updatePassword, updateDisplayName } from "../utilities/api";
 import Notification from "../buildingBlocks/Notification";
+import { checkLoggedIn } from "../utilities/api";
 
 export default function Preferences() {
-  const { authState } = useUser();
+  const { authState, dispatch } = useUser();
+  console.log(authState);
 
+  // Password states
   const [currentPassword, setCurrentPassword] = useState<string>("");
   const [newPassword, setNewPassword] = useState<string>("");
   const [newPassword2, setNewPassword2] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessagePassword, setErrorMessagePassword] = useState<string>("");
   const [updatePassEnabled, setUpdatePassEnabled] = useState<boolean>(true);
 
+  // Display Name states
+  const [displayName, setDisplayName] = useState<string>("");
+  const [errorMessageDisplayName, setErrorMessageDisplayName] =
+    useState<string>("");
+  const [updateDisplayNameEnabled, setUpdateDispalyNameEnabled] =
+    useState<boolean>(true);
+
+  useEffect(() => {
+    if (!authState.dataLoading) {
+      setDisplayName(authState.displayName);
+    }
+  }, [authState.dataLoading, authState.displayName]);
+
+  // Enable/disable save button for password
   useEffect(() => {
     if (
       newPassword !== newPassword2 &&
       newPassword !== "" &&
       newPassword2 !== ""
     ) {
-      setErrorMessage("Password do not match");
+      setErrorMessagePassword("Password do not match");
     } else {
-      setErrorMessage("");
+      setErrorMessagePassword("");
     }
 
     if (
@@ -37,13 +54,28 @@ export default function Preferences() {
     }
   }, [newPassword, newPassword2, currentPassword]);
 
+  // Enable/disable save button for display name
+  useEffect(() => {
+    if (displayName === "") {
+      setErrorMessageDisplayName("Display name cannot be empty");
+    } else {
+      setErrorMessageDisplayName("");
+    }
+
+    if (displayName === "" || displayName === authState.displayName) {
+      setUpdateDispalyNameEnabled(true);
+    } else {
+      setUpdateDispalyNameEnabled(false);
+    }
+  }, [displayName, authState.displayName]);
+
   function handlePasswordUpdate(event: React.FormEvent<HTMLFormElement>) {
     updatePassword(
       event,
       authState.userId,
       currentPassword,
       newPassword,
-      setErrorMessage,
+      setErrorMessagePassword,
       setCurrentPassword,
       setNewPassword,
       setNewPassword2,
@@ -51,6 +83,20 @@ export default function Preferences() {
       setNotificationMessage,
       setSeverity
     );
+  }
+
+  function handleDisplayNameUpdate(event: React.FormEvent<HTMLFormElement>) {
+    updateDisplayName(
+      event,
+      authState.userId,
+      displayName,
+      setErrorMessageDisplayName,
+      setOpen,
+      setNotificationMessage,
+      setSeverity
+    ).then(() => {
+      checkLoggedIn(dispatch);
+    });
   }
 
   // Notification settings
@@ -71,7 +117,45 @@ export default function Preferences() {
       />
       {!authState.dataLoading ? (
         <>
-          <div className="w-full">
+          <div className="flex w-full flex-col">
+            <form
+              method="POST"
+              onSubmit={handleDisplayNameUpdate}
+              className="flex w-[400px] flex-col"
+            >
+              <p className=" pb-4 text-start text-2xl text-[#a0a0a0]">
+                Update display name
+              </p>
+              <div className="">
+                <Input
+                  inputType="authTextInput"
+                  type="displayName"
+                  labelFor="displayName"
+                  labelValue="Display name"
+                  inputValue={displayName}
+                  inputPlaceholder=""
+                  inputId="displayName"
+                  inputName="displayName"
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                    setDisplayName(e.target.value)
+                  }
+                  required={true}
+                  minLength={5}
+                ></Input>
+              </div>
+
+              <p className="mb-2 mt-2 h-[20px] w-full text-start text-sm font-medium text-[red]">
+                {errorMessageDisplayName ? errorMessageDisplayName : null}
+              </p>
+              <Button
+                componentType="passwordUpdate"
+                type="submit"
+                label="Save"
+                enabled={updateDisplayNameEnabled}
+              ></Button>
+            </form>
+            <div className="mb-5 mt-5 h-[1px] w-[400px] min-w-[400px] bg-[#323232]"></div>
+
             {authState.type === "password" ? (
               <form
                 method="POST"
@@ -134,7 +218,7 @@ export default function Preferences() {
                 </div>
 
                 <p className="mb-2 mt-2 h-[20px] w-full text-start text-sm font-medium text-[red]">
-                  {errorMessage ? errorMessage : null}
+                  {errorMessagePassword ? errorMessagePassword : null}
                 </p>
                 <Button
                   componentType="passwordUpdate"
@@ -144,9 +228,7 @@ export default function Preferences() {
                 ></Button>
               </form>
             ) : (
-              <div>
-                <p>google user</p>
-              </div>
+              <></>
             )}
           </div>
         </>
