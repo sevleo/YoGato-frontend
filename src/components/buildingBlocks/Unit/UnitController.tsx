@@ -78,7 +78,7 @@ function UnitController({
             id: unit.aspectId,
             count: 1,
           };
-          uniqueAspects.push(uniqueAspect);
+          uniqueAspects.push(uniqueAspect as any);
         }
         // Save unique aspect group
         aspectGroups.forEach((group) => {

@@ -31,25 +31,34 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
     const clonedFlow = structuredClone(flow);
 
     const secondOne = {
+      id: "1",
       announcement: "one",
       duration: 1,
       image: "1",
       name: "one",
       url_svg_alt_local: "secondCountdown",
+      sanskritName: "",
+      aspectId: 0,
     };
     const secondTwo = {
+      id: "2",
       announcement: "two",
       duration: 1,
       image: "2",
       name: "two",
       url_svg_alt_local: "secondCountdown",
+      sanskritName: "",
+      aspectId: 0,
     };
     const secondThree = {
+      id: "3",
       announcement: "three",
       duration: 1,
       image: "3",
       name: "three",
       url_svg_alt_local: "secondCountdown",
+      sanskritName: "",
+      aspectId: 0,
     };
     clonedFlow.units.unshift(secondThree);
     clonedFlow.units.unshift(secondTwo);
@@ -134,7 +143,12 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
 
   const [timerState, dispatch] = useReducer(flowReducer, initialTimerState);
 
+  // Real index
   const [currentUnitIndex, setCurrentUnitIndex] = useState<number>(0);
+
+  // Index excluding 3 seconds added to beginning of flow
+  const [currentUnitIndexTrimmed, setCurrentUnitIndexTrimmed] =
+    useState<number>(0);
 
   const [flowCount, setFlowCount] = useState<number>(0);
   const [flowPercent, setFlowPercent] = useState<number>(0);
@@ -146,7 +160,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
 
   const [timerCount, setTimerCount] = useState(0);
 
-  const duration = newFlow.duration;
+  const duration = newFlow.duration - 3;
   const hours = Math.floor(duration / 3600);
   const minutes = Math.floor((duration % 3600) / 60);
   const seconds = duration % 60;
@@ -181,24 +195,26 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
   // Flow timer
   const callback = useCallback(() => {
     setTimerCount((prevValue) => prevValue + 1);
+    if (currentUnitIndex > 2) {
+      setFlowPercent((prevValue) => {
+        const updatedValue = prevValue + flowIncrement;
+        return updatedValue;
+      });
+      setFlowCount((prevValue) => +(prevValue + 0.01));
+    }
     setUnitCount((prevValue) => +(prevValue + 0.01));
-    setFlowCount((prevValue) => +(prevValue + 0.01));
     setUnitPercent((prevValue) => {
       const updatedValue = prevValue + unitIncrement;
       return updatedValue;
     });
-    setFlowPercent((prevValue) => {
-      const updatedValue = prevValue + flowIncrement;
-      return updatedValue;
-    });
-  }, [unitIncrement, flowIncrement]);
+  }, [unitIncrement, flowIncrement, currentUnitIndex]);
 
   const timer = useTimer({ delay: 10, fireOnStart: true }, callback);
 
   // Update Flow Increment to calculate percentages for progress bar
   useEffect(() => {
     if (timerState.startFlow) {
-      const newIncrement = 100 / (newFlow.duration * 100);
+      const newIncrement = 100 / ((newFlow.duration - 3) * 100);
       setFlowIncrement(newIncrement);
     }
   }, [newFlow.duration, timerState.startFlow]);
@@ -223,6 +239,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
       });
 
       setCurrentUnitIndex(0);
+      setCurrentUnitIndexTrimmed(0);
 
       setFlowCount(0);
       setFlowPercent(0);
@@ -264,9 +281,18 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
       setUnitCount(0);
       setUnitPercent(0);
       next();
-      setCurrentUnitIndex((prevValue) => prevValue + 1);
+      setCurrentUnitIndex((prevValue) => {
+        return prevValue + 1;
+      });
     }
   }, [timerCount, unitPercent]);
+
+  // Update trimmed unit index
+  useEffect(() => {
+    if (currentUnitIndex >= 3) {
+      setCurrentUnitIndexTrimmed((prevValue) => prevValue + 1);
+    }
+  }, [currentUnitIndex]);
 
   // Audio play (added Web Audio API to support mobile browser)
   useEffect(() => {
@@ -274,7 +300,6 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
       const audioSrc = mp3Provider(
         newFlow.units[currentUnitIndex].url_svg_alt_local
       );
-      console.log(audioSrc);
       fetch(audioSrc)
         .then((response) => response.arrayBuffer())
         .then((buffer) => {
@@ -333,6 +358,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
       type: START_FLOW,
     });
     setCurrentUnitIndex(0);
+    setCurrentUnitIndexTrimmed(0);
     setFlowPercent(0);
     if (sliderRef.current) {
       sliderRef.current.slickGoTo(0);
@@ -362,6 +388,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
     });
 
     setCurrentUnitIndex(0);
+    setCurrentUnitIndexTrimmed(0);
 
     setFlowCount(0);
     setFlowPercent(0);
@@ -374,7 +401,9 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
     setTimerCount(0);
 
     setTimeout(() => {
-      sliderRef.current.slickGoTo(0);
+      if (sliderRef.current) {
+        sliderRef.current.slickGoTo(0);
+      }
     }, 500);
   }
 
@@ -452,7 +481,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
               <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
                 <p className="text-start text-[#a0a0a0]">Duration</p>
                 <p className="text-start text-[#a0a0a0]">
-                  {flowCount.toFixed(1)} / {newFlow.duration} seconds
+                  {flowCount.toFixed(1)} / {newFlow.duration - 3} seconds
                 </p>
               </div>
               <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
@@ -482,11 +511,17 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
                 <p className="text-start text-[#a0a0a0]">Current</p>
                 {!timerState.startFlow ? (
                   <p className="text-start text-[#a0a0a0]">
-                    1 / {newFlow.units.length}
+                    1 / {newFlow.units.length - 3}
                   </p>
+                ) : currentUnitIndexTrimmed === 0 ? (
+                  <>
+                    <p className="text-start text-[#a0a0a0]">
+                      1 / {newFlow.units.length - 3}
+                    </p>
+                  </>
                 ) : (
                   <p className="text-start text-[#a0a0a0]">
-                    {currentUnitIndex + 1} / {newFlow.units.length}
+                    {currentUnitIndexTrimmed} / {newFlow.units.length - 3}
                   </p>
                 )}
               </div>
