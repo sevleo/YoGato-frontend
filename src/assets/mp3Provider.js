@@ -97,6 +97,8 @@ import sphinx from "./poses_audios/sphinx.mp3";
 import splits_right from "./poses_audios/splits_right.mp3";
 import splits_left from "./poses_audios/splits_left.mp3";
 
+import secondCountdown from "../assets/countdown.wav";
+
 const poseAudios = {
   boatstraightlegs,
   bow,
@@ -165,6 +167,7 @@ const poseAudios = {
   sphinx,
   splits_right,
   splits_left,
+  secondCountdown,
 };
 
 function mp3Provider(poseName) {

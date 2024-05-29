@@ -16,6 +16,8 @@ import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
 import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
 import { useFlow } from "../utilities/FlowContext";
 import Button from "../buildingBlocks/Button";
+import flowEndSound from "../../assets/countdown.wav";
+import { useMemo } from "react";
 
 interface PreviewProps {
   handleDesigningClick: () => void;
@@ -24,6 +26,37 @@ interface PreviewProps {
 
 function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
   const { flow } = useFlow();
+
+  const newFlow = useMemo(() => {
+    const clonedFlow = structuredClone(flow);
+
+    const secondOne = {
+      announcement: "one",
+      duration: 1,
+      image: "1",
+      name: "one",
+      url_svg_alt_local: "secondCountdown",
+    };
+    const secondTwo = {
+      announcement: "two",
+      duration: 1,
+      image: "2",
+      name: "two",
+      url_svg_alt_local: "secondCountdown",
+    };
+    const secondThree = {
+      announcement: "three",
+      duration: 1,
+      image: "3",
+      name: "three",
+      url_svg_alt_local: "secondCountdown",
+    };
+    clonedFlow.units.unshift(secondThree);
+    clonedFlow.units.unshift(secondTwo);
+    clonedFlow.units.unshift(secondOne);
+    clonedFlow.duration = clonedFlow.duration + 3;
+    return clonedFlow;
+  }, [flow]);
 
   // Web Audio API
   const [audioContext, setAudioContext] = useState<AudioContext | null>(null);
@@ -113,7 +146,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
 
   const [timerCount, setTimerCount] = useState(0);
 
-  const duration = flow.duration;
+  const duration = newFlow.duration;
   const hours = Math.floor(duration / 3600);
   const minutes = Math.floor((duration % 3600) / 60);
   const seconds = duration % 60;
@@ -165,25 +198,25 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
   // Update Flow Increment to calculate percentages for progress bar
   useEffect(() => {
     if (timerState.startFlow) {
-      const newIncrement = 100 / (flow.duration * 100);
+      const newIncrement = 100 / (newFlow.duration * 100);
       setFlowIncrement(newIncrement);
     }
-  }, [flow.duration, timerState.startFlow]);
+  }, [newFlow.duration, timerState.startFlow]);
 
   // Update Unit Increment to calculate percentages for progress bar
   useEffect(() => {
     if (timerState.startFlow) {
-      if (flow.units[currentUnitIndex]) {
+      if (newFlow.units[currentUnitIndex]) {
         const newIncrement =
-          100 / (flow.units[currentUnitIndex].duration * 100);
+          100 / (newFlow.units[currentUnitIndex].duration * 100);
         setUnitIncrement(newIncrement);
       }
     }
-  }, [flow.units, currentUnitIndex, timerState.startFlow]);
+  }, [newFlow.units, currentUnitIndex, timerState.startFlow]);
 
   // Flow end
   useEffect(() => {
-    if (timerCount === flow.duration * 100) {
+    if (timerCount === newFlow.duration * 100) {
       timer.stop();
       dispatch({
         type: STOP_FLOW,
@@ -200,9 +233,30 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
       setUnitIncrement(0);
 
       setTimerCount(0);
+
+      if (audioContext) {
+        const audioSrc = flowEndSound;
+        fetch(audioSrc)
+          .then((response) => response.arrayBuffer())
+          .then((buffer) => {
+            audioContext.decodeAudioData(buffer, (decodedData) => {
+              const source = audioContext.createBufferSource();
+              source.buffer = decodedData;
+              const gainNode = audioContext.createGain();
+              gainNode.gain.value = volumeRef.current;
+              source.connect(gainNode);
+              gainNode.connect(audioContext.destination);
+              source.start(0);
+            });
+          })
+          .catch((error) => {
+            console.error("Error fetching or decoding audio data:", error);
+          });
+      }
+
       next();
     }
-  }, [timer, timerCount, flow.duration]);
+  }, [timer, timerCount, newFlow.duration, audioContext]);
 
   // Unit end
   useEffect(() => {
@@ -218,8 +272,9 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
   useEffect(() => {
     if (timerState.startFlow && audioContext) {
       const audioSrc = mp3Provider(
-        flow.units[currentUnitIndex].url_svg_alt_local
+        newFlow.units[currentUnitIndex].url_svg_alt_local
       );
+      console.log(audioSrc);
       fetch(audioSrc)
         .then((response) => response.arrayBuffer())
         .then((buffer) => {
@@ -237,7 +292,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
           console.error("Error fetching or decoding audio data:", error);
         });
     }
-  }, [currentUnitIndex, flow.units, timerState.startFlow, audioContext]);
+  }, [currentUnitIndex, timerState.startFlow, audioContext, newFlow]);
 
   // Start/Pause/Resume controls
   useEffect(() => {
@@ -279,6 +334,9 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
     });
     setCurrentUnitIndex(0);
     setFlowPercent(0);
+    if (sliderRef.current) {
+      sliderRef.current.slickGoTo(0);
+    }
   }
 
   function handleCancelButtonClick() {
@@ -298,6 +356,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
   }
 
   function handleStopButtonClick() {
+    timer.stop();
     dispatch({
       type: STOP_FLOW,
     });
@@ -314,17 +373,19 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
 
     setTimerCount(0);
 
-    timer.stop();
+    setTimeout(() => {
+      sliderRef.current.slickGoTo(0);
+    }, 500);
   }
 
-  return flow.units.length > 0 ? (
+  return newFlow.units.length > 0 ? (
     <>
       <div className="rounded-md border-[1px] border-[#323232] bg-[#232323]">
         <div className="flex w-full flex-col items-start justify-center  gap-1 p-5  ">
           <div className="flex w-full flex-col items-start justify-center">
             <>
               <p className="text-[30px] text-[#a0a0a0]">
-                {flow.flowName ? flow.flowName : "No name"}
+                {newFlow.flowName ? newFlow.flowName : "No name"}
               </p>
             </>
           </div>
@@ -374,12 +435,12 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
           </div>
           <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
             <p className="text-start text-[#a0a0a0]">Poses</p>
-            <p className="text-start text-[#a0a0a0]">{flow.units.length}</p>
+            <p className="text-start text-[#a0a0a0]">{newFlow.units.length}</p>
           </div>
           <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
             <p className="text-start text-[#a0a0a0]">Unique poses</p>
             <p className="text-start text-[#a0a0a0]">
-              {flow.uniqueAspects.length}
+              {newFlow.uniqueAspects.length}
             </p>
           </div>
         </div>
@@ -391,7 +452,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
               <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
                 <p className="text-start text-[#a0a0a0]">Duration</p>
                 <p className="text-start text-[#a0a0a0]">
-                  {flowCount.toFixed(1)} / {flow.duration} seconds
+                  {flowCount.toFixed(1)} / {newFlow.duration} seconds
                 </p>
               </div>
               <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
@@ -421,11 +482,11 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
                 <p className="text-start text-[#a0a0a0]">Current</p>
                 {!timerState.startFlow ? (
                   <p className="text-start text-[#a0a0a0]">
-                    1 / {flow.units.length}
+                    1 / {newFlow.units.length}
                   </p>
                 ) : (
                   <p className="text-start text-[#a0a0a0]">
-                    {currentUnitIndex + 1} / {flow.units.length}
+                    {currentUnitIndex + 1} / {newFlow.units.length}
                   </p>
                 )}
               </div>
@@ -434,17 +495,17 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
 
                 <p className="text-start text-[#a0a0a0]">
                   {timerState.startFlow
-                    ? flow.units[currentUnitIndex].name
-                    : flow.units[0].name}
+                    ? newFlow.units[currentUnitIndex].name
+                    : newFlow.units[0].name}
                 </p>
               </div>
               <div className="grid w-full grid-cols-[1fr_2fr] gap-2">
                 <p className="text-start text-[#a0a0a0] ">Duration</p>
                 <p className="text-start text-[#a0a0a0]">
                   {unitCount.toFixed(1)} /{" "}
-                  {flow.units[currentUnitIndex]
-                    ? flow.units[currentUnitIndex].duration
-                    : flow.units[0].duration}{" "}
+                  {newFlow.units[currentUnitIndex]
+                    ? newFlow.units[currentUnitIndex].duration
+                    : newFlow.units[0].duration}{" "}
                   seconds
                 </p>
               </div>
@@ -460,7 +521,7 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
           <div className="image-track m-auto h-full w-[280px]">
             <div className=" ml-auto mr-auto flex h-full max-w-[400px] flex-col">
               <Slider {...settings} ref={sliderRef}>
-                {flow.units.map((unit) => {
+                {newFlow.units.map((unit) => {
                   return (
                     <div
                       key={unit.id}
@@ -470,7 +531,33 @@ function Preview({ handleDesigningClick, handleFlowsClick }: PreviewProps) {
                         <CircularProgressBar
                           percentValue={unitPercent}
                           value={
-                            <img className="w-2/3" src={unit.image} alt="" />
+                            unit.image === "1" ? (
+                              <>
+                                <p className="text-[30px] font-bold text-[#6ccc93]">
+                                  1
+                                </p>
+                              </>
+                            ) : unit.image === "2" ? (
+                              <>
+                                <p className="text-[30px] font-bold text-[#6ccc93]">
+                                  2
+                                </p>
+                              </>
+                            ) : unit.image === "3" ? (
+                              <>
+                                <p className="text-[30px] font-bold text-[#6ccc93]">
+                                  3
+                                </p>
+                              </>
+                            ) : (
+                              <>
+                                <img
+                                  className="w-2/3"
+                                  src={unit.image}
+                                  alt=""
+                                />
+                              </>
+                            )
                           }
                         ></CircularProgressBar>
                       </div>
