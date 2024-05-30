@@ -121,7 +121,7 @@ export default function Preferences() {
             <form
               method="POST"
               onSubmit={handleDisplayNameUpdate}
-              className="flex w-[400px] flex-col"
+              className="flex w-[300px] flex-col"
             >
               <p className=" pb-4 text-start text-2xl text-[#a0a0a0]">
                 Update display name
@@ -154,13 +154,13 @@ export default function Preferences() {
                 enabled={updateDisplayNameEnabled}
               ></Button>
             </form>
-            <div className="mb-5 mt-5 h-[1px] w-[400px] min-w-[400px] bg-[#323232]"></div>
+            <div className="mb-5 mt-5 h-[1px] w-[300px] bg-[#323232]"></div>
 
             {authState.type === "password" ? (
               <form
                 method="POST"
                 onSubmit={handlePasswordUpdate}
-                className="flex w-[400px] flex-col"
+                className="flex w-[300px] flex-col"
               >
                 <p className=" pb-4 text-start text-2xl text-[#a0a0a0]">
                   Change password
